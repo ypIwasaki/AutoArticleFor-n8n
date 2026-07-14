@@ -1,0 +1,25 @@
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    restart: unless-stopped
+    ports:
+      - "${N8N_PORT:-5678}:5678"
+    environment:
+      N8N_HOST: ${N8N_HOST:-localhost}
+      N8N_PORT: 5678
+      N8N_PROTOCOL: ${N8N_PROTOCOL:-http}
+      GENERIC_TIMEZONE: ${GENERIC_TIMEZONE:-Asia/Tokyo}
+      TZ: ${TZ:-Asia/Tokyo}
+      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: ${N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS:-true}
+      N8N_RUNNERS_ENABLED: ${N8N_RUNNERS_ENABLED:-true}
+      N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY:-change-me-before-production}
+      PROJECT_ROOT: ${PROJECT_ROOT:-/project}
+      N8N_RESTRICT_FILE_ACCESS_TO: ${N8N_RESTRICT_FILE_ACCESS_TO:-/project/content}
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./:/project
+      - ./n8n/workflows:/workflows:ro
+
+volumes:
+  n8n_data:
+

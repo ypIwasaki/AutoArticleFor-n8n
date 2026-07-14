@@ -1,0 +1,129 @@
+{
+  "name": "Auto Article Starter",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "0b3a7793-dcf5-4e43-9d70-321f07e79887",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "auto-article/brief",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "4b8d30c1-a214-46b5-9ee6-19ec6d9bbbc9",
+      "name": "Article Request Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        240,
+        120
+      ],
+      "webhookId": "auto-article-brief"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      topic: 'Using n8n for article automation',\n      keywords: ['n8n', 'automation', 'content operations'],\n      audience: 'developers and operators',\n      tone: 'practical',\n      targetLength: 1200,\n      source: 'manual-sample'\n    }\n  }\n];\n"
+      },
+      "id": "c97e2b11-912f-4212-94cb-8eaaafce7b2e",
+      "name": "Sample Article Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        520,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $json.body ?? $json;\nconst keywordInput = input.keywords ?? input.keyword ?? [];\nconst keywords = Array.isArray(keywordInput)\n  ? keywordInput\n  : String(keywordInput)\n      .split(',')\n      .map((keyword) => keyword.trim())\n      .filter(Boolean);\n\nreturn [\n  {\n    json: {\n      topic: input.topic || 'Untitled article topic',\n      keywords,\n      audience: input.audience || 'general readers',\n      tone: input.tone || 'practical',\n      targetLength: Number(input.targetLength || input.target_length || 1200),\n      source: 'webhook'\n    }\n  }\n];\n"
+      },
+      "id": "d688799f-cfad-48e2-b7a0-19eda0292654",
+      "name": "Normalize Article Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        520,
+        120
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const topic = $json.topic;\nconst keywords = Array.isArray($json.keywords) ? $json.keywords : [];\nconst audience = $json.audience;\nconst tone = $json.tone;\nconst targetLength = $json.targetLength;\nconst primaryKeyword = keywords[0] || topic;\nconst slug = topic\n  .toLowerCase()\n  .replace(/[^a-z0-9]+/g, '-')\n  .replace(/^-|-$/g, '')\n  .slice(0, 80) || 'article-draft';\n\nconst outline = [\n  {\n    heading: 'Problem and context',\n    intent: `Explain why ${topic} matters to ${audience}.`\n  },\n  {\n    heading: 'Recommended workflow',\n    intent: 'Describe the repeatable process and decision points.'\n  },\n  {\n    heading: 'Implementation notes',\n    intent: 'List practical setup details, dependencies, and pitfalls.'\n  },\n  {\n    heading: 'Next steps',\n    intent: 'Give the reader concrete actions to take.'\n  }\n];\n\nconst generationPrompt = [\n  `Write an article about: ${topic}`,\n  `Audience: ${audience}`,\n  `Tone: ${tone}`,\n  `Target length: about ${targetLength} words`,\n  `Primary keyword: ${primaryKeyword}`,\n  `Supporting keywords: ${keywords.join(', ') || 'none'}`,\n  'Use the outline below, keep the structure clear, and avoid unsupported claims.',\n  JSON.stringify(outline, null, 2)\n].join('\\n\\n');\n\nreturn [\n  {\n    json: {\n      title: topic,\n      slug,\n      metadata: {\n        audience,\n        tone,\n        targetLength,\n        primaryKeyword,\n        keywords,\n        source: $json.source\n      },\n      outline,\n      generationPrompt,\n      nextAutomationSteps: [\n        'Send generationPrompt to an LLM node or HTTP Request node.',\n        'Store the draft in a review queue before publishing.',\n        'Publish only after an explicit approval step.'\n      ]\n    }\n  }\n];\n"
+      },
+      "id": "5d5763a0-c84f-46a8-bb97-08f5720b20bc",
+      "name": "Build Article Brief",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        820,
+        240
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Sample Article Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Article Request Webhook": {
+      "main": [
+        [
+          {
+            "node": "Normalize Article Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sample Article Request": {
+      "main": [
+        [
+          {
+            "node": "Build Article Brief",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Article Request": {
+      "main": [
+        [
+          {
+            "node": "Build Article Brief",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-07-13T00:00:00.000Z",
+  "versionId": "8b0fffb5-a8ac-4a13-bac1-0e6c73b31db7"
+}
+

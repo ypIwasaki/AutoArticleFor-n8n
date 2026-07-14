@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# n8n local state and secrets
+.n8n/
+n8n/.data/
+n8n/data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+

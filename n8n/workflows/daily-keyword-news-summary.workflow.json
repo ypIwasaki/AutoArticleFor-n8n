@@ -1,0 +1,320 @@
+{
+  "name": "Daily Keyword News Summary",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 * * *"
+            }
+          ]
+        }
+      },
+      "id": "dd6a9ec4-9d58-4ce8-bc3e-99381c6f60c5",
+      "name": "Daily Schedule",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        180,
+        120
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "f9c1047e-f7d4-4b84-af97-8cb878fc3321",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        180,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "daily-keyword-summary/request",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "4b42e278-7592-47f1-8129-29010509250f",
+      "name": "Keyword Summary Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        180,
+        520
+      ],
+      "webhookId": "daily-keyword-summary-request"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "return [\n  {\n    json: {\n      keywords: ['Vtuber', 'にじさんじ'],\n      lookbackHours: 24,\n      maxArticles: 30,\n      locale: 'ja-JP',\n      language: 'ja',\n      country: 'JP',\n      outputLanguage: 'ja',\n      source: 'default-daily-request'\n    }\n  }\n];\n"
+      },
+      "id": "2f6dd34c-50df-47a1-9c39-b6c7d4d72539",
+      "name": "Default Daily Summary Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        220
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const input = $json.body ?? $json;\n\nreturn [\n  {\n    json: {\n      keywords: input.keywords ?? input.keyword ?? ['Vtuber', 'にじさんじ'],\n      lookbackHours: Number(input.lookbackHours ?? input.lookback_hours ?? 24),\n      maxArticles: Number(input.maxArticles ?? input.max_articles ?? 30),\n      locale: input.locale ?? 'ja-JP',\n      language: input.language ?? 'ja',\n      country: input.country ?? 'JP',\n      outputLanguage: input.outputLanguage ?? input.output_language ?? 'ja',\n      source: 'webhook-request'\n    }\n  }\n];\n"
+      },
+      "id": "fe99a1c0-4b5e-43b5-bd27-02c42d693b52",
+      "name": "Normalize Webhook Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const input = $json.body ?? $json;\nconst keywordInput = input.keywords ?? input.keyword ?? [];\nconst keywords = Array.isArray(keywordInput)\n  ? keywordInput\n  : String(keywordInput)\n      .split(/,|\\n/)\n      .map((keyword) => keyword.trim())\n      .filter(Boolean);\n\nconst normalizedKeywords = keywords.length ? keywords : ['Vtuber', 'にじさんじ'];\nconst lookbackHours = Math.max(1, Number(input.lookbackHours || 24));\nconst lookbackDays = Math.max(1, Math.ceil(lookbackHours / 24));\nconst maxArticles = Math.max(1, Number(input.maxArticles || 30));\nconst locale = input.locale || 'ja-JP';\nconst language = input.language || 'ja';\nconst country = input.country || 'JP';\nconst outputLanguage = input.outputLanguage || 'ja';\nconst since = new Date(Date.now() - lookbackHours * 60 * 60 * 1000).toISOString();\nconst until = new Date().toISOString();\nconst feedRequests = [];\n\nfor (const keyword of normalizedKeywords) {\n  const googleQuery = `${keyword} when:${lookbackDays}d`;\n  const ceid = `${country}:${language}`;\n  const googleNewsRssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(googleQuery)}&hl=${encodeURIComponent(locale)}&gl=${encodeURIComponent(country)}&ceid=${encodeURIComponent(ceid)}`;\n  const hatenaBookmarkRssUrl = `https://b.hatena.ne.jp/search/text?q=${encodeURIComponent(keyword)}&sort=recent&mode=rss`;\n\n  feedRequests.push({\n    sourceName: 'Google News',\n    keyword,\n    query: googleQuery,\n    rssUrl: googleNewsRssUrl\n  });\n\n  feedRequests.push({\n    sourceName: 'Hatena Bookmark',\n    keyword,\n    query: keyword,\n    rssUrl: hatenaBookmarkRssUrl\n  });\n}\n\nreturn feedRequests.map((feed) => ({\n  json: {\n    ...feed,\n    keywords: normalizedKeywords,\n    since,\n    until,\n    lookbackHours,\n    maxArticles,\n    locale,\n    language,\n    country,\n    outputLanguage,\n    requestSource: input.source || 'daily-summary-request'\n  }\n}));\n"
+      },
+      "id": "6c03a5b7-2d8d-4f5c-9b11-199aaf1cbf3f",
+      "name": "Build Search RSS URLs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        800,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.rssUrl }}"
+      },
+      "id": "a163661f-771a-4ef0-b772-688e6a421eee",
+      "name": "Read RSS Search Results",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        1120,
+        360
+      ],
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const rssItems = $input.all();\nlet queryItems = [];\n\ntry {\n  queryItems = $('Build Search RSS URLs').all().map((item) => item.json);\n} catch (error) {\n  queryItems = [];\n}\n\nconst firstQuery = queryItems[0] || {};\nconst since = firstQuery.since ? new Date(firstQuery.since) : new Date(Date.now() - 24 * 60 * 60 * 1000);\nconst keywords = firstQuery.keywords || [];\nconst maxArticles = Number(firstQuery.maxArticles || 30);\n\nfunction cleanText(value) {\n  return String(value || '')\n    .replace(/<!\\[CDATA\\[/g, '')\n    .replace(/\\]\\]>/g, '')\n    .replace(/<[^>]*>/g, ' ')\n    .replace(/&nbsp;/g, ' ')\n    .replace(/&amp;/g, '&')\n    .replace(/&lt;/g, '<')\n    .replace(/&gt;/g, '>')\n    .replace(/&quot;/g, '\"')\n    .replace(/&#39;/g, \"'\")\n    .replace(/\\s+/g, ' ')\n    .trim();\n}\n\nconst seen = new Set();\nconst articles = [];\n\nfor (const item of rssItems) {\n  const article = item.json || {};\n  const rawDate = article.isoDate || article.pubDate || article.date || article.published || '';\n  const publishedAt = rawDate ? new Date(rawDate) : null;\n\n  if (publishedAt && Number.isFinite(publishedAt.getTime()) && publishedAt < since) {\n    continue;\n  }\n\n  const title = cleanText(article.title);\n  const url = article.link || article.guid || '';\n  const excerpt = cleanText(article.contentSnippet || article.content || article.description || article.summary);\n  const key = url || title.toLowerCase();\n\n  if ((!title && !url) || seen.has(key)) {\n    continue;\n  }\n\n  seen.add(key);\n  articles.push({\n    title,\n    url,\n    publishedAt: publishedAt && Number.isFinite(publishedAt.getTime()) ? publishedAt.toISOString() : rawDate,\n    source: cleanText(article.creator || article.author || article['dc:creator'] || ''),\n    excerpt: excerpt.slice(0, 700)\n  });\n}\n\narticles.sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || '')));\n\nreturn [\n  {\n    json: {\n      generatedAt: new Date().toISOString(),\n      period: {\n        since: since.toISOString(),\n        until: firstQuery.until || new Date().toISOString()\n      },\n      keywords,\n      queryCount: queryItems.length,\n      searchSources: Array.from(new Set(queryItems.map((item) => item.sourceName).filter(Boolean))),\n      articleCount: articles.length,\n      articles: articles.slice(0, maxArticles),\n      outputLanguage: firstQuery.outputLanguage || 'ja',\n      requestSource: firstQuery.requestSource || 'rss'\n    }\n  }\n];\n"
+      },
+      "id": "8cb4d75a-72bd-4c72-9af9-39b28de0f9da",
+      "name": "Normalize and Deduplicate Articles",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1440,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const data = $json;\nconst articles = Array.isArray(data.articles) ? data.articles : [];\nconst keywords = Array.isArray(data.keywords) ? data.keywords : [];\nconst dateLabel = new Date(data.generatedAt || Date.now()).toISOString().slice(0, 10);\n\nconst sourceLines = articles.map((article, index) => {\n  const parts = [\n    `${index + 1}. ${article.title || '(no title)'}`,\n    article.publishedAt ? `Published: ${article.publishedAt}` : null,\n    article.source ? `Source: ${article.source}` : null,\n    article.url ? `URL: ${article.url}` : null,\n    article.excerpt ? `Excerpt: ${article.excerpt}` : null\n  ].filter(Boolean);\n\n  return parts.join('\\n');\n});\n\nconst topItems = articles.slice(0, 10).map((article, index) => {\n  const title = article.title || '(no title)';\n  const link = article.url ? ` - ${article.url}` : '';\n  const excerpt = article.excerpt ? `\\n  ${article.excerpt}` : '';\n  return `${index + 1}. ${title}${link}${excerpt}`;\n});\n\nconst digestMarkdown = [\n  `# Daily Keyword News Summary - ${dateLabel}`,\n  '',\n  `Keywords: ${keywords.join(', ') || '(not available)'}`,\n  `Period: ${data.period?.since || ''} to ${data.period?.until || ''}`,\n  `Articles found: ${data.articleCount}`,\n  '',\n  '## Top Items',\n  topItems.length ? topItems.join('\\n\\n') : 'No recent RSS items were found for the configured keywords.',\n  '',\n  '## Source URLs',\n  articles.map((article) => `- ${article.title || article.url}: ${article.url || '(no URL)'}`).join('\\n') || '- No URLs'\n].join('\\n');\n\nconst llmPrompt = [\n  `You are preparing a daily news and web-content digest in ${data.outputLanguage || 'ja'}.`,\n  `Summarize only the sources listed below. Do not invent facts or add uncited claims.`,\n  `Target keywords: ${keywords.join(', ') || '(not available)'}`,\n  `Time window: ${data.period?.since || ''} to ${data.period?.until || ''}`,\n  'Return the digest with these sections: 1) Executive summary, 2) Important developments by keyword, 3) Source-by-source notes, 4) Items to monitor tomorrow.',\n  'For each important claim, mention the source title or URL.',\n  '',\n  'Sources:',\n  sourceLines.join('\\n\\n') || 'No source items were found.'\n].join('\\n');\n\nreturn [\n  {\n    json: {\n      ...data,\n      digestMarkdown,\n      llmPrompt,\n      nextAutomationSteps: [\n        'Connect llmPrompt to an OpenAI, Anthropic, Gemini, or HTTP Request node for semantic summarization.',\n        'Send digestMarkdown or the LLM output to Gmail, Slack, Notion, Google Docs, or WordPress.',\n        'Add a duplicate-history store if the same articles should not appear across multiple days.'\n      ]\n    }\n  }\n];\n"
+      },
+      "id": "bc3c09bb-e89f-419c-bd09-0754a8899369",
+      "name": "Build Daily Digest",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const data = $json;\nconst knownTerms = [\n  { term: 'ホロライブ', aliases: ['ホロライブ', 'hololive'], category: 'agency/group' },\n  { term: 'COVER', aliases: ['COVER', 'カバー株式会社', 'カバー'], category: 'company' },\n  { term: 'ANYCOLOR', aliases: ['ANYCOLOR', 'ANYCOLOR株式会社'], category: 'company' },\n  { term: 'NIJISANJI EN', aliases: ['NIJISANJI EN', 'にじさんじEN'], category: 'agency/group' },\n  { term: 'ぶいすぽっ!', aliases: ['ぶいすぽっ!', 'ぶいすぽ', 'VSPO!'], category: 'agency/group' },\n  { term: 'Brave group', aliases: ['Brave group', 'BraveGroup'], category: 'company' },\n  { term: 'あおぎり高校', aliases: ['あおぎり高校'], category: 'agency/group' },\n  { term: 'ななしいんく', aliases: ['ななしいんく', '774inc'], category: 'agency/group' },\n  { term: 'Neo-Porte', aliases: ['Neo-Porte', 'ネオポルテ'], category: 'agency/group' },\n  { term: 'VShojo', aliases: ['VShojo'], category: 'agency/group' },\n  { term: 'Phase Connect', aliases: ['Phase Connect'], category: 'agency/group' },\n  { term: '.LIVE', aliases: ['.LIVE', 'どっとライブ'], category: 'agency/group' },\n  { term: 'のりプロ', aliases: ['のりプロ'], category: 'agency/group' },\n  { term: 'RIOT MUSIC', aliases: ['RIOT MUSIC'], category: 'agency/group' },\n  { term: 'Re:AcT', aliases: ['Re:AcT', 'ReAct'], category: 'agency/group' },\n  { term: 'VOMS', aliases: ['VOMS'], category: 'agency/group' },\n  { term: '深層組', aliases: ['深層組'], category: 'agency/group' },\n  { term: 'Varium', aliases: ['Varium', 'ぶいありうむっ！'], category: 'agency/group' },\n  { term: 'ホロスターズ', aliases: ['ホロスターズ', 'HOLOSTARS'], category: 'agency/group' },\n  { term: 'ChroNoiR', aliases: ['ChroNoiR', 'クロノワール'], category: 'unit' },\n  { term: 'ROF-MAO', aliases: ['ROF-MAO', 'ろふまお'], category: 'unit' },\n  { term: 'Live2D', aliases: ['Live2D'], category: 'technology' }\n];\nconst stopTerms = new Set(['https', 'http', 'www', 'com', 'ニュース', 'まとめ', '記事', '動画', '配信', '発表', '開催', '公開', 'YouTube']);\n\nfunction jstDateParts(value) {\n  const date = value ? new Date(value) : new Date();\n  const formatter = new Intl.DateTimeFormat('en-US', {\n    timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit'\n  });\n  const parts = Object.fromEntries(formatter.formatToParts(date).map((part) => [part.type, part.value]));\n  return { date: `${parts.year}-${parts.month}-${parts.day}` };\n}\n\nfunction slugifyKeywords(keywords) {\n  return (keywords || [])\n    .map((keyword) => String(keyword).trim())\n    .filter(Boolean)\n    .join('-')\n    .toLowerCase()\n    .replace(/[\\\\/:*?\"<>|`$&;(){}[\\]\\n\\r\\t]+/g, '-')\n    .replace(/\\s+/g, '-')\n    .replace(/-+/g, '-')\n    .replace(/^-|-$/g, '')\n    .slice(0, 90) || 'daily-summary';\n}\n\nfunction frontMatter(dateLabel) {\n  const keywords = Array.isArray(data.keywords) ? data.keywords : [];\n  const sources = Array.isArray(data.searchSources) ? data.searchSources : [];\n  return [\n    '---',\n    'title: \"Daily Keyword News Summary\"',\n    `date: \"${dateLabel}\"`,\n    `generatedAt: \"${data.generatedAt || new Date().toISOString()}\"`,\n    'keywords:',\n    ...(keywords.length ? keywords.map((keyword) => `  - \"${String(keyword).replace(/\"/g, '\\\\\"')}\"`) : ['  - \"\"']),\n    'sources:',\n    ...(sources.length ? sources.map((source) => `  - \"${String(source).replace(/\"/g, '\\\\\"')}\"`) : ['  - \"\"']),\n    `articleCount: ${Number(data.articleCount || 0)}`,\n    '---',\n    ''\n  ].join('\\n');\n}\n\nfunction articleListMarkdown(articles) {\n  if (!articles.length) {\n    return 'No articles were captured for this run.';\n  }\n  return articles.map((article, index) => [\n    `### ${index + 1}. ${article.title || '(no title)'}`,\n    '',\n    article.url ? `- URL: ${article.url}` : null,\n    article.publishedAt ? `- Published: ${article.publishedAt}` : null,\n    article.source ? `- Source: ${article.source}` : null,\n    '',\n    article.excerpt || null\n  ].filter((line) => line !== null).join('\\n')).join('\\n\\n');\n}\n\nfunction buildDigestMarkdown(dateLabel) {\n  const articles = Array.isArray(data.articles) ? data.articles : [];\n  const period = data.period || {};\n  return [\n    frontMatter(dateLabel),\n    data.digestMarkdown || `# Daily Keyword News Summary - ${dateLabel}`,\n    '',\n    '## Run Metadata',\n    '',\n    `- Generated at: ${data.generatedAt || ''}`,\n    `- Period start: ${period.since || ''}`,\n    `- Period end: ${period.until || ''}`,\n    `- Article count: ${Number(data.articleCount || articles.length)}`,\n    `- Search sources: ${(data.searchSources || []).join(', ') || '(not available)'}`,\n    '',\n    '## Captured Articles',\n    '',\n    articleListMarkdown(articles),\n    '',\n    '## LLM Prompt',\n    '',\n    '<details>',\n    '<summary>Prompt used for semantic summarization</summary>',\n    '',\n    '```text',\n    data.llmPrompt || '',\n    '```',\n    '',\n    '</details>',\n    ''\n  ].join('\\n');\n}\n\nfunction escapeRegExp(value) {\n  return String(value).replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&');\n}\n\nfunction collectSourceReferences(articles, term) {\n  const refs = [];\n  const lowerTerm = String(term).toLowerCase();\n  for (const article of articles) {\n    const haystack = `${article.title || ''}\\n${article.excerpt || ''}\\n${article.source || ''}`.toLowerCase();\n    if (haystack.includes(lowerTerm)) {\n      refs.push(article.title || article.url || '(untitled source)');\n    }\n    if (refs.length >= 3) break;\n  }\n  return refs;\n}\n\nfunction addCandidate(candidates, currentKeywords, term, category, reason, sourceRefs = []) {\n  const normalized = String(term || '').trim();\n  if (!normalized || normalized.length < 2) return;\n  const lower = normalized.toLowerCase();\n  if (stopTerms.has(normalized) || currentKeywords.has(lower)) return;\n  const existing = candidates.get(lower);\n  if (existing) {\n    existing.count += 1;\n    existing.reasons.add(reason);\n    sourceRefs.forEach((source) => existing.sources.add(source));\n    return;\n  }\n  candidates.set(lower, { term: normalized, category, count: 1, reasons: new Set([reason]), sources: new Set(sourceRefs) });\n}\n\nfunction extractSourceTerms(text) {\n  const terms = new Set();\n  for (const match of text.matchAll(/#([A-Za-z0-9_\\-\\u3040-\\u30ff\\u3400-\\u9fff]{2,40})/g)) terms.add(match[1]);\n  for (const match of text.matchAll(/\\b[A-Z][A-Za-z0-9&.:'!-]{2,30}\\b/g)) terms.add(match[0]);\n  for (const match of text.matchAll(/[ァ-ヴー]{3,20}/g)) terms.add(match[0]);\n  for (const match of text.matchAll(/[一-龠々〆ヵヶ]{2,12}(?:事務所|プロ|高校|会社|株式会社|グループ|運営|所属)/g)) terms.add(match[0]);\n  return [...terms];\n}\n\nfunction extractKeywordCandidates(markdown) {\n  const articles = Array.isArray(data.articles) ? data.articles : [];\n  const currentKeywords = new Set((data.keywords || []).map((keyword) => String(keyword).toLowerCase()));\n  const candidates = new Map();\n\n  for (const known of knownTerms) {\n    let count = 0;\n    for (const alias of known.aliases || [known.term]) {\n      const matches = markdown.match(new RegExp(escapeRegExp(alias), 'gi'));\n      count += matches ? matches.length : 0;\n    }\n    if (count > 0) {\n      addCandidate(candidates, currentKeywords, known.term, known.category, `known VTuber-related term appeared ${count} time(s)`, collectSourceReferences(articles, known.term));\n      const candidate = candidates.get(known.term.toLowerCase());\n      if (candidate) candidate.count = count;\n    }\n  }\n\n  const sourceText = articles.map((article) => `${article.title || ''}\\n${article.excerpt || ''}\\n${article.source || ''}`).join('\\n');\n  for (const term of extractSourceTerms(sourceText)) {\n    if (term.length > 30 || /^\\d+$/.test(term)) continue;\n    addCandidate(candidates, currentKeywords, term, 'source-derived', 'appeared in captured article text', collectSourceReferences(articles, term));\n  }\n\n  return [...candidates.values()].map((candidate) => ({\n    term: candidate.term,\n    category: candidate.category,\n    count: candidate.count,\n    reasons: [...candidate.reasons],\n    sources: [...candidate.sources]\n  })).sort((a, b) => b.count - a.count || a.term.localeCompare(b.term, 'ja')).slice(0, 40);\n}\n\n\nfunction buildAiExtractionInstructionMarkdown(dateLabel, digestRelativePath, candidateRelativePath, digestMarkdown, candidates) {\n  const currentKeywords = Array.isArray(data.keywords) ? data.keywords : [];\n  const candidateContext = candidates.length\n    ? candidates.map((candidate) => ({\n        term: candidate.term,\n        category: candidate.category,\n        count: candidate.count,\n        reasons: candidate.reasons,\n        sources: candidate.sources.slice(0, 3)\n      }))\n    : [];\n\n  return [\n    '---',\n    'title: \"AI Keyword Extraction Instructions\"',\n    `date: \"${dateLabel}\"`,\n    `sourceDigest: \"${digestRelativePath}\"`,\n    `ruleBasedCandidates: \"${candidateRelativePath}\"`,\n    '---',\n    '',\n    `# AI Keyword Extraction Instructions - ${dateLabel}`,\n    '',\n    'このファイルは、AI APIを自動実行せず、別途AIにキーワード抽出を依頼するための指示書です。',\n    '以下の「依頼文」から「入力Digest」までをAIに渡してください。',\n    '',\n    '## 依頼文',\n    '',\n    'あなたはVTuber業界ニュースのリサーチ担当です。',\n    '以下の日次Digestから、今後の検索キーワードとして使う価値がある候補を意味ベースで抽出してください。',\n    '',\n    '### 現在の検索キーワード',\n    '',\n    currentKeywords.map((keyword) => `- ${keyword}`).join('\\n') || '- (none)',\n    '',\n    '### 重視する候補',\n    '',\n    '- VTuber事務所、グループ、運営会社',\n    '- VTuber本人名、ユニット名',\n    '- イベント名、ライブ名、コラボ名',\n    '- 商品名、グッズ名、メディア企画名',\n    '- 今後も継続して追う価値がある話題',\n    '',\n    '### 除外する候補',\n    '',\n    '- shorts、karaoke、WEB、PLUS などの一般語または媒体都合の語',\n    '- URL断片、ID、意味の薄い英数字',\n    '- 1日だけの挨拶タグや汎用タグ',\n    '- 文脈上VTuberと無関係なゲーム攻略語',\n    '- 既存キーワードとほぼ同じ語',\n    '',\n    '### 出力形式',\n    '',\n    '以下のMarkdown形式で出力してください。',\n    '',\n    '````markdown',\n    '# AI Keyword Candidates',\n    '',\n    '## Summary',\n    '',\n    '抽出結果の短い要約。',\n    '',\n    '## Candidates',\n    '',\n    '| Candidate | Category | Confidence | Add | Reason | Evidence |',\n    '| --- | --- | ---: | --- | --- | --- |',\n    '| 候補語 | vtuber_agency / vtuber_group / company / talent / event / collaboration / product_or_goods / platform_or_media / topic / other | 0.00-1.00 | yes/no | 追加候補にした理由 | 根拠となる記事タイトルや本文断片 |',\n    '',\n    '## Suggested Default Keywords',\n    '',\n    '```js',\n    'keywords: [',\n    '  \"追加推奨キーワード\"',\n    ']',\n    '```',\n    '',\n    '## Rejected Terms',\n    '',\n    '- 除外した語: 除外理由',\n    '````',\n    '',\n    '### 判断基準',\n    '',\n    '- 今後の検索精度を上げる語を優先する',\n    '- 事務所、企業、グループは特に優先する',\n    '- Add は毎日固定監視する価値が高い場合だけ yes にする',\n    '- 根拠はDigest内のタイトル、抜粋、URLから示す',\n    '',\n    '## ルールベース候補（参考）',\n    '',\n    '以下はワークフローが機械的に抽出した候補です。ノイズが含まれるため、参考情報として扱ってください。',\n    '',\n    '```json',\n    JSON.stringify(candidateContext, null, 2),\n    '```',\n    '',\n    '## 入力Digest',\n    '',\n    '```markdown',\n    digestMarkdown,\n    '```',\n    ''\n  ].join('\\n');\n}\n\nfunction buildCandidateMarkdown(dateLabel, digestRelativePath, candidates) {\n  const currentKeywords = Array.isArray(data.keywords) ? data.keywords : [];\n  const suggested = [...new Set([\n    ...currentKeywords,\n    ...candidates.filter((candidate) => candidate.category !== 'source-derived' || candidate.count >= 2).slice(0, 12).map((candidate) => candidate.term)\n  ])];\n  const rows = candidates.length\n    ? candidates.map((candidate) => {\n        const sources = candidate.sources.slice(0, 2).join('<br>') || '-';\n        return `| ${candidate.term} | ${candidate.category} | ${candidate.count} | ${candidate.reasons.join('<br>')} | ${sources} |`;\n      }).join('\\n')\n    : '| No candidates found | - | 0 | No source terms matched the extraction rules | - |';\n\n  return [\n    '---',\n    'title: \"Keyword Candidates\"',\n    `date: \"${dateLabel}\"`,\n    `sourceDigest: \"${digestRelativePath}\"`,\n    '---',\n    '',\n    `# Keyword Candidates - ${dateLabel}`,\n    '',\n    `Source digest: \\`${digestRelativePath}\\``,\n    '',\n    '## Current Keywords',\n    '',\n    currentKeywords.map((keyword) => `- ${keyword}`).join('\\n') || '- (none)',\n    '',\n    '## Extracted Candidates',\n    '',\n    '| Candidate | Category | Count | Reason | Example sources |',\n    '| --- | --- | ---: | --- | --- |',\n    rows,\n    '',\n    '## Suggested Keyword List',\n    '',\n    '```js',\n    `keywords: ${JSON.stringify(suggested, null, 2)}`,\n    '```',\n    '',\n    '## Notes',\n    '',\n    '- Candidates are extracted heuristically from the saved digest and captured article text.',\n    '- Review the list before adding terms to the production workflow.',\n    '- Agency and company terms are prioritized for VTuber monitoring.',\n    ''\n  ].join('\\n');\n}\n\nfunction markdownBinary(markdown, fileName) {\n  return {\n    data: Buffer.from(markdown, 'utf8').toString('base64'),\n    mimeType: 'text/markdown',\n    fileExtension: 'md',\n    fileName\n  };\n}\n\nconst dateParts = jstDateParts(data.generatedAt);\nconst fileName = `${dateParts.date}.md`;\nconst defaultProjectRoot = '/home/raimu/N8N/AutoArticleFor-n8n';\nconst projectRoot = defaultProjectRoot.replace(/\\/$/, '');\nconst digestRelativePath = `content/daily-digests/${fileName}`;\nconst candidateRelativePath = `content/keyword-candidates/${fileName}`;\nconst instructionRelativePath = `content/ai-extraction-instructions/${fileName}`;\nconst digestPath = `${projectRoot}/${digestRelativePath}`;\nconst candidatePath = `${projectRoot}/${candidateRelativePath}`;\nconst instructionPath = `${projectRoot}/${instructionRelativePath}`;\nconst digestMarkdown = buildDigestMarkdown(dateParts.date);\nconst candidates = extractKeywordCandidates(digestMarkdown);\nconst candidateMarkdown = buildCandidateMarkdown(dateParts.date, digestRelativePath, candidates);\nconst instructionMarkdown = buildAiExtractionInstructionMarkdown(dateParts.date, digestRelativePath, candidateRelativePath, digestMarkdown, candidates);\n\nreturn [\n  {\n    json: {\n      fileKind: 'daily-digest',\n      filePath: digestPath,\n      relativePath: digestRelativePath,\n      date: dateParts.date,\n      articleCount: Number(data.articleCount || 0),\n      candidateCount: candidates.length\n    },\n    binary: {\n      data: markdownBinary(digestMarkdown, fileName)\n    }\n  },\n  {\n    json: {\n      fileKind: 'keyword-candidates',\n      filePath: candidatePath,\n      relativePath: candidateRelativePath,\n      date: dateParts.date,\n      articleCount: Number(data.articleCount || 0),\n      candidateCount: candidates.length,\n      candidates: candidates.slice(0, 15).map((candidate) => ({ term: candidate.term, category: candidate.category, count: candidate.count }))\n    },\n    binary: {\n      data: markdownBinary(candidateMarkdown, fileName)\n    }\n  },\n  {\n    json: {\n      fileKind: 'ai-extraction-instructions',\n      filePath: instructionPath,\n      relativePath: instructionRelativePath,\n      date: dateParts.date,\n      articleCount: Number(data.articleCount || 0),\n      candidateCount: candidates.length,\n      sourceDigest: digestRelativePath,\n      sourceCandidates: candidateRelativePath\n    },\n    binary: {\n      data: markdownBinary(instructionMarkdown, fileName)\n    }\n  }\n];\n"
+      },
+      "id": "dce1c6b9-d4d7-498a-8b8c-cfbcf2e917fb",
+      "name": "Build Markdown Files",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2080,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $json.filePath }}",
+        "dataPropertyName": "data",
+        "options": {
+          "append": false
+        }
+      },
+      "id": "c4f0ec51-5668-4d46-b98f-2253f40f4b77",
+      "name": "Write Markdown Files",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        2400,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const items = $input.all().map((item) => item.json);\nconst digest = items.find((item) => item.fileKind === 'daily-digest');\nconst candidates = items.find((item) => item.fileKind === 'keyword-candidates');\nconst instructions = items.find((item) => item.fileKind === 'ai-extraction-instructions');\n\nreturn [\n  {\n    json: {\n      saved: true,\n      date: digest?.date || candidates?.date || instructions?.date || new Date().toISOString().slice(0, 10),\n      digestPath: digest?.relativePath || digest?.fileName || '',\n      candidatePath: candidates?.relativePath || candidates?.fileName || '',\n      instructionPath: instructions?.relativePath || instructions?.fileName || '',\n      articleCount: digest?.articleCount ?? candidates?.articleCount ?? instructions?.articleCount ?? 0,\n      candidateCount: candidates?.candidateCount ?? instructions?.candidateCount ?? 0,\n      candidates: candidates?.candidates || [],\n      writtenFiles: items.map((item) => item.relativePath || item.fileName).filter(Boolean)\n    }\n  }\n];"
+      },
+      "id": "63e1417b-fb59-4c9b-a3ea-c59b3c2a65d7",
+      "name": "Summarize Saved Markdown Files",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2720,
+        360
+      ]
+    }
+  ],
+  "connections": {
+    "Daily Schedule": {
+      "main": [
+        [
+          {
+            "node": "Default Daily Summary Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Default Daily Summary Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keyword Summary Webhook": {
+      "main": [
+        [
+          {
+            "node": "Normalize Webhook Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Default Daily Summary Request": {
+      "main": [
+        [
+          {
+            "node": "Build Search RSS URLs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Webhook Request": {
+      "main": [
+        [
+          {
+            "node": "Build Search RSS URLs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Search RSS URLs": {
+      "main": [
+        [
+          {
+            "node": "Read RSS Search Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read RSS Search Results": {
+      "main": [
+        [
+          {
+            "node": "Normalize and Deduplicate Articles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize and Deduplicate Articles": {
+      "main": [
+        [
+          {
+            "node": "Build Daily Digest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Daily Digest": {
+      "main": [
+        [
+          {
+            "node": "Build Markdown Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Markdown Files": {
+      "main": [
+        [
+          {
+            "node": "Write Markdown Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Markdown Files": {
+      "main": [
+        [
+          {
+            "node": "Summarize Saved Markdown Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Summarize Saved Markdown Files": {
+      "main": []
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Tokyo"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2026-07-14T00:00:00.000Z",
+  "versionId": "f5cd0af8-98af-4bc2-a922-fc7252fc2fe9"
+}

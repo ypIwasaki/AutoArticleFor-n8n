@@ -126,19 +126,21 @@ For Docker, `docker-compose.yml` sets `N8N_RESTRICT_FILE_ACCESS_TO=/project/cont
 
 ## Markdown output
 
-Each successful run writes two files:
+Each successful run writes four files:
 
 ```text
 content/daily-digests/YYYY-MM-DD.md
 content/keyword-candidates/YYYY-MM-DD.md
 content/ai-extraction-instructions/YYYY-MM-DD.md
+content/ai-summary-instructions/YYYY-MM-DD.md
 ```
 
 The first file contains the captured article list, source URLs, digest metadata,
 and LLM prompt. The second file extracts candidate follow-up keywords from the
 saved digest with deterministic rules. The third file is a prompt/instruction
-Markdown file that can be copied into an AI chat for manual semantic extraction.
-The workflow does not call AI APIs automatically.
+Markdown file for manual semantic keyword extraction. The fourth file is a
+prompt/instruction Markdown file for manual article summarization. The workflow
+does not call AI APIs automatically.
 
 For npm/WSL usage, the workflow defaults to this project path:
 

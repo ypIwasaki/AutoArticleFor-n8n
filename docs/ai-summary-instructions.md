@@ -19,6 +19,13 @@ Digest and captured source list. It includes:
 - Structured article data.
 - The full saved daily digest as input context.
 
+The instruction tells the AI to save the created summary as a Markdown file in
+the project when file access is available:
+
+```text
+content/article-summaries/YYYY-MM-DD.md
+```
+
 The source digest is saved separately:
 
 ```text

@@ -18,6 +18,13 @@ That file contains:
 - Rule-based candidates as reference data.
 - The full saved daily digest as input context.
 
+The instruction tells the AI to save semantic extraction results as a Markdown
+file in the project when file access is available:
+
+```text
+content/ai-keyword-candidates/YYYY-MM-DD.md
+```
+
 The source digest and rule-based candidate files are saved separately:
 
 ```text

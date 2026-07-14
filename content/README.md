@@ -10,6 +10,10 @@ content/
     YYYY-MM-DD.md
   keyword-candidates/
     YYYY-MM-DD.md
+  article-summaries/
+    YYYY-MM-DD.md  # manual AI output target
+  ai-keyword-candidates/
+    YYYY-MM-DD.md  # manual AI output target
   ai-extraction-instructions/
     YYYY-MM-DD.md
   ai-summary-instructions/
@@ -24,6 +28,10 @@ content/
 - `keyword-candidates`: Rule-based follow-up keywords extracted from the saved
   digest content, especially VTuber agencies, groups, companies, and related
   terms.
+- `article-summaries`: Manual AI article-summary outputs created from
+  `ai-summary-instructions`.
+- `ai-keyword-candidates`: Manual AI semantic keyword-extraction outputs created
+  from `ai-extraction-instructions`.
 - `ai-extraction-instructions`: Prompt/instruction Markdown files that can be
   copied into an AI chat when you want semantic keyword extraction manually.
 - `ai-summary-instructions`: Prompt/instruction Markdown files that can be

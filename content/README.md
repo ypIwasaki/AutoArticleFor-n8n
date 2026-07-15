@@ -41,3 +41,11 @@ content/
 
 Generated files are intended to be reviewable Markdown artifacts. They can be
 committed when you want to keep a historical archive in Git.
+
+## Analysis archive
+
+- `structured-records`: JSONL run and article records written by the n8n workflow for reusable analysis.
+- `analysis/weekly-reports`: Weekly volume, topic, source, and follow-up keyword reports.
+- `analysis/keyword-quality`: Keyword coverage, noise, source-quality, and AI candidate-review reports.
+
+Create historical JSONL files with `python3 scripts/backfill_structured_records.py`, then generate reports with `python3 scripts/generate_analysis_reports.py`.

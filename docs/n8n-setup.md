@@ -208,3 +208,9 @@ python3 scripts/sync_workflow_to_n8n.py
 ```
 
 See `docs/n8n-api-sync.md` for API key and workflow ID setup.
+
+## Analysis archive
+
+The workflow also writes `content/structured-records/YYYY-MM-DD.jsonl` through the `Build Structured Records` and `Write Structured Records` nodes. This JSONL file contains one run record and the captured article records for that day.
+
+Use `python3 scripts/generate_analysis_reports.py` to create weekly reports from the archive. See `docs/analysis.md` for the backfill command, output locations, and limitations.

@@ -124,3 +124,14 @@ Markdown instruction files under `content/ai-extraction-instructions/` and
 want semantic keyword extraction or article summarization manually.
 
 See `docs/ai-keyword-extraction.md` for details.
+
+## Weekly analysis
+
+Each n8n run also writes `content/structured-records/YYYY-MM-DD.jsonl` for reusable analysis. Backfill existing Markdown digests and generate the latest weekly reports with:
+
+```bash
+python3 scripts/backfill_structured_records.py
+python3 scripts/generate_analysis_reports.py
+```
+
+See `docs/analysis.md` for report contents and limitations.

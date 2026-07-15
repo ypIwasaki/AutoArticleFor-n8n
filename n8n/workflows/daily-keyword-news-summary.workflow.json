@@ -179,6 +179,38 @@
         2720,
         360
       ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const data = $json;\nconst articles = Array.isArray(data.articles) ? data.articles : [];\nconst keywords = Array.isArray(data.keywords) ? data.keywords : [];\nconst newline = String.fromCharCode(10);\n\nfunction jstDate(value) {\n  const date = value ? new Date(value) : new Date();\n  const formatter = new Intl.DateTimeFormat('en-US', {\n    timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit'\n  });\n  const parts = Object.fromEntries(formatter.formatToParts(date).map((part) => [part.type, part.value]));\n  return parts.year + '-' + parts.month + '-' + parts.day;\n}\n\nconst dateLabel = jstDate(data.generatedAt);\nconst generatedAt = data.generatedAt || new Date().toISOString();\nconst runRecord = {\n  schemaVersion: 1,\n  recordType: 'run',\n  runDate: dateLabel,\n  generatedAt,\n  period: data.period || {},\n  keywords,\n  searchSources: Array.isArray(data.searchSources) ? data.searchSources : [],\n  articleCount: Number(data.articleCount || articles.length),\n  capturedArticleCount: articles.length,\n  requestSource: data.requestSource || 'rss'\n};\nconst articleRecords = articles.map((article, index) => ({\n  schemaVersion: 1,\n  recordType: 'article',\n  runDate: dateLabel,\n  generatedAt,\n  keywords,\n  articleIndex: index + 1,\n  article: {\n    title: article.title || '',\n    url: article.url || '',\n    publishedAt: article.publishedAt || '',\n    source: article.source || '',\n    excerpt: article.excerpt || ''\n  }\n}));\nconst jsonl = [runRecord, ...articleRecords].map((record) => JSON.stringify(record)).join(newline) + newline;\nconst relativePath = 'content/structured-records/' + dateLabel + '.jsonl';\nconst projectRoot = '/home/raimu/N8N/AutoArticleFor-n8n';\nconst fileName = dateLabel + '.jsonl';\n\nreturn [\n  {\n    json: {\n      fileKind: 'structured-records',\n      filePath: projectRoot + '/' + relativePath,\n      relativePath,\n      date: dateLabel,\n      articleCount: runRecord.articleCount,\n      capturedArticleCount: runRecord.capturedArticleCount\n    },\n    binary: {\n      data: {\n        data: Buffer.from(jsonl, 'utf8').toString('base64'),\n        mimeType: 'application/x-ndjson',\n        fileExtension: 'jsonl',\n        fileName\n      }\n    }\n  }\n];"
+      },
+      "id": "bf0d28db-3a85-4d59-a107-93faa99c16d3",
+      "name": "Build Structured Records",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2080,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ $json.filePath }}",
+        "dataPropertyName": "data",
+        "options": {
+          "append": false
+        }
+      },
+      "id": "5c4ee870-e767-4f75-a4bb-15e237aa148f",
+      "name": "Write Structured Records",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        2400,
+        600
+      ]
     }
   ],
   "connections": {
@@ -277,6 +309,11 @@
             "node": "Build Markdown Files",
             "type": "main",
             "index": 0
+          },
+          {
+            "node": "Build Structured Records",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -304,6 +341,20 @@
       ]
     },
     "Summarize Saved Markdown Files": {
+      "main": []
+    },
+    "Build Structured Records": {
+      "main": [
+        [
+          {
+            "node": "Write Structured Records",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Structured Records": {
       "main": []
     }
   },

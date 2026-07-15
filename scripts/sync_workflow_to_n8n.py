@@ -15,7 +15,7 @@ from typing import Any
 
 
 DEFAULT_WORKFLOW_FILE = "n8n/workflows/daily-keyword-news-summary.workflow.json"
-UPDATE_FIELDS = ("name", "nodes", "connections", "settings", "staticData")
+UPDATE_FIELDS = ("name", "nodes", "connections", "settings")
 
 
 def load_env_file(path: Path) -> None:
@@ -104,7 +104,6 @@ def load_workflow(path: Path) -> dict[str, Any]:
 def build_update_payload(workflow: dict[str, Any]) -> dict[str, Any]:
     payload = {field: workflow.get(field) for field in UPDATE_FIELDS if field in workflow}
     payload.setdefault("settings", {})
-    payload.setdefault("staticData", None)
     return payload
 
 

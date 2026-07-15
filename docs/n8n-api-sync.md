@@ -65,8 +65,7 @@ python3 scripts/sync_workflow_to_n8n.py --active-state from-json
 ## Notes
 
 - The script updates an existing workflow. It does not create a new one.
-- It updates workflow structure only: name, nodes, connections, settings, and
-  static data.
+- It updates workflow structure only: name, nodes, connections, and settings. Runtime static data, including automatically promoted keywords, is preserved.
 - Credentials are not stored in workflow JSON and are not updated by this
   script.
 - If you edited the workflow in the n8n UI after exporting, syncing from this

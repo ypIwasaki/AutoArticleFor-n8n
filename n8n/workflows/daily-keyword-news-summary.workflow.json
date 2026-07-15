@@ -53,7 +53,7 @@
     {
       "parameters": {
         "mode": "runOnceForAllItems",
-        "jsCode": "return [\n  {\n    json: {\n      keywords: ['Vtuber', 'にじさんじ'],\n      lookbackHours: 24,\n      maxArticles: 30,\n      locale: 'ja-JP',\n      language: 'ja',\n      country: 'JP',\n      outputLanguage: 'ja',\n      source: 'default-daily-request'\n    }\n  }\n];\n"
+        "jsCode": "const baseKeywords = ['Vtuber', 'にじさんじ', 'VOLTACTION', 'うおむすめ', 'エデン組', 'りぷらい', 'VTuberオーディション'];\nconst staticData = $getWorkflowStaticData('global');\nconst promotedKeywords = Array.isArray(staticData.autoKeywords) ? staticData.autoKeywords : [];\nconst seen = new Set();\nconst keywords = [];\n\nfor (const value of [...baseKeywords, ...promotedKeywords]) {\n  const keyword = String(value || '').trim();\n  const key = keyword.toLowerCase();\n  if (keyword && !seen.has(key)) {\n    seen.add(key);\n    keywords.push(keyword);\n  }\n}\n\nreturn [\n  {\n    json: {\n      keywords,\n      lookbackHours: 24,\n      maxArticles: 60,\n      locale: 'ja-JP',\n      language: 'ja',\n      country: 'JP',\n      outputLanguage: 'ja',\n      source: 'default-daily-request'\n    }\n  }\n];"
       },
       "id": "2f6dd34c-50df-47a1-9c39-b6c7d4d72539",
       "name": "Default Daily Summary Request",
@@ -67,7 +67,7 @@
     {
       "parameters": {
         "mode": "runOnceForAllItems",
-        "jsCode": "const input = $json.body ?? $json;\n\nreturn [\n  {\n    json: {\n      keywords: input.keywords ?? input.keyword ?? ['Vtuber', 'にじさんじ'],\n      lookbackHours: Number(input.lookbackHours ?? input.lookback_hours ?? 24),\n      maxArticles: Number(input.maxArticles ?? input.max_articles ?? 30),\n      locale: input.locale ?? 'ja-JP',\n      language: input.language ?? 'ja',\n      country: input.country ?? 'JP',\n      outputLanguage: input.outputLanguage ?? input.output_language ?? 'ja',\n      source: 'webhook-request'\n    }\n  }\n];\n"
+        "jsCode": "const input = $json.body ?? $json;\nconst baseKeywords = ['Vtuber', 'にじさんじ', 'VOLTACTION', 'うおむすめ', 'エデン組', 'りぷらい', 'VTuberオーディション'];\nconst staticData = $getWorkflowStaticData('global');\nconst promotedKeywords = Array.isArray(staticData.autoKeywords) ? staticData.autoKeywords : [];\nconst seen = new Set();\nconst defaultKeywords = [];\n\nfor (const value of [...baseKeywords, ...promotedKeywords]) {\n  const keyword = String(value || '').trim();\n  const key = keyword.toLowerCase();\n  if (keyword && !seen.has(key)) {\n    seen.add(key);\n    defaultKeywords.push(keyword);\n  }\n}\n\nreturn [\n  {\n    json: {\n      keywords: input.keywords ?? input.keyword ?? defaultKeywords,\n      lookbackHours: Number(input.lookbackHours ?? input.lookback_hours ?? 24),\n      maxArticles: Number(input.maxArticles ?? input.max_articles ?? 60),\n      locale: input.locale ?? 'ja-JP',\n      language: input.language ?? 'ja',\n      country: input.country ?? 'JP',\n      outputLanguage: input.outputLanguage ?? input.output_language ?? 'ja',\n      source: 'webhook-request'\n    }\n  }\n];"
       },
       "id": "fe99a1c0-4b5e-43b5-bd27-02c42d693b52",
       "name": "Normalize Webhook Request",
@@ -169,14 +169,14 @@
     {
       "parameters": {
         "mode": "runOnceForAllItems",
-        "jsCode": "const items = $input.all().map((item) => item.json);\nconst digest = items.find((item) => item.fileKind === 'daily-digest');\nconst candidates = items.find((item) => item.fileKind === 'keyword-candidates');\nconst instructions = items.find((item) => item.fileKind === 'ai-extraction-instructions');\nconst summaryInstructions = items.find((item) => item.fileKind === 'ai-summary-instructions');\n\nreturn [\n  {\n    json: {\n      saved: true,\n      date: digest?.date || candidates?.date || instructions?.date || summaryInstructions?.date || new Date().toISOString().slice(0, 10),\n      digestPath: digest?.relativePath || digest?.fileName || '',\n      candidatePath: candidates?.relativePath || candidates?.fileName || '',\n      instructionPath: instructions?.relativePath || instructions?.fileName || '',\n      summaryInstructionPath: summaryInstructions?.relativePath || summaryInstructions?.fileName || '',\n      articleCount: digest?.articleCount ?? candidates?.articleCount ?? instructions?.articleCount ?? summaryInstructions?.articleCount ?? 0,\n      candidateCount: candidates?.candidateCount ?? instructions?.candidateCount ?? 0,\n      candidates: candidates?.candidates || [],\n      writtenFiles: items.map((item) => item.relativePath || item.fileName).filter(Boolean)\n    }\n  }\n];"
+        "jsCode": "const items = $input.all().map((item) => item.json);\nconst digest = items.find((item) => item.fileKind === 'daily-digest');\nconst candidates = items.find((item) => item.fileKind === 'keyword-candidates');\nconst instructions = items.find((item) => item.fileKind === 'ai-extraction-instructions');\nconst summaryInstructions = items.find((item) => item.fileKind === 'ai-summary-instructions');\nconst promotion = items.find((item) => Array.isArray(item.autoAddedKeywords));\n\nreturn [\n  {\n    json: {\n      saved: true,\n      date: digest?.date || candidates?.date || instructions?.date || summaryInstructions?.date || new Date().toISOString().slice(0, 10),\n      digestPath: digest?.relativePath || digest?.fileName || '',\n      candidatePath: candidates?.relativePath || candidates?.fileName || '',\n      instructionPath: instructions?.relativePath || instructions?.fileName || '',\n      summaryInstructionPath: summaryInstructions?.relativePath || summaryInstructions?.fileName || '',\n      articleCount: digest?.articleCount ?? candidates?.articleCount ?? instructions?.articleCount ?? summaryInstructions?.articleCount ?? 0,\n      candidateCount: candidates?.candidateCount ?? instructions?.candidateCount ?? 0,\n      candidates: candidates?.candidates || [],\n      autoAddedKeywords: promotion?.autoAddedKeywords || [],\n      autoKeywordCount: promotion?.autoKeywordCount ?? 0,\n      writtenFiles: items.map((item) => item.relativePath || item.fileName).filter(Boolean)\n    }\n  }\n];"
       },
       "id": "63e1417b-fb59-4c9b-a3ea-c59b3c2a65d7",
       "name": "Summarize Saved Markdown Files",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2720,
+        3040,
         360
       ]
     },
@@ -210,6 +210,20 @@
       "position": [
         2400,
         600
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const writtenItems = $input.all();\nconst data = $('Build Daily Digest').first().json;\nconst articles = Array.isArray(data.articles) ? data.articles : [];\nconst baseKeywords = ['Vtuber', 'にじさんじ', 'VOLTACTION', 'うおむすめ', 'エデン組', 'りぷらい', 'VTuberオーディション'];\nconst staticData = $getWorkflowStaticData('global');\nconst existing = Array.isArray(staticData.autoKeywords) ? staticData.autoKeywords : [];\nconst maxAutoKeywords = 30;\nconst blockedTerms = new Set([\n  'vtuber', 'にじさんじ', '事務所', 'グッズ', 'ライブ', 'オーディション',\n  'appmedia', 't.co', 'mshale', 'shorts', 'karaoke', 'pr', 'live2d'\n]);\nconst knownEntities = [\n  'ホロライブ', 'COVER', 'ANYCOLOR', 'NIJISANJI EN', 'ぶいすぽっ!',\n  'Brave group', 'あおぎり高校', 'ななしいんく', 'Neo-Porte', 'VShojo',\n  'Phase Connect', '.LIVE', 'のりプロ', 'RIOT MUSIC', 'Re:AcT', 'VOMS',\n  '深層組', 'Varium', 'ホロスターズ', 'ChroNoiR', 'ROF-MAO'\n];\n\nfunction normalize(value) {\n  return String(value || '').trim().toLowerCase();\n}\n\nfunction isSafeTerm(value) {\n  const term = String(value || '').trim();\n  const normalized = normalize(term);\n  return term.length >= 2\n    && term.length <= 30\n    && !blockedTerms.has(normalized)\n    && !/^\\d+$/.test(term)\n    && !/^https?:/i.test(term)\n    && !/[|/\\\\]/.test(term);\n}\n\nconst currentKeywords = [];\nconst currentSet = new Set();\nfor (const value of [...baseKeywords, ...existing]) {\n  const term = String(value || '').trim();\n  const key = normalize(term);\n  if (term && !currentSet.has(key)) {\n    currentSet.add(key);\n    currentKeywords.push(term);\n  }\n}\n\nconst candidates = new Map();\nfunction addCandidate(value, category, reason, title) {\n  const term = String(value || '').trim();\n  const key = normalize(term);\n  if (!isSafeTerm(term) || currentSet.has(key)) return;\n  const current = candidates.get(key);\n  if (current) {\n    current.sources.add(title);\n    return;\n  }\n  candidates.set(key, { term, category, reason, sources: new Set([title]) });\n}\n\nfor (const article of articles) {\n  const title = String(article.title || '');\n  const text = `${title}\\n${article.excerpt || ''}`;\n\n  for (const term of knownEntities) {\n    if (text.toLowerCase().includes(term.toLowerCase())) {\n      addCandidate(term, 'known-entity', 'known agency, company, or unit appears in a captured article', title);\n    }\n  }\n\n  const agencyPattern = /VTuber事務所[「『]?([ぁ-んァ-ヴー一-龠A-Za-z0-9!._-]{2,24}?)(?=初|が|の|、|。|「|『|3期|大型|募集|$)/g;\n  for (const match of text.matchAll(agencyPattern)) {\n    addCandidate(match[1], 'agency', 'explicit VTuber agency name in a captured article', title);\n  }\n\n  const unitPattern = /【にじさんじ】([ぁ-んァ-ヴー一-龠A-Za-z0-9!._-]{2,24}?)(?=\\d+(?:周年|th)|[ 　]*(?:周年|グッズ|ライブ))/g;\n  for (const match of text.matchAll(unitPattern)) {\n    addCandidate(match[1], 'unit', 'explicit にじさんじ unit name in a goods, anniversary, or live article', title);\n  }\n}\n\nconst additions = [];\nfor (const candidate of candidates.values()) {\n  if (currentKeywords.length >= maxAutoKeywords + baseKeywords.length) break;\n  currentSet.add(normalize(candidate.term));\n  currentKeywords.push(candidate.term);\n  additions.push({\n    term: candidate.term,\n    category: candidate.category,\n    reason: candidate.reason,\n    sources: [...candidate.sources].slice(0, 3)\n  });\n}\n\nstaticData.autoKeywords = currentKeywords.filter((term) => !baseKeywords.some((base) => normalize(base) === normalize(term)));\nif (additions.length) {\n  const history = Array.isArray(staticData.autoKeywordPromotionHistory)\n    ? staticData.autoKeywordPromotionHistory\n    : [];\n  staticData.autoKeywordPromotionHistory = [...history, ...additions.map((candidate) => ({\n    ...candidate,\n    promotedAt: new Date().toISOString()\n  }))].slice(-100);\n}\nstaticData.lastKeywordPromotion = {\n  checkedAt: new Date().toISOString(),\n  addedKeywords: additions.map((candidate) => candidate.term),\n  autoKeywordCount: staticData.autoKeywords.length\n};\n\nreturn writtenItems.map((item) => ({\n  json: {\n    ...item.json,\n    autoAddedKeywords: additions.map((candidate) => candidate.term),\n    autoKeywordCount: staticData.autoKeywords.length\n  },\n  binary: item.binary\n}));"
+      },
+      "id": "b1e3b5cf-ccfb-4e2d-9a24-aa626397511d",
+      "name": "Promote Extracted Keywords",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2720,
+        360
       ]
     }
   ],
@@ -333,7 +347,7 @@
       "main": [
         [
           {
-            "node": "Summarize Saved Markdown Files",
+            "node": "Promote Extracted Keywords",
             "type": "main",
             "index": 0
           }
@@ -356,6 +370,17 @@
     },
     "Write Structured Records": {
       "main": []
+    },
+    "Promote Extracted Keywords": {
+      "main": [
+        [
+          {
+            "node": "Summarize Saved Markdown Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "pinData": {},

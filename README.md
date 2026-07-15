@@ -135,3 +135,6 @@ python3 scripts/generate_analysis_reports.py
 ```
 
 See `docs/analysis.md` for report contents and limitations.
+## Automatic keyword promotion
+
+The workflow promotes high-confidence agency and unit names from captured articles into n8n workflow static data. Promoted terms are added to the next scheduled search. See `docs/automatic-keyword-promotion.md` for the policy and webhook behavior.

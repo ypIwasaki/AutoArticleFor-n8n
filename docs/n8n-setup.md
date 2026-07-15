@@ -55,7 +55,15 @@ The workflow is designed for daily keyword monitoring.
 The default keywords are configured in the `Default Daily Summary Request` Code node:
 
 ```js
-keywords: ['Vtuber', 'にじさんじ']
+keywords: [
+  'Vtuber',
+  'にじさんじ',
+  'VOLTACTION',
+  'うおむすめ',
+  'エデン組',
+  'りぷらい',
+  'VTuberオーディション'
+]
 ```
 
 Edit that node in n8n to change the scheduled daily keywords.
@@ -214,3 +222,8 @@ See `docs/n8n-api-sync.md` for API key and workflow ID setup.
 The workflow also writes `content/structured-records/YYYY-MM-DD.jsonl` through the `Build Structured Records` and `Write Structured Records` nodes. This JSONL file contains one run record and the captured article records for that day.
 
 Use `python3 scripts/generate_analysis_reports.py` to create weekly reports from the archive. See `docs/analysis.md` for the backfill command, output locations, and limitations.
+## Automatic keyword promotion
+
+After the Markdown files are written, `Promote Extracted Keywords` adds high-confidence agency and unit names to n8n workflow static data. The new terms are included in the next scheduled run and in keyword-unspecified production webhook requests.
+
+See `docs/automatic-keyword-promotion.md` for the promotion policy and persistence behavior.

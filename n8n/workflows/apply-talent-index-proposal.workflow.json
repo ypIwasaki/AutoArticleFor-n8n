@@ -1,0 +1,264 @@
+{
+  "name": "Apply Talent Index Proposal",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "talent-index/apply",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        160,
+        300
+      ],
+      "id": "b1000000-0000-4000-8000-000000000001",
+      "name": "Apply Talent Index Proposal Webhook",
+      "webhookId": "apply-talent-index-proposal"
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $json.body ?? $json;\nconst proposal = input.proposal ?? input;\nconst now = new Date().toISOString();\nfunction list(name) {\n  if (!Array.isArray(proposal[name])) throw new Error(`${name} must be an array.`);\n  return proposal[name];\n}\nfunction text(value, field, required = true) {\n  const result = String(value ?? '').trim();\n  if (required && !result) throw new Error(`${field} is required.`);\n  return result;\n}\nfunction uniqueBy(rows, key, name) {\n  const keys = new Set();\n  for (const row of rows) {\n    const value = text(row[key], `${name}.${key}`);\n    if (keys.has(value)) throw new Error(`${name} contains duplicate ${key}: ${value}`);\n    keys.add(value);\n  }\n  return keys;\n}\nconst articles = list('articles').map((row) => ({\n  article_key: text(row.article_key, 'articles.article_key'),\n  url: text(row.url, 'articles.url', false),\n  title: text(row.title, 'articles.title', false),\n  excerpt: text(row.excerpt, 'articles.excerpt', false).slice(0, 2000),\n  source: text(row.source, 'articles.source', false),\n  published_at: text(row.published_at, 'articles.published_at', false) || null,\n  last_seen_at: text(row.last_seen_at, 'articles.last_seen_at', false) || now\n}));\nconst talents = list('talents').map((row) => {\n  const status = text(row.status ?? 'pending', 'talents.status');\n  if (!['pending', 'approved', 'rejected'].includes(status)) throw new Error(`Invalid talent status: ${status}`);\n  const searchEnabled = row.search_enabled === true || row.search_enabled === 1 || String(row.search_enabled).toLowerCase() === 'true';\n  if (searchEnabled && status !== 'approved') throw new Error('search_enabled is allowed only for approved talents.');\n  const aliases = typeof row.aliases_json === 'string' ? row.aliases_json : JSON.stringify(row.aliases_json ?? [row.display_name]);\n  JSON.parse(aliases);\n  return { talent_id: text(row.talent_id, 'talents.talent_id'), display_name: text(row.display_name, 'talents.display_name'), organization: text(row.organization, 'talents.organization', false), aliases_json: aliases, status, search_enabled: searchEnabled, auto_discovered: Boolean(row.auto_discovered), last_seen_at: text(row.last_seen_at, 'talents.last_seen_at', false) || now };\n});\nconst articleKeys = uniqueBy(articles, 'article_key', 'articles');\nconst talentKeys = uniqueBy(talents, 'talent_id', 'talents');\nconst articleTalents = list('articleTalents').map((row) => {\n  const articleKey = text(row.article_key, 'articleTalents.article_key');\n  const talentId = text(row.talent_id, 'articleTalents.talent_id');\n  if (!articleKeys.has(articleKey)) throw new Error(`articleTalents references article_key not included in proposal: ${articleKey}`);\n  if (!talentKeys.has(talentId)) throw new Error(`articleTalents references talent_id not included in proposal: ${talentId}`);\n  const confidence = Number(row.confidence);\n  if (!Number.isFinite(confidence) || confidence < 0 || confidence > 1) throw new Error('articleTalents.confidence must be between 0 and 1.');\n  const aliases = typeof row.matched_aliases_json === 'string' ? row.matched_aliases_json : JSON.stringify(row.matched_aliases_json ?? []);\n  JSON.parse(aliases);\n  return { relation_key: text(row.relation_key, 'articleTalents.relation_key'), article_key: articleKey, talent_id: talentId, matched_aliases_json: aliases, matched_fields: text(row.matched_fields, 'articleTalents.matched_fields'), evidence_text: text(row.evidence_text, 'articleTalents.evidence_text'), confidence, detection_method: text(row.detection_method ?? 'ai_review', 'articleTalents.detection_method'), last_seen_at: text(row.last_seen_at, 'articleTalents.last_seen_at', false) || now };\n});\nuniqueBy(articleTalents, 'relation_key', 'articleTalents');\nreturn [{ json: { proposalDate: text(proposal.proposalDate ?? now.slice(0, 10), 'proposalDate'), articles, talents, articleTalents, counts: { articles: articles.length, talents: talents.length, articleTalents: articleTalents.length } } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        400,
+        300
+      ],
+      "id": "b1000000-0000-4000-8000-000000000002",
+      "name": "Validate AI Proposal"
+    },
+    {
+      "parameters": {
+        "jsCode": "const proposal = $('Validate AI Proposal').first().json; const rows = Array.isArray(proposal.articles) ? proposal.articles : []; return rows.map((row) => ({ json: row }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        40
+      ],
+      "id": "b1000000-0000-4000-8000-000000000006",
+      "name": "Prepare Proposed Articles"
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "value": "SxxxaIzNRCuyag42",
+          "mode": "id"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "article_key",
+              "condition": "eq",
+              "keyValue": "={{ $json.article_key }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": null
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1600,
+        40
+      ],
+      "id": "b1000000-0000-4000-8000-000000000007",
+      "name": "Upsert Proposed Articles"
+    },
+    {
+      "parameters": {
+        "jsCode": "const proposal = $('Validate AI Proposal').first().json; const rows = Array.isArray(proposal.talents) ? proposal.talents : []; return rows.map((row) => ({ json: row }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        260
+      ],
+      "id": "b1000000-0000-4000-8000-000000000008",
+      "name": "Prepare Proposed Talents"
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "value": "OF29JuraLMGFrnxt",
+          "mode": "id"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "talent_id",
+              "condition": "eq",
+              "keyValue": "={{ $json.talent_id }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": null
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1600,
+        260
+      ],
+      "id": "b1000000-0000-4000-8000-000000000009",
+      "name": "Upsert Proposed Talents"
+    },
+    {
+      "parameters": {
+        "jsCode": "const proposal = $('Validate AI Proposal').first().json; const rows = Array.isArray(proposal.articleTalents) ? proposal.articleTalents : []; return rows.map((row) => ({ json: row }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1360,
+        480
+      ],
+      "id": "b1000000-0000-4000-8000-000000000010",
+      "name": "Prepare Proposed Relations"
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "value": "yRjO5ajn72B5hvxA",
+          "mode": "id"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "relation_key",
+              "condition": "eq",
+              "keyValue": "={{ $json.relation_key }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": null
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1600,
+        480
+      ],
+      "id": "b1000000-0000-4000-8000-000000000011",
+      "name": "Upsert Proposed Relations"
+    }
+  ],
+  "connections": {
+    "Prepare Proposed Relations": {
+      "main": [
+        [
+          {
+            "node": "Upsert Proposed Relations",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upsert Proposed Relations": {
+      "main": [
+        []
+      ]
+    },
+    "Validate AI Proposal": {
+      "main": [
+        [
+          {
+            "node": "Prepare Proposed Articles",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Prepare Proposed Talents",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Prepare Proposed Relations",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Proposed Articles": {
+      "main": [
+        [
+          {
+            "node": "Upsert Proposed Articles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upsert Proposed Talents": {
+      "main": [
+        []
+      ]
+    },
+    "Upsert Proposed Articles": {
+      "main": [
+        []
+      ]
+    },
+    "Apply Talent Index Proposal Webhook": {
+      "main": [
+        [
+          {
+            "node": "Validate AI Proposal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Proposed Talents": {
+      "main": [
+        [
+          {
+            "node": "Upsert Proposed Talents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b1000000-0000-4000-8000-000000000012",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "tags": []
+}

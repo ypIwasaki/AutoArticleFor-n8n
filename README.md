@@ -146,3 +146,11 @@ automatically promoted keywords.
 ## Automatic keyword promotion
 
 The workflow promotes high-confidence agency and unit names from captured articles into n8n workflow static data. Promoted terms are combined with the manual list in `config/keywords.json` on the next scheduled search. See `docs/automatic-keyword-promotion.md` for the policy and webhook behavior.
+
+## Talent/article index
+
+The daily workflow generates AI instructions for talent/article indexing and
+reads only approved, search-enabled talents as future default search keywords.
+Reviewed proposals are applied through a separate workflow to `talents`,
+`articles`, and `article_talents`, which supports multiple talent associations
+per article. See `docs/talent-article-index.md`.

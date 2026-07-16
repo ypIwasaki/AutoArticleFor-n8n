@@ -43,30 +43,33 @@ The workflow is designed for daily keyword monitoring.
 1. `Daily Schedule` runs every day at 08:00 Asia/Tokyo after the workflow is activated.
 2. `Manual Trigger` lets you test the default keyword set from the n8n editor.
 3. `Keyword Summary Webhook` lets another system pass keywords at runtime.
-4. `Build Search RSS URLs` creates Google News RSS and Hatena Bookmark RSS search URLs for each keyword.
-5. `Read RSS Search Results` reads matching RSS items.
-6. `Normalize and Deduplicate Articles` filters recent items and removes duplicates.
-7. `Build Daily Digest` creates the source-based digest and LLM prompt.
-8. `Write Markdown Files` writes the digest and keyword candidates under `content/`.
-9. `Summarize Saved Markdown Files` returns the saved file paths as the webhook response.
+4. `Read Keyword Configuration` loads `config/keywords.json`, and `Parse Keyword Configuration` parses it.
+5. `Build Keyword Summary Request` combines manual keywords with previously promoted terms.
+6. `Build Search RSS URLs` creates Google News RSS and Hatena Bookmark RSS search URLs for each keyword.
+7. `Read RSS Search Results` reads matching RSS items.
+8. `Normalize and Deduplicate Articles` filters recent items and removes duplicates.
+9. `Build Daily Digest` creates the source-based digest and LLM prompt.
+10. `Write Markdown Files` writes the digest and keyword candidates under `content/`.
+11. `Summarize Saved Markdown Files` returns the saved file paths as the webhook response.
 
 ## Default keywords
 
-The default keywords are configured in the `Default Daily Summary Request` Code node:
+Edit `config/keywords.json` to change the default keywords. The next workflow
+run reads the saved file directly; do not edit a Code node or resync the
+workflow after changing only this configuration.
 
-```js
-keywords: [
-  'Vtuber',
-  'にじさんじ',
-  'VOLTACTION',
-  'うおむすめ',
-  'エデン組',
-  'りぷらい',
-  'VTuberオーディション'
-]
+```json
+{
+  "manualKeywords": ["Vtuber", "にじさんじ", "追加したい語句"],
+  "excludedKeywords": ["自動追加しない語句"],
+  "maxAutoKeywords": 30
+}
 ```
 
-Edit that node in n8n to change the scheduled daily keywords.
+`manualKeywords` is always included in the default search. `excludedKeywords`
+only blocks automatic promotion and removes matching previously promoted terms
+from the default search; it does not remove a manual keyword. See
+`docs/keyword-management.md` for full behavior.
 
 ## Test the webhook
 

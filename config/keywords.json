@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "manualKeywords": [
+    "Vtuber",
+    "にじさんじ",
+    "VOLTACTION",
+    "うおむすめ",
+    "エデン組",
+    "りぷらい",
+    "VTuberオーディション"
+  ],
+  "excludedKeywords": [
+    "Vtuber",
+    "にじさんじ",
+    "事務所",
+    "グッズ",
+    "ライブ",
+    "オーディション",
+    "AppMedia",
+    "t.co",
+    "mshale",
+    "shorts",
+    "karaoke",
+    "PR",
+    "Live2D"
+  ],
+  "maxAutoKeywords": 30
+}

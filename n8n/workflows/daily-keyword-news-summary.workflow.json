@@ -52,43 +52,52 @@
     },
     {
       "parameters": {
-        "mode": "runOnceForAllItems",
-        "jsCode": "const baseKeywords = ['Vtuber', 'にじさんじ', 'VOLTACTION', 'うおむすめ', 'エデン組', 'りぷらい', 'VTuberオーディション'];\nconst staticData = $getWorkflowStaticData('global');\nconst promotedKeywords = Array.isArray(staticData.autoKeywords) ? staticData.autoKeywords : [];\nconst seen = new Set();\nconst keywords = [];\n\nfor (const value of [...baseKeywords, ...promotedKeywords]) {\n  const keyword = String(value || '').trim();\n  const key = keyword.toLowerCase();\n  if (keyword && !seen.has(key)) {\n    seen.add(key);\n    keywords.push(keyword);\n  }\n}\n\nreturn [\n  {\n    json: {\n      keywords,\n      lookbackHours: 24,\n      maxArticles: 60,\n      locale: 'ja-JP',\n      language: 'ja',\n      country: 'JP',\n      outputLanguage: 'ja',\n      source: 'default-daily-request'\n    }\n  }\n];"
+        "operation": "read",
+        "fileSelector": "/home/raimu/N8N/AutoArticleFor-n8n/config/keywords.json",
+        "options": {
+          "dataPropertyName": "keywordConfigFile"
+        }
       },
       "id": "2f6dd34c-50df-47a1-9c39-b6c7d4d72539",
-      "name": "Default Daily Summary Request",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
+      "name": "Read Keyword Configuration",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
       "position": [
-        480,
-        220
+        400,
+        360
       ]
     },
     {
       "parameters": {
-        "mode": "runOnceForAllItems",
-        "jsCode": "const input = $json.body ?? $json;\nconst baseKeywords = ['Vtuber', 'にじさんじ', 'VOLTACTION', 'うおむすめ', 'エデン組', 'りぷらい', 'VTuberオーディション'];\nconst staticData = $getWorkflowStaticData('global');\nconst promotedKeywords = Array.isArray(staticData.autoKeywords) ? staticData.autoKeywords : [];\nconst seen = new Set();\nconst defaultKeywords = [];\n\nfor (const value of [...baseKeywords, ...promotedKeywords]) {\n  const keyword = String(value || '').trim();\n  const key = keyword.toLowerCase();\n  if (keyword && !seen.has(key)) {\n    seen.add(key);\n    defaultKeywords.push(keyword);\n  }\n}\n\nreturn [\n  {\n    json: {\n      keywords: input.keywords ?? input.keyword ?? defaultKeywords,\n      lookbackHours: Number(input.lookbackHours ?? input.lookback_hours ?? 24),\n      maxArticles: Number(input.maxArticles ?? input.max_articles ?? 60),\n      locale: input.locale ?? 'ja-JP',\n      language: input.language ?? 'ja',\n      country: input.country ?? 'JP',\n      outputLanguage: input.outputLanguage ?? input.output_language ?? 'ja',\n      source: 'webhook-request'\n    }\n  }\n];"
+        "operation": "fromJson",
+        "binaryPropertyName": "keywordConfigFile",
+        "destinationKey": "keywordConfig",
+        "options": {
+          "encoding": "utf8",
+          "stripBOM": true,
+          "keepSource": "json"
+        }
       },
       "id": "fe99a1c0-4b5e-43b5-bd27-02c42d693b52",
-      "name": "Normalize Webhook Request",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
+      "name": "Parse Keyword Configuration",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
       "position": [
-        480,
-        520
+        640,
+        360
       ]
     },
     {
       "parameters": {
         "mode": "runOnceForAllItems",
-        "jsCode": "const input = $json.body ?? $json;\nconst keywordInput = input.keywords ?? input.keyword ?? [];\nconst keywords = Array.isArray(keywordInput)\n  ? keywordInput\n  : String(keywordInput)\n      .split(/,|\\n/)\n      .map((keyword) => keyword.trim())\n      .filter(Boolean);\n\nconst normalizedKeywords = keywords.length ? keywords : ['Vtuber', 'にじさんじ'];\nconst lookbackHours = Math.max(1, Number(input.lookbackHours || 24));\nconst lookbackDays = Math.max(1, Math.ceil(lookbackHours / 24));\nconst maxArticles = Math.max(1, Number(input.maxArticles || 30));\nconst locale = input.locale || 'ja-JP';\nconst language = input.language || 'ja';\nconst country = input.country || 'JP';\nconst outputLanguage = input.outputLanguage || 'ja';\nconst since = new Date(Date.now() - lookbackHours * 60 * 60 * 1000).toISOString();\nconst until = new Date().toISOString();\nconst feedRequests = [];\n\nfor (const keyword of normalizedKeywords) {\n  const googleQuery = `${keyword} when:${lookbackDays}d`;\n  const ceid = `${country}:${language}`;\n  const googleNewsRssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(googleQuery)}&hl=${encodeURIComponent(locale)}&gl=${encodeURIComponent(country)}&ceid=${encodeURIComponent(ceid)}`;\n  const hatenaBookmarkRssUrl = `https://b.hatena.ne.jp/search/text?q=${encodeURIComponent(keyword)}&sort=recent&mode=rss`;\n\n  feedRequests.push({\n    sourceName: 'Google News',\n    keyword,\n    query: googleQuery,\n    rssUrl: googleNewsRssUrl\n  });\n\n  feedRequests.push({\n    sourceName: 'Hatena Bookmark',\n    keyword,\n    query: keyword,\n    rssUrl: hatenaBookmarkRssUrl\n  });\n}\n\nreturn feedRequests.map((feed) => ({\n  json: {\n    ...feed,\n    keywords: normalizedKeywords,\n    since,\n    until,\n    lookbackHours,\n    maxArticles,\n    locale,\n    language,\n    country,\n    outputLanguage,\n    requestSource: input.source || 'daily-summary-request'\n  }\n}));\n"
+        "jsCode": "const input = $json.body ?? $json;\nconst keywordInput = input.keywords ?? input.keyword ?? [];\nconst keywords = Array.isArray(keywordInput)\n  ? keywordInput\n  : String(keywordInput)\n      .split(/,|\\n/)\n      .map((keyword) => keyword.trim())\n      .filter(Boolean);\n\nconst normalizedKeywords = keywords;\nif (!normalizedKeywords.length) {\n  throw new Error('No keywords were configured for this run.');\n}\nconst lookbackHours = Math.max(1, Number(input.lookbackHours || 24));\nconst lookbackDays = Math.max(1, Math.ceil(lookbackHours / 24));\nconst maxArticles = Math.max(1, Number(input.maxArticles || 60));\nconst locale = input.locale || 'ja-JP';\nconst language = input.language || 'ja';\nconst country = input.country || 'JP';\nconst outputLanguage = input.outputLanguage || 'ja';\nconst since = new Date(Date.now() - lookbackHours * 60 * 60 * 1000).toISOString();\nconst until = new Date().toISOString();\nconst feedRequests = [];\n\nfor (const keyword of normalizedKeywords) {\n  const googleQuery = `${keyword} when:${lookbackDays}d`;\n  const ceid = `${country}:${language}`;\n  const googleNewsRssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(googleQuery)}&hl=${encodeURIComponent(locale)}&gl=${encodeURIComponent(country)}&ceid=${encodeURIComponent(ceid)}`;\n  const hatenaBookmarkRssUrl = `https://b.hatena.ne.jp/search/text?q=${encodeURIComponent(keyword)}&sort=recent&mode=rss`;\n\n  feedRequests.push({\n    sourceName: 'Google News',\n    keyword,\n    query: googleQuery,\n    rssUrl: googleNewsRssUrl\n  });\n\n  feedRequests.push({\n    sourceName: 'Hatena Bookmark',\n    keyword,\n    query: keyword,\n    rssUrl: hatenaBookmarkRssUrl\n  });\n}\n\nreturn feedRequests.map((feed) => ({\n  json: {\n    ...feed,\n    keywords: normalizedKeywords,\n    since,\n    until,\n    lookbackHours,\n    maxArticles,\n    locale,\n    language,\n    country,\n    outputLanguage,\n    requestSource: input.source || 'daily-summary-request'\n  }\n}));\n"
       },
       "id": "6c03a5b7-2d8d-4f5c-9b11-199aaf1cbf3f",
       "name": "Build Search RSS URLs",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        800,
+        1120,
         360
       ]
     },
@@ -101,7 +110,7 @@
       "type": "n8n-nodes-base.rssFeedRead",
       "typeVersion": 1.2,
       "position": [
-        1120,
+        1360,
         360
       ],
       "alwaysOutputData": true
@@ -109,14 +118,14 @@
     {
       "parameters": {
         "mode": "runOnceForAllItems",
-        "jsCode": "const rssItems = $input.all();\nlet queryItems = [];\n\ntry {\n  queryItems = $('Build Search RSS URLs').all().map((item) => item.json);\n} catch (error) {\n  queryItems = [];\n}\n\nconst firstQuery = queryItems[0] || {};\nconst since = firstQuery.since ? new Date(firstQuery.since) : new Date(Date.now() - 24 * 60 * 60 * 1000);\nconst keywords = firstQuery.keywords || [];\nconst maxArticles = Number(firstQuery.maxArticles || 30);\n\nfunction cleanText(value) {\n  return String(value || '')\n    .replace(/<!\\[CDATA\\[/g, '')\n    .replace(/\\]\\]>/g, '')\n    .replace(/<[^>]*>/g, ' ')\n    .replace(/&nbsp;/g, ' ')\n    .replace(/&amp;/g, '&')\n    .replace(/&lt;/g, '<')\n    .replace(/&gt;/g, '>')\n    .replace(/&quot;/g, '\"')\n    .replace(/&#39;/g, \"'\")\n    .replace(/\\s+/g, ' ')\n    .trim();\n}\n\nconst seen = new Set();\nconst articles = [];\n\nfor (const item of rssItems) {\n  const article = item.json || {};\n  const rawDate = article.isoDate || article.pubDate || article.date || article.published || '';\n  const publishedAt = rawDate ? new Date(rawDate) : null;\n\n  if (publishedAt && Number.isFinite(publishedAt.getTime()) && publishedAt < since) {\n    continue;\n  }\n\n  const title = cleanText(article.title);\n  const url = article.link || article.guid || '';\n  const excerpt = cleanText(article.contentSnippet || article.content || article.description || article.summary);\n  const key = url || title.toLowerCase();\n\n  if ((!title && !url) || seen.has(key)) {\n    continue;\n  }\n\n  seen.add(key);\n  articles.push({\n    title,\n    url,\n    publishedAt: publishedAt && Number.isFinite(publishedAt.getTime()) ? publishedAt.toISOString() : rawDate,\n    source: cleanText(article.creator || article.author || article['dc:creator'] || ''),\n    excerpt: excerpt.slice(0, 700)\n  });\n}\n\narticles.sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || '')));\n\nreturn [\n  {\n    json: {\n      generatedAt: new Date().toISOString(),\n      period: {\n        since: since.toISOString(),\n        until: firstQuery.until || new Date().toISOString()\n      },\n      keywords,\n      queryCount: queryItems.length,\n      searchSources: Array.from(new Set(queryItems.map((item) => item.sourceName).filter(Boolean))),\n      articleCount: articles.length,\n      articles: articles.slice(0, maxArticles),\n      outputLanguage: firstQuery.outputLanguage || 'ja',\n      requestSource: firstQuery.requestSource || 'rss'\n    }\n  }\n];\n"
+        "jsCode": "const rssItems = $input.all();\nlet queryItems = [];\n\ntry {\n  queryItems = $('Build Search RSS URLs').all().map((item) => item.json);\n} catch (error) {\n  queryItems = [];\n}\n\nconst firstQuery = queryItems[0] || {};\nconst since = firstQuery.since ? new Date(firstQuery.since) : new Date(Date.now() - 24 * 60 * 60 * 1000);\nconst keywords = firstQuery.keywords || [];\nconst maxArticles = Number(firstQuery.maxArticles || 60);\n\nfunction cleanText(value) {\n  return String(value || '')\n    .replace(/<!\\[CDATA\\[/g, '')\n    .replace(/\\]\\]>/g, '')\n    .replace(/<[^>]*>/g, ' ')\n    .replace(/&nbsp;/g, ' ')\n    .replace(/&amp;/g, '&')\n    .replace(/&lt;/g, '<')\n    .replace(/&gt;/g, '>')\n    .replace(/&quot;/g, '\"')\n    .replace(/&#39;/g, \"'\")\n    .replace(/\\s+/g, ' ')\n    .trim();\n}\n\nconst seen = new Set();\nconst articles = [];\n\nfor (const item of rssItems) {\n  const article = item.json || {};\n  const rawDate = article.isoDate || article.pubDate || article.date || article.published || '';\n  const publishedAt = rawDate ? new Date(rawDate) : null;\n\n  if (publishedAt && Number.isFinite(publishedAt.getTime()) && publishedAt < since) {\n    continue;\n  }\n\n  const title = cleanText(article.title);\n  const url = article.link || article.guid || '';\n  const excerpt = cleanText(article.contentSnippet || article.content || article.description || article.summary);\n  const key = url || title.toLowerCase();\n\n  if ((!title && !url) || seen.has(key)) {\n    continue;\n  }\n\n  seen.add(key);\n  articles.push({\n    title,\n    url,\n    publishedAt: publishedAt && Number.isFinite(publishedAt.getTime()) ? publishedAt.toISOString() : rawDate,\n    source: cleanText(article.creator || article.author || article['dc:creator'] || ''),\n    excerpt: excerpt.slice(0, 700)\n  });\n}\n\narticles.sort((a, b) => String(b.publishedAt || '').localeCompare(String(a.publishedAt || '')));\n\nreturn [\n  {\n    json: {\n      generatedAt: new Date().toISOString(),\n      period: {\n        since: since.toISOString(),\n        until: firstQuery.until || new Date().toISOString()\n      },\n      keywords,\n      queryCount: queryItems.length,\n      searchSources: Array.from(new Set(queryItems.map((item) => item.sourceName).filter(Boolean))),\n      articleCount: articles.length,\n      articles: articles.slice(0, maxArticles),\n      outputLanguage: firstQuery.outputLanguage || 'ja',\n      requestSource: firstQuery.requestSource || 'rss'\n    }\n  }\n];\n"
       },
       "id": "8cb4d75a-72bd-4c72-9af9-39b28de0f9da",
       "name": "Normalize and Deduplicate Articles",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1440,
+        1600,
         360
       ]
     },
@@ -130,7 +139,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1760,
+        1840,
         360
       ]
     },
@@ -162,7 +171,7 @@
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1.1,
       "position": [
-        2400,
+        2320,
         360
       ]
     },
@@ -176,7 +185,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3040,
+        2800,
         360
       ]
     },
@@ -208,21 +217,35 @@
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1.1,
       "position": [
-        2400,
+        2320,
         600
       ]
     },
     {
       "parameters": {
         "mode": "runOnceForAllItems",
-        "jsCode": "const writtenItems = $input.all();\nconst data = $('Build Daily Digest').first().json;\nconst articles = Array.isArray(data.articles) ? data.articles : [];\nconst baseKeywords = ['Vtuber', 'にじさんじ', 'VOLTACTION', 'うおむすめ', 'エデン組', 'りぷらい', 'VTuberオーディション'];\nconst staticData = $getWorkflowStaticData('global');\nconst existing = Array.isArray(staticData.autoKeywords) ? staticData.autoKeywords : [];\nconst maxAutoKeywords = 30;\nconst blockedTerms = new Set([\n  'vtuber', 'にじさんじ', '事務所', 'グッズ', 'ライブ', 'オーディション',\n  'appmedia', 't.co', 'mshale', 'shorts', 'karaoke', 'pr', 'live2d'\n]);\nconst knownEntities = [\n  'ホロライブ', 'COVER', 'ANYCOLOR', 'NIJISANJI EN', 'ぶいすぽっ!',\n  'Brave group', 'あおぎり高校', 'ななしいんく', 'Neo-Porte', 'VShojo',\n  'Phase Connect', '.LIVE', 'のりプロ', 'RIOT MUSIC', 'Re:AcT', 'VOMS',\n  '深層組', 'Varium', 'ホロスターズ', 'ChroNoiR', 'ROF-MAO'\n];\n\nfunction normalize(value) {\n  return String(value || '').trim().toLowerCase();\n}\n\nfunction isSafeTerm(value) {\n  const term = String(value || '').trim();\n  const normalized = normalize(term);\n  return term.length >= 2\n    && term.length <= 30\n    && !blockedTerms.has(normalized)\n    && !/^\\d+$/.test(term)\n    && !/^https?:/i.test(term)\n    && !/[|/\\\\]/.test(term);\n}\n\nconst currentKeywords = [];\nconst currentSet = new Set();\nfor (const value of [...baseKeywords, ...existing]) {\n  const term = String(value || '').trim();\n  const key = normalize(term);\n  if (term && !currentSet.has(key)) {\n    currentSet.add(key);\n    currentKeywords.push(term);\n  }\n}\n\nconst candidates = new Map();\nfunction addCandidate(value, category, reason, title) {\n  const term = String(value || '').trim();\n  const key = normalize(term);\n  if (!isSafeTerm(term) || currentSet.has(key)) return;\n  const current = candidates.get(key);\n  if (current) {\n    current.sources.add(title);\n    return;\n  }\n  candidates.set(key, { term, category, reason, sources: new Set([title]) });\n}\n\nfor (const article of articles) {\n  const title = String(article.title || '');\n  const text = `${title}\\n${article.excerpt || ''}`;\n\n  for (const term of knownEntities) {\n    if (text.toLowerCase().includes(term.toLowerCase())) {\n      addCandidate(term, 'known-entity', 'known agency, company, or unit appears in a captured article', title);\n    }\n  }\n\n  const agencyPattern = /VTuber事務所[「『]?([ぁ-んァ-ヴー一-龠A-Za-z0-9!._-]{2,24}?)(?=初|が|の|、|。|「|『|3期|大型|募集|$)/g;\n  for (const match of text.matchAll(agencyPattern)) {\n    addCandidate(match[1], 'agency', 'explicit VTuber agency name in a captured article', title);\n  }\n\n  const unitPattern = /【にじさんじ】([ぁ-んァ-ヴー一-龠A-Za-z0-9!._-]{2,24}?)(?=\\d+(?:周年|th)|[ 　]*(?:周年|グッズ|ライブ))/g;\n  for (const match of text.matchAll(unitPattern)) {\n    addCandidate(match[1], 'unit', 'explicit にじさんじ unit name in a goods, anniversary, or live article', title);\n  }\n}\n\nconst additions = [];\nfor (const candidate of candidates.values()) {\n  if (currentKeywords.length >= maxAutoKeywords + baseKeywords.length) break;\n  currentSet.add(normalize(candidate.term));\n  currentKeywords.push(candidate.term);\n  additions.push({\n    term: candidate.term,\n    category: candidate.category,\n    reason: candidate.reason,\n    sources: [...candidate.sources].slice(0, 3)\n  });\n}\n\nstaticData.autoKeywords = currentKeywords.filter((term) => !baseKeywords.some((base) => normalize(base) === normalize(term)));\nif (additions.length) {\n  const history = Array.isArray(staticData.autoKeywordPromotionHistory)\n    ? staticData.autoKeywordPromotionHistory\n    : [];\n  staticData.autoKeywordPromotionHistory = [...history, ...additions.map((candidate) => ({\n    ...candidate,\n    promotedAt: new Date().toISOString()\n  }))].slice(-100);\n}\nstaticData.lastKeywordPromotion = {\n  checkedAt: new Date().toISOString(),\n  addedKeywords: additions.map((candidate) => candidate.term),\n  autoKeywordCount: staticData.autoKeywords.length\n};\n\nreturn writtenItems.map((item) => ({\n  json: {\n    ...item.json,\n    autoAddedKeywords: additions.map((candidate) => candidate.term),\n    autoKeywordCount: staticData.autoKeywords.length\n  },\n  binary: item.binary\n}));"
+        "jsCode": "const writtenItems = $input.all();\nconst data = $('Build Daily Digest').first().json;\nconst articles = Array.isArray(data.articles) ? data.articles : [];\nconst config = data.keywordConfig || {};\nconst baseKeywords = Array.isArray(config.manualKeywords)\n  ? config.manualKeywords.map((term) => String(term || '').trim()).filter(Boolean)\n  : [];\nconst staticData = $getWorkflowStaticData('global');\nconst existing = Array.isArray(staticData.autoKeywords) ? staticData.autoKeywords : [];\nconst maxAutoKeywords = Math.max(0, Math.floor(Number(config.maxAutoKeywords ?? 30) || 0));\nconst configuredExclusions = Array.isArray(config.excludedKeywords)\n  ? config.excludedKeywords.map((term) => String(term || '').trim().toLowerCase()).filter(Boolean)\n  : [];\nconst blockedTerms = new Set([\n  'vtuber', 'にじさんじ', '事務所', 'グッズ', 'ライブ', 'オーディション',\n  'appmedia', 't.co', 'mshale', 'shorts', 'karaoke', 'pr', 'live2d',\n  ...configuredExclusions\n]);\nconst knownEntities = [\n  'ホロライブ', 'COVER', 'ANYCOLOR', 'NIJISANJI EN', 'ぶいすぽっ!',\n  'Brave group', 'あおぎり高校', 'ななしいんく', 'Neo-Porte', 'VShojo',\n  'Phase Connect', '.LIVE', 'のりプロ', 'RIOT MUSIC', 'Re:AcT', 'VOMS',\n  '深層組', 'Varium', 'ホロスターズ', 'ChroNoiR', 'ROF-MAO'\n];\n\nfunction normalize(value) {\n  return String(value || '').trim().toLowerCase();\n}\n\nfunction isSafeTerm(value) {\n  const term = String(value || '').trim();\n  const normalized = normalize(term);\n  return term.length >= 2\n    && term.length <= 30\n    && !blockedTerms.has(normalized)\n    && !/^\\d+$/.test(term)\n    && !/^https?:/i.test(term)\n    && !/[|/\\\\]/.test(term);\n}\n\nconst currentKeywords = [];\nconst currentSet = new Set();\nfor (const value of [...baseKeywords, ...existing]) {\n  const term = String(value || '').trim();\n  const key = normalize(term);\n  if (term && !currentSet.has(key)) {\n    currentSet.add(key);\n    currentKeywords.push(term);\n  }\n}\n\nconst candidates = new Map();\nfunction addCandidate(value, category, reason, title) {\n  const term = String(value || '').trim();\n  const key = normalize(term);\n  if (!isSafeTerm(term) || currentSet.has(key)) return;\n  const current = candidates.get(key);\n  if (current) {\n    current.sources.add(title);\n    return;\n  }\n  candidates.set(key, { term, category, reason, sources: new Set([title]) });\n}\n\nfor (const article of articles) {\n  const title = String(article.title || '');\n  const text = `${title}\\n${article.excerpt || ''}`;\n\n  for (const term of knownEntities) {\n    if (text.toLowerCase().includes(term.toLowerCase())) {\n      addCandidate(term, 'known-entity', 'known agency, company, or unit appears in a captured article', title);\n    }\n  }\n\n  const agencyPattern = /VTuber事務所[「『]?([ぁ-んァ-ヴー一-龠A-Za-z0-9!._-]{2,24}?)(?=初|が|の|、|。|「|『|3期|大型|募集|$)/g;\n  for (const match of text.matchAll(agencyPattern)) {\n    addCandidate(match[1], 'agency', 'explicit VTuber agency name in a captured article', title);\n  }\n\n  const unitPattern = /【にじさんじ】([ぁ-んァ-ヴー一-龠A-Za-z0-9!._-]{2,24}?)(?=\\d+(?:周年|th)|[ 　]*(?:周年|グッズ|ライブ))/g;\n  for (const match of text.matchAll(unitPattern)) {\n    addCandidate(match[1], 'unit', 'explicit にじさんじ unit name in a goods, anniversary, or live article', title);\n  }\n}\n\nconst additions = [];\nfor (const candidate of candidates.values()) {\n  if (currentKeywords.length >= maxAutoKeywords + baseKeywords.length) break;\n  currentSet.add(normalize(candidate.term));\n  currentKeywords.push(candidate.term);\n  additions.push({\n    term: candidate.term,\n    category: candidate.category,\n    reason: candidate.reason,\n    sources: [...candidate.sources].slice(0, 3)\n  });\n}\n\nstaticData.autoKeywords = currentKeywords\n  .filter((term) => !baseKeywords.some((base) => normalize(base) === normalize(term)))\n  .filter((term) => !blockedTerms.has(normalize(term)))\n  .slice(0, maxAutoKeywords);\nif (additions.length) {\n  const history = Array.isArray(staticData.autoKeywordPromotionHistory)\n    ? staticData.autoKeywordPromotionHistory\n    : [];\n  staticData.autoKeywordPromotionHistory = [...history, ...additions.map((candidate) => ({\n    ...candidate,\n    promotedAt: new Date().toISOString()\n  }))].slice(-100);\n}\nstaticData.lastKeywordPromotion = {\n  checkedAt: new Date().toISOString(),\n  addedKeywords: additions.map((candidate) => candidate.term),\n  autoKeywordCount: staticData.autoKeywords.length\n};\n\nreturn writtenItems.map((item) => ({\n  json: {\n    ...item.json,\n    autoAddedKeywords: additions.map((candidate) => candidate.term),\n    autoKeywordCount: staticData.autoKeywords.length\n  },\n  binary: item.binary\n}));"
       },
       "id": "b1e3b5cf-ccfb-4e2d-9a24-aa626397511d",
       "name": "Promote Extracted Keywords",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2720,
+        2560,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const config = $json.keywordConfig ?? {};\n\nfunction toTerms(value) {\n  const values = Array.isArray(value) ? value : String(value ?? '').split(/,|\\n/);\n  const seen = new Set();\n  return values.reduce((terms, value) => {\n    const term = String(value || '').trim();\n    const key = term.toLowerCase();\n    if (term && !seen.has(key)) {\n      seen.add(key);\n      terms.push(term);\n    }\n    return terms;\n  }, []);\n}\n\nfunction positiveNumber(value, fallback) {\n  const number = Number(value);\n  return Number.isFinite(number) && number > 0 ? number : fallback;\n}\n\nconst manualKeywords = toTerms(config.manualKeywords);\nif (!manualKeywords.length) {\n  throw new Error('config/keywords.json must contain at least one manualKeywords entry.');\n}\nconst excludedKeywords = toTerms(config.excludedKeywords);\nconst manualSet = new Set(manualKeywords.map((term) => term.toLowerCase()));\nconst excludedSet = new Set(excludedKeywords.map((term) => term.toLowerCase()));\nconst staticData = $getWorkflowStaticData('global');\nconst autoKeywords = toTerms(staticData.autoKeywords)\n  .filter((term) => !manualSet.has(term.toLowerCase()))\n  .filter((term) => !excludedSet.has(term.toLowerCase()));\nconst defaultKeywords = toTerms([...manualKeywords, ...autoKeywords]);\n\nlet webhookItem = null;\ntry {\n  webhookItem = $('Keyword Summary Webhook').first().json;\n} catch (error) {\n  webhookItem = null;\n}\nconst isWebhook = Boolean(webhookItem && Object.keys(webhookItem).length);\nconst input = isWebhook ? (webhookItem.body ?? webhookItem) : {};\nconst hasExplicitKeywords = Object.prototype.hasOwnProperty.call(input, 'keywords')\n  || Object.prototype.hasOwnProperty.call(input, 'keyword');\nconst requestedKeywords = toTerms(input.keywords ?? input.keyword ?? []);\nconst keywords = hasExplicitKeywords && requestedKeywords.length ? requestedKeywords : defaultKeywords;\n\nreturn [{\n  json: {\n    keywords,\n    keywordConfig: {\n      schemaVersion: Number(config.schemaVersion || 1),\n      manualKeywords,\n      excludedKeywords,\n      maxAutoKeywords: Math.max(0, Math.floor(Number(config.maxAutoKeywords ?? 30) || 0))\n    },\n    keywordConfigPath: 'config/keywords.json',\n    lookbackHours: positiveNumber(input.lookbackHours ?? input.lookback_hours, 24),\n    maxArticles: positiveNumber(input.maxArticles ?? input.max_articles, 60),\n    locale: input.locale ?? 'ja-JP',\n    language: input.language ?? 'ja',\n    country: input.country ?? 'JP',\n    outputLanguage: input.outputLanguage ?? input.output_language ?? 'ja',\n    source: isWebhook ? 'webhook-request' : 'default-daily-request'\n  }\n}];"
+      },
+      "id": "ccf6e73d-dcfe-42ed-92a9-d89a94ab521a",
+      "name": "Build Keyword Summary Request",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
         360
       ]
     }
@@ -232,7 +255,7 @@
       "main": [
         [
           {
-            "node": "Default Daily Summary Request",
+            "node": "Read Keyword Configuration",
             "type": "main",
             "index": 0
           }
@@ -243,7 +266,7 @@
       "main": [
         [
           {
-            "node": "Default Daily Summary Request",
+            "node": "Read Keyword Configuration",
             "type": "main",
             "index": 0
           }
@@ -254,29 +277,7 @@
       "main": [
         [
           {
-            "node": "Normalize Webhook Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Default Daily Summary Request": {
-      "main": [
-        [
-          {
-            "node": "Build Search RSS URLs",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Normalize Webhook Request": {
-      "main": [
-        [
-          {
-            "node": "Build Search RSS URLs",
+            "node": "Read Keyword Configuration",
             "type": "main",
             "index": 0
           }
@@ -376,6 +377,39 @@
         [
           {
             "node": "Summarize Saved Markdown Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Keyword Configuration": {
+      "main": [
+        [
+          {
+            "node": "Parse Keyword Configuration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Keyword Configuration": {
+      "main": [
+        [
+          {
+            "node": "Build Keyword Summary Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Keyword Summary Request": {
+      "main": [
+        [
+          {
+            "node": "Build Search RSS URLs",
             "type": "main",
             "index": 0
           }

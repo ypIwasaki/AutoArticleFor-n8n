@@ -135,6 +135,14 @@ python3 scripts/generate_analysis_reports.py
 ```
 
 See `docs/analysis.md` for report contents and limitations.
+## Manual keyword management
+
+Edit `config/keywords.json` to add or remove keywords from the default daily
+search. The workflow reads this file at the start of every run, so the next
+scheduled, manual, or keyword-unspecified webhook run uses the saved changes.
+See `docs/keyword-management.md` for the JSON schema and the interaction with
+automatically promoted keywords.
+
 ## Automatic keyword promotion
 
-The workflow promotes high-confidence agency and unit names from captured articles into n8n workflow static data. Promoted terms are added to the next scheduled search. See `docs/automatic-keyword-promotion.md` for the policy and webhook behavior.
+The workflow promotes high-confidence agency and unit names from captured articles into n8n workflow static data. Promoted terms are combined with the manual list in `config/keywords.json` on the next scheduled search. See `docs/automatic-keyword-promotion.md` for the policy and webhook behavior.

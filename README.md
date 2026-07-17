@@ -57,13 +57,14 @@ Use this JSON body with the webhook test URL:
 {
   "keywords": ["Vtuber", "にじさんじ"],
   "lookbackHours": 24,
-  "maxArticles": 30,
   "locale": "ja-JP",
   "language": "ja",
   "country": "JP",
   "outputLanguage": "ja"
 }
 ```
+
+`maxArticles` を省略すると、期間内で重複除去後に取得できた全記事を保存し、要約指示書の対象にします。必要な場合だけ正の整数を指定して件数を制限できます。
 
 In n8n test mode, the webhook URL is usually:
 
@@ -153,4 +154,17 @@ The daily workflow generates AI instructions for talent/article indexing and
 reads only approved, search-enabled talents as future default search keywords.
 Reviewed proposals are applied through a separate workflow to `talents`,
 `articles`, and `article_talents`, which supports multiple talent associations
+
+## Talent Index dashboard
+
+Run the local read-only dashboard to browse the n8n `talents`, `articles`, and
+`article_talents` Data Tables:
+
+```bash
+bash scripts/start_talent_dashboard.sh
+```
+
+Open `http://127.0.0.1:8765`. It falls back to reviewed proposal JSON when the
+local n8n database is unavailable. See `docs/talent-dashboard.md` for the data
+source and configuration details.
 per article. See `docs/talent-article-index.md`.

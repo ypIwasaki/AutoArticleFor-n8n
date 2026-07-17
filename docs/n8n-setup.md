@@ -89,13 +89,14 @@ Example body:
 {
   "keywords": ["Vtuber", "にじさんじ"],
   "lookbackHours": 24,
-  "maxArticles": 30,
   "locale": "ja-JP",
   "language": "ja",
   "country": "JP",
   "outputLanguage": "ja"
 }
 ```
+
+`maxArticles` を省略すると、期間内で重複除去後に取得できた全記事を保存し、要約指示書の対象にします。必要な場合だけ正の整数を指定して件数を制限できます。
 
 After activation, use the production webhook path:
 
@@ -111,11 +112,10 @@ the RSS node. The workflow now enables `alwaysOutputData` on `Read RSS Search
 Results`, so later nodes should still run and return a digest with
 `articleCount: 0` when no items are found.
 
-If `articleCount` is still 0, try these changes in `Default Daily Summary Request`:
+If `articleCount` is still 0, increase the lookback window in `Default Daily Summary Request`:
 
 ```js
-lookbackHours: 72,
-maxArticles: 50
+lookbackHours: 72
 ```
 
 The workflow searches both Google News and Hatena Bookmark for each keyword.

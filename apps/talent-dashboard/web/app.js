@@ -226,15 +226,16 @@ function showKeywordManagementNotice(message = '', tone = '') {
   elements.keywordManagementNotice.className = `keyword-candidate-notice${tone ? ` ${tone}` : ''}`;
 }
 
-function keywordScopeLabel(scope) { return scope === 'manual' ? '手動設定' : 'n8n自動設定'; }
+function keywordScopeLabel(scope) { return scope === 'manual' ? '手動設定' : scope === 'automatic' ? 'n8n自動設定' : 'タレント登録'; }
 
 function renderKeywordSettings() {
   const data = state.keywordSettings;
   if (!data) return;
   const manual = (data.manualKeywords || []).map((keyword) => ({ keyword, scope: 'manual' }));
   const automatic = (data.automaticKeywords || []).map((keyword) => ({ keyword, scope: 'automatic' }));
-  const rows = [...manual, ...automatic];
-  document.querySelector('#managed-keyword-count').textContent = `手動 ${manual.length} / 自動 ${automatic.length}`;
+  const talent = (data.talentKeywords || []).map((keyword) => ({ keyword, scope: 'talent' }));
+  const rows = [...manual, ...automatic, ...talent];
+  document.querySelector('#managed-keyword-count').textContent = `手動 ${manual.length} / 自動 ${automatic.length} / 登録 ${talent.length}`;
   const headers = ['キーワード', '保存先', '操作'];
   elements.keywordSettingsTable.querySelector('thead').innerHTML = `<tr>${headers.map((header) => `<th>${header}</th>`).join('')}</tr>`;
   elements.keywordSettingsTable.querySelector('tbody').innerHTML = rows.length ? rows.map((item) => keywordSettingMarkup(item)).join('') : '<tr><td colspan="3"><p class="empty-detail">設定済みキーワードはありません。</p></td></tr>';
@@ -243,6 +244,9 @@ function renderKeywordSettings() {
 }
 
 function keywordSettingMarkup(item) {
+  if (item.scope === 'talent') {
+    return `<tr><td><div class="cell-title">${html(item.keyword)}</div></td><td><span class="keyword-state held">${html(keywordScopeLabel(item.scope))}</span></td><td><span class="muted">自動同期</span></td></tr>`;
+  }
   const isEditing = state.editingKeyword?.scope === item.scope && state.editingKeyword?.keyword === item.keyword;
   if (isEditing) {
     return `<tr><td><input class="keyword-edit-input" type="text" maxlength="30" value="${html(item.keyword)}" aria-label="キーワードを編集"></td><td>${html(keywordScopeLabel(item.scope))}</td><td><div class="keyword-actions"><button class="text-button" type="button" data-keyword-action="save" data-keyword="${html(item.keyword)}" data-scope="${item.scope}">保存</button><button class="text-button" type="button" data-keyword-action="cancel" data-keyword="${html(item.keyword)}" data-scope="${item.scope}">取消</button></div></td></tr>`;

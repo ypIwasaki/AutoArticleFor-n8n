@@ -28,10 +28,19 @@ To remove an automatically promoted term, open the workflow execution/static
 data in n8n and remove it from `autoKeywords`. Manual terms should be edited
 only in `config/keywords.json`.
 
+## Talent-derived keywords
+
+The Daily Keyword News Summary workflow reads the n8n `talents` Data Table at
+run time. Every registered `display_name` except a row whose `status` is
+`rejected` is added to the default search keywords. This list is not stored in
+`autoKeywords`, is not subject to `maxAutoKeywords`, and is refreshed whenever
+a talent proposal is applied. New talent records therefore become searchable on
+the next scheduled or keyword-unspecified run.
+
 ## Webhook override
 
 A webhook request with `keywords` explicitly supplied uses only those terms for
-that one request. Omitting `keywords` uses the combined manual and automatic
+that one request. Omitting `keywords` uses the combined manual, automatic, and talent-derived
 keyword lists.
 
 
@@ -43,4 +52,4 @@ Candidates marked `Add: yes` can be added from the page. The dashboard accepts o
 
 ## Dashboard keyword management
 
-The Talent Index dashboard can display and manage both keyword stores. Use `手動設定` for durable entries in `config/keywords.json`; they are included on the next run. Use `n8n自動設定` for the workflow's `autoKeywords` static data. The page supports adding, editing, and deleting either type. Removing a keyword affects only its selected store, so a duplicate in the other store remains available until it is also removed.
+The Talent Index dashboard can display and manage the two editable keyword stores. Use `手動設定` for durable entries in `config/keywords.json`; they are included on the next run. Use `n8n自動設定` for the workflow's `autoKeywords` static data. The page supports adding, editing, and deleting either type. `タレント登録` lists names derived from the n8n `talents` Data Table; it is read-only and automatically refreshed when the registry changes. Removing a keyword affects only its selected editable store, so a duplicate in the other store remains available until it is also removed.

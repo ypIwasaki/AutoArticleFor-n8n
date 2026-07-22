@@ -1,6 +1,6 @@
 # Talent Index Dashboard
 
-`talents`、`articles`、`article_talents` のn8n Data Tableを閲覧するための、ローカル専用の読み取り専用アプリケーションです。タレント候補、収集記事、複数タレントと記事の関係、検出根拠をブラウザから確認できます。
+`talents`、`articles`、`article_talents` のn8n Data Tableを閲覧し、日次検索キーワードを管理するローカルアプリケーションです。ダッシュボードではタレント候補、収集記事、複数タレントと記事の関係、検出根拠を確認できます。キーワードページでは手動設定・n8n自動設定・タレント登録由来の検索語を確認できます。
 
 ## 起動
 
@@ -30,7 +30,7 @@ n8nのDBまたは対象テーブルを読み込めない場合、`content/talent
 
 ## 操作範囲
 
-このアプリケーションはデータを変更しません。タレント候補の承認、検索有効化、記事とタレントの登録は、既存のn8nワークフローと `docs/talent-article-index.md` の手順で行います。
+このアプリケーションはタレント・記事・関係のData Tableを変更しません。キーワードページでは、`config/keywords.json` の手動設定とn8nの`autoKeywords`を編集できます。`タレント登録`はData Tableから動的に作られる読み取り専用の検索語です。タレント候補の承認、記事とタレントの登録は、既存のn8nワークフローと `docs/talent-article-index.md` の手順で行います。
 
 ## 記事要約
 

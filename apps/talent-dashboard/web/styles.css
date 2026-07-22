@@ -128,7 +128,7 @@ tbody tr { cursor: pointer; }
 .command-button:hover:not(:disabled) { border-color: var(--accent-dark); background: var(--accent-dark); }
 .command-button:disabled { cursor: wait; opacity: .6; }
 
-@media (max-width: 760px) { .keyword-section-heading { align-items: flex-start; } .keyword-section-heading h2 { font-size: 17px; } }
+@media (max-width: 760px) { .keyword-section-heading { align-items: flex-start; } .keyword-section-heading h2 { font-size: 17px; } .keyword-section-heading .source-badge { max-width: 148px; white-space: normal; text-align: right; } }
 
 
 .keyword-settings-section { margin-top: 24px; padding: 20px 0 0; border-top: 1px solid var(--line); }

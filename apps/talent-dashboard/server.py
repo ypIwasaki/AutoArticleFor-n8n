@@ -203,6 +203,31 @@ def load_keyword_runtime() -> tuple[list[str], str | None]:
             pass
 
 
+def load_registered_talent_keywords() -> tuple[list[str], str, str | None]:
+    try:
+        payload, source = load_from_n8n()
+        source_error: str | None = None
+    except Exception as exc:  # Keep keyword visibility available without n8n.
+        payload, source = load_from_proposals()
+        source_error = str(exc)
+
+    keywords: dict[str, str] = {}
+    for row in payload.get("talents", []):
+        if str(row.get("status", "")).strip().casefold() == "rejected":
+            continue
+        keyword = str(row.get("display_name", "")).strip()
+        if (
+            len(keyword) < 1
+            or len(keyword) > 80
+            or re.search(r"[|/\\\r\n]", keyword)
+            or re.match(r"^https?:", keyword, flags=re.IGNORECASE)
+        ):
+            continue
+        keywords.setdefault(keyword_identity(keyword), keyword)
+
+    return sorted(keywords.values(), key=lambda item: (item.casefold(), item)), source, source_error
+
+
 def load_latest_keyword_candidates() -> tuple[str, list[dict[str, Any]]]:
     candidate_dir = PROJECT_ROOT / "content" / "ai-keyword-candidates"
     paths = sorted(candidate_dir.glob("????-??-??.md"))
@@ -248,8 +273,9 @@ def keyword_candidates_payload() -> dict[str, Any]:
     config = load_keyword_config()
     manual = [str(term).strip() for term in config.get("manualKeywords", []) if str(term).strip()]
     automatic, runtime_error = load_keyword_runtime()
+    talent_keywords, talent_keyword_source, talent_keyword_error = load_registered_talent_keywords()
     current_by_identity: dict[str, str] = {}
-    for term in [*manual, *automatic]:
+    for term in [*manual, *automatic, *talent_keywords]:
         current_by_identity.setdefault(keyword_identity(term), term)
 
     for candidate in candidates:
@@ -262,6 +288,9 @@ def keyword_candidates_payload() -> dict[str, Any]:
         "candidates": candidates,
         "manualKeywords": manual,
         "automaticKeywords": automatic,
+        "talentKeywords": talent_keywords,
+        "talentKeywordSource": talent_keyword_source,
+        "talentKeywordError": talent_keyword_error,
         "currentKeywordCount": len(current_by_identity),
         "runtimeError": runtime_error,
     }
@@ -292,9 +321,13 @@ def keyword_management_payload() -> dict[str, Any]:
     config = load_keyword_config()
     manual = [str(term).strip() for term in config.get("manualKeywords", []) if str(term).strip()]
     automatic, runtime_error = load_keyword_runtime()
+    talent_keywords, talent_keyword_source, talent_keyword_error = load_registered_talent_keywords()
     return {
         "manualKeywords": manual,
         "automaticKeywords": automatic,
+        "talentKeywords": talent_keywords,
+        "talentKeywordSource": talent_keyword_source,
+        "talentKeywordError": talent_keyword_error,
         "excludedKeywords": [str(term).strip() for term in config.get("excludedKeywords", []) if str(term).strip()],
         "maxAutoKeywords": max(0, int(config.get("maxAutoKeywords", 30) or 0)),
         "runtimeError": runtime_error,

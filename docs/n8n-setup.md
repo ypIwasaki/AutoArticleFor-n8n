@@ -44,8 +44,8 @@ The workflow is designed for daily keyword monitoring.
 2. `Manual Trigger` lets you test the default keyword set from the n8n editor.
 3. `Keyword Summary Webhook` lets another system pass keywords at runtime.
 4. `Read Keyword Configuration` loads `config/keywords.json`, and `Parse Keyword Configuration` parses it.
-5. `Load Talent Registry` reads approved talent names from the existing n8n `talents` Data Table.
-6. `Build Keyword Summary Request` combines manual keywords with previously promoted terms and approved, search-enabled talent names.
+5. `Load Talent Registry` reads registered talent names from the existing n8n `talents` Data Table.
+6. `Build Keyword Summary Request` combines manual keywords, previously promoted terms, and names of all non-rejected registered talents.
 7. `Build Search RSS URLs` creates Google News RSS and Hatena Bookmark RSS search URLs for each keyword.
 8. `Read RSS Search Results` reads matching RSS items.
 9. `Normalize and Deduplicate Articles` filters recent items and removes duplicates.

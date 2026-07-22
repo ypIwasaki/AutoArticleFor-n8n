@@ -143,3 +143,18 @@ tbody tr { cursor: pointer; }
 .danger-text-button:hover { color: #7a2831; }
 
 @media (max-width: 760px) { .keyword-management-form { grid-template-columns: minmax(0, 1fr) auto; } .keyword-management-form select { grid-column: 1 / -1; } }
+
+
+.primary-nav { display: flex; gap: 2px; margin-left: auto; }
+.nav-link { min-height: 34px; padding: 8px 11px; border-bottom: 2px solid transparent; color: var(--muted); font-size: 13px; font-weight: 750; text-decoration: none; white-space: nowrap; }
+.nav-link:hover { color: var(--ink); background: #f7f9fa; }
+.nav-link.is-active { border-bottom-color: var(--accent); color: var(--accent-dark); }
+.single-page-main { max-width: 1120px; }
+.single-page-main .keyword-settings-section, .single-page-main .keyword-candidate-section { margin-top: 0; padding-top: 0; border-top: 0; }
+
+@media (max-width: 760px) {
+  .topbar { flex-wrap: wrap; gap: 10px 14px; }
+  .primary-nav { order: 3; width: 100%; margin-left: 0; overflow-x: auto; border-top: 1px solid var(--line); }
+  .nav-link { flex: 0 0 auto; padding-left: 9px; padding-right: 9px; }
+  .topbar-actions { margin-left: auto; }
+}

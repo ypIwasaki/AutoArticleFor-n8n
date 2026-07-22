@@ -1,3 +1,5 @@
+const currentPage = document.body.dataset.page || 'dashboard';
+
 const state = {
   dashboard: null,
   view: 'talents',
@@ -281,7 +283,7 @@ async function manageKeyword(operation, scope, keyword, previousKeyword = '') {
     const result = await response.json().catch(() => ({}));
     if (!response.ok) throw new Error(result.error || `HTTP ${response.status}`);
     state.editingKeyword = null;
-    await loadDashboard();
+    await loadKeywordSettingsPage();
     const labels = { add: '追加しました', edit: '更新しました', remove: '削除しました' };
     const status = result.status === 'already_added' ? 'すでに設定されています' : result.status === 'already_removed' ? 'すでに削除されています' : result.status === 'unchanged' ? '変更はありません' : labels[operation];
     showKeywordManagementNotice(`${result.keyword || keyword || previousKeyword}: ${status}`, 'success');
@@ -337,7 +339,7 @@ async function addKeywordCandidate(keyword, button) {
     if (!['added', 'already_added'].includes(result.status)) {
       throw new Error(result.reason || 'n8n rejected the keyword.');
     }
-    await loadDashboard();
+    await loadKeywordCandidatesPage();
     const label = result.status === 'already_added' ? 'すでに追加されています' : 'n8nへ追加しました。次回の定期実行から使用されます。';
     showKeywordNotice(`${result.keyword || keyword}: ${label}`, 'success');
   } catch (error) {
@@ -348,39 +350,65 @@ async function addKeywordCandidate(keyword, button) {
   }
 }
 
-function renderAll() { if (!state.dashboard) return; renderMetrics(state.dashboard.summary); renderTable(); renderKeywordSettings(); }
+function renderAll() { if (!state.dashboard) return; renderMetrics(state.dashboard.summary); renderTable(); }
+
+function setPageSource(label, generatedAt = new Date().toISOString()) {
+  document.querySelector('#source-badge').textContent = label;
+  document.querySelector('#generated-at').textContent = `更新: ${date(generatedAt)}`;
+}
 
 async function loadDashboard() {
   const button = document.querySelector('#reload-button');
   button.disabled = true;
   try {
-    const [dashboardResponse, candidateResponse, settingsResponse] = await Promise.all([
-      fetch('/api/dashboard', { cache: 'no-store' }),
-      fetch('/api/keyword-candidates', { cache: 'no-store' }),
-      fetch('/api/keywords', { cache: 'no-store' }),
-    ]);
-    if (!dashboardResponse.ok) throw new Error(`ダッシュボード: HTTP ${dashboardResponse.status}`);
-    if (!candidateResponse.ok) {
-      const failure = await candidateResponse.json().catch(() => ({}));
-      throw new Error(failure.error || `キーワード候補: HTTP ${candidateResponse.status}`);
-    }
-    if (!settingsResponse.ok) {
-      const failure = await settingsResponse.json().catch(() => ({}));
-      throw new Error(failure.error || `キーワード設定: HTTP ${settingsResponse.status}`);
-    }
-    state.dashboard = await dashboardResponse.json();
-    state.keywordCandidates = await candidateResponse.json();
-    state.keywordSettings = await settingsResponse.json();
+    const response = await fetch('/api/dashboard', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`ダッシュボード: HTTP ${response.status}`);
+    state.dashboard = await response.json();
     state.selected = null;
     setSource(state.dashboard);
     populateOrganizations(state.dashboard.summary.organizations || []);
     renderAll();
-    renderKeywordCandidates();
     elements.detail.innerHTML = '<p class="empty-detail">選択なし</p>';
   } catch (error) {
     elements.notice.hidden = false;
     elements.notice.textContent = `データを読み込めませんでした: ${error.message}`;
-  } finally { button.disabled = false; }
+  } finally {
+    button.disabled = false;
+  }
+}
+
+async function loadKeywordSettingsPage() {
+  const button = document.querySelector('#reload-button');
+  button.disabled = true;
+  try {
+    const response = await fetch('/api/keywords', { cache: 'no-store' });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(data.error || `HTTP ${response.status}`);
+    state.keywordSettings = data;
+    setPageSource('キーワード設定', data.generatedAt);
+    renderKeywordSettings();
+  } catch (error) {
+    showKeywordManagementNotice(`キーワード設定を読み込めませんでした: ${error.message}`, 'error');
+  } finally {
+    button.disabled = false;
+  }
+}
+
+async function loadKeywordCandidatesPage() {
+  const button = document.querySelector('#reload-button');
+  button.disabled = true;
+  try {
+    const response = await fetch('/api/keyword-candidates', { cache: 'no-store' });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(data.error || `HTTP ${response.status}`);
+    state.keywordCandidates = data;
+    setPageSource('AI候補', data.generatedAt);
+    renderKeywordCandidates();
+  } catch (error) {
+    showKeywordNotice(`AIキーワード候補を読み込めませんでした: ${error.message}`, 'error');
+  } finally {
+    button.disabled = false;
+  }
 }
 
 function populateOrganizations(organizations) {
@@ -389,23 +417,51 @@ function populateOrganizations(organizations) {
   elements.organization.value = current;
 }
 
-document.querySelectorAll('.tab-button').forEach((button) => button.addEventListener('click', () => {
-  state.view = button.dataset.view;
-  state.selected = null;
-  document.querySelectorAll('.tab-button').forEach((tab) => { const active = tab === button; tab.classList.toggle('is-active', active); tab.setAttribute('aria-selected', String(active)); });
-  elements.detail.innerHTML = '<p class="empty-detail">選択なし</p>';
-  renderTable();
-}));
-
-elements.search.addEventListener('input', () => { state.filters.search = elements.search.value; renderTable(); });
-elements.status.addEventListener('change', () => { state.filters.status = elements.status.value; renderTable(); });
-elements.organization.addEventListener('change', () => { state.filters.organization = elements.organization.value; renderTable(); });
-elements.confidence.addEventListener('input', () => { state.filters.confidence = Number(elements.confidence.value); elements.confidenceValue.value = state.filters.confidence.toFixed(2); renderTable(); });
-elements.linkedOnly.addEventListener('change', () => { state.filters.linkedOnly = elements.linkedOnly.checked; renderTable(); });
-elements.summarizedOnly.addEventListener('change', () => { state.filters.summarizedOnly = elements.summarizedOnly.checked; renderTable(); });
-document.querySelector('#clear-filters').addEventListener('click', () => { state.filters = { search: '', status: '', organization: '', confidence: 0, linkedOnly: false, summarizedOnly: false }; elements.search.value = ''; elements.status.value = ''; elements.organization.value = ''; elements.confidence.value = '0'; elements.confidenceValue.value = '0.00'; elements.linkedOnly.checked = false; elements.summarizedOnly.checked = false; renderTable(); });
-document.querySelector('#reload-button').addEventListener('click', loadDashboard);
-document.querySelector('#close-detail').addEventListener('click', () => { state.selected = null; elements.detail.innerHTML = '<p class="empty-detail">選択なし</p>'; renderTable(); });
-elements.keywordManagementForm.addEventListener('submit', (event) => { event.preventDefault(); manageKeyword('add', elements.keywordManagementScope.value, elements.keywordManagementInput.value); });
-window.addEventListener('resize', () => state.dashboard && drawActivity(state.dashboard.summary.dailyVolume));
-loadDashboard();
+if (currentPage === 'dashboard') {
+  document.querySelectorAll('.tab-button').forEach((button) => button.addEventListener('click', () => {
+    state.view = button.dataset.view;
+    state.selected = null;
+    document.querySelectorAll('.tab-button').forEach((tab) => {
+      const active = tab === button;
+      tab.classList.toggle('is-active', active);
+      tab.setAttribute('aria-selected', String(active));
+    });
+    elements.detail.innerHTML = '<p class="empty-detail">選択なし</p>';
+    renderTable();
+  }));
+  elements.search.addEventListener('input', () => { state.filters.search = elements.search.value; renderTable(); });
+  elements.status.addEventListener('change', () => { state.filters.status = elements.status.value; renderTable(); });
+  elements.organization.addEventListener('change', () => { state.filters.organization = elements.organization.value; renderTable(); });
+  elements.confidence.addEventListener('input', () => { state.filters.confidence = Number(elements.confidence.value); elements.confidenceValue.value = state.filters.confidence.toFixed(2); renderTable(); });
+  elements.linkedOnly.addEventListener('change', () => { state.filters.linkedOnly = elements.linkedOnly.checked; renderTable(); });
+  elements.summarizedOnly.addEventListener('change', () => { state.filters.summarizedOnly = elements.summarizedOnly.checked; renderTable(); });
+  document.querySelector('#clear-filters').addEventListener('click', () => {
+    state.filters = { search: '', status: '', organization: '', confidence: 0, linkedOnly: false, summarizedOnly: false };
+    elements.search.value = '';
+    elements.status.value = '';
+    elements.organization.value = '';
+    elements.confidence.value = '0';
+    elements.confidenceValue.value = '0.00';
+    elements.linkedOnly.checked = false;
+    elements.summarizedOnly.checked = false;
+    renderTable();
+  });
+  document.querySelector('#reload-button').addEventListener('click', loadDashboard);
+  document.querySelector('#close-detail').addEventListener('click', () => {
+    state.selected = null;
+    elements.detail.innerHTML = '<p class="empty-detail">選択なし</p>';
+    renderTable();
+  });
+  window.addEventListener('resize', () => state.dashboard && drawActivity(state.dashboard.summary.dailyVolume));
+  loadDashboard();
+} else if (currentPage === 'keywords') {
+  elements.keywordManagementForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    manageKeyword('add', elements.keywordManagementScope.value, elements.keywordManagementInput.value);
+  });
+  document.querySelector('#reload-button').addEventListener('click', loadKeywordSettingsPage);
+  loadKeywordSettingsPage();
+} else if (currentPage === 'candidates') {
+  document.querySelector('#reload-button').addEventListener('click', loadKeywordCandidatesPage);
+  loadKeywordCandidatesPage();
+}

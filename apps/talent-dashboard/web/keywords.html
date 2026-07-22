@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f6f8">
+    <title>キーワード管理 | Talent Index</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-page="keywords">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true">TI</div>
+        <div><p class="eyebrow">AUTO ARTICLE / N8N</p><h1>Talent Index</h1></div>
+      </div>
+      <nav class="primary-nav" aria-label="主要ナビゲーション">
+        <a class="nav-link" href="index.html">ダッシュボード</a>
+        <a class="nav-link is-active" href="keywords.html" aria-current="page">キーワード</a>
+        <a class="nav-link" href="keyword-candidates.html">AI候補</a>
+      </nav>
+      <div class="topbar-actions">
+        <span id="source-badge" class="source-badge">Loading</span>
+        <span id="generated-at" class="generated-at"></span>
+        <button id="reload-button" class="icon-button" type="button" title="データを再読み込み" aria-label="データを再読み込み">↻</button>
+      </div>
+    </header>
+    <main class="single-page-main">
+      <section id="keyword-settings" class="keyword-settings-section" aria-labelledby="keyword-settings-heading">
+        <div class="keyword-section-heading">
+          <div><p class="eyebrow">SEARCH KEYWORDS</p><h2 id="keyword-settings-heading">設定済みキーワード</h2></div>
+          <span id="managed-keyword-count" class="source-badge">-</span>
+        </div>
+        <form id="keyword-management-form" class="keyword-management-form">
+          <input id="keyword-management-input" type="text" maxlength="30" placeholder="キーワードを入力" aria-label="追加するキーワード">
+          <select id="keyword-management-scope" aria-label="保存先">
+            <option value="manual">手動設定</option>
+            <option value="automatic">n8n自動設定</option>
+          </select>
+          <button class="command-button" type="submit">追加</button>
+        </form>
+        <p id="keyword-management-notice" class="keyword-candidate-notice" hidden></p>
+        <div class="keyword-table-scroll">
+          <table id="keyword-settings-table"><thead></thead><tbody></tbody></table>
+        </div>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

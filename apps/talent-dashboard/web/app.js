@@ -2,6 +2,9 @@ const state = {
   dashboard: null,
   view: 'talents',
   selected: null,
+  keywordCandidates: null,
+  keywordSettings: null,
+  editingKeyword: null,
   filters: { search: '', status: '', organization: '', confidence: 0, linkedOnly: false, summarizedOnly: false },
 };
 
@@ -16,6 +19,13 @@ const elements = {
   linkedOnly: document.querySelector('#linked-only'),
   summarizedOnly: document.querySelector('#summarized-only'),
   detail: document.querySelector('#detail-content'),
+  keywordTable: document.querySelector('#keyword-candidates-table'),
+  keywordNotice: document.querySelector('#keyword-candidate-notice'),
+  keywordSettingsTable: document.querySelector('#keyword-settings-table'),
+  keywordManagementNotice: document.querySelector('#keyword-management-notice'),
+  keywordManagementForm: document.querySelector('#keyword-management-form'),
+  keywordManagementInput: document.querySelector('#keyword-management-input'),
+  keywordManagementScope: document.querySelector('#keyword-management-scope'),
 };
 
 function html(value) {
@@ -208,19 +218,164 @@ function articleListItem(article, relation) {
   return `<li>${link}<div class="cell-subtitle">${compactDate(article?.published_at || relation?.last_seen_at)}${relation?.confidence != null ? ` / 信頼度 ${confidence(relation.confidence)}` : ''}</div></li>`;
 }
 
-function renderAll() { if (!state.dashboard) return; renderMetrics(state.dashboard.summary); renderTable(); }
+function showKeywordManagementNotice(message = '', tone = '') {
+  elements.keywordManagementNotice.hidden = !message;
+  elements.keywordManagementNotice.textContent = message;
+  elements.keywordManagementNotice.className = `keyword-candidate-notice${tone ? ` ${tone}` : ''}`;
+}
+
+function keywordScopeLabel(scope) { return scope === 'manual' ? '手動設定' : 'n8n自動設定'; }
+
+function renderKeywordSettings() {
+  const data = state.keywordSettings;
+  if (!data) return;
+  const manual = (data.manualKeywords || []).map((keyword) => ({ keyword, scope: 'manual' }));
+  const automatic = (data.automaticKeywords || []).map((keyword) => ({ keyword, scope: 'automatic' }));
+  const rows = [...manual, ...automatic];
+  document.querySelector('#managed-keyword-count').textContent = `手動 ${manual.length} / 自動 ${automatic.length}`;
+  const headers = ['キーワード', '保存先', '操作'];
+  elements.keywordSettingsTable.querySelector('thead').innerHTML = `<tr>${headers.map((header) => `<th>${header}</th>`).join('')}</tr>`;
+  elements.keywordSettingsTable.querySelector('tbody').innerHTML = rows.length ? rows.map((item) => keywordSettingMarkup(item)).join('') : '<tr><td colspan="3"><p class="empty-detail">設定済みキーワードはありません。</p></td></tr>';
+  elements.keywordSettingsTable.querySelectorAll('button[data-keyword-action]').forEach((button) => button.addEventListener('click', () => handleKeywordSettingAction(button)));
+  if (data.runtimeError) showKeywordManagementNotice(`n8nの自動キーワードを確認できません: ${data.runtimeError}`, 'error');
+}
+
+function keywordSettingMarkup(item) {
+  const isEditing = state.editingKeyword?.scope === item.scope && state.editingKeyword?.keyword === item.keyword;
+  if (isEditing) {
+    return `<tr><td><input class="keyword-edit-input" type="text" maxlength="30" value="${html(item.keyword)}" aria-label="キーワードを編集"></td><td>${html(keywordScopeLabel(item.scope))}</td><td><div class="keyword-actions"><button class="text-button" type="button" data-keyword-action="save" data-keyword="${html(item.keyword)}" data-scope="${item.scope}">保存</button><button class="text-button" type="button" data-keyword-action="cancel" data-keyword="${html(item.keyword)}" data-scope="${item.scope}">取消</button></div></td></tr>`;
+  }
+  return `<tr><td><div class="cell-title">${html(item.keyword)}</div></td><td><span class="keyword-state ${item.scope === 'manual' ? 'eligible' : 'added'}">${html(keywordScopeLabel(item.scope))}</span></td><td><div class="keyword-actions"><button class="text-button" type="button" data-keyword-action="edit" data-keyword="${html(item.keyword)}" data-scope="${item.scope}">編集</button><button class="text-button danger-text-button" type="button" data-keyword-action="remove" data-keyword="${html(item.keyword)}" data-scope="${item.scope}">削除</button></div></td></tr>`;
+}
+
+async function handleKeywordSettingAction(button) {
+  const { keyword, scope, keywordAction: action } = button.dataset;
+  if (action === 'edit') {
+    state.editingKeyword = { keyword, scope };
+    renderKeywordSettings();
+    elements.keywordSettingsTable.querySelector('.keyword-edit-input')?.focus();
+    return;
+  }
+  if (action === 'cancel') {
+    state.editingKeyword = null;
+    renderKeywordSettings();
+    return;
+  }
+  if (action === 'save') {
+    const input = button.closest('tr').querySelector('.keyword-edit-input');
+    await manageKeyword('edit', scope, input?.value || '', keyword);
+    return;
+  }
+  if (action === 'remove' && window.confirm(`「${keyword}」を削除しますか？`)) {
+    await manageKeyword('remove', scope, '', keyword);
+  }
+}
+
+async function manageKeyword(operation, scope, keyword, previousKeyword = '') {
+  try {
+    const response = await fetch('/api/keywords', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ operation, scope, keyword, previousKeyword }),
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.error || `HTTP ${response.status}`);
+    state.editingKeyword = null;
+    await loadDashboard();
+    const labels = { add: '追加しました', edit: '更新しました', remove: '削除しました' };
+    const status = result.status === 'already_added' ? 'すでに設定されています' : result.status === 'already_removed' ? 'すでに削除されています' : result.status === 'unchanged' ? '変更はありません' : labels[operation];
+    showKeywordManagementNotice(`${result.keyword || keyword || previousKeyword}: ${status}`, 'success');
+    if (operation === 'add') elements.keywordManagementInput.value = '';
+  } catch (error) {
+    showKeywordManagementNotice(`${keyword || previousKeyword} を変更できませんでした: ${error.message}`, 'error');
+  }
+}
+
+function showKeywordNotice(message = '', tone = '') {
+  elements.keywordNotice.hidden = !message;
+  elements.keywordNotice.textContent = message;
+  elements.keywordNotice.className = `keyword-candidate-notice${tone ? ` ${tone}` : ''}`;
+}
+
+function renderKeywordCandidates() {
+  const data = state.keywordCandidates;
+  if (!data) return;
+  document.querySelector('#current-keyword-count').textContent = `現在 ${Number(data.currentKeywordCount || 0).toLocaleString('ja-JP')} 件`;
+  const headers = ['候補', '分類', '信頼度', '根拠', '状態', '操作'];
+  elements.keywordTable.querySelector('thead').innerHTML = `<tr>${headers.map((header) => `<th>${header}</th>`).join('')}</tr>`;
+  const rows = data.candidates || [];
+  elements.keywordTable.querySelector('tbody').innerHTML = rows.length ? rows.map((candidate) => {
+    const status = candidate.state === 'added'
+      ? `<span class="keyword-state added">追加済み</span>`
+      : candidate.recommended
+        ? '<span class="keyword-state eligible">追加候補</span>'
+        : '<span class="keyword-state held">保留</span>';
+    const action = candidate.state === 'eligible'
+      ? `<button class="command-button" type="button" data-keyword="${html(candidate.keyword)}">追加</button>`
+      : '<span class="muted">-</span>';
+    return `<tr><td><div class="cell-title">${html(candidate.keyword)}</div></td><td>${html(candidate.category)}</td><td>${confidence(candidate.confidence)}</td><td><div class="cell-subtitle keyword-evidence">${html(candidate.evidence)}</div></td><td>${status}</td><td>${action}</td></tr>`;
+  }).join('') : '<tr><td colspan="6"><p class="empty-detail">候補ファイルがありません。</p></td></tr>';
+  elements.keywordTable.querySelectorAll('button[data-keyword]').forEach((button) => button.addEventListener('click', () => addKeywordCandidate(button.dataset.keyword, button)));
+  if (data.runtimeError) {
+    showKeywordNotice(`n8nの現在のキーワード状態を確認できません: ${data.runtimeError}`, 'error');
+  }
+}
+
+async function addKeywordCandidate(keyword, button) {
+  if (!keyword) return;
+  button.disabled = true;
+  const originalLabel = button.textContent;
+  button.textContent = '追加中';
+  try {
+    const response = await fetch('/api/keyword-candidates/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ keyword }),
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.error || `HTTP ${response.status}`);
+    if (!['added', 'already_added'].includes(result.status)) {
+      throw new Error(result.reason || 'n8n rejected the keyword.');
+    }
+    await loadDashboard();
+    const label = result.status === 'already_added' ? 'すでに追加されています' : 'n8nへ追加しました。次回の定期実行から使用されます。';
+    showKeywordNotice(`${result.keyword || keyword}: ${label}`, 'success');
+  } catch (error) {
+    showKeywordNotice(`${keyword} を追加できませんでした: ${error.message}`, 'error');
+  } finally {
+    button.disabled = false;
+    button.textContent = originalLabel;
+  }
+}
+
+function renderAll() { if (!state.dashboard) return; renderMetrics(state.dashboard.summary); renderTable(); renderKeywordSettings(); }
 
 async function loadDashboard() {
   const button = document.querySelector('#reload-button');
   button.disabled = true;
   try {
-    const response = await fetch('/api/dashboard', { cache: 'no-store' });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    state.dashboard = await response.json();
+    const [dashboardResponse, candidateResponse, settingsResponse] = await Promise.all([
+      fetch('/api/dashboard', { cache: 'no-store' }),
+      fetch('/api/keyword-candidates', { cache: 'no-store' }),
+      fetch('/api/keywords', { cache: 'no-store' }),
+    ]);
+    if (!dashboardResponse.ok) throw new Error(`ダッシュボード: HTTP ${dashboardResponse.status}`);
+    if (!candidateResponse.ok) {
+      const failure = await candidateResponse.json().catch(() => ({}));
+      throw new Error(failure.error || `キーワード候補: HTTP ${candidateResponse.status}`);
+    }
+    if (!settingsResponse.ok) {
+      const failure = await settingsResponse.json().catch(() => ({}));
+      throw new Error(failure.error || `キーワード設定: HTTP ${settingsResponse.status}`);
+    }
+    state.dashboard = await dashboardResponse.json();
+    state.keywordCandidates = await candidateResponse.json();
+    state.keywordSettings = await settingsResponse.json();
     state.selected = null;
     setSource(state.dashboard);
     populateOrganizations(state.dashboard.summary.organizations || []);
     renderAll();
+    renderKeywordCandidates();
     elements.detail.innerHTML = '<p class="empty-detail">選択なし</p>';
   } catch (error) {
     elements.notice.hidden = false;
@@ -251,5 +406,6 @@ elements.summarizedOnly.addEventListener('change', () => { state.filters.summari
 document.querySelector('#clear-filters').addEventListener('click', () => { state.filters = { search: '', status: '', organization: '', confidence: 0, linkedOnly: false, summarizedOnly: false }; elements.search.value = ''; elements.status.value = ''; elements.organization.value = ''; elements.confidence.value = '0'; elements.confidenceValue.value = '0.00'; elements.linkedOnly.checked = false; elements.summarizedOnly.checked = false; renderTable(); });
 document.querySelector('#reload-button').addEventListener('click', loadDashboard);
 document.querySelector('#close-detail').addEventListener('click', () => { state.selected = null; elements.detail.innerHTML = '<p class="empty-detail">選択なし</p>'; renderTable(); });
+elements.keywordManagementForm.addEventListener('submit', (event) => { event.preventDefault(); manageKeyword('add', elements.keywordManagementScope.value, elements.keywordManagementInput.value); });
 window.addEventListener('resize', () => state.dashboard && drawActivity(state.dashboard.summary.dailyVolume));
 loadDashboard();

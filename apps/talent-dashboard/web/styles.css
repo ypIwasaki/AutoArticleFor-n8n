@@ -107,3 +107,39 @@ tbody tr { cursor: pointer; }
 
 @media (max-width: 1180px) { .overview { grid-template-columns: minmax(240px, 1fr) minmax(350px, 1.3fr); } .activity-panel { grid-column: 1 / -1; } .workspace { grid-template-columns: 210px minmax(0, 1fr); } .detail-panel { position: static; grid-column: 1 / -1; } .detail-content { max-height: none; } }
 @media (max-width: 760px) { .topbar { align-items: flex-start; } .topbar-actions { flex-wrap: wrap; } .generated-at { display: none; } main { padding: 20px 14px 32px; } .overview, .workspace { grid-template-columns: 1fr; gap: 16px; } .metrics { grid-template-columns: repeat(2, 1fr); } .filter-panel { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 14px; } .filter-panel .panel-heading { grid-column: 1 / -1; } .filter-panel label { margin-top: 14px; } .table-scroll { max-height: 520px; min-height: 360px; } .detail-panel { grid-column: auto; } th, td { padding-left: 9px; padding-right: 9px; } .tab-button { flex: 1; min-width: 0; padding: 0 4px; } .table-toolbar .muted { display: none; } }
+
+
+.keyword-candidate-section { margin-top: 24px; padding: 20px 0 0; border-top: 1px solid var(--line); }
+.keyword-section-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 12px; }
+.keyword-section-heading h2 { margin-bottom: 0; font-size: 18px; }
+.keyword-candidate-notice { margin: 0 0 12px; padding: 9px 12px; border-left: 3px solid var(--amber); color: #65410a; background: #fff8ec; line-height: 1.45; }
+.keyword-candidate-notice.success { border-left-color: var(--accent); color: var(--accent-dark); background: #eaf7f5; }
+.keyword-candidate-notice.error { border-left-color: var(--danger); color: #7a2831; background: #fcedef; }
+.keyword-table-scroll { overflow-x: auto; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
+#keyword-candidates-table { min-width: 880px; table-layout: auto; }
+#keyword-candidates-table th, #keyword-candidates-table td { white-space: nowrap; }
+#keyword-candidates-table td:nth-child(4) { width: 42%; white-space: normal; }
+.keyword-evidence { max-width: 560px; margin-top: 0; white-space: normal; }
+.keyword-state { display: inline-flex; align-items: center; min-height: 22px; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 800; white-space: nowrap; }
+.keyword-state.added { color: var(--accent-dark); background: #e5f5f2; }
+.keyword-state.eligible { color: var(--blue); background: #edf4fb; }
+.keyword-state.held { color: var(--muted); background: #edf0f2; }
+.command-button { min-width: 52px; height: 30px; padding: 0 10px; border: 1px solid var(--accent); border-radius: 4px; color: #fff; background: var(--accent); font-size: 12px; font-weight: 750; }
+.command-button:hover:not(:disabled) { border-color: var(--accent-dark); background: var(--accent-dark); }
+.command-button:disabled { cursor: wait; opacity: .6; }
+
+@media (max-width: 760px) { .keyword-section-heading { align-items: flex-start; } .keyword-section-heading h2 { font-size: 17px; } }
+
+
+.keyword-settings-section { margin-top: 24px; padding: 20px 0 0; border-top: 1px solid var(--line); }
+.keyword-management-form { display: grid; grid-template-columns: minmax(220px, 1fr) 168px auto; gap: 8px; max-width: 680px; margin: 0 0 12px; }
+.keyword-management-form input, .keyword-management-form select, .keyword-edit-input { height: 34px; padding: 0 9px; border: 1px solid var(--line); border-radius: 4px; background: #fff; color: var(--ink); }
+.keyword-management-form input:focus, .keyword-management-form select:focus, .keyword-edit-input:focus { outline: 2px solid #b9ddd9; outline-offset: 1px; border-color: var(--accent); }
+#keyword-settings-table { min-width: 580px; table-layout: auto; }
+#keyword-settings-table td:first-child { width: 56%; }
+.keyword-edit-input { width: min(100%, 360px); }
+.keyword-actions { display: flex; gap: 12px; align-items: center; }
+.danger-text-button { color: var(--danger); }
+.danger-text-button:hover { color: #7a2831; }
+
+@media (max-width: 760px) { .keyword-management-form { grid-template-columns: minmax(0, 1fr) auto; } .keyword-management-form select { grid-column: 1 / -1; } }

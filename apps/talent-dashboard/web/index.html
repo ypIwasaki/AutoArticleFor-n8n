@@ -47,6 +47,48 @@
 
       <p id="data-notice" class="data-notice" hidden></p>
 
+      <section id="keyword-settings" class="keyword-settings-section" aria-labelledby="keyword-settings-heading">
+        <div class="keyword-section-heading">
+          <div>
+            <p class="eyebrow">SEARCH KEYWORDS</p>
+            <h2 id="keyword-settings-heading">設定済みキーワード</h2>
+          </div>
+          <span id="managed-keyword-count" class="source-badge">-</span>
+        </div>
+        <form id="keyword-management-form" class="keyword-management-form">
+          <input id="keyword-management-input" type="text" maxlength="30" placeholder="キーワードを入力" aria-label="追加するキーワード">
+          <select id="keyword-management-scope" aria-label="保存先">
+            <option value="manual">手動設定</option>
+            <option value="automatic">n8n自動設定</option>
+          </select>
+          <button class="command-button" type="submit">追加</button>
+        </form>
+        <p id="keyword-management-notice" class="keyword-candidate-notice" hidden></p>
+        <div class="keyword-table-scroll">
+          <table id="keyword-settings-table">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="keyword-candidates" class="keyword-candidate-section" aria-labelledby="keyword-candidates-heading">
+        <div class="keyword-section-heading">
+          <div>
+            <p class="eyebrow">SEARCH KEYWORDS</p>
+            <h2 id="keyword-candidates-heading">AIキーワード候補</h2>
+          </div>
+          <span id="current-keyword-count" class="source-badge">-</span>
+        </div>
+        <p id="keyword-candidate-notice" class="keyword-candidate-notice" hidden></p>
+        <div class="keyword-table-scroll">
+          <table id="keyword-candidates-table">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
       <section class="workspace" aria-label="データ閲覧">
         <aside class="filter-panel" aria-label="絞り込み">
           <div class="panel-heading"><span>絞り込み</span><button id="clear-filters" type="button" class="text-button">解除</button></div>

@@ -33,3 +33,14 @@ only in `config/keywords.json`.
 A webhook request with `keywords` explicitly supplied uses only those terms for
 that one request. Omitting `keywords` uses the combined manual and automatic
 keyword lists.
+
+
+## Dashboard candidates
+
+The local Talent Index dashboard exposes the newest `content/ai-keyword-candidates/YYYY-MM-DD.md` file at `http://127.0.0.1:8765/`.
+Candidates marked `Add: yes` can be added from the page. The dashboard accepts only terms from that latest file, then sends the selected term to the active Daily Keyword News Summary workflow. n8n stores the term in `autoKeywords`, so it is used by the next scheduled or keyword-unspecified run. Candidates marked `Add: no` remain review-only.
+
+
+## Dashboard keyword management
+
+The Talent Index dashboard can display and manage both keyword stores. Use `手動設定` for durable entries in `config/keywords.json`; they are included on the next run. Use `n8n自動設定` for the workflow's `autoKeywords` static data. The page supports adding, editing, and deleting either type. Removing a keyword affects only its selected store, so a duplicate in the other store remains available until it is also removed.

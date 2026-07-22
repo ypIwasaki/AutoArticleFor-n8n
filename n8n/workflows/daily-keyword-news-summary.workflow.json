@@ -272,6 +272,142 @@
       "id": "a191a98a-4b4b-4ff5-9cbc-c2f98d84400d",
       "name": "Load Talent Registry",
       "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "keyword-candidate/add",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "05f480ec-c5af-41f0-ae26-bd01d8701bcb",
+      "name": "Keyword Candidate Add Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        180,
+        760
+      ],
+      "webhookId": "keyword-candidate-add"
+    },
+    {
+      "parameters": {
+        "operation": "read",
+        "fileSelector": "/home/raimu/N8N/AutoArticleFor-n8n/config/keywords.json",
+        "options": {
+          "dataPropertyName": "keywordConfigFile"
+        }
+      },
+      "id": "24f39cd1-7216-4b35-9bc5-7c20a04a0c0d",
+      "name": "Read Candidate Keyword Configuration",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        420,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "binaryPropertyName": "keywordConfigFile",
+        "destinationKey": "keywordConfig",
+        "options": {
+          "encoding": "utf8",
+          "stripBOM": true,
+          "keepSource": "json"
+        }
+      },
+      "id": "b1e6fefb-f5ef-4344-9c4f-f7d56b3d2ae6",
+      "name": "Parse Candidate Keyword Configuration",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        660,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const webhook = $('Keyword Candidate Add Webhook').first().json ?? {};\nconst body = webhook.body ?? webhook;\nconst keyword = String(body.keyword ?? '').trim();\nconst candidateDate = String(body.candidateDate ?? '').trim();\nconst source = String(body.source ?? '').trim();\nconst config = $input.first().json.keywordConfig ?? {};\nconst terms = (value) => { const seen = new Set(); return (Array.isArray(value) ? value : String(value ?? '').split(/,|\\n/)).reduce((all, value) => { const term = String(value || '').trim(); const key = normalize(term); if (term && !seen.has(key)) { seen.add(key); all.push(term); } return all; }, []); };\nconst normalize = (value) => String(value || '').trim().replaceAll('！', '!').toLocaleLowerCase('ja-JP');\nconst manualKeywords = terms(config.manualKeywords);\nconst excludedKeywords = new Set(terms(config.excludedKeywords).map(normalize));\nconst maxAutoKeywords = Math.max(0, Math.floor(Number(config.maxAutoKeywords ?? 30) || 0));\nconst staticData = $getWorkflowStaticData('global');\nconst autoKeywords = terms(staticData.autoKeywords);\nconst current = [...manualKeywords, ...autoKeywords];\nconst key = normalize(keyword);\nconst respond = (status, reason, added) => [{ json: { status, keyword, reason, added, autoKeywordCount: autoKeywords.length } }];\n\nif (source !== 'talent-dashboard') return respond('rejected', 'This webhook only accepts requests from the local Talent Index dashboard.', false);\nif (!/^\\d{4}-\\d{2}-\\d{2}$/.test(candidateDate)) return respond('rejected', 'candidateDate must use YYYY-MM-DD.', false);\nif (keyword.length < 2 || keyword.length > 30 || /[|/\\\\]/.test(keyword) || /^https?:/i.test(keyword)) return respond('rejected', 'The keyword format is not allowed.', false);\nif (excludedKeywords.has(key)) return respond('rejected', 'The keyword is excluded by config/keywords.json.', false);\nif (current.some((term) => normalize(term) === key)) return respond('already_added', 'The keyword is already configured.', false);\nif (autoKeywords.length >= maxAutoKeywords) return respond('rejected', `The automatic keyword limit (${maxAutoKeywords}) has been reached.`, false);\n\nautoKeywords.push(keyword);\nstaticData.autoKeywords = autoKeywords;\nconst history = Array.isArray(staticData.manualKeywordAdditions) ? staticData.manualKeywordAdditions : [];\nconst addition = { term: keyword, candidateDate, source, addedAt: new Date().toISOString() };\nstaticData.manualKeywordAdditions = [...history, addition].slice(-100);\nstaticData.lastManualKeywordAddition = addition;\nreturn [{ json: { status: 'added', keyword, reason: 'Saved to workflow static data.', added: true, autoKeywordCount: autoKeywords.length } }];"
+      },
+      "id": "435136b3-8d79-43f1-aa4e-b2ad4e6318a5",
+      "name": "Add Dashboard Keyword Candidate",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        900,
+        760
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "keyword-management/update",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "a976ce00-d946-40e9-af28-3bf71fd97cd3",
+      "name": "Keyword Management Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        180,
+        980
+      ],
+      "webhookId": "keyword-management-update"
+    },
+    {
+      "parameters": {
+        "operation": "read",
+        "fileSelector": "/home/raimu/N8N/AutoArticleFor-n8n/config/keywords.json",
+        "options": {
+          "dataPropertyName": "keywordConfigFile"
+        }
+      },
+      "id": "c25994a0-3ad0-445d-ae6d-1ac88bd8fa2f",
+      "name": "Read Keyword Management Configuration",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1.1,
+      "position": [
+        420,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "fromJson",
+        "binaryPropertyName": "keywordConfigFile",
+        "destinationKey": "keywordConfig",
+        "options": {
+          "encoding": "utf8",
+          "stripBOM": true,
+          "keepSource": "json"
+        }
+      },
+      "id": "a8caa49b-43ed-4765-9b58-347212e133c8",
+      "name": "Parse Keyword Management Configuration",
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        660,
+        980
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const webhook = $('Keyword Management Webhook').first().json ?? {};\nconst body = webhook.body ?? webhook;\nconst operation = String(body.operation ?? '').trim().toLowerCase();\nlet keyword = String(body.keyword ?? '').trim();\nconst previousKeyword = String(body.previousKeyword ?? '').trim();\nconst source = String(body.source ?? '').trim();\nconst config = $input.first().json.keywordConfig ?? {};\nconst normalize = (value) => String(value || '').trim().replaceAll('！', '!').toLocaleLowerCase('ja-JP');\nconst terms = (value) => { const seen = new Set(); return (Array.isArray(value) ? value : String(value ?? '').split(/,|\\n/)).reduce((all, value) => { const term = String(value || '').trim(); const key = normalize(term); if (term && !seen.has(key)) { seen.add(key); all.push(term); } return all; }, []); };\nconst manualKeywords = terms(config.manualKeywords);\nconst excludedKeywords = new Set(terms(config.excludedKeywords).map(normalize));\nconst maxAutoKeywords = Math.max(0, Math.floor(Number(config.maxAutoKeywords ?? 30) || 0));\nconst staticData = $getWorkflowStaticData('global');\nconst autoKeywords = terms(staticData.autoKeywords);\nconst respond = (status, reason, value = keyword || previousKeyword, changed = false) => [{ json: { status, keyword: value, reason, changed, autoKeywordCount: autoKeywords.length } }];\nconst validKeyword = (value) => value.length >= 2 && value.length <= 30 && !/[|/\\\\]/.test(value) && !/^https?:/i.test(value);\n\nif (source !== 'talent-dashboard') return respond('rejected', 'This webhook only accepts requests from the local Talent Index dashboard.');\nif (!['add', 'edit', 'remove'].includes(operation)) return respond('rejected', 'operation must be add, edit, or remove.');\nif (operation !== 'remove' && !validKeyword(keyword)) return respond('rejected', 'The keyword format is not allowed.');\nif ((operation === 'edit' || operation === 'remove') && !previousKeyword) return respond('rejected', 'previousKeyword is required.');\nif (operation !== 'remove' && excludedKeywords.has(normalize(keyword))) return respond('rejected', 'The keyword is excluded by config/keywords.json.');\nif (operation !== 'remove' && manualKeywords.some((term) => normalize(term) === normalize(keyword))) return respond('already_added', 'The keyword is already configured manually.');\n\nlet status = 'rejected';\nlet reason = '';\nlet changed = false;\nif (operation === 'add') {\n  if (autoKeywords.some((term) => normalize(term) === normalize(keyword))) return respond('already_added', 'The keyword is already configured.');\n  if (autoKeywords.length >= maxAutoKeywords) return respond('rejected', `The automatic keyword limit (${maxAutoKeywords}) has been reached.`);\n  autoKeywords.push(keyword);\n  status = 'added'; reason = 'Saved to workflow static data.'; changed = true;\n} else {\n  const index = autoKeywords.findIndex((term) => normalize(term) === normalize(previousKeyword));\n  if (index < 0) return respond(operation === 'remove' ? 'already_removed' : 'rejected', operation === 'remove' ? 'The keyword was already removed.' : 'The keyword no longer exists.');\n  if (operation === 'remove') {\n    const removed = autoKeywords.splice(index, 1)[0];\n    keyword = removed;\n    status = 'removed'; reason = 'Removed from workflow static data.'; changed = true;\n  } else if (normalize(autoKeywords[index]) === normalize(keyword)) {\n    return respond('unchanged', 'The keyword did not change.', autoKeywords[index]);\n  } else if (autoKeywords.some((term, position) => position !== index && normalize(term) === normalize(keyword))) {\n    return respond('rejected', 'The keyword already exists.');\n  } else {\n    autoKeywords[index] = keyword;\n    status = 'updated'; reason = 'Updated in workflow static data.'; changed = true;\n  }\n}\n\nif (changed) {\n  staticData.autoKeywords = autoKeywords;\n  const history = Array.isArray(staticData.dashboardKeywordManagement) ? staticData.dashboardKeywordManagement : [];\n  staticData.dashboardKeywordManagement = [...history, { operation, keyword, previousKeyword, changedAt: new Date().toISOString() }].slice(-100);\n  staticData.lastDashboardKeywordManagement = staticData.dashboardKeywordManagement.at(-1);\n}\nreturn respond(status, reason, keyword, changed);"
+      },
+      "id": "5d7ff09d-f5d4-46b9-9c4d-a91f455b40d0",
+      "name": "Manage Dashboard Keyword",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        900,
+        980
+      ]
     }
   ],
   "connections": {
@@ -445,6 +581,72 @@
         [
           {
             "node": "Build Keyword Summary Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keyword Candidate Add Webhook": {
+      "main": [
+        [
+          {
+            "node": "Read Candidate Keyword Configuration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Candidate Keyword Configuration": {
+      "main": [
+        [
+          {
+            "node": "Parse Candidate Keyword Configuration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Candidate Keyword Configuration": {
+      "main": [
+        [
+          {
+            "node": "Add Dashboard Keyword Candidate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Keyword Management Webhook": {
+      "main": [
+        [
+          {
+            "node": "Read Keyword Management Configuration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Keyword Management Configuration": {
+      "main": [
+        [
+          {
+            "node": "Parse Keyword Management Configuration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Keyword Management Configuration": {
+      "main": [
+        [
+          {
+            "node": "Manage Dashboard Keyword",
             "type": "main",
             "index": 0
           }

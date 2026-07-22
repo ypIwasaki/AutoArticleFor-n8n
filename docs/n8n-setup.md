@@ -46,7 +46,7 @@ The workflow is designed for daily keyword monitoring.
 4. `Read Keyword Configuration` loads `config/keywords.json`, and `Parse Keyword Configuration` parses it.
 5. `Load Talent Registry` reads registered talent names from the existing n8n `talents` Data Table.
 6. `Build Keyword Summary Request` combines manual keywords, previously promoted terms, and names of all non-rejected registered talents.
-7. `Build Search RSS URLs` creates Google News RSS and Hatena Bookmark RSS search URLs for each keyword.
+7. `Build Search RSS URLs` creates Google News and Hatena Bookmark RSS search URLs for each keyword, and adds one PANORA new-items RSS request filtered by the configured keywords.
 8. `Read RSS Search Results` reads matching RSS items.
 9. `Normalize and Deduplicate Articles` filters recent items and removes duplicates.
 10. `Build Daily Digest` creates the source-based digest and LLM prompt.
@@ -118,7 +118,7 @@ If `articleCount` is still 0, increase the lookback window in `Default Daily Sum
 lookbackHours: 72
 ```
 
-The workflow searches both Google News and Hatena Bookmark for each keyword.
+The workflow searches Google News and Hatena Bookmark for each keyword. It also fetches PANORA once per run and stores only PANORA entries whose title or excerpt matches a configured keyword.
 
 ## File access setting
 

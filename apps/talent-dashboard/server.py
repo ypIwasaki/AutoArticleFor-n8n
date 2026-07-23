@@ -66,7 +66,8 @@ def load_from_n8n() -> tuple[dict[str, Any], str]:
     connection.row_factory = sqlite3.Row
     try:
         rows = connection.execute(
-            "SELECT id, name FROM data_table WHERE name IN ('talents', 'articles', 'article_talents')"
+            "SELECT id, name FROM data_table "
+            "WHERE name IN ('talents', 'articles', 'article_talents', 'article_classifications')"
         ).fetchall()
         identifiers = {row["name"]: row["id"] for row in rows}
         missing = {"talents", "articles", "article_talents"}.difference(identifiers)
@@ -77,6 +78,13 @@ def load_from_n8n() -> tuple[dict[str, Any], str]:
         for name in ("talents", "articles", "article_talents"):
             table = quoted_table_name(identifiers[name])
             payload[name] = [normalise_row(row) for row in connection.execute(f"SELECT * FROM {table}")]
+        if "article_classifications" in identifiers:
+            table = quoted_table_name(identifiers["article_classifications"])
+            payload["article_classifications"] = [
+                normalise_row(row) for row in connection.execute(f"SELECT * FROM {table}")
+            ]
+        else:
+            payload["article_classifications"] = []
         return payload, "n8n-data-tables"
     finally:
         connection.close()
@@ -111,7 +119,70 @@ def load_from_proposals() -> tuple[dict[str, Any], str]:
         "articles": list(articles.values()),
         "talents": list(talents.values()),
         "article_talents": list(relations.values()),
+        "article_classifications": load_classification_proposals(),
     }, "proposal-files"
+
+
+def load_classification_proposals() -> list[dict[str, Any]]:
+    """Load reviewed classification proposals when no Data Table row exists yet."""
+    proposal_dir = PROJECT_ROOT / "content" / "article-classification-proposals"
+    classifications: dict[str, dict[str, Any]] = {}
+    for path in sorted(proposal_dir.glob("*.json")):
+        try:
+            proposal = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        for item in proposal.get("classifications", []):
+            if not isinstance(item, dict):
+                continue
+            article_key = str(item.get("article_key", "")).strip()
+            article_url = str(item.get("article_url", "")).strip()
+            identifier = article_key or article_url
+            if identifier:
+                classifications[identifier] = item
+    return list(classifications.values())
+
+def load_classification_taxonomy() -> dict[str, Any]:
+    path = PROJECT_ROOT / "config" / "article-classification-taxonomy.json"
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {"articleTypes": [], "categories": [], "relevance": []}
+    if not isinstance(data, dict):
+        return {"articleTypes": [], "categories": [], "relevance": []}
+    return {
+        "articleTypes": data.get("articleTypes", []),
+        "categories": data.get("categories", []),
+        "relevance": data.get("relevance", []),
+    }
+
+
+def official_identity(value: Any) -> str:
+    return re.sub(r"[\s\u3000]+", "", str(value or "")).casefold()
+
+
+def value_list(value: Any) -> list[str]:
+    if isinstance(value, list):
+        return [str(item).strip() for item in value if str(item).strip()]
+    try:
+        parsed = json.loads(str(value or "[]"))
+    except json.JSONDecodeError:
+        return []
+    if not isinstance(parsed, list):
+        return []
+    return [str(item).strip() for item in parsed if str(item).strip()]
+
+
+def load_official_talent_registry() -> dict[str, Any]:
+    registry_dir = PROJECT_ROOT / "content" / "official-talent-registry"
+    for path in sorted(registry_dir.glob("????-??-??.json"), reverse=True):
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if isinstance(data, dict) and isinstance(data.get("talents"), list):
+            return data
+    return {"generatedAt": "", "talents": []}
 
 
 def source_note_items(markdown: str) -> list[str]:
@@ -501,8 +572,72 @@ def build_dashboard() -> dict[str, Any]:
     articles = payload["articles"]
     relations = payload["article_talents"]
     article_summaries = load_article_summaries()
+    classification_taxonomy = load_classification_taxonomy()
+    official_registry = load_official_talent_registry()
+    registry_by_org_name: dict[tuple[str, str], dict[str, Any]] = {}
+    registry_by_name: dict[str, list[dict[str, Any]]] = {}
+    for registry_talent in official_registry.get("talents", []):
+        if not isinstance(registry_talent, dict):
+            continue
+        organization = official_identity(registry_talent.get("organization"))
+        names = [registry_talent.get("display_name"), *registry_talent.get("aliases", [])]
+        for value in names:
+            name = official_identity(value)
+            if not name:
+                continue
+            registry_by_org_name[(organization, name)] = registry_talent
+            matches = registry_by_name.setdefault(name, [])
+            if registry_talent not in matches:
+                matches.append(registry_talent)
+
+    def official_record_for(talent: dict[str, Any]) -> dict[str, Any] | None:
+        organization = official_identity(talent.get("organization"))
+        names = [talent.get("display_name"), *value_list(talent.get("aliases_json"))]
+        for value in names:
+            name = official_identity(value)
+            if not name:
+                continue
+            match = registry_by_org_name.get((organization, name))
+            if match:
+                return match
+        for value in names:
+            matches = registry_by_name.get(official_identity(value), [])
+            if len(matches) == 1:
+                return matches[0]
+        return None
+
+    enriched_talent_records: list[dict[str, Any]] = []
+    for talent in talents:
+        official = official_record_for(talent)
+        official_fields = {}
+        if official:
+            official_fields = {
+                "officialProfileUrl": str(official.get("profile_url") or ""),
+                "officialRosterUrl": str(official.get("source_url") or ""),
+                "officialGroupId": str(official.get("group_id") or ""),
+                "officialGroupName": str(official.get("group_name") or ""),
+                "officialRegistryUpdatedAt": str(official_registry.get("generatedAt") or ""),
+            }
+        enriched_talent_records.append({**talent, **official_fields})
+
     article_map = {str(article.get("article_key", "")): article for article in articles}
-    talent_map = {str(talent.get("talent_id", "")): talent for talent in talents}
+    article_key_by_url = {
+        str(article.get("url", "")).strip(): str(article.get("article_key", "")).strip()
+        for article in articles
+        if str(article.get("url", "")).strip() and str(article.get("article_key", "")).strip()
+    }
+    classification_map: dict[str, dict[str, Any]] = {}
+    for classification in load_classification_proposals():
+        article_key = str(classification.get("article_key", "")).strip()
+        if not article_key:
+            article_key = article_key_by_url.get(str(classification.get("article_url", "")).strip(), "")
+        if article_key:
+            classification_map[article_key] = classification
+    for classification in payload.get("article_classifications", []):
+        article_key = str(classification.get("article_key", "")).strip()
+        if article_key:
+            classification_map[article_key] = classification
+    talent_map = {str(talent.get("talent_id", "")): talent for talent in enriched_talent_records}
 
     relation_counts: dict[str, int] = {}
     article_talents: dict[str, list[dict[str, Any]]] = {}
@@ -524,7 +659,7 @@ def build_dashboard() -> dict[str, Any]:
 
     enriched_talents = [
         {**talent, "article_count": relation_counts.get(str(talent.get("talent_id", "")), 0)}
-        for talent in talents
+        for talent in enriched_talent_records
     ]
     enriched_articles = []
     for article in articles:
@@ -536,6 +671,7 @@ def build_dashboard() -> dict[str, Any]:
                 "ai_summary": summary.get("text", ""),
                 "summary_date": summary.get("summary_date", ""),
                 "summary_source_titles": summary.get("source_titles", []),
+                "classification": classification_map.get(str(article.get("article_key", "")), {}),
             }
         )
 
@@ -554,6 +690,23 @@ def build_dashboard() -> dict[str, Any]:
         status = str(talent.get("status", "unknown"))
         status_counts[status] = status_counts.get(status, 0) + 1
 
+    article_type_counts: dict[str, int] = {}
+    primary_category_counts: dict[str, int] = {}
+    relevance_counts: dict[str, int] = {}
+    for article in enriched_articles:
+        classification = article.get("classification", {})
+        if not classification:
+            continue
+        article_type = str(classification.get("article_type", "")).strip()
+        primary_category = str(classification.get("primary_category", "")).strip()
+        relevance = str(classification.get("relevance", "")).strip()
+        if article_type:
+            article_type_counts[article_type] = article_type_counts.get(article_type, 0) + 1
+        if primary_category:
+            primary_category_counts[primary_category] = primary_category_counts.get(primary_category, 0) + 1
+        if relevance:
+            relevance_counts[relevance] = relevance_counts.get(relevance, 0) + 1
+
     return {
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "source": source,
@@ -564,10 +717,15 @@ def build_dashboard() -> dict[str, Any]:
             "relations": len(enriched_relations),
             "searchEnabled": sum(1 for talent in enriched_talents if talent.get("search_enabled")),
             "articleSummaries": sum(1 for article in enriched_articles if article.get("ai_summary")),
+            "articleClassifications": sum(1 for article in enriched_articles if article.get("classification")),
             "statusCounts": status_counts,
+            "articleTypeCounts": article_type_counts,
+            "primaryCategoryCounts": primary_category_counts,
+            "relevanceCounts": relevance_counts,
             "dailyVolume": [{"date": date, "count": daily_volume[date]} for date in sorted(daily_volume)],
             "organizations": organizations,
         },
+        "classificationTaxonomy": classification_taxonomy,
         "talents": sorted(enriched_talents, key=lambda item: (str(item.get("display_name", "")).lower(), str(item.get("talent_id", "")))),
         "articles": sorted(enriched_articles, key=lambda item: str(item.get("published_at") or item.get("last_seen_at") or ""), reverse=True),
         "relations": sorted(enriched_relations, key=lambda item: str(item.get("last_seen_at", "")), reverse=True),

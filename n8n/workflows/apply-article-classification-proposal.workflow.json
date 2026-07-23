@@ -1,0 +1,216 @@
+{
+  "name": "Apply Article Classification Proposal",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "article-classification/apply",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        160,
+        300
+      ],
+      "id": "c1000000-0000-4000-8000-000000000001",
+      "name": "Apply Article Classification Proposal Webhook",
+      "webhookId": "apply-article-classification-proposal"
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "value": "articles",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": []
+        },
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        400,
+        300
+      ],
+      "id": "c1000000-0000-4000-8000-000000000002",
+      "name": "Load Existing Articles",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $('Apply Article Classification Proposal Webhook').first().json;\nconst proposal = input.body?.proposal ?? input.body ?? input.proposal ?? input;\nconst now = new Date().toISOString();\nconst articleTypes = new Set(['news_article', 'official_announcement', 'press_release', 'video_or_stream', 'social_post', 'guide_or_database', 'image_gallery', 'other']);\nconst categories = new Set(['talent_activity', 'live_or_music', 'event', 'product_or_goods', 'collaboration', 'audition_or_recruitment', 'company_or_business', 'game_or_technology', 'media_or_editorial', 'community_or_fan', 'other']);\nconst relevanceLevels = new Set(['in_scope', 'low_relevance', 'out_of_scope']);\nconst methods = new Set(['ai_review', 'manual_review']);\nconst existingArticles = $input.all().map((item) => item.json);\nconst articleKeyByUrl = new Map(existingArticles\n  .map((article) => [String(article.url ?? \"\").trim(), String(article.article_key ?? \"\").trim()])\n  .filter(([url, articleKey]) => url && articleKey)\n);\nconst existingArticleKeys = new Set(articleKeyByUrl.values());\nfunction text(value, field, required = true) {\n  const result = String(value ?? '').trim();\n  if (required && !result) throw new Error(`${field} is required.`);\n  return result;\n}\nfunction list(value, field) {\n  if (!Array.isArray(value)) throw new Error(`${field} must be an array.`);\n  return value;\n}\nfunction categoryList(value) {\n  const parsed = Array.isArray(value) ? value : JSON.parse(String(value ?? '[]'));\n  if (!Array.isArray(parsed)) throw new Error('secondary_categories_json must be an array.');\n  const values = parsed.map((item) => text(item, 'secondary_categories_json item'));\n  if (values.length > 3) throw new Error('secondary_categories_json may contain at most 3 values.');\n  if (new Set(values).size !== values.length) throw new Error('secondary_categories_json contains duplicates.');\n  for (const value of values) if (!categories.has(value)) throw new Error(`Invalid secondary category: ${value}`);\n  return values;\n}\nif (Number(proposal.proposalVersion ?? 1) !== 1) throw new Error('proposalVersion must be 1.');\nconst rows = list(proposal.classifications, 'classifications');\nif (!rows.length) throw new Error('classifications must contain at least one row.');\nconst seen = new Set();\nconst classifications = rows.map((row) => {\n  const requestedArticleKey = text(row.article_key, \"classifications.article_key\", false);\n  const articleUrl = text(row.article_url, \"classifications.article_url\", false);\n  const articleKey = requestedArticleKey || articleKeyByUrl.get(articleUrl) || \"\";\n  if (!articleKey) throw new Error(\"Each classification requires a known article_url or article_key.\");\n  if (requestedArticleKey && !existingArticleKeys.has(requestedArticleKey)) {\n    throw new Error(\"Unknown article_key: \" + requestedArticleKey);\n  }\n  if (articleUrl && articleKeyByUrl.has(articleUrl) && articleKeyByUrl.get(articleUrl) !== articleKey) {\n    throw new Error(\"article_url does not match article_key: \" + articleUrl);\n  }\n  if (seen.has(articleKey)) throw new Error(\"classifications contains a duplicate article: \" + articleKey);\n  seen.add(articleKey);\n  const articleType = text(row.article_type, 'classifications.article_type');\n  const primaryCategory = text(row.primary_category, 'classifications.primary_category');\n  const secondary = categoryList(row.secondary_categories_json);\n  const relevance = text(row.relevance, 'classifications.relevance');\n  const confidence = Number(row.confidence);\n  const method = text(row.classification_method ?? 'ai_review', 'classifications.classification_method');\n  if (!articleTypes.has(articleType)) throw new Error(`Invalid article_type: ${articleType}`);\n  if (!categories.has(primaryCategory)) throw new Error(`Invalid primary_category: ${primaryCategory}`);\n  if (secondary.includes(primaryCategory)) throw new Error('primary_category must not be included in secondary_categories_json.');\n  if (!relevanceLevels.has(relevance)) throw new Error(`Invalid relevance: ${relevance}`);\n  if (!Number.isFinite(confidence) || confidence < 0 || confidence > 1) throw new Error('confidence must be between 0 and 1.');\n  if (!methods.has(method)) throw new Error(`Invalid classification_method: ${method}`);\n  return {\n    article_key: articleKey,\n    article_type: articleType,\n    primary_category: primaryCategory,\n    secondary_categories_json: JSON.stringify(secondary),\n    relevance,\n    confidence,\n    evidence_text: text(row.evidence_text, 'classifications.evidence_text').slice(0, 2000),\n    classification_method: method,\n    classified_at: text(row.classified_at, 'classifications.classified_at', false) || now\n  };\n});\nreturn [{ json: { proposalDate: text(proposal.proposalDate ?? now.slice(0, 10), 'proposalDate'), classifications, counts: { classifications: classifications.length } } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        680,
+        300
+      ],
+      "id": "c1000000-0000-4000-8000-000000000003",
+      "name": "Validate Article Classification Proposal"
+    },
+    {
+      "parameters": {
+        "jsCode": "const proposal = $('Validate Article Classification Proposal').first().json;\nreturn proposal.classifications.map((row) => ({ json: row }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        920,
+        300
+      ],
+      "id": "c1000000-0000-4000-8000-000000000004",
+      "name": "Prepare Article Classifications"
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "value": "={{ $env.N8N_ARTICLE_CLASSIFICATIONS_TABLE_ID }}",
+          "mode": "id"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "article_key",
+              "condition": "eq",
+              "keyValue": "={{ $json.article_key }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": null
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1160,
+        300
+      ],
+      "id": "c1000000-0000-4000-8000-000000000005",
+      "name": "Upsert Article Classifications"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const proposal = $('Validate Article Classification Proposal').first().json;\nreturn [{ json: { accepted: true, proposalDate: proposal.proposalDate, counts: proposal.counts } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1400,
+        300
+      ],
+      "id": "c1000000-0000-4000-8000-000000000006",
+      "name": "Build Classification Apply Response"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1640,
+        300
+      ],
+      "id": "c1000000-0000-4000-8000-000000000007",
+      "name": "Respond to Classification Apply Request"
+    }
+  ],
+  "connections": {
+    "Apply Article Classification Proposal Webhook": {
+      "main": [
+        [
+          {
+            "node": "Load Existing Articles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Existing Articles": {
+      "main": [
+        [
+          {
+            "node": "Validate Article Classification Proposal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Article Classification Proposal": {
+      "main": [
+        [
+          {
+            "node": "Prepare Article Classifications",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Article Classifications": {
+      "main": [
+        [
+          {
+            "node": "Upsert Article Classifications",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upsert Article Classifications": {
+      "main": [
+        [
+          {
+            "node": "Build Classification Apply Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Classification Apply Response": {
+      "main": [
+        [
+          {
+            "node": "Respond to Classification Apply Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Classification Apply Request": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "pinData": null,
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "c1000000-0000-4000-8000-000000000008",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}

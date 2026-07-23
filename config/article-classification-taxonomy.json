@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "articleTypes": [
+    { "id": "news_article", "label": "ニュース記事", "description": "第三者媒体によるニュース・速報・報道記事" },
+    { "id": "official_announcement", "label": "公式告知", "description": "事務所、企業、タレント、イベント主催者などの公式発表" },
+    { "id": "press_release", "label": "プレスリリース", "description": "企業・団体が配信した報道向け発表" },
+    { "id": "video_or_stream", "label": "動画・配信", "description": "配信アーカイブ、動画、配信予定、切り抜き" },
+    { "id": "social_post", "label": "SNS投稿", "description": "SNSまたは短縮URL経由の投稿" },
+    { "id": "guide_or_database", "label": "攻略・データベース", "description": "ゲーム攻略、人物データ、検索性を主目的とするページ" },
+    { "id": "image_gallery", "label": "画像・写真ページ", "description": "画像一覧、写真ページ、同一記事の派生ページ" },
+    { "id": "other", "label": "その他", "description": "上記に当てはまらない記事・ページ" }
+  ],
+  "categories": [
+    { "id": "talent_activity", "label": "タレント活動", "description": "出演、活動報告、受賞、個人企画など" },
+    { "id": "live_or_music", "label": "配信・音楽", "description": "配信、番組、歌唱、楽曲、アルバム、ライブ配信" },
+    { "id": "event", "label": "イベント", "description": "ライブ、展示、フェス、出演イベント、オフライン催事" },
+    { "id": "product_or_goods", "label": "商品・グッズ", "description": "グッズ、音源、ゲーム内商品、販売、予約、キャンペーン特典" },
+    { "id": "collaboration", "label": "コラボレーション", "description": "企業、作品、ブランド、他者との共同企画" },
+    { "id": "audition_or_recruitment", "label": "募集・オーディション", "description": "所属募集、オーディション、採用、参加者募集" },
+    { "id": "company_or_business", "label": "企業・事業", "description": "会社、事務所、運営、資金、方針、事業、権利など" },
+    { "id": "game_or_technology", "label": "ゲーム・技術", "description": "ゲーム、配信技術、3D、Live2D、プラットフォーム、制作技術" },
+    { "id": "media_or_editorial", "label": "メディア・編集", "description": "インタビュー、特集、レビュー、コラム、写真レポート" },
+    { "id": "community_or_fan", "label": "コミュニティ・ファン", "description": "ファン活動、二次創作、コスプレ、コミュニティ企画" },
+    { "id": "other", "label": "その他", "description": "分類対象だが既定カテゴリに該当しない内容" }
+  ],
+  "relevance": [
+    { "id": "in_scope", "label": "対象", "description": "監視対象のVTuber、事務所、グループ、関連業界を主題とする" },
+    { "id": "low_relevance", "label": "低関連", "description": "対象語を含むが主題ではなく、分析・監視の優先度が低い" },
+    { "id": "out_of_scope", "label": "対象外", "description": "対象語との実質的な関連が確認できない" }
+  ],
+  "rules": {
+    "onePrimaryCategory": true,
+    "maximumSecondaryCategories": 3,
+    "secondaryCategoriesMustDifferFromPrimary": true,
+    "requiresEvidence": true,
+    "requiresAiReview": true
+  }
+}

@@ -25,6 +25,36 @@ TOPIC_PATTERNS = {
     "ゲーム攻略": GAME_GUIDE_PATTERN,
 }
 
+ARTICLE_TYPE_LABELS = {
+    "news_article": "ニュース記事",
+    "official_announcement": "公式発表",
+    "press_release": "プレスリリース",
+    "video_or_stream": "動画・配信アーカイブ",
+    "social_post": "SNS投稿",
+    "guide_or_database": "ガイド・データベース",
+    "image_gallery": "画像ギャラリー",
+    "other": "その他",
+}
+CATEGORY_LABELS = {
+    "talent_activity": "タレント活動",
+    "live_or_music": "ライブ・音楽",
+    "event": "イベント",
+    "product_or_goods": "商品・グッズ",
+    "collaboration": "コラボレーション",
+    "audition_or_recruitment": "募集・オーディション",
+    "company_or_business": "企業・事業",
+    "game_or_technology": "ゲーム・技術",
+    "media_or_editorial": "メディア・企画記事",
+    "community_or_fan": "コミュニティ・ファン",
+    "other": "その他",
+}
+RELEVANCE_LABELS = {
+    "in_scope": "対象内",
+    "low_relevance": "低関連",
+    "out_of_scope": "対象外",
+}
+
+
 
 def parse_date(value: object) -> date | None:
     try:
@@ -42,6 +72,13 @@ def clean_cell(value: object) -> str:
     return str(value or "").replace("|", " ").replace("\n", " ").strip()
 
 
+def display_path(path: Path) -> str:
+    try:
+        return str(path.relative_to(PROJECT_ROOT))
+    except ValueError:
+        return str(path)
+
+
 def format_table(headers: list[str], rows: list[list[object]]) -> list[str]:
     header = "| " + " | ".join(headers) + " |"
     divider = "| " + " | ".join("---" for _ in headers) + " |"
@@ -49,7 +86,9 @@ def format_table(headers: list[str], rows: list[list[object]]) -> list[str]:
         "| " + " | ".join(clean_cell(value) for value in row) + " |"
         for row in rows
     ]
-    return [header, divider, *(body or [["-" for _ in headers]])]
+    if not body:
+        body = ["| " + " | ".join("-" for _ in headers) + " |"]
+    return [header, divider, *body]
 
 
 def article_text(article: dict[str, Any]) -> str:
@@ -104,6 +143,29 @@ def load_records(records_dir: Path) -> tuple[list[dict[str, Any]], list[dict[str
             elif record.get("recordType") == "article" and isinstance(record.get("article"), dict):
                 articles.append(record)
     return runs, articles
+
+
+def load_reviewed_classifications(proposal_dir: Path) -> dict[str, dict[str, Any]]:
+    """Read the latest reviewed classification proposal for each article URL."""
+    classifications: dict[str, dict[str, Any]] = {}
+    for path in sorted(proposal_dir.glob("*.json")):
+        try:
+            proposal = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        for item in proposal.get("classifications", []):
+            if not isinstance(item, dict):
+                continue
+            article_url = str(item.get("article_url") or "").strip()
+            if not article_url:
+                continue
+            if str(item.get("classification_method") or "") not in {
+                "ai_review",
+                "manual_review",
+            }:
+                continue
+            classifications[article_url] = item
+    return classifications
 
 
 def deduplicate_articles(records: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -188,6 +250,7 @@ def build_weekly_report(
     articles: list[dict[str, Any]],
     unique_articles: list[dict[str, Any]],
     candidates: list[dict[str, Any]],
+    classifications: dict[str, dict[str, Any]],
 ) -> str:
     runs_by_date = grouped_runs(runs)
     articles_by_date = Counter(str(record.get("runDate")) for record in articles)
@@ -195,6 +258,11 @@ def build_weekly_report(
     topic_counts: Counter[str] = Counter()
     source_counts: Counter[str] = Counter()
     source_noise_counts: Counter[str] = Counter()
+    article_type_counts: Counter[str] = Counter()
+    category_counts: Counter[str] = Counter()
+    relevance_counts: Counter[str] = Counter()
+    classified_count = 0
+
     for record in unique_articles:
         article = record["article"]
         source = infer_source(article)
@@ -203,6 +271,21 @@ def build_weekly_report(
             source_noise_counts[source] += 1
         for topic in article_topics(article):
             topic_counts[topic] += 1
+
+        article_url = str(article.get("url") or "").strip()
+        classification = classifications.get(article_url)
+        if not classification:
+            continue
+        classified_count += 1
+        article_type = str(classification.get("article_type") or "").strip()
+        category = str(classification.get("primary_category") or "").strip()
+        relevance = str(classification.get("relevance") or "").strip()
+        if article_type:
+            article_type_counts[article_type] += 1
+        if category:
+            category_counts[category] += 1
+        if relevance:
+            relevance_counts[relevance] += 1
 
     dates = sorted(runs_by_date)
     daily_rows: list[list[object]] = []
@@ -230,6 +313,18 @@ def build_weekly_report(
         [source, count, source_noise_counts[source]]
         for source, count in source_counts.most_common(10)
     ]
+    type_rows = [
+        [ARTICLE_TYPE_LABELS.get(article_type, article_type), count, f"{count / classified_count * 100:.1f}%"]
+        for article_type, count in article_type_counts.most_common()
+    ]
+    category_rows = [
+        [CATEGORY_LABELS.get(category, category), count, f"{count / classified_count * 100:.1f}%"]
+        for category, count in category_counts.most_common()
+    ]
+    relevance_rows = [
+        [RELEVANCE_LABELS.get(relevance, relevance), count, f"{count / classified_count * 100:.1f}%"]
+        for relevance, count in relevance_counts.most_common()
+    ]
     candidate_rows = [
         [
             candidate["term"],
@@ -241,6 +336,7 @@ def build_weekly_report(
         for candidate in candidates
         if candidate["add_count"]
     ]
+    coverage = f"{(classified_count / len(unique_articles) * 100):.1f}%" if unique_articles else "0.0%"
 
     lines = [
         f"# Weekly Trend Report - {label}",
@@ -252,12 +348,29 @@ def build_weekly_report(
         f"- ワークフロー報告の記事数合計: {reported_count}",
         f"- 分析用に保存された記事数: {len(articles)}",
         f"- 週内の重複を除いた記事数: {len(unique_articles)}",
+        f"- AIレビュー済み分類: {classified_count}/{len(unique_articles)} 件 ({coverage})",
         "",
         "## Daily Volume",
         "",
         *format_table(["Date", "Keywords", "Reported", "Archived"], daily_rows),
         "",
-        "## Topic Signals",
+        "## Reviewed Article Categories",
+        "",
+        "主カテゴリの比率です。AIレビュー済みの記事だけを母数にしています。",
+        "",
+        *format_table(["Primary Category", "Unique Articles", "Share"], category_rows),
+        "",
+        "## Reviewed Article Types",
+        "",
+        *format_table(["Article Type", "Unique Articles", "Share"], type_rows),
+        "",
+        "## Reviewed Relevance",
+        "",
+        *format_table(["Relevance", "Unique Articles", "Share"], relevance_rows),
+        "",
+        "## Topic Signals (Supplementary)",
+        "",
+        "以下は未分類の記事も含む、タイトルとRSS抜粋の語句による補助シグナルです。カテゴリ比率としては扱いません。",
         "",
         *format_table(["Topic", "Unique Articles"], topic_rows),
         "",
@@ -272,7 +385,8 @@ def build_weekly_report(
         "## Interpretation Notes",
         "",
         "- 件数は取得記事の量を示し、話題の人気・閲覧数・SNS反応を直接示すものではありません。",
-        "- トピック分類はタイトルと抜粋に含まれる語によるルールベース判定です。",
+        "- 記事種別・カテゴリ・関連度は、本文を確認したAIレビュー提案だけを集計しています。",
+        "- 未分類記事はカテゴリ比率の母数に含めません。分類網羅率を確認してから傾向を判断します。",
         "- 単発投稿・切り抜き・ゲーム攻略は、記事数に含めつつノイズ候補として別集計しています。",
         "",
     ]
@@ -387,6 +501,11 @@ def main() -> int:
         default=PROJECT_ROOT / "content" / "ai-keyword-candidates",
     )
     parser.add_argument(
+        "--classification-proposal-dir",
+        type=Path,
+        default=PROJECT_ROOT / "content" / "article-classification-proposals",
+    )
+    parser.add_argument(
         "--output-dir",
         type=Path,
         default=PROJECT_ROOT / "content" / "analysis",
@@ -412,9 +531,15 @@ def main() -> int:
     ]
     unique_articles = deduplicate_articles(selected_articles)
     candidates = aggregate_candidates(parse_ai_candidates(args.ai_candidate_dir, target_week))
+    classifications = load_reviewed_classifications(args.classification_proposal_dir)
 
     weekly_report = build_weekly_report(
-        target_week, selected_runs, selected_articles, unique_articles, candidates
+        target_week,
+        selected_runs,
+        selected_articles,
+        unique_articles,
+        candidates,
+        classifications,
     )
     quality_report = build_keyword_quality_report(
         target_week, selected_runs, unique_articles, candidates
@@ -429,8 +554,8 @@ def main() -> int:
     weekly_path.write_text(weekly_report, encoding="utf-8")
     quality_path.write_text(quality_report, encoding="utf-8")
 
-    print(f"wrote {weekly_path.relative_to(PROJECT_ROOT)}")
-    print(f"wrote {quality_path.relative_to(PROJECT_ROOT)}")
+    print(f"wrote {display_path(weekly_path)}")
+    print(f"wrote {display_path(quality_path)}")
     return 0
 
 

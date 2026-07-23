@@ -154,11 +154,19 @@ The daily workflow generates AI instructions for talent/article indexing and
 reads only approved, search-enabled talents as future default search keywords.
 Reviewed proposals are applied through a separate workflow to `talents`,
 `articles`, and `article_talents`, which supports multiple talent associations
+per article. See `docs/talent-article-index.md`.
+
+## Article classifications
+
+The daily workflow also writes an AI review instruction for article type,
+category, and relevance. Reviewed proposal JSON is applied through a separate
+workflow to the `article_classifications` Data Table. See
+`docs/article-classifications.md` for the taxonomy and setup.
 
 ## Talent Index dashboard
 
-Run the local read-only dashboard to browse the n8n `talents`, `articles`, and
-`article_talents` Data Tables:
+Run the local read-only dashboard to browse the n8n `talents`, `articles`,
+`article_talents`, and `article_classifications` Data Tables:
 
 ```bash
 bash scripts/start_talent_dashboard.sh
@@ -167,4 +175,3 @@ bash scripts/start_talent_dashboard.sh
 Open `http://127.0.0.1:8765`. It falls back to reviewed proposal JSON when the
 local n8n database is unavailable. See `docs/talent-dashboard.md` for the data
 source and configuration details.
-per article. See `docs/talent-article-index.md`.

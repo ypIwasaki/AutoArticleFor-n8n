@@ -50,8 +50,8 @@ The workflow is designed for daily keyword monitoring.
 8. `Read RSS Search Results` reads matching RSS items.
 9. `Normalize and Deduplicate Articles` filters recent items and removes duplicates.
 10. `Build Daily Digest` creates the source-based digest and LLM prompt.
-11. `Write Markdown Files` writes the digest and keyword candidates under `content/`.
-12. `Build Markdown Files` also writes an AI talent-index instruction; talent extraction and table updates are not performed in the daily workflow.
+11. `Write Markdown Files` writes the digest, keyword candidates, and all AI review instructions under `content/`.
+12. `Build Markdown Files` also creates instructions for article summaries, talent-index updates, and article classifications. The daily workflow does not automatically extract talent data or apply article classifications.
 13. `Summarize Saved Markdown Files` returns the saved file paths as the webhook response.
 
 ## Default keywords

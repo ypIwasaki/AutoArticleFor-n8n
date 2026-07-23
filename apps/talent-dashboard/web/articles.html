@@ -30,7 +30,11 @@
           <div class="panel-heading"><span>絞り込み</span><button id="clear-filters" type="button" class="text-button">解除</button></div>
           <label><span>検索</span><input id="search-input" type="search" placeholder="記事、情報源、タレントを検索"></label>
           <label><span>情報源</span><select id="source-filter"><option value="">すべて</option></select></label>
+          <label><span>記事種別</span><select id="article-type-filter"><option value="">すべて</option></select></label>
+          <label><span>カテゴリ</span><select id="category-filter"><option value="">すべて</option></select></label>
+          <label><span>関連度</span><select id="relevance-filter"><option value="">すべて</option></select></label>
           <label class="toggle-row"><input id="linked-only" type="checkbox"><span>関連タレントあり</span></label>
+          <label class="toggle-row"><input id="classified-only" type="checkbox"><span>分類済み</span></label>
           <label class="toggle-row"><input id="summarized-only" type="checkbox"><span>保存済み要約あり</span></label>
         </aside>
         <section class="data-panel records-table-panel" aria-live="polite">

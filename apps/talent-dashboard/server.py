@@ -24,6 +24,11 @@ STATIC_ROOT = APP_ROOT / "web"
 TABLE_ID_PATTERN = re.compile(r"^[A-Za-z0-9_]+$")
 MARKDOWN_LINK_PATTERN = re.compile(r"\[([^\]]+)\]\((https?://[^\s)]+)\)")
 SOURCE_NOTES_HEADING = "## Source-by-source Notes"
+SOURCE_NOTE_ITEM_PATTERN = re.compile(r"^(?:-\s+|\d+\.\s+)(.+)$")
+SOURCE_NOTE_SUMMARY_PATTERN = re.compile(
+    r"(?:^|\s)-\s*要約\s*[:：]\s*(.*?)(?=\s+-\s*(?:関連キーワード|重要度|根拠)\s*[:：]|$)"
+)
+BODY_VERIFIED_PATTERN = re.compile(r"(?:^|\s)-\s*本文確認\s*[:：]\s*確認済み(?:\s|（|\(|$)")
 KEYWORD_MUTATION_LOCK = threading.RLock()
 
 
@@ -110,7 +115,7 @@ def load_from_proposals() -> tuple[dict[str, Any], str]:
 
 
 def source_note_items(markdown: str) -> list[str]:
-    """Return the top-level bullets beneath the source-by-source heading."""
+    """Return source-note items written as bullets or numbered Markdown lists."""
     if SOURCE_NOTES_HEADING not in markdown:
         return []
 
@@ -119,10 +124,11 @@ def source_note_items(markdown: str) -> list[str]:
     items: list[str] = []
     current: str | None = None
     for line in section.splitlines():
-        if line.startswith("- "):
+        match = SOURCE_NOTE_ITEM_PATTERN.match(line)
+        if match:
             if current:
                 items.append(current)
-            current = line[2:].strip()
+            current = match.group(1).strip()
         elif current and line.strip():
             current = f"{current} {line.strip()}"
     if current:
@@ -146,11 +152,13 @@ def load_article_summaries() -> dict[str, dict[str, Any]]:
             if not links:
                 continue
             without_links = MARKDOWN_LINK_PATTERN.sub("", item).strip()
-            summary_parts = re.split(r"[:：]", without_links, maxsplit=1)
-            if len(summary_parts) < 2 or not summary_parts[1].strip():
+            if not BODY_VERIFIED_PATTERN.search(without_links):
+                continue
+            summary_match = SOURCE_NOTE_SUMMARY_PATTERN.search(without_links)
+            if not summary_match:
                 continue
             entry = {
-                "text": re.sub(r"\s+", " ", summary_parts[1]).strip(),
+                "text": re.sub(r"\s+", " ", summary_match.group(1)).strip(),
                 "summary_date": path.stem,
                 "source_titles": [title for title, _ in links],
             }

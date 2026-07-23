@@ -160,7 +160,7 @@ function renderTable() {
   elements.table.querySelector('thead').innerHTML = `<tr>${headers.map((header) => `<th>${header}</th>`).join('')}</tr>`;
   elements.table.querySelector('tbody').innerHTML = rows.length ? rows.map((row) => rowMarkup(row, view, selected)).join('') : `<tr><td colspan="${headers.length}"><p class="empty-detail">条件に一致するデータはありません。</p></td></tr>`;
   document.querySelector('#result-count').textContent = `${rows.length} 件`;
-  document.querySelector('#view-title').textContent = view === 'talents' ? 'タレント候補' : view === 'articles' ? '取得記事' : '記事・タレント関係';
+  document.querySelector('#view-title').textContent = view === 'talents' ? 'タレント一覧' : view === 'articles' ? '取得記事' : '記事・タレント関係';
   elements.table.querySelectorAll('tbody tr[data-key]').forEach((row) => row.addEventListener('click', () => selectRow(row.dataset.key)));
 }
 

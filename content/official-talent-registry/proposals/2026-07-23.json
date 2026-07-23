@@ -1,0 +1,3898 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-07-23",
+  "articles": [],
+  "talents": [
+    {
+      "talent_id": "talent-bfb23f92206cf454",
+      "display_name": "アイア アマレ",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"アイア アマレ\", \"Aia Amare\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-3ca55b9303594b0d",
+      "display_name": "アルバーン・ノックス",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"アルバーン・ノックス\", \"Alban Knox\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-689468d593655951",
+      "display_name": "エナー・アールウェット",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"エナー・アールウェット\", \"Enna Alouette\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-d4acab30d4224160",
+      "display_name": "エリーラ ペンドラ",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"エリーラ ペンドラ\", \"Elira Pendora\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-027d21c1c98f234e",
+      "display_name": "クララ チャームウッド",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"クララ チャームウッド\", \"Klara Charmwood\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-625251869d1c66b3",
+      "display_name": "クロード クローマーク",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"クロード クローマーク\", \"Claude Clawmark\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-cc75ec7121166333",
+      "display_name": "ケイリクス・デボネア",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"ケイリクス・デボネア\", \"Kaelix Debonair\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c60c8a59b4fab7e1",
+      "display_name": "サニー・ブリスコー",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"サニー・ブリスコー\", \"Sonny Brisko\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-3166f76838a6aa3f",
+      "display_name": "ジール・ギンジョウカ",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"ジール・ギンジョウカ\", \"Zeal Ginjoka\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-401823c100030862",
+      "display_name": "スカーレ ヨナグニ",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"スカーレ ヨナグニ\", \"Scarle Yonaguni\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c7f0256dd89f847e",
+      "display_name": "セイブル",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"セイブル\", \"Seible\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-14f7c0d2ea5c46fa",
+      "display_name": "ドッピオ ドロップサイト",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"ドッピオ ドロップサイト\", \"Doppio Dropscythe\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-5166307e07c8b6c0",
+      "display_name": "フィナーナ 竜宮",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"フィナーナ 竜宮\", \"Finana Ryugu\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-530e07406d2fb069",
+      "display_name": "フリオドール",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"フリオドール\", \"Freodore\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-14aac53a13ec34a9",
+      "display_name": "ベンタクロウ ブリンガー",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"ベンタクロウ ブリンガー\", \"Vantacrow Bringer\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-55da368c36391588",
+      "display_name": "ペトラ グリン",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"ペトラ グリン\", \"Petra Gurin\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-e92ea4a9d6ffb212",
+      "display_name": "マリア マリオネット",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"マリア マリオネット\", \"Maria Marionette\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-3364e58a50968f4e",
+      "display_name": "ミリー・パフェ",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"ミリー・パフェ\", \"Millie Parfait\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-819d3a47018abf1f",
+      "display_name": "ユウ Q ウィルソン",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"ユウ Q ウィルソン\", \"Yu Q. Wilson\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-79b1670074f19652",
+      "display_name": "ルカ・カネシロ",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"ルカ・カネシロ\", \"Luca Kaneshiro\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-36a64def09c58644",
+      "display_name": "レン ゾット",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"レン ゾット\", \"Ren Zotto\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-09ec2c29e87f3eb3",
+      "display_name": "ヴェザリウス バンデージ",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"ヴェザリウス バンデージ\", \"Vezalius Bandage\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-ee785b7c5eb913d9",
+      "display_name": "ヴェール ヴァーミリオン",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"ヴェール ヴァーミリオン\", \"Ver Vermillion\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-043557b9f1805479",
+      "display_name": "ヴォックス・アクマ",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"ヴォックス・アクマ\", \"Vox Akuma\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-30523777c4c40e06",
+      "display_name": "凉舞 バレンウォート",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"凉舞 バレンウォート\", \"Ryoma Barrenwort\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-50c8aa9715a158f4",
+      "display_name": "浮奇・ヴィオレタ",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"浮奇・ヴィオレタ\", \"Uki Violeta\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c09410191b041b6a",
+      "display_name": "狂蘭 メロコ",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"狂蘭 メロコ\", \"Meloco Kyoran\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-7887cc72e0d37b33",
+      "display_name": "闇ノシュウ",
+      "organization": "NIJISANJI EN",
+      "aliases_json": "[\"闇ノシュウ\", \"Shu Yamino\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-7e194a86ed9e6d68",
+      "display_name": "うる虎がーる",
+      "organization": "あおぎり高校",
+      "aliases_json": "[\"うる虎がーる\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-2fa8e42a88485575",
+      "display_name": "ぷわぷわぽぷら",
+      "organization": "あおぎり高校",
+      "aliases_json": "[\"ぷわぷわぽぷら\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-eeb58abf2024d3a8",
+      "display_name": "エトラ",
+      "organization": "あおぎり高校",
+      "aliases_json": "[\"エトラ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-4daa79a899328570",
+      "display_name": "八十科むじな",
+      "organization": "あおぎり高校",
+      "aliases_json": "[\"八十科むじな\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-941500f8bdb79fca",
+      "display_name": "千代浦蝶美",
+      "organization": "あおぎり高校",
+      "aliases_json": "[\"千代浦蝶美\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-554e75c198eaa58e",
+      "display_name": "大代真白",
+      "organization": "あおぎり高校",
+      "aliases_json": "[\"大代真白\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-0e9acbd810f41256",
+      "display_name": "山黒音玄",
+      "organization": "あおぎり高校",
+      "aliases_json": "[\"山黒音玄\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-0e00197e9db94251",
+      "display_name": "我部りえる",
+      "organization": "あおぎり高校",
+      "aliases_json": "[\"我部りえる\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b1c00839400f1993",
+      "display_name": "春雨麗女",
+      "organization": "あおぎり高校",
+      "aliases_json": "[\"春雨麗女\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-11c71fb956dac321",
+      "display_name": "月赴ゐぶき",
+      "organization": "あおぎり高校",
+      "aliases_json": "[\"月赴ゐぶき\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-f1b0ca515018cfb7",
+      "display_name": "栗駒こまる",
+      "organization": "あおぎり高校",
+      "aliases_json": "[\"栗駒こまる\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-0d31ac64c402a551",
+      "display_name": "水菜月夏希",
+      "organization": "あおぎり高校",
+      "aliases_json": "[\"水菜月夏希\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-70d601ff125e2865",
+      "display_name": "石狩あかり",
+      "organization": "あおぎり高校",
+      "aliases_json": "[\"石狩あかり\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-6fbbea9351536e39",
+      "display_name": "萌実",
+      "organization": "あおぎり高校",
+      "aliases_json": "[\"萌実\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-3226df1922b067e6",
+      "display_name": "音霊魂子",
+      "organization": "あおぎり高校",
+      "aliases_json": "[\"音霊魂子\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-01666080cef96347",
+      "display_name": "桃川ニジマス",
+      "organization": "うおむすめ",
+      "aliases_json": "[\"桃川ニジマス\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c3cd5a888a45d7f8",
+      "display_name": "紅波マダイ",
+      "organization": "うおむすめ",
+      "aliases_json": "[\"紅波マダイ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-d4c45c34d443f07a",
+      "display_name": "黄金マアジ",
+      "organization": "うおむすめ",
+      "aliases_json": "[\"黄金マアジ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-3b5396cf44e94e08",
+      "display_name": "あいうらら",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"あいうらら\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-cb28280de1ccf9a5",
+      "display_name": "ミーニャ・スコット",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"ミーニャ・スコット\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-03debb53ffd5",
+      "display_name": "ロロ・オリフィス",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"ロロ・オリフィス\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-21633aba3b9c2d43",
+      "display_name": "夏河ひのり",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"夏河ひのり\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-aff6888dc0075e8d",
+      "display_name": "夢見むむ",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"夢見むむ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-0bdc7016",
+      "display_name": "孫守まごも",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"孫守まごも\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b11908c26151d987",
+      "display_name": "安心院みさ",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"安心院みさ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8e85ec9c0c6762d6",
+      "display_name": "小鳥谷なの",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"小鳥谷なの\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-4438f77c38d9381e",
+      "display_name": "尾幌こま",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"尾幌こま\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b378c6a7",
+      "display_name": "星屑ぷらね",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"星屑ぷらね\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c9800d3194436a06",
+      "display_name": "智念せいら",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"智念せいら\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-37009ed9",
+      "display_name": "本阿弥あずさ",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"本阿弥あずさ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-fff091f123ec5fe7",
+      "display_name": "殴須賀ポコル",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"殴須賀ポコル\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-9a0e2a50761b9a8a",
+      "display_name": "王猛ちたむ",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"王猛ちたむ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-65ea896aa9fa1a04",
+      "display_name": "紙束ねるこ",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"紙束ねるこ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-5041fcc0",
+      "display_name": "終末むくろ",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"終末むくろ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8b423346dac304ee",
+      "display_name": "藍坂しう",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"藍坂しう\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-d5bb52e0e00eabb0",
+      "display_name": "蹄音かさね",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"蹄音かさね\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-207bc0706eeb3393",
+      "display_name": "雪芽るみ",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"雪芽るみ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-52a9bbece5718a80",
+      "display_name": "領国つかさ",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"領国つかさ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-e3808ab149694213",
+      "display_name": "鬼ノめる",
+      "organization": "すぺしゃりて",
+      "aliases_json": "[\"鬼ノめる\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-f19a4739bbc378f6",
+      "display_name": "Rei7",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"Rei7\", \"Reina\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-06a4ba69",
+      "display_name": "えま★おうがすと",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"えま★おうがすと\", \"Emma August\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-9cd94121",
+      "display_name": "える",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"える\", \"Elu\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-567c7526",
+      "display_name": "でびでび・でびる",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"でびでび・でびる\", \"Debidebi Debiru\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-1bce9db3",
+      "display_name": "ぷりん・らら・もーど",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ぷりん・らら・もーど\", \"Purin Lala Mode\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-f744291e",
+      "display_name": "ぽめろ・ぱんち",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ぽめろ・ぱんち\", \"Pomelo Punch\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-07aefaf8",
+      "display_name": "ましろ爻",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ましろ爻\", \"Mashiro Meme\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-9ff00087da9a2ebc",
+      "display_name": "アルス・アルマル",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"アルス・アルマル\", \"Ars Almal\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8e6d8aef",
+      "display_name": "アンジュ・カトリーナ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"アンジュ・カトリーナ\", \"Ange Katrina\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-a2c406b9ec7d793b",
+      "display_name": "イ ロハ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"イ ロハ\", \"Lee Roha\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-85cc5de9",
+      "display_name": "イブラヒム",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"イブラヒム\", \"Ibrahim\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-14111031d147895e",
+      "display_name": "エクス・アルビオ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"エクス・アルビオ\", \"Ex Albio\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-14519295d1486488",
+      "display_name": "エトナ クリムソン",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"エトナ クリムソン\", \"Etna Crimson\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-7a6be78d39215862",
+      "display_name": "エリー・コニファー",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"エリー・コニファー\", \"Eli Conifer\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-67565746f9f8e378",
+      "display_name": "オ ジユ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"オ ジユ\", \"Oh Jiyu\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-aaf491f1",
+      "display_name": "オリバー・エバンス",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"オリバー・エバンス\", \"Oliver Evans\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-f6905332f8687153",
+      "display_name": "ガオン",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ガオン\", \"Gaon\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-521b588b46894c2c",
+      "display_name": "ギルザレンⅢ世",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ギルザレンⅢ世\", \"Gilzaren III\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-9652bd37f72576ad",
+      "display_name": "シェリン・バーガンディ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"シェリン・バーガンディ\", \"Shellin Burgundy\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-987d03c724504256",
+      "display_name": "シスター・クレア",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"シスター・クレア\", \"Sister Claire\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-adc49b44",
+      "display_name": "ジョー・力一",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ジョー・力一\", \"Joe Rikiichi\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b396087b23be7697",
+      "display_name": "セフィナ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"セフィナ\", \"Seffyna\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-fad45abc",
+      "display_name": "セラフ・ダズルガーデン",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"セラフ・ダズルガーデン\", \"Seraph Dazzlegarden\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-1cc6d4e020515927",
+      "display_name": "ソ ナギ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ソ ナギ\", \"So Nagi\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-2192f3c2c50b",
+      "display_name": "ソフィア・ヴァレンタイン",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ソフィア・ヴァレンタイン\", \"Sophia Valentine\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-006ef91f865b7d69",
+      "display_name": "デレム カド",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"デレム カド\", \"Derem Kado\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8812d36ae0961374",
+      "display_name": "ドーラ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ドーラ\", \"Dola\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-2b79b78f96b40ff3",
+      "display_name": "ナ セラ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ナ セラ\", \"Na Sera\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-9341b4b8a9ff9834",
+      "display_name": "ナギサ アルシニア",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ナギサ アルシニア\", \"Nagisa Arcinia\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-889059ac",
+      "display_name": "ニュイ・ソシエール",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ニュイ・ソシエール\", \"Nui Sociere\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-ea51cecd89a73295",
+      "display_name": "ハ ユン",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ハ ユン\", \"Ha Yun\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-39c3de63c1be99bc",
+      "display_name": "ハナ マキア",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ハナ マキア\", \"Hana Macchia\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-3dfb866c6a00d625",
+      "display_name": "フミ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"フミ\", \"Fumi\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-d23e330f92ea3446",
+      "display_name": "フレン・E・ルスタリオ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"フレン・E・ルスタリオ\", \"Furen E Lustario\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c08638f670172b68",
+      "display_name": "ベルモンド・バンデラス",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ベルモンド・バンデラス\", \"Belmond Banderas\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-f3c03d6b",
+      "display_name": "ミラン・ケストレル",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ミラン・ケストレル\", \"Milan Kestrel\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-5830ea63a6d5a0cc",
+      "display_name": "ミン スゥーハ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ミン スゥーハ\", \"Min Suha\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-09783e4e75dcf116",
+      "display_name": "モイラ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"モイラ\", \"Moira\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-a52353a4c4bae8e3",
+      "display_name": "ヤン ナリ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ヤン ナリ\", \"Yang Nari\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-7f310d2e59a32e83",
+      "display_name": "ライ ガリレイ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ライ ガリレイ\", \"Rai Galilei\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-9ff6203923c59508",
+      "display_name": "ライラ アルストロエメリア",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ライラ アルストロエメリア\", \"Layla Alstroemeria\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-396b96fe",
+      "display_name": "ラトナ・プティ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ラトナ・プティ\", \"Ratna Petit\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-5c5af087",
+      "display_name": "リゼ・ヘルエスタ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"リゼヘルエスタ\", \"Lize Helesta\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-984a49759fda771a",
+      "display_name": "リュ ハリ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"リュ ハリ\", \"Ryu Hari\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-7480a761",
+      "display_name": "ルイス・キャミー",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ルイス・キャミー\", \"Luis Cammy\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c8b6fb9c",
+      "display_name": "ルンルン",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ルンルン\", \"Lunlun\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-2e15d9abbecee4de",
+      "display_name": "レイン・パターソン",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"レイン・パターソン\", \"Lain Paterson\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-81453776",
+      "display_name": "レオス・ヴィンセント",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"レオス・ヴィンセント\", \"Leos Vincent\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-940c7f36609eb9c9",
+      "display_name": "レヨン",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"レヨン\", \"Rayon\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-85c390fa682ceab1",
+      "display_name": "レヴィ・エリファ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"レヴィ・エリファ\", \"Levi Elipha\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-941754ad",
+      "display_name": "ローレン・イロアス",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"ローレン・イロアス\", \"Lauren Iroas\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-bad3ab719b596ac5",
+      "display_name": "一橋綾人",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"一橋綾人\", \"Hitotsubashi Ayato\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-606e6283a8bae31d",
+      "display_name": "七瀬すず菜",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"七瀬すず菜\", \"Nanase Suzuna\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-a92a91844435ef76",
+      "display_name": "三枝明那",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"三枝明那\", \"Saegusa Akina\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-372ec7",
+      "display_name": "不破湊",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"不破湊\", \"Fuwa Minato\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-4fcb5784ee57fe22",
+      "display_name": "九里詠太",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"九里詠太\", \"Kuri Eita\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-77d1f7f4",
+      "display_name": "五十嵐梨花",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"五十嵐梨花\", \"Igarashi Rika\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-637bb36ff729116a",
+      "display_name": "五木左京",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"五木左京\", \"Itsuki Sakyo\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-d8e0a23d",
+      "display_name": "伊波ライ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"伊波ライ\", \"Inami Rai\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8398fec3320e3062",
+      "display_name": "伏見ガク",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"伏見ガク\", \"Fushimi Gaku\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-91c608ce",
+      "display_name": "佐伯イッテツ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"佐伯イッテツ\", \"Saiki Ittetsu\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-036cc8ae",
+      "display_name": "倉持めると",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"倉持めると\", \"Kuramochi Meruto\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-d0dbf0d8",
+      "display_name": "健屋花那",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"健屋花那\", \"Sukoya Kana\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-2fa73686",
+      "display_name": "先斗寧",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"先斗寧\", \"Ponto Nei\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-88a76a9",
+      "display_name": "剣持刀也",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"剣持刀也\", \"Kenmochi Toya\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-dfd412ab816f",
+      "display_name": "加賀美ハヤト",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"加賀美ハヤト\", \"Kagami Hayato\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-69eaedfe",
+      "display_name": "北小路ヒスイ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"北小路ヒスイ\", \"Kitakoji Hisui\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-26912768",
+      "display_name": "北見遊征",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"北見遊征\", \"Kitami Yusei\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-fcbccedf",
+      "display_name": "十河ののは",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"十河ののは\", \"Togawa Nonoha\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-de9bf325e7c03518",
+      "display_name": "千凛あゆむ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"千凛あゆむ\", \"Senri Ayumu\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-457879e5",
+      "display_name": "卯月コウ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"卯月コウ\", \"Uzuki Kou\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-a3d1c27ef5406914",
+      "display_name": "叢雲カゲツ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"叢雲カゲツ\", \"Murakumo Kagetsu\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-2ce66fb0",
+      "display_name": "叶",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"叶\", \"Kanae\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-494571f5",
+      "display_name": "司賀りこ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"司賀りこ\", \"Shiga Riko\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-91755977fc648e4f",
+      "display_name": "周央サンゴ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"周央サンゴ\", \"Suo Sango\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-310eeb88",
+      "display_name": "四季凪アキラ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"四季凪アキラ\", \"Shikinagi Akira\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b78da1f2",
+      "display_name": "城瀬いすみ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"城瀬いすみ\", \"Shirose Isumi\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-28905e06",
+      "display_name": "塚原大地",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"塚原大地\", \"Tsukahara Daichi\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-ada05c29e1e5eaac",
+      "display_name": "壱百満天原サロメ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"壱百満天原サロメ\", \"Hyakumantenbara Salome\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-f36e3a90c01aef75",
+      "display_name": "夕陽リリ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"夕陽リリ\", \"Yuhi Riri\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-849ffb5b",
+      "display_name": "夜牛詩乃",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"夜牛詩乃\", \"Yagyu Shino\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-ab1d9734bbb96821",
+      "display_name": "夜見れな",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"夜見れな\", \"Yorumi Rena\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-fb53f95aed222263",
+      "display_name": "夢月ロア",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"夢月ロア\", \"Yuzuki Roa\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-fb3746201525d119",
+      "display_name": "夢追翔",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"夢追翔\", \"Yumeoi Kakeru\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-16fa8eafab82caba",
+      "display_name": "天ヶ瀬むゆ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"天ヶ瀬むゆ\", \"Amagase Muyu\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b98917fcc95c55dd",
+      "display_name": "天宮こころ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"天宮こころ\", \"Amamiya Kokoro\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-aa78cd13",
+      "display_name": "宇佐美リト",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"宇佐美リト\", \"Usami Rito\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b3f0b5bceb5f4d28",
+      "display_name": "宇志海いちご",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"宇志海いちご\", \"Ushimi Ichigo\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-768db1dff6b061d8",
+      "display_name": "家長むぎ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"家長むぎ\", \"Ienaga Mugi\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-a0356c06",
+      "display_name": "小々波いるか",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"小々波いるか\", \"Kokonami Iruka\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-39666b65",
+      "display_name": "小柳ロウ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"小柳ロウ\", \"Koyanagi Rou\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-4bbb03c49e4c4923",
+      "display_name": "小清水透",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"小清水透\", \"Koshimizu Toru\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-a14d914d",
+      "display_name": "山神カルタ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"山神カルタ\", \"Yamagami Karuta\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-cca8b50617b2af0f",
+      "display_name": "弦月藤士郎",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"弦月藤士郎\", \"Genzuki Tojiro\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c9e5377e",
+      "display_name": "御子神琴音",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"御子神琴音\", \"Mikogami Kotone\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8f27843aaa78da74",
+      "display_name": "愛園愛美",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"愛園愛美\", \"Aizono Manami\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-e3759676",
+      "display_name": "戌亥とこ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"戌亥とこ\", \"Inui Toko\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-f63001629516d5f7",
+      "display_name": "文野環",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"文野環\", \"Fumino Tamaki\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-690c875dff4cf91b",
+      "display_name": "早乙女ベリー",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"早乙女ベリー\", \"Saotome Berry\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-4ecdc9c9301d6be0",
+      "display_name": "早瀬走",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"早瀬走\", \"Hayase Sou\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-02a702a285150882",
+      "display_name": "明楽レイ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"明楽レイ\", \"Akira Ray\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b9dd4c39",
+      "display_name": "星導ショウ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"星導ショウ\", \"Hoshirube Sho\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-5806c22e",
+      "display_name": "星川サラ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"星川サラ\", \"Hoshikawa Sara\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-49e4c5f6a0473ae7",
+      "display_name": "春崎エアル",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"春崎エアル\", \"Harusaki Air\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-4dd898cc405e45e2",
+      "display_name": "月ノ美兎",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"月ノ美兎\", \"Tsukino Mito\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b88c7c54950814d5",
+      "display_name": "本間ひまわり",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"本間ひまわり\", \"Honma Himawari\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-beec189c08b9cba7",
+      "display_name": "来栖夏芽",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"来栖夏芽\", \"Kurusu Natsume\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-92c2a86a235ad27a",
+      "display_name": "東堂コハク",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"東堂コハク\", \"Todo Kohaku\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-f7b98f6cf1aacd72",
+      "display_name": "栞葉るり",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"栞葉るり\", \"Shioriha Ruri\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-d1fa3ea42eeb5a33",
+      "display_name": "桜凛月",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"桜凛月\", \"Sakura Ritsuki\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-def62db1ad804aa3",
+      "display_name": "梢桃音",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"梢桃音\", \"Kozue Mone\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-11b933bb358c6ddc",
+      "display_name": "森中花咲",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"森中花咲\", \"Morinaka Kazaki\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c857f287",
+      "display_name": "椎名唯華",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"椎名唯華\", \"Shiina Yuika\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b9c833be",
+      "display_name": "榊ネス",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"榊ネス\", \"Sakaki Ness\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-3840a4f5",
+      "display_name": "樋口楓",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"樋口楓\", \"Higuchi Kaede\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-7a2b9d9a",
+      "display_name": "水面まどか",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"水面まどか\", \"Minamo Madoka\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-eeadb7b21209b102",
+      "display_name": "海妹四葉",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"海妹四葉\", \"Umise Yotsuha\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-845fa9a7",
+      "display_name": "渋谷ハジメ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"渋谷ハジメ\", \"Shibuya Hajime\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-21195519",
+      "display_name": "渚トラウト",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"渚トラウト\", \"Nagisa Trout\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8d28258a",
+      "display_name": "渡会雲雀",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"渡会雲雀\", \"Watarai Hibari\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8b117dc26a456f68",
+      "display_name": "物述有栖",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"物述有栖\", \"Mononobe Alice\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-4d8f97a0",
+      "display_name": "猫屋敷美紅",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"猫屋敷美紅\", \"Nekoyashiki Miku\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-eabc6aa6e3f79b8d",
+      "display_name": "獅子堂あかり",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"獅子堂あかり\", \"Shishido Akari\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-9b46b11b",
+      "display_name": "珠乃井ナナ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"珠乃井ナナ\", \"Tamanoi Nana\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-74552759",
+      "display_name": "甲斐田晴",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"甲斐田晴\", \"Kaida Haru\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-a557c3a394ee7288",
+      "display_name": "男虎",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"男虎\", \"Onotora\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-9fe0322401f926e3",
+      "display_name": "町田ちま",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"町田ちま\", \"Machita Chima\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-d6cfe4d258f94661",
+      "display_name": "白砂あやね",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"白砂あやね\", \"Shirasa Ayane\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-454cf474",
+      "display_name": "白雪巴",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"白雪巴\", \"Shirayuki Tomoe\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-7d18d301",
+      "display_name": "皇れお",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"皇れお\", \"Sumeragi Reo\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8e5a6dabb7e05f20",
+      "display_name": "矢車りね",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"矢車りね\", \"Yaguruma Rine\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-95f28e54",
+      "display_name": "石神のぞみ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"石神のぞみ\", \"Ishigami Nozomi\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-969288ce",
+      "display_name": "社築",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"社築\", \"Yashiro Kizuku\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-7e1d6f0c2cd45587",
+      "display_name": "神田笑一",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"神田笑一\", \"Kanda Shoichi\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-0c7096270deae945",
+      "display_name": "空星きらめ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"空星きらめ\", \"Sorahoshi Kirame\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b414a98addae8160",
+      "display_name": "立伝都々",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"立伝都々\", \"Tachitsute Toto\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-7425bf87bd6f555c",
+      "display_name": "竜胆尊",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"竜胆尊\", \"Rindou Mikoto\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-17ef808d8cf421bb",
+      "display_name": "笹木咲",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"笹木咲\", \"Sasaki Saku\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-4081853400c91128",
+      "display_name": "篠宮ゆの",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"篠宮ゆの\", \"Shinomiya Yuno\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-14b2461ab7a2564e",
+      "display_name": "綺沙良",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"綺沙良\", \"Kisara\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-61c061f674c58eee",
+      "display_name": "緋八マナ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"緋八マナ\", \"Hibachi Mana\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-06d4101d",
+      "display_name": "緑仙",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"緑仙\", \"Ryushen\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c4eb6239",
+      "display_name": "舞元啓介",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"舞元啓介\", \"Maimoto Keisuke\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-87445732",
+      "display_name": "花畑チャイカ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"花畑チャイカ\", \"Hanabatake Chaika\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-26cc9fd4de18a6b8",
+      "display_name": "花籠つばさ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"花籠つばさ\", \"Hanakago Tsubasa\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-f788c63c610b0984",
+      "display_name": "葉加瀬冬雪",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"葉加瀬冬雪\", \"Hakase Fuyuki\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-74df9bf19e43d34e",
+      "display_name": "葉山舞鈴",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"葉山舞鈴\", \"Hayama Marin\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-540020ac",
+      "display_name": "葛葉",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"葛葉\", \"Kuzuha\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-25a30e7b",
+      "display_name": "蝸堂みかる",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"蝸堂みかる\", \"Kadou Mikaru\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-dc16bf26",
+      "display_name": "西園チグサ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"西園チグサ\", \"Nishizono Chigusa\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-58a385825aab3d76",
+      "display_name": "語部紡",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"語部紡\", \"Kataribe Tsumugu\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-7271e54",
+      "display_name": "赤城ウェン",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"赤城ウェン\", \"Akagi Wen\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-36833644f76f4084",
+      "display_name": "赤羽葉子",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"赤羽葉子\", \"Akabane Youko\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8cd3a86a18b30fbc",
+      "display_name": "轟京子",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"轟京子\", \"Todoroki Kyoko\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-3a964093f97b517f",
+      "display_name": "酒寄颯馬",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"酒寄颯馬\", \"Sakayori Soma\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-80e823f56b4c2ec9",
+      "display_name": "鈴原るる",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"鈴原るる\", \"Suzuhara Lulu\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-96a0b8cce2c4c3e3",
+      "display_name": "鈴木勝",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"鈴木勝\", \"Suzuki Masaru\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-ca8d21ba6ac507e2",
+      "display_name": "鏑木ろこ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"鏑木ろこ\", \"Kaburaki Roco\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-3d4ff5ac",
+      "display_name": "長尾景",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"長尾景\", \"Nagao Kei\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-bcd6baf069e7d569",
+      "display_name": "雨森小夜",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"雨森小夜\", \"Amemori Sayo\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-18738b63",
+      "display_name": "雪城眞尋",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"雪城眞尋\", \"Yukishiro Mahiro\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-80a911bd408ba580",
+      "display_name": "雲母たまこ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"雲母たまこ\", \"Kirara Tamako\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c9d1b6ca71870cef",
+      "display_name": "静凛",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"静凛\", \"Shizuka Rin\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-263044d8",
+      "display_name": "風楽奏斗",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"風楽奏斗\", \"Fura Kanato\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-814749ece7baac06",
+      "display_name": "飛鳥ひな",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"飛鳥ひな\", \"Asuka Hina\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-90332a1d",
+      "display_name": "魁星",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"魁星\", \"Kaisei\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-6ea1bbc1428f9031",
+      "display_name": "魔使マオ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"魔使マオ\", \"Matsukai Mao\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-cd444702",
+      "display_name": "魔界ノりりむ",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"魔界ノりりむ\", \"Makaino Ririmu\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-9aead08e",
+      "display_name": "鷹宮リオン",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"鷹宮リオン\", \"Takamiya Rion\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-2a3be86d4cf498ea",
+      "display_name": "黒井しば",
+      "organization": "にじさんじ",
+      "aliases_json": "[\"黒井しば\", \"Kuroi Shiba\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-d66f15f8d1d3af1f",
+      "display_name": "ソラリリコ",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"ソラリリコ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b768459a",
+      "display_name": "一ノ瀬うるは",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"一ノ瀬うるは\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-e6bab056d5745d94",
+      "display_name": "兎咲ミミ",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"兎咲ミミ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-f8fada04",
+      "display_name": "八雲べに",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"八雲べに\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8875bd29",
+      "display_name": "千燈ゆうひ",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"千燈ゆうひ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-2a4c8494cc780905",
+      "display_name": "地崎ジラ",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"地崎ジラ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-5b6eda3a",
+      "display_name": "夜乃くろむ",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"夜乃くろむ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-1cd2c8fdb244b3a6",
+      "display_name": "夢野あかり",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"夢野あかり\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-6dcc0a29b0eb3db0",
+      "display_name": "如月れん",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"如月れん\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-85f52bdeaf34",
+      "display_name": "小森めと",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"小森めと\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-e8ffaecf9518",
+      "display_name": "小雀とと",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"小雀とと\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-e065a63bd94b58c9",
+      "display_name": "梅園ジュノ",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"梅園ジュノ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-0bd1032d",
+      "display_name": "橘ひなの",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"橘ひなの\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b42169585ddad321",
+      "display_name": "涼上エリス",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"涼上エリス\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b6dccf9b699a",
+      "display_name": "猫汰つな",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"猫汰つな\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-e1776d7a3c749442",
+      "display_name": "甘結もか",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"甘結もか\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-3a79b50d",
+      "display_name": "白波らむね",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"白波らむね\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-3556ec0fdcec",
+      "display_name": "神成きゅぴ",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"神成きゅぴ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-a1af2090",
+      "display_name": "空澄セナ",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"空澄セナ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-e68a81ed",
+      "display_name": "紡木こかげ",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"紡木こかげ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b8b8299a3131",
+      "display_name": "紫宮るな",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"紫宮るな\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-04209059d6573b63",
+      "display_name": "美暮ナリン",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"美暮ナリン\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-d6355e8e",
+      "display_name": "胡桃のあ",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"胡桃のあ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c363437bfa1ab9cf",
+      "display_name": "花芽すみれ",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"花芽すみれ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-1569a5df",
+      "display_name": "花芽なずな",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"花芽なずな\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-6ce82ca9b6cbf823",
+      "display_name": "英リサ",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"英リサ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-592b371b6fa9",
+      "display_name": "藍沢エマ",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"藍沢エマ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-6b14fca345256387",
+      "display_name": "蝶屋はなび",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"蝶屋はなび\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-11020554",
+      "display_name": "銀城サイネ",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"銀城サイネ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-9f9266beeaa7fdfc",
+      "display_name": "青月レミア",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"青月レミア\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-2df55fccc8dc9bec",
+      "display_name": "黒刃アリヤ",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"黒刃アリヤ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-68fda08f",
+      "display_name": "龍巻ちせ",
+      "organization": "ぶいすぽっ！",
+      "aliases_json": "[\"龍巻ちせ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-d5cb679f41bb5d32",
+      "display_name": "あまね星歌",
+      "organization": "りぷらい！",
+      "aliases_json": "[\"あまね星歌\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8a902647cacbbcbf",
+      "display_name": "はみぃ",
+      "organization": "りぷらい！",
+      "aliases_json": "[\"はみぃ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-41ed80c1dec207ca",
+      "display_name": "わお",
+      "organization": "りぷらい！",
+      "aliases_json": "[\"わお\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-5f7f9f3f2cfb7170",
+      "display_name": "モーティ･アストラベータ",
+      "organization": "りぷらい！",
+      "aliases_json": "[\"モーティ･アストラベータ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-09dcb64f12898a9e",
+      "display_name": "保ノ花めるる",
+      "organization": "りぷらい！",
+      "aliases_json": "[\"保ノ花めるる\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-a9949891a70735f7",
+      "display_name": "夢咲あいす",
+      "organization": "りぷらい！",
+      "aliases_json": "[\"夢咲あいす\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-62c23b625034f554",
+      "display_name": "如月ぽて",
+      "organization": "りぷらい！",
+      "aliases_json": "[\"如月ぽて\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-5e43d3f12093347f",
+      "display_name": "恋青星くらら",
+      "organization": "りぷらい！",
+      "aliases_json": "[\"恋青星くらら\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-4613d0c976a4141b",
+      "display_name": "愛歯えいる",
+      "organization": "りぷらい！",
+      "aliases_json": "[\"愛歯えいる\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-6735c4298e93c8a8",
+      "display_name": "日向なこ",
+      "organization": "りぷらい！",
+      "aliases_json": "[\"日向なこ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-db3795246f854a94",
+      "display_name": "津島ちよめ",
+      "organization": "りぷらい！",
+      "aliases_json": "[\"津島ちよめ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-5bee046763da25c8",
+      "display_name": "海田にこ",
+      "organization": "りぷらい！",
+      "aliases_json": "[\"海田にこ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-e02b7d81ea0f9324",
+      "display_name": "為永ほまれ",
+      "organization": "りぷらい！",
+      "aliases_json": "[\"為永ほまれ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-bd3f6480e429db1b",
+      "display_name": "白描つむぎ",
+      "organization": "りぷらい！",
+      "aliases_json": "[\"白描つむぎ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-476439fa6d14d17e",
+      "display_name": "紫乃めりん。",
+      "organization": "りぷらい！",
+      "aliases_json": "[\"紫乃めりん。\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b5ac7a8a390867e2",
+      "display_name": "陽月てら",
+      "organization": "りぷらい！",
+      "aliases_json": "[\"陽月てら\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-931242fc20ef5536",
+      "display_name": "久我レオ",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"久我レオ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-9d1eb82ef732",
+      "display_name": "光葉エニ",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"光葉エニ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-06632149f85aa18a",
+      "display_name": "八神ツクモ",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"八神ツクモ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-601e3fe57ddf0d1c",
+      "display_name": "夜絆ニウ",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"夜絆ニウ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-3288f3b93c837b74",
+      "display_name": "天帝フォルテ",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"天帝フォルテ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-6ad45a8298891690",
+      "display_name": "幽乃うつろ",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"幽乃うつろ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-59ecee38decb",
+      "display_name": "心白てと",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"心白てと\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-3ea2c4cb171ab38d",
+      "display_name": "或世イヌ",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"或世イヌ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c582c68264cd6156",
+      "display_name": "日裏クロ",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"日裏クロ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-d0b8ab3d",
+      "display_name": "昏昏アリア",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"昏昏アリア\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-4f06822d56b22209",
+      "display_name": "柊ツルギ",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"柊ツルギ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-479743e63be92f23",
+      "display_name": "水無瀬",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"水無瀬\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8d84f697993dbe0c",
+      "display_name": "渋谷ハル",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"渋谷ハル\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-f1865e72",
+      "display_name": "瀬尾カザリ",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"瀬尾カザリ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-88aecb55d62f",
+      "display_name": "甘音あむ",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"甘音あむ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-9060f14c48f9",
+      "display_name": "白那しずく",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"白那しずく\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c0b0be0494237bc7",
+      "display_name": "白雪レイド",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"白雪レイド\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-31505c9b",
+      "display_name": "絲依とい",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"絲依とい\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-f1148605a2e17d3d",
+      "display_name": "緋月ゆい",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"緋月ゆい\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-5141bf8c1f01e8c1",
+      "display_name": "青桐エイト",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"青桐エイト\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-0b15b595",
+      "display_name": "鬼ヶ谷テン",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"鬼ヶ谷テン\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-df975b68",
+      "display_name": "麻倉シノ",
+      "organization": "ネオポルテ",
+      "aliases_json": "[\"麻倉シノ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-0507288a9e025c7c",
+      "display_name": "アクセル・シリオス",
+      "organization": "ホロスターズ",
+      "aliases_json": "[\"アクセル・シリオス\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-0d7c6fee01eafe50",
+      "display_name": "アステル・レダ",
+      "organization": "ホロスターズ",
+      "aliases_json": "[\"アステル・レダ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-7fa051d57b01dfb6",
+      "display_name": "オクタビオ",
+      "organization": "ホロスターズ",
+      "aliases_json": "[\"オクタビオ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-e767bd9aef03a68b",
+      "display_name": "ガビス・ベッテル",
+      "organization": "ホロスターズ",
+      "aliases_json": "[\"ガビス・ベッテル\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-bac4d717cd98f52b",
+      "display_name": "クリムゾン・ルーズ",
+      "organization": "ホロスターズ",
+      "aliases_json": "[\"クリムゾン・ルーズ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-177cf105834c4165",
+      "display_name": "ゴールドブレット",
+      "organization": "ホロスターズ",
+      "aliases_json": "[\"ゴールドブレット\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-a584271080fd028d",
+      "display_name": "ジュラルド・ティー・レクスフォード",
+      "organization": "ホロスターズ",
+      "aliases_json": "[\"ジュラルド・ティー・レクスフォード\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-7dbe59282bb3faef",
+      "display_name": "マキナ・X・フレオン",
+      "organization": "ホロスターズ",
+      "aliases_json": "[\"マキナ・X・フレオン\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c9154998e47febfc",
+      "display_name": "リージス・アルテア",
+      "organization": "ホロスターズ",
+      "aliases_json": "[\"リージス・アルテア\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-bac5c48a4cec7a3d",
+      "display_name": "万象院ハッカ",
+      "organization": "ホロスターズ",
+      "aliases_json": "[\"万象院ハッカ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c7cc8059a8295709",
+      "display_name": "夕刻ロベル",
+      "organization": "ホロスターズ",
+      "aliases_json": "[\"夕刻ロベル\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-596657c3e615a2a9",
+      "display_name": "夜十神封魔",
+      "organization": "ホロスターズ",
+      "aliases_json": "[\"夜十神封魔\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b88422dab7a585c0",
+      "display_name": "奏手イヅル",
+      "organization": "ホロスターズ",
+      "aliases_json": "[\"奏手イヅル\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-6af86b3eca494678",
+      "display_name": "定水寺シンリ",
+      "organization": "ホロスターズ",
+      "aliases_json": "[\"定水寺シンリ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-fdb0a0fc4dd38687",
+      "display_name": "羽継烏有",
+      "organization": "ホロスターズ",
+      "aliases_json": "[\"羽継烏有\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-02354c917ae43005",
+      "display_name": "荒咬オウガ",
+      "organization": "ホロスターズ",
+      "aliases_json": "[\"荒咬オウガ\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-1083b916",
+      "display_name": "AZKi",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"AZKi\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-0ce4f844",
+      "display_name": "IRyS",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"IRyS\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-3a3f5b3bcf10ee1e",
+      "display_name": "こぼ・かなえる",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"こぼ・かなえる\", \"Kobo Kanaeru\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-ae83813f",
+      "display_name": "さくらみこ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"さくらみこ\", \"Sakura Miko\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c854ddf6",
+      "display_name": "ときのそら",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"ときのそら\", \"Tokino Sora\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-cb7ff30bb11dc99b",
+      "display_name": "アイラニ・イオフィフティーン",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"アイラニ・イオフィフティーン\", \"Airani Iofifteen\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-379ccf211c93082d",
+      "display_name": "アキ・ローゼンタール",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"アキ・ローゼンタール\", \"Aki Rosenthal\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-05d0f54350981de0",
+      "display_name": "アユンダ・リス",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"アユンダ・リス\", \"Ayunda Risu\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8558f34f54a66d48",
+      "display_name": "アーニャ・メルフィッサ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"アーニャ・メルフィッサ\", \"Anya Melfissa\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-a365daa2b5df6fe6",
+      "display_name": "エリザベス・ローズ・ブラッドフレイム",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"エリザベス・ローズ・ブラッドフレイム\", \"Elizabeth Rose Bloodflame\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-bd7e7edc0f6fa125",
+      "display_name": "オーロ・クロニー",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"オーロ・クロニー\", \"Ouro Kronii\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-44e3725b7340f018",
+      "display_name": "カエラ・コヴァルスキア",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"カエラ・コヴァルスキア\", \"Kaela Kovalskia\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-6dd1e383a43e5a40",
+      "display_name": "クレイジー・オリー",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"クレイジー・オリー\", \"Kureiji Ollie\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-2e1db4829c4fd2b6",
+      "display_name": "シオリ・ノヴェラ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"シオリ・ノヴェラ\", \"Shiori Novella\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-4af39af1517eadbe",
+      "display_name": "ジジ・ムリン",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"ジジ・ムリン\", \"Gigi Murin\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-faa0e4eb93940704",
+      "display_name": "セシリア・イマーグリーン",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"セシリア・イマーグリーン\", \"Cecilia Immergreen\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-7e0fac23d9017a31",
+      "display_name": "ネリッサ・レイヴンクロフト",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"ネリッサ・レイヴンクロフト\", \"Nerissa Ravencroft\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-4fd92025146aacbd",
+      "display_name": "ハコス・ベールズ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"ハコス・ベールズ\", \"Hakos Baelz\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8e503da684a9611d",
+      "display_name": "パヴォリア・レイネ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"パヴォリア・レイネ\", \"Pavolia Reine\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-2bf9c00084c59abf",
+      "display_name": "フワワ・アビスガード",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"フワワ・アビスガード\", \"Fuwawa Abyssgard\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c66916793d590903",
+      "display_name": "ベスティア・ゼータ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"ベスティア・ゼータ\", \"Vestia Zeta\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-2f1e97c79215d0b6",
+      "display_name": "ムーナ・ホシノヴァ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"ムーナ・ホシノヴァ\", \"Moona Hoshinova\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-0fa43167d665706f",
+      "display_name": "モココ・アビスガード",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"モココ・アビスガード\", \"Mococo Abyssgard\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c20638ee2b499d83",
+      "display_name": "ラオーラ・パンテーラ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"ラオーラ・パンテーラ\", \"Raora Panthera\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-1d570ecb612f7028",
+      "display_name": "ラプラス・ダークネス",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"ラプラス・ダークネス\", \"La+ Darknesss\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-748d93061d59030b",
+      "display_name": "ロボ子さん",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"ロボ子さん\", \"Robocosan\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-bafaa1a21f5d9917",
+      "display_name": "一伊那尓栖",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"一伊那尓栖\", \"Ninomae Ina'nis\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-dc8b2feb",
+      "display_name": "一条莉々華",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"一条莉々華\", \"Ichijou Ririka\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-432f96c92be21c24",
+      "display_name": "不知火フレア",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"不知火フレア\", \"Shiranui Flare\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-332ddcbf26d884a6",
+      "display_name": "井月みちる",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"井月みちる\", \"Izuki Michiru\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c7763ef4",
+      "display_name": "儒烏風亭らでん",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"儒烏風亭らでん\", \"Juufuutei Raden\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8fd4d74a",
+      "display_name": "兎田ぺこら",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"兎田ぺこら\", \"Pekora\", \"Usada Pekora\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-d76c1222",
+      "display_name": "博衣こより",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"博衣こより\", \"Hakui Koyori\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-a51c4d4d7c3a643f",
+      "display_name": "古石ビジュー",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"古石ビジュー\", \"Koseki Bijou\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-5207c489e9986905",
+      "display_name": "夏色まつり",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"夏色まつり\", \"Natsuiro Matsuri\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-ee8be20dafc25850",
+      "display_name": "大神ミオ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"大神ミオ\", \"Ookami Mio\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-ab860b3b",
+      "display_name": "大空スバル",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"大空スバル\", \"Oozora Subaru\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-72190d87",
+      "display_name": "姫森ルーナ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"姫森ルーナ\", \"Himemori Luna\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-a08860e8",
+      "display_name": "宝鐘マリン",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"宝鐘マリン\", \"Houshou Marine\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-9dca51f3d0c89bc0",
+      "display_name": "小鳥遊キアラ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"小鳥遊キアラ\", \"Takanashi Kiara\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-9f5bc564",
+      "display_name": "尾丸ポルカ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"尾丸ポルカ\", \"Omaru Polka\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-bae59616f1103401",
+      "display_name": "常闇トワ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"常闇トワ\", \"Tokoyami Towa\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-cea70c389e046905",
+      "display_name": "戌神ころね",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"戌神ころね\", \"Inugami Korone\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-3bb990c5",
+      "display_name": "星街すいせい",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"星街すいせい\", \"Hoshimachi Suisei\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-53f2a185",
+      "display_name": "桃鈴ねね",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"桃鈴ねね\", \"Momosuzu Nene\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c9de425d59c42106",
+      "display_name": "森カリオペ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"森カリオペ\", \"Mori Calliope\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-01c9f9da",
+      "display_name": "水宮枢",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"水宮枢\", \"Mizumiya Su\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-dcef04c8cfd33724",
+      "display_name": "猫又おかゆ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"猫又おかゆ\", \"Nekomata Okayu\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-bc0b0a4ae1f355b8",
+      "display_name": "獅白ぼたん",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"獅白ぼたん\", \"Shishiro Botan\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-1185351a69756217",
+      "display_name": "癒月ちょこ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"癒月ちょこ\", \"Yuzuki Choco\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-7b6875ee",
+      "display_name": "白上フブキ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"白上フブキ\", \"Shirakami Fubuki\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-8f45fbc7",
+      "display_name": "白銀ノエル",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"白銀ノエル\", \"Shirogane Noel\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-d6921db6ea08a7c2",
+      "display_name": "百鬼あやめ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"百鬼あやめ\", \"Nakiri Ayame\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-03d1f7fc",
+      "display_name": "綺々羅々ヴィヴィ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"綺々羅々ヴィヴィ\", \"Kikirara Vivi\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-b251de784e6bda24",
+      "display_name": "花園さやか",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"花園さやか\", \"Hanazono Sayaka\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-d6838757",
+      "display_name": "虎金妃笑虎",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"虎金妃笑虎\", \"Koganei Niko\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-de50c17b",
+      "display_name": "角巻わため",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"角巻わため\", \"Tsunomaki Watame\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-56abd8c00d8d41d8",
+      "display_name": "赤井はあと",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"赤井はあと\", \"Akai Haato\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-cddb049a",
+      "display_name": "輪堂千速",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"輪堂千速\", \"Rindo Chihaya\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-fddc1190c055c819",
+      "display_name": "轟はじめ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"轟はじめ\", \"Todoroki Hajime\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-d645070861d88bd9",
+      "display_name": "雪花ラミィ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"雪花ラミィ\", \"Yukihana Lamy\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-1ae1c6bbf076d047",
+      "display_name": "音乃瀬奏",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"音乃瀬奏\", \"Otonose Kanade\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-c3887d443fe0e5a2",
+      "display_name": "響咲リオナ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"響咲リオナ\", \"Isaki Riona\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-4502fa23797de1a8",
+      "display_name": "風白ゆき",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"風白ゆき\", \"Kazeshiro Yuki\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-e046787d",
+      "display_name": "風真いろは",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"風真いろは\", \"Kazama Iroha\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    },
+    {
+      "talent_id": "talent-a146c130",
+      "display_name": "鷹嶺ルイ",
+      "organization": "ホロライブ",
+      "aliases_json": "[\"鷹嶺ルイ\", \"Takane Lui\"]",
+      "status": "approved",
+      "search_enabled": false,
+      "auto_discovered": false,
+      "last_seen_at": "2026-07-23T01:31:34Z"
+    }
+  ],
+  "articleTalents": []
+}

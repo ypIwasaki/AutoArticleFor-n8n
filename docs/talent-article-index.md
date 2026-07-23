@@ -1,8 +1,8 @@
 # Talent/article index
 
 The daily workflow does not infer talents or update Data Tables. It reads the
-existing `talents` table and adds every non-rejected registered display name to
-the default search request, then writes an AI instruction file under
+existing `talents` table and adds only `approved` records whose
+`search_enabled` value is true to the default search request, then writes an AI instruction file under
 `content/ai-talent-index-instructions/`.
 
 ## AI review flow
@@ -20,9 +20,9 @@ proposal into the following n8n Data Tables. It contains no extraction logic.
 ## Tables
 
 `talents` is the registry. Use `pending`, `approved`, or `rejected` in
-`status`; `rejected` rows are excluded from default daily search keywords, and
-all other registered display names are included automatically. `aliases_json`
-stores a JSON array of literal aliases.
+`status`. A display name becomes a default daily search keyword only when its
+status is `approved` and `search_enabled` is true. `aliases_json` stores a JSON
+array of literal aliases.
 
 `articles` stores one row per article URL/key. Its system `createdAt` is the
 first insert time and `last_seen_at` is refreshed when a reviewed proposal
@@ -35,6 +35,8 @@ talents. Every relation must include evidence and confidence.
 ## Safety rules
 
 - Do not automatically approve or search-enable a discovered name.
+- Official-roster synchronization may approve a name backed by a configured
+  official source, but it keeps individual-name search disabled by default.
 - Do not delete rows or overwrite an approved record without explicit review.
 - Do not infer official names, aliases, or organizations absent from the
   source evidence.

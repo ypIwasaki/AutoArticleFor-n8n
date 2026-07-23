@@ -34,6 +34,6 @@ n8nのDBまたは対象テーブルを読み込めない場合、`content/talent
 
 ## 記事要約
 
-記事の詳細画面では、`content/article-summaries/YYYY-MM-DD.md` の `Source-by-source Notes` にあるAI要約を、MarkdownリンクのURLで取得記事に関連付けて表示します。要約がない記事は「要約未作成」として表示します。
+記事の詳細画面では、article-summaries内のSource-by-source Notesにある本文確認済みのAI要約だけを、MarkdownリンクのURLで取得記事に関連付けて表示します。本文確認: 確認済みがない旧要約や本文未確認項目は表示せず、要約未作成として扱います。
 
 次回以降に作成するAI要約指示書は、取得記事を省略せず、各記事を同じURLへのMarkdownリンク付きで1項目ずつ要約するよう更新しました。このワークフロー定義をn8nへ同期した後の新規要約から、より広く記事単位で表示されます。

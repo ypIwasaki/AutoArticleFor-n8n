@@ -5,7 +5,7 @@
       "parameters": {
         "httpMethod": "POST",
         "path": "talent-index/apply",
-        "responseMode": "lastNode",
+        "responseMode": "responseNode",
         "options": {}
       },
       "type": "n8n-nodes-base.webhook",
@@ -168,6 +168,35 @@
       ],
       "id": "b1000000-0000-4000-8000-000000000011",
       "name": "Upsert Proposed Relations"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const proposal = $('Validate AI Proposal').first().json;\nreturn [{ json: { accepted: true, proposalDate: proposal.proposalDate, counts: proposal.counts } }];"
+      },
+      "id": "f1c8b297-890b-40da-84d3-421ed35ce530",
+      "name": "Build Apply Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        700,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "13ed01e0-95f1-47dd-9d80-87c62c0d0b8c",
+      "name": "Respond to Apply Request",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        940,
+        680
+      ]
     }
   ],
   "connections": {
@@ -202,6 +231,11 @@
           },
           {
             "node": "Prepare Proposed Relations",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Build Apply Response",
             "type": "main",
             "index": 0
           }
@@ -249,6 +283,22 @@
             "index": 0
           }
         ]
+      ]
+    },
+    "Build Apply Response": {
+      "main": [
+        [
+          {
+            "node": "Respond to Apply Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Apply Request": {
+      "main": [
+        []
       ]
     }
   },

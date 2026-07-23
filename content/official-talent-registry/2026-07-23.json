@@ -1,0 +1,5013 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-23T01:31:34Z",
+  "groups": [
+    {
+      "id": "nijisanji",
+      "displayName": "にじさんじ / NIJISANJI EN",
+      "sourceUrl": "https://www.nijisanji.jp/talents",
+      "parser": "nijisanji_next_data",
+      "allowedAffiliations": [
+        "にじさんじ",
+        "NIJISANJI EN"
+      ],
+      "searchEnabledByDefault": false
+    },
+    {
+      "id": "hololive",
+      "displayName": "ホロライブ",
+      "organization": "ホロライブ",
+      "sourceUrl": "https://hololive.hololivepro.com/talents/",
+      "parser": "talent_h3",
+      "searchEnabledByDefault": false
+    },
+    {
+      "id": "holostars",
+      "displayName": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "sourceUrl": "https://holostars.hololivepro.com/talent",
+      "parser": "talent_h3",
+      "searchEnabledByDefault": false
+    },
+    {
+      "id": "vspo",
+      "displayName": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "sourceUrl": "https://vspo.jp/member/",
+      "parser": "vspo_data_name",
+      "searchEnabledByDefault": false
+    },
+    {
+      "id": "aogiri-high-school",
+      "displayName": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "sourceUrl": "https://aogirihighschool.com/",
+      "parser": "aogiri_member_links",
+      "searchEnabledByDefault": false
+    },
+    {
+      "id": "neo-porte",
+      "displayName": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "sourceUrl": "https://neo-porte.jp/member/",
+      "parser": "neo_porte_member_links",
+      "searchEnabledByDefault": false
+    },
+    {
+      "id": "specialite",
+      "displayName": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "sourceUrl": "https://specialite.games/",
+      "parser": "specialite_talent_links",
+      "searchEnabledByDefault": false
+    },
+    {
+      "id": "replay-live",
+      "displayName": "りぷらい！",
+      "organization": "りぷらい！",
+      "sourceUrl": "https://replaylive.jp/member/",
+      "parser": "replay_member_links",
+      "searchEnabledByDefault": false
+    },
+    {
+      "id": "uomusume",
+      "displayName": "うおむすめ",
+      "organization": "うおむすめ",
+      "sourceUrl": "https://uomusume.com/",
+      "parser": "uomusume_character_links",
+      "searchEnabledByDefault": false
+    }
+  ],
+  "talents": [
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "アイア アマレ",
+      "aliases": [
+        "アイア アマレ",
+        "Aia Amare"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/aia-amare",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "アルバーン・ノックス",
+      "aliases": [
+        "アルバーン・ノックス",
+        "Alban Knox"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/alban-knox",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "エナー・アールウェット",
+      "aliases": [
+        "エナー・アールウェット",
+        "Enna Alouette"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/enna-alouette",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "エリーラ ペンドラ",
+      "aliases": [
+        "エリーラ ペンドラ",
+        "Elira Pendora"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/elira-pendora",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "クララ チャームウッド",
+      "aliases": [
+        "クララ チャームウッド",
+        "Klara Charmwood"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/klara-charmwood",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "クロード クローマーク",
+      "aliases": [
+        "クロード クローマーク",
+        "Claude Clawmark"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/claude-clawmark",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "ケイリクス・デボネア",
+      "aliases": [
+        "ケイリクス・デボネア",
+        "Kaelix Debonair"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kaelix-debonair",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "サニー・ブリスコー",
+      "aliases": [
+        "サニー・ブリスコー",
+        "Sonny Brisko"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/sonny-brisko",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "ジール・ギンジョウカ",
+      "aliases": [
+        "ジール・ギンジョウカ",
+        "Zeal Ginjoka"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/zeal-ginjoka",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "スカーレ ヨナグニ",
+      "aliases": [
+        "スカーレ ヨナグニ",
+        "Scarle Yonaguni"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/scarle-yonaguni",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "セイブル",
+      "aliases": [
+        "セイブル",
+        "Seible"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/seible",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "ドッピオ ドロップサイト",
+      "aliases": [
+        "ドッピオ ドロップサイト",
+        "Doppio Dropscythe"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/doppio-dropscythe",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "フィナーナ 竜宮",
+      "aliases": [
+        "フィナーナ 竜宮",
+        "Finana Ryugu"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/finana-ryugu",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "フリオドール",
+      "aliases": [
+        "フリオドール",
+        "Freodore"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/freodore",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "ベンタクロウ ブリンガー",
+      "aliases": [
+        "ベンタクロウ ブリンガー",
+        "Vantacrow Bringer"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/vantacrow-bringer",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "ペトラ グリン",
+      "aliases": [
+        "ペトラ グリン",
+        "Petra Gurin"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/petra-gurin",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "マリア マリオネット",
+      "aliases": [
+        "マリア マリオネット",
+        "Maria Marionette"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/maria-marionette",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "ミリー・パフェ",
+      "aliases": [
+        "ミリー・パフェ",
+        "Millie Parfait"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/millie-parfait",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "ユウ Q ウィルソン",
+      "aliases": [
+        "ユウ Q ウィルソン",
+        "Yu Q. Wilson"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/yu-q-wilson",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "ルカ・カネシロ",
+      "aliases": [
+        "ルカ・カネシロ",
+        "Luca Kaneshiro"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/luca-kaneshiro",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "レン ゾット",
+      "aliases": [
+        "レン ゾット",
+        "Ren Zotto"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ren-zotto",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "ヴェザリウス バンデージ",
+      "aliases": [
+        "ヴェザリウス バンデージ",
+        "Vezalius Bandage"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/vezalius-bandage",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "ヴェール ヴァーミリオン",
+      "aliases": [
+        "ヴェール ヴァーミリオン",
+        "Ver Vermillion"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ver-vermillion",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "ヴォックス・アクマ",
+      "aliases": [
+        "ヴォックス・アクマ",
+        "Vox Akuma"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/vox-akuma",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "凉舞 バレンウォート",
+      "aliases": [
+        "凉舞 バレンウォート",
+        "Ryoma Barrenwort"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ryoma-barrenwort",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "浮奇・ヴィオレタ",
+      "aliases": [
+        "浮奇・ヴィオレタ",
+        "Uki Violeta"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/uki-violeta",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "狂蘭 メロコ",
+      "aliases": [
+        "狂蘭 メロコ",
+        "Meloco Kyoran"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/meloco-kyoran",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "NIJISANJI EN",
+      "display_name": "闇ノシュウ",
+      "aliases": [
+        "闇ノシュウ",
+        "Shu Yamino"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/shu-yamino",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "aogiri-high-school",
+      "group_name": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "display_name": "うる虎がーる",
+      "aliases": [
+        "うる虎がーる"
+      ],
+      "profile_url": "https://aogirihighschool.com/aogirihighschool/members/urutoragaru",
+      "source_url": "https://aogirihighschool.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "aogiri-high-school",
+      "group_name": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "display_name": "ぷわぷわぽぷら",
+      "aliases": [
+        "ぷわぷわぽぷら"
+      ],
+      "profile_url": "https://aogirihighschool.com/aogirihighschool/members/puwapuwa-popura",
+      "source_url": "https://aogirihighschool.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "aogiri-high-school",
+      "group_name": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "display_name": "エトラ",
+      "aliases": [
+        "エトラ"
+      ],
+      "profile_url": "https://aogirihighschool.com/aogirihighschool/members/etra",
+      "source_url": "https://aogirihighschool.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "aogiri-high-school",
+      "group_name": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "display_name": "八十科むじな",
+      "aliases": [
+        "八十科むじな"
+      ],
+      "profile_url": "https://aogirihighschool.com/aogirihighschool/members/yasoshina-mujina",
+      "source_url": "https://aogirihighschool.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "aogiri-high-school",
+      "group_name": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "display_name": "千代浦蝶美",
+      "aliases": [
+        "千代浦蝶美"
+      ],
+      "profile_url": "https://aogirihighschool.com/aogirihighschool/members/chiyoura-chiyomi",
+      "source_url": "https://aogirihighschool.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "aogiri-high-school",
+      "group_name": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "display_name": "大代真白",
+      "aliases": [
+        "大代真白"
+      ],
+      "profile_url": "https://aogirihighschool.com/aogirihighschool/members/oshiro-mashiro",
+      "source_url": "https://aogirihighschool.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "aogiri-high-school",
+      "group_name": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "display_name": "山黒音玄",
+      "aliases": [
+        "山黒音玄"
+      ],
+      "profile_url": "https://aogirihighschool.com/aogirihighschool/members/yamaguro-nekuro",
+      "source_url": "https://aogirihighschool.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "aogiri-high-school",
+      "group_name": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "display_name": "我部りえる",
+      "aliases": [
+        "我部りえる"
+      ],
+      "profile_url": "https://aogirihighschool.com/aogirihighschool/members/gabu-rieru",
+      "source_url": "https://aogirihighschool.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "aogiri-high-school",
+      "group_name": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "display_name": "春雨麗女",
+      "aliases": [
+        "春雨麗女"
+      ],
+      "profile_url": "https://aogirihighschool.com/aogirihighschool/members/harusame-urame",
+      "source_url": "https://aogirihighschool.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "aogiri-high-school",
+      "group_name": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "display_name": "月赴ゐぶき",
+      "aliases": [
+        "月赴ゐぶき"
+      ],
+      "profile_url": "https://aogirihighschool.com/aogirihighschool/members/tsukiyuki-ibuki",
+      "source_url": "https://aogirihighschool.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "aogiri-high-school",
+      "group_name": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "display_name": "栗駒こまる",
+      "aliases": [
+        "栗駒こまる"
+      ],
+      "profile_url": "https://aogirihighschool.com/aogirihighschool/members/kurikoma-komaru",
+      "source_url": "https://aogirihighschool.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "aogiri-high-school",
+      "group_name": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "display_name": "水菜月夏希",
+      "aliases": [
+        "水菜月夏希"
+      ],
+      "profile_url": "https://aogirihighschool.com/aogirihighschool/members/minazuki-natsuki",
+      "source_url": "https://aogirihighschool.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "aogiri-high-school",
+      "group_name": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "display_name": "石狩あかり",
+      "aliases": [
+        "石狩あかり"
+      ],
+      "profile_url": "https://aogirihighschool.com/aogirihighschool/members/ishikari-akari",
+      "source_url": "https://aogirihighschool.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "aogiri-high-school",
+      "group_name": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "display_name": "萌実",
+      "aliases": [
+        "萌実"
+      ],
+      "profile_url": "https://aogirihighschool.com/aogirihighschool/members/moemi",
+      "source_url": "https://aogirihighschool.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "aogiri-high-school",
+      "group_name": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "display_name": "音霊魂子",
+      "aliases": [
+        "音霊魂子"
+      ],
+      "profile_url": "https://aogirihighschool.com/aogirihighschool/members/otodama-tamako",
+      "source_url": "https://aogirihighschool.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "uomusume",
+      "group_name": "うおむすめ",
+      "organization": "うおむすめ",
+      "display_name": "桃川ニジマス",
+      "aliases": [
+        "桃川ニジマス"
+      ],
+      "profile_url": "https://uomusume.com/character/nijimasu/",
+      "source_url": "https://uomusume.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "uomusume",
+      "group_name": "うおむすめ",
+      "organization": "うおむすめ",
+      "display_name": "紅波マダイ",
+      "aliases": [
+        "紅波マダイ"
+      ],
+      "profile_url": "https://uomusume.com/character/madai/",
+      "source_url": "https://uomusume.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "uomusume",
+      "group_name": "うおむすめ",
+      "organization": "うおむすめ",
+      "display_name": "黄金マアジ",
+      "aliases": [
+        "黄金マアジ"
+      ],
+      "profile_url": "https://uomusume.com/character/maaji/",
+      "source_url": "https://uomusume.com/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "あいうらら",
+      "aliases": [
+        "あいうらら"
+      ],
+      "profile_url": "https://specialite.games/talents/urara-ai/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "ミーニャ・スコット",
+      "aliases": [
+        "ミーニャ・スコット"
+      ],
+      "profile_url": "https://specialite.games/talents/minya-scott/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "ロロ・オリフィス",
+      "aliases": [
+        "ロロ・オリフィス"
+      ],
+      "profile_url": "https://specialite.games/talents/lolo-orifice/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "夏河ひのり",
+      "aliases": [
+        "夏河ひのり"
+      ],
+      "profile_url": "https://specialite.games/talents/hinori-natsukawa/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "夢見むむ",
+      "aliases": [
+        "夢見むむ"
+      ],
+      "profile_url": "https://specialite.games/talents/mumu-yumemi/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "孫守まごも",
+      "aliases": [
+        "孫守まごも"
+      ],
+      "profile_url": "https://specialite.games/talents/magomo-magomori/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "安心院みさ",
+      "aliases": [
+        "安心院みさ"
+      ],
+      "profile_url": "https://specialite.games/talents/misa-anshinin/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "小鳥谷なの",
+      "aliases": [
+        "小鳥谷なの"
+      ],
+      "profile_url": "https://specialite.games/talents/nano-kozuya/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "尾幌こま",
+      "aliases": [
+        "尾幌こま"
+      ],
+      "profile_url": "https://specialite.games/talents/koma-oboro/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "星屑ぷらね",
+      "aliases": [
+        "星屑ぷらね"
+      ],
+      "profile_url": "https://specialite.games/talents/planei-hoshikuzu/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "智念せいら",
+      "aliases": [
+        "智念せいら"
+      ],
+      "profile_url": "https://specialite.games/talents/seira-chinen/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "本阿弥あずさ",
+      "aliases": [
+        "本阿弥あずさ"
+      ],
+      "profile_url": "https://specialite.games/talents/azusa-honami/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "殴須賀ポコル",
+      "aliases": [
+        "殴須賀ポコル"
+      ],
+      "profile_url": "https://specialite.games/talents/pokoru-bokosuka/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "王猛ちたむ",
+      "aliases": [
+        "王猛ちたむ"
+      ],
+      "profile_url": "https://specialite.games/talents/chitamu-omo/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "紙束ねるこ",
+      "aliases": [
+        "紙束ねるこ"
+      ],
+      "profile_url": "https://specialite.games/talents/neruko-kammitaba/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "終末むくろ",
+      "aliases": [
+        "終末むくろ"
+      ],
+      "profile_url": "https://specialite.games/talents/mukuro-owarino/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "藍坂しう",
+      "aliases": [
+        "藍坂しう"
+      ],
+      "profile_url": "https://specialite.games/talents/siu-aisaka/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "蹄音かさね",
+      "aliases": [
+        "蹄音かさね"
+      ],
+      "profile_url": "https://specialite.games/talents/kasane-teion/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "雪芽るみ",
+      "aliases": [
+        "雪芽るみ"
+      ],
+      "profile_url": "https://specialite.games/talents/lumi-yukime/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "領国つかさ",
+      "aliases": [
+        "領国つかさ"
+      ],
+      "profile_url": "https://specialite.games/talents/tsukasa-ryogoku/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "specialite",
+      "group_name": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "display_name": "鬼ノめる",
+      "aliases": [
+        "鬼ノめる"
+      ],
+      "profile_url": "https://specialite.games/talents/meru-onino/",
+      "source_url": "https://specialite.games/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "Rei7",
+      "aliases": [
+        "Rei7",
+        "Reina"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/reina",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "えま★おうがすと",
+      "aliases": [
+        "えま★おうがすと",
+        "Emma August"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/emma-august",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "える",
+      "aliases": [
+        "える",
+        "Elu"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/elu",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "でびでび・でびる",
+      "aliases": [
+        "でびでび・でびる",
+        "Debidebi Debiru"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/debidebi-debiru",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ぷりん・らら・もーど",
+      "aliases": [
+        "ぷりん・らら・もーど",
+        "Purin Lala Mode"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/purin-lala-mode",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ぽめろ・ぱんち",
+      "aliases": [
+        "ぽめろ・ぱんち",
+        "Pomelo Punch"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/pomelo-punch",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ましろ爻",
+      "aliases": [
+        "ましろ爻",
+        "Mashiro Meme"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/meme-mashiro",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "アルス・アルマル",
+      "aliases": [
+        "アルス・アルマル",
+        "Ars Almal"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ars-almal",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "アンジュ・カトリーナ",
+      "aliases": [
+        "アンジュ・カトリーナ",
+        "Ange Katrina"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ange-katrina",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "イ ロハ",
+      "aliases": [
+        "イ ロハ",
+        "Lee Roha"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/lee-roha",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "イブラヒム",
+      "aliases": [
+        "イブラヒム",
+        "Ibrahim"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ibrahim",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "エクス・アルビオ",
+      "aliases": [
+        "エクス・アルビオ",
+        "Ex Albio"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ex-albio",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "エトナ クリムソン",
+      "aliases": [
+        "エトナ クリムソン",
+        "Etna Crimson"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/etna-crimson",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "エリー・コニファー",
+      "aliases": [
+        "エリー・コニファー",
+        "Eli Conifer"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/eli-conifer",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "オ ジユ",
+      "aliases": [
+        "オ ジユ",
+        "Oh Jiyu"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/oh-jiyu",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "オリバー・エバンス",
+      "aliases": [
+        "オリバー・エバンス",
+        "Oliver Evans"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/oliver-evans",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ガオン",
+      "aliases": [
+        "ガオン",
+        "Gaon"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/gaon",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ギルザレンⅢ世",
+      "aliases": [
+        "ギルザレンⅢ世",
+        "Gilzaren III"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/gilzaren-iii",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "シェリン・バーガンディ",
+      "aliases": [
+        "シェリン・バーガンディ",
+        "Shellin Burgundy"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/shellin-burgundy",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "シスター・クレア",
+      "aliases": [
+        "シスター・クレア",
+        "Sister Claire"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/sister-claire",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ジョー・力一",
+      "aliases": [
+        "ジョー・力一",
+        "Joe Rikiichi"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/joe-rikiichi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "セフィナ",
+      "aliases": [
+        "セフィナ",
+        "Seffyna"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/seffyna",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "セラフ・ダズルガーデン",
+      "aliases": [
+        "セラフ・ダズルガーデン",
+        "Seraph Dazzlegarden"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/seraph-dazzlegarden",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ソ ナギ",
+      "aliases": [
+        "ソ ナギ",
+        "So Nagi"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/so-nagi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ソフィア・ヴァレンタイン",
+      "aliases": [
+        "ソフィア・ヴァレンタイン",
+        "Sophia Valentine"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/sophia-valentine",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "デレム カド",
+      "aliases": [
+        "デレム カド",
+        "Derem Kado"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/derem-kado",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ドーラ",
+      "aliases": [
+        "ドーラ",
+        "Dola"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/dola",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ナ セラ",
+      "aliases": [
+        "ナ セラ",
+        "Na Sera"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/na-sera",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ナギサ アルシニア",
+      "aliases": [
+        "ナギサ アルシニア",
+        "Nagisa Arcinia"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/nagisa-arcinia",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ニュイ・ソシエール",
+      "aliases": [
+        "ニュイ・ソシエール",
+        "Nui Sociere"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/nui-sociere",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ハ ユン",
+      "aliases": [
+        "ハ ユン",
+        "Ha Yun"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ha-yun",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ハナ マキア",
+      "aliases": [
+        "ハナ マキア",
+        "Hana Macchia"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/hana-macchia",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "フミ",
+      "aliases": [
+        "フミ",
+        "Fumi"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/fumi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "フレン・E・ルスタリオ",
+      "aliases": [
+        "フレン・E・ルスタリオ",
+        "Furen E Lustario"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/furen-e-lustario",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ベルモンド・バンデラス",
+      "aliases": [
+        "ベルモンド・バンデラス",
+        "Belmond Banderas"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/belmond-banderas",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ミラン・ケストレル",
+      "aliases": [
+        "ミラン・ケストレル",
+        "Milan Kestrel"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/milan-kestrel",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ミン スゥーハ",
+      "aliases": [
+        "ミン スゥーハ",
+        "Min Suha"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/min-suha",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "モイラ",
+      "aliases": [
+        "モイラ",
+        "Moira"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/moira",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ヤン ナリ",
+      "aliases": [
+        "ヤン ナリ",
+        "Yang Nari"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/yang-nari",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ライ ガリレイ",
+      "aliases": [
+        "ライ ガリレイ",
+        "Rai Galilei"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/rai-galilei",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ライラ アルストロエメリア",
+      "aliases": [
+        "ライラ アルストロエメリア",
+        "Layla Alstroemeria"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/layla-alstroemeria",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ラトナ・プティ",
+      "aliases": [
+        "ラトナ・プティ",
+        "Ratna Petit"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ratna-petit",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "リゼ・ヘルエスタ",
+      "aliases": [
+        "リゼ・ヘルエスタ",
+        "Lize Helesta"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/lize-helesta",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "リュ ハリ",
+      "aliases": [
+        "リュ ハリ",
+        "Ryu Hari"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ryu-hari",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ルイス・キャミー",
+      "aliases": [
+        "ルイス・キャミー",
+        "Luis Cammy"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/luis-cammy",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ルンルン",
+      "aliases": [
+        "ルンルン",
+        "Lunlun"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/lunlun",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "レイン・パターソン",
+      "aliases": [
+        "レイン・パターソン",
+        "Lain Paterson"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/lain-paterson",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "レオス・ヴィンセント",
+      "aliases": [
+        "レオス・ヴィンセント",
+        "Leos Vincent"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/leos-vincent",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "レヨン",
+      "aliases": [
+        "レヨン",
+        "Rayon"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/rayon",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "レヴィ・エリファ",
+      "aliases": [
+        "レヴィ・エリファ",
+        "Levi Elipha"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/levi-elipha",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "ローレン・イロアス",
+      "aliases": [
+        "ローレン・イロアス",
+        "Lauren Iroas"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/lauren-iroas",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "一橋綾人",
+      "aliases": [
+        "一橋綾人",
+        "Hitotsubashi Ayato"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ayato-hitotsubashi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "七瀬すず菜",
+      "aliases": [
+        "七瀬すず菜",
+        "Nanase Suzuna"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/suzuna-nanase",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "三枝明那",
+      "aliases": [
+        "三枝明那",
+        "Saegusa Akina"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/akina-saegusa",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "不破湊",
+      "aliases": [
+        "不破湊",
+        "Fuwa Minato"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/minato-fuwa",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "九里詠太",
+      "aliases": [
+        "九里詠太",
+        "Kuri Eita"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/eita-kuri",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "五十嵐梨花",
+      "aliases": [
+        "五十嵐梨花",
+        "Igarashi Rika"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/rika-igarashi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "五木左京",
+      "aliases": [
+        "五木左京",
+        "Itsuki Sakyo"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/sakyo-itsuki",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "伊波ライ",
+      "aliases": [
+        "伊波ライ",
+        "Inami Rai"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/rai-inami",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "伏見ガク",
+      "aliases": [
+        "伏見ガク",
+        "Fushimi Gaku"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/gaku-fushimi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "佐伯イッテツ",
+      "aliases": [
+        "佐伯イッテツ",
+        "Saiki Ittetsu"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ittetsu-saiki",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "倉持めると",
+      "aliases": [
+        "倉持めると",
+        "Kuramochi Meruto"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/meruto-kuramochi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "健屋花那",
+      "aliases": [
+        "健屋花那",
+        "Sukoya Kana"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kana-sukoya",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "先斗寧",
+      "aliases": [
+        "先斗寧",
+        "Ponto Nei"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/nei-ponto",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "剣持刀也",
+      "aliases": [
+        "剣持刀也",
+        "Kenmochi Toya"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/toya-kenmochi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "加賀美ハヤト",
+      "aliases": [
+        "加賀美ハヤト",
+        "Kagami Hayato"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/hayato-kagami",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "北小路ヒスイ",
+      "aliases": [
+        "北小路ヒスイ",
+        "Kitakoji Hisui"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/hisui-kitakoji",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "北見遊征",
+      "aliases": [
+        "北見遊征",
+        "Kitami Yusei"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/yusei-kitami",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "十河ののは",
+      "aliases": [
+        "十河ののは",
+        "Togawa Nonoha"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/nonoha-togawa",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "千凛あゆむ",
+      "aliases": [
+        "千凛あゆむ",
+        "Senri Ayumu"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ayumu-senri",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "卯月コウ",
+      "aliases": [
+        "卯月コウ",
+        "Uzuki Kou"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kou-uzuki",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "叢雲カゲツ",
+      "aliases": [
+        "叢雲カゲツ",
+        "Murakumo Kagetsu"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kagetsu-murakumo",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "叶",
+      "aliases": [
+        "叶",
+        "Kanae"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kanae",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "司賀りこ",
+      "aliases": [
+        "司賀りこ",
+        "Shiga Riko"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/riko-shiga",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "周央サンゴ",
+      "aliases": [
+        "周央サンゴ",
+        "Suo Sango"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/sango-suo",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "四季凪アキラ",
+      "aliases": [
+        "四季凪アキラ",
+        "Shikinagi Akira"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/akira-shikinagi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "城瀬いすみ",
+      "aliases": [
+        "城瀬いすみ",
+        "Shirose Isumi"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/isumi-shirose",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "塚原大地",
+      "aliases": [
+        "塚原大地",
+        "Tsukahara Daichi"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/daichi-tsukahara",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "壱百満天原サロメ",
+      "aliases": [
+        "壱百満天原サロメ",
+        "Hyakumantenbara Salome"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/salome-hyakumantenbara",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "夕陽リリ",
+      "aliases": [
+        "夕陽リリ",
+        "Yuhi Riri"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/riri-yuhi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "夜牛詩乃",
+      "aliases": [
+        "夜牛詩乃",
+        "Yagyu Shino"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/shino-yagyu",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "夜見れな",
+      "aliases": [
+        "夜見れな",
+        "Yorumi Rena"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/rena-yorumi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "夢月ロア",
+      "aliases": [
+        "夢月ロア",
+        "Yuzuki Roa"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/roa-yuzuki",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "夢追翔",
+      "aliases": [
+        "夢追翔",
+        "Yumeoi Kakeru"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kakeru-yumeoi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "天ヶ瀬むゆ",
+      "aliases": [
+        "天ヶ瀬むゆ",
+        "Amagase Muyu"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/muyu-amagase",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "天宮こころ",
+      "aliases": [
+        "天宮こころ",
+        "Amamiya Kokoro"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kokoro-amamiya",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "宇佐美リト",
+      "aliases": [
+        "宇佐美リト",
+        "Usami Rito"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/rito-usami",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "宇志海いちご",
+      "aliases": [
+        "宇志海いちご",
+        "Ushimi Ichigo"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ichigo-ushimi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "家長むぎ",
+      "aliases": [
+        "家長むぎ",
+        "Ienaga Mugi"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/mugi-ienaga",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "小々波いるか",
+      "aliases": [
+        "小々波いるか",
+        "Kokonami Iruka"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/iruka-kokonami",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "小柳ロウ",
+      "aliases": [
+        "小柳ロウ",
+        "Koyanagi Rou"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/rou-koyanagi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "小清水透",
+      "aliases": [
+        "小清水透",
+        "Koshimizu Toru"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/toru-koshimizu",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "山神カルタ",
+      "aliases": [
+        "山神カルタ",
+        "Yamagami Karuta"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/karuta-yamagami",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "弦月藤士郎",
+      "aliases": [
+        "弦月藤士郎",
+        "Genzuki Tojiro"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/tojiro-genzuki",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "御子神琴音",
+      "aliases": [
+        "御子神琴音",
+        "Mikogami Kotone"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kotone-mikogami",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "愛園愛美",
+      "aliases": [
+        "愛園愛美",
+        "Aizono Manami"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/manami-aizono",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "戌亥とこ",
+      "aliases": [
+        "戌亥とこ",
+        "Inui Toko"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/toko-inui",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "文野環",
+      "aliases": [
+        "文野環",
+        "Fumino Tamaki"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/tamaki-fumino",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "早乙女ベリー",
+      "aliases": [
+        "早乙女ベリー",
+        "Saotome Berry"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/berry-saotome",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "早瀬走",
+      "aliases": [
+        "早瀬走",
+        "Hayase Sou"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/sou-hayase",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "明楽レイ",
+      "aliases": [
+        "明楽レイ",
+        "Akira Ray"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/akira-ray",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "星導ショウ",
+      "aliases": [
+        "星導ショウ",
+        "Hoshirube Sho"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/sho-hoshirube",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "星川サラ",
+      "aliases": [
+        "星川サラ",
+        "Hoshikawa Sara"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/sara-hoshikawa",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "春崎エアル",
+      "aliases": [
+        "春崎エアル",
+        "Harusaki Air"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/air-harusaki",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "月ノ美兎",
+      "aliases": [
+        "月ノ美兎",
+        "Tsukino Mito"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/mito-tsukino",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "本間ひまわり",
+      "aliases": [
+        "本間ひまわり",
+        "Honma Himawari"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/himawari-honma",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "来栖夏芽",
+      "aliases": [
+        "来栖夏芽",
+        "Kurusu Natsume"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/natsume-kurusu",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "東堂コハク",
+      "aliases": [
+        "東堂コハク",
+        "Todo Kohaku"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kohaku-todo",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "栞葉るり",
+      "aliases": [
+        "栞葉るり",
+        "Shioriha Ruri"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ruri-shioriha",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "桜凛月",
+      "aliases": [
+        "桜凛月",
+        "Sakura Ritsuki"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ritsuki-sakura",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "梢桃音",
+      "aliases": [
+        "梢桃音",
+        "Kozue Mone"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/mone-kozue",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "森中花咲",
+      "aliases": [
+        "森中花咲",
+        "Morinaka Kazaki"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kazaki-morinaka",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "椎名唯華",
+      "aliases": [
+        "椎名唯華",
+        "Shiina Yuika"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/yuika-shiina",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "榊ネス",
+      "aliases": [
+        "榊ネス",
+        "Sakaki Ness"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ness-sakaki",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "樋口楓",
+      "aliases": [
+        "樋口楓",
+        "Higuchi Kaede"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kaede-higuchi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "水面まどか",
+      "aliases": [
+        "水面まどか",
+        "Minamo Madoka"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/madoka-minamo",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "海妹四葉",
+      "aliases": [
+        "海妹四葉",
+        "Umise Yotsuha"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/yotsuha-umise",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "渋谷ハジメ",
+      "aliases": [
+        "渋谷ハジメ",
+        "Shibuya Hajime"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/hajime-shibuya",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "渚トラウト",
+      "aliases": [
+        "渚トラウト",
+        "Nagisa Trout"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/trout-nagisa",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "渡会雲雀",
+      "aliases": [
+        "渡会雲雀",
+        "Watarai Hibari"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/hibari-watarai",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "物述有栖",
+      "aliases": [
+        "物述有栖",
+        "Mononobe Alice"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/alice-mononobe",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "猫屋敷美紅",
+      "aliases": [
+        "猫屋敷美紅",
+        "Nekoyashiki Miku"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/miku-nekoyashiki",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "獅子堂あかり",
+      "aliases": [
+        "獅子堂あかり",
+        "Shishido Akari"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/akari-shishido",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "珠乃井ナナ",
+      "aliases": [
+        "珠乃井ナナ",
+        "Tamanoi Nana"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/nana-tamanoi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "甲斐田晴",
+      "aliases": [
+        "甲斐田晴",
+        "Kaida Haru"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/haru-kaida",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "男虎",
+      "aliases": [
+        "男虎",
+        "Onotora"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/onotora",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "町田ちま",
+      "aliases": [
+        "町田ちま",
+        "Machita Chima"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/chima-machita",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "白砂あやね",
+      "aliases": [
+        "白砂あやね",
+        "Shirasa Ayane"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ayane-shirasa",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "白雪巴",
+      "aliases": [
+        "白雪巴",
+        "Shirayuki Tomoe"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/tomoe-shirayuki",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "皇れお",
+      "aliases": [
+        "皇れお",
+        "Sumeragi Reo"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/reo-sumeragi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "矢車りね",
+      "aliases": [
+        "矢車りね",
+        "Yaguruma Rine"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/rine-yaguruma",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "石神のぞみ",
+      "aliases": [
+        "石神のぞみ",
+        "Ishigami Nozomi"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/nozomi-ishigami",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "社築",
+      "aliases": [
+        "社築",
+        "Yashiro Kizuku"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kizuku-yashiro",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "神田笑一",
+      "aliases": [
+        "神田笑一",
+        "Kanda Shoichi"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/shoichi-kanda",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "空星きらめ",
+      "aliases": [
+        "空星きらめ",
+        "Sorahoshi Kirame"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kirame-sorahoshi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "立伝都々",
+      "aliases": [
+        "立伝都々",
+        "Tachitsute Toto"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/toto-tachitsute",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "竜胆尊",
+      "aliases": [
+        "竜胆尊",
+        "Rindou Mikoto"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/mikoto-rindou",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "笹木咲",
+      "aliases": [
+        "笹木咲",
+        "Sasaki Saku"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/saku-sasaki",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "篠宮ゆの",
+      "aliases": [
+        "篠宮ゆの",
+        "Shinomiya Yuno"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/yuno-shinomiya",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "綺沙良",
+      "aliases": [
+        "綺沙良",
+        "Kisara"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kisara",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "緋八マナ",
+      "aliases": [
+        "緋八マナ",
+        "Hibachi Mana"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/mana-hibachi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "緑仙",
+      "aliases": [
+        "緑仙",
+        "Ryushen"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/ryushen",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "舞元啓介",
+      "aliases": [
+        "舞元啓介",
+        "Maimoto Keisuke"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/keisuke-maimoto",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "花畑チャイカ",
+      "aliases": [
+        "花畑チャイカ",
+        "Hanabatake Chaika"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/chaika-hanabatake",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "花籠つばさ",
+      "aliases": [
+        "花籠つばさ",
+        "Hanakago Tsubasa"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/tsubasa-hanakago",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "葉加瀬冬雪",
+      "aliases": [
+        "葉加瀬冬雪",
+        "Hakase Fuyuki"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/fuyuki-hakase",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "葉山舞鈴",
+      "aliases": [
+        "葉山舞鈴",
+        "Hayama Marin"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/marin-hayama",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "葛葉",
+      "aliases": [
+        "葛葉",
+        "Kuzuha"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kuzuha",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "蝸堂みかる",
+      "aliases": [
+        "蝸堂みかる",
+        "Kadou Mikaru"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/mikaru-kadou",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "西園チグサ",
+      "aliases": [
+        "西園チグサ",
+        "Nishizono Chigusa"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/chigusa-nishizono",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "語部紡",
+      "aliases": [
+        "語部紡",
+        "Kataribe Tsumugu"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/tsumugu-kataribe",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "赤城ウェン",
+      "aliases": [
+        "赤城ウェン",
+        "Akagi Wen"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/wen-akagi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "赤羽葉子",
+      "aliases": [
+        "赤羽葉子",
+        "Akabane Youko"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/youko-akabane",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "轟京子",
+      "aliases": [
+        "轟京子",
+        "Todoroki Kyoko"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kyoko-todoroki",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "酒寄颯馬",
+      "aliases": [
+        "酒寄颯馬",
+        "Sakayori Soma"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/soma-sakayori",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "鈴原るる",
+      "aliases": [
+        "鈴原るる",
+        "Suzuhara Lulu"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/lulu-suzuhara",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "鈴木勝",
+      "aliases": [
+        "鈴木勝",
+        "Suzuki Masaru"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/masaru-suzuki",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "鏑木ろこ",
+      "aliases": [
+        "鏑木ろこ",
+        "Kaburaki Roco"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/roco-kaburaki",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "長尾景",
+      "aliases": [
+        "長尾景",
+        "Nagao Kei"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kei-nagao",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "雨森小夜",
+      "aliases": [
+        "雨森小夜",
+        "Amemori Sayo"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/sayo-amemori",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "雪城眞尋",
+      "aliases": [
+        "雪城眞尋",
+        "Yukishiro Mahiro"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/mahiro-yukishiro",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "雲母たまこ",
+      "aliases": [
+        "雲母たまこ",
+        "Kirara Tamako"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/tamako-kirara",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "静凛",
+      "aliases": [
+        "静凛",
+        "Shizuka Rin"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/rin-shizuka",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "風楽奏斗",
+      "aliases": [
+        "風楽奏斗",
+        "Fura Kanato"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kanato-fura",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "飛鳥ひな",
+      "aliases": [
+        "飛鳥ひな",
+        "Asuka Hina"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/hina-asuka",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "魁星",
+      "aliases": [
+        "魁星",
+        "Kaisei"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/kaisei",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "魔使マオ",
+      "aliases": [
+        "魔使マオ",
+        "Matsukai Mao"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/mao-matsukai",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "魔界ノりりむ",
+      "aliases": [
+        "魔界ノりりむ",
+        "Makaino Ririmu"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/makaino-ririmu",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "鷹宮リオン",
+      "aliases": [
+        "鷹宮リオン",
+        "Takamiya Rion"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/rion-takamiya",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "nijisanji",
+      "group_name": "にじさんじ / NIJISANJI EN",
+      "organization": "にじさんじ",
+      "display_name": "黒井しば",
+      "aliases": [
+        "黒井しば",
+        "Kuroi Shiba"
+      ],
+      "profile_url": "https://www.nijisanji.jp/talents/shiba-kuroi",
+      "source_url": "https://www.nijisanji.jp/talents",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "ソラリリコ",
+      "aliases": [
+        "ソラリリコ"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-riko",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "一ノ瀬うるは",
+      "aliases": [
+        "一ノ瀬うるは"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-uruha",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "兎咲ミミ",
+      "aliases": [
+        "兎咲ミミ"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-mimi",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "八雲べに",
+      "aliases": [
+        "八雲べに"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-beni",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "千燈ゆうひ",
+      "aliases": [
+        "千燈ゆうひ"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-yuuhi",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "地崎ジラ",
+      "aliases": [
+        "地崎ジラ"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-jira",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "夜乃くろむ",
+      "aliases": [
+        "夜乃くろむ"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-kuromu",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "夢野あかり",
+      "aliases": [
+        "夢野あかり"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-akari",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "如月れん",
+      "aliases": [
+        "如月れん"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-ren",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "小森めと",
+      "aliases": [
+        "小森めと"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-met",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "小雀とと",
+      "aliases": [
+        "小雀とと"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-toto",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "梅園ジュノ",
+      "aliases": [
+        "梅園ジュノ"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-juno",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "橘ひなの",
+      "aliases": [
+        "橘ひなの"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-hinano",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "涼上エリス",
+      "aliases": [
+        "涼上エリス"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-eris",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "猫汰つな",
+      "aliases": [
+        "猫汰つな"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-tsuna",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "甘結もか",
+      "aliases": [
+        "甘結もか"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-moka",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "白波らむね",
+      "aliases": [
+        "白波らむね"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-ramune",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "神成きゅぴ",
+      "aliases": [
+        "神成きゅぴ"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-qpi",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "空澄セナ",
+      "aliases": [
+        "空澄セナ"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-sena",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "紡木こかげ",
+      "aliases": [
+        "紡木こかげ"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-kokage",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "紫宮るな",
+      "aliases": [
+        "紫宮るな"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-runa",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "美暮ナリン",
+      "aliases": [
+        "美暮ナリン"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-narin",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "胡桃のあ",
+      "aliases": [
+        "胡桃のあ"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-noah",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "花芽すみれ",
+      "aliases": [
+        "花芽すみれ"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-sumire",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "花芽なずな",
+      "aliases": [
+        "花芽なずな"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-nazuna",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "英リサ",
+      "aliases": [
+        "英リサ"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-lisa",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "藍沢エマ",
+      "aliases": [
+        "藍沢エマ"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-ema",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "蝶屋はなび",
+      "aliases": [
+        "蝶屋はなび"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-hanabi",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "銀城サイネ",
+      "aliases": [
+        "銀城サイネ"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-saine",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "青月レミア",
+      "aliases": [
+        "青月レミア"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-remia",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "黒刃アリヤ",
+      "aliases": [
+        "黒刃アリヤ"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-arya",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "vspo",
+      "group_name": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "display_name": "龍巻ちせ",
+      "aliases": [
+        "龍巻ちせ"
+      ],
+      "profile_url": "https://vspo.jp/member/#member-chise",
+      "source_url": "https://vspo.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "replay-live",
+      "group_name": "りぷらい！",
+      "organization": "りぷらい！",
+      "display_name": "あまね星歌",
+      "aliases": [
+        "あまね星歌"
+      ],
+      "profile_url": "https://replaylive.jp/member_list/amane-seika/",
+      "source_url": "https://replaylive.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "replay-live",
+      "group_name": "りぷらい！",
+      "organization": "りぷらい！",
+      "display_name": "はみぃ",
+      "aliases": [
+        "はみぃ"
+      ],
+      "profile_url": "https://replaylive.jp/member_list/hamii/",
+      "source_url": "https://replaylive.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "replay-live",
+      "group_name": "りぷらい！",
+      "organization": "りぷらい！",
+      "display_name": "わお",
+      "aliases": [
+        "わお"
+      ],
+      "profile_url": "https://replaylive.jp/member_list/wao/",
+      "source_url": "https://replaylive.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "replay-live",
+      "group_name": "りぷらい！",
+      "organization": "りぷらい！",
+      "display_name": "モーティ･アストラベータ",
+      "aliases": [
+        "モーティ･アストラベータ"
+      ],
+      "profile_url": "https://replaylive.jp/member_list/morty-astravete/",
+      "source_url": "https://replaylive.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "replay-live",
+      "group_name": "りぷらい！",
+      "organization": "りぷらい！",
+      "display_name": "保ノ花めるる",
+      "aliases": [
+        "保ノ花めるる"
+      ],
+      "profile_url": "https://replaylive.jp/member_list/meruru-honoka/",
+      "source_url": "https://replaylive.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "replay-live",
+      "group_name": "りぷらい！",
+      "organization": "りぷらい！",
+      "display_name": "夢咲あいす",
+      "aliases": [
+        "夢咲あいす"
+      ],
+      "profile_url": "https://replaylive.jp/member_list/yumesaki-aisu/",
+      "source_url": "https://replaylive.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "replay-live",
+      "group_name": "りぷらい！",
+      "organization": "りぷらい！",
+      "display_name": "如月ぽて",
+      "aliases": [
+        "如月ぽて"
+      ],
+      "profile_url": "https://replaylive.jp/member_list/kisaragi-pote/",
+      "source_url": "https://replaylive.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "replay-live",
+      "group_name": "りぷらい！",
+      "organization": "りぷらい！",
+      "display_name": "恋青星くらら",
+      "aliases": [
+        "恋青星くらら"
+      ],
+      "profile_url": "https://replaylive.jp/member_list/cosmo-clara/",
+      "source_url": "https://replaylive.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "replay-live",
+      "group_name": "りぷらい！",
+      "organization": "りぷらい！",
+      "display_name": "愛歯えいる",
+      "aliases": [
+        "愛歯えいる"
+      ],
+      "profile_url": "https://replaylive.jp/member_list/aiba-eiru/",
+      "source_url": "https://replaylive.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "replay-live",
+      "group_name": "りぷらい！",
+      "organization": "りぷらい！",
+      "display_name": "日向なこ",
+      "aliases": [
+        "日向なこ"
+      ],
+      "profile_url": "https://replaylive.jp/member_list/nako-hinata/",
+      "source_url": "https://replaylive.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "replay-live",
+      "group_name": "りぷらい！",
+      "organization": "りぷらい！",
+      "display_name": "津島ちよめ",
+      "aliases": [
+        "津島ちよめ"
+      ],
+      "profile_url": "https://replaylive.jp/member_list/tsushima_chiyome/",
+      "source_url": "https://replaylive.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "replay-live",
+      "group_name": "りぷらい！",
+      "organization": "りぷらい！",
+      "display_name": "海田にこ",
+      "aliases": [
+        "海田にこ"
+      ],
+      "profile_url": "https://replaylive.jp/member_list/kaida-nico/",
+      "source_url": "https://replaylive.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "replay-live",
+      "group_name": "りぷらい！",
+      "organization": "りぷらい！",
+      "display_name": "為永ほまれ",
+      "aliases": [
+        "為永ほまれ"
+      ],
+      "profile_url": "https://replaylive.jp/member_list/tamenaga-homare/",
+      "source_url": "https://replaylive.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "replay-live",
+      "group_name": "りぷらい！",
+      "organization": "りぷらい！",
+      "display_name": "白描つむぎ",
+      "aliases": [
+        "白描つむぎ"
+      ],
+      "profile_url": "https://replaylive.jp/member_list/tsumugi-hakubyou/",
+      "source_url": "https://replaylive.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "replay-live",
+      "group_name": "りぷらい！",
+      "organization": "りぷらい！",
+      "display_name": "紫乃めりん。",
+      "aliases": [
+        "紫乃めりん。"
+      ],
+      "profile_url": "https://replaylive.jp/member_list/shino-merin/",
+      "source_url": "https://replaylive.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "replay-live",
+      "group_name": "りぷらい！",
+      "organization": "りぷらい！",
+      "display_name": "陽月てら",
+      "aliases": [
+        "陽月てら"
+      ],
+      "profile_url": "https://replaylive.jp/member_list/hizuki-tera/",
+      "source_url": "https://replaylive.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "久我レオ",
+      "aliases": [
+        "久我レオ"
+      ],
+      "profile_url": "https://neo-porte.jp/member/kuga-leo",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "光葉エニ",
+      "aliases": [
+        "光葉エニ"
+      ],
+      "profile_url": "https://neo-porte.jp/member/mitsuba-eni",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "八神ツクモ",
+      "aliases": [
+        "八神ツクモ"
+      ],
+      "profile_url": "https://neo-porte.jp/member/yagami-tsukumo",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "夜絆ニウ",
+      "aliases": [
+        "夜絆ニウ"
+      ],
+      "profile_url": "https://neo-porte.jp/member/yozuna-niu",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "天帝フォルテ",
+      "aliases": [
+        "天帝フォルテ"
+      ],
+      "profile_url": "https://neo-porte.jp/member/tentei-forte",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "幽乃うつろ",
+      "aliases": [
+        "幽乃うつろ"
+      ],
+      "profile_url": "https://neo-porte.jp/member/kasukano-utsuro",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "心白てと",
+      "aliases": [
+        "心白てと"
+      ],
+      "profile_url": "https://neo-porte.jp/member/kohaku-teto",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "或世イヌ",
+      "aliases": [
+        "或世イヌ"
+      ],
+      "profile_url": "https://neo-porte.jp/member/aruse-inu",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "日裏クロ",
+      "aliases": [
+        "日裏クロ"
+      ],
+      "profile_url": "https://neo-porte.jp/member/hiura-kuro",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "昏昏アリア",
+      "aliases": [
+        "昏昏アリア"
+      ],
+      "profile_url": "https://neo-porte.jp/member/konkon-aria",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "柊ツルギ",
+      "aliases": [
+        "柊ツルギ"
+      ],
+      "profile_url": "https://neo-porte.jp/member/hiiragi-tsurugi",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "水無瀬",
+      "aliases": [
+        "水無瀬"
+      ],
+      "profile_url": "https://neo-porte.jp/member/minase",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "渋谷ハル",
+      "aliases": [
+        "渋谷ハル"
+      ],
+      "profile_url": "https://neo-porte.jp/member/shibuya-hal",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "瀬尾カザリ",
+      "aliases": [
+        "瀬尾カザリ"
+      ],
+      "profile_url": "https://neo-porte.jp/member/ceo-kazari",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "甘音あむ",
+      "aliases": [
+        "甘音あむ"
+      ],
+      "profile_url": "https://neo-porte.jp/member/amane-amu",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "白那しずく",
+      "aliases": [
+        "白那しずく"
+      ],
+      "profile_url": "https://neo-porte.jp/member/shirona-shizuku",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "白雪レイド",
+      "aliases": [
+        "白雪レイド"
+      ],
+      "profile_url": "https://neo-porte.jp/member/shirayuki-reid",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "絲依とい",
+      "aliases": [
+        "絲依とい"
+      ],
+      "profile_url": "https://neo-porte.jp/member/itoi-toi",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "緋月ゆい",
+      "aliases": [
+        "緋月ゆい"
+      ],
+      "profile_url": "https://neo-porte.jp/member/hizuki-yui",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "青桐エイト",
+      "aliases": [
+        "青桐エイト"
+      ],
+      "profile_url": "https://neo-porte.jp/member/aogiri-eito",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "鬼ヶ谷テン",
+      "aliases": [
+        "鬼ヶ谷テン"
+      ],
+      "profile_url": "https://neo-porte.jp/member/onigaya-ten",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "neo-porte",
+      "group_name": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "display_name": "麻倉シノ",
+      "aliases": [
+        "麻倉シノ"
+      ],
+      "profile_url": "https://neo-porte.jp/member/asakura-shino",
+      "source_url": "https://neo-porte.jp/member/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "holostars",
+      "group_name": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "display_name": "アクセル・シリオス",
+      "aliases": [
+        "アクセル・シリオス"
+      ],
+      "profile_url": "https://holostars.hololivepro.com/talent/axel-syrios/",
+      "source_url": "https://holostars.hololivepro.com/talent",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "holostars",
+      "group_name": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "display_name": "アステル・レダ",
+      "aliases": [
+        "アステル・レダ"
+      ],
+      "profile_url": "https://holostars.hololivepro.com/talent/astel-leda/",
+      "source_url": "https://holostars.hololivepro.com/talent",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "holostars",
+      "group_name": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "display_name": "オクタビオ",
+      "aliases": [
+        "オクタビオ"
+      ],
+      "profile_url": "https://holostars.hololivepro.com/talent/octavio/",
+      "source_url": "https://holostars.hololivepro.com/talent",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "holostars",
+      "group_name": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "display_name": "ガビス・ベッテル",
+      "aliases": [
+        "ガビス・ベッテル"
+      ],
+      "profile_url": "https://holostars.hololivepro.com/talent/bettel/",
+      "source_url": "https://holostars.hololivepro.com/talent",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "holostars",
+      "group_name": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "display_name": "クリムゾン・ルーズ",
+      "aliases": [
+        "クリムゾン・ルーズ"
+      ],
+      "profile_url": "https://holostars.hololivepro.com/talent/crimzon-ruze/",
+      "source_url": "https://holostars.hololivepro.com/talent",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "holostars",
+      "group_name": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "display_name": "ゴールドブレット",
+      "aliases": [
+        "ゴールドブレット"
+      ],
+      "profile_url": "https://holostars.hololivepro.com/talent/goldbullet/",
+      "source_url": "https://holostars.hololivepro.com/talent",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "holostars",
+      "group_name": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "display_name": "ジュラルド・ティー・レクスフォード",
+      "aliases": [
+        "ジュラルド・ティー・レクスフォード"
+      ],
+      "profile_url": "https://holostars.hololivepro.com/talent/jurard-t-rexford/",
+      "source_url": "https://holostars.hololivepro.com/talent",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "holostars",
+      "group_name": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "display_name": "マキナ・X・フレオン",
+      "aliases": [
+        "マキナ・X・フレオン"
+      ],
+      "profile_url": "https://holostars.hololivepro.com/talent/flayon/",
+      "source_url": "https://holostars.hololivepro.com/talent",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "holostars",
+      "group_name": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "display_name": "リージス・アルテア",
+      "aliases": [
+        "リージス・アルテア"
+      ],
+      "profile_url": "https://holostars.hololivepro.com/talent/regis-altare/",
+      "source_url": "https://holostars.hololivepro.com/talent",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "holostars",
+      "group_name": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "display_name": "万象院ハッカ",
+      "aliases": [
+        "万象院ハッカ"
+      ],
+      "profile_url": "https://holostars.hololivepro.com/talent/hakka/",
+      "source_url": "https://holostars.hololivepro.com/talent",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "holostars",
+      "group_name": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "display_name": "夕刻ロベル",
+      "aliases": [
+        "夕刻ロベル"
+      ],
+      "profile_url": "https://holostars.hololivepro.com/talent/yukoku-roberu/",
+      "source_url": "https://holostars.hololivepro.com/talent",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "holostars",
+      "group_name": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "display_name": "夜十神封魔",
+      "aliases": [
+        "夜十神封魔"
+      ],
+      "profile_url": "https://holostars.hololivepro.com/talent/yatogami-fuma/",
+      "source_url": "https://holostars.hololivepro.com/talent",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "holostars",
+      "group_name": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "display_name": "奏手イヅル",
+      "aliases": [
+        "奏手イヅル"
+      ],
+      "profile_url": "https://holostars.hololivepro.com/talent/kanade-izuru/",
+      "source_url": "https://holostars.hololivepro.com/talent",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "holostars",
+      "group_name": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "display_name": "定水寺シンリ",
+      "aliases": [
+        "定水寺シンリ"
+      ],
+      "profile_url": "https://holostars.hololivepro.com/talent/shinri/",
+      "source_url": "https://holostars.hololivepro.com/talent",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "holostars",
+      "group_name": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "display_name": "羽継烏有",
+      "aliases": [
+        "羽継烏有"
+      ],
+      "profile_url": "https://holostars.hololivepro.com/talent/utsugi-uyu/",
+      "source_url": "https://holostars.hololivepro.com/talent",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "holostars",
+      "group_name": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "display_name": "荒咬オウガ",
+      "aliases": [
+        "荒咬オウガ"
+      ],
+      "profile_url": "https://holostars.hololivepro.com/talent/aragami-oga/",
+      "source_url": "https://holostars.hololivepro.com/talent",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "AZKi",
+      "aliases": [
+        "AZKi"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/azki/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "IRyS",
+      "aliases": [
+        "IRyS"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/irys/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "こぼ・かなえる",
+      "aliases": [
+        "こぼ・かなえる",
+        "Kobo Kanaeru"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/kobo-kanaeru/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "さくらみこ",
+      "aliases": [
+        "さくらみこ",
+        "Sakura Miko"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/sakuramiko/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "ときのそら",
+      "aliases": [
+        "ときのそら",
+        "Tokino Sora"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/tokino-sora/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "アイラニ・イオフィフティーン",
+      "aliases": [
+        "アイラニ・イオフィフティーン",
+        "Airani Iofifteen"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/airani-iofifteen/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "アキ・ローゼンタール",
+      "aliases": [
+        "アキ・ローゼンタール",
+        "Aki Rosenthal"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/aki-rosenthal/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "アユンダ・リス",
+      "aliases": [
+        "アユンダ・リス",
+        "Ayunda Risu"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/ayunda-risu/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "アーニャ・メルフィッサ",
+      "aliases": [
+        "アーニャ・メルフィッサ",
+        "Anya Melfissa"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/anya-melfissa/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "エリザベス・ローズ・ブラッドフレイム",
+      "aliases": [
+        "エリザベス・ローズ・ブラッドフレイム",
+        "Elizabeth Rose Bloodflame"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/elizabeth-rose-bloodflame/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "オーロ・クロニー",
+      "aliases": [
+        "オーロ・クロニー",
+        "Ouro Kronii"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/ouro-kronii/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "カエラ・コヴァルスキア",
+      "aliases": [
+        "カエラ・コヴァルスキア",
+        "Kaela Kovalskia"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/kaela-kovalskia/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "クレイジー・オリー",
+      "aliases": [
+        "クレイジー・オリー",
+        "Kureiji Ollie"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/kureiji-ollie/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "シオリ・ノヴェラ",
+      "aliases": [
+        "シオリ・ノヴェラ",
+        "Shiori Novella"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/shiori-novella/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "ジジ・ムリン",
+      "aliases": [
+        "ジジ・ムリン",
+        "Gigi Murin"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/gigi-murin/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "セシリア・イマーグリーン",
+      "aliases": [
+        "セシリア・イマーグリーン",
+        "Cecilia Immergreen"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/cecilia-immergreen/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "ネリッサ・レイヴンクロフト",
+      "aliases": [
+        "ネリッサ・レイヴンクロフト",
+        "Nerissa Ravencroft"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/nerissa-ravencroft/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "ハコス・ベールズ",
+      "aliases": [
+        "ハコス・ベールズ",
+        "Hakos Baelz"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/hakos-baelz/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "パヴォリア・レイネ",
+      "aliases": [
+        "パヴォリア・レイネ",
+        "Pavolia Reine"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/pavolia-reine/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "フワワ・アビスガード",
+      "aliases": [
+        "フワワ・アビスガード",
+        "Fuwawa Abyssgard"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/fuwawa-abyssgard/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "ベスティア・ゼータ",
+      "aliases": [
+        "ベスティア・ゼータ",
+        "Vestia Zeta"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/vestia-zeta/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "ムーナ・ホシノヴァ",
+      "aliases": [
+        "ムーナ・ホシノヴァ",
+        "Moona Hoshinova"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/moona-hoshinova/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "モココ・アビスガード",
+      "aliases": [
+        "モココ・アビスガード",
+        "Mococo Abyssgard"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/mococo-abyssgard/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "ラオーラ・パンテーラ",
+      "aliases": [
+        "ラオーラ・パンテーラ",
+        "Raora Panthera"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/raora-panthera/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "ラプラス・ダークネス",
+      "aliases": [
+        "ラプラス・ダークネス",
+        "La+ Darknesss"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/la-darknesss/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "ロボ子さん",
+      "aliases": [
+        "ロボ子さん",
+        "Robocosan"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/roboco-san/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "一伊那尓栖",
+      "aliases": [
+        "一伊那尓栖",
+        "Ninomae Ina'nis"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/ninomae-inanis/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "一条莉々華",
+      "aliases": [
+        "一条莉々華",
+        "Ichijou Ririka"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/ichijou-ririka/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "不知火フレア",
+      "aliases": [
+        "不知火フレア",
+        "Shiranui Flare"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/shiranui-flare/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "井月みちる",
+      "aliases": [
+        "井月みちる",
+        "Izuki Michiru"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/izuki-michiru/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "儒烏風亭らでん",
+      "aliases": [
+        "儒烏風亭らでん",
+        "Juufuutei Raden"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/juufuutei-raden/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "兎田ぺこら",
+      "aliases": [
+        "兎田ぺこら",
+        "Usada Pekora"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/usada-pekora/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "博衣こより",
+      "aliases": [
+        "博衣こより",
+        "Hakui Koyori"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/hakui-koyori/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "古石ビジュー",
+      "aliases": [
+        "古石ビジュー",
+        "Koseki Bijou"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/koseki-bijou/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "夏色まつり",
+      "aliases": [
+        "夏色まつり",
+        "Natsuiro Matsuri"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/natsuiro-matsuri/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "大神ミオ",
+      "aliases": [
+        "大神ミオ",
+        "Ookami Mio"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/ookami-mio/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "大空スバル",
+      "aliases": [
+        "大空スバル",
+        "Oozora Subaru"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/oozora-subaru/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "姫森ルーナ",
+      "aliases": [
+        "姫森ルーナ",
+        "Himemori Luna"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/himemori-luna/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "宝鐘マリン",
+      "aliases": [
+        "宝鐘マリン",
+        "Houshou Marine"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/houshou-marine/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "小鳥遊キアラ",
+      "aliases": [
+        "小鳥遊キアラ",
+        "Takanashi Kiara"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/takanashi-kiara/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "尾丸ポルカ",
+      "aliases": [
+        "尾丸ポルカ",
+        "Omaru Polka"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/omaru-polka/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "常闇トワ",
+      "aliases": [
+        "常闇トワ",
+        "Tokoyami Towa"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/tokoyami-towa/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "戌神ころね",
+      "aliases": [
+        "戌神ころね",
+        "Inugami Korone"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/inugami-korone/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "星街すいせい",
+      "aliases": [
+        "星街すいせい",
+        "Hoshimachi Suisei"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/hoshimachi-suisei/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "桃鈴ねね",
+      "aliases": [
+        "桃鈴ねね",
+        "Momosuzu Nene"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/momosuzu-nene/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "森カリオペ",
+      "aliases": [
+        "森カリオペ",
+        "Mori Calliope"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/mori-calliope/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "水宮枢",
+      "aliases": [
+        "水宮枢",
+        "Mizumiya Su"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/mizumiya-su/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "猫又おかゆ",
+      "aliases": [
+        "猫又おかゆ",
+        "Nekomata Okayu"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/nekomata-okayu/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "獅白ぼたん",
+      "aliases": [
+        "獅白ぼたん",
+        "Shishiro Botan"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/shishiro-botan/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "癒月ちょこ",
+      "aliases": [
+        "癒月ちょこ",
+        "Yuzuki Choco"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/yuzuki-choco/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "白上フブキ",
+      "aliases": [
+        "白上フブキ",
+        "Shirakami Fubuki"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/shirakami-fubuki/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "白銀ノエル",
+      "aliases": [
+        "白銀ノエル",
+        "Shirogane Noel"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/shirogane-noel/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "百鬼あやめ",
+      "aliases": [
+        "百鬼あやめ",
+        "Nakiri Ayame"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/nakiri-ayame/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "綺々羅々ヴィヴィ",
+      "aliases": [
+        "綺々羅々ヴィヴィ",
+        "Kikirara Vivi"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/kikirara-vivi/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "花園さやか",
+      "aliases": [
+        "花園さやか",
+        "Hanazono Sayaka"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/hanazono-sayaka/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "虎金妃笑虎",
+      "aliases": [
+        "虎金妃笑虎",
+        "Koganei Niko"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/koganei-niko/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "角巻わため",
+      "aliases": [
+        "角巻わため",
+        "Tsunomaki Watame"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/tsunomaki-watame/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "赤井はあと",
+      "aliases": [
+        "赤井はあと",
+        "Akai Haato"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/akai-haato/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "輪堂千速",
+      "aliases": [
+        "輪堂千速",
+        "Rindo Chihaya"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/rindo-chihaya/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "轟はじめ",
+      "aliases": [
+        "轟はじめ",
+        "Todoroki Hajime"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/todoroki-hajime/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "雪花ラミィ",
+      "aliases": [
+        "雪花ラミィ",
+        "Yukihana Lamy"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/yukihana-lamy/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "音乃瀬奏",
+      "aliases": [
+        "音乃瀬奏",
+        "Otonose Kanade"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/otonose-kanade/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "響咲リオナ",
+      "aliases": [
+        "響咲リオナ",
+        "Isaki Riona"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/isaki-riona/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "風白ゆき",
+      "aliases": [
+        "風白ゆき",
+        "Kazeshiro Yuki"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/kazeshiro-yuki/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "風真いろは",
+      "aliases": [
+        "風真いろは",
+        "Kazama Iroha"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/kazama-iroha/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    },
+    {
+      "group_id": "hololive",
+      "group_name": "ホロライブ",
+      "organization": "ホロライブ",
+      "display_name": "鷹嶺ルイ",
+      "aliases": [
+        "鷹嶺ルイ",
+        "Takane Lui"
+      ],
+      "profile_url": "https://hololive.hololivepro.com/talents/takane-lui/",
+      "source_url": "https://hololive.hololivepro.com/talents/",
+      "search_enabled_by_default": false
+    }
+  ]
+}

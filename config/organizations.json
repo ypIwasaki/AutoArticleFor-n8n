@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "groups": [
+    {
+      "id": "nijisanji",
+      "displayName": "にじさんじ / NIJISANJI EN",
+      "sourceUrl": "https://www.nijisanji.jp/talents",
+      "parser": "nijisanji_next_data",
+      "allowedAffiliations": ["にじさんじ", "NIJISANJI EN"],
+      "searchEnabledByDefault": false
+    },
+    {
+      "id": "hololive",
+      "displayName": "ホロライブ",
+      "organization": "ホロライブ",
+      "sourceUrl": "https://hololive.hololivepro.com/talents/",
+      "parser": "talent_h3",
+      "searchEnabledByDefault": false
+    },
+    {
+      "id": "holostars",
+      "displayName": "ホロスターズ",
+      "organization": "ホロスターズ",
+      "sourceUrl": "https://holostars.hololivepro.com/talent",
+      "parser": "talent_h3",
+      "searchEnabledByDefault": false
+    },
+    {
+      "id": "vspo",
+      "displayName": "ぶいすぽっ！",
+      "organization": "ぶいすぽっ！",
+      "sourceUrl": "https://vspo.jp/member/",
+      "parser": "vspo_data_name",
+      "searchEnabledByDefault": false
+    },
+    {
+      "id": "aogiri-high-school",
+      "displayName": "あおぎり高校",
+      "organization": "あおぎり高校",
+      "sourceUrl": "https://aogirihighschool.com/",
+      "parser": "aogiri_member_links",
+      "searchEnabledByDefault": false
+    },
+    {
+      "id": "neo-porte",
+      "displayName": "ネオポルテ",
+      "organization": "ネオポルテ",
+      "sourceUrl": "https://neo-porte.jp/member/",
+      "parser": "neo_porte_member_links",
+      "searchEnabledByDefault": false
+    },
+    {
+      "id": "specialite",
+      "displayName": "すぺしゃりて",
+      "organization": "すぺしゃりて",
+      "sourceUrl": "https://specialite.games/",
+      "parser": "specialite_talent_links",
+      "searchEnabledByDefault": false
+    },
+    {
+      "id": "replay-live",
+      "displayName": "りぷらい！",
+      "organization": "りぷらい！",
+      "sourceUrl": "https://replaylive.jp/member/",
+      "parser": "replay_member_links",
+      "searchEnabledByDefault": false
+    },
+    {
+      "id": "uomusume",
+      "displayName": "うおむすめ",
+      "organization": "うおむすめ",
+      "sourceUrl": "https://uomusume.com/",
+      "parser": "uomusume_character_links",
+      "searchEnabledByDefault": false
+    }
+  ]
+}

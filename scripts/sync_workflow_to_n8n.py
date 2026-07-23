@@ -245,6 +245,14 @@ def main() -> int:
     if not workflow_id:
         workflow_id = find_workflow_id_by_name(api_base_url, api_key, workflow_name)
 
+    current = api_request("GET", api_base_url, f"/workflows/{workflow_id}", api_key)
+    current_name = str(current.get("name") or "") if isinstance(current, dict) else ""
+    if current_name != workflow["name"]:
+        raise RuntimeError(
+            f"Target workflow {workflow_id!r} is named {current_name!r}, but the local workflow is named "
+            f"{workflow['name']!r}. Set --workflow-id or --workflow-name for the matching workflow."
+        )
+
     if args.dry_run:
         print(f"Workflow file: {workflow_file}")
         print(f"Local workflow name: {workflow['name']}")
@@ -254,9 +262,7 @@ def main() -> int:
         print("Dry run only. No API update was sent.")
         return 0
 
-    current = api_request("GET", api_base_url, f"/workflows/{workflow_id}", api_key)
     current_active = bool(current.get("active")) if isinstance(current, dict) else False
-
     updated = api_request("PUT", api_base_url, f"/workflows/{workflow_id}", api_key, payload)
 
     desired_active: bool | None

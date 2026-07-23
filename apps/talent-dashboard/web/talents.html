@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f6f8">
+    <title>タレント一覧 | Talent Index</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-page="talent-list">
+    <header class="topbar">
+      <div class="brand-lockup"><div class="brand-mark" aria-hidden="true">TI</div><div><p class="eyebrow">AUTO ARTICLE / N8N</p><h1>Talent Index</h1></div></div>
+      <nav class="primary-nav" aria-label="主要ナビゲーション">
+        <a class="nav-link" href="index.html">ダッシュボード</a>
+        <a class="nav-link is-active" href="talents.html" aria-current="page">タレント</a>
+        <a class="nav-link" href="articles.html">記事</a>
+        <a class="nav-link" href="keywords.html">キーワード</a>
+        <a class="nav-link" href="keyword-candidates.html">AI候補</a>
+      </nav>
+      <div class="topbar-actions"><span id="source-badge" class="source-badge">Loading</span><span id="generated-at" class="generated-at"></span><button id="reload-button" class="icon-button" type="button" title="データを再読み込み" aria-label="データを再読み込み">↻</button></div>
+    </header>
+    <main class="record-page-main">
+      <section class="record-heading" aria-labelledby="talent-list-heading">
+        <div><p class="eyebrow">TALENT DIRECTORY</p><h2 id="talent-list-heading">タレント一覧</h2><p>公式サイトから同期した所属・活動中のタレントと、既存の候補データを確認します。</p></div>
+        <span id="record-count" class="source-badge">-</span>
+      </section>
+      <p id="data-notice" class="data-notice" hidden></p>
+      <section class="records-layout" aria-label="タレント一覧">
+        <aside class="filter-panel" aria-label="絞り込み">
+          <div class="panel-heading"><span>絞り込み</span><button id="clear-filters" type="button" class="text-button">解除</button></div>
+          <label><span>検索</span><input id="search-input" type="search" placeholder="名前、別名を検索"></label>
+          <label><span>状態</span><select id="status-filter"><option value="">すべて</option><option value="approved">approved</option><option value="pending">pending</option><option value="rejected">rejected</option></select></label>
+          <label><span>事務所・組織</span><select id="organization-filter"><option value="">すべて</option></select></label>
+          <label class="toggle-row"><input id="linked-only" type="checkbox"><span>関連記事があるもの</span></label>
+        </aside>
+        <section class="data-panel records-table-panel" aria-live="polite">
+          <div class="table-toolbar"><div><span>タレント</span><span id="result-count" class="result-count"></span></div><span class="muted">名前を選ぶと詳細を開きます</span></div>
+          <div class="table-scroll record-table-scroll"><table id="records-table"><thead></thead><tbody></tbody></table></div>
+          <nav id="pagination" class="pagination" aria-label="ページ移動"></nav>
+        </section>
+      </section>
+    </main>
+    <script src="records.js"></script>
+  </body>
+</html>

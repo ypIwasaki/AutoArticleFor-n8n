@@ -158,3 +158,56 @@ tbody tr { cursor: pointer; }
   .nav-link { flex: 0 0 auto; padding-left: 9px; padding-right: 9px; }
   .topbar-actions { margin-left: auto; }
 }
+
+
+.table-link, .article-link, .back-link { color: var(--blue); font-weight: 700; text-decoration: none; }
+.table-link:hover, .article-link:hover, .back-link:hover { color: var(--accent-dark); text-decoration: underline; }
+.talent-chip { color: var(--blue); text-decoration: none; }
+.talent-chip:hover { border-color: var(--blue); background: #edf4fb; }
+
+.record-page-main { max-width: 1400px; }
+.record-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+.record-heading h2 { margin-bottom: 7px; }
+.record-heading p:last-child { max-width: 56ch; margin-bottom: 0; color: var(--muted); line-height: 1.6; }
+.records-layout { display: grid; grid-template-columns: 230px minmax(0, 1fr); gap: 18px; margin-top: 24px; align-items: start; }
+.records-table-panel { min-width: 0; }
+.record-table-scroll { min-height: 570px; max-height: calc(100vh - 268px); }
+.pagination { min-height: 54px; display: flex; align-items: center; justify-content: center; gap: 5px; padding: 10px 12px; border-top: 1px solid var(--line); }
+.page-button { min-width: 32px; height: 30px; padding: 0 8px; border: 1px solid var(--line); border-radius: 4px; background: #fff; color: var(--ink); font-size: 12px; font-weight: 700; }
+.page-button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent-dark); }
+.page-button.is-active { border-color: var(--accent); color: #fff; background: var(--accent); }
+.page-button:disabled { cursor: default; color: #a5afb8; background: #f4f6f8; }
+.pagination-ellipsis { padding: 0 3px; color: var(--muted); }
+
+.record-detail-panel, .detail-table-section, .article-summary, .excerpt-section { margin-top: 18px; padding: 20px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+.record-detail-panel { margin-top: 0; }
+.record-title { max-width: 980px; margin-bottom: 8px; font-size: 27px; line-height: 1.35; overflow-wrap: anywhere; }
+.detail-section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 13px; }
+.detail-section-heading h2, .excerpt-section h2 { margin-bottom: 0; font-size: 18px; }
+.detail-section-heading .eyebrow, .excerpt-section .eyebrow { margin-bottom: 5px; }
+.detail-table-scroll { overflow-x: auto; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.detail-table-scroll table { min-width: 760px; table-layout: auto; }
+.detail-table-scroll td { white-space: normal; }
+.article-summary > p, .excerpt-section > p:last-child { max-width: 88ch; margin-bottom: 0; color: var(--muted); line-height: 1.7; white-space: pre-wrap; }
+.excerpt-section { padding-bottom: 22px; }
+
+@media (max-width: 900px) {
+  .records-layout { grid-template-columns: 1fr; }
+  .record-table-scroll { max-height: 600px; min-height: 420px; }
+}
+@media (max-width: 760px) {
+  .record-heading { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .record-title { font-size: 22px; }
+  .record-detail-panel, .detail-table-section, .article-summary, .excerpt-section { padding: 15px; }
+  .pagination { overflow-x: auto; justify-content: flex-start; }
+}
+
+
+.summary-cell { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.summary-toggle { width: 28px; height: 28px; display: inline-grid; place-items: center; border: 1px solid var(--line); border-radius: 4px; background: #fff; color: var(--accent-dark); font-size: 12px; line-height: 1; }
+.summary-toggle:hover { border-color: var(--accent); background: #eaf7f5; }
+.summary-toggle:focus-visible { outline: 2px solid #b9ddd9; outline-offset: 1px; }
+.article-summary-row td { padding: 0; background: #f7fbfb; }
+.article-summary-inline { max-width: 88ch; padding: 14px 16px 16px; color: var(--muted); font-size: 13px; line-height: 1.65; white-space: pre-wrap; }
+.article-summary-inline p { margin: 0; }
+.article-summary-inline .summary-date { margin-bottom: 7px; font-size: 12px; }

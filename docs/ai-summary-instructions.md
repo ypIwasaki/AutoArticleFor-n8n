@@ -9,8 +9,9 @@ copied into an AI chat manually:
 content/ai-summary-instructions/YYYY-MM-DD.md
 ```
 
-That file asks the AI to summarize the fetched articles using only the saved
-Digest and captured source list. It includes:
+That file requires the AI to open each captured URL, follow redirects to the
+original article, and summarize the verified article body. The saved Digest and
+captured source list are discovery aids, not substitutes for article text. It includes:
 
 - Current search keywords.
 - The target time window and article count.
@@ -31,3 +32,8 @@ The source digest is saved separately:
 ```text
 content/daily-digests/YYYY-MM-DD.md
 ```
+
+
+## Body verification
+
+The AI must mark every source note as body-verified or body-unavailable. A body-unavailable item must state the reason and must not present a title or RSS excerpt paraphrase as an article summary. Executive and topic-level summaries may cite only body-verified items.

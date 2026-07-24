@@ -19,6 +19,7 @@
     articleType: document.querySelector('#article-type-filter'),
     category: document.querySelector('#category-filter'),
     relevance: document.querySelector('#relevance-filter'),
+    feedbackStatus: document.querySelector('#feedback-status-filter'),
     linkedOnly: document.querySelector('#linked-only'),
     classifiedOnly: document.querySelector('#classified-only'),
     summarizedOnly: document.querySelector('#summarized-only'),
@@ -134,6 +135,25 @@
     return '<div class="classification-cell"><span class="classification-type">' + html(taxonomyLabel('articleTypes', classification.article_type)) + '</span><div class="classification-chips">' + chips + '</div><span class="classification-relevance">' + html(taxonomyLabel('relevance', classification.relevance)) + '</span></div>';
   }
 
+  function feedbackIsRejected(feedback) {
+    return feedback?.is_rejected === true
+      || feedback?.is_rejected === 1
+      || ['1', 'true', 'yes'].includes(String(feedback?.is_rejected || '').toLocaleLowerCase('ja-JP'));
+  }
+
+  function articleFeedbackStatus(article) {
+    const feedback = article.feedback || {};
+    if (!feedback.reviewed_at && !feedback.article_key) return 'unreviewed';
+    return feedbackIsRejected(feedback) ? 'rejected' : 'approved';
+  }
+
+  function feedbackMarkup(article) {
+    const status = articleFeedbackStatus(article);
+    if (status === 'approved') return '<span class="summary-status complete">可</span>';
+    if (status === 'rejected') return '<span class="summary-status rejected">不可</span>';
+    return '<span class="summary-status missing">未評価</span>';
+  }
+
   function populateTaxonomyOptions(select, kind) {
     if (!select) return;
     const current = select.value;
@@ -160,6 +180,7 @@
     const articleType = elements.articleType?.value || '';
     const category = elements.category?.value || '';
     const relevance = elements.relevance?.value || '';
+    const feedbackStatus = elements.feedbackStatus?.value || '';
     const linkedOnly = Boolean(elements.linkedOnly?.checked);
     const classifiedOnly = Boolean(elements.classifiedOnly?.checked);
     const summarizedOnly = Boolean(elements.summarizedOnly?.checked);
@@ -172,6 +193,7 @@
         && (!articleType || classification.article_type === articleType)
         && (!category || categories.includes(category))
         && (!relevance || classification.relevance === relevance)
+        && (feedbackStatus ? articleFeedbackStatus(article) === feedbackStatus : articleFeedbackStatus(article) !== 'rejected')
         && (!linkedOnly || (article.talents || []).length > 0)
         && (!classifiedOnly || Boolean(classification.article_type))
         && (!summarizedOnly || Boolean(article.ai_summary));
@@ -231,14 +253,14 @@
     const classifiedCount = Number(state.dashboard.summary.articleClassifications || 0);
     elements.recordCount.textContent = Number(state.dashboard.summary.articles || 0).toLocaleString('ja-JP') + ' 件 / 分類済み ' + classifiedCount.toLocaleString('ja-JP') + ' 件';
     elements.resultCount.textContent = rows.length + ' 件';
-    elements.table.querySelector('thead').innerHTML = '<tr><th>記事</th><th>種別・カテゴリ</th><th>公開日</th><th>要約</th><th>関連タレント</th><th>情報源</th></tr>';
+    elements.table.querySelector('thead').innerHTML = '<tr><th>記事</th><th>種別・カテゴリ</th><th>公開日</th><th>要約</th><th>評価</th><th>関連タレント</th><th>情報源</th></tr>';
     elements.table.querySelector('tbody').innerHTML = pageRows.length
       ? pageRows.map((article) => {
         const chips = (article.talents || []).slice(0, 3).map((talent) => '<a class="talent-chip" href="' + html(recordUrl('talent', talent.talent_id)) + '">' + html(talent.display_name) + '</a>').join('') || '<span class="muted">未紐付け</span>';
         const summary = article.ai_summary ? '<span class="summary-status complete">本文確認済み</span>' : '<span class="summary-status missing">未作成</span>';
-        return '<tr><td><div class="cell-title"><a class="table-link" href="' + html(recordUrl('article', article.article_key)) + '">' + html(article.title || '(無題)') + '</a></div><div class="cell-subtitle">' + html(article.excerpt || article.url || '') + '</div></td><td>' + classificationMarkup(article) + '</td><td>' + compactDate(article.published_at || article.last_seen_at) + '</td><td>' + summary + '</td><td>' + chips + '</td><td>' + html(article.source || '-') + '</td></tr>';
+        return '<tr><td><div class="cell-title"><a class="table-link" href="' + html(recordUrl('article', article.article_key)) + '">' + html(article.title || '(無題)') + '</a></div><div class="cell-subtitle">' + html(article.excerpt || article.url || '') + '</div></td><td>' + classificationMarkup(article) + '</td><td>' + compactDate(article.published_at || article.last_seen_at) + '</td><td>' + summary + '</td><td>' + feedbackMarkup(article) + '</td><td>' + chips + '</td><td>' + html(article.source || '-') + '</td></tr>';
       }).join('')
-      : '<tr><td colspan="6"><p class="empty-detail">条件に一致する記事はありません。</p></td></tr>';
+      : '<tr><td colspan="7"><p class="empty-detail">条件に一致する記事はありません。</p></td></tr>';
     renderPagination(rows.length, pageSize, renderArticleList);
   }
 
@@ -316,6 +338,83 @@
   }
 
 
+  function bindArticleFeedback() {
+    const form = elements.detail.querySelector('#article-feedback-form');
+    if (!form) return;
+    const status = form.querySelector('.article-feedback-status');
+    const badge = form.closest('.article-feedback').querySelector('.article-feedback-badge');
+    const decisionInputs = [...form.querySelectorAll('input[name="decision"]')];
+    const reasonGroup = form.querySelector('.article-feedback-reason');
+    const reasonSelect = form.querySelector('#article-feedback-reason');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const setDecisionState = () => {
+      const decision = decisionInputs.find((input) => input.checked)?.value || '';
+      const rejected = decision === 'rejected';
+      reasonGroup.hidden = !rejected;
+      reasonSelect.required = rejected;
+      if (!rejected) reasonSelect.value = '';
+      submitButton.disabled = !decision;
+    };
+    const setBusy = (busy) => {
+      decisionInputs.forEach((input) => { input.disabled = busy; });
+      reasonSelect.disabled = busy;
+      submitButton.disabled = busy;
+    };
+
+    decisionInputs.forEach((input) => input.addEventListener('change', setDecisionState));
+    setDecisionState();
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const decision = decisionInputs.find((input) => input.checked)?.value || '';
+      const reason = String(new FormData(form).get('reasonCode') || '');
+      if (!decision) {
+        status.textContent = '可または不可を選択してください。';
+        status.className = 'article-feedback-status error';
+        return;
+      }
+      if (decision === 'rejected' && !reason) {
+        status.textContent = '不可理由を選択してください。';
+        status.className = 'article-feedback-status error';
+        return;
+      }
+
+      setBusy(true);
+      status.textContent = '保存中...';
+      status.className = 'article-feedback-status';
+      let saved = false;
+      try {
+        const response = await fetch('/api/article-feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            articleKey: form.dataset.articleKey || '',
+            decision,
+            reasonCode: decision === 'rejected' ? reason : '',
+          }),
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.error || 'HTTP ' + response.status);
+        saved = true;
+        if (decision === 'rejected') {
+          status.textContent = '不可として保存しました。';
+          status.className = 'article-feedback-status success';
+          window.setTimeout(() => { window.location.assign('articles.html'); }, 450);
+          return;
+        }
+        status.textContent = '可として保存しました。';
+        status.className = 'article-feedback-status success';
+        badge.textContent = '可';
+        badge.className = 'summary-status complete article-feedback-badge';
+      } catch (error) {
+        status.textContent = '保存できませんでした: ' + error.message;
+        status.className = 'article-feedback-status error';
+      } finally {
+        if (!saved || decision === 'approved') setBusy(false);
+      }
+    });
+  }
+
   function renderArticleDetail() {
     const identifier = new URLSearchParams(window.location.search).get('id') || '';
     const article = state.dashboard.articles.find((row) => String(row.article_key) === identifier);
@@ -367,7 +466,15 @@
     const sourceSection = sourceUrl
       ? '<section class="detail-info-section"><div class="detail-section-heading"><div><p class="eyebrow">SOURCE</p><h2>元記事</h2></div><span class="source-badge">' + html(article.source || '情報源未設定') + '</span></div><p class="source-url">' + html(sourceUrl) + '</p><div class="detail-actions"><a class="detail-action" href="' + html(sourceUrl) + '" target="_blank" rel="noreferrer">元記事を開く</a></div></section>'
       : '';
-    elements.detail.innerHTML = '<section class="record-detail-panel"><p class="detail-kicker">ARTICLE</p><h2 class="record-title">' + html(article.title || '(無題)') + '</h2><p class="detail-meta">' + date(article.published_at || article.last_seen_at) + ' &nbsp; ' + html(article.source || '情報源未設定') + '</p>' + keyValues([['公開日', date(article.published_at || article.last_seen_at)], ['情報源', article.source || '-'], ['関連タレント', talents.length + ' 件'], ['保存済み要約', article.ai_summary ? 'あり' : 'なし'], ['分類', classified ? 'あり' : 'なし']]) + '</section>' + sourceSection + classificationSection + summary + '<section class="detail-table-section"><div class="detail-section-heading"><div><p class="eyebrow">RELATED TALENTS</p><h2>関連タレント</h2></div><span class="source-badge">' + talents.length + ' 件</span></div><div class="detail-table-scroll"><table><thead><tr><th>タレント</th><th>状態</th><th>紐づけ根拠</th></tr></thead><tbody>' + talentRows + '</tbody></table></div></section>' + relatedSection + '<section class="excerpt-section"><p class="eyebrow">RSS EXCERPT</p><h2>取得時の抜粋</h2><p>' + html(article.excerpt || '抜粋なし') + '</p></section>';
+    const feedback = article.feedback || {};
+    const feedbackStatus = articleFeedbackStatus(article);
+    const feedbackRejected = feedbackStatus === 'rejected';
+    const feedbackReviewed = feedbackStatus !== 'unreviewed';
+    const feedbackBadge = feedbackMarkup(article).replace('summary-status ', 'summary-status article-feedback-badge ');
+    const approvedChecked = feedbackStatus === 'approved' ? ' checked' : '';
+    const feedbackSection = '<section class="article-feedback"><div class="detail-section-heading"><div><p class="eyebrow">ARTICLE REVIEW</p><h2>記事評価</h2></div>' + feedbackBadge + '</div><form id="article-feedback-form" data-article-key="' + html(article.article_key) + '"><fieldset class="article-decision-fieldset"><legend>判定</legend><div class="article-decision-options"><label><input type="radio" name="decision" value="approved"' + approvedChecked + '><span>可</span></label><label><input type="radio" name="decision" value="rejected"><span>不可</span></label></div></fieldset><div class="article-feedback-reason" hidden><label for="article-feedback-reason">不可理由</label><select id="article-feedback-reason" name="reasonCode"><option value="">選択してください</option><option value="suspicious_source">信頼できない情報源</option><option value="irrelevant">調査対象と無関係</option><option value="unavailable">ページ削除・取得不能</option><option value="outdated">情報が古すぎる</option></select></div><div class="article-feedback-actions"><button type="submit" class="command-button article-feedback-submit" disabled>評価を保存</button></div><p class="article-feedback-status" role="status"></p></form></section>';
+    elements.detail.innerHTML = '<section class="record-detail-panel"><p class="detail-kicker">ARTICLE</p><h2 class="record-title">' + html(article.title || '(無題)') + '</h2><p class="detail-meta">' + date(article.published_at || article.last_seen_at) + ' &nbsp; ' + html(article.source || '情報源未設定') + '</p>' + keyValues([['公開日', date(article.published_at || article.last_seen_at)], ['情報源', article.source || '-'], ['関連タレント', talents.length + ' 件'], ['保存済み要約', article.ai_summary ? 'あり' : 'なし'], ['分類', classified ? 'あり' : 'なし']]) + '</section>' + sourceSection + feedbackSection + classificationSection + summary + '<section class="detail-table-section"><div class="detail-section-heading"><div><p class="eyebrow">RELATED TALENTS</p><h2>関連タレント</h2></div><span class="source-badge">' + talents.length + ' 件</span></div><div class="detail-table-scroll"><table><thead><tr><th>タレント</th><th>状態</th><th>紐づけ根拠</th></tr></thead><tbody>' + talentRows + '</tbody></table></div></section>' + relatedSection + '<section class="excerpt-section"><p class="eyebrow">RSS EXCERPT</p><h2>取得時の抜粋</h2><p>' + html(article.excerpt || '抜粋なし') + '</p></section>';
+    bindArticleFeedback();
   }
 
 
@@ -379,6 +486,7 @@
     if (elements.articleType) elements.articleType.value = '';
     if (elements.category) elements.category.value = '';
     if (elements.relevance) elements.relevance.value = '';
+    if (elements.feedbackStatus) elements.feedbackStatus.value = '';
     if (elements.linkedOnly) elements.linkedOnly.checked = false;
     if (elements.classifiedOnly) elements.classifiedOnly.checked = false;
     if (elements.summarizedOnly) elements.summarizedOnly.checked = false;
@@ -388,7 +496,7 @@
   }
 
   function bindListEvents(render) {
-    [elements.search, elements.status, elements.organization, elements.source, elements.articleType, elements.category, elements.relevance, elements.linkedOnly, elements.classifiedOnly, elements.summarizedOnly].filter(Boolean).forEach((element) => {
+    [elements.search, elements.status, elements.organization, elements.source, elements.articleType, elements.category, elements.relevance, elements.feedbackStatus, elements.linkedOnly, elements.classifiedOnly, elements.summarizedOnly].filter(Boolean).forEach((element) => {
       const eventName = element.type === 'search' ? 'input' : 'change';
       element.addEventListener(eventName, () => { state.pageNumber = 1; render(); });
     });

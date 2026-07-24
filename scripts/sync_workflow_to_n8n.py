@@ -204,6 +204,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="List workflows in n8n and exit.",
     )
+    parser.add_argument(
+        "--create-if-missing",
+        action="store_true",
+        help="Create the workflow when no workflow with the requested name exists.",
+    )
     return parser.parse_args()
 
 
@@ -240,10 +245,23 @@ def main() -> int:
             print(f"{item.get('id')}\t{item.get('name')}\tactive={item.get('active')}")
         return 0
 
-    workflow_id = args.workflow_id or os.environ.get("N8N_WORKFLOW_ID")
+    workflow_id = args.workflow_id or (
+        None if args.workflow_name else os.environ.get("N8N_WORKFLOW_ID")
+    )
     workflow_name = args.workflow_name or os.environ.get("N8N_WORKFLOW_NAME") or workflow["name"]
+    created_workflow = False
     if not workflow_id:
-        workflow_id = find_workflow_id_by_name(api_base_url, api_key, workflow_name)
+        try:
+            workflow_id = find_workflow_id_by_name(api_base_url, api_key, workflow_name)
+        except RuntimeError:
+            if not args.create_if_missing:
+                raise
+            created = api_request("POST", api_base_url, "/workflows", api_key, payload)
+            workflow_id = str(created.get("id") or "")
+            if not workflow_id:
+                raise RuntimeError("n8n did not return an ID for the created workflow")
+            created_workflow = True
+            print(f"Created n8n workflow {workflow_id}: {created.get('name', workflow['name'])}")
 
     current = api_request("GET", api_base_url, f"/workflows/{workflow_id}", api_key)
     current_name = str(current.get("name") or "") if isinstance(current, dict) else ""
@@ -263,7 +281,9 @@ def main() -> int:
         return 0
 
     current_active = bool(current.get("active")) if isinstance(current, dict) else False
-    updated = api_request("PUT", api_base_url, f"/workflows/{workflow_id}", api_key, payload)
+    updated = current if created_workflow else api_request(
+        "PUT", api_base_url, f"/workflows/{workflow_id}", api_key, payload
+    )
 
     desired_active: bool | None
     if active_state == "preserve":
@@ -282,7 +302,8 @@ def main() -> int:
     elif desired_active is False:
         api_request("POST", api_base_url, f"/workflows/{workflow_id}/deactivate", api_key)
 
-    print(f"Updated n8n workflow {workflow_id}: {updated.get('name', workflow['name'])}")
+    if not created_workflow:
+        print(f"Updated n8n workflow {workflow_id}: {updated.get('name', workflow['name'])}")
     if desired_active is not None:
         print(f"Active state requested: {desired_active}")
     return 0

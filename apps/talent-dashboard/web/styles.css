@@ -84,6 +84,7 @@ tbody tr { cursor: pointer; }
 .summary-status { display: inline-flex; align-items: center; min-height: 22px; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 800; white-space: nowrap; }
 .summary-status.complete { color: var(--accent-dark); background: #e5f5f2; }
 .summary-status.missing { color: var(--muted); background: #edf0f2; }
+.summary-status.rejected { color: var(--danger); background: #fae9eb; }
 .talent-chip { display: inline-block; max-width: 154px; margin: 0 3px 3px 0; padding: 3px 6px; overflow: hidden; border: 1px solid #c9dbed; border-radius: 4px; color: var(--blue); background: #f4f8fc; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
 
 .detail-panel { position: sticky; top: 18px; min-height: 330px; overflow: hidden; }
@@ -235,3 +236,44 @@ tbody tr { cursor: pointer; }
 .article-summary-inline .summary-date { margin-bottom: 7px; font-size: 12px; }
 .article-classification { margin-top: 18px; padding: 20px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
 .article-classification .evidence { max-width: 88ch; margin-top: 14px; }
+
+.article-feedback { margin-top: 18px; padding: 20px; border-top: 2px solid #d77b83; border-bottom: 1px solid var(--line); background: #fffafb; }
+.article-feedback form { display: grid; gap: 12px; max-width: 620px; }
+.article-feedback label, .article-decision-fieldset legend { color: var(--ink); font-size: 13px; font-weight: 750; }
+.article-decision-fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.article-decision-fieldset legend { margin-bottom: 7px; padding: 0; }
+.article-decision-options { display: inline-flex; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: #fff; }
+.article-decision-options label { position: relative; display: flex; margin: 0; cursor: pointer; }
+.article-decision-options input { position: absolute; opacity: 0; pointer-events: none; }
+.article-decision-options span { display: inline-flex; min-width: 72px; min-height: 32px; align-items: center; justify-content: center; padding: 0 12px; border-left: 1px solid var(--line); color: var(--muted); font-size: 13px; font-weight: 750; }
+.article-decision-options label:first-child span { border-left: 0; }
+.article-decision-options input:checked + span { color: #fff; background: var(--accent); }
+.article-decision-options input[value="rejected"]:checked + span { background: var(--danger); }
+.article-decision-options input:focus-visible + span { outline: 2px solid #b9ddd9; outline-offset: -2px; }
+.article-feedback-reason { display: grid; gap: 7px; }
+.article-feedback select { min-width: 230px; height: 34px; padding: 0 9px; border: 1px solid var(--line); border-radius: 4px; background: #fff; color: var(--ink); }
+.article-feedback select:focus { outline: 2px solid #f1c6cb; outline-offset: 1px; border-color: var(--danger); }
+.article-feedback-actions { display: flex; }
+.article-feedback-submit { border-color: var(--accent); background: var(--accent); }
+.article-feedback-submit:hover:not(:disabled) { border-color: var(--accent-dark); background: var(--accent-dark); }
+.article-feedback-submit:disabled { cursor: default; border-color: var(--line); color: #9da7b0; background: #eef1f3; }
+.article-feedback-status { min-height: 18px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+.article-feedback-status.success { color: var(--accent-dark); }
+.article-feedback-status.error { color: #7a2831; }
+
+@media (max-width: 760px) {
+  .article-feedback { padding: 15px; }
+  .article-decision-options { display: flex; width: 100%; }
+  .article-decision-options label { flex: 1; }
+  .article-decision-options span { width: 100%; }
+  .article-feedback select { width: 100%; min-width: 0; }
+  .article-feedback-actions, .article-feedback-submit { width: 100%; }
+}
+
+
+@media (max-width: 760px) {
+  .article-feedback { padding: 15px; }
+  .article-feedback-controls { align-items: stretch; }
+  .article-feedback select { flex: 1 1 100%; min-width: 0; }
+  .article-feedback-submit { width: 100%; }
+}

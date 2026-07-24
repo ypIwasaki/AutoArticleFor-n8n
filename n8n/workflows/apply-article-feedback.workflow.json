@@ -1,0 +1,186 @@
+{
+  "name": "Apply Article Feedback",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "article-feedback/reject",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        160,
+        300
+      ],
+      "id": "f1000000-0000-4000-8000-000000000001",
+      "name": "Article Feedback Webhook",
+      "webhookId": "apply-article-feedback"
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "value": "articles",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": []
+        },
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        400,
+        300
+      ],
+      "id": "f1000000-0000-4000-8000-000000000002",
+      "name": "Load Articles for Feedback",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const webhook = $('Article Feedback Webhook').first().json ?? {};\nconst body = webhook.body ?? webhook;\nconst articleKey = String(body.articleKey ?? '').trim();\nconst articleUrl = String(body.articleUrl ?? '').trim();\nconst decision = String(body.decision ?? '').trim().toLocaleLowerCase('ja-JP');\nconst requestedReasonCode = String(body.reasonCode ?? '').trim().toLocaleLowerCase('ja-JP');\nconst source = String(body.source ?? '').trim();\nconst validDecisions = new Set(['approved', 'rejected']);\nconst validReasons = new Set(['suspicious_source', 'irrelevant', 'unavailable', 'outdated']);\nconst articles = $input.all().map((item) => item.json ?? {});\nconst article = articles.find((item) => String(item.article_key ?? '').trim() === articleKey);\nconst text = (value, field, maximum = 500) => {\n  const result = String(value ?? '').trim();\n  if (result.length > maximum) throw new Error(field + ' is too long.');\n  return result;\n};\nconst domain = (value) => {\n  const result = text(value, 'sourceDomain', 253).toLocaleLowerCase('ja-JP').replace(/^www\\./, '');\n  if (result && !/^[a-z0-9.-]+$/.test(result)) throw new Error('sourceDomain is invalid.');\n  return result;\n};\nif (source !== 'talent-dashboard') throw new Error('This webhook only accepts the local Talent Index dashboard.');\nif (!articleKey) throw new Error('articleKey is required.');\nif (!validDecisions.has(decision)) throw new Error('decision must be approved or rejected.');\nif (decision === 'rejected' && !validReasons.has(requestedReasonCode)) throw new Error('reasonCode is invalid.');\nif (decision === 'approved' && requestedReasonCode && requestedReasonCode !== 'approved') throw new Error('reasonCode is invalid for an approved article.');\nif (!article) throw new Error('Unknown articleKey.');\nif (articleUrl && String(article.url ?? '').trim() !== articleUrl) throw new Error('articleUrl does not match articleKey.');\n\nconst reasonCode = decision === 'approved' ? 'approved' : requestedReasonCode;\nconst sourceDomain = decision === 'rejected' && reasonCode === 'suspicious_source' ? domain(body.sourceDomain) : '';\nconst publisherLabel = decision === 'rejected' && reasonCode === 'suspicious_source'\n  ? text(body.publisherLabel, 'publisherLabel', 200).toLocaleLowerCase('ja-JP')\n  : '';\nconst titleSignature = decision === 'rejected' && reasonCode === 'irrelevant'\n  ? text(body.titleSignature, 'titleSignature', 500).toLocaleLowerCase('ja-JP')\n  : '';\nreturn [{\n  json: {\n    article_key: articleKey, article_url: String(article.url ?? '').trim(),\n    is_rejected: decision === 'rejected', reason_code: reasonCode,\n    source_domain: sourceDomain, publisher_label: publisherLabel,\n    title_signature: titleSignature, reviewed_at: new Date().toISOString(), review_source: source,\n  },\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        680,
+        300
+      ],
+      "id": "f1000000-0000-4000-8000-000000000003",
+      "name": "Validate Article Feedback"
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "upsert",
+        "dataTableId": {
+          "value": "article_feedback",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "article_key",
+              "condition": "eq",
+              "keyValue": "={{ $json.article_key }}"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": null
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        920,
+        300
+      ],
+      "id": "f1000000-0000-4000-8000-000000000004",
+      "name": "Upsert Article Feedback"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const feedback = $('Validate Article Feedback').first().json;\nreturn [{\n  json: {\n    accepted: true,\n    articleKey: feedback.article_key,\n    decision: feedback.is_rejected ? 'rejected' : 'approved',\n    reasonCode: feedback.reason_code,\n    reviewedAt: feedback.reviewed_at,\n  },\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1160,
+        300
+      ],
+      "id": "f1000000-0000-4000-8000-000000000005",
+      "name": "Build Article Feedback Response"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.4,
+      "position": [
+        1400,
+        300
+      ],
+      "id": "f1000000-0000-4000-8000-000000000006",
+      "name": "Respond to Article Feedback"
+    }
+  ],
+  "connections": {
+    "Article Feedback Webhook": {
+      "main": [
+        [
+          {
+            "node": "Load Articles for Feedback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Articles for Feedback": {
+      "main": [
+        [
+          {
+            "node": "Validate Article Feedback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Article Feedback": {
+      "main": [
+        [
+          {
+            "node": "Upsert Article Feedback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upsert Article Feedback": {
+      "main": [
+        [
+          {
+            "node": "Build Article Feedback Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Article Feedback Response": {
+      "main": [
+        [
+          {
+            "node": "Respond to Article Feedback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Article Feedback": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

@@ -408,6 +408,44 @@
         900,
         980
       ]
+    },
+    {
+      "parameters": {
+        "resource": "row",
+        "operation": "get",
+        "dataTableId": {
+          "value": "article_feedback",
+          "mode": "name"
+        },
+        "matchType": "allConditions",
+        "filters": {
+          "conditions": []
+        },
+        "returnAll": true
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1840,
+        500
+      ],
+      "id": "f2000000-0000-4000-8000-000000000001",
+      "name": "Load Article Feedback",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const data = $('Normalize and Deduplicate Articles').first().json;\nconst feedbackRows = $input.all().map((item) => item.json ?? {});\nconst isRejected = (value) => value === true || value === 1 || ['1', 'true', 'yes'].includes(String(value ?? '').trim().toLocaleLowerCase('ja-JP'));\nconst rejected = feedbackRows.filter((row) => row.article_key && isRejected(row.is_rejected));\nconst exactUrls = new Set(rejected.map((row) => String(row.article_url ?? '').trim()).filter(Boolean));\nconst sourceDomains = new Set(rejected\n  .filter((row) => String(row.reason_code ?? '') === 'suspicious_source')\n  .map((row) => String(row.source_domain ?? '').trim().toLocaleLowerCase('ja-JP').replace(/^www\\./, ''))\n  .filter(Boolean));\nconst publisherLabels = new Set(rejected\n  .filter((row) => String(row.reason_code ?? '') === 'suspicious_source')\n  .map((row) => String(row.publisher_label ?? '').trim().toLocaleLowerCase('ja-JP'))\n  .filter(Boolean));\nconst titleSignatures = new Set(rejected\n  .filter((row) => String(row.reason_code ?? '') === 'irrelevant')\n  .map((row) => String(row.title_signature ?? '').trim().toLocaleLowerCase('ja-JP'))\n  .filter(Boolean));\n\nfunction canonicalTitle(value) {\n  return String(value ?? '')\n    .replace(/\\s+(?:-|｜|–|—)\\s+\\S.*$/, '')\n    .replace(/\\s+/g, ' ')\n    .trim()\n    .toLocaleLowerCase('ja-JP');\n}\nfunction publisherLabel(article) {\n  const source = String(article.source ?? '').trim();\n  if (source) return source.replace(/\\s+/g, ' ').toLocaleLowerCase('ja-JP');\n  const title = String(article.title ?? '').trim();\n  const match = title.match(/\\s+(?:-|｜|–|—)\\s+(.+)$/);\n  return match ? match[1].replace(/\\s+/g, ' ').trim().toLocaleLowerCase('ja-JP') : '';\n}\nfunction sourceDomain(article) {\n  try {\n    const hostname = new URL(String(article.url ?? '')).hostname.toLocaleLowerCase('ja-JP').replace(/^www\\./, '');\n    return ['news.google.com', 'b.hatena.ne.jp'].includes(hostname) ? '' : hostname;\n  } catch (error) {\n    return '';\n  }\n}\n\nlet excludedArticleCount = 0;\nconst articles = (Array.isArray(data.articles) ? data.articles : []).filter((article) => {\n  const url = String(article.url ?? '').trim();\n  const rejectedByUrl = url && exactUrls.has(url);\n  const rejectedByDomain = sourceDomains.has(sourceDomain(article));\n  const rejectedByPublisher = publisherLabels.has(publisherLabel(article));\n  const rejectedByTitle = titleSignatures.has(canonicalTitle(article));\n  const rejectedArticle = rejectedByUrl || rejectedByDomain || rejectedByPublisher || rejectedByTitle;\n  if (rejectedArticle) excludedArticleCount += 1;\n  return !rejectedArticle;\n});\n\nreturn [{\n  json: {\n    ...data,\n    articleCount: articles.length,\n    excludedArticleCount,\n    articles,\n  },\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2080,
+        500
+      ],
+      "id": "f2000000-0000-4000-8000-000000000002",
+      "name": "Apply Article Feedback Exclusions"
     }
   ],
   "connections": {
@@ -470,7 +508,7 @@
       "main": [
         [
           {
-            "node": "Build Daily Digest",
+            "node": "Load Article Feedback",
             "type": "main",
             "index": 0
           }
@@ -647,6 +685,28 @@
         [
           {
             "node": "Manage Dashboard Keyword",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load Article Feedback": {
+      "main": [
+        [
+          {
+            "node": "Apply Article Feedback Exclusions",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Apply Article Feedback Exclusions": {
+      "main": [
+        [
+          {
+            "node": "Build Daily Digest",
             "type": "main",
             "index": 0
           }

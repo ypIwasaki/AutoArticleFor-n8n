@@ -9,7 +9,7 @@ import os
 import re
 import sqlite3
 import threading
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from http import HTTPStatus
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -30,6 +30,7 @@ SOURCE_NOTE_SUMMARY_PATTERN = re.compile(
 )
 BODY_VERIFIED_PATTERN = re.compile(r"(?:^|\s)-\s*本文確認\s*[:：]\s*確認済み(?:\s|（|\(|$)")
 KEYWORD_MUTATION_LOCK = threading.RLock()
+ARTICLE_FEEDBACK_MUTATION_LOCK = threading.RLock()
 
 
 def normalise_row(row: sqlite3.Row) -> dict[str, Any]:
@@ -67,7 +68,7 @@ def load_from_n8n() -> tuple[dict[str, Any], str]:
     try:
         rows = connection.execute(
             "SELECT id, name FROM data_table "
-            "WHERE name IN ('talents', 'articles', 'article_talents', 'article_classifications')"
+            "WHERE name IN ('talents', 'articles', 'article_talents', 'article_classifications', 'article_feedback')"
         ).fetchall()
         identifiers = {row["name"]: row["id"] for row in rows}
         missing = {"talents", "articles", "article_talents"}.difference(identifiers)
@@ -85,6 +86,13 @@ def load_from_n8n() -> tuple[dict[str, Any], str]:
             ]
         else:
             payload["article_classifications"] = []
+        if "article_feedback" in identifiers:
+            table = quoted_table_name(identifiers["article_feedback"])
+            payload["article_feedback"] = [
+                normalise_row(row) for row in connection.execute(f"SELECT * FROM {table}")
+            ]
+        else:
+            payload["article_feedback"] = []
         return payload, "n8n-data-tables"
     finally:
         connection.close()
@@ -120,6 +128,7 @@ def load_from_proposals() -> tuple[dict[str, Any], str]:
         "talents": list(talents.values()),
         "article_talents": list(relations.values()),
         "article_classifications": load_classification_proposals(),
+        "article_feedback": [],
     }, "proposal-files"
 
 
@@ -237,6 +246,59 @@ def load_article_summaries() -> dict[str, dict[str, Any]]:
                 summaries[url.strip()] = entry
 
     return summaries
+
+
+def load_article_capture_metadata() -> dict[str, dict[str, str]]:
+    """Map saved article URLs to resolved source details captured during review."""
+    path = PROJECT_ROOT / "content" / "article-body-captures" / "backfill-state.json"
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    entries = data.get("entries", {}) if isinstance(data, dict) else {}
+    if not isinstance(entries, dict):
+        return {}
+
+    metadata: dict[str, dict[str, str]] = {}
+    for original_url, entry in entries.items():
+        if not isinstance(entry, dict):
+            continue
+        key = str(original_url or "").strip()
+        if not key:
+            continue
+        metadata[key] = {
+            "resolved_url": str(entry.get("resolved_url") or "").strip(),
+            "source_host": str(entry.get("source_host") or "").strip(),
+        }
+    return metadata
+
+
+def canonical_article_title(value: Any) -> str:
+    title = re.sub(r"\s+(?:-|｜|–|—)\s+\S.*$", "", str(value or "").strip())
+    return re.sub(r"\s+", " ", title).casefold().strip()
+
+
+def article_publisher_label(article: dict[str, Any]) -> str:
+    source = str(article.get("source") or "").strip()
+    if source:
+        return re.sub(r"\s+", " ", source).casefold()
+    title = str(article.get("title") or "").strip()
+    match = re.search(r"\s+(?:-|｜|–|—)\s+(.+)$", title)
+    return re.sub(r"\s+", " ", match.group(1)).casefold().strip() if match else ""
+
+
+def source_domain_for_article(article: dict[str, Any], capture_metadata: dict[str, dict[str, str]]) -> str:
+    url = str(article.get("url") or "").strip()
+    capture = capture_metadata.get(url, {})
+    host = str(capture.get("source_host") or "").strip()
+    if not host:
+        candidate = str(capture.get("resolved_url") or url).strip()
+        try:
+            host = urlparse(candidate).hostname or ""
+        except ValueError:
+            host = ""
+    host = host.casefold().removeprefix("www.")
+    return "" if host in {"", "news.google.com", "b.hatena.ne.jp"} else host
 
 
 def date_key(value: Any) -> str:
@@ -560,6 +622,234 @@ def add_keyword_candidate(keyword: str) -> dict[str, Any]:
     return result
 
 
+ARTICLE_FEEDBACK_REASONS = {
+    "suspicious_source",
+    "irrelevant",
+    "unavailable",
+    "outdated",
+}
+ARTICLE_FEEDBACK_DECISIONS = {"approved", "rejected"}
+
+
+def feedback_is_rejected(value: Any) -> bool:
+    return value is True or value == 1 or str(value or "").strip().casefold() in {"1", "true", "yes"}
+
+
+FEEDBACK_REASON_LABELS = {
+    "suspicious_source": "信頼できない情報源",
+    "irrelevant": "調査対象と無関係",
+    "unavailable": "ページ削除・取得不能",
+    "outdated": "情報が古すぎる",
+}
+FEEDBACK_REASON_INSTRUCTIONS = {
+    "suspicious_source": "同じ配信元・媒体名の新規記事を根拠として採用しない。信頼できる一次情報または別媒体で確認する。",
+    "irrelevant": "タイトルだけで採用せず、対象タレント・組織・企画との明確な関連を本文で確認する。",
+    "unavailable": "該当 URL は根拠に使わない。ページが利用できないことを記録し、代替の一次情報を探す。",
+    "outdated": "該当 URL は現在の状況の根拠に使わない。公開日・更新日を確認し、より新しい一次情報または報道へ置き換える。",
+}
+
+
+def markdown_text(value: Any) -> str:
+    return re.sub(r"[\r\n]+", " ", str(value or "")).replace("[", "\\[").replace("]", "\\]").strip()
+
+
+def markdown_url(value: Any) -> str:
+    return str(value or "").strip().replace(")", "%29")
+
+
+def feedback_instruction_timestamp() -> datetime:
+    return datetime.now(timezone(timedelta(hours=9), "JST"))
+
+
+def build_article_feedback_instruction_markdown(
+    payload: dict[str, Any],
+    generated_at: datetime | None = None,
+) -> str:
+    generated_at = generated_at or feedback_instruction_timestamp()
+    articles_by_key = {
+        str(article.get("article_key") or "").strip(): article
+        for article in payload.get("articles", [])
+        if str(article.get("article_key") or "").strip()
+    }
+    feedback_rows = [
+        feedback
+        for feedback in payload.get("article_feedback", [])
+        if str(feedback.get("article_key") or "").strip()
+    ]
+    feedback_rows.sort(
+        key=lambda feedback: str(feedback.get("reviewed_at") or ""),
+        reverse=True,
+    )
+
+    approved_count = sum(
+        1 for feedback in feedback_rows if not feedback_is_rejected(feedback.get("is_rejected"))
+    )
+    rejected_by_reason: dict[str, list[dict[str, Any]]] = {
+        reason: [] for reason in ARTICLE_FEEDBACK_REASONS
+    }
+    for feedback in feedback_rows:
+        if not feedback_is_rejected(feedback.get("is_rejected")):
+            continue
+        reason = str(feedback.get("reason_code") or "").strip()
+        if reason in rejected_by_reason:
+            rejected_by_reason[reason].append(feedback)
+
+    lines = [
+        f"# 記事評価フィードバック指示書 - {generated_at.date().isoformat()}",
+        "",
+        f"- 更新日時: {generated_at.isoformat(timespec='seconds')}",
+        "- 入力: n8n Data Table article_feedback",
+        "- 用途: 記事の収集、本文確認、要約、分類を行うAIが、利用者の評価を次回以降の判断に反映するための補助指示書。",
+        "",
+        "## AIへの共通指示",
+        "",
+        "1. 可と判定された記事を根拠に使う場合も、本文・公開日・対象との関連を確認する。",
+        "2. 不可と判定された記事は、以下の理由別ルールに従う。理由のない一般化や、未記載の媒体・記事への拡大適用はしない。",
+        "3. ページ削除・取得不能 と 情報が古すぎる は、原則として該当URLだけを除外する。媒体全体を除外してはならない。",
+        "4. 信頼できない情報源 は、記載された媒体・ドメインを根拠に使わず、代替の一次情報または別媒体を確認する。",
+        "",
+        "## 評価集計",
+        "",
+        f"- 可: {approved_count}件",
+        f"- 不可: {sum(len(rows) for rows in rejected_by_reason.values())}件",
+    ]
+    for reason in ("suspicious_source", "irrelevant", "unavailable", "outdated"):
+        lines.append(f"- 不可 / {FEEDBACK_REASON_LABELS[reason]}: {len(rejected_by_reason[reason])}件")
+
+    lines.extend(["", "## 理由別の判断ルール"])
+    for reason in ("suspicious_source", "irrelevant", "unavailable", "outdated"):
+        lines.extend([
+            "",
+            f"### {FEEDBACK_REASON_LABELS[reason]}",
+            "",
+            FEEDBACK_REASON_INSTRUCTIONS[reason],
+        ])
+        examples = rejected_by_reason[reason][:10]
+        if not examples:
+            lines.append("")
+            lines.append("- 該当する評価済み記事はありません。")
+            continue
+
+        lines.extend(["", "評価済みの代表記事:"])
+        for feedback in examples:
+            article_key = str(feedback.get("article_key") or "").strip()
+            article = articles_by_key.get(article_key, {})
+            title = markdown_text(article.get("title") or article_key or "記事タイトルなし")
+            url = markdown_url(article.get("url") or feedback.get("article_url"))
+            reviewed_at = str(feedback.get("reviewed_at") or "-")
+            source_hint = str(feedback.get("source_domain") or feedback.get("publisher_label") or "").strip()
+            article_link = f"[{title}]({url})" if url else title
+            lines.append(f"- {article_link}")
+            lines.append(f"  - 評価日時: {reviewed_at}")
+            if source_hint:
+                lines.append(f"  - 媒体・ドメイン: {source_hint}")
+
+    if not feedback_rows:
+        lines.extend([
+            "",
+            "## 評価済み記事",
+            "",
+            "- まだ評価はありません。通常の収集・本文確認・要約方針に従ってください。",
+        ])
+
+    return '\n'.join(lines) + '\n'
+
+
+def write_article_feedback_instruction(
+    payload: dict[str, Any] | None = None,
+    generated_at: datetime | None = None,
+) -> Path:
+    if payload is None:
+        payload, _ = load_from_n8n()
+    generated_at = generated_at or feedback_instruction_timestamp()
+    output_dir = PROJECT_ROOT / "content" / "article-feedback-instructions"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / f"{generated_at.date().isoformat()}.md"
+    temporary_path = output_path.with_suffix(".md.tmp")
+    temporary_path.write_text(
+        build_article_feedback_instruction_markdown(payload, generated_at),
+        encoding="utf-8",
+    )
+    temporary_path.replace(output_path)
+    return output_path
+
+
+def call_article_feedback_webhook(feedback: dict[str, Any]) -> dict[str, Any]:
+    body = json.dumps(feedback, ensure_ascii=False).encode("utf-8")
+    webhook_url = os.environ.get(
+        "N8N_ARTICLE_FEEDBACK_WEBHOOK_URL",
+        "http://127.0.0.1:5678/webhook/article-feedback/reject",
+    )
+    webhook_request = request.Request(
+        webhook_url,
+        data=body,
+        headers={"Content-Type": "application/json; charset=utf-8", "Accept": "application/json"},
+        method="POST",
+    )
+    try:
+        with request.urlopen(webhook_request, timeout=30) as response:
+            raw_response = response.read().decode("utf-8")
+    except error.HTTPError as exc:
+        details = exc.read().decode("utf-8", "replace")
+        raise RuntimeError(f"n8n returned HTTP {exc.code}: {details}") from exc
+    except error.URLError as exc:
+        raise RuntimeError(f"Could not connect to n8n: {exc.reason}") from exc
+    try:
+        result = json.loads(raw_response) if raw_response else {}
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("n8n returned an invalid response") from exc
+    if not isinstance(result, dict) or not result.get("accepted"):
+        reason = result.get("reason") if isinstance(result, dict) else ""
+        raise RuntimeError(str(reason or "n8n did not accept the article feedback"))
+    return result
+
+
+def evaluate_article(payload: dict[str, Any]) -> dict[str, Any]:
+    article_key = str(payload.get("articleKey") or "").strip()
+    decision = str(payload.get("decision") or "").strip().casefold()
+    reason_code = str(payload.get("reasonCode") or "").strip().casefold()
+    if not article_key:
+        raise ValueError("articleKey is required")
+    if decision not in ARTICLE_FEEDBACK_DECISIONS:
+        raise ValueError("decision must be approved or rejected")
+    if decision == "rejected" and reason_code not in ARTICLE_FEEDBACK_REASONS:
+        raise ValueError("reasonCode must be suspicious_source, irrelevant, unavailable, or outdated")
+
+    with ARTICLE_FEEDBACK_MUTATION_LOCK:
+        try:
+            data, _ = load_from_n8n()
+        except Exception as exc:
+            raise RuntimeError(f"n8n Data Tables are unavailable: {exc}") from exc
+        article = next(
+            (item for item in data.get("articles", []) if str(item.get("article_key") or "") == article_key),
+            None,
+        )
+        if article is None:
+            raise ValueError("The article no longer exists in the current Data Table")
+
+        capture_metadata = load_article_capture_metadata()
+        feedback = {
+            "articleKey": article_key,
+            "articleUrl": str(article.get("url") or "").strip(),
+            "decision": decision,
+            "reasonCode": reason_code if decision == "rejected" else "approved",
+            "sourceDomain": source_domain_for_article(article, capture_metadata)
+            if decision == "rejected" and reason_code == "suspicious_source"
+            else "",
+            "publisherLabel": article_publisher_label(article)
+            if decision == "rejected" and reason_code == "suspicious_source"
+            else "",
+            "titleSignature": canonical_article_title(article.get("title"))
+            if decision == "rejected" and reason_code == "irrelevant"
+            else "",
+            "source": "talent-dashboard",
+        }
+        result = call_article_feedback_webhook(feedback)
+        instruction_path = write_article_feedback_instruction()
+        result["feedbackInstructionFile"] = str(instruction_path.relative_to(PROJECT_ROOT))
+        return result
+
+
 def build_dashboard() -> dict[str, Any]:
     error: str | None = None
     try:
@@ -569,8 +859,29 @@ def build_dashboard() -> dict[str, Any]:
         error = str(exc)
 
     talents = payload["talents"]
-    articles = payload["articles"]
-    relations = payload["article_talents"]
+    all_articles = payload["articles"]
+    article_feedback_by_key = {
+        str(feedback.get("article_key") or "").strip(): feedback
+        for feedback in payload.get("article_feedback", [])
+        if str(feedback.get("article_key") or "").strip()
+    }
+    rejected_feedback_by_key = {
+        article_key: feedback
+        for article_key, feedback in article_feedback_by_key.items()
+        if feedback_is_rejected(feedback.get("is_rejected"))
+    }
+    articles = [
+        article
+        for article in all_articles
+        if str(article.get("article_key") or "").strip() not in rejected_feedback_by_key
+    ]
+    visible_article_keys = {str(article.get("article_key") or "").strip() for article in articles}
+    all_relations = payload["article_talents"]
+    relations = [
+        relation
+        for relation in all_relations
+        if str(relation.get("article_key") or "").strip() in visible_article_keys
+    ]
     article_summaries = load_article_summaries()
     classification_taxonomy = load_classification_taxonomy()
     official_registry = load_official_talent_registry()
@@ -620,10 +931,10 @@ def build_dashboard() -> dict[str, Any]:
             }
         enriched_talent_records.append({**talent, **official_fields})
 
-    article_map = {str(article.get("article_key", "")): article for article in articles}
+    article_map = {str(article.get("article_key", "")): article for article in all_articles}
     article_key_by_url = {
         str(article.get("url", "")).strip(): str(article.get("article_key", "")).strip()
-        for article in articles
+        for article in all_articles
         if str(article.get("url", "")).strip() and str(article.get("article_key", "")).strip()
     }
     classification_map: dict[str, dict[str, Any]] = {}
@@ -641,13 +952,17 @@ def build_dashboard() -> dict[str, Any]:
 
     relation_counts: dict[str, int] = {}
     article_talents: dict[str, list[dict[str, Any]]] = {}
+    for relation in all_relations:
+        article_key = str(relation.get("article_key", ""))
+        talent_id = str(relation.get("talent_id", ""))
+        article_talents.setdefault(article_key, []).append(talent_map.get(talent_id, {}))
+
     talent_articles: dict[str, list[dict[str, Any]]] = {}
     enriched_relations: list[dict[str, Any]] = []
     for relation in relations:
         talent_id = str(relation.get("talent_id", ""))
         article_key = str(relation.get("article_key", ""))
         relation_counts[talent_id] = relation_counts.get(talent_id, 0) + 1
-        article_talents.setdefault(article_key, []).append(talent_map.get(talent_id, {}))
         talent_articles.setdefault(talent_id, []).append(article_map.get(article_key, {}))
         enriched_relations.append(
             {
@@ -662,7 +977,7 @@ def build_dashboard() -> dict[str, Any]:
         for talent in enriched_talent_records
     ]
     enriched_articles = []
-    for article in articles:
+    for article in all_articles:
         summary = article_summaries.get(str(article.get("url", "")).strip(), {})
         enriched_articles.append(
             {
@@ -672,11 +987,18 @@ def build_dashboard() -> dict[str, Any]:
                 "summary_date": summary.get("summary_date", ""),
                 "summary_source_titles": summary.get("source_titles", []),
                 "classification": classification_map.get(str(article.get("article_key", "")), {}),
+                "feedback": article_feedback_by_key.get(str(article.get("article_key", "")), {}),
             }
         )
 
+    visible_enriched_articles = [
+        article
+        for article in enriched_articles
+        if not feedback_is_rejected((article.get("feedback") or {}).get("is_rejected"))
+    ]
+
     daily_volume: dict[str, int] = {}
-    for article in enriched_articles:
+    for article in visible_enriched_articles:
         key = date_key(article.get("published_at") or article.get("last_seen_at"))
         if key:
             daily_volume[key] = daily_volume.get(key, 0) + 1
@@ -693,7 +1015,7 @@ def build_dashboard() -> dict[str, Any]:
     article_type_counts: dict[str, int] = {}
     primary_category_counts: dict[str, int] = {}
     relevance_counts: dict[str, int] = {}
-    for article in enriched_articles:
+    for article in visible_enriched_articles:
         classification = article.get("classification", {})
         if not classification:
             continue
@@ -713,11 +1035,13 @@ def build_dashboard() -> dict[str, Any]:
         "sourceError": error,
         "summary": {
             "talents": len(enriched_talents),
-            "articles": len(enriched_articles),
+            "articles": len(visible_enriched_articles),
+            "rejectedArticles": len(rejected_feedback_by_key),
+            "reviewedArticles": len(article_feedback_by_key),
             "relations": len(enriched_relations),
             "searchEnabled": sum(1 for talent in enriched_talents if talent.get("search_enabled")),
-            "articleSummaries": sum(1 for article in enriched_articles if article.get("ai_summary")),
-            "articleClassifications": sum(1 for article in enriched_articles if article.get("classification")),
+            "articleSummaries": sum(1 for article in visible_enriched_articles if article.get("ai_summary")),
+            "articleClassifications": sum(1 for article in visible_enriched_articles if article.get("classification")),
             "statusCounts": status_counts,
             "articleTypeCounts": article_type_counts,
             "primaryCategoryCounts": primary_category_counts,
@@ -797,6 +1121,9 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                 return
             if path == "/api/keywords":
                 self.send_json(HTTPStatus.OK, manage_keyword(payload))
+                return
+            if path == "/api/article-feedback":
+                self.send_json(HTTPStatus.OK, evaluate_article(payload))
                 return
             self.send_json(HTTPStatus.NOT_FOUND, {"error": "Not found"})
         except ValueError as exc:

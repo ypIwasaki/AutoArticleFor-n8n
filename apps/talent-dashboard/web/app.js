@@ -1,14 +1,28 @@
 const currentPage = document.body.dataset.page || 'dashboard';
+const pageState = window.TalentIndexPageState;
+const savedDashboardState = pageState?.get('dashboard', {}) || {};
+const savedKeywordState = pageState?.get('keywords', {}) || {};
+const savedFilters = savedDashboardState.filters || {};
+const savedEditingKeyword = savedKeywordState.editingKeyword;
 
 const state = {
   dashboard: null,
-  view: 'talents',
+  view: ['talents', 'articles', 'relations'].includes(savedDashboardState.view) ? savedDashboardState.view : 'talents',
   selected: null,
+  selectedKey: String(savedDashboardState.selectedKey || ''),
   keywordCandidates: null,
   keywordSettings: null,
-  editingKeyword: null,
-  filters: { search: '', status: '', organization: '', confidence: 0, linkedOnly: false, summarizedOnly: false },
+  editingKeyword: savedEditingKeyword && typeof savedEditingKeyword === 'object' ? savedEditingKeyword : null,
+  filters: {
+    search: String(savedFilters.search || ''),
+    status: String(savedFilters.status || ''),
+    organization: String(savedFilters.organization || ''),
+    confidence: Math.min(1, Math.max(0, Number(savedFilters.confidence) || 0)),
+    linkedOnly: Boolean(savedFilters.linkedOnly),
+    summarizedOnly: Boolean(savedFilters.summarizedOnly),
+  },
 };
+let restoreScrollPending = true;
 
 const elements = {
   table: document.querySelector('#data-table'),
@@ -29,6 +43,55 @@ const elements = {
   keywordManagementInput: document.querySelector('#keyword-management-input'),
   keywordManagementScope: document.querySelector('#keyword-management-scope'),
 };
+
+function persistDashboardState() {
+  if (currentPage !== 'dashboard') return;
+  pageState?.set('dashboard', {
+    view: state.view,
+    selectedKey: state.selected?.key || state.selectedKey || '',
+    filters: state.filters,
+  });
+}
+
+function syncDashboardTabs() {
+  document.querySelectorAll('.tab-button').forEach((tab) => {
+    const active = tab.dataset.view === state.view;
+    tab.classList.toggle('is-active', active);
+    tab.setAttribute('aria-selected', String(active));
+  });
+}
+
+function restoreDashboardControls() {
+  if (currentPage !== 'dashboard') return;
+  elements.search.value = state.filters.search;
+  elements.status.value = state.filters.status;
+  elements.confidence.value = String(state.filters.confidence);
+  elements.confidenceValue.value = state.filters.confidence.toFixed(2);
+  elements.linkedOnly.checked = state.filters.linkedOnly;
+  elements.summarizedOnly.checked = state.filters.summarizedOnly;
+}
+
+function persistKeywordFormState() {
+  if (currentPage !== 'keywords') return;
+  pageState?.set('keywords', {
+    draft: elements.keywordManagementInput?.value || '',
+    scope: elements.keywordManagementScope?.value || 'manual',
+    editingKeyword: state.editingKeyword,
+  });
+}
+
+function restoreKeywordFormState() {
+  if (currentPage !== 'keywords') return;
+  elements.keywordManagementInput.value = String(savedKeywordState.draft || '');
+  const scope = String(savedKeywordState.scope || 'manual');
+  elements.keywordManagementScope.value = ['manual', 'automatic'].includes(scope) ? scope : 'manual';
+}
+
+function restoreScrollWhenReady() {
+  if (!restoreScrollPending) return;
+  pageState?.restoreScroll();
+  restoreScrollPending = false;
+}
 
 function html(value) {
   return String(value ?? '').replace(/[&<>'"]/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[character]));
@@ -189,6 +252,8 @@ function selectRow(key) {
       : dashboard.relations.find((item) => item.relation_key === key);
   if (!row) return;
   state.selected = { key, row };
+  state.selectedKey = String(key);
+  persistDashboardState();
   renderTable();
   renderDetail(row, view);
 }
@@ -258,12 +323,14 @@ async function handleKeywordSettingAction(button) {
   const { keyword, scope, keywordAction: action } = button.dataset;
   if (action === 'edit') {
     state.editingKeyword = { keyword, scope };
+    persistKeywordFormState();
     renderKeywordSettings();
     elements.keywordSettingsTable.querySelector('.keyword-edit-input')?.focus();
     return;
   }
   if (action === 'cancel') {
     state.editingKeyword = null;
+    persistKeywordFormState();
     renderKeywordSettings();
     return;
   }
@@ -292,6 +359,7 @@ async function manageKeyword(operation, scope, keyword, previousKeyword = '') {
     const status = result.status === 'already_added' ? 'すでに設定されています' : result.status === 'already_removed' ? 'すでに削除されています' : result.status === 'unchanged' ? '変更はありません' : labels[operation];
     showKeywordManagementNotice(`${result.keyword || keyword || previousKeyword}: ${status}`, 'success');
     if (operation === 'add') elements.keywordManagementInput.value = '';
+    persistKeywordFormState();
   } catch (error) {
     showKeywordManagementNotice(`${keyword || previousKeyword} を変更できませんでした: ${error.message}`, 'error');
   }
@@ -371,8 +439,25 @@ async function loadDashboard() {
     state.selected = null;
     setSource(state.dashboard);
     populateOrganizations(state.dashboard.summary.organizations || []);
+    syncDashboardTabs();
+    const selectedRow = state.view === 'talents'
+      ? state.dashboard.talents.find((item) => String(item.talent_id) === state.selectedKey)
+      : state.view === 'articles'
+        ? state.dashboard.articles.find((item) => String(item.article_key) === state.selectedKey)
+        : state.dashboard.relations.find((item) => String(item.relation_key) === state.selectedKey);
+    if (selectedRow) {
+      state.selected = { key: state.selectedKey, row: selectedRow };
+    } else {
+      state.selectedKey = '';
+    }
     renderAll();
-    elements.detail.innerHTML = '<p class="empty-detail">選択なし</p>';
+    if (selectedRow) {
+      renderDetail(selectedRow, state.view);
+    } else {
+      elements.detail.innerHTML = '<p class="empty-detail">選択なし</p>';
+    }
+    persistDashboardState();
+    restoreScrollWhenReady();
   } catch (error) {
     elements.notice.hidden = false;
     elements.notice.textContent = `データを読み込めませんでした: ${error.message}`;
@@ -391,6 +476,7 @@ async function loadKeywordSettingsPage() {
     state.keywordSettings = data;
     setPageSource('キーワード設定', data.generatedAt);
     renderKeywordSettings();
+    restoreScrollWhenReady();
   } catch (error) {
     showKeywordManagementNotice(`キーワード設定を読み込めませんでした: ${error.message}`, 'error');
   } finally {
@@ -408,6 +494,7 @@ async function loadKeywordCandidatesPage() {
     state.keywordCandidates = data;
     setPageSource('AI候補', data.generatedAt);
     renderKeywordCandidates();
+    restoreScrollWhenReady();
   } catch (error) {
     showKeywordNotice(`AIキーワード候補を読み込めませんでした: ${error.message}`, 'error');
   } finally {
@@ -425,20 +512,18 @@ if (currentPage === 'dashboard') {
   document.querySelectorAll('.tab-button').forEach((button) => button.addEventListener('click', () => {
     state.view = button.dataset.view;
     state.selected = null;
-    document.querySelectorAll('.tab-button').forEach((tab) => {
-      const active = tab === button;
-      tab.classList.toggle('is-active', active);
-      tab.setAttribute('aria-selected', String(active));
-    });
+    state.selectedKey = '';
+    syncDashboardTabs();
+    persistDashboardState();
     elements.detail.innerHTML = '<p class="empty-detail">選択なし</p>';
     renderTable();
   }));
-  elements.search.addEventListener('input', () => { state.filters.search = elements.search.value; renderTable(); });
-  elements.status.addEventListener('change', () => { state.filters.status = elements.status.value; renderTable(); });
-  elements.organization.addEventListener('change', () => { state.filters.organization = elements.organization.value; renderTable(); });
-  elements.confidence.addEventListener('input', () => { state.filters.confidence = Number(elements.confidence.value); elements.confidenceValue.value = state.filters.confidence.toFixed(2); renderTable(); });
-  elements.linkedOnly.addEventListener('change', () => { state.filters.linkedOnly = elements.linkedOnly.checked; renderTable(); });
-  elements.summarizedOnly.addEventListener('change', () => { state.filters.summarizedOnly = elements.summarizedOnly.checked; renderTable(); });
+  elements.search.addEventListener('input', () => { state.filters.search = elements.search.value; persistDashboardState(); renderTable(); });
+  elements.status.addEventListener('change', () => { state.filters.status = elements.status.value; persistDashboardState(); renderTable(); });
+  elements.organization.addEventListener('change', () => { state.filters.organization = elements.organization.value; persistDashboardState(); renderTable(); });
+  elements.confidence.addEventListener('input', () => { state.filters.confidence = Number(elements.confidence.value); elements.confidenceValue.value = state.filters.confidence.toFixed(2); persistDashboardState(); renderTable(); });
+  elements.linkedOnly.addEventListener('change', () => { state.filters.linkedOnly = elements.linkedOnly.checked; persistDashboardState(); renderTable(); });
+  elements.summarizedOnly.addEventListener('change', () => { state.filters.summarizedOnly = elements.summarizedOnly.checked; persistDashboardState(); renderTable(); });
   document.querySelector('#clear-filters').addEventListener('click', () => {
     state.filters = { search: '', status: '', organization: '', confidence: 0, linkedOnly: false, summarizedOnly: false };
     elements.search.value = '';
@@ -448,17 +533,25 @@ if (currentPage === 'dashboard') {
     elements.confidenceValue.value = '0.00';
     elements.linkedOnly.checked = false;
     elements.summarizedOnly.checked = false;
+    persistDashboardState();
     renderTable();
   });
   document.querySelector('#reload-button').addEventListener('click', loadDashboard);
   document.querySelector('#close-detail').addEventListener('click', () => {
     state.selected = null;
+    state.selectedKey = '';
+    persistDashboardState();
     elements.detail.innerHTML = '<p class="empty-detail">選択なし</p>';
     renderTable();
   });
   window.addEventListener('resize', () => state.dashboard && drawActivity(state.dashboard.summary.dailyVolume));
+  restoreDashboardControls();
+  syncDashboardTabs();
   loadDashboard();
 } else if (currentPage === 'keywords') {
+  restoreKeywordFormState();
+  elements.keywordManagementInput.addEventListener('input', persistKeywordFormState);
+  elements.keywordManagementScope.addEventListener('change', persistKeywordFormState);
   elements.keywordManagementForm.addEventListener('submit', (event) => {
     event.preventDefault();
     manageKeyword('add', elements.keywordManagementScope.value, elements.keywordManagementInput.value);

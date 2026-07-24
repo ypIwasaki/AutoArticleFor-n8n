@@ -1,6 +1,13 @@
 (() => {
   const page = document.body.dataset.page || '';
-  const state = { dashboard: null, pageNumber: 1 };
+  const pageState = window.TalentIndexPageState;
+  const savedListState = pageState?.get('list', {}) || {};
+  const savedPageNumber = Number(savedListState.pageNumber);
+  const state = {
+    dashboard: null,
+    pageNumber: Number.isInteger(savedPageNumber) && savedPageNumber > 0 ? savedPageNumber : 1,
+    restoreScrollPending: true,
+  };
 
   const elements = {
     notice: document.querySelector('#data-notice'),
@@ -161,6 +168,39 @@
     select.value = current;
   }
 
+  function restoreListState() {
+    if (!['talent-list', 'article-list'].includes(page)) return;
+    if (elements.search) elements.search.value = String(savedListState.search || '');
+    if (elements.status) elements.status.value = String(savedListState.status || '');
+    if (elements.organization) elements.organization.value = String(savedListState.organization || '');
+    if (elements.source) elements.source.value = String(savedListState.source || '');
+    if (elements.articleType) elements.articleType.value = String(savedListState.articleType || '');
+    if (elements.category) elements.category.value = String(savedListState.category || '');
+    if (elements.relevance) elements.relevance.value = String(savedListState.relevance || '');
+    if (elements.feedbackStatus) elements.feedbackStatus.value = String(savedListState.feedbackStatus || '');
+    if (elements.linkedOnly) elements.linkedOnly.checked = Boolean(savedListState.linkedOnly);
+    if (elements.classifiedOnly) elements.classifiedOnly.checked = Boolean(savedListState.classifiedOnly);
+    if (elements.summarizedOnly) elements.summarizedOnly.checked = Boolean(savedListState.summarizedOnly);
+  }
+
+  function persistListState() {
+    if (!pageState || !['talent-list', 'article-list'].includes(page)) return;
+    pageState.set('list', {
+      pageNumber: state.pageNumber,
+      search: elements.search?.value || '',
+      status: elements.status?.value || '',
+      organization: elements.organization?.value || '',
+      source: elements.source?.value || '',
+      articleType: elements.articleType?.value || '',
+      category: elements.category?.value || '',
+      relevance: elements.relevance?.value || '',
+      feedbackStatus: elements.feedbackStatus?.value || '',
+      linkedOnly: Boolean(elements.linkedOnly?.checked),
+      classifiedOnly: Boolean(elements.classifiedOnly?.checked),
+      summarizedOnly: Boolean(elements.summarizedOnly?.checked),
+    });
+  }
+
   function filteredTalents() {
     const query = (elements.search?.value || '').trim().toLocaleLowerCase('ja-JP');
     const status = elements.status?.value || '';
@@ -221,6 +261,7 @@
     elements.pagination.querySelectorAll('button[data-page-number]').forEach((buttonElement) => {
       buttonElement.addEventListener('click', () => {
         state.pageNumber = Number(buttonElement.dataset.pageNumber);
+        persistListState();
         render();
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
@@ -241,6 +282,7 @@
       ? pageRows.map((talent) => '<tr><td><div class="cell-title"><a class="table-link" href="' + html(recordUrl('talent', talent.talent_id)) + '">' + html(talent.display_name) + '</a></div><div class="cell-subtitle">' + html(aliases(talent.aliases_json).join(' / ') || '別名なし') + '</div></td><td>' + html(talent.organization || '-') + '</td><td>' + statusBadge(talent.status) + '</td><td>' + Number(talent.article_count || 0) + '</td><td>' + compactDate(talent.last_seen_at) + '</td></tr>').join('')
       : '<tr><td colspan="5"><p class="empty-detail">条件に一致するタレントはいません。</p></td></tr>';
     renderPagination(rows.length, pageSize, renderTalentList);
+    persistListState();
   }
 
   function renderArticleList() {
@@ -262,6 +304,7 @@
       }).join('')
       : '<tr><td colspan="7"><p class="empty-detail">条件に一致する記事はありません。</p></td></tr>';
     renderPagination(rows.length, pageSize, renderArticleList);
+    persistListState();
   }
 
   function keyValues(items) {
@@ -361,7 +404,26 @@
       submitButton.disabled = busy;
     };
 
-    decisionInputs.forEach((input) => input.addEventListener('change', setDecisionState));
+    const savedFeedback = pageState?.get('articleFeedback', {}) || {};
+    if (savedFeedback.articleKey === form.dataset.articleKey) {
+      const savedDecision = decisionInputs.find((input) => input.value === savedFeedback.decision);
+      if (savedDecision) savedDecision.checked = true;
+      if (savedFeedback.reason) reasonSelect.value = savedFeedback.reason;
+    }
+    const persistFeedbackDraft = () => {
+      const decision = decisionInputs.find((input) => input.checked)?.value || '';
+      pageState?.set('articleFeedback', {
+        articleKey: form.dataset.articleKey || '',
+        decision,
+        reason: reasonSelect.value || '',
+      });
+    };
+
+    decisionInputs.forEach((input) => input.addEventListener('change', () => {
+      setDecisionState();
+      persistFeedbackDraft();
+    }));
+    reasonSelect.addEventListener('change', persistFeedbackDraft);
     setDecisionState();
 
     form.addEventListener('submit', async (event) => {
@@ -396,6 +458,7 @@
         const result = await response.json().catch(() => ({}));
         if (!response.ok) throw new Error(result.error || 'HTTP ' + response.status);
         saved = true;
+        pageState?.clear('articleFeedback');
         if (decision === 'rejected') {
           status.textContent = '不可として保存しました。';
           status.className = 'article-feedback-status success';
@@ -491,6 +554,7 @@
     if (elements.classifiedOnly) elements.classifiedOnly.checked = false;
     if (elements.summarizedOnly) elements.summarizedOnly.checked = false;
     state.pageNumber = 1;
+    pageState?.clear('list');
     if (page === 'talent-list') renderTalentList();
     if (page === 'article-list') renderArticleList();
   }
@@ -498,7 +562,11 @@
   function bindListEvents(render) {
     [elements.search, elements.status, elements.organization, elements.source, elements.articleType, elements.category, elements.relevance, elements.feedbackStatus, elements.linkedOnly, elements.classifiedOnly, elements.summarizedOnly].filter(Boolean).forEach((element) => {
       const eventName = element.type === 'search' ? 'input' : 'change';
-      element.addEventListener(eventName, () => { state.pageNumber = 1; render(); });
+      element.addEventListener(eventName, () => {
+        state.pageNumber = 1;
+        persistListState();
+        render();
+      });
     });
     elements.clearFilters?.addEventListener('click', resetFilters);
   }
@@ -506,6 +574,7 @@
   function renderPage() {
     if (page === 'talent-list') {
       populateOptions(elements.organization, state.dashboard.summary.organizations || []);
+      restoreListState();
       bindListEvents(renderTalentList);
       renderTalentList();
       return;
@@ -516,6 +585,7 @@
       populateTaxonomyOptions(elements.articleType, 'articleTypes');
       populateTaxonomyOptions(elements.category, 'categories');
       populateTaxonomyOptions(elements.relevance, 'relevance');
+      restoreListState();
       bindListEvents(renderArticleList);
       renderArticleList();
       return;
@@ -535,6 +605,10 @@
       state.dashboard = await response.json();
       setSource(state.dashboard);
       renderPage();
+      if (state.restoreScrollPending) {
+        pageState?.restoreScroll();
+        state.restoreScrollPending = false;
+      }
     } catch (error) {
       showNotice('データを読み込めませんでした: ' + error.message);
       if (elements.detail) elements.detail.innerHTML = '<section class="record-detail-panel"><p class="empty-detail">データを読み込めませんでした。</p></section>';

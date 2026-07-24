@@ -1,0 +1,2387 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-07-24",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE8wWHNsNUJUSnh2Sm5SYl9Lb19WX3U5QWMzLWh5Z2xNRk1rdU9hdDlJYTBFdGpzRU5jNjJmVS1FMHhzSzNvRVNZTmcxN19DQQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "event",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "HOME > グッズ > 【にじさんじ】風楽奏斗、渡会雲雀、四季凪アキラ、セラフ・ダズルガーデンの「VOLTACTION」デビュー4周年記念グッズが登場！ ANYCOLORが運営するVTuber / バーチャルライバーグループ「にじさんじ」は、「VOLTACTION 4th Anniversary」グッズを2026年7月24日(金)19時から販売開始します。 【ポケチャンにじさんじ杯】トーナメント抽選結果が発表！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMi0gJBVV95cUxPa0pMLVR6aDBJcGJscGMwV2Y4d1Fxb1haNVNlNlZ3TkpXejFRSlloRUljWU8zRDZaQUJYV1FvVmRZSXlEdjdvSVJQQ0Q2Wm1ydE01OUlVT0F6cmlXRlhsOFRlM2RGMWZENmdEUElMNTJ6b3NlNnhOaGYyR3gtSmE0UXFoVF9YUHZadk5FRkZGVUFraXU0NXJmblNKQ0FmZURqd3RIRGF5SVU2dHdTZjFwVFQ1bXBtZ0gwTUhtajkzTWk3TDBSYVYycnpHRFY3UEZOWkJQTmUtUUtVX25uU3F5bFNBQ19RdEg5eFI2RkJTTmpjYVZFblJqQWtZWUcwaTZTOElTbkFlQTl3NlZTLUlvX2hvdUpYVU9KTmlucTBoM0ZfSXoxbUxRb0E2c2huV000ek9ZdWF6aWYtdW1kbFBRVkJrOVl5UTh1T1FtYU4ycWF2QQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "collaboration",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "アカウントを取得する パスワードの復元 パスワードをリカバーする あなたのEメール More ホーム V-tuber VTuberが現実世界へ！ VTuberの現実世界展開がいっそう加速しています。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBnTm9temNVclFhUHFjZ2Z6RGRoOW1DcktoN1UwTTZsdHFKTTZSS1RsMzNlLWEzcDdSVlFhVDhRM1B3OF9WbXU3MUgwVG80VHo2cUR4TTBXWFA1clV4XzNvd2dwOXBMSzhBUGc?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "community_or_fan",
+      "secondary_categories_json": [
+        "live_or_music",
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "5月5～10日にかけて東京・池袋サンシャインシティでコスプレイベント「 acosta!@池袋サンシャインシティ 」が開催されました。 本稿では「 ホロライブ 」兎田ぺこらのコスプレでイベントに参加した 水雨るる（X：@ririruru_0409） さんの撮り下ろしフォトレポートをお届けします。 兎田ぺこら「ホロライブ」／水雨るる（X： @ririruru_0409 ）",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5BVFQwU194U0ljcWNHeGw2WTJpTVdYR0lvYjBYcFBvY2I2S3VHS1lkdXB3NERMVWdGTGoxYWNmM1ZFak5iODVnbHpwODdlT2ZrWi1J?oc=5",
+      "article_type": "official_announcement",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "product_or_goods",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "この夏を彩る\"メロい\"ダンスチューンを英語・日本語の2バージョンで世界へ発信！ ANYCOLOR株式会社(本社：東京都港区 代表取締役：田角陸、以下「当社」)が運営するVTuber / バーチャルライバーグループ「NIJISANJI EN」は、ユニバーサルミュージック合同会社(本社：東京都渋谷区、社長兼最高経営責任者(CEO)藤倉尚)の邦楽レーベル・Virgin Musicと共同で育成、音楽プロデュースをおこなっているユニット「BY THE BEAT」の2nd Digital Single『MERORI』を2026年7月31日(金)に、『僕にメロり。 にじさんじから「VOLTACTION 4th Anniversary」グッズが登場！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQbmNMaE1JdzVwaThQU0hSTHhpVnhoOGk2Tzdja1pPaGQ4Sm9HQTFPM29yOXF5QjhWRWNHeVRYVjh4VVVTbkE3M2JuaGlYXzE3WHFXenZmWUNjRWpXS0xKMk1kaXloQ3M3OUE2U25KTkpSYm5KNXhFZy1rckhQTGdXdjVhamZoLUt4Q3FhX181OHg2U0s3cnpYTGhTM0xHcDIxSDQ4?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "TPO - ベトナム代表チームは、前回大会の優勝チームとしてASEANカップ2026に臨みます。 今年の大会に向けて、主催者はベトナム代表チームに特別な待遇を与え、ユニフォームの袖に特別なバッジを付けて出場させます。 Báo Tiền Phong • 22/07/2026 Vietnam.vn をフォローしてください G o o g l e News 0",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMizwNBVV95cUxQaGFRdFdpbVVEWEM5Q2VvOUR0alZTanl0TXgySFpqeG5YclRra29sU3ZpNlppdm04eERMMm1kbUNULWJ4U0cwN29aX3lCYmUxNGZSaTVudDRVM01KMmZtemcwRzFwMDY3VlNPWVFSa0trZ3lQemNyNkxpaWFDLTN1OF9FWnBNZGFwNUFSUi1hQVJFcjRwZjlZS2xSc2lnUHk0UG1vcnhfNEFMYnh4YlJJT1NsQksyVlJWZWVXYUcyS19ldzl0eDd0U0ljSDExMmlSUkJyNm9pcDVmQVlpZUZCOUhwTVAtR3hGMEp6aXpUN0lXMkVXcF9sTjdyR1dRVk9tNUN2Mm4tRWtfRzE3THVtNDRfOE4wOF81enNfWEM0WVBsQ1JPSWp2akxRTFplWEpLQXZUUHcxTkRTUmRCcTM1NWhtRlZ4NkNnaFl6dU02ZVNiNzJ3c2p3YjZkZGc3Mmw4SFdaaUhYU3RGYmFNejE3WXpCdVByMDZiUWl6NHlZaVBVaGFGRjZRNVk3aHlIRFczNlpMRzIzTlFLRUl3Vkc2ZzdvSjlSeTdsSkhsNm5PbHJTS29qV2RNRFd4Z3N5dVRBT3NGNDRoVTdWX1FCMUh3?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "2026年06月23日 19:02 (06月23日 22:00更新) 芸能 にじさんじ・るんるん VTuber／バーチャルライバーグループ「にじさんじ」のユニット「いずれ菖蒲か杜若」に所属するルンルンが23日、自身のXがを更新。 【画像】『THE遊び王決定戦 Season2』第1話の場面カット6点 にじさんじの人気ライバーが可愛いぬいぐるみに『にじぱぺっとシリーズ vol.6』 にじさんじライバーの容姿を盗撮・誹謗中傷の動画流出問題、YAB EntertainMentが謝罪＆経緯報告「所属ライバーは契約終了」【報告全文】 にじさんじ綺沙良＆ルンルン、『TOKYO LIGHTS』プレオープニングイベントに登場 ChroNoiR＆ROF-MAOとあやかきの楽曲でオープニングショー 「にじさんじ」ライ。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1QR1NTSUNTS1NaT0pjTjFmNzZCYjJZZDFwal9iRFRyVnpLTEhoQnh5R3NrYTBZNS1zOVFHcnRwZ0VxRmpHdmhranotaw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "室蘭民報電子版「Ｗｅｂむろみん」では、「いぶりファースト」の視点で皆さまに地域の細かい情報から、全国、世界のニュースをお届けしてまいります。 【独自】陸自情報部隊が「愛国心」など調査か 国内有識者ら対象に個人情報収集 数千人分、シビリアンコントロール逸脱も 07月22日 熊本日日新聞 【ロト6】当選番号速報…第2122回(7月23日)の抽選結果、当選金額は 07月23日 福井新聞 「レジに出すのが恥ずかしくて」避妊具を計4回盗んだ男性教諭を懲戒免職 滋賀県教委 07月23日 京都新聞 ロト6（LOTO6）よく出る数字…過去の当選番号から分析 月曜日、木曜日別も 07月23日 福井新聞 【速報】千葉県内２０３０。 食中毒…24人が嘔吐下痢、ビビンバなど食べ 123人が昼に弁当を食べてから異変…店で調理された弁当で麦ごはん、麻婆和えも 留置施設の昼食 セレウス菌を検出、営業停止に 08時15分 埼玉新聞 内堀知事に指定証伝達。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBpTWhWb3NIQTg3c0h1LTZDUGY5Z0lFYUNSNzhRRm51bk1PcXJ4MUJTcjkwVEE4UkowWWFHMzczOWFhc21HajFfMm1NNDFjT1BObzBrM1NMLUFYZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music",
+        "event"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "AppMediaトップ パワプロ2026攻略 サクセス 友沢亮のイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 友沢亮のイベント内容や友沢亮の金特、声優(CV)についてまで掲載しています。 リリース hololive Dreams（ホロライブ ドリームス） COVER、QualiArts",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE12Z2MzbFVMMV9IRXc1YmZBbklZZERoUmJITFpFd3d0SXZFWnlsY196TXBqeEoxbmROWE1Xcnh6ZlVBWi0xNEZycGRCNGVFREpkZ2pNdU93?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "松崎町を拠点に古道再生や循環型ビジネスを展開する「BASE TRES（ベーストレス）」（松崎町松崎）が、在日スペイン大使館などが主催する「Spain Talks 2026」において、環境保全や地域再生に貢献した企業に贈られる「コーポレート・アワード」を受賞した。 【伊豆下田ローカル発見隊 Vol.2】江戸時代からの地名を後世に残したい、下田で消えゆく町名を地図に残す 【伊豆下田ローカル発見隊 Vol.1】SHK終戦80周年企画番組「昭和20年下田空襲」",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5yZlcxYjZfdW9EU2pYT2VJOFl5dURZUnBUX0RUNDNkWFowTFgteEN6MVZQeHlvbE1pNHNJTURlbTgyUmV2VWN4WVF3dTV3MDMtd2NDSE1lSUVSMGc0a1hJZEdac2hRZUQt?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "VTuber事務所ハコネクト所属メンバーによる『ハコネクト夏の平成ギャルゲボイス2026』が7月24日(金) | ニコニコニュース 2026年7月24日(金)19時00分～2026年8月23日(日)23時59分までの期間、ハコネクト公式BOOTHにて『ハコネクト夏の平成ギャルゲボイス2026』を販売いたします。 VTuber事務所ハコネクト所属メンバーが『平成の恋愛ゲームのような世界観』をコンセプトに収録したボイスコンテンツです。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5faWFHblNkOTI2Qllya1VRSEFHcEZrcUZPRzEya0dTcEFaczF0bERON0YtbWZFNWd2dzdOYVk1MVhsNXZBbzdJLUxERkNLXzZsaXFuMU5hR0pZYWxhQzNIMmt4VQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "小中学生の前でミスコン水着審査、SNSで批判殺到 主催者が釈明 [三面] - VIETJOベトナムニュース ベトナムニュース総合情報サイトVIETJO [ベトジョー] ようこそ ゲスト様 7/23 の為替レート 161.56 VND 26,300 VND ※ Agribank の仲値を表示 2026/07/23 18:00 JST更新 会社情報 ライフ セミナー 社会 日系 経済 三面 生活 観光 政治 統計 法律 特集 エンタメ スポーツ 会員限定 南中部地方 クアンガイ省 のリーソン特区で開催されたミスコンテスト「ミス・ツーリズム・アイデンティティ・ベトナム2026(Miss Tourism Identity Vietnam 2026)」で、出場者が制服姿の小中学生らの前で水着審査に臨む様子を映した動画がソーシャル・ネットワーキング・サービス(SNS)で拡散され、不適切だとして物議を醸している。 これに対し、コンテスト。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB4X01FTFhNNHBPUjZOUHVXUHBfZW9Ddnotd3ZDOENmS1F4SlUxZEY5SERJYzBHaHIxdFk5U1ZRcnUzMTY4bmxlenVoRTNwNlZIbThrcEpkNm5fUQ?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "「大追跡～警視庁SSBC強行犯係～Season2」開幕プレミアイベントより ※ザテレビジョン撮影 ▼「大追跡～警視庁SSBC強行犯係～Season2」TELASA番組ページ▼ https://www.telasa.jp/series/16716 ▼「TELASA」特集はこちら▼ https://thetv.jp/feature/telasa/ ▼2026年7月期の夏ドラマ一覧はこちら▼ 男性アイドル出演番組一覧はこちら！ 大追跡～警視庁ＳＳＢＣ強行犯係～ Blu-ray BOX [Blu-ray] 大森南朋 (出演), 相葉雅紀 (出演), 松下奈緒 (出演), 伊藤淳史 (出演), 髙木雄也 (出演) tcエンタテインメント 発売日： 2026/01/30 Amazonで詳しくみる 本ページはアフィリエイトプログラムによる収益を得ています",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPRGtwdjczWGk2d05DWldoRExSOVpHT3RFSGxYclc2OU1iSDV2Qmp4YWxxbUZOZWo2d0xkdFNmM0RTbm8wWUstN3BJRWZZSE9lc2lMUlltblJTZVVoVEwxaE94ZnQ4NHhFLTBtVmxlOWpiOFpkc2NneXZqN3BtaGJnMFdkalJKUC1Pck14bw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "（ダン・トリ新聞）－ミス・ツーリズム・ベトナム・ページェントの主催者は、出場者の水着パフォーマンスが多くの若い学生の前で行われたことについて謝罪した。 Báo Dân trí • 23/07/2026 Vietnam.vn をフォローしてください G o o g l e News 0 主催者側は謝罪文の中で、これは単なる偶発的な出来事だったと述べるとともに、組織運営上の不備を率直に認めた。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE41SUZvN2JsZlFqTDVCV1VYRFA2QUQtdU9sd09EOXpXQzNkdi1OdE1ONTgzeHhZcW16RXlxMk9mcEdJSUFpT1VGWVBUYUh2VzZkOFMzNVdLWkQ1UQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "collaboration"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.86,
+      "evidence_text": "AppMediaトップ パワプロ2026攻略 栄冠ナイン にじさんじキャラの入手方法と能力 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026栄冠ナインのにじさんじキャラの入手方法と能力です。 パワプロ2026にじさんじの特能や性能、にじさんじコラボの履歴書の入手についてまで全て掲載しています。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1GSGdNUjdUR1ctY2llb3lsNUVMUVVrNTQwMTVycG5CUkVUN1NXZk44UHkxTUxZb0JDRlBvWE0zWkF2Y0pPMjB0YmFBMnJFa2dORkJLVkdTdnQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "HOME > その他 > 【ポケチャンにじさんじ杯】トーナメント抽選結果が発表！ 『Pokémon Champions はじまりの王者決定戦 にじさんじ杯』は塚原大地VS九里詠太のY4T4(ヤタ)同期対決など注目カード多数 ANYCOLORが運営するVTuber/バーチャルライバーグループ「にじさんじ」ライバー・笹木咲のYouTubeチャンネルにて、「はじまりの王者決定戦にじさんじ杯 抽選会！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFB5MndOcWNKVENiOUp0UjBrX1ppR2xJb0cyLWRGRXF1bnpoVERuc054Qlk3X0tNMUZPbTNiYUd2Z3ozMGk0dXd3bXFhYzNJVDJSOEE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "2026年07月16日 21:30 (07月16日 22:30更新) 芸能 『Snow Man 佐久間大介の待って、無理、しんどい、、』に出演する（左から）佐久間大介、甲斐田晴〔©ANYCOLOR, Inc.〕 9人組グループ・Snow Man・佐久間大介がパーソナリティを務める文化放送『Snow Man 佐久間大介の待って、無理、しんどい、、』（毎週土曜 後8：00）18日の放送に、にじさんじのバーチャルライバー・甲斐田晴がゲスト出演する。 甲斐田は、にじさんじ所属のバーチャルライバーとして動画配信サイトにて配信活動を行っているほか、同期メンバーと結成したユニット「VΔLZ」（ヴァルツ）などのユニットでも活動している、大人気VTuber。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE05MmlpWG95dEUyZlpJa1hCZlBGS1RmUWZzcENzU1ppMjJGcE1pdVh2MVhxT3dNMHhHVUxsRDk1NnJ5WjZUSlhZdEh4MHNKM3dpMWZUX1R6MWt5QQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music",
+        "event"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "AppMediaトップ パワプロ2026攻略 サクセス 黒珠真のイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 黒珠真のイベント内容や黒珠真の金特、声優(CV)についてまで掲載しています。 リリース hololive Dreams（ホロライブ ドリームス） COVER、QualiArts",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5QcE5CVVVKZ0UxZFd2S1RkYWNFQ1J0ZEdBejJXMjNZMFBqMFRWaXhlZlQ5bThsQzNCSmk2WEZpNXEzV2tOLXRyYk0tUFhMbGJfbnc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "event",
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "HOME > ゲーム・アプリ > 【ホロドリ】アプリ『hololive Dreams(ホロライブドリームス)』正式サービス開始！ リリース記念の15日連続25曲追加キャンペーンなどが開催 カバーは、QualiArtsと共同で開発する、「ホロライブ」初の公式スマートフォン向けゲーム『hololive Dreams(ホロライブドリームス/ホロドリ)』について、2026年7月23日(木)より正式サービスを開始しました。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE94dThoak91V2ZocG5KQWt3aVhhVTgxNk9wZUk4X0l5UWJ6SVUzcTZqWVdLZ3p3WWJYZHFJa25wdFB4c0xzLXc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "ANYCOLOR株式会社(本社：東京都港区 代表取締役：田角陸、以下「当社」)が運営するVTuber / バーチャルライバーグループ「にじさんじ」は、「VOLTACTION 4th Anniversary」グッズを2026年7月24日(金)19時から販売開始いたします。 ANYCOLOR株式会社が運営するVTuber/バーチャルライバーグループ「にじさんじ」所属の風楽奏斗、渡会雲雀、四季凪アキラ、セラフ・ダズルガーデンで構成されるユニット「VOLTACTION」のデビュー4周年を記念した新グッズが登場する。 2026年7月24日(金)19時からにじさんじオフィシャルストアで販売が開始される。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNYXZfVUlqSEludGFNWFJRQXgydEtzbFdET3lGMXdyRFJxV1ZrbFEtaVRjSTRMQzF0OVlNNWxuT0poT1lLOGphYmJYYWQ2VExRSkFLd3NNWmg5S1RXXy10UU1lUHZrX0dxaXJXc012VkJ3YU5VTFgwTk9mbmxHZnBPbFpydF9UYWpSZlhsWkplOUJwYUFXM3AtR1N1MDlKUQ?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "美人コンテストの出場者が小学生の前で水着姿を披露し、物議を醸した件について、主催者は謝罪するとともに、決勝戦に向けて全ての手順を強化すると発表した。 Báo Thanh niên • 23/07/2026 Vietnam.vn をフォローしてください G o o g l e News 0 出場者が小学生の前で水着姿でパフォーマンスをする写真がソーシャルメディアで拡散し、物議を醸したことを受け、ミス・ ツーリズム・ ベトナム・コンテストの主催者は、大会の公式ファンページに謝罪文を掲載した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9iWUdrV3llWm9YVVEwN1NMbUMtZW0teFVfUFVQeVI0RFVfaGNHSU1GbGxYSEt0QkdNTnl4dTJVWEpicU5xT2RoTl9jU0lNdWhO?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "event",
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "「15日連続25曲追加キャンペーン」等、リリース記念キャンペーンも開催～ タテ読み「あたしンち」 #17「雨に気がつく」 NEW! 7/13 タテ読み「あたしンち」 #16「母は大谷君が好き」 6/29 タテ読み「あたしンち」 #15「マスター後つける」 6/15 この特集の記事をすべて見る 企業と共同実証で学生が学ぶのは技術だけじゃない 手のひらサイズのセンサーが街を「見る」 芝浦工大×スズキ、自動運転の死角をAIで 7/17 「数学を勉強する意味が分かる」東京理科大1年生を感心させた授業とは 「MetaMoJi」社員が教えた生成AIの原理 7/16 文系卒がアプリ開発の国際コンテストで部門3位。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1UaUlfaE8yOGtHb1FsOWs0d25qb1dxU29NUjlvWUtCbUJtYTFnd1Q4bVFRZk5OZkVsaHNLNk1kT0xpTW1iWGs4VFBnaDI0WVE5NkxRUnlB?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "collaboration",
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "タテ読み「あたしンち」 #17「雨に気がつく」 NEW! 7/13 タテ読み「あたしンち」 #16「母は大谷君が好き」 6/29 タテ読み「あたしンち」 #15「マスター後つける」 6/15 この特集の記事をすべて見る 企業と共同実証で学生が学ぶのは技術だけじゃない 手のひらサイズのセンサーが街を「見る」 芝浦工大×スズキ、自動運転の死角をAIで 7/17 「数学を勉強する意味が分かる」東京理科大1年生を感心させた授業とは 「MetaMoJi」社員が教えた生成AIの原理 7/16 文系卒がアプリ開発の国際コンテストで部門3位。 7/5 「チャッピー」と呼んでいる場合ではない 「次に狙われるのは日本」池上彰と斎藤幸平が語る資本主義の限界と民主主義の未来 7/5 AIの時代だからこそ「情報は自分の足を使って嗅ぎ回る」 コンサルタント・メン獄が語る「検索で到達できない究極的な個別性」の見つけ方 7/3 この特集の記事をすべて見る",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5aRVVlaUZxY2k2cHViQjN6SGJGRUs5cFVFcHVoOHFRNjN6dzhoRE82NS1ESzJJdzBndUVjdWhMMl94OW14cUtrcHVBRVhoN0lHRFY3azhGTnlFb3dWLWRwZmRjSUw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "キーワード・カテゴリ・年月のいずれかを入力してください。 夏の伊勢原を彩る恒例の「大納涼まつり」が、７月25日（土）（午後２時40分〜９時）と26日（日）（３時〜８時）の２日間、伊勢原大神宮で開催される。 半世紀の節目を迎える今年は「50Ｙｅａｒｓ ｏｆ Ｔｒａｄｉｔｉｏｎａｌ（50年の歴史）」をテーマに掲げ、例年以上にパワーアップした記念企画が用意されている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5yamJlR0NqSXI1QVZoYUpTcHBnb09Pd0xua1huTTJmNzkxLXlLMjdGMkRseEtRS0EwbDE5dzdtS0RjN29vVlhtTWdQSHI5MXM?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "サッカー W 杯、スペインが ４大会ぶりに王者に返り咲き | 朝日ウイークリーデジタル(Asahi Weekly DIGITAL)日本語解説付きで読めて聴ける英字新聞 Spanish defensive midfielder Rodri hoists the World Cup trophy as his teammates rejoice after routing defending champions Argentina 1-0 in the World Cup finals in New Jersey on July 19. Devising steadfast defensive tactics throughout the tournament, the Spaniards managed to climb atop the soccer wor...",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9FWjBpdmNuRTVsYk9Ma0daWnpZWVZUUFg4YlBlS2Y1cEZBVnJ6MzZoYlBGLXVwNDJFcnh4Rll6YkZER0JXa1ByUGY3a3FwMTdTWmJ4RGZ6S1FiZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.86,
+      "evidence_text": "QualiArtsとカバーのiOS/Android向けアプリ『hololive Dreams（ホロライブドリームス）』のリセマラ攻略ガイドをお届けします。 App Storeでダウンロードする Google Playでダウンロードする 『ホロライブ』をAmazonで調べる 『ホロライブ』を楽天で調べる 【目次】 ・ リセマラの方法は？ ・ チュートリアル後のガチャ ・ ガチャで入手できる星5メンバー一覧",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE5yWEtrem1adjctUU4ya2xOdmhOWDFyWE4xZ05IT0RUWjdjMzBBczRpQUYyVmxKWE5zVU5uSHhIZ2RJanVl?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "本作は、女性VTuberグループ「ホロライブ」初となる公式スマホ・PC向けリズム&RPG。 事前登録で160万人を突破するなど大きな期待を集めていたが、前評判に違わぬ出足となっている。 カバー、「ホロライブ」初の公式スマホゲーム『hololive Dreams（ホロライブドリームス）』の正式サービスを開始 好きなタレントの最高レアを選べる！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1kd3plZzhmZThjTWFJa0lsc0FoaUJvaWctSGhvdXlKMjAyRzA4TV9POWhfcFZGb0l4c2JGNllfZGdRbkttbHlCMVYwcTRJejFvRENXdlpGemE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "「大追跡～警視庁SSBC強行犯係～Season2」開幕プレミアイベントより ※ザテレビジョン撮影 7月22日(水)にスタートする、大森南朋、相葉雅紀、松下奈緒がトリプル主演を務めるドラマ「大追跡～警視庁SSBC強行犯係～Season2」(毎週水曜夜9:00-9:54、テレビ朝日系※初回は拡大スペシャル／TELASAにて配信)の開幕プレミ... ＜明日の風、薫る＞上坂樹里“直美”は内田慈“文”の願いをかなえるため、海が見える神社に向かう 2026/7/23 8:15",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5LR1o4VFZxN25sbHFXNEZkUTZXSGpfdWNCaW5rR2Rxa2cwNGt2cENkMnMyTzNmWlR3c1p0NW5pOGNTNm12ak8yUzFwSExfTGc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "今回は新作リズムゲームアプリ『 ホロライブドリームス 』のプレイ評価レビューをお届けします！ 正直に言うと筆者はアイドルとかVTuberとかはほぼわからないのですが、マジで可愛いですこのゲーム。 音ゲーとしてはシンプルで定番のヤツとしか言いようがないですが……、ぶっちゃけ音ゲーはシンプルなのが一番面白いですからね。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNbkxfNG1xQTk0cFhDM2JIZnVsdWlUTFNFTkN1eW5mNS05Uzd0MXd2NzJLNWFUbmt3Q1phR0dkSi05VWY2eEZNV1dkcy1kclBXRkNxWGkwdng4cDNvVktwLWM1X01HWGhoNzVzbjhYenY2a1dTcFVBLXZZNXhQbXQwcFg2cExtdGc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "ＡＮＹＣＯＬＯＲ < 5032 > の経常利益予想コンセンサスは、前週値の21,462百万円から1.3%下落し、21,176百万円となった。 対前年実績で見た場合6.3%の増益予想から4.8%増益予想に下方修正された。 会社予想値18,000百万円と比較すると、現在のコンセンサス予想は強気の見方となっている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1qUnkwMGVOdnNDTWJHTXJsNXRuV0F5cTNzSHpTVjN6SnUwVDBYVzYyQzd6TjJacVVleGs5NEVhU1R1bXlhWXFwSU9mYTQtVXpLaDhkMlFRbHE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "【必読】“あの頃”の表参道・原宿の象徴的な景色7選 【感謝！ 大満足のランチプレート- SEARCH HOME > REAL NAVI > NEWS > 【2026青山盆踊り】善光寺で青山表参道商店会主催「令和8年 謝恩納涼盆踊り大会」が開催 NEWS 青山表参道商店会主催による 夏の恒例イベント「令和8年 謝恩納涼盆踊り大会」 が、北青山3丁目・善光寺境内にて、2026年7月26日（日）・27日（月）の2日間にわたり開催される。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE92bnA3elVrdnljdi1nbnZJRXNGZlVWbUNZWlBaS0ZCRXlnNGQ4bmZud2otOTlFLU5JNHNvb0pBbTczTDBOLXpNcU5hV1hQWG5BVkdyZGh1d015dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music",
+        "event"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "AppMediaトップ パワプロ2026攻略 サクセス 虹谷誠のイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 虹谷誠のイベント内容や虹谷誠の金特、声優(CV)についてまで掲載しています。 リリース hololive Dreams（ホロライブ ドリームス） COVER、QualiArts",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9qZ0dFZWlBck4wY1NWUnNiVHRRUzJWT1BPeGV0OHoxRjlOcHFjMFlpM3lvb2s1b3FZV3JqWUhjaWFtY0NKTzU5OVFfR2NxaEdOY2JONDQ3aXdGemFNMFFtQXlBVDVrM1RXVnFwalQzQWdRN3RvU3hLMTdUWTlvSW8?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "ホリプロとテレビ朝日が主催するミュージカル「ディア・エヴァン・ハンセン」における転売対策について発表した。 公式サイトでは「このたび、弊社が認めていない非正規のチケット販売サイト(チケジャム・チケット流通センター・viagogo・チケットストリート・メルカリ・ヤフオク！ ・チケフェス等の売買仲介サイトなど)やSNSにおいて、本公演のチケットが高額転売されている、またはその疑いがある座席（出品情報に記載された座席）を複数確認いたしました」と報告。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1NUHFyTnhmbEdmcXdwSjFrZXJXdENETC1PUndONnM5ajgtOVV5Mk16ZDF2SmhvNm9aYWRMUUFmOTdwY1JtMUFxRFlrMEhzQQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "HOME > グッズ > 【にじさんじ】月ノ美兎や不破湊、壱百満天原サロメのモチーフがポップなピンバッジになって登場！ 「にじピンバッジコレクション Vol.1」が販売決定 ANYCOLORが運営するVTuber/バーチャルライバーグループ「にじさんじ」は、「にじピンバッジコレクション Vol.1」を2026年7月24日(金)18時から販売開始します。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1ObUtuTjFFbkhJMEpyeTlVZUh4dmlZUWFoUnFKVXNmQXcyaWhTZXVIUEhES25yZmR2VGt1czRINDlycHRiOXJJUjhkZw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "7月23日、Re:AcTを運営するmikaiはVTuber・花鋏キョウが1月末に卒業していたことを発表した。 Re:AcTは7月23日に公式Xアカウントで「『花鋏キョウ』卒業のお知らせ」として文書を投稿。 文書では花鋏キョウが2026年1月末で卒業していたことが発表されている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFB1OGxzUEdzT0QyWEswcTYxOXdFdHRGVEF1QmZ0UEVCcUFPZGt6NGJvcThlSTV1dnlGNjVIR0ktMm9iS0tiYnlRYXV1Ri1tWDNhT2IwVW5nZm1UYkNteVQ3c1B1RkFWaHp4My1CX3dDVzYwSktYeWxqSWJR?oc=5",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "2.5次元VTuber・あくいるさやさんのX（旧Twitter）アカウントは7月22日、投稿を更新。 あくいるさやさんが急逝したことを報告したところ「嘘だと思いたい…」「だから言葉はナイフなんだって」といった声が上がっています。 ◆VTuber夢乃とわさん死去、急性骨髄性白血病で闘病生活送る。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE0ydGV5dkVRTXR0VFJOQWlSYmE1MXlNTzVBWkgxUmJUQm5XWm5mSlB5V3NiMTQ4UUZrRDBvTndoSjVYQmZ2OWVjYzIwUV9USF9TbG9BTm9FRXV2dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "AppMediaトップ パワプロ2026攻略 サクセス 二刀流育成理論と作り方 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026サクセスの二刀流選手育成理論です。 リリース hololive Dreams（ホロライブ ドリームス） COVER、QualiArts",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE84S05FQThUa21oaFRHS0ZvUFctTDQ3QUJCc3pBZ0hRamszdjF2TWVrVzZyYzh2SFdzZ1ZTZk9KQkdyZ2w0cUU0OG0wYw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "2026年9月27日（日）東京・後楽園ホールにて第1回大会が開催される株式会社東京ドーム主催のキックボクシング大会『KORAKUEN JAMBULL』（こうらくえん・じゃんぶる）の記者会見が、7月22日（水）都内にて行われた。 今大会は、後楽園ホールを使用しているシュートボクシング協会などの立ち技格闘技の9団体・プロモーション（NKB日本キックボクシング連盟、ジャパンキックボクシング協会、新日本キックボクシング協会、スック・ワンキントーン、ニュージャパンキックボクシング連盟（NJKF）、KNOCK OUT、Bigbang、RISE）が一堂に会し、9月27日（日）東京・後楽園ホールにて第一回大会を開催する。 試合は-60kg（下限は57kg）の階級で行われ、デビュー10戦以内（現・元タイトル保持者は対象外）の男子選手を対象に、ヒジ打ち・首相撲ありとヒジなし・ワンキャッチワンアタックの2つのルールで行われる。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE13QVc5c3NUQUVoeVF4LUxhV19Gd2FTNXRvZWEtYW1ZaU5odVlSZWV6QmNnWFgycFpHcXJCdXBLWWdJWlVjZzZXcGp4OUZmQWs?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "Re:AcT SUMMER FES 2026 Pack デジリアトレカをリリースしました！ 株式会社ユートニック（本社：東京都新宿区、代表取締役：常田俊太郎）は、 Re:AcT SUMMER FES 2026 Packをリリースしました。 「デジリアトレカ」とは、デジタルとリアルの両方で楽しむことができる新感覚トレーディングカードであり、限定コンテンツを楽しむことができます。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPRHJHdXlRNUZnN05kVEZoT3Q1bmhidjd2a3hsYktSQ3ctSnBGWXgtZmZucmpBZ2VNZ2dkVFNBRzBmU20zS2lHYTl3VVk2bUpPdXM3Tl95Z21oQVJ0bmd4XzdDZHU4b204RDAtWGQ3cFZaLXdqR3VzdE5QU0RybjB4dnlsR004b0ZIRi1uVjNR?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "「BOY presents “KID” 12」フライヤー （ COPYRIGHT (C) Natasha All Rights Reserved. 【写真】伝説的なラインナップの「BOY 10TH ANNIVERSARY / KID vol.10」 「ライジングサン」タイムテーブル公開、今年のクロージングアクトはSHISHAMO",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBzYU5pQk9UclNYczkwX3YwdXVWanl3VnVtWDdGTUs2b29VZ1lBZktzUUc4YTJ0MVpNZmdYRGtwc1p6M25XdFNMd0JzUUJOOUdNalNHLXlCSENHUlNPTTJuMNIBZkFVX3lxTE5qekJLdUJGN2lzRjR2cGx4Y3hGbXhMVmp6cl9Ya3c1QjVtaWJmdWZRbUxDaUNRZW90WGNaRV9WRmVnZDhHYV9yUlN1ZG1Zb3NldnFhU1BJbUFXbDBpMmVzLUozaURadw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "A・DIMENSIONは、『あおぎり高校 山黒音玄 私服衣装Ver. 1/7スケールフィギュア』の予約受付を7月23日12時より開始した。 本商品は、VTuberグループ「あおぎり高校」所属の山黒音玄を1/7スケールで立体化したもの。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1ZNklxOGFYQ1FBNEEyeGY1YzV5UDEyRFpKUzhqejFHUkQ2ZHh1YVpnVEpLQm1XTWRzV3NGOFFlaXVMcmZjRGZyUGlZWnJwMUU?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "ニューヨークを拠点とするJapanese Food and Hospitality Association of New York（JFHANY）7月29日（水）午後3時から「レストラン経営者のための、他人事ではない訴訟事例」と題したセミナーを開催する。 ニューヨークでは近年、労務問題やハラスメント、賃金・残業、契約、リースなど、レストラン経営を取り巻く法的リスクがますます複雑化しています。 本セミナーでは、ニューヨークメトロエリアにおいて数多くのレストラン関連法務を手掛けてきた川崎晋平弁護士を講師に迎え、実際の訴訟事例をもとに、経営者が知っておくべき法的リスクや予防策について分かりやすく解説する。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBrd0FLckxBN0tjSUJNVDB2RHc4aWcwb3piRnVZakNVS042U053TTZxSzRuZEZtbjJuNjMwQmh0NUs3eXVydzNyMzJSeGVOdFJQeWZUVTA2RTNabmhIcWplVWVDSQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "バーチャルライバーグループ「にじさんじ」は、新ライバー「 ぷりん・らら・もーど 」さんと「 ぽめろ・ぱんち 」さんのデビューを発表しました。 7月22日に行われたデビュー配信では、ぷりん・らら・もーどさんが好きなゲームとして『 VALORANT 』と『 リーグ・オブ・レジェンド （LoL）』を挙げています。 新たにデビューした2人は、どちらも「 元・魔法少女 」という肩書を持つ、ファンシーなデザインが特徴のVTuberです。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBSc0Q3OThXaDdSX0oyMWpUcDRyS0dQUjBXQkthaW1PZ2VZT1pwbmFUYktGVTJfOW55Rl9WS2NkVjVGRW0tSWNib18zR1ZIOWNEN0NGUUhzNTE4YnZLWERTVjFWSFBwbjlxMHc?oc=5",
+      "article_type": "press_release",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "7月31日オンライン予選会からツアー各地の地方予選を勝ち抜き、東京ファイナルへ。 株式会社IVI Entertainment（本社：東京都港区、取締役社長：大城 将）は、人気クリエイターグループ「くれいじーまぐねっと」が主催するイベント「SODA POP FESTIVAL 2026 SUMMER」との連動企画として、全国規模のクイズ大会「くれいじーまぐねっと クイズ王決定戦 in SODA POP FESTIVAL 2026 SUMMER 」を開催することをお知らせいたします。 「SODA POP FESTIVAL 2026 SUMMER」は、くれいじーまぐねっとが主催するイベントで、福岡・大阪・北海道・愛知・東京の全5会場を巡るツアーとして開催される。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE56WU1WMFVIREUtYXBxNWVTR0QyMFF6ZDBGUllNSW5FTEppOXQ3aTRQMVpOMzlvUFJhZXJmTGlfbDRhY2tPZ3lseXpFWE51dw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "product_or_goods",
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "HOME > イベント情報 > 【ホロライブ】癒月ちょこ、AZki、桃鈴ねねの描き下ろしイラストグッズが登場！ 極楽湯・RAKU SPAコラボ“フロライフ 癒しの湯巡り旅～ひとめぐり～”が開催 極楽湯およびGK Marketingは、2026年8月6日(木)より極楽湯・RAKU SPAグループ11店舗で、カバーが運営する女性VTuberグループ「ホロライブ」とのコラボキャンペーン“フロライフ 癒しの湯巡り旅～ひとめぐり～”を開催します。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPcnY1bTZJcW1sLWpkaklVRUZsX1pheFdKeFlZT2FpTk9rTnRiNDFpTHBJdnlwWk5YOTdubVJyRjlLenZsWEdVWDhqMzQ5ZDNYRmE3RXNPS0puVVFyOFM2aWR0bEVEeHhJUHJhVVhTYjRQNzNkUW84bEdrbHRoRXZVMzkybUU5MFE0c05fekhSWTVGRlYx0gGUAUFVX3lxTE9ydjVtNklxbWwtamRqSVVFRmxfWmF4V0p4WVlPYWlOT2tOdGI0MWlMcEl2eXBaTlg5N25tUnJGOUt6dmxYR1VYOGozNDlkM1hGYTdFc09LSm5VUXI4UzZpZHRsRUR4eElQcmFVWFNiNFA3M2RRbzhsR2tsdGhFdlUzOTJtRTkwUTRzTl96SFJZNUZGVjE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "バーチャルタレント事務所「Re:AcT(リアクト)」が23日、公式X(旧ツイッター)アカウントを更新。 所属していたVtuber「花鋏(はなばさみ)キョウ」が今年1月末に引退していたことを公表した。 花鋏は2018年にデビューしたバーチャルYouTuber。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNcG9iV1hmc0ZYaG41bjM1VHdfX0k1bWVqTHp5eWp1c0pQRVd6YmRZMFl1Uy1xUWgzb1JrTGN2OERfMnJWTkozdTl3ZWxCclRpa0FSaHh6anFtQnBOWndPTHFQS0E5NnpCOFVUQVVyeUsxQmZtbEVWRlo2Z19lUlRSNE15czhsY1JjQWlXTWpKdkZxZw?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "7月23日午後、ベトナムスポーツソリューションズ株式会社（VSSG）とホーチミン市警察サッカークラブは、2026年ベトナムU9、U11、U13サッカーフェスティバルの開催を発表する式典を開催した。 Báo Tuổi Trẻ • 23/07/2026 Vietnam.vn をフォローしてください G o o g l e News 0 ベトナムU9、U11、U13サッカーフェスティバル2026の発表式典の概要 - 写真：学生",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://prtimes.jp/main/html/rd/p/000000002.000169782.html",
+      "article_type": "press_release",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "現役の恐竜研究者でありながらVTuberとして各種SNSで最新の化石情報を発信している「古知累すすむ」（高崎竜司；岡山理科大学）は、米国学術雑誌Paleobiologyにて恐竜の胃と消化戦略の進化に関する新説を提唱しました。 体長8メートルを超えるティラノサウルスの近縁種で、強力な顎で獲物を骨ごとかみ砕いていた可能性が指摘されているが、大量の胃石を持つ化石が報告されている。 というのも、この研究の筆頭著者である高崎竜司（VTuber古知累すすむ）による実験で、少なくともニワトリにおいては「植物食性」の個体よりも「肉食性」の個体は胃の筋量が多く、胃石がまるまっている傾向が捉えられていたのです。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1pVUo3NThFRTBlSGhtZmxpZEVHMDExMW9hMndTaTU3N0psd2tHTzZEVVo5Z0M4TEt6Y3dHYkVDdHAwOHJyYlhmbTFyeHNLclNCeDhDMk4wcWtXMkFRMC1nS18zaw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "ついに、 2026年7月23日 、世界中のホロリスが待ちに待ったホロライブ初の公式大型スマホ＆PCゲーム 『hololive Dreams（ホロライブ ドリームス / 通称：ホロドリ）』 が全世界同時にサービス開始しました！ カバーとQualiArtsの最強タッグ が手掛けるリズム＆RPGということで、発表時から ドチャクソ期待されていた 今作ですが、リリース当日からアプリを落として 徹夜で死ぬほど遊び倒しました ！ ホロライブのファン（ホロリス）はもちろん、 音ゲー好きや箱庭ゲーム好きも絶対にハマる要素が詰まりまくっています 。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBickNlaWstR1NJVC1qLXVacDFqWlpoanoxSjczOWdpcTNfM3h5d0dOWE1HLUV6OXlUWDAyamFPa0NaMmdUMnVZNEtzYmRjejl4QjdfV29R?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "BOY主催によるイベント『KID 12』が8月10日（月・祝前日）に東京・SHIBUYA CLUB QUATTROにて開催される。 『KID』は東京・渋谷を拠点に「FASHION & MUSIC」をコンセプトに掲げるショップ ＆ スペース「BOY」が主催するオールナイトパーティ。 2014年より様々なスケールで開催されており、10回目を記念して過去最大規模で開催されたLIQUIDROOM全館での『KID10』では、当時から先鋭的な表現をつづけるアーティストをBOYならではの感性であつめ、Tohjiや羊文学、GEZAN、betcover!!などが出演し話題を呼んだ。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1zancweVllbk1JZ1M0RmgtMUZramozeEY1VFhmMGVPR1V6TkNmS3NEZXlILTBERkZFMHVkM0t3YnA5VzgxN0tBSFdEamJzaFVZd3p6dXU2Z19wZzRXWlRxOVVkN1JGbDRlcnc?oc=5",
+      "article_type": "press_release",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "今回が12回目・2024年以来、オールナイト公演での『KID』は実に7年振りの開催。 株式会社パルコ(本部:東京都渋谷区)は同社が運営するベニュー「CLUB QUATTRO」にて2026年8月10日(月・祝前)深夜、渋谷を拠点に\"FASHION & MUSIC\"をコンセプトに掲げる場 BOY主催によるイベント『KID 12』を実施することを発表します。 『KID』は渋谷を拠点のBOYが主催するオールナイトパーティーで2014年より様々なスケールで数々のかけがえない夜をつくってきました。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE54UnlTdy1kTzhIQ0Y3SDFJWFRVTEIwZWxLVy1JSi1yd2Nnam5Wajc1MTVkLUMtcHBNWEc1dno1X3lOXzBVVC1lazdIUDRsMW9NSDFsNjBueHRGSFRYQVBF?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "ATEEZが、7月29日にリリースする日本5thシングル『BAD (Japanese Ver.)』のユニットコンセプトフォトとパックショットを公開した。 ユニットコンセプトフォトは、HONGJOONG、SEONGHWA、SAN、JONGHOの4人と、YUNHO、YEOSANG、MINGI、WOOYOUNGの4人による2つのユニットで構成されており、ソロカットや集合カットとは異なる距離感や空気感が印象的な、ユニットならではの新たな魅力が詰まったビジュアルに仕上がっている。 【先ヨミ】MECHATU-A『On-Deck!』30.2万枚で現在アルバム首位独走中",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5mSVI4ZUVxU29BMEFhcUw2bmNYLTBDeW51SjBSVkR5bG4zb01UUVJ0eHZOMHNyUGZJdGlabEl3VUZpcEpNeS02ZGVhMVhiWEVKbXlIX1ZJcFhzUGNlQ1JR?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "フジテレビの音楽番組『STAR』の7月30日放送回の出演者が発表された。 20th CenturyはTVアニメ『MAO』のオープニングテーマに起用されている新曲「僕らが上書きする世界」を、timeleszはメンバーの佐藤勝利がアニメーション初主演を務める映画『君と花火と約束と』の主題歌「消えない花火」（7月29日リリース）を、NCT WISHはTRFのリメイクソング「BOY MEETS GIRL」を、Number_iはメンバーの神宮寺勇太がプロデュースを手がけた楽曲「BUGS LIFE」を、さらに、７月31日より劇場公開される『モアナと伝説の。 【先ヨミ】MECHATU-A『On-Deck!』30.2万枚で現在アルバム首位独走中",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE54SDNzTWcySHdKODVUaDZFSG1YLW1WeWtoVUpIOHJxTnpxdGFOYm9xTUpoV0gzaEZXbVpaa3lLMGV2ZFRLX2QtYXN6US0?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "ANYCOLOR株式会社(本社：東京都港区 代表取締役：田角陸、以下「当社」)が運営するVTuber / バーチャルライバーグループ「にじさんじ」は、「VOLTACTION 4th Anniversary」グッズを2026年7月24日(金)19時から販売開始いたします。 2026年7月24日(金)19時から「VOLTACTION 4th Anniversary」グッズを販売開始！ 当社が運営するバーチャルライバーグループ「にじさんじ」所属の風楽奏斗、渡会雲雀、四季凪アキラ、セラフ・ダズルガーデンによるユニット「VOLTACTION」のデビュー4周年を記念した新グッズが登場！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFA2M1lvT3dXYnVOMTZHa1ZxWjcyRVZBY2VZZzltb004WWI3TEE4Ujg0bHNlQlhQeDBTYi1zVV95cW9iUWkwU1NqV1FRdGVLVlgzcVBLMg?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "event",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "極楽湯およびGK Marketingは、極楽湯・RAKU SPAグループ11店舗で、カバーが運営する女性VTuberグループ「ホロライブ」とのコラボキャンペーン“フロライフ 癒しの湯巡り旅～ひとめぐり～”を8月6日より開催することを発表した。 店舗入館時に入館料金と併せて「癒しのフロライフセット～ひとめぐり～」の料金を支払った利用者には、描き下ろしイラストを使用したコラボ限定マフラータオルがランダムで手渡される。 コラボ風呂はホロライブタレントが香りを選んだ3種類を用意し、浴室には特別デザインのタペストリーが装飾される。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5maUl3aGJHY3ZXcFBnVnlTUEVQazJ4akdKbDl2TVlvSG5XcnlSTlJKV0Q2dWFtZUx2V0ZMQXFWcnYtT0hMemUyRk1zSnhPWVVtdVpDNWhmSnpUcFJHaW0tZzdjclpfRThjeFE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "バーチャルタレント事務所「Re:AcT」を運営するmikaiは7月23日、所属するVTuber・花鋏キョウが2026年1月末に卒業していたことを発表しました。 花鋏キョウさんは、2018年9月にデビューした「Re:Act」所属のバーチャルアーティストです。 2025年には3rdアルバム「Purity」をリリースするなど、歌を中心とした活動を展開してきました。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFBmbUJ2Y0ZrUjFjMVE0dTZNQUdkUFZyajdzRVMwSnRqeVB6d2Z2QmphaHhuOWxSRlZpZGVCQ1hmaml1TkVYdnRNZWRB?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "AI審査・AI-OCR・公式ページ自動生成を提供開始。 株式会社公募ガイド社（本社：東京都港区、代表取締役：浅田邦裕）は、コンテスト・公募運営DXプラットフォーム「Kouboプランナー」において、コンテスト運営の効率化を支援する3つのAI機能をリリースしたことをお知らせします。 紙応募やメール受付、手作業の集計といったアナログ業務を大幅に削減し、主催者様の運営負荷を軽減します。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFAxblRxUVd1bkM3OXg3djdkTFYyajFCSDZObXQ1TnJhbkpnQ3ZDdEtHQWplZDlzS0JZa2VsMS1wTmRlNUxuVVFoTkxBN2pPX04tdmFqM1ZNT240Wk9VX19FSkpUTQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "product_or_goods",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.86,
+      "evidence_text": "記事検索 ゲームタイトル/メーカー名検索 詳細な検索へ TOP TOP 話題作 オンラインゲーム 週刊連載 攻略ガイド レビュー インタビュー ムービー ゲームショウ プレゼント 配信番組表 PC XBOX PS5/PS4 Switch スマホ 女性向け VR ハードウェア AC アナログ ▼その他 ［インタビュー］「EWC 2026」の舞台裏を主催団体Esports Foundationの幹部4人に聞く。 トップ > OTHERS > にじさんじ 2026/07/23 19:14",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9IeVNmRFlyWjF1V2sydFRMQlFuc2NGNGhVQVk1dTBoMUx1M0NkYjRlb0dHaE1FaUlvOHN3ZENlbDh2NTZhTzhwNmVRckltdldVcmFwWG9TSmcwZmVxRlUzaNIBZkFVX3lxTE50V1VqZXdQd0pVZTd3ck9mRXg1cklPbGJZb2FKZkVMcExxd1c3Y1E4Z0tPN0dFeGt0eHJ0cE85eW9pME9GOG93eXNWNExUVWx1ZWVYS0JxWHV1ZFJjM19CcjJydzk1QQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "ANYCOLORが運営するVTuber／バーチャルライバーグループ「にじさんじ」より、新グッズ『にじピンバッジコレクション Vol.1』が7月24日18時から販売開始されることが発表された。 本商品は、にじさんじライバーたちの個性あふれるモチーフをポップにデザインしたピンバッジコレクション。 参加ライバーは、来栖夏芽、椎名唯華、健屋花那、ソフィア・ヴァレンタイン、月ノ美兎、花畑チャイカ、壱百満天原サロメ、不破湊、町田ちま、ミラン・ケストレル、社築の11名となる。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1yZC12Ym1GcktIY1pwV2FmMmhULVZXR2xKdk5VRnZfUWJpZUhnUmZ6VUgtTlVCd1Y1aVU4eE9UM2hjUWVHRU53MU9RRWFtdHQwUDg5QkpaNFVyMW5HeWQ2dmZBckQ3dGdmT3VNaXpad1pCM192UzdyWUt0QmVDY3c?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "今週のCDアルバム売上レポートから2026年7月20日～7月22日の集計が明らかとなり、MECHATU-A『On-Deck!』が302,951枚を売り上げて首位を走っている。 本作は、「にじさんじ」所属のVTuberである佐伯イッテツ、赤城ウェン、宇佐美リト、緋八マナ、星導ショウ、叢雲カゲツ、小柳ロウ、伊波ライからなるユニットの1stミニアルバム。 本作にはリード曲「The Hearties」のほか、全7曲が収録されている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFB4UFJFUjY0OFRDdVpJWjE3UTk4a09aNEF1c1Rwd1dpbTU5bm1sVTByWEhVTzJuR202MV80SnpBam9TeHpSTFpTRWh1UDRpcWl5RVBDRV9OTDI4RHZhYllOSnVPU29WYUw1M3U4dzVsSnZHNHl4Q0VMcm1TRQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "代表の野呂健太が、一般社団法人生成AI活用普及協会（GUGA）主催の「GenAI HR Awards | ニコニコニュース 株式会社ベクトル（本社：東京都港区、代表取締役社長CEO：西江 肇司、東証プライム：6058、以下ベクトル）のグループ会社として、システム開発やAIを活用したSaaS事業を主力事業としてTech領域を担う株式会社オフショアカンパニー（本社：東京都港区、代表取締役：野呂 健太、以下オフショアカンパニー）の代表取締役であり、ベクトルグループCTOの野呂健太が、一般社団法人生成AI活用普及協会（GUGA）が主催する「GenAI HR Awards 2026」の審査員に就任した。 野呂は二次審査員として、一次審査を通過した応募者によるプレゼンテーション動画をもとに審査を行い、最終審査へ進むファイナリストの選定を担当します。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNUm5PZ3lERG9IdEd1N2FxY2l5am9Qc19yb0lTVUJ5NkFyWm9YQnE1VTJhXy0wWnFsUmt3QXh6RURGWDIxQVp3ZXMwWDYtQWZZNHZ1M2xrclhvclc2cW1hamRRVXBqQV9RRHdZVUNkeFhTVjFzWWtCMU9VU19WRlVDTHEzOV9TR01DMzZzaUtB?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "product_or_goods",
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "”「ホロライブ」さくらみこの私服衣装フィギュアが登場！ ”かぐや、彩葉、ヤチヨの録り下ろしボイスが聞ける♪ 「超かぐや姫！ VTuber・花鋏キョウ、1月末に卒業していたー「コミュニケーションの行き違い」により卒業から半年後に発表 インサイド 7/23(木) 19:30",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1CTFlDVHhxQWMxNEdYZWxXNzl5X1FpNXBNNVhjQjZoY3NjY2tfZXhrN09Oc1Z6VE04OHVYRVBrLTl5NnBPOGZ4UElwMWlKcWpjLTF5WTl1TEl6c0psWl8xQ2Nn?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "product_or_goods",
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "「ムーミン」スナフキンと釣りしたり、仲間たちが大集合したり☆ポーチ＆バッグがカプセルトイに登場 ”「ホロライブ」さくらみこの私服衣装フィギュアが登場！ さらに期間中は、ホロライブタレントが香りを選んだ3種類のコラボ風呂として、心潤うムスクの香りの「癒月ちょこの湯」、フルーティなワインの香りの「AZKiの湯」、グレープフルーツの香りの「桃鈴ねねの湯」が設置される。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFAwam1iVlJyajFpVDgyQ3U1TEtLdmFMQjBvRE9UdFNhbUtyanViR240MFVYQWhvZjVUYUJSR0h0OWxsYXRPT2hnWkxxQkMyeHVOeFVpOWNLRlU4OVNneWFoeWQ4Y2ZGRUI1X2c?oc=5",
+      "article_type": "press_release",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "ANYCOLOR株式会社(本社：東京都港区 代表取締役：田角陸、以下「当社」)が運営するVTuber / バーチャルライバーグループ「にじさんじ」は、「VOLTACTION 4th Anniversary」グッズを2026年7月24日(金)19時から販売開始いたします。 2026年7月24日(金)19時から「VOLTACTION 4th Anniversary」グッズを販売開始！ 当社が運営するバーチャルライバーグループ「にじさんじ」所属の風楽奏斗、渡会雲雀、四季凪アキラ、セラフ・ダズルガーデンによるユニット「VOLTACTION」のデビュー4周年を記念した新グッズが登場！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9FY2lJMHpyYkFRZVlMSVpZMEZVcGoxUk5iLW9oTEh6VjhsbG9FaEs3M01SdVlPWjFNbXV0SGNQbUt5OWRTZC1Gc0tWRUVBSE5qOVdDODVmQjFRNFNSUVUwQTFqaTFQZ3dpaEVnR3JRRzR4b0V0VTA0?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "カバー株式会社は7月23日、同社が運営するVTuber事務所 「ホロライブプロダクション」 の所属タレントに対する権利侵害行為への対応状況を公開した。 所属タレントへ 誹謗中傷を行っていた人物 を特定し、 示談が成立 したことを報告している。 — カバー株式会社 (@cover_corp) July 23, 2026",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9rYmE3Zi0tYnIzWWtDM2tWSTh6bE1FQ3JHSXJtVjdLZVkyTTNPelpucWRvSkRWMnVsUHhTa2lfX190dmxOeXM3MTAzdzUtTEFu?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "product_or_goods",
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "本ページはアフィリエイトプログラムによる収益を得ています リンクテキスト リンクテキスト リンクテキスト LINEに送信 極楽湯およびGK Marketingが、女性VTuberグループ「ホロライブ」とのコラボキャンペーン「フロライフ 癒しの湯巡り旅～ひとめぐり～」を開催！ ホロライブ×極楽湯・RAKU SPAコラボ“フロライフ 癒しの湯巡り旅～ひとめぐり～”",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1uZkRlYXJOT2taMmZXQk5fdHE1UXJZZnVNM2VaYVQ5SldHU3EyVWRHOTFMdTVYeGh1Z1QtQTZKNWE3UXROZU9fSWtaTUt1YzZXT2MzLWFSazlxQQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "注目度 78474 『ガンダム』新作アニメ、『機動戦士ガンダムRG XARX-ZERO（アレックスゼロ）』発表、2027年展開予定！ 「ホロライブ」運営のカバー、所属タレントへ悪質な誹謗中傷を行った人物との示談成立を報告。 カバー株式会社は7月23日、同社が運営するVTuber事務所 「ホロライブプロダクション」 の所属タレントに対する権利侵害行為への対応状況を公開した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://kumanichi.com/articles/2016919",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "product_or_goods",
+        "event"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "【独自第2弾】「性的嗜好」や「異性関係」の項目も 陸自部隊による情報収集 日本人大学教授ら対象 クマニチ 熊日ベータ版 お得なクーポンを使う 熊日主催イベントを見る 新聞に投稿する 料理のレシピを見る 脳トレに挑戦する くまモンクイズ 特産品を買う くまにちポータル 熊日ビューアー おくやみ 事件・事故 お出かけ情報 動植物園ライブカメラ プレゼント 販売店情報誌 休日当番医 ヨミトク！ クマニチ 熊日ベータ版 お得なクーポンを使う 熊日主催イベントを見る 新聞に投稿する 料理のレシピを見る 脳トレに挑戦する くまモンクイズ 特産品を買う",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9jWFJ4MDkxOW1nWkhiQzVaV0ZLdVNWMm5wQkMwb3RaUFpFT3hiendBR21aZTdxZ1ZyX1JZRnpaMS0tRngwSUR1NTV2aXdwRTVWeGY5OXRwSUZnQQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music",
+        "event"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "AppMediaトップ パワプロ2026攻略 サクセス 四条澄香のイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 四条澄香のイベント内容や四条澄香の金特、声優(CV)についてまで掲載しています。 リリース hololive Dreams（ホロライブ ドリームス） COVER、QualiArts",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/149512",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "ホロライブを運営するカバー株式会社が、同社および所属タレントに対する権利侵害を行った人物（を特定し、対象者との間で示談が成立したことを、7月23日あきらかにした。 所属タレントを名指ししたうえで誹謗中傷投稿をおこない、所属タレントの社会的評価を貶め、人格的な尊厳を侵害する行為を行なっていたとし、カバーは発信者情報開示請求を通じて、対象者の特定。 — カバー株式会社 (@cover_corp) July 23, 2026",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBiZ0dvQXppTWJjZ1pGQUJ3RFhHYU1aYWhLT2lsNkZHa0FMZ2hHaWY3UlRYUVJYZlJoZGVJaWJIQlJjMlpDeGEtOGR6eUtqeDg2djk5d09oTTFEaHpnblBXQXB6YjFUS2VMdUtsVjUxd2VaaktqSFRF0gF8QVVfeXFMTVQ3a3phbVBfY3ZSbV8weTJBTUNZUThMcmZva2NXelFOMF9CSzJmaTBoZ1c2ZHZYZzVzZEtlSldySEpRVlhId19rXzNLT0luWDJqQ2NrV2JjMXcxQVRyWDNxWHBSdDBuelRuODNwWU5EYjQ1anl0b0hmdTh6NQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "◇23日 国内女子ゴルフ 大東建託いい部屋ネットレディス第1日（福岡県糸島市、ザ・クイーンズヒルGC） プロ2季目の都玲華（22）＝大東建託＝が1イーグル、7バーディー、2ボギーの65で7アンダー。 朝から厳しい日差しで、コースの最高気温は34・6度（午後1時45分）。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9SR2NQM3Y2T2FrNDIxYUV1dVRudm8wNG9SOHNoa0NsVWlIeWMxSmhLdDRXZ09KTjQ1ZTYwTnBnNlBmakhhb1hpZ1dCMnZweG8yaFFWWExlZ1BNVkR3Q3V0N1ZzZEd4ekpvLXc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "product_or_goods",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "Aimingは、3DアニメーションRPG 『陰の実力者になりたくて！ マスターオブガーデン（以下、カゲマス）』 において、VTuberグループ「ホロライブ」所属の「風真いろは」さんが登場することを発表しました。 今回VTuberグループのホロライブより風真いろはさんが、 「[風を仰ぎし用心棒]風真いろは」 として参戦します。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9DU3BtLWdlTE5xU2NQN1d6MmZtOTRSaERzYnpYX28tOEZEV3JMV2VzLUExMDJXRm5zM0ZNa1dBVGpVcjFtQzgyNE1xY2lDclhHZDVsRGlRVldEUnlKUzJoaV9tdUszbkFVdUdDVUt6ZWVtMGZRZkRZ?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "product_or_goods",
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "ガンダムシリーズ最新作「機動戦士ガンダムRG アレックスゼロ」発表！ VTuber・花鋏キョウ、1月末に卒業していたー「コミュニケーションの行き違い」により卒業から半年後に発表 ガンダムゲーム最新作『GUNDAM ROGUE ORBIT』より、主人公機「ガンダムヘリックス」がHGガンプラ化！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFA1TlFfSWhpa19HN25Ma3JQWm5JOVpQZDJJVUxWNTFjOFhmc252c2h2ejhZQnZMQzlvX0JZdHFnNllkVG13R28yNA?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "半年前に卒業していた「Re:AcT」所属VTuber・花鋏キョウさん／画像は 「Re:AcT」公式サイト より バーチャルタレント事務所・ Re:AcT （リアクト）所属の 花鋏キョウ （はなばさみ・きょう）さんの卒業が発表された。 7月23日（木）のRe:AcTの声明によれば、花鋏キョウさんは 1月末をもって卒業していた と説明。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9renMxc1M3QkkyOWxlRktYTnFkWUNncHZITkRReFNsZUpySXduVUZTNjJKZm95akU4alJQaHEyYjhhU0J6NmxpVC1lQlU?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "event",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "ハンドトラッキングを使って直感的に楽しめるインタラクティブコンテンツ『Vガチャ』プレイ画面イメージ 登場するキャラクター(IP)やVTuberのイラスト素材やLive2Dモデルに合わせた 完全オリジナルのガチャ演出 を組み込むことが可能です。 本システムは、 主催者様がすでに抱えている「過去のイベントグッズ」や「余剰在庫」をそのまま景品として組み込むことが可能 です。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE91V2NqQ20wQkdfd0RPNEpPdWE1MHpmbHNzWTYtamxaeFV5bnhmc2dvc2lpLW5MSG5OSWJZOG1nWXVqbGx1enZ6MjVrOWRRRG5ZMlJHdEVaOXdlMEI4bUVKc2t2ZWdBQXZYNFFEU2l2X0JDbllnaTZVRXhWYw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "人々の健康で豊かな暮らしをサポートする株式会社白寿生科学研究所（本社：東京都渋谷区、代表取締役社長：原浩之）は、2026年7月19日（日）に中総合会館（京都府舞鶴市）にて開催された自治体イベント「家族でリフレッシュフェスタ2026」にブースを初出展いたしました。 当社は2025年より「まいづる健やかプロジェクト」のメンバー企業に認定されており、地域住民の皆様の健康増進に貢献する取り組みの一環として、本イベントへ出展いたしました。 舞鶴市が主催する、子育てファミリーや市民の健康・リフレッシュを目的とした体験型自治体イベントです。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE56bGxpOTd2MUFUT3d6aGstd3lSQ1BXZXE5RVJtcDFFU1F4U0NwNi1UbVY3al9JSmZ6aDFTZ2xveV9xNTlnNjRnSmRYVmJRazNlM0toOU5XNzlud3J1NjZ4bg?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "Home » Re:AcT所属のVTuber花鋏キョウが1月末に卒業していたと発表、 株式会社mikaiは、Re:AcT所属のバーチャルタレント「花鋏キョウ」さんが2026年1月末日をもって卒業したと発表しました。 同社によると、2026年1月末日以前から活動内容や運営体制、卒業の意向について本人と協議を重ねていました。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5HUFFEd25pQURoTGE2ZUNKelRlOUpYQWhrUlQ4bDVfekZ4cUswaTR5VG5KNWxsd1k5NGF4cmpXMVVYb0x5ejY3R193bGtPNVFsTWoyV00xVkROcG5rMGt2cjN3aHF5R3dpSFR6MDJvcXVEMkRucml1X2dZRnJ1Q0k?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "「ホロライブ」所属VTuber・さくらみこさんが、23日までにチャンネルを更新し、名作アクションゲーム『スーパードンキーコング』（SFC／1994年）を実況。 “お約束”に引っ掛かってやられ、ファンから「待ってた」などの反響が集まっている。 【動画】ホロライブ・大空スバル、『ドラゴンボール』ネットミームの“元ネタ”に驚愕「〇亡シーンがミームになってるの鬼か！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFA2bEZOa01MUXhQdEZHR1RqaDlXNHY1ZmhXdnIzLUFvX2N0QjYwc3BvWVc3SUVJZVZVOFA1WC1CRm1mYWhIM2d1UQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "talent_activity"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "ピーナッツくん が、ホラー展覧会「 超ヤバイお呪い展 」とコラボする。 なお、会場で試したお呪いの“効力”については、主催者は責任を負わないと告知されている。 同作でピーナッツくんの相棒をつとめており、ピーナッツくんのVTuber活動や音楽活動の中でもたびたび姿を現している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/149502",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "多様な映像や体験型コンテンツを手がける株式会社TREE Digital Studio（本社：東京都渋谷区、代表取締役社長：足立 晋一、以下、TREE）は、福岡県糟屋郡志免町にある産業遺産「旧志免鉱業所竪坑櫓（きゅうしめこうぎょうしょたてこうやぐら）」のデジタルコンテンツと公式Webサイトの企画・制作を手掛けました。 本件は、「旧志免鉱業所竪坑櫓」の歴史的意義や、当時の労働者の想いをデジタル技術で後世に継承し、郷土愛の醸成と関係人口の創出を目的として、志免町がプロポーザルを実施しました。 審査の結果、TREEの企画が採択され、VRを活用した2種類の体験型コンテンツと、公式Webサイトおよび「旧志免鉱業所竪坑櫓」を自由に探索できるメタバースコンテンツを制作しました。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/149497",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "2026年7月24日(金)19時00分～2026年8月23日(日)23時59分までの期間、ハコネクト公式BOOTHにて『ハコネクト夏の平成ギャルゲボイス2026』を販売いたします。 VTuber事務所ハコネクト所属メンバーが『平成の恋愛ゲームのような世界観』をコンセプトに収録したボイスコンテンツです。 YouTube： https://www.youtube.com/@uyuzukimeo 【VTuber事務所「ハコネクト」及び運営会社について】",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1GN0JvOFlQc3RqN1ZlTkVwX3BsUXZPdjhteFh1VEd4V0YzWXMyUFViOGR3aE1PWHJqbWJwQktmM3p4SmRxbklrVk5NNEZnTlZyY3fSAVJBVV95cUxNRjdCbzhZUHN0ajdWZU5FcF9wbFF2T3Y4bXhYdVRHeFdGM1lzMlBVYjhkd2hNT1hyam1icEJLZjN6eEpkcW5Ja1ZOTTRGZ05WcmN3?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "フォーバルは22日、とやまDXコンソーシアムが実施する令和8年度「階層別DX人材育成プログラム企画運営業務」を受託したと発表した。 富山県には製造業を中心に高い技術力を有する企業が多いが、人手不足や高齢化、属人的な業務運営、紙やExcelを主体とした業務などの課題を抱えており、DXの必要性を認識しながらも、具体的な取り組みが進んでいない企業が少なくない。 本事業では、それらの課題解決に向け、経営層とDX推進担当者を対象に階層別の人材育成を実施し、組織全体としてのスキルアップとDXを推進する。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE11c2dZa1VDbXZpUUwtalJ0TGRlWjdtbEM2bkZQX2J2VTlUTXJLVUlCcEx5VUJCak1FSVlhajg0ZVhpLW5UX0hRUU40OVM?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "ANYCOLOR株式会社(本社：東京都港区 代表取締役：田角陸、以下「当社」)が運営するVTuber / バーチャルライバーグループ「にじさんじ」は、「にじピンバッジコレクション Vol.1」を2026年7月24日(金)18時から販売開始いたします。 2026年7月24日(金)18時から「にじピンバッジコレクション Vol.1」の販売を開始！ にじさんじライバーたちの個性あふれるモチーフをポップにデザインしたピンバッジコレクションが登場！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/149484",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "event",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "株式会社Mawariは、KDDI株式会社およびサムスン電子ジャパン株式会社と連携し、次世代モバイル技術を体感できる共同デモンストレーションイベント『Samsung Galaxy Z Fold8シリーズとミリ波で体験！ VTuberスペシャル3Dトークライブ presented by KDDI | Samsung』を、2026年8月3日（月）に都内で開催します。 本イベントには、人気VTuber「ChumuNote（ちゅむのーと）」「天使エル」「結目ユイ」「九条林檎」の4名が出演。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQXzRMNGRvdkhnV19EUk1qMEx4bGtpM2tWVWQxeXp2QlROQ29WT2ZBVVBsQ3B5VFV0SWoxMktpN1NpUUw5TGpSR2lEN3cxLVJxX0FtbGotdWNnNk9rZm0zeWxnVmlsRFB5TS1mY2ZhVUdvR1MteTZFTUlNY183ZGJSbWNJOWlyd2tDUHZlb2dsb0dtYWc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "ベトナムのASEANカップ2026の初戦は、キム・サンシク監督率いるチームが開催国である東ティモールと対戦する予定だったにもかかわらず、東ティモールではなくチョンブリ（タイ）で行われることになった。 試合はタイで開催されるが、主催者の規定により東ティモールが開催国として指定されている。 長年にわたり、同チームは国内のサッカーインフラ整備が完了するまでの間、アジアサッカー連盟（AFF）や国際サッカー連盟（FIFA）が主催する大会のホームグラウンドとして、タイや マレーシア のスタジアムを定期的に利用してきた。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1xM0E3Q3gySTNVNjMwR2xRUDRvY3d5dFY2Uk13RU5HQTFmR0c1NXhXTEZ4STN3cmk3V2EweFNvc2NhM0hJZUZyZjdsenVIUjhyMTBvbTE3MHFMckltekFVMVJidllQdEg2TUtQZ3hIaHp1eFE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "10月24日（土）に東京・恵比寿LIQUIDROOM、KATA、LIQUID LOFTにて開催される『SHIBUYA SOUND RIVERSE ～ SSR2026 ～』（以下、SSR2026）の第4弾ラインナップが発表された。 『SHIBUYA SOUND RIVERSE』は、音楽ディストリビューションサービス 〈FRIENDSHIP.〉 が主催するショーケースイベント。 主催：HIP LAND MUSIC CORPORATION / FRIENDSHIP.",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQWXU1b05naXlTOFpsaEZ4UVZObTVHLWk5XzJIaHNpQ1c4RUp3a2JBNFBEdlJDNUh1X19fTDItTkRVVWRMVk9acm1FR0R0OVlRNXhRaGE0NGxqWGYxSmVsa3p5cmtzdW5LMEhwQWt2RXM0dWkyVXdJNWUxY1VSV0dLc1NHWEpNSzBHdTFjNzNR?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "兎田ぺこら、宝鐘マリンなどが所属する「3期生」は、なぜホロライブの“転換点”となった？ その後の展開を決定づけた、黄金世代を振り返る【特集】 ホロライブ・大神ミオのタロット占いは“当たりすぎる”!?",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1hT2dMWXJtNFd1ZS1CNDJza0ZrMjN3Y3BOX0t2SGIwczNZTWxHTTNOS1AwS0tKRVBRUW9RdlpqQVNkeXI4VGJLemw1MEJ6R3BMYTlIR1JGWmJJbnVvcXNFX0dRSXpBR1NEOUE?oc=5",
+      "article_type": "press_release",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "ANYCOLOR株式会社(本社：東京都港区 代表取締役：田角陸、以下「当社」)が運営するVTuber / バーチャルライバーグループ「にじさんじ」は、「にじピンバッジコレクション Vol.1」を2026年7月24日(金)18時から販売開始いたします。 2026年7月24日(金)18時から「にじピンバッジコレクション Vol.1」の販売を開始！ にじさんじライバーたちの個性あふれるモチーフをポップにデザインしたピンバッジコレクションが登場！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1UcjFLUVVGelh2dk5tZngzWFd4Qm5IenFhTVlfZ0YtWnV0YjJjM2I2ZXN4cnZVVDY3djdXQ1lYQk82b2taOThZZA?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "カバー株式会社が、同社が運営するVTuber事務所・ ホロライブプロダクション 所属タレントへの権利侵害を行った人物を特定し、示談が成立したと発表した。 対象者はSNS上で、所属タレントを名指しして誹謗中傷を投稿。 カバー社は、ホロライブプロダクションの所属タレント及び自社スタッフに対する誹謗中傷や権利侵害への対応状況を継続的に公表している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1iUTM3aHotemswZWFzdC0wYXdDUFdwTno3QWlMYWdvaWNEbk5uMThUX3VDSWFJazJ6Vy1VQ0tOb3NRMjhLNUliZ2VGcFN6LUUta2lfSm1zNDE4SzhNc3dHTjltQ2h6cUpKM0dz?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "CD「にじさんじ MECHATU-A/On-Deck! MECHADE-K 盤」やコミックス『コヨーテ V』が発売！ 特に注目はCD「にじさんじ MECHATU-A/On-Deck!",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1wa0VpSmdXYXBiNGZhVlIyeDBGZXh5SGxMeVJyU3JPdC1YR1l4R1NkZHkwdWZlTVF1aGp5b3F3M29MLVRKdUJ5VzZLNzhLUmFmN2VndnJzRTl3UDE4NWR3b0oycHNfQTR1aDZ4Y3VhWVdXWjBCZjhSLXFqcFo?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "product_or_goods",
+        "event",
+        "talent_activity"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "音楽ディストリビューションサービス「FRIENDSHIP.」が主催するショーケースイベント『SHIBUYA SOUND RIVERSE 〜 SSR2026 〜』の第4弾出演アーティストとして、DENIMS、永井琳子 (Band Set)、友田オレ (Band Set)、sucola、ゆうさりの5組が発表された。 あわせて本日・7月23日（木）より、イープラスほかにてチケット一般発売がスタートしている。 『SHIBUYA SOUND RIVERSE』（略称：SSR）は、「FRIENDSHIP.」が音楽配信をサポートするアーティストたちが一堂に会する年に一度のスペシャルイベント。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQbjl4QzVNSUdWQmx6ejZHRnp5dWxjSlVkSHNibVNya0ZKRXpLb1RlRTlWaHpxMms2ZWt0X1gtaTFQMEdTLVFGWVlTSHZ4WVpyc0x2Nk15dmtEOGxlaGd5anZacUt2ZWR2YkpEWk1ERVk2eWhJRVIwQmktMUViaUFlSVBwV2puUENrQW0wZdIBjAFBVV95cUxQbjl4QzVNSUdWQmx6ejZHRnp5dWxjSlVkSHNibVNya0ZKRXpLb1RlRTlWaHpxMms2ZWt0X1gtaTFQMEdTLVFGWVlTSHZ4WVpyc0x2Nk15dmtEOGxlaGd5anZacUt2ZWR2YkpEWk1ERVk2eWhJRVIwQmktMUViaUFlSVBwV2puUENrQW0wZQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "フォーバル < 8275>は22日、とやまDXコンソーシアムが実施する令和8年度「階層別DX人材育成プログラム企画運営業務」を受託したと発表した。 富山県には製造業を中心に高い技術力を有する企業が多いが、人手不足や高齢化、属人的な業務運営、紙やExcelを主体とした業務などの課題を抱えており、DXの必要性を認識しながらも、具体的な取り組みが進んでいない企業が少なくない。 本事業では、それらの課題解決に向け、経営層とDX推進担当者を対象に階層別の人材育成を実施し、組織全体としてのスキルアップとDXを推進する。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1adlptQ2ZCczROYS00ZFpDZl9EcUxEcmNZME02RVNrU0pIWXhzSWwyb0R3YzFqQTBfRVpzeW1SZk9ZdWk5aTNwdVZaaUwwVm9PQkpsUFJHWE1tcjdVdzRYaWc1Wjh2S2RVT0E?oc=5",
+      "article_type": "press_release",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "『Samsung Galaxy Z Fold8シリーズとミリ波で体験！ VTuberスペシャル3Dトークライブ presented by KDDI | Samsung』を、8月3日に都内で開催 VTuberスペシャル3Dトークライブ presented by KDDI | Samsung』を、2026年8月3日（月）に都内で開催します。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBpM0lVZ0tUd2p5OHlwanhlNWxzX29tcnFFd2NNT3pLRHlvVHhtSnNVaHZ0bXZwYTBtWjZnWGpDU1g1MThlZEE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "シエナ・スパイロはクリス・ステイプルトンの“It Takes A Woman”をカヴァーしたパフォーマンス映像が公開されている。 これはスポティファイのために収録されたもので、自身の楽曲“Great Expectation”も披露している。 シエナ・スパイロは7月3日にデビュー・アルバム『ビジター』をリリースしている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE81Mm5FVXRVeVUyZ2VYRngzc2lJU19aRmFvand2VDJVcUtsdWtaak1GN1VVMDZlT09SRFFnM0RwYW52c1VLTHhGZjdZWno1OUhMNmhJZllQdjA2Zw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "event",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "マスターオブガーデン』「風真いろは」さんのピックアップガチャ開催！ マスターオブガーデン』は、女性VTuberグループ「ホロライブ」に所属する 「風真いろは」さんが登場するピックアップガチャ を開催した。 さらに、過去に開催されたホロライブメンバーが登場する 「復刻ホロライブピックアップガチャ」 も同時開催している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE9MTzN2N0dsdTdOQVJlTnlIQjJYTnFBQU4zMHotSjRDLU5WY1BIZnVYZVRpb25yQ3I5eWtsNktIWVIxNE1TNjJrQQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "eスポーツ 事業を展開する株式会社 CELLORB が、国内市場のファン動向や消費行動、スポンサー価値を分析した「 eスポーツ業界ビジネスレポート2026 」を公開した。 同レポートは補論にて、eスポーツとVTuber視聴者の重なりについても分析している。 eスポーツ視聴経験者のうち、75.5％がVTuberも視聴していた一方で、VTuber視聴者のうちeスポーツも見る人は31.0％。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBkMC1QRUcwdUdHS0F3VndscFZoQllhb29uczZ6eHY2UnlCcHdZMmRlMFpsSXQ3RlhUQUtRdTZyX3lnNnlMZzVRZHFmcWJDV2RmOWpjZlFUUS1OZllWX0xKRWozQ1RKdS1VMVgxM0t1TEZDZw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "Home » ホロライブ、初のスマホゲーム「ホロドリ」正式サービス開始 カバー株式会社は2026年7月23日、株式会社QualiArtsと共同で開発する「ホロライブ」初の公式スマートフォン向けゲーム『hololive Dreams』（以下、ホロドリ）の正式サービスを開始しました。 App Store、Google Play、Steamにて配信されています。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1IWTFXQk1Lek5seElWd0NaVW81RzhBel9lX3ZMUFk3aGRvdklvck9mcGVDQWY0ejllNVlvcE9kWVkyakpWSVFxS2Fyc2lfN0JHTkdKVkxPenNDaFpiRDRFQjV5UTFzTzFsdkNEcG5PczRkNHRULWJLTld0TTdRYmM?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "community_or_fan",
+      "secondary_categories_json": [
+        "event",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "当記事のイベントは、諸般の事情により中止になった旨、会場である「イオンモールとなみ」より連絡がありました。 【記事更新:2026年7月23日午後5:05】 県内最大規模のコスプレイヤーが集結するなどのイベントが26日に富山県砺波市のイオンモールとなみで開催されます。 会場ではコスプレイヤーたちの撮影会のほか、ご当地VTuberによるブースも展開予定です。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE9EVmJSaU1oSmtyc3lVVTAtUy1JZkZkS2JfWHR1T1YxMkhFLVc1cWxYSi0yM0lEN2hrcUlrOWRFYVY1U2VGTk9Va2tB?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "ONE OK ROCK のベーシスト・ Ryota が主催する、音楽・アート・ゲームが融合した新感覚のプロジェクト 「Melty Island （メルティアイランド）」 が、人気オンラインゲーム FORTNITE 内で公開された。 「ゲームを通じて外の世界へ」をコンセプトにした本作は、Ryotaが「自分が本当に遊びたい場所をつくる」という発想からスタート。 主催：Ryota Kohama （ONE OK ROCK/FOOL COOL） マップコード：0325-0159-5730 対応プラットフォーム：PlayStation4、PlayStation5、Xboxシリーズ、Nintendo Switchシリーズ、PC（Windows）、iOS、Android、クラウドベースのゲーム配信サービス 基本プレイ無料 公式サイトURL： https://meltyisland.com/",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOWldRbVdKakFRMXl5S0FQR1dlWnk4elRJREZuaThQcktON1ZrZDRhVjVrTWNnREgyLUk5NXNKYkZ0ZDhQSE5YeHJDdF9nMGxuRzlnS3VRbXJyRldWWlREX0RFMXBOaEZ1dzZ1OHY2QzVyWWNIUTcwMmpzRUtkSWJuVmhRU1hKZE0?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "【FISCO銘柄コメント】ＡＮＹＣＯＬＯＲ---?VTuberグループ「にじさんじ」の運営が主力 ＡＮＹＣＯＬＯＲ < 5032 > ?VTuberグループ「にじさんじ」の運営が主力。 英語圏におけるVTuberビジネス「NIJISANJI EN」等も。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/149474",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "次世代XRブランド VITURE Inc.（本社：米国カリフォルニア州、代表：David Jiang、以下 VITURE）は、2026年7月22日（水）より、日本のクリエイターおよびコミュニティを対象とした支援企画「世界の見方を変えよう」を開始します。 本企画では、人気XRグラス「VITURE Luma Ultra」を、個人クリエイター最大50名・団体最大50組、総額最大2,000万円相当※の規模で無償提供（返却不要）し、それぞれの視点から生まれる新しいXR体験の創出を支援します。 応募締切は2026年8月4日（火）、応募は特設ページ（ https://www.viture.jp/creators ）にて受け付けます。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5Ta0hZNDNlck1CV0dlZzhlUGo1Z05aMm5ObHNabHcwSkJ5ZnBQbmlpeGJyYWNReFpibEhnSnppOEFycUUyWUR4YkcyR0NJN0pFQVhmM3ZicHVSclZpalNMZHlKU3piYU1fanc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "カバーは7月23日、VTuber事務所 「ホロライブプロダクション」 に対する権利侵害行為への対応について、対象者との間で示談が成立したことを報告しました。 報告によると、この人物はSNSにおいて、所属タレントを名指ししたうえで誹謗中傷投稿を行い、社会的評価を不当に貶めるとともに、人格的な尊厳を侵害する行為を行っていたとのこと。 ホロライブ・宝鐘マリンを「To LOVEる」の矢吹健太朗先生が描く！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1YSmNtT2NUSW1JZGR0cnJ6VGxPSXkxbV9NRlZoT1d6bm9KVzRudXR1WVZ4YnQ5cFlQZl96RzFnb2Z4MmFsemdwUWg5MVYtYTRpd3gwVUdKcDZ3S196YnBXQkxqOUl4UUd4b1FubHBmVWVEc1Y1Ymg4?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event",
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "ガンダムシリーズ最新作「機動戦士ガンダムRG アレックスゼロ」発表！ VTuber・花鋏キョウ、1月末に卒業していたー「コミュニケーションの行き違い」により卒業から半年後に発表 ガンダムゲーム最新作『GUNDAM ROGUE ORBIT』より、主人公機「ガンダムヘリックス」がHGガンプラ化！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9lSXFVOVNZUG9faXU0YVZCZ3JwQ2N1OHYwVkFoZ0ZLcmhFRWpPRG1nT3lYVUVrQUxBMDViLUNPUUtoZUpXX0RWZXFfemE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "バーチャルタレント事務所の Re:AcT は7月23日、所属VTuberの 花鋏キョウ さんが2026年1月末日をもって卒業したことを発表した。 「花鋏キョウ」卒業のお知らせ pic.twitter.com/4YSZ1orpQF — Re:AcT / リアクト【公式】 (@Re_AcT_) July 23, 2026",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE1oZWlfRW5xU2xnT18wTjBfeVR2OFBGMXVkc0dzUkprSWE0bUVlQ2IwcEtMeVJYV3gzYjJxSUlWTlAtQnpu?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "カバー<5253>は、7月23日、同社および所属タレントに対する権利侵害を行った人物（以下「対象者」）を特定し、対象者との間で示談が成立したことを発表した。 対象者は、SNSにおいて、所属タレントを名指ししたうえで誹謗中傷投稿を行い、所属タレントの社会的評価を不当に貶め、また人格的な尊厳を侵害する行為を行っていた。 会社名 カバー株式会社 設立 2016年6月 代表者 代表取締役社長CEO 谷郷 元昭 決算期 3月 直近業績 売上高493億3000万円、営業利益70億5600万円、経常利益70億6800万円、最終利益30億1600万円（2026年3月期） 上場区分 東証グロース 証券コード 5253",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFB3UERtMWJKMnNzcTMxZHo0RWY3MTVLWVdPLWU5ajFSdVdpR3FoaHdhTHlUZTJXZXZDNlBrRnU4R3Q3VkNBbGlHMmtrUVl5Vm1pWkFSeFhYeWFTalNGQmV5N3dRMA?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "記事検索 ゲームタイトル/メーカー名検索 詳細な検索へ TOP PC XBOX PS5/PS4 Switch スマホ スマホ iOSニュース Androidニュース 事前登録 セール情報 注目のアプリ インタビュー ムービー iOSゲーム一覧 Androidゲーム一覧 女性向け VR ハードウェア AC アナログ ▼その他 ［インタビュー］「EWC 2026」の舞台裏を主催団体Esports Foundationの幹部4人に聞く。 ホロライブ初の公式スマホゲーム「hololive Dreams」，7月23日にリリース決定。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBRMGNnaVJwV29VU0tMUl9FYzR5MG1hNlNBTG9ZbXdDeXRNTWp5cXlMbTd3VmpYQ1Z1RFBKOV9QLXZaOENaZ2RYUENLbVp2TnVkbTFfbnhTUQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "product_or_goods",
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "女性VTuberグループ“ホロライブ”×極楽湯・RAKU SPAコラボ“フロライフ 癒しの湯巡り旅～ひとめぐり～”が8月6日（木）より開催されます。 “ホロライブ”をAmazonで調べる “ホロライブ”を楽天市場で調べる 極楽湯は、2026年8月6日（木）より極楽湯・RAKU SPAグループ11店舗で、カバーが運営する女性VTuberグループ“ホロライブ”とのコラボキャンペーン“フロライフ 癒しの湯巡り旅～ひとめぐり～”を開催します。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9idE1LcTF3Smk4Rk1nR2c4OTRyd1Z4U1Rsck5FOUlkUFhiU1g1Zm1SeVh4OTBVZlRNYU11VFFLc1ZMVVcyaDdsN2xyNGVybm9rUm9SYlktcVh0dw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "event",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "注目度 69036 『ガンダム』新作アニメ、『機動戦士ガンダムRG XARX-ZERO（アレックスゼロ）』発表、2027年展開予定！ VTuberグループ「ホロライブ」と、極楽湯・RAKU SPAによるコラボキャンペーン 「フロライフ 癒しの湯巡り旅～ひとめぐり～」 が、8月6日より極楽湯・RAKU SPAグループの11店舗で開催される。 【 #ホロライブ ×極楽湯 RAKUSPAコラボ】 ／ #フロライフ癒しの湯巡り旅 夏のスペシャルイベントが開催決定♨️ ＼ ～ひとめぐり～💋⚒️🍑 8/6(木)-8/25(火)：11店舗開催 ～ふためぐり～🚑⚔️♌🍃 8/27(木)-9/29(火)：39店舗開催 https://t.co/kUYwaJMz8Q ※～ふためぐり～詳細は8/13(木)に発表予定❣ pic.twitter.com/8W1Q81U0Si",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5EQlZGV185UkhvTTh3ZEN0MWFEQThFQS1OeGlKUGhmeHVuRFN0MDFJSXlLV1h1MVV5Z3RXNEMtNWxydkFYQkhpRklXZ3pNZlFKTEZ6d2xmS0dsWlQzaDdXeFdaSW9mN05u?oc=5",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "Home » 近畿大学の岡本教授、VTuberの受容に関する研究論文を発表、無料ダウンロード可能 近畿大学総合社会学部教授の岡本健氏は7月17日、VTuberの認知や受容について調査した論文を大学のリポジトリで公開しました。 論文のタイトルは「VTuberは人々にどのように認知・受容されているのか―2024年度に実施した大学生へのアンケート調査の結果から―」です。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBoeGgzTGFlVjR5eWJXUC0tU054M2lzamctOFNqZ0ZYbUdpSGhnRWhyTlJpVmMxM0lNLThEUkp6TC03RU54T2VPODZ5ZHpSUE1FUlg3cTJ4RQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.86,
+      "evidence_text": "AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス ガチャ演出・確定演出まとめ【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)におけるガチャ演出・確定演出まとめです。 ホロドリガチャの昇格演出や流れについて掲載しています。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOTDNRTkJCRjVpSEZqTlF4QlFxSWhWWkl4cTlUSDgweU1VRDlUZFdMQkRGNEJzaW9qN1ZiUDNWVS1QNXVwY3VyUnphLUt5VHZwbkNURjYwQ1U0WVZQNHJ3OXJ3SWNPVnVsTS1teHFYU3NnbmhIcy1fRDJ2Z1RkTmFTZm43LV9FM1dZSWczUnJFY0o2UGJ0WVFR0gGXAUFVX3lxTE5MM1FOQkJGNWlIRmpOUXhCUXFJaFZaSXhxOVRIODB5TVVEOVRkV0xCREY0QnNpb2o3VmJQM1ZVLVA1dXBjdXJSemEtS3lUdnBuQ1RGNjBDVTRZVlA0cnc5cndJY09WdWxNLW14cVhTc2duaEhzLV9EMnZnVGROYVNmbjctX0UzV1lJZzNSckVjSjZQYnRZUVE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "楽天グループ株式会社(以下、 楽天 )は、サポートを行っているVTuberやストリーマーの公式グッズオンラインショップ「 Rakuten esports SHOP 」初となるポップアップショップを、 2026年8月8日(土)から8月16日(日)まで の期間限定でオープンすることを発表しました。 「Rakuten esports SHOP」ポップアップショップが期間限定オープン！ 楽天が展開する「 Rakuten esports SHOP 」は、VTuberやストリーマーの公式グッズオンラインショップ。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1pTVFwbi1CdkdxeXk1SnhDUXdkWFJ6VGF1SFJLb3VjQ2c5MFlBREYyYmljUTZZeGtHNTVfZ0NjcldheXN2ZUFPMFpUc19PdmxQMGllUy01UWx6eFo5NmJBSW1mMFRBRHVQM3FnaVFwZnEyaFN5aGow?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "product_or_goods",
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "ガンダムシリーズ最新作「機動戦士ガンダムRG アレックスゼロ」発表！ VTuber・花鋏キョウ、1月末に卒業していたー「コミュニケーションの行き違い」により卒業から半年後に発表 ガンダムゲーム最新作『GUNDAM ROGUE ORBIT』より、主人公機「ガンダムヘリックス」がHGガンプラ化！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFB6Wk9NUi1GUHAxQTFlUmZJZEM3cVRsbGRNNmlyNmI1ZVhEb3ltSkJ5OGJBb0pwMUlORGlYNERIWEo0c09IRU5tQ2I1Nm9rQjR5TVZLbHUzczhlRUZpODZ1Sjd6RV8yT245eWc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "product_or_goods",
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "極楽湯およびGK Marketingは、VTuberグループ「ホロライブ」とのコラボキャンペーン「フロライフ 癒しの湯巡り旅～ひとめぐり～」を8月6日～8月25日の期間、「フロライフ 癒しの湯巡り旅～ひとめぐり～」を8月27日～9月29日の期間、極楽湯・RAKU SPAグループにて開催します。 今回はを8月6日～8月25日開催の「フロライフ 癒しの湯巡り旅～ひとめぐり～」の情報が公開。 ホロライブ「ラプラス・ダークネス」伝説の企画「ホロメンお姉さんTier表」が復活ーまさかの『ホロドリ』運営から依頼、ライン超えした場合は“強制終了”の可能性も",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFB5RzMyZi03Y0NydDlyaXpxbXBvNUJnMnNQYmdya0wzaldBVWo2NG4yamJtMmJYT19NNW9tS1BkSmxFT01jUW5rUmJhdnZ1VXVpN3BoemViY2hjd2l2Y19YSDBWOXpHRzFGMDBhLVZ3blRNOTRxRU1B?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "product_or_goods",
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "ガンダムシリーズ最新作「機動戦士ガンダムRG アレックスゼロ」発表！ VTuber・花鋏キョウ、1月末に卒業していたー「コミュニケーションの行き違い」により卒業から半年後に発表 ガンダムゲーム最新作『GUNDAM ROGUE ORBIT』より、主人公機「ガンダムヘリックス」がHGガンプラ化！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBTcHVZRkxVUjVaQkFLbU9obzFNWDlsdGg2RUpxcVc4T0pJdTc0MnBoUGk4bVJOakJ0Xzk1SERpek1CN3gzMEg3NUpxX3hhbGFXUVhuQUp3Q2RJZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "AppMediaトップ パワプロ2026攻略 栄冠ナイン 新要素・変更点まとめ AppMedia株式会社 https://appmedia.jp/ AppMedia にじさんじ所属のVTuber「舞元啓介」「椎名唯華」「リゼ・ヘルエスタ」「五十嵐梨花」の4名が選手として栄冠ナイン本編に初登場。 ▶ 新要素・変更点まとめ ▶ 金特のおすすめ一覧と効果 ▶ 金特本の入手方法 ▶ アイテム業者の条件と商品 ▶ DLCのおすすめ ▶ にじさんじキャラの入手方法",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFAwS1ExTlBlX0d5NHBZTEZ0VkRFZTI5azVETk8tYjdoQXpMYTFEc29TTVNxTkUxWmdPNDYwNjlJRWpySllia0pvWGRUb3M?oc=5",
+      "article_type": "news_article",
+      "primary_category": "collaboration",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "株式会社コレカティス（本社：東京都渋谷区、代表取締役：高橋大樹、以下「当社」）は、VIRTUAL業界で活躍する活動者支援を目的とした「一億円プロジェクト」の第一弾として、VTuberに特化したコラボカフェ事業の展開を発表いたします。 店内にはSONY製BRAVIAの75インチ4K大型モニターなどを設置。 VTuberならではのデジタルコンテンツを活かし、食事をするだけではない没入感のある体験を実現します。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1HUkpXRU54V1B1cEhKTXJGZDdCdzhsandldmQ4RG9vR0xWUUpxdVBLYzVxc0RZbU5UUUlQOGJyczlWNmNzTW5XYXdDSlNZTGM0bm9GbWU3a19JN1BuQnB1cEw2Zjl1QWU4YlBqY0FtZnVWOU4yVWlVSzh3?oc=5",
+      "article_type": "press_release",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "内田有紀：50歳、年齢を重ねて変化した主演への思い 大人の心にすっと入るラブストーリーで「ときめいてほしい」 三栄 2026年8月22日(土)・23日(日)、東京・青山にて開催決定！ 株式会社三栄（本社所在地：東京都新宿区、代表取締役社長：鈴木 賢志）は2026年8月22日（土）・23日（日）にファッション誌『FUDGE（ファッジ）』のお買い物イベント「FUDGE Marche TOKYO」を開催します。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1Cd01rSmZ0VU5RRXBvZWM5WlNjUTNTVkdBSkRPejdURnUxTm0xaWVmRmFGeEpzTHAtcno1b3ExbW0wejFfOHktOHRHMlpad280UVlxbVNqSzctZkRUZkRfaG9TYVJFTnNkOTU0UXdTeGliUTFBWXJBOFZSSQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "最適な解説/説明体験の自動化を実現するプレゼン自動化AI「TALKsmith（トークスミス）」を提供する株式会社LOOV（本社：東京都渋谷区、代表取締役CEO：内田雅人、以下「LOOV」）は、厚生労働省後援・日本の人事部主催の「HRアワード2026」プロフェッショナル部門「人材採用・雇用部門」において、入賞しましたことをお知らせいたします。 また、7月13日（月）から8月5日（水）17時まで、「HRアワード2026」公式サイトにて、最優秀賞・優秀賞候補を選出する投票を受け付けています。 「HRアワード」は、厚生労働省の後援のもと、株式会社HRビジョンが運営する人事ナレッジコミュニティ『日本の人事部』が主催し、人と組織の成長を促す優れた取り組みを表彰する制度です。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE11TUkxU29kTHhDV0Q2UkMwdERrUU1zZzNqVFE4eUlDMGZ3VDV4QTVXQmdjaFVMVjJrdkNUS1pveXl3V1JSdXhHbmNQS0FuS2QwSVcxSA?oc=5",
+      "article_type": "news_article",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "ロッキング・オン・ジャパンが主催するアーティストのオーディションプロジェクト「RO JACK for COUNTDOWN JAPAN 26/27」につきまして、7月23日昼12:00にエントリー受付がスタートしました。 RO JACK（アールオー・ジャック）は、音楽フェス「ROCK IN JAPAN FESTIVAL」「COUNTDOWN JAPAN」「JAPAN JAM」の企画制作や、雑誌『rockinʼon』「ROCKINʼON JAPAN」「CUT」を発行しているロッキング・オンが主催するアーティストのオーディションプロジェクトです。 メジャーレーベルをパートナーに迎え、2025年に約5年ぶりの再始動を果たしました。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPM1R1M1lJaHNXZFNLeXR6UUpVZzdILWttenA0M2tWSmw5MFIzYUU5X0t5RWpXOVEtb2RGQ2VCWC1yeGVhZElTMTZxcEVrYVE1XzhQVmRNdms0WG4wejQxWlpBenFlb25TNm9sbV83NVdvV2F3U3lsdmY5a0VfV1BVWmJsSQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "Home » VTuber古知累すすむ、恐竜の消化戦略の進化に関する新説を米国の学術雑誌Paleobiologyで発表 恐竜研究VTuber古知累すすむさんが、恐竜の消化戦略の進化に関する新説を米国の学術雑誌Paleobiologyで発表しました。 古知累すすむさんは、として活動する岡山理科大学助教・高崎竜司さんがVTuberとして活動する際の姿です。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5CVDdpWEVsMDZpS05TQURTUEtLeWgwZUk0UWZjQlBuczBjc1d3T2VjMEE4QTFXYjQwRmZiU0lVVWJNcXRieFFxZWtpQQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "News | 2026.07.23 2026.07.23 ポスト シェア はてブ 03- Performanceが主催する＜From BLOCK 03- 3DAYS Vol.2＞が2026年8月13日（木）〜15日（土）に新宿・THE PINK TOKYOで開催。 HIP HOPメディア「03- Performance」が主催するイベント＜From BLOCK 03- 3DAYS Vol.2＞が、2026年8月13日（木）から15日（土）の3日間、東京・新宿のTHE PINK TOKYOにて開催される。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9vaDFlRTJ1S2ZQNXVSLW92TlFDaENyRnoteUZHTVpTdTZsSGFRU3lLSF9DVng3OUZxX2VmMkZKY1d0VWptb0ZKWUVoRDgyLTVsWXJLUXdwWG5pZVd4MUdEcTNoRWI?oc=5",
+      "article_type": "press_release",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "映画「氷血」全編を会津でロケ 雪国舞台のホラー作品、イオンシネマ福島できょうまで上映 福島県政150周年特集 「あなたの知っている ふくしまのスゴイところ」募集！ 東日本大震災から15年 福島の魅力詰まったイラスト 「みんなのふくしまマップ」",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1HSU1kN1ozQVVERW9TUWFTckptYXpSREJ4ZmdsMWZwdUVMaU1vU3I0c3pzRHdVSXlRM3NzUHpYRWhpNUotdFZ4cnM3YWRTZnlNTnZ2SUFXVlllNWdIR0ZWTjJfZzBSdVQ4R0V3ckoxQ0tfREVSNl9sZ1VJb9IBgAFBVV95cUxNN19ZX0dWc2Z5Q1A5UEVoQkc4eUx0X3FUZlFiMEJ5U3U4R3UyTHlYeGRfU3lOd2dkdGRMWU5HR3RoSHpjT0dnajBjQzZlT29iZy1yemxoNDFVTFgxdHJkd0lBVzRyTnhhc09mMEk4R0RSRkUxWlpCRUZjSmVHVE5MaA?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "三保町を拠点に活動する学童野球チーム「三保ウイングス」が、８月８日（土）に兵庫県淡路市で開幕する「ミズノ ベースボール ドリームカップ」（ミズノ株式会社主催）の全国大会に出場する。 初戦に向け、三保町にある専用グラウンドで練習に励んでいる。 これまでも同大会の県大会に５回ほどエントリーしてきたが「なかなか勝てなかった」と監督の坂浪健太さんは話す。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiQEFVX3lxTE1Eb3pTVEVCMWlFd2VXWEFDblpzQXF1LUtMcEI0NjBHOGpHQ1VMYmx1OEtSOE5YR1B6cVh6WTZUZE3SAUZBVV95cUxNWWNuWUxxVmt1UnEyUGF5c3paY3lsT2FyU3k2WXlfTTI0V3lGbHVDc2IzUHlYRW5BZnFWT2FHbFVqQi0xZFFR?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "早期アクセスは8月29日（土）から開始予定 『NBA® 2K27』の公式ゲームプレイトレーラーも7月28日（火）に公開予定 2026年7月23日（木）、2KはNBA史上初となる満場一致で最優秀守備選手賞を受賞したサンアントニオ・スパーズのビクター・ウェンバンヤマ選手が 『NBA 2K27』 通常版 のカバーを飾ることを発表しました。 また、 デラックス エディション のカバーには2024年のWNBA新人王に輝き、WNBAオールスターで3度のスターターを務めるインディアナ・フィーバーのガード、ケイトリン・クラーク選手が登場。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://togetter.com/li/2723791",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "2026-07-23 08:10:06 レッド／名古屋のVTuber @red_nagoya 【タグ】 #裏名古屋奇譚 #裏ナゴアート ご依頼・各種リンク→ lit.link/uranago YouTube4万人突破ありがと！ VTuberなんだが配信切り忘れたら伝説になってた アクリルキャラスタンド 心音淡雪",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5hMG1XMGxiTlNSWHA0cnNQenZNQ25QNVJ5OVZpbWZST2o0OW4yN3NrLURyaDdBTFBjWHo3MU9WWVB1Y3lTNXZJRW1WbFQ2RUVJVFdhT3pn?oc=5",
+      "article_type": "news_article",
+      "primary_category": "collaboration",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "兵庫アーバン競馬（HUK）は、VTuber「青馬ひすみ」さんとのコラボレーション企画として、園田競馬場で行われる9月までの重賞レースを対象に、レース予想や観戦トークを交えた同時視聴配信を行う。 この企画は、7月から9月にかけて行われる重賞5レースを対象に展開。 配信では、競馬好きVTuberとして活動する青馬ひすみさんが、レースの見どころや予想を紹介。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFA3eThVT0QzZ0JwdTgzQ0tVNDBNTjdBT1F1ak5iOGpvZDhwN2wzUFJ1S0kwem9tT3pQNWxsUGh0RURtNDhMRHpiUmkxbU54bmE5WXVIYjh1UFAwMVdIWHFzbnJBc2R6OFE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "【山黒音玄 私服衣装Ver.】 予約期間：7月23日12時～9月30日23時59分 2027年11月 発売予定 価格：22,880円 本商品はあおぎり高校所属のVTuber・山黒音玄さんを1/7スケールフィギュア化したもの。 予約締切：9/30 → https://t.co/cipuO3yyxx #山黒音玄 #あおぎり高校 #Aディメンション pic.twitter.com/KWaXk0Q9eW",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9XbEpjTUVHaFJhMzNVSnpHWWd2SW1RUVVaZDZjOTFyM01DOFlYTmdTTS16dWtpblB1Z1Izdi1wbW0xaHA4NE9yWkowQ01GX2FBYkp2YjVpWHBGWXZSSVRHYQ?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "community_or_fan",
+      "secondary_categories_json": [
+        "live_or_music",
+        "event",
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "5月23、24日に東京・池袋サンシャインシティでコスプレイベント「acosta!@池袋サンシャインシティ」が開催されました。 イベントには多くのコスプレイヤー、カメラマンが参加し、『原神』『崩壊:スターレイル』といった人気ゲームから、話題沸騰中の「名探偵プリキュア!」根強い人気の「DEATH NOTE」弥海砂、「にじさんじ」「ホロライブ」などのVTuberまで幅広いジャンルのコスプレを楽しんでいました。 本稿では「ぶいすぽっ!」橘ひなののコスプレでイベントに参加した菜柚（X：@n_ay_u）さんの撮り下ろしフォトレポートをお届けします。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5aem1EdjlHT3I5YXZzZGhpVnAxQW9YbmtuZnBYNWNEX2xVOVhZUmxCX25LRWg0Smh3LUpZVWRRc1VTbEppczFEX0cyNlJzRnIwcms0a0poYVFiTDQxOEE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event",
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "GAME MUSIC JAM - Level 1 7月18日(土)LaLa arena TOKYO-BAY 2026年7月18日（土）、19日（日）、20日（月・祝）の3日間、『GAME MUSIC JAM - Level 1』が、LaLa arena TOKYO-BAYにて開催された。 MCのおついちと、祖堅正慶（『ファイナルファンタジーXIV』サウンドディレクター／THE PRIMALS）の挨拶の後、オープニングアクトを務めたのは、『SQUARE ENIX Vocal Covers - Timeless Classics』。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFB4WEo2eEZRdU80MkhBUXJ4MVhXSEs3NGkxTEFheTdmSjgzR0VocmlJQU9vX2swTEZualF3UHhYa3JtUW1iRTlYOGhFc29id3phVnhCQi1nYlpmc1FmYkp0b2JTMGZnSlQwZ2UyazlCcmlpaVE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "Home » ONE OK ROCKのRyota、音楽×アート×ゲームを融合したFortniteマップ「Melty Island」を公開 2026年7月23日（木）18時より、ONE OK ROCKのベーシスト・Ryota主催の新プロジェクト「Melty Island（メルティアイランド）」が、Fortnite上で公開されます。 VR/AR/VTuber専門メディア「Mogura」が今注目するキーワード",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://kumanichi.com/articles/2016466",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "product_or_goods",
+        "event"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "陸上自衛隊中央情報隊（朝霞駐屯地）の対外情報部門「現地情報隊」が、市民を対象に、思想信条に関する情報を組織的に調査・収集しているとみられる問題が浮上した。 クマニチ 熊日ベータ版 お得なクーポンを使う 熊日主催イベントを見る 新聞に投稿する 料理のレシピを見る 脳トレに挑戦する くまモンクイズ 特産品を買う くまにちポータル 熊日ビューアー おくやみ 事件・事故 お出かけ情報 動植物園ライブカメラ プレゼント 販売店情報誌 休日当番医 ヨミトク！ クマニチ 熊日ベータ版 お得なクーポンを使う 熊日主催イベントを見る 新聞に投稿する 料理のレシピを見る 脳トレに挑戦する くまモンクイズ 特産品を買う",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBnVWlSZ2hNZjVrR3JWejVBeFJ0bm5DVWJjN2ZYSkRxX3lyUUxoRDhKNWR1Nmx0Q3NVOHF1R19IM2NoWXAxZHIzb1VwZTB1Q19hYk41bmppYw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.86,
+      "evidence_text": "AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス リセマラ当たり モココ・アビスガードのカード・楽曲一覧【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)におけるモココ・アビスガードのキャラ・カード一覧です。 ホロドリモココ・アビスガードのホロメン一覧や楽曲一覧まで全て掲載。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBibjF6MFY5R0Jvc0IySWN3VmxXakl6OFRYNUJ1djBRa1VTMnJnLXNVVklYRlJlVkZpckFJQjR4bHM1LTFlQ19kZFB6dFJUSXpjc3MyTHRFbw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.86,
+      "evidence_text": "AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス リセマラ当たり パヴォリア・レイネのカード・楽曲一覧【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)におけるパヴォリア・レイネのキャラ・カード一覧です。 ホロドリパヴォリア・レイネのホロメン一覧や楽曲一覧まで全て掲載。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5IdXcwV25wTG9BdlZsOWhRamREN2hJd21VRy04bTMxNTlCYi10X2ptQWhZcmxBMmRmN05fbUY2Y04wcWZrNWRXRkxyOFoyWW9EXzIxZ3ZnOA?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.86,
+      "evidence_text": "AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス リセマラ当たり カエラ・コヴァルスキアのカード・楽曲一覧【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)におけるカエラ・コヴァルスキアのキャラ・カード一覧です。 ホロドリカエラ・コヴァルスキアのホロメン一覧や楽曲一覧まで全て掲載。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1GQXp4WFdVN09DU2pSdGpaT210bkNGV0NvbE0xdEVFcm13Nlp1Z3RKVEZ1YVczVEV5MkwyRVJRc2RFRGQxa1JVR2RsMW5zQnE2bG5SWFRDOA?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.86,
+      "evidence_text": "AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス リセマラ当たり ベスティア・ゼータのカード・楽曲一覧【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)におけるベスティア・ゼータのキャラ・カード一覧です。 ホロドリベスティア・ゼータのホロメン一覧や楽曲一覧まで全て掲載。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE84aTNHVEoxM3BpSmlELUlDWUlrUFFxUTlrbnJyREhvdTJWY0Jkd1VwelhTN01MUVREcVFyV2JEczQxdWdlczljemFpOE1Jd0pxV0N2bGhQTQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.86,
+      "evidence_text": "AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス リセマラ当たり 赤井はあとのカード・楽曲一覧【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)における赤井はあとのキャラ・カード一覧です。 ホロドリ赤井はあとのホロメン一覧や楽曲一覧まで全て掲載。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE04dzF0cWlMbkxWTTV4bGV3dmJFdlozb2x3QkE4SWNKaXgzalZwM2hxZFF1d0xvNDlkLXR4cS1rTFFkTGtydjN2WFpaR1hELWV6SnZBZGI1dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.86,
+      "evidence_text": "AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス リセマラ当たり ときのそらのカード・楽曲一覧【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)におけるときのそらのキャラ・カード一覧です。 ホロドリときのそらのホロメン一覧や楽曲一覧まで全て掲載。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE00dWd5MVhNODI2OVcxWHNEVXVybmwtV2FmdHJoYUtyY3UzOUprUWluLUhnaVZ2MzVKSU51dFZpbVpjcTJp?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "この日の前場引け後に「ホロライブ」初の公式スマートフォン向けゲーム『hololive Dreams（ホロライブドリームス）』の正式サービスを開始したことを発表したものの、これで目先の材料出尽くしとみた売り物に押される展開となっているようだ。 カバー、「ホロライブ」初の公式スマホゲーム『hololive Dreams（ホロライブドリームス）』の正式サービスを開始 好きなタレントの最高レアを選べる！ 【ゲームエンタメ株概況(7/23)】カバーが後場に入って急落…新作「ホロドリ」リリースも目先材料出尽くしに シリコンスタジオは3日連続のS高",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTFBvOVdWWldhVEJMbTVaSVcweTE3dDRZQVRUX1RFc1Q2aW1Wb2tvbUFfaUlWMDJ4MVdibHY3OVNIbUFSRWhGYWZz?oc=5",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "ウルフ・アリスはフィンズベリー・パーク公演でニルヴァーナの“Smells Like Teen Spirit”のカヴァーを披露している。 ウルフ・アリスはザ・ラスト・ディナー・パーティー、リッキ・リー、レイチェル・チノウリリ、キーオ、フローレンス・ロードをサポート・アクトに迎えて、7月5日にフィンズベリー・パーク公演を行っている。 ウルフ・アリスはアンコールで“Moaning Lisa Smile”を演奏した後にニルヴァーナの“Smells Like Teen Spirit”のカヴァーを披露しており、ライヴは“Giant Peach”で締めくくられている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMi2AJBVV95cUxQZjZKb19aRjRtUzlBZFNsc3J5dzhIODhOc1k1TFhhQVpWZWpLdXRJX1VnS082OFRtVDBCemh3SmZiTlgxT3hFX2ROTXdjTHNOcHhEMUhfLTVJQWcyVk9FbnpGcHFuNTBHU3BDREFGdmtfNlpiaTVxaEtzaF9zcERrQ3Y4dmpURUoxWXJJOTY0eTh4amtlZWFma2pjR2N5Vjc4RTBaY19ubk1weEhzeHpqZFlYLXZKZ3A4ZHdPVVItdXdGSmhXcE1oWWJnbGlHYjR5UVNRLVZ4TnBPRWNRVXhpMGpLSVo4NkFGbkZvdjBRc243U0ZJcnNyT21wQjEwNUhwSHdZbWVUNWZFNkdfUGhWR1N2ZDVrcXRuU3Bfb0VZeFNfU3dMdjFGUEtSVzByUkJqX1U5QWRUbDhEYjRyei1TZE5teUx1VzB6WVhwYVpLMThWaTM4WTAwUw?oc=5",
+      "article_type": "official_announcement",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "2026.07.23 QualiArtsとカバーが共同開発する「ホロライブ」初のスマホゲー ム 『hololive Dreams』（略称「ホロドリ」）、正式サービス開始！ カバー株式会社（本社：東京都港区、代表取締役社長：谷郷元昭）は、株式会社QualiArts（本社：東京都渋谷区、代表取締役社長：辻岡義立）と共同で開発を行う、「ホロライブ」初の公式スマートフォン向けゲーム『hololive Dreams（ホロライブドリームス）』（以下、『ホロドリ』）について、2026年7月23日（木）より正式サービスを開始したことをお知らせいたします。 本作では、ゲーム開始時に、好きなタレントの最高レアを1つ選んで獲得できます。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE93SmRSLU8zMUVQUXF4alBrYl9qc3kzcktIVVoxdWFOM3NxMEtaM0lZZU05UnpXeURTMTlLSDlNa2pid002SUt1Rk4wUUk0OXJENW1N?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "カバー株式会社は2026年7月23日、VTuber（ブイチューバー）グループ「ホロライブ」初となる公式スマートフォン向けゲーム『hololive Dreams（ホロライブドリームス、略称：ホロドリ）』の正式サービスを開始した。 本作は株式会社QualiArts（クオリアーツ）との共同開発によるもので、App Store、Google Playに加え、PCプラットフォームのSteam（スティーム）でも展開される。 2026年現在のVTuber業界は、従来のライブ配信主体のモデルから、IP（知的財産）を多角的に活用する総合エンターテインメントビジネスへと変貌を遂げている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5nNDZQVmZDVG94cUVIRk9BSTJxOHBfTXMydkZsdkxqUWdjbk1ERjRLZGtPU01WZV8wQnUyWE1ybm5CX0V6R2F1Ny1lVkdyZUI2Z3ZTVGNWMnVIUzAzQVN2MnRaN3ZDVld2T0lDUEtpWHZaSDczNVo4?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "community_or_fan",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "ガンダムシリーズ最新作「機動戦士ガンダムRG アレックスゼロ」発表！ VTuber・花鋏キョウ、1月末に卒業していたー「コミュニケーションの行き違い」により卒業から半年後に発表 ガンダムゲーム最新作『GUNDAM ROGUE ORBIT』より、主人公機「ガンダムヘリックス」がHGガンプラ化！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBzZWJCQXBIZVFkOFpWbmZacGU5bEduMXpBOW1UWE85VkR4R0FUSUJqb0RjS09McER5WVQ0QXgtcVFlcHJVQ2FVOWtnVQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "トレードワークスが展開するトラベル関連製品ブランド「gowell」より、新アイテムとして「ポケットモンスター」がデザインされたトラベル関連製品の販売を開始した。 今回発売される新商品は吸水速乾機能付きのTシャツと、2種類のパスポートカバー。 【楽天市場で買うとすぐに届く】ポケモン パスポートカバー フシギバナ・リザードン・カメックス クリア |",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/149455",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "event",
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "カバー株式会社（本社：東京都港区、代表取締役社長：谷郷元昭）は、株式会社QualiArts（本社：東京都渋谷区、代表取締役社長：辻岡義立）と共同で開発する、「ホロライブ」初の公式スマートフォン向けゲーム『hololive Dreams（ホロライブドリームス）』（以下、『ホロドリ』）について、2026年7月23日（木）より正式サービスを開始したことをお知らせいたします。 本作では、ゲーム開始時に、好きなタレントの最高レアを1つ選んで獲得できます。 「ホロライブメンバーたちの施設を完成させ、みんなが楽しめる夢のようなテーマパーク「ドリーム・パーク」を作ること」がゲームのゴールとなります。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/149449",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event",
+        "talent_activity"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "AWA株式会社（本社：東京都港区、代表取締役CEO：冨樫晃己）が運営する、サブスクリプション型（定額制）音楽ストリーミングサービス「AWA（アワ）」は、2026年7月24日(金) 22:00より、無料で誰でも参加できるオンライン空間「ラウンジ」で、ネットシーンを中心とした注目アーティストなどを毎回ゲストに招き、有識者であるMCとともにシーンの次のステージを切り開く番組「AWAステージ（通称：アワステ）」の第79回を開催いたします。 番組MCは、AWA公式のネット発キュレーターであり、年間100組以上のVTuberが出演するイベントスペース「秋葉原エンタス」のアドバイザーで国内外でDJ活動も行うTAKUYA the bringerとライター/編集の森山ド・ロ、バーチャルシンガーの式部めぐりが担当。 ラジオ番組「VTuber Music DJ’s #VMDJ」のNavigatorとして、VTuber音楽の魅力を発信。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE03MVlvOWpSZjB6YmluR1ZHaC14YzAtczRQR19HN0pOVlhpLXpnZVdPdW1xc3NXanNWTnRlUjNDR29aZl9VNXRmSE9mNTE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "株式会社A・DIMENSION（Aディメンション）（本社：東京都台東区、代表取締役社長：上村篤）は、『あおぎり高校 山黒音玄 私服衣装Ver. 1/7スケールフィギュア』の発売を決定し、予約受付を2026年7月23日（木）12:00より開始いたします。 あおぎり高校所属の大人気VTuber「山黒音玄」が1/7スケールフィギュアになりました！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5DSmQtazRmYWI3M0NNckN2VGs3VVhFSGp6YTRla0ptQndzbTFXVUx1bGp2dXpFX2plRHo4dkZMQjRJUm94MjhkRWhCUFRDQkhicnpiWEhHY3p4czNrX3VjbnhDbmxQUG90dXc?oc=5",
+      "article_type": "press_release",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "ボイスマーケットは、声を売りたい人と声を必要とする人をつなぐ音声売買サービスとして開発を進めています。 しかし私たちが目指しているのは、単なる音声売買サービスではありません。 ボイスマーケットでは、 ・VTuber事務所 ・声優養成所 ・ゲーム会社 ・音声制作会社 ・動画制作会社 ・ラジオ局 ・Podcast事業者 ・クリエイター向けサービス事業者 などとの連携も積極的に検討しております。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBENWhXYVNKMnFSaHFyTFlJNDZCQ0xBVzNGQnR1TVJ4YkF0cUhJT2RtWmVGRWFPUkFqdG9RR1hBR3BJN09uVFdzdk5EamE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "event",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "当社子会社の株式会社極楽湯(本社：東京都千代田区、代表取締役社長：佐藤 剛史)および株式会社GK Marketing(本社：東京都千代田区、代表取締役社長：山本 真司)は、2026年8月6日(木)より極楽湯・RAKU SPAグループ11店舗で、カバー株式会社(本社：東京都港区、代表取締役社長：谷郷 元昭)が運営する女性VTuberグループ「ホロライブ」とのコラボキャンペーン“フロライフ 癒しの湯巡り旅～ひとめぐり～”を開催いたします。 極楽湯 ： https://www.gokurakuyu.ne.jp/ ホロライブ×極楽湯・RAKU SPAコラボ“フロライフ 癒しの湯巡り旅～ひとめぐり～”",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE5uZDlYbFV3dWtVTXBhWVlkSlI5bUJXWnhNNFkwZFhleGlkY1lSSGZHcm1KS01YcjdWSFJoaHV1TFpFbU9sYmRjQQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "株式会社QualiArts(本社:東京都渋谷区、代表取締役社長:辻岡義立)は、カバー株式会社(本社:東京都港区、代表取締役社長:谷郷元昭)と共同で開発する、「ホロライブ」初の公式スマートフォン向けゲーム『hololive Dreams(ホロライブドリームス)』(以下、『ホロドリ』)について、2026年7月23日(木)より正式サービスを開始したことをお知らせいたします。 「ホロドリ」は、リズムゲームを中心としたテーマパークが舞台のリズム&RPGです。 「ホロライブメンバーたちの施設を完成させ、みんなが楽しめる夢のようなテーマパーク「ドリーム・パーク」を作ること」がゲームのゴールとなります。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5BUFFZQ05Ha09taXpfcDI2VDh3RTRzbGYzZDM5b0p2RnNLR1E1dzNROVV6VUNSdWRnbHc4QzBjOW1LeU1lYmlmVEFQSkRsaUw3SGdjdg?oc=5",
+      "article_type": "official_announcement",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [
+        "live_or_music",
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "カバー株式会社コマース本部で、公式アプリ「ホロプラス」の開発をしているエンジニアのHです。 2026年の前半、ホロプラスで「ホロプラスくじ」と「タレントタイムライン」という2つの機能をリリースしました。 世界最大級のVTuber事務所「ホロライブプロダクション」を支える横断開発チームにて、エンジニアリングマネージャーを募集します。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5Vb2luaDdkSzJWaUN2dzR4X3ZRSzJJNVRib0RRTFJaeFJhNzNySVdKazhpQkNlTndwaXVfaTU5c0Z1RU1PdExwaEo4NFI4NWZZTUlsUmNBcFVWTG9xUUFfWmpXTQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "collaboration"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "ヴィッセル神戸 ニュース/レポート : 楽天グループ主催 Xチケットプレゼントキャンペーン開催のお知らせ 楽天グループのスポーツに関する情報を発信するXアカウント @RakutenSportsJP で、2026/27明治安田Ｊ1リーグ開幕を祝したチケットプレゼントキャンペーンを開催いたします。 2026/07/23 楽天グループ主催 Xチケットプレゼントキャンペーン開催のお知らせ クラブ",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBpZ0tpVmhvc1pucUF4RkRBUllSSlVMZEVlbm5ad0N6WkpSQ1lTcXdVSGFibHhZajdRR1REN3BsX3hUMnlWcWVqTXVnTkpKYnNm?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "event",
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "タテ読み「あたしンち」 #17「雨に気がつく」 NEW! 7/13 タテ読み「あたしンち」 #16「母は大谷君が好き」 6/29 タテ読み「あたしンち」 #15「マスター後つける」 6/15 この特集の記事をすべて見る 企業と共同実証で学生が学ぶのは技術だけじゃない 手のひらサイズのセンサーが街を「見る」 芝浦工大×スズキ、自動運転の死角をAIで 7/17 「数学を勉強する意味が分かる」東京理科大1年生を感心させた授業とは 「MetaMoJi」社員が教えた生成AIの原理 7/16 文系卒がアプリ開発の国際コンテストで部門3位。 7/5 「チャッピー」と呼んでいる場合ではない 「次に狙われるのは日本」池上彰と斎藤幸平が語る資本主義の限界と民主主義の未来 7/5 AIの時代だからこそ「情報は自分の足を使って嗅ぎ回る」 コンサルタント・メン獄が語る「検索で到達できない究極的な個別性」の見つけ方 7/3 この特集の記事をすべて見る",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9JQmJ0OU9KNm8tMGM2X0pNRHRSOGZQSDFlalk2WUQ0OU04b0JoZm5tUWdQc0hrVzZQSmZCZ01pdzdiU3d2N2k5RTdZTHQ4cHhVOFM1LXZOM2VRa3lCMnIzTmpqWUp0MkFCUUE?oc=5",
+      "article_type": "press_release",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "event",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "当社子会社の株式会社極楽湯(本社：東京都千代田区、代表取締役社長：佐藤 剛史)および株式会社GK Marketing(本社：東京都千代田区、代表取締役社長：山本 真司)は、2026年8月6日(木)より極楽湯・RAKU SPAグループ11店舗で、カバー株式会社(本社：東京都港区、代表取締役社長：谷郷 元昭)が運営する女性VTuberグループ「ホロライブ」とのコラボキャンペーン“フロライフ 癒しの湯巡り旅～ひとめぐり～”を開催いたします。 極楽湯 ： https://www.gokurakuyu.ne.jp/ ホロライブ×極楽湯・RAKU SPAコラボ“フロライフ 癒しの湯巡り旅～ひとめぐり～”",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFA1aVZQVjdGRVV2N1laVXBvTGpGa3pQblFINTlQbTltTUFKNnpVNFo0ejZQMWY1VXFOdWZvUlNRN2UwRV9NbjZCSFpBcVd0bGMxZmhJTzJFQ2lzQ0JKYk1qQWlWNXNMVmxZR3c?oc=5",
+      "article_type": "press_release",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "A・DIMENSIONの直販ECサイトでご予約のお客様には『限定特典（非売品）』が付属！ 株式会社A・DIMENSION（Aディメンション）（本社：東京都台東区、代表取締役社長：上村篤）は、『あおぎり高校 山黒音玄 私服衣装Ver. あおぎり高校所属の大人気VTuber「山黒音玄」が1/7スケールフィギュアになりました！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9Kc2xiaGxjUEttLWFfQU5ZZDgzcktCeTJVd3hWWUtaa2ZVejFnNDlFcDMzZUE2TS0xMTlTQ0w5dFIyeUNDUVNYYjFzTDRLTmFV?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "本ページはアフィリエイトプログラムによる収益を得ています リンクテキスト リンクテキスト リンクテキスト LINEに送信 あおぎり高校所属のVTuber・山黒音玄さんが私服姿でA・DIMENSIONから1/7スケールフィギュア化！ 大きく垂れ下がったお耳が特徴的なあおぎり高校のVTuber・山黒音玄さんがA・DIMENSIONからフィギュア化。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE05SGRWR3FhRF9UTTBZVU1zaFNZNE1JanpwcVRJYXpzcTY0MEpDWFN0MGlOa0xEZ0RVekVhejhQaElvUWp1cENnNXhJN3Y2VzF6TGo2aTdiZW1lay1RbHlfcHI1a3lIX2g3RHBBM2hR?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "Home » 大阪府の公式キャラクター「もずやん」がRobloxに登場 このコンテンツは、大阪府主催のイベント「 もずやんの大阪推し活！ 全国キャラバン 主催 大阪府 開催期間 2026年8月2日（日）〜11月1日（日） 会場 ららぽーと門真（大阪）／サンシャインシティ（東京）／ららぽーと福岡／グローバルゲート（愛知）／イオンモール四條畷（大阪） 体験内容 Roblox「NAMBA PLAY PARK」でもずやんアバターを操作するアスレチックゲーム（1回3〜4分） 参加方法 Meta Osaka公式サイト予約または当日受付。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE5DQlhQc0QwUFNOYU1DMzRQVVN6aGdPc0liYk5pYmNsM3J3NWN3RVYyWjEzUXppcEJLWEVLQmpfTVZmM3JP?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "本作は、リズムゲームを中心としたテーマパークが舞台のリズム＆RPG。 「ホロライブメンバーたちの施設を完成させ、みんなが楽しめる夢のようなテーマパーク「ドリーム・パーク」を作ること」がゲームのゴールとなる。 キャンペーン期間中、ホロライブのオリジナル楽曲やカバー楽曲など全25曲を順次追加する予定だ。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE9HWTNKYjNqLXVVR1N1WGhjd0JYbHY5SVJVVnV5NzU3U19ZSnlMSnlkTzRKYV9kei1kZVpqUVlPWTN6X1Rl?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "product_or_goods",
+        "event",
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "デジタル技術の進化と動画配信市場の拡大を背景に、VTuberは日本発の新たなIPとして世界的な存在感を高めている。 YouTubeやライブ配信を起点に人気を集めたキャラクターは、音楽、ライブイベント、ゲーム、アニメ、グッズ、ライセンスへと展開され、一つのIPとして大きな経済圏を形成するまでに成長した。 本記事では、VTuber・デジタルエンターテインメント分野で独自IPを創出し、国内外へ展開している注目企業5社を紹介する。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE15QmVhSnlGV3VkRTRaa2prelQ2SnROd09UbW9vR3BEWndHbDB6YUVvcVBZODdCaGRwdFg4UU9ib0oxOE52XzBHeGtaQkRFdXlvem5BcW5qYVctaXRoekYwb3hBS2M2YTA?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "クレジットカード決済会員は新コースに自動移行するので特に作業は不要です。 昨年は１００人以上が参加し、主催者は「今年も楽しみながら川や街をきれいにしましょう」と呼びかけている。 タレントの福島和可菜さんが中心のランニングチーム「Ｒｕｎ＆Ｂｅｅｒ」が主催し、今年で４回目。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFAzc1FsNEl2TXpSS3JiQmxRclFqT1Z3NUg3cC1vc0ZqMnlienRNVjlZbUt2WjhRQnoxXzd5MHMzQXptTnBiNmpiVHF2bw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "多くのランナーが行き交う 秦野市 の水無川沿いを走りながら街を美化するランニングイベント「Ｃｌｅａｎ Ｓｔｒｉｄｅ（クリーンストライド）」が２６日に行われる。 昨年は１００人以上が参加し、主催者は「今年も ... 神奈川で地震、秦野市で震度１ 震源地は神奈川県西部 07月09日 神奈川新聞 【速報】関東で地震 Ｍ２．３ 震源は神奈川県西部 地震が及んだ地域人口１５万人 07月09日 千葉日報 ヒグマ肉の串焼き堪能を 秦野・鶴巻地区で１２日、ジビエマルシェ 07月03日 神奈川新聞 山梨の地震で相模原など震度５弱 神奈川県内２人けが 中井町で土砂崩落 06月26日 神奈川新聞",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE8tWDd0clBtOW9HREhUY0NGVGdGbjJqdTltZXREY0xxZE13ckdZYVFFSFpib0t5c0V4Rkh5LWc0MVhySndiR28zZGJNNDFKYnAtNUtTSFBtaVFCY1RPdU53NjliOEJIZ19HenYzUHFtdTFhR0VNMUROUGwwQTU?oc=5",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "Home » 代々木アニメーション学院、VTuber科に「歌い手コース」を新設 代々木アニメーション学院は、VTuber科において新コース「歌い手コース」を新設すると発表しました。 対象は2027年4月入学生以降で、2年次進級時に希望制で選択できます。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBHWGtTUms3T3F5TXVYd0hVVVdMLTNMNG5JTzRKaVJzUV9Xa0NXdW1CY1lRd3B2LVQtek9talFXS2l0bWduNDdsandwTVdCY0M1aGZrOHpaZnEwYzdzV18xQXQxRmY4RkR4VTJ6cmtNejd6Y21rWHQ1ajA2OWtLNlU?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "元日本代表の山村宏太さん、高橋賢さんらを迎えエキシビションマッチ交流（上）と、多くの来場者でにぎわった「わきゃが市場」＝18日、天城町平土野（提供写真） 【徳之島】第52回あまぎ祭協賛イベント「ビーチバレーin平土野浜」と「わきゃが市場」（天城町商工会青年部主催）が18日、天城町平土野地区で開かれた。 昼は中高生から一般まで20チーム約200人がビーチバレーで熱戦を繰り広げ、夜は飲食ブースやステージイベントが並ぶ恒例の「わきゃが市場」が開かれ、多くの来場者でにぎわった。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQbmRwYWU3Z3B5dGpCa3h1bHZSM1VUOXdFSVIwUTNkZl9NRm1DT29za1BoOEtmVzloZTZKY01DT2NBekdfeS1UZFBrV0o5b2F6OUtkTzhZUUxYWk03QVh2bm1DbUdWbkNCWWNOcUlnMzlnX3RQVXlFMmJQVE82ZE0tUHhVUXotU2R0djlReE1GcFhKb1RfMFBoUlkxcDE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "ハティン省 - ホアンソングループ株式会社で開催された労働組合の食事会には、多数の組合員と従業員が集まり、温かく親密で一体感のある雰囲気が醸成された。 Tổng Liên đoàn Lao động Việt Nam • 23/07/2026 Vietnam.vn をフォローしてください G o o g l e News 0 7月22日、ハティン省労働組合は、ベトナム労働組合の設立97周年（1929年7月28日～2026年7月28日）を記念して、ホアンソングループ株式会社の労働組合が「労働組合会食」を開催すると発表した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBUWjVPZk1NcVFtaktZQWNUT2dRNURPRjY3bENtNUhPN3JsVF9GenhCQW00RGtrOHhQV19UeXM3ZHdnWmFGajNJUEpDZ2hRR1FRRGkwa0w3Z09TX0xjSzQxQUxwNXd6dw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "Bonfire Studiosが開発、DRIMAGE JAPANがパブリッシングするPC（Steam）用チームベースPvP「アーケロン」にて、7月19日にストリーマーのけんき氏が主催する「けんきカスタムイベント」が開催された。 イベントは「初心者向けカスタムマッチ」として開催され、27人が参加。 けんき氏がクイズを出題するなど、ゲームプレイを通して慣れていく様子が配信された。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFAxZ2V0X2M5X1ZWT3ctdG41WmJJWWdZMzJjQkhCNVB3WlNCc18taTBFVGVtYWFQQndIa045azB2RnRLblF2MWc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [
+        "live_or_music",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "VOISING、代々木アニメーション学院VTuber科「歌い手コース」新設に協力 VOISINGは、代々木アニメーション学院がVTuber科に新設する、2年次進級時の選択コース「歌い手コース」の教育プログラム開発および運営に協力する。 本コースは、3月に発足した代々木アニメーショングループのシナジーを活かした新たな教育プログラムで、代々木アニメーション学院が長年培ってきたエンターテインメント教育のノウハウと、VOISINGが持つ歌い手・2.5次元アイドルIPの企画、運営、タレント育成およびプロデュースの知見を融合し、歌い手、VTuber、配信者をはじめとする次世代のエンターテインメント業界で活躍する人材の育成を支援する。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://dailyportalz.jp/kiji/chugoku-umai-kona-gandie",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "中国のうまい粉「乾碟（ガンディエ）」を食してほしい (1/2) :: デイリーポータルZ 「焼肉とか火鍋に合うよ」と、中国の友達がある日手渡してきた真っ赤な小袋の粉。 唐辛子や花椒、ピーナッツの粉を調合した、脳に直でうま味が届く調味料です。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9OM0RwMWFzdVByeUt1bm9XejRCS3YwQzMwazdMemZSNm5JZkQ4ZkZoNlFsMWUzTkNIUTFrN0lvVUtlTFU1Wk83Q2RUcUFHRHlSX1ZodVBrU3p0al9Ydjh4NQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "collaboration",
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "2026 7/23 ゲーム ゲームアプリ VTuber ホロライブ 2026.07.23 [PR] 本ページでは一部にアフィリエイトリンクを利用しており、購入実績などに基づいて手数料を受領しています。 株式会社QualiArtsは7月22日、カバー株式会社と共同開発する「ホロライブ」初の公式スマートフォン向けゲーム『hololive Dreams（ホロライブドリームス、略称：ホロドリ）』について、App StoreおよびGoogle Playで事前ダウンロードを開始したと発表しました。 あわせて、累計事前登録者数が150万人を突破したことと、サービス開始後に「15日連続25曲追加キャンペーン」を実施することも発表されました。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE41WGRlSUljNFY3eTlZSDBkb3A0Y01hekJTNVpSUlVjamR5MWhvZl82bjdTV0FsdWJwbUh6OGhtV1FGclFfZExoY2Q4bEpjNHQ0R2ttN1NxMkJaN05lbE9OT1gxR3Y?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "collaboration"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "NEWSオファーの経緯を明かした小籔千豊 （C）ORICON NewS inc. SABU監督、初のベネチアへ 台湾・日本共同製作『Arrested Memory』出品決定 堤真一、霧島れいかが出演 田中圭、鈴木おさむが作る舞台の魅力「舞台を見たことがない人とか、舞台に興味がない人とか、入口としてとても入りやすい」",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBzdVVoaGtQc3FPZnBNZGZfajNrM29SS3JEcmFTMDl2MTJHTW9zem1VN0ozc2RRbVBnX2FWU3BUc3QwLTkyTklnc1pIaw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "Home » HTC、バーチャルアイドル番組『VPOP ASIA』始動、VTuber Ksonが特別出演 HTCのXRコンテンツ制作会社VIVE ORIGINALSは、バーチャルアイドルオーディション番組『VPOP ASIA』を始動しました。 番組には、日本の人気VTuber Ksonさんも特別出演します。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5pbnNZd1lQQzBSVDRjcGFKeUpmSjlTOFAwQ0VXN0pfLUtXSlV2TWlPR1RCQ0NDZGRUVkZMOFRrWV9vUTdYYTMtN1hkQmYwYVE5bWx1UXc5VVdhQQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "AppMediaトップ パワプロ2026攻略 サクセス 継承選手の作り方 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026サクセスにおける継承選手の作り方について掲載しています。 リリース hololive Dreams（ホロライブ ドリームス） COVER、QualiArts",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBTZ0UyMmkzTGZYTjRHTG1sdENlSXM3bWdaTnNJUFlGLWlqWDdfNE1oeXd4TU9Ucnk2b2xwdkd0QlY1YlFLNDhvMnI2eHl3cS12R3VJc09KNThkZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "collaboration",
+        "live_or_music"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "AppMediaトップ パワプロ2026攻略 PP(パワポイント)の効率的な入手方法 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026でコラボしているにじさんじのキャラクターは、栄冠ナインでスカウトすることができる。 リリース hololive Dreams（ホロライブ ドリームス） COVER、QualiArts",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5VUmZHX0lTNEtlOHJPLWEtUk9uWko5X0tSTVVRelR1ZlJWMlJIVlFPSlNQWnduUXRlTXBsNDFYYndHTWxIVTBsc081WF9hN3ZL?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "4位にはBTSの「ARIRANG」が週間ポイント2.4万PT（23,890PT）でランクイン。 6月8日付以来、7週ぶり、通算11週目のTOP5入りとなった。 オリコン調べ（ 2026 年 7 月 27 日付：集計期間： 2026 年 7 月 13 日～ 7 月 19 日）",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBzeEdOMDlPeHJmX0FHOXJEOHc0czg4TVJDZElVY0tyaUduSjBvY0FGLWhNbTFqR3FQUDJOc0sydlpWZTIwYy1lOXh2V0pIMGZtQ3IzNjZXMlZwZw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "武蔵野大学は21日、同学データサイエンス学部データサイエンス学科2年生の滑川 裕里瑛さんが、情報処理学会主催の「マルチメディア、分散、協調とモバイル（DICOMO2026）シンポジウム」において「声が植物になる―マルチモーダル感情推定に基づくメディアアート生成システム」を発表し、優秀プレゼンテーション賞を受賞したと発表した。 DICOMO2026には270件の研究発表があり、多くの大学教員、企業研究者、大学院生が参加する中、学部2年生として最年少での受賞となった。 DICOMOは、情報処理学会が主催する、AIや情報技術分野では国内トップクラスの学術シンポジウム。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9lNzRBbzBEd1N6WjdxWDhDOUg4eDJMYVJQdHFDaDFobTlfTGtEU3ZuQUJKTXRyVVJfTEdNVGlCQ0pMMy1fNmNWZXZwcDNQWExKOTBrdTdKRmpHQnJzamFwSTg1ZjdtRGRyY3c?oc=5",
+      "article_type": "press_release",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "このたび、シーホース三河は、2026年8月7日(金)にスギ薬局知立福祉アリーナにて開催される知立市主催イベント「涼しいなかで汗をかこう！ バスケ&チア体験会」へ参加いたしますので、お知らせいたします。 当日は、シーホース三河ユースコーチによる小学校4年生～中学生を対象としたバスケットボールクリニック(事前申込制)を実施するほか、どなたでも参加可能なシュート体験、シーホース三河公式チアリーダー Super Girlsによるチアダンス体験（当日受付）を開催いたします。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiwgJBVV95cUxQV0hpTXRxVTB0WTg4Y0F5c3lxLWFnc3ZNZnA4YVNVU084djAzQkJQOFJKMG1pMm5RdkpIVk5FMlo4SFVNRF80RndwOTYyS3lnQlVhV2tTY3oyVHJta0laZ0ZzVmR0WVJKU01QOWg3dXJIbFVHUTJrMTdiSXhiTFdERXdLZEZ0eEowcFJza01EajBQQ2Z5X1g3NHlSM21za2YweUppRmlqQV9ueUx1bktrLUZHVnV3SHllYjJlYUk5WDBMUk5rXzk2Uk0tMWtxLXN5emZ1M0l6SEFGamNJLVJ5a2VYeWpPQVdHVFQ3cjhIZFhWZE1LaGhscU5hMk1CSUprcTVNNUE2Tjg4c2lWTVF4RHNvRjlSM2tPQzVtQzRfOE91elVMQUgtbXR6ZmRRY3BibGtzbk92cXY0Vll2dmI3Qmt30gHHAkFVX3lxTE1CVXEwQ1Iza0g4WHZ6Yl9Ma21iU2lqdmZnRlh6MmFwSFpiVThpS05hTG82a2lidVNQRDJsOEdkTXlVbmp5SGFneFZNeGR1cDh5WVJjcGRGaUw3TDdITzVvQVZmNHp5dmgzSlZFX3BXbEI1MmhjcGNCM3ZjQTZXR0g5ZGxoQWpwUGZudy1PZ1pHbTB4bGlnVjFtd0lDVk9VSkRydllvTXIyZHJ1YVZteUl2WUNUX1N0UDJEdUY3M0RicmZtR0lEd2FuTHY3UjV5VFZWemt5Vzc5eUR5OTlaOHA1UUFJUkZfM09FS1N3ZWtFSFJhanBBemlGODMySXhSdGFqOGtxVnV0X2d3TFVfcGlSQzVqV1NvUzQ2U3Y4clZCbzk5cWM5ei1Ha1dPeDJCUWJiRWZHZlhyeFptb3gzaEw0ZS1aYW83TQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "「チュラル」が、2026年8月21日から8月23日まで東京・アトリエ春風舎にて上演されます。 本作は、演者全員が振付家として参加する舞踊団体「がらんどう」による4回目の主催公演です。 がらんどう主催公演『チュラル』は、日常から離れたライブ体験を提供する舞台です。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPc0U4SEVJMElHX1NQaEhPbEpFeEc2V3FINUQ0dzBNanZfSFJTQU4tWWZDS1QtNHpOVnJ5WjV2d3Z5QUtKaXMxVFlKU1hkV2xGd0M1ZWh3V1JHRUdyeHhxenc3XzBCaVNCcFYybldmNno1NXVHcDhpek4tUUNZdnJPUGJySnFjTmFLRjAyVXRqdnhPWTVIaGMzN3AtMzjSAY8BQVVfeXFMTlFlbDFxVHBtX3g4bE8yVWlMYUplZG5hYmt3c1BDZUVrcGRQZm9tZHdQc0M2Q0xPeVhzMmt6UzI1S0lnd2VJZUEya3pubUt1WjlFZjQ4dVVJeWFFcjhxVDQ3VkRILXNJRG9QeldydXNlNTdXWGhPQXRmOHdJbU9iRWFDTTFyeHJBN0lUS0J2WnM?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "JR目黒駅西口前で開催される「第40回 地域のふれあい盆踊り大会」のお知らせです。 開催日時は2026年7月26日（日）で10時から模擬店が営業をスタート。 【他画像入り記事はこちら】【目黒区】権之助坂商店街振興組合主催で行われる「第40回目黒駅前 地域のふれあい盆踊り大会」、2026年は7月26日（日）開催です",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE9SNFhpU19ONmNibEhDcXd3TF9WMHRReExzaXV4OXhpSWlBeG9JMkJESlJqSjh2STdQcmFpSE9VUXlVX2pFa3Q1SlVtV3lzY1NHUHROTzdkN2tnY0duQkZPOVBVbG1DbTROX0tVUXhnbGpnS3VqOUdfZHVn?oc=5",
+      "article_type": "press_release",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "本コーナーに掲載している プレスリリース は、 株式会社PR TIMES から提供を受けた企業等の プレスリリース を原文のまま掲載しています。 弊社が、掲載している製品やサービスを推奨したり、 プレスリリース の内容を保証したりするものではございません。 本コーナーに掲載している プレスリリース に関するお問い合わせは、 株式会社PR TIMES（release_sankei@prtimes.co.jp） まで直接ご連絡ください。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE03clJEMFpvcEF0NkN2RWNfZXRycTl2UFQzMFRKRHl2NEl3MDdxNWo3Z2U4RVk5S1NCQjc4a1RIcTVOVFNTQ0YtTnBXOEhNTkdldnRwYWUxUHp6QnNqSmRHV1hoekdTR1VN?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "2026年7月1日から3日間にわたり開催された、国内最大級のスタートアップカンファレンス「IVS2026」。 なかでも、本イベントのダイヤモンドスポンサーを務めたファイナンスプラットフォーム FINCHI が主催した見城徹・藤田晋のトークセッションは、事前の注目度の高さをさらに上回る大盛況。 カンファレンスのなかでもとりわけ来場者の注目を集めたのが、FINCHIが主催したトークセッションだ。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNNE1UQ29YRlNlTEhkWWhIUmtKTnp3ZzRYZVpQeUVDVGNFN2FTVlRFdEhPMDBVVVZnUWtFa1oxaXhrQlNyZ0kweGZjRGpiVzVBalVIVDVqYld0MHpvb1dYQ2J3T3BESlJtazhDQTF6VEE4eTByT2x4UHBGLWttTHBfT1pXLUNINmJHRlk5T0ZiU2dmVThBcGVkdNIBngFBVV95cUxNY2hFUHVQUWgzbGVES1BtWUtqbVJTZm5jOXZjVFk0cm9VbGpsY2RjYzExTXNfZjNXNFlER0NyUjYwa01RaTl5Y1k1TjJSWUpjSXoxSDV1QnJ1NVRFYzBDSWFidGdoOHBLUVZBZklIRy1ickZqaGN0RE05SkpSWjFEeHZpaElkZ0lyQUFwdzJEank2UUZoaUtJeTlLLWlOdw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "宮城県連合遺族会の晴山宗規会長（左）が村井嘉浩知事に陳情書を手渡した=2026年7月21日、仙台市青葉区の県庁、高橋昌宏撮影 毎年8月を中心に開かれている宮城県戦没者追悼式について、県は今年、単独で主催することを決めた。 県連合遺族会は1951年に財団法人として認可以降、追悼式を長く主催してきたが、2025年の式典は県に要望し、共催という形をとった。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBUN3V4alJheWxBZ25HbjJ4S24tVFE5UjhFYmJsMjJZbWJIMWZSaFlKWGU5NGhjajI4WU9zMDNoQV9CTTJHQjAwbG1PLVFRSUVkRFFPM3lEZVZ2cmRKVTkwR2Uxb3FvTXdPWEpmU3lXekQtUElSci1CWF9peFBqM3M?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "＜画像2 / 4＞ナイチンゲールダンス・ヤスのコラム連載！ 主催ライブを通して考え続けた需要と“オタク心”【ヤスのコラム#5】｜ウォーカープラス 主催ライブを通して考え続けた需要と“オタク心”【ヤスのコラム#5】",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1yYzBCVDRWdnpvOVhHdlNRR2xmSzRtaUl0Zi0xOGVNN0k2bC1ISmNhVEpTRnlhTUVnY3FUdWdrbXpXRUVZX3dId3BfVTRaaFltQW1HSk9xTGRyZw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "Under license from Forbes.com LLC™ All rights reserved. 1回あたりに買われている個数を見ると、「にじさんじ」、「鬼滅の刃」、「ホロライブ」がトップ3となり、平均2個以上が買われている。 「サンリオ」や「ちいかわ」と比較して、バーチャルユーチューバーの「にじさんじ」や「ホロライブ」は、ファンの年齢層が高いためか、一度に何個も買う、いわゆる「大人買い」の割合が高い。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQOGxEa0wzVUFaSVo4Z1RPSEF0dlNUTTlfVXJMSVp1cVZnSkZwX0RDQ19JWmZjcXB0MGFSSnRfeE9nZlRnM0dMa2tnU0NSWjdLblU5MXR4dzcwclU1bkhZSUVIS3VjcmxnSUQ4RDY0Szc3S0JFVDhSaHNIaTAwTGRma1hHZ3cxX3JWVnVudUk4RmthYk5jQkZYN0g5YTgzLXVxQllUZDVtSXFzMjg0aDVFV1BMOUVjRFZOWXZULWNVaG56YjlKd2FYeQ?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "主催者側は、調整の不備を認め、日差しを避けるためのスケジュール変更により、リーソンで開催されたミス・アイランド・ビューティー・コンテストで学生が観客席に座る事態になったと述べた。 Báo Nghệ An • 22/07/2026 Vietnam.vn をフォローしてください G o o g l e News 0 世論の強い反発を受け、大会主催者は公式に詳細な説明を発表した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://0115765.com/archives/196722",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "一般社団法人日本トレーディングカード協会は22日、公式Xアカウントを開設し本格的な活動発信を開始した。 今後は公式アカウントを通じて協会の取り組みやトレーディングカード文化に関する情報を積極的に発信していく方針だ。 また、協会が公式大会も定期的に主催するといい、プレイヤーの技術向上と交流の場の提供。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE4wcDdINEQyU21ZVXVIMWFFT0N5YUp5eUFpSVlkc1dnLWxiekhyUmxnYWt4NjVxSEFZdUpDMnptMDJ1SGVWNUVsaDVscGFqajl6ZUk3WHdfRzBQQQ?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "伊豆新聞で取材した写真をご希望の方に販売しています。 大会に向けて出来上がったパンフレットを確認する本社スタッフ＝伊東市鎌田の伊豆新聞本社 若衆連合太鼓 観客魅了 網代ベイフェス 夏祭り締めくくる―熱海 猛暑日のオアシス ７月観測史上最高更新 網代３６・５度で初猛暑日―熱海市 伊豆山神社清掃イベントで参加者絆深める―熱海 あす戸田ロケ回を放送 ＮＨＫ朝ドラ「風、薫る」―沼津 戸田で高齢者移動支援に広がり 本年度から診療所送迎も―沼津市戸田 食協戸田支部がまな板削り 繁忙期迎え美しく清潔に―沼津市戸田 「安全、熱中症対策万全に」 三島大祭り実行委が晴天祈願 輪投げで子どもと交流 牧之郷いきいきクが大会―伊豆市。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOTUNrQXVRdHk2VDU1OFNnbXM3RG1fbEFNaDdldmlLajdMVlZva0lRcFJMU3BMNzZIeGgxZzBWZ1p3ZHZZa2V1ZURHejhpQVh1a1lfTG5tRmxQLUdyYTh0YjJ5dmhZNmJPcnlncHNFLS1ZZ2RWUTdBclBvYkhfV0RENkM1eVp6T2dzSG1kdnVxV0F4WGF6dHFKaDE3YlRrNkJoM2FTZTAtOA?oc=5",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.78,
+      "evidence_text": "ミス・ビジネス・グローバルの担当者は、主催者側がティアラにダイヤモンドがちりばめられているとか、高価な素材で作られているとは一切言っていないことを確認した。 ZNews • 22/07/2026 Vietnam.vn をフォローしてください G o o g l e News 0 ここ数日、ソーシャルメディアでは、TikTokerがミス・ビジネス・グローバル2023コンテストのティアラを鑑定に出す 動画 が話題になっている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPRXdUOFJWcUVmbW12Q1FGUmFZRjdral9rc3h3Tk43QWswaGVzd3hMOG1HRmVjbElIV29peGhqcXZWcENGTDdCZFA0ZkRmQktHdEJBcHZnTF9MLTVYLWVoSXRoUHA3Q254LVVLczJOQzFHM2ZPb2lwRGFkUnhhQXRaRjk2TWJJWGxDTXJ5S09pNklIRDU0T1NlT0R2M05TRnRBWEpESWQ2NnpYMmRjelNFWWQtb29VengzSl85RVlkeGs0MmR4dlpZRktxWUc0UnZSUnhfeGc2d9IBhwFBVV95cUxPMWxiMjg3QkZNcmdMZzY4cDRmWmhzZTJhQ213djUtNTlsS0ZWUzdlN2NMZ3hoOUxLVWtxUkZXTXBwNXF2eVE5OXJMX3p0S2hIdHNDZlBIVU5lVjJKekJlbVhMWWlYa3hFZU0tbzk0U2xGRUVhc0xmQWNlaGJ0QmdqSGdudzVCMFU?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "community_or_fan",
+      "secondary_categories_json": [
+        "event",
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "シノン「ソードアート・オンライン」／胡麦るあ（X：@looa_cos） イベントには『原神』『鳴潮』など人気ゲームからアニメ3期が注目の「無職転生 〜異世界行ったら本気だす〜」などのアニメ、VTuberの人気キャラクターのコスプレが見られました。 ライフルを持つハードさと可愛さの融合「ソードアート・オンライン」シノンから、人気のVTuberまで、幅広いジャンルのコスプレをご覧ください。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-23T23:27:05Z"
+    }
+  ]
+}

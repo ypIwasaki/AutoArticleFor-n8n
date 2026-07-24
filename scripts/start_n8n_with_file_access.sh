@@ -7,6 +7,9 @@ PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 export N8N_RESTRICT_FILE_ACCESS_TO="${N8N_RESTRICT_FILE_ACCESS_TO:-$PROJECT_ROOT}"
 export PROJECT_ROOT="$PROJECT_ROOT"
 
+# Local workflows use the configured Data Table ID through $env expressions.
+export N8N_BLOCK_ENV_ACCESS_IN_NODE="${N8N_BLOCK_ENV_ACCESS_IN_NODE:-false}"
+
 # Keep environment-specific Data Table IDs out of committed workflow exports.
 if [[ -f "$PROJECT_ROOT/.env" ]]; then
   table_id="$(grep -m1 "^N8N_ARTICLE_CLASSIFICATIONS_TABLE_ID=" "$PROJECT_ROOT/.env" | cut -d= -f2-)"

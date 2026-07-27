@@ -1,0 +1,41 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-07-28",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBoeGgzTGFlVjR5eWJXUC0tU054M2lzamctOFNqZ0ZYbUdpSGhnRWhyTlJpVmMxM0lNLThEUkp6TC03RU54T2VPODZ5ZHpSUE1FUlg3cTJ4RQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "本文でホロライブドリームスのガチャ演出、昇格演出、流れを解説していることを確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T23:37:14Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE41SUZvN2JsZlFqTDVCV1VYRFA2QUQtdU9sd09EOXpXQzNkdi1OdE1ONTgzeHhZcW16RXlxMk9mcEdJSUFpT1VGWVBUYUh2VzZkOFMzNVdLWkQ1UQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "collaboration"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "本文でにじさんじコラボの履歴書入手方法とキャラクターの能力を解説していることを確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T23:37:14Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE0ydGV5dkVRTXR0VFJOQWlSYmE1MXlNTzVBWkgxUmJUQm5XWm5mSlB5V3NiMTQ4UUZrRDBvTndoSjVYQmZ2OWVjYzIwUV9USF9TbG9BTm9FRXV2dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.9,
+      "evidence_text": "本文の主題はパワプロ2026の二刀流選手育成で、VTuberまたは所属との直接的な関係を確認できなかった。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T23:37:14Z"
+    }
+  ]
+}

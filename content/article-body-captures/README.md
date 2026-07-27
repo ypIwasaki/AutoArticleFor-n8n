@@ -1,15 +1,17 @@
 # Article Body Captures
 
-`backfill-state.json` は、保存済み記事を本文確認済みの要約へ再作成するときの取得状態を保持します。
+リンク先から取得した本文テキストと、動画・SNSで取得できた公開メタデータを保存します。
 
-- Google News の中継 URL は、配信元の URL を復元してから確認します。
-- 記事本文そのものは保存しません。確認日時、配信元 URL、本文テキスト量、本文要点、本文ハッシュだけを保存します。
-- 本文を十分に取得できない場合は未確認として理由を保存し、タイトルや RSS 抜粋から要約を作りません。
+- 日付別の JSONL: YYYY-MM-DD.jsonl
+- 再開用の取得状態: backfill-state.json
+- n8n Data Table: article_contents
+
+本文は正規化して最大 100,000 文字まで保存します。通常記事は本文、動画・SNSは公開されているタイトル・投稿者・概要だけを保存します。本文が短い場合も partial として保存し、取得不能は理由を残します。
 
 実行コマンド:
 
-```bash
-python3 scripts/backfill_article_summaries.py --write
-```
+python3 scripts/capture_article_contents.py --retry-unverified
 
-途中で停止しても `backfill-state.json` から再開できます。未確認の記事も再試行する場合は `--retry-unverified` を追加します。
+Google News は最小 2.5 秒、配信元ページは最小 0.75 秒の間隔で取得します。429 などは待機後に再試行します。既存の本文も保存し直す場合は --refresh、日次要約も再作成する場合は --refresh --write を使います。
+
+N8N_API_KEY が設定された .env があれば、結果は article_contents Data Table にも article_key をキーとして upsert されます。

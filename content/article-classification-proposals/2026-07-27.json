@@ -1,0 +1,455 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-07-27",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiQkFVX3lxTE5HckNrTnlacmJadGRwWm42Sk45MnBidXVhR285bWs1NG9qY2o0NjgzWWF5aEtib0pUMVpmc1hJOW53Zw?oc=5",
+      "article_type": "media_or_editorial",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.88,
+      "evidence_text": "SNS効果測定サービス hashout は Social Report へ きっかけは、VTuberの華月エアリさんが見つけたYouTube公式ヘルプの更新です。 この投稿が切り抜きクリエイターやVTuber運営スタッフの間で急速に広がり、「サムネイルを作ってる人みんなに共有したい」というshaketarooさんの投稿がさらに拡散を後押ししました。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTE1QZ0dmMUNUYTJOemlSdG1yYjBqaEtaRFJRTnpoTGNCMVJyaU9HX05TRXA4VDBTWlJpOHBTSW9udE54VHc?oc=5",
+      "article_type": "media_or_editorial",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "community_or_fan"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.88,
+      "evidence_text": "SNS効果測定サービス hashout は Social Report へ ホロライブ初のスマートフォン向けゲーム『hololive Dreams（ホロドリ）』のフレンド機能に、想定を超える数の申請が集中しています。 しかも対象は、ゲーム内のキャラクターではなく、プレイヤーとしてゲームに参加しているホロメン（ホロライブ所属タレント）本人のアカウントです。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/149868",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "2026年7月26日、「アイドルマスター」での芸能事務所の枠を越えたアイドルフェスイベント「 IDOL WORLD SUPER FESTIVAL 2026 」のエンディングにて、2027年7月24日（土）、25日（日）に、ライブイベント 「 765 PRODUCTION × 961 PRODUCTION IDOL ULTIMATE ONCE AND FOR ALL 」が開催されることが明らかになった。 ここで判明しているのは、開催日時が2027年7月24、25日であること、そして開催場所が京王アリーナ TOKYO（東京都調布市）であることだ。 765プロダクションの社長・高木順二朗氏と961プ",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBxMjFpbGJ3eFV4TTJqWWVKZHdpNWVjZVEwNGYwdjlUdzQ0czJTclQ1Sk5IR3VlRUp1eUo3Z0h2SWU0WVQtRGlYTExNUTFQQ0s5?oc=5",
+      "article_type": "official_announcement",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.88,
+      "evidence_text": "ANYCOLOR株式会社(本社：東京都港区 代表取締役：田角陸、以下「当社」)が運営するVTuber/バーチャルライバーグループ「にじさんじ」は、「絶対寝かせないASMRボイス Vol.2」を2026年7月31日(金)11時より、にじさんじオフィシャルストア・NIJISANJI EN Official Storeにて販売を開始いたします。 2026年7月31日(金)11時からにじさんじ「絶対寝かせないASMRボイス Vol.2」販売開始！ バイノーラル収録された異色のシチュエーションボイス第2弾が登場！",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5vQ2dITWMzYy1WeTA4dXJla280SVNKTUhOOXVCalc2QlJHTEhKc0dWZkV4aGgtUThmZlp4VF80cHJkWjRlX213S0FQRHNHOVA1bVo0Tlk5ZUlFTzVFSmdkSlBHMGcxelhQcWVGak0yaGlnSnJKQXAwQXVibnNPWHc?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "女子ゴルフの国内ツアー、大東建託・いい部屋ネットレディスは26日、福岡のザ・クイーンズヒルGC（6485ヤード、パー72）で最終日が行われ、プロ2年目の19歳・加藤麗奈（ヤマエグループHD）が5バーディー、1ボギーの68で回り、通算22アンダーで涙のツアー初優勝を掴んだ。 最終日に着用した真っ赤なウェアを、大東建託の社長が絶賛した。 【動画】女子ゴルフ19歳新星が着た最終日の勝負服 加藤は2日目に64のビッグスコアで単独首位に浮上。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1WTHJiSVhQX2txQTdsMTJIYXF1UWQwS1ZQbDdvbWVidWtGTVpBSUFmZVdVSTloSEZuczlLczh1eElhNjQtMF9OY2Zqenc1VzRNbnB5NVZNSGVtUQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "AppMediaトップ パワプロ2026攻略 特殊能力 渾身の決勝打の効果と入手方法 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026の渾身の決勝打の効果と入手方法です。 リリース hololive Dreams（ホロライブ ドリームス） COVER、QualiArts",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5IdXcwV25wTG9BdlZsOWhRamREN2hJd21VRy04bTMxNTlCYi10X2ptQWhZcmxBMmRmN05fbUY2Y04wcWZrNWRXRkxyOFoyWW9EXzIxZ3ZnOA?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.88,
+      "evidence_text": "AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス リセマラ当たり カエラ・コヴァルスキアのカード・楽曲一覧【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)におけるカエラ・コヴァルスキアのキャラ・カード一覧です。 ホロドリカエラ・コヴァルスキアのホロメン一覧や楽曲一覧まで全て掲載。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9qNDhGLTRkNHgyYlBUZ0p4eDZqeHJ6QjhFOUJESl9aVTU2R2M3eldVazhfYVJwUV9HWS1NS3FuaGZEZWJLblo4RzlNbjJ4Z280WFVHUnVYSGxnS2t6cy1Td2RhWVhnQW8yU0cwa19aNFc0NnU0a04zYWlsWQ?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "O Mon政治センターは、2026年に第2回政党意識向上研修コースを開催する予定です。 Ban Tuyên giáo và Dân vận Thành ủy Cần Thơ • 23/05/2026 Vietnam.vn をフォローしてください G o o g l e News 0 オモン 政治 センター所長のヴォー・ズイ・タン同志は、研修コースの目的、プログラム内容、日程、規則、規定について説明した。 この講習会には、オモン区、フオックトイ区、トイロン区、およびオモン地域 保健 センターの各機関・部署から、優秀な人材36名が参加しました。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1IVEVud0lzSmVhQ3VmMTlnUlpRaTVucm5aZ25MVlhVMHVzS3JKYW9ORzhMWEhLcERUYWFkZTVxbzNMTmNRRUw2ZG9Ya2dmOTlxRGNWR3JOYU1mYm1zSEE?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "2026年7月26日に兵庫県赤穂市で、起立性調節障がいそよ風ひろば「この子は、なぜ私のもとに生まれてきたの？ 」と題しての不登校勉強会にお誘いがありましたので、参加しました。 学校という存在が合わないんだ」とお子さんが言われたそうです。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE92NEdwRWRXRmxHd1VOcUtrc2daSkRWaE5XQmp1WkVMVU81amJMYUpHU0VkbGFsUkhzdFhsNlNQcGRLNnNVQi1DZmRHYVZNSHpJRXhINnh2OXBSSThHQkE?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "この講座は、杉並で暮らす外国人に、ボランティアで日本語を支援するためのものです。 私は都内日本語学校で、日本に来た留学生や、日本で働いている在留外国人に5年くらい日本語を教えていましたが、いずれも入門・初心者レベルは少なく、いわゆる日本語能力試験（JLPT）を目指す人ばかりを担当していました。 この講座は、入門・初級レベルの学習者を対象として、買い物やごみ出し、病院での会話やお願いや許可など、生活に必要なサバイバル日本語の習得を目指すもので、私にとっても初めての日本語支援分野なので、受講がとても楽しみです。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5pbnNZd1lQQzBSVDRjcGFKeUpmSjlTOFAwQ0VXN0pfLUtXSlV2TWlPR1RCQ0NDZGRUVkZMOFRrWV9vUTdYYTMtN1hkQmYwYVE5bWx1UXc5VVdhQQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "AppMediaトップ パワプロ2026攻略 サクセス 継承選手の作り方 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026サクセスにおける継承選手の作り方について掲載しています。 リリース hololive Dreams（ホロライブ ドリームス） COVER、QualiArts",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9IcE8wdng5ZW9UZzF0Y0wyWXJkMGd1Vnh0b1ZPMmpuUnpJaGdvOFQzSkJGLXF3b3ZYMjl6SkRRdlNJMFEwWFdJXzBMWmVjQTlqOFpkczNLVEtweURCU2VFVnl0NGdDQ19UUjZpdzJweTRzQURjaTI3aw?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "美空ひばりさんのカバーアルバムを発売する氷川きよし 画像（1枚） 歌手の氷川きよし（４８）が、９月２日に 美空ひばり さんの楽曲をカバーしたアルバム「氷川きよし 美空ひばりを歌う」を発売することが２６日、分かった。 過去にも「歌は我が命」を配信リリースするなど、美空さんを尊敬する氷川。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE40c2FTVjRVdjIydHlYQ3h5YkJQMDZxV0xTUUtJYV9zelVHQ2JoVkRoMTVLUmlJNDNSMGloeS1ZNWJlS1hpalBYVU9vbUs2TFMybF9wc0lCd2Q?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "氷川きよしが、2026年9月2日に新たなカバーアルバム『氷川きよし 美空ひばりを歌う』を発売することが決定。 ■最新ビジュアルは、氷川の圧倒的な存在感とアルバムの世界観を表現した仕上がりに 本作は、昭和を彩り、平成・令和の世でも愛される国民的歌手・美空ひばりの名曲の数々を、氷川がリスペクトを込めて歌い継ぐ至高のカバーアルバム。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB3OXN6cVJocUJsN3U2Tk5fb2JKS1ExRld6dk16b0NWYkdQdjlMbzRWMkwzSHBETG1BMnBtSjZ3Mi1sbFlRMXpzN1U0aTNjRTV0MDQ1ZXB1dmhVYnpUb2dLMWRiaGY1RGlKVEVhWjhuMVU?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "読売新聞をご購読の方が、お名前やメールアドレスなどの必要項目を入力すると、読売新聞オンラインの読者会員に登録でき、読売新聞オンラインのフルサービスを受けられます。 登録後、読売新聞販売店（YC）がご購読の確認をさせていただき、確認が完了すると会員ステータスが「読者会員（申請中）」から「読者会員」に変わります。 読者会員（家族）として、読者会員と同様のサービスを利用できます。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE0yWnp4N0w1WVJIYmZ5UXFyZngxZi1PcmhJVnlpMElKRU0zTzJoY2dhQjBlbzhMRlZNdnRwMXBIRm1FeGItRGxEWGpiZVNlTmF0b1k2Slo2Nm9RRVZwYWFoRDVVZFd6MlpGS1E?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "氷川きよしが、2026年9月2日（水）に新たなカバーアルバム「氷川きよし 美空ひばりを歌う」を発売することが決定。 本作は、昭和を彩り、平成・令和の世でも愛される国民的歌手・美空ひばりさんの名曲の数々を、氷川がリスペクトを込めて歌い継ぐ至高のカバーアルバムとなっている。 今回公開された最新ビジュアルでは、氷川の圧倒的な存在感とアルバムの世界観が見事に表現されており、作品への期待をさらに高める仕上がりとなっている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPR0pBTXRqLWZMYktCMTFUVm5JMWpqX2FmT3BMbm9NNC1hMTF0ZEFiVm1rQzFRdm92VzQ0Z05Vb3NMSFRwbk4xOTdTUVJYSlJ3bTl5NGNTck9sNHV5ZDRXQS14RzRvNlhENUZrOHdnRlcyd05lSGoyOVFmTHUtbGs1T2luRFMtUnBONUwxTEFwamd2bGtBbmc?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "2度目の主催フェスを成功させた「s＊＊t kingz」 Photo By 提供写真 4人組ダンスグループ「s＊＊t kingz（シットキングス）」が25、26日の両日、横浜市のぴあアリーナMMで2年ぶりの主催フェスティバル「s＊＊t kingz FES 2026 会社」を開催した。 これまでのアーティスト主催フェスとは一線を画すような内容で、2日間で1万6000人を魅了した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNajZrNjNpSWJfZ1dSdGpsdm5LWGVFeVNSeU93UzdFUE1yRVBwWjV5dFgwMmtJR1Q0a1gtbC1fdEVUVU94NlJkcWhPN3pZWWRqTWZSbzZBMDhTdk1ZTFBsQV9uZDFZb0NZR1ZSWHUtcXRmMWhJNjZET25HQ1VOd2tMeUhKaDBPS2NMWUhZZndKNFNoM1hmdzlMQVdNZW56bVdSazhfQ9IBpAFBVV95cUxNajZrNjNpSWJfZ1dSdGpsdm5LWGVFeVNSeU93UzdFUE1yRVBwWjV5dFgwMmtJR1Q0a1gtbC1fdEVUVU94NlJkcWhPN3pZWWRqTWZSbzZBMDhTdk1ZTFBsQV9uZDFZb0NZR1ZSWHUtcXRmMWhJNjZET25HQ1VOd2tMeUhKaDBPS2NMWUhZZndKNFNoM1hmdzlMQVdNZW56bVdSazhfQw?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "ダンスパフォーマンスグループ、s＊＊t kingz（シットキングス）が26日、横浜市内のぴあアリーナMMで「s＊＊t kingz FES 2026 会社」を開催した。 世界的に注目を集める4人組で、23年にはダンサー初の日本武道館ワンマンライブを成功させた。 24年の「s＊＊t kingz FES 2024 ももたろう」以来、2度目の主催フェス。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9Zdnp3QmdUclpybkRpWFJiTWNhSkdPdEY2c0dSNWRUM1V4Y1g2d3NWWGJfR25MeWNxV25NVUk2V0hXVFY4dm0tQ1FOWVBsd3BVM3A5bkdZS29fYTlRU01qRFVjSEhYblZOcmJyb1BTMFExTk9UTG1B0gF_QVVfeXFMTUZhdnEzV2RHSlpSREZzeExCSEVaczBMM2Rucjc2N1NvdVNURVl3emd6VnppSjVrZnREYjJaN2ozdWNUandKT1EwYTdUS2RKTktzQWFvdnFXaWpQak94M1dNMDJhU00weGloRzlRemNNT2JJcUw1WkVoYkpUMjlFMA?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "「s＊＊t kingz FES 2026 会社」を開催したs＊＊t kingzら出演者 ダンスパフォーマンスグループ、s＊＊t kingz（シットキングス）が26日、横浜市内のぴあアリーナMMで「s＊＊t kingz FES 2026 会社」を開催した。 世界的に注目を集める4人組で、23年にはダンサー初の日本武道館ワンマンライブを成功させた。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBPcjFIWGVZN056VVBoUy1RYy1uUEZpSnBNd2owbHRYSk5EMlkydEZ1Zm5GT0xja3Z6YVVNaEdSdi1kd2pZVE8zMHZNbDVFLXRiVmtUNTZwRklpdw?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "「大追跡～警視庁SSBC強行犯係～Season2」開幕プレミアイベントより ※ザテレビジョン撮影 ▼「大追跡～警視庁SSBC強行犯係～Season2」TELASA番組ページ▼ https://www.telasa.jp/series/16716 ▼「TELASA」特集はこちら▼ https://thetv.jp/feature/telasa/ ▼2026年7月期の夏ドラマ一覧はこちら▼ 男性アイドル出演番組一覧はこちら！ 大追跡～警視庁ＳＳＢＣ強行犯係～ Blu-ray BOX [Blu-ray] 大森南朋 (出演), 相葉雅紀 (出演), 松下奈緒 (出演), 伊藤淳史 (出演), 髙木雄也",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9wcUxEVGNScTlwMEJaVFM5eWMxQXRTSWhoazFBamVKSDVwd0oyQ0dyLWxPRUhIbUgzejBIXzZDZWNlbDhNUGJZdmgwalhkR3IxOHlEWUlHeUZzSGZHYlBv?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "伊豆新聞デジタルに登録すると続きをお読みいただけます。 オール伊豆少年野球 ２６日開幕 伊東で２４チーム４日間激戦ー本社主催 （7/25) 水泳高校総体 戸塚きょうだい全国へ １００・２００メートル バタフライ、自由形―伊東 （7/24)",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMizwJBVV95cUxQV1NvWG1XdlpBanJzalJZRHNPUnlhY29mcnVmdENFU0tBTTZCNkxyYnFsYmszRDNxSEdUNWt2d2cya0UwWGxZQkdfNlpQdGwwYUh1VG9vMGstenl1MkJweC1XUS1ZcndBQnJoR2dRVWxCRV8taE1mZEQ3aVRFdWhlWEktZ05jM0hHOHQwQ0cxdGNrQ0ZHdjZBc2Z2U0ZPbExMWGFBMFVyNjRQaVBrYm1JRWFQVHpBbnNwVU04ejZFcmphdVlscm92V1R6QU1IR01EXzlFR3dyT1NqOVlOa3NTMERGcFBPSERQakZzZlpUaERXdFYtR2NleU9xM0FwZ3ZXNFpDck9yWnJmMHY4NjREWnNrRmpBbmtuUFZ3V3dvTmw2TmJaLXR0UEhVTXBUVEpXWnFyX09mYzRIdzRJU2ZZT1YxOU5QMVdTR1FiWXhzMA?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "株式会社IVI Entertainment 7月31日オンライン予選会からツアー各地の地方予選を勝ち抜き、東京ファイナルへ。 会場内ポイント「マグチップ」やオークション「マグオク」も同時解禁 ■ クイズ王決定戦 開催概要 正式名称：くれいじーまぐねっと クイズ王決定戦 in SODA POP FESTIVAL SUMMER 2026 オンライン予選会：2026年7月31日（金）20:00～21:00（生配信・予定）／全国どこからでも参加可 地方予選：8月5日（水）福岡・Zepp Fukuoka ／ 8月10日（月）大阪・Zepp Namba ／ 8月19日（水）北海道・Zepp Sapporo",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMizwJBVV95cUxPdHhGcUZJWm5XeXA3cFF6UDFJelVPREYta3ZhZktSb1pEd2RxVlBCejkyR0drZ055ZE90c3gwR2tDUDdqTjROS3N3LTdjRGhLM0NVNGV5bFdqTDNpSnFvbVFEclFoZk5VMkxMOGFCbVVfaDJveDloajNiblliWldXSmhtWFlhQlhYMkNyaXdHWkFQX2hJRlJnUU45eThlc0w2eFlvd1dycmxRU1QwbWZlV2ZUQmQ3bkNWRHNuTEV6OS0yV3ZjWGZqNTE4UkFqSnJrQ2xRY2NQcnUwcnFDV1JuM1NyTGF5dmF6bVBSYUdlVzBUYVJMdWlac0Vic3NvbmpTNE5aVTJURlJ6RXdhUkFDc0tRanBvYUdXVmpwSDRLazZORmgtU3l6Y3Bka2FfQmpLbllwelJBRnNTUU9nX3R5RWhrZGh0SkhaVkpUZGVsWQ?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "製作委員会 メディアミックスプロジェクト「リ・クレシェンド！ 」でカバーされる浅倉大介楽曲の配信リリース日が決定、ジャケット画像を公開しました 」は、〈再起〉〈再生〉をテーマに、音楽を通じて夢を追いかける少女たちが、時にぶつかり合い、時に友情を育んでいく姿を、繊細かつドラマチックに描いていく、メディアミックスプロジェクト。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE92azNVeHNzWmFXTUpTUTFBaXctUXU3bm5ZYTZDU2xFN2V1dWNpb1RwS2RNajRPd1hiUXM4dXBvT1lHR1BDLVBkS1pBOTdWRGZ6NmczM0gyYjdiMmtKSWxVNzUxb3VKZEF0LUE?oc=5",
+      "article_type": "press_release",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.88,
+      "evidence_text": "株式会社クレーネルは、2026年7月26日に幕張メッセにて開催される「ワンダーフェスティバル2026[夏]」に出展いたします。 初公開となる原型・デコレーションマスターを展示予定。 種類 イベント ビジネスカテゴリ 漫画・アニメ アート・カルチャー キーワード ホロライブプロダクション NEEDY GIRL OVERDOSE ウマ娘 プリティーダービー Fate/Grand Orde 鬼滅の刃 ToHeart フィギュア 勝利の女神：NIKKE ブルーアーカイブ ダウンロード プレスリリース素材",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBoeGgzTGFlVjR5eWJXUC0tU054M2lzamctOFNqZ0ZYbUdpSGhnRWhyTlJpVmMxM0lNLThEUkp6TC03RU54T2VPODZ5ZHpSUE1FUlg3cTJ4RQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.88,
+      "evidence_text": "AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス ガチャ演出・確定演出まとめ【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)におけるガチャ演出・確定演出まとめです。 ホロドリガチャの昇格演出や流れについて掲載しています。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://kihaseason2015.hatenablog.com/entry/2026/07/27/000100",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "阿倍王子神社夏祭り2026は、大阪市阿倍野区にある阿倍王子神社で毎年7月27日と28日に開催される伝統ある地域の夏祭りです。 無病息災を祈願する神事が中心となり、28日の本宮ではみこしや枕太鼓、だんじり囃子の車が巡行する夏祭神幸渡御式が行われ、町全体に夏の風情が広がります。 境内および周辺の道路には多くの屋台が立ち並び、16時から22時まで美味しいグルメや縁日の遊びが楽しめるため、家族連れや地域住民はもちろん観光客にも人気のイベントです。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE8tcEx6eWpCakVaU0xKc2Jfb2NQU1F5dnZTaUozLXJZX29HdHhJMGxSZExmNUszdDNGcU56NGh3SlJoQklZRmxVTU5yN3FDcTJuWmVDWU15UzNVX0ZmWnc5YWJQOA?oc=5",
+      "article_type": "media_or_editorial",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.88,
+      "evidence_text": "2026年7月22日、カバー株式会社と株式会社QualiArtsのタッグによってリリースされた注目の新作ゲーム 『ホロライブドリームス』 （略称：ホロドリ / hololive Dreams）。 総勢50名以上のホロライブメンバーが登場し、初期収録楽曲はなんと150曲以上という超大型タイトルとして、リリース前から大きな話題を呼んでいました。 しかし、いざサービスが開始されると、SteamやSNS上での評価は「賛否両論」という意外な滑り出しを見せることに……。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5RbjhWblB0TnBFUFdlcGFPRVU4TUxQMjV3T1BxS01lcWJUR1Fld3cxU3BROGdRUVozSlJNQW94WEYxbXV5dlRDQk5tSTVGODdmbDdaeWxnWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.88,
+      "evidence_text": "AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス 曲一覧 カバー曲一覧｜収録曲【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)におけるカバー曲一覧です。 ホロドリカバー曲一覧を解放条件付きで掲載しています。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE84aTNHVEoxM3BpSmlELUlDWUlrUFFxUTlrbnJyREhvdTJWY0Jkd1VwelhTN01MUVREcVFyV2JEczQxdWdlczljemFpOE1Jd0pxV0N2bGhQTQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.88,
+      "evidence_text": "AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス リセマラ当たり 赤井はあとのカード・楽曲一覧【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)における赤井はあとのキャラ・カード一覧です。 ホロドリ赤井はあとのホロメン一覧や楽曲一覧まで全て掲載。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE5weVRFcm1RcURacE5uSXZ2OFFTMHlTaE5ZYXlHcndSVXZ3WnZHT25ZV3NxVE9rQnV0MFVibURWNEtyUkhW?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "The Martinez Brothers Official Photo NEW RELEASE 2026.07.26 The Martinez Brothers - Impressions (feat. Stevie Appleton) ULTRA JAPAN 2026 出演",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTFBBclVCZUlXZzJvS0pYaTNobkFhTUFaUFBxa0R5dlZOSEZlV1JJa0c0Mm5jWlB5STFWN3duZEh3eC1xaEVZ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.88,
+      "evidence_text": "株式会社ゼロアドバンスが運営するVTuber事務所「ALTER PRODUCTION」は、バトル・対決漫画を中心とした漫画語り配信に特化した姉妹ユニットの第1期生VTuberタレント2名を募集するオーディションを開催する。 応募受付期間は2026年7月15日（水）から8月31日（月）までである。 ALTER PRODUCTIONは、各タレントが明確な専門領域を持つ「特化型」のVTuber事務所だ。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://maikalfujio.hatenablog.com/entry/2026/07/26/2026%E5%B9%B47%E6%9C%8827%E6%97%A5(%E6%9C%88%E6%9B%9C%E6%97%A5)%E3%83%9D%E3%83%88%E3%83%B3%E3%83%9D%E3%83%83%E3%83%88%E3%83%B3%EF%BD%9E%E2%99%AA%E2%99%AA",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "空き缶に屋根から落ちてくる、しずくの音だ「雨漏り」だ・・雨降りの日は総出だ「ほら そっち」ナベ持った弟が駆ける、兄貴が「ほら 向こう」妹たちが 両手で お茶碗抱えて チョコチョコ走る・・・晩ごはん食べてると「キャー」と叫ぶ姉が 首すじにタオル巻きながら「背中が濡れた」って 大笑いした、みんなもゲラゲラ笑った・・・ 次の日も雨降り続いた、今みたいに排水溝は完備していなかった 道は冠水して歩けなかった・・隣も同じだった 「学校休みだよ!!」大声で近所の子が怒鳴った・・どこも。 ブランド梨(幸水)盗まれました・・・犯人は4～5人と推定・親子(父79才・息子54才)でショック状態です・デパート納品、贈",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE8zU29XZ0l0V0YtdzJkdG84QzdKT05QcmJoM1BJS0hUSlRWdFhWUE85OGNHWUZ3Sl9iRUdJYm03WWo5N2d4N3dBdw?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "東京都主催の『都民向け金融セミナー』は、全5回にわたって開催される無料のセミナーです。 2026年8月5日（水）に開催される初回は、高校生を対象として「お金の知識」をテーマに実施されます。 会場である秋葉原のUDXギャラリーでの参加に加え、オンライン参加も可能なハイブリッド形式で開催されます。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOUTdSRU1IMjUxTURtN0xVZG1OYlB0dFh2ZTQ5OW83Mnh4VFhKRE45enRRUlI0cGROaDVCU1h0MkVNaDVxSVZfSTR6SnFRQkFqVy1FLXlEZk80Q3VCdXdpMHpSaWRWakJKZURLNXRaenBTMGh3WWN5Smp2MkFUeFpza0JPalBNYkxCVDhJSTh6aDQ0eFE4WjljYzh4RWJFZEREYUlraTB2emFjSVc3YkVyaFhWZ0tnbGJRNjE0Mko1SnpvV3pzaVpzcQ?oc=5",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "今日のスマートウォッチは、スマートフォンの拡張機能として機能し、健康状態のモニタリングやスポーツパフォーマンスの測定を行っています。 その発展はすでに限界に達したように思われがちですが、私は最近、まだまだ改善の余地があることを実感しました。 階段から不注意で転落し、その後脚を骨折したため、すべてのスポーツの挑戦を中断せざるを得ませんでした。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9jWFJ4MDkxOW1nWkhiQzVaV0ZLdVNWMm5wQkMwb3RaUFpFT3hiendBR21aZTdxZ1ZyX1JZRnpaMS0tRngwSUR1NTV2aXdwRTVWeGY5OXRwSUZnQQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "AppMediaトップ パワプロ2026攻略 サクセス 四条澄香のイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 四条澄香のイベント内容や四条澄香の金特、声優(CV)についてまで掲載しています。 リリース hololive Dreams（ホロライブ ドリームス） COVER、QualiArts",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBpTWhWb3NIQTg3c0h1LTZDUGY5Z0lFYUNSNzhRRm51bk1PcXJ4MUJTcjkwVEE4UkowWWFHMzczOWFhc21HajFfMm1NNDFjT1BObzBrM1NMLUFYZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "AppMediaトップ パワプロ2026攻略 サクセス 友沢亮のイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 友沢亮のイベント内容や友沢亮の金特、声優(CV)についてまで掲載しています。 リリース hololive Dreams（ホロライブ ドリームス） COVER、QualiArts",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE41SUZvN2JsZlFqTDVCV1VYRFA2QUQtdU9sd09EOXpXQzNkdi1OdE1ONTgzeHhZcW16RXlxMk9mcEdJSUFpT1VGWVBUYUh2VzZkOFMzNVdLWkQ1UQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "collaboration",
+      "secondary_categories_json": [
+        "game_or_technology"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.88,
+      "evidence_text": "AppMediaトップ パワプロ2026攻略 栄冠ナイン にじさんじキャラの入手方法と能力 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026栄冠ナインのにじさんじキャラの入手方法と能力です。 パワプロ2026にじさんじの特能や性能、にじさんじコラボの履歴書の入手についてまで全て掲載しています。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE0ydGV5dkVRTXR0VFJOQWlSYmE1MXlNTzVBWkgxUmJUQm5XWm5mSlB5V3NiMTQ4UUZrRDBvTndoSjVYQmZ2OWVjYzIwUV9USF9TbG9BTm9FRXV2dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.88,
+      "evidence_text": "AppMediaトップ パワプロ2026攻略 サクセス 二刀流育成理論と作り方 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026サクセスの二刀流選手育成理論です。 リリース hololive Dreams（ホロライブ ドリームス） COVER、QualiArts",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/149760",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.88,
+      "evidence_text": "株式会社Blackbox（本社：東京都新宿区、代表取締役CEO 坂本龍優、以下「Blackbox」）が運営する“会いに行けるアイドルVTuberプロダクション”「ラブボックス」所属のクインテが、2026年8月1日（土）、新宿・BUZZ music LABO Shinjukuにて単独ミニライブ『クインテ Mini Live ~ Re Quintet ~』を開催することをお知らせいたします。 本公演は、新メンバー2名の加入により5人体制へと生まれ変わったクインテが、“クインテット（五重奏）”の名の通り、5人でもう一度走り出す再始動の一日です。 クインテは2025年2月2日、5人組の2.5次元アイド",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE04dzF0cWlMbkxWTTV4bGV3dmJFdlozb2x3QkE4SWNKaXgzalZwM2hxZFF1d0xvNDlkLXR4cS1rTFFkTGtydjN2WFpaR1hELWV6SnZBZGI1dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.88,
+      "evidence_text": "AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス リセマラ当たり ときのそらのカード・楽曲一覧【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)におけるときのそらのキャラ・カード一覧です。 ホロドリときのそらのホロメン一覧や楽曲一覧まで全て掲載。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-27T00:28:47Z"
+    }
+  ]
+}

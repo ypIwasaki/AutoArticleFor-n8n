@@ -254,8 +254,8 @@
         "resource": "row",
         "operation": "get",
         "dataTableId": {
-          "value": "talents",
-          "mode": "name"
+          "value": "OF29JuraLMGFrnxt",
+          "mode": "id"
         },
         "matchType": "allConditions",
         "filters": {

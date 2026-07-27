@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f6f8">
+    <title>週間レポート | Talent Index</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-page="weekly-reports">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true">TI</div>
+        <div><p class="eyebrow">AUTO ARTICLE / N8N</p><h1>Talent Index</h1></div>
+      </div>
+      <nav class="primary-nav" aria-label="主要ナビゲーション">
+        <a class="nav-link" href="index.html">ダッシュボード</a>
+        <a class="nav-link" href="talents.html">タレント</a>
+        <a class="nav-link" href="articles.html">記事</a>
+        <a class="nav-link" href="keywords.html">キーワード</a>
+        <a class="nav-link" href="keyword-candidates.html">AI候補</a>
+        <a class="nav-link is-active" href="weekly-reports.html" aria-current="page">週間レポート</a>
+      </nav>
+      <div class="topbar-actions">
+        <span id="report-count" class="source-badge">Loading</span>
+        <button id="reload-button" class="icon-button" type="button" title="レポートを再読み込み" aria-label="レポートを再読み込み">↻</button>
+      </div>
+    </header>
+
+    <main class="weekly-page-main">
+      <section class="record-heading" aria-labelledby="weekly-reports-heading">
+        <div>
+          <p class="eyebrow">WEEKLY RESEARCH</p>
+          <h2 id="weekly-reports-heading">週間調査レポート</h2>
+          <p>月曜日から日曜日までの取得内容を、日次の更新ごとに同じ週のレポートへ反映します。</p>
+        </div>
+      </section>
+
+      <p id="report-notice" class="data-notice" hidden></p>
+
+      <section class="weekly-reports-layout" aria-label="週間調査レポート">
+        <aside class="weekly-report-list-panel" aria-label="週の選択">
+          <div class="panel-heading"><span>対象週</span></div>
+          <div id="weekly-report-list" class="weekly-report-list" aria-live="polite"></div>
+        </aside>
+
+        <article class="weekly-report-viewer" aria-live="polite">
+          <header class="weekly-report-header">
+            <div>
+              <p id="weekly-report-period" class="detail-kicker">WEEKLY REPORT</p>
+              <h2 id="weekly-report-title">レポートを読み込み中</h2>
+            </div>
+            <p id="weekly-report-meta" class="muted"></p>
+          </header>
+          <div id="weekly-report-content" class="weekly-report-content">
+            <p class="empty-detail">レポートを読み込み中です。</p>
+          </div>
+        </article>
+      </section>
+    </main>
+    <script src="page-state.js"></script>
+    <script src="weekly-reports.js"></script>
+  </body>
+</html>

@@ -29,6 +29,8 @@ SOURCE_NOTE_SUMMARY_PATTERN = re.compile(
     r"(?:^|\s)-\s*要約\s*[:：]\s*(.*?)(?=\s+-\s*(?:関連キーワード|重要度|根拠)\s*[:：]|$)"
 )
 BODY_VERIFIED_PATTERN = re.compile(r"(?:^|\s)-\s*本文確認\s*[:：]\s*確認済み(?:\s|（|\(|$)")
+WEEKLY_REPORT_FILENAME_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}\.md$")
+WEEKLY_REPORT_FRONT_MATTER_PATTERN = re.compile(r"\A---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 KEYWORD_MUTATION_LOCK = threading.RLock()
 ARTICLE_FEEDBACK_MUTATION_LOCK = threading.RLock()
 
@@ -271,6 +273,66 @@ def load_article_capture_metadata() -> dict[str, dict[str, str]]:
             "source_host": str(entry.get("source_host") or "").strip(),
         }
     return metadata
+
+
+def weekly_report_directory() -> Path:
+    return PROJECT_ROOT / "content" / "weekly-reports"
+
+
+def weekly_report_metadata(markdown: str, path: Path) -> dict[str, str]:
+    metadata = {
+        "weekStart": path.stem,
+        "weekEnd": "",
+        "coveredThrough": "",
+        "title": "Weekly News Research Report",
+        "generatedAt": "",
+    }
+    match = WEEKLY_REPORT_FRONT_MATTER_PATTERN.match(markdown)
+    if not match:
+        return metadata
+    for line in match.group(1).splitlines():
+        key, separator, value = line.partition(":")
+        if not separator:
+            continue
+        normalized_key = key.strip()
+        if normalized_key not in metadata:
+            continue
+        metadata[normalized_key] = value.strip().strip('"').strip("'")
+    return metadata
+
+
+def weekly_report_summary(markdown: str) -> str:
+    body = WEEKLY_REPORT_FRONT_MATTER_PATTERN.sub("", markdown, count=1)
+    body = re.sub(r"^#.*$", "", body, count=1, flags=re.MULTILINE)
+    for line in body.splitlines():
+        text = line.strip().lstrip("- ").strip()
+        if text and not text.startswith("#") and not text.startswith("|"):
+            return re.sub(r"\s+", " ", text)[:180]
+    return ""
+
+
+def load_weekly_report(week_start: str) -> dict[str, Any]:
+    filename = f"{week_start}.md"
+    if not WEEKLY_REPORT_FILENAME_PATTERN.fullmatch(filename):
+        raise ValueError("Invalid weekly report identifier")
+    path = weekly_report_directory() / filename
+    if not path.exists():
+        raise FileNotFoundError("Weekly report was not found")
+    markdown = path.read_text(encoding="utf-8")
+    return {**weekly_report_metadata(markdown, path), "markdown": markdown}
+
+
+def weekly_reports_payload() -> dict[str, Any]:
+    reports: list[dict[str, str]] = []
+    for path in sorted(weekly_report_directory().glob("????-??-??.md"), reverse=True):
+        if not WEEKLY_REPORT_FILENAME_PATTERN.fullmatch(path.name):
+            continue
+        try:
+            markdown = path.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        reports.append({**weekly_report_metadata(markdown, path), "summary": weekly_report_summary(markdown)})
+    return {"reports": reports}
 
 
 def canonical_article_title(value: Any) -> str:
@@ -1090,6 +1152,16 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         path = urlparse(self.path).path
         if path == "/api/dashboard":
             self.send_json(HTTPStatus.OK, build_dashboard())
+            return
+        if path == "/api/weekly-reports":
+            self.send_json(HTTPStatus.OK, weekly_reports_payload())
+            return
+        if path.startswith("/api/weekly-reports/"):
+            try:
+                week_start = path[len("/api/weekly-reports/"):]
+                self.send_json(HTTPStatus.OK, load_weekly_report(week_start))
+            except (OSError, ValueError) as exc:
+                self.send_json(HTTPStatus.NOT_FOUND, {"error": str(exc)})
             return
         if path == "/api/keyword-candidates":
             try:

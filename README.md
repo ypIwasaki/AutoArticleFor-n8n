@@ -175,3 +175,15 @@ bash scripts/start_talent_dashboard.sh
 Open `http://127.0.0.1:8765`. It falls back to reviewed proposal JSON when the
 local n8n database is unavailable. See `docs/talent-dashboard.md` for the data
 source and configuration details.
+
+## AI weekly research reports
+
+After every daily workflow run, n8n creates a weekly report instruction in
+content/ai-weekly-report-instructions. Its filename is the Monday (JST) of
+the current week. Process that instruction alongside the daily AI instructions
+and save or update the matching report in content/weekly-reports.
+
+A week runs from Monday through Sunday in JST. Until Sunday, every daily run
+updates the same report file with the full collection range available so far.
+A new Monday starts a new report. Reports distinguish body-verified article
+summaries from video metadata summaries and document missing or noisy data.

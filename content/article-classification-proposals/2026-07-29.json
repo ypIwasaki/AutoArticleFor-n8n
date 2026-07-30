@@ -1,0 +1,52 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-07-29",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE9NdWZyWk12aWhCdEZjUFVMVjZvOVZ2NG5jU0wtSXh5OWlsX1EydU5nNDIwR24ya1NPUjA1U1R2dFc1ZGJrbkE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.93,
+      "evidence_text": "本文でIZIGENIAの新メンバーDubstePが7月28日にデビューすると確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-28T23:37:19Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/150133",
+      "article_type": "press_release",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.93,
+      "evidence_text": "本文でAviviとミラミラがEasyPop提供曲を用いる合同オーディションを開催すると確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-28T23:37:19Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE04dzF0cWlMbkxWTTV4bGV3dmJFdlozb2x3QkE4SWNKaXgzalZwM2hxZFF1d0xvNDlkLXR4cS1rTFFkTGtydjN2WFpaR1hELWV6SnZBZGI1dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.93,
+      "evidence_text": "本文でホロライブドリームス内のときのそらのカードイラスト・楽曲一覧を解説していると確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-28T23:37:19Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5mTFU0c0ViYldtbjZaaFFHZUotc0JXMlJtVncxckNkV1l4ZVVvZlJjTmdIb1N4bm1OMkFWd3F2S0dNQlVwdTM4M1pCMkRodw?oc=5",
+      "article_type": "press_release",
+      "primary_category": "collaboration",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.93,
+      "evidence_text": "本文で葛葉、壱百満天原サロメ、伊波ライ、佐伯イッテツによるアニメ連動のリレー実況が決定したと確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-28T23:37:19Z"
+    }
+  ]
+}

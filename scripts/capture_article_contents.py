@@ -10,6 +10,7 @@ from urllib.parse import urlencode,urlparse
 import backfill_article_summaries as old
 from sync_workflow_to_n8n import api_request,load_env_file,normalize_api_base_url
 ROOT=Path(__file__).resolve().parents[1]; DIR=ROOT/"content/article-body-captures"; STATE=DIR/"backfill-state.json"; NAME="article_contents"; MAX=100000
+RECORDS=ROOT/"content/structured-records"
 COLS=[{"name":n,"type":t} for n,t in [("article_key","string"),("original_url","string"),("resolved_url","string"),("source_domain","string"),("content_type","string"),("content_status","string"),("content_text","string"),("content_length","number"),("content_hash","string"),("extraction_method","string"),("failure_reason","string"),("content_path","string"),("fetched_at","date")]]
 SHORT={"t.co","bit.ly","tinyurl.com","ow.ly","buff.ly","is.gd"}; VIDEO={"youtube.com","youtu.be","tiktok.com","vimeo.com","twitch.tv"}; SOCIAL={"x.com","twitter.com","instagram.com","facebook.com","threads.net","bsky.app"}
 def now(): return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00","Z")
@@ -35,6 +36,21 @@ def load():
  try:d=json.loads(STATE.read_text(encoding="utf8"))
  except (OSError,json.JSONDecodeError):return {},{}
  return d.get("entries",{}),d.get("resolvedUrls",{})
+
+def load_record_articles(run_date=None):
+ paths=[RECORDS/f"{run_date}.jsonl"] if run_date else sorted(RECORDS.glob("????-??-??.jsonl"))
+ result={}
+ for path in paths:
+  if not path.exists(): continue
+  for raw in path.read_text(encoding="utf8").splitlines():
+   try: record=json.loads(raw)
+   except json.JSONDecodeError: continue
+   if record.get("recordType")!="article" or not isinstance(record.get("article"),dict): continue
+   article=record["article"]; url=str(article.get("url","")).strip()
+   if not url: continue
+   result[url]=old.Article(url=url,title=str(article.get("title","")).strip(),excerpt=str(article.get("excerpt","")).strip(),source=str(article.get("source","")).strip(),published_at=str(article.get("publishedAt","")).strip(),last_seen_at=str(article.get("lastSeenAt","")).strip(),run_date=str(record.get("runDate") or path.stem))
+ return result
+
 def save(e,c):
  DIR.mkdir(parents=True,exist_ok=True);STATE.write_text(json.dumps({"schemaVersion":2,"generatedAt":now(),"entries":e,"resolvedUrls":c},ensure_ascii=False,indent=2)+"\n",encoding="utf8")
 def make(a,key,status,kind,url,reason="",text="",method="",summary=""):
@@ -72,6 +88,16 @@ def archive(e):
   p=DIR/(day+".jsonl");rel=str(p.relative_to(ROOT)).replace("\\","/")
   for x in vs:x["content_path"]=rel
   p.write_text("\n".join(json.dumps({"recordType":"article-content","articleKey":x.get("article_key",""),"originalUrl":x.get("original_url",""),"resolvedUrl":x.get("resolved_url"),"contentStatus":x.get("status","unavailable"),"contentType":x.get("content_type","unknown"),"contentText":x.get("content_text",""),"contentLength":x.get("body_length",0),"failureReason":x.get("reason"),"fetchedAt":x.get("processed_at","")},ensure_ascii=False) for x in vs)+"\n",encoding="utf8")
+
+def archive_run(articles,e):
+ by_date=defaultdict(list)
+ for article in articles:
+  entry=e.get(article.url)
+  if entry: by_date[article.run_date].append((article,entry))
+ for day,items in by_date.items():
+  p=DIR/(day+".jsonl")
+  p.write_text("\n".join(json.dumps({"recordType":"article-content","articleKey":entry.get("article_key",hashlib.sha256(article.url.encode()).hexdigest()),"originalUrl":article.url,"resolvedUrl":entry.get("resolved_url"),"contentStatus":entry.get("status","unavailable"),"contentType":entry.get("content_type","unknown"),"contentText":entry.get("content_text",""),"contentLength":entry.get("body_length",0),"failureReason":entry.get("reason"),"fetchedAt":entry.get("processed_at","")},ensure_ascii=False) for article,entry in items)+"\n",encoding="utf8")
+
 def conn(env):
  load_env_file(env);b=normalize_api_base_url(os.environ.get("N8N_API_BASE_URL") or os.environ.get("N8N_BASE_URL") or "");k=os.environ["N8N_API_KEY"];ts=api_request("GET",b,"/data-tables",k).get("data",[]);x=next((x for x in ts if x.get("name")==NAME),None)
  if not x:x=api_request("POST",b,"/data-tables",k,{"name":NAME,"columns":COLS})
@@ -79,8 +105,12 @@ def conn(env):
 def upsert(c,x):
  b,k,t=c;d={n:x.get(m,"") for n,m in [("article_key","article_key"),("original_url","original_url"),("resolved_url","resolved_url"),("source_domain","source_host"),("content_type","content_type"),("content_status","status"),("content_text","content_text"),("content_hash","content_hash"),("extraction_method","extraction_method"),("failure_reason","reason"),("content_path","content_path"),("fetched_at","processed_at")]};d["content_length"]=x["body_length"];api_request("POST",b,f"/data-tables/{t}/rows/upsert",k,{"filter":{"type":"and","filters":[{"columnName":"article_key","condition":"eq","value":d["article_key"]}]},"data":d,"returnData":False})
 def main():
- p=argparse.ArgumentParser();p.add_argument("--database",type=Path,default=old.DEFAULT_DATABASE_PATH);p.add_argument("--limit",type=int);p.add_argument("--retry-unverified",action="store_true");p.add_argument("--refresh",action="store_true");p.add_argument("--google-delay",type=float,default=2.5);p.add_argument("--publisher-delay",type=float,default=.75);p.add_argument("--max-retries",type=int,default=4);p.add_argument("--env-file",type=Path,default=ROOT/".env");p.add_argument("--no-sync-contents",action="store_true");p.add_argument("--write",action="store_true");a=p.parse_args();db=a.database.expanduser();f=Fetch(a.google_delay,a.publisher_delay,a.max_retries);old.http_bytes=f
- arts=old.load_articles(db);keys={str(x.get("url","")):str(x.get("article_key","")) for x in old.database_rows(db)};e,ca=load();todo=[x for x in arts if a.refresh or x.url not in e or(a.retry_unverified and e[x.url].get("status")!="verified")][:a.limit];c=None
+ p=argparse.ArgumentParser();p.add_argument("--database",type=Path,default=old.DEFAULT_DATABASE_PATH);p.add_argument("--run-date",help="Capture all articles from one structured-record date, including rows not yet in the articles table.");p.add_argument("--limit",type=int);p.add_argument("--retry-unverified",action="store_true");p.add_argument("--refresh",action="store_true");p.add_argument("--google-delay",type=float,default=2.5);p.add_argument("--publisher-delay",type=float,default=.75);p.add_argument("--max-retries",type=int,default=4);p.add_argument("--env-file",type=Path,default=ROOT/".env");p.add_argument("--no-sync-contents",action="store_true");p.add_argument("--write",action="store_true");a=p.parse_args();db=a.database.expanduser();f=Fetch(a.google_delay,a.publisher_delay,a.max_retries);old.http_bytes=f
+ db_arts=old.load_articles(db); record_arts=load_record_articles(a.run_date)
+ if a.run_date: arts=sorted(record_arts.values(),key=lambda x:(x.published_at,x.url),reverse=True)
+ else:
+  arts_by_url={x.url:x for x in db_arts};arts_by_url.update(record_arts);arts=sorted(arts_by_url.values(),key=lambda x:(x.run_date,x.published_at,x.url),reverse=True)
+ keys={str(x.get("url","")):str(x.get("article_key","")) for x in old.database_rows(db)};e,ca=load();todo=[x for x in arts if a.refresh or x.url not in e or(a.retry_unverified and e[x.url].get("status")!="verified")][:a.limit];c=None
  if not a.no_sync_contents:
   try:c=conn(a.env_file)
   except Exception as x:print("warning: Data Table sync disabled: "+str(x),file=sys.stderr)
@@ -91,6 +121,6 @@ def main():
    try:upsert(c,e[x.url])
    except Exception as z:print("warning: Data Table sync failed: "+str(z),file=sys.stderr)
   print(f"[{i}/{len(todo)}] {e[x.url]['status']}: {x.title[:90]}")
- archive(e);save(e,ca)
+ archive(e);archive_run(record_arts.values(),e);save(e,ca)
  if a.write:old.write_summaries(arts,e)
 if __name__=="__main__":main()

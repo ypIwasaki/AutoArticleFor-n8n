@@ -1,0 +1,123 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-07-30",
+  "classifications": [
+    {
+      "article_url": "https://panora.tokyo/archives/150317",
+      "article_type": "press_release",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.96,
+      "evidence_text": "ビバップ高校が漆八ぷてらを8月1日にデビューさせると本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T08:42:00Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/150265",
+      "article_type": "press_release",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.96,
+      "evidence_text": "STARAZO PRODUCTIONの2期生として沢華しいねと橘白夜が8月2日に初配信すると本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T08:42:00Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/150278",
+      "article_type": "press_release",
+      "primary_category": "collaboration",
+      "secondary_categories_json": [
+        "product_or_goods"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "VTeeがホロライブとの初回コラボレーションを発表したと本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T08:42:00Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9MY2p2UU4zemgxeUhuc1ZtQ0JaSHNMYk1xZlJpXzlkX3VGbzJwbWtzZExybjRqMDNsemJVa2RDTW5vd0k4RGp3NVAtdHVrS2l4S2dj?oc=5",
+      "article_type": "press_release",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.95,
+      "evidence_text": "白砂あやね・水面まどかによるうみゃみーの記念グッズ販売を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T08:42:00Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBmVFJrb1lRV1FSaDhIaTRCSDhnSzZWdHhQU0pIR3NuUmpVRmItVzlkeEc0azd2OXZhUHVtTlpDRDBqYmpMdGptNXJiSjc1dnNxNXVTLTVfOEhuOWdZOVhQWTk3YjdYMGJZNnJWaGRRV3RBNkROdkM4Vkl1Um5fMTA?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "桃鈴ねねが東京ガーデンシアターで初ソロライブを開催したと本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T08:42:00Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/150171",
+      "article_type": "press_release",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "live_or_music",
+        "product_or_goods"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.95,
+      "evidence_text": "ラブボックス所属クインテが8月1日に5人体制初の単独ライブを行うと本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T08:42:00Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/150188",
+      "article_type": "press_release",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.86,
+      "evidence_text": "VTuberやCGキャラクターのモーション収録で用いられるn-Links RetargetのFBX記録機能追加を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T08:42:00Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBTcHVZRkxVUjVaQkFLbU9obzFNWDlsdGg2RUpxcVc4T0pJdTc0MnBoUGk4bVJOakJ0Xzk1SERpek1CN3gzMEg3NUpxX3hhbGFXUVhuQUp3Q2RJZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "collaboration"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.91,
+      "evidence_text": "パワプロ2026栄冠ナインに舞元啓介、椎名唯華、リゼ・ヘルエスタ、五十嵐梨花が登場すると本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T08:42:00Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFA2MTFxRE5wZjFWTnhvM0hnbUxDZGZKZFhOajg5Wm5pWXJPeDlTN0xmT3EyRUEtSjhvT1B3ZktzMGZsQ1llcVpLc3A0M1dKd19vZjZsSUY1bTdFbUZxX01HOQ?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "community_or_fan",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.84,
+      "evidence_text": "宝鐘マリンの誕生日に合わせたコスプレ写真の紹介であり、公式活動の一次情報ではない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T08:42:00Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9KdlBEMkdDeV8zZW1iQU9qc0pweFJ6YjFqZ3FmX2ZSS01RNmhhaWFhZTdrVDlIcklnUHM2NXFoS1FUa1lNLTIzYWg4djBMVHFRV0x5amZzRQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.9,
+      "evidence_text": "ホロライブドリームスにおける音乃瀬奏のカード性能を解説する記事である。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T08:42:00Z"
+    }
+  ]
+}

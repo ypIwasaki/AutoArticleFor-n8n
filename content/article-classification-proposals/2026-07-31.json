@@ -1,0 +1,352 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-07-31",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1DZTM2bnFjeUh1d1poUmRRWURIMUd2aGFadmxzN1h4N004SGxlbDJFb09rSHZxeHJVNFRvVjlJMUd1ZTQ1MHdaQkI5OEc1aXplck0zUWZzQQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスのカード性能、編成、楽曲またはガチャ情報を扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBsd1RiRjBFeFpDd2N5Zk5GTU9ZdXFjeXFFSVVkcWRod0RMTUVQSmxEbXNEcklCV0p4MXNHTmI4Rk95Z05ONEQ5QVRCbl9EdzNTQ0VBVGd1S2loY0ZKdzFsVHcxM1hvZm9a?oc=5",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.95,
+      "evidence_text": "ハンドトラッキングを使いVTuberと双方向に反応できるイベント向け体験コンテンツの提供開始を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE51N2NMdEN0SGJNVkF0YUMyc1dHTTdxMU53bGFpNFVSMnVHRG5ZM0VJZ3E5Y3cycFNOeExpaFU2dm1kMUxDTFRXX3hXbTc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.97,
+      "evidence_text": "本文を確認したが、VTuber・監視対象組織・関連企画を主題としていない検索ノイズである。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9TeWlKRjJkSk50dXRuZzRidncwUExYcTkxZkwxN0w2c1BYLUxzc3BONi1XQ245RUJMbXN4VXVkZmdRZFdQdGZnby1ZTlFMOFI1NjBLWWhLWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスのカード性能、編成、楽曲またはガチャ情報を扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMickFVX3lxTE1IZEp3cXZqVmp6TDNwSVBCRVR6bkRxek03M3hrRnBrYUZxd0VpaEhzY09XR0NQdkp1aEZWQ3VKQTU2WkN2NFQzM2VGbVF3cks0R25fTW5XaXNTZ3l0dTVkTWhaZVRjOTVvc0RzdEtwd1ExUQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.97,
+      "evidence_text": "本文を確認したが、VTuber・監視対象組織・関連企画を主題としていない検索ノイズである。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFAtRGJrRXltRGxoYm42cmxMdTIzaHh6NlhvY2lXMEs0SWd6cVVOTlFlQ2ZnaDFTd3FEU0lwa25scm82VEVyZHA3MmpVWWlnUmRVYzVwa2lxUQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスのカード性能、編成、楽曲またはガチャ情報を扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9PU0g0bjhEMXN0eldJM1FwMW00cFZyN3BWUGZvRmN2UWZ5ckdsdzhwbHdYNHEydTNkczZoV3MxU2tjMHBZbEFpOUlweUVoRlotLVRzTTBWUQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスのカード性能、編成、楽曲またはガチャ情報を扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスのカード性能、編成、楽曲またはガチャ情報を扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBoUXhtYTB5RkpvZ3VrSURmV2Nwdl9iU0hYRkhROUpNYkcyU2VPNlF0czU0Y3JDanNjLUNrNHBTT0pScElaeG5iaEVMcFFsNHpIS1VwdU1iaw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスのカード性能、編成、楽曲またはガチャ情報を扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5ac2dhcmFmOVVieHhhbVlXRml5N1dHS0YwaFcwblhubm1Xb2p5bWpBZm9IYy1mVHhzMWc4OHNYWTQtd2JrTDZOdVdEX2lBZjNXNUxlZHZRQQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスのカード性能、編成、楽曲またはガチャ情報を扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBqMnFBU3BseUgtdEVoTFZuQ2o1WXpmRGFMNTdSXy1tSnpFcmR0Tm9YVnp0LUhZOFdCWUJjeWthckFaVVg5bE5jelJaYVMydk56XzdvNldCNA?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスのカード性能、編成、楽曲またはガチャ情報を扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE80c1RzN1hBQmhaSTlPRW8xaDVwaDluX0lXZUltU1V5Umwyd0hVaWdmaU9jQ2NGWjRvNUpLVm9GWER3N29KdWFnblpVeG84dlRpNnBWUEdEWUNmaXVjdjF5M3NZMmUySUhFa1JLdmNfdkJWMmxqZE1ndWVEWVU2dw?oc=5",
+      "article_type": "press_release",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.91,
+      "evidence_text": "多数のVTuberが登場するカードゲームにオンライン対戦が実装されたことを本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE92bnA3elVrdnljdi1nbnZJRXNGZlVWbUNZWlBaS0ZCRXlnNGQ4bmZud2otOTlFLU5JNHNvb0pBbTczTDBOLXpNcU5hV1hQWG5BVkdyZGh1d015dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.97,
+      "evidence_text": "本文を確認したが、VTuber・監視対象組織・関連企画を主題としていない検索ノイズである。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9jWFJ4MDkxOW1nWkhiQzVaV0ZLdVNWMm5wQkMwb3RaUFpFT3hiendBR21aZTdxZ1ZyX1JZRnpaMS0tRngwSUR1NTV2aXdwRTVWeGY5OXRwSUZnQQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.97,
+      "evidence_text": "本文を確認したが、VTuber・監視対象組織・関連企画を主題としていない検索ノイズである。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1GQXp4WFdVN09DU2pSdGpaT210bkNGV0NvbE0xdEVFcm13Nlp1Z3RKVEZ1YVczVEV5MkwyRVJRc2RFRGQxa1JVR2RsMW5zQnE2bG5SWFRDOA?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスのカード性能、編成、楽曲またはガチャ情報を扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9KdlBEMkdDeV8zZW1iQU9qc0pweFJ6YjFqZ3FmX2ZSS01RNmhhaWFhZTdrVDlIcklnUHM2NXFoS1FUa1lNLTIzYWg4djBMVHFRV0x5amZzRQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスのカード性能、編成、楽曲またはガチャ情報を扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBoeGgzTGFlVjR5eWJXUC0tU054M2lzamctOFNqZ0ZYbUdpSGhnRWhyTlJpVmMxM0lNLThEUkp6TC03RU54T2VPODZ5ZHpSUE1FUlg3cTJ4RQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスのカード性能、編成、楽曲またはガチャ情報を扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9nX3Z6b2pFQnNDbDh3eEhEZFh4WmFhTk9PSVI1R1hERzY2NmZtVzV0N1gtdUMtWmxmXy00bkNyYnFkS3JuOFEyaEFRcXdZdkVqNVpYSndkdzJYdG5IcWRuSQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [
+        "live_or_music",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.96,
+      "evidence_text": "虎金妃笑虎の初オリジナル曲「星炎」と、miwaによる書き下ろしの背景を扱う本文確認済みインタビューである。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBTcHVZRkxVUjVaQkFLbU9obzFNWDlsdGg2RUpxcVc4T0pJdTc0MnBoUGk4bVJOakJ0Xzk1SERpek1CN3gzMEg3NUpxX3hhbGFXUVhuQUp3Q2RJZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "collaboration"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "パワプロ2026栄冠ナインに登場するにじさんじライバーまたはコラボ要素を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE84aTNHVEoxM3BpSmlELUlDWUlrUFFxUTlrbnJyREhvdTJWY0Jkd1VwelhTN01MUVREcVFyV2JEczQxdWdlczljemFpOE1Jd0pxV0N2bGhQTQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスのカード性能、編成、楽曲またはガチャ情報を扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE41SUZvN2JsZlFqTDVCV1VYRFA2QUQtdU9sd09EOXpXQzNkdi1OdE1ONTgzeHhZcW16RXlxMk9mcEdJSUFpT1VGWVBUYUh2VzZkOFMzNVdLWkQ1UQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "collaboration"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "パワプロ2026栄冠ナインに登場するにじさんじライバーまたはコラボ要素を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/150367",
+      "article_type": "press_release",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [
+        "collaboration",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.96,
+      "evidence_text": "viviONがVTuber同士の交流企画「ゔいこん」を始動し、出演VTuberの募集を開始したと本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1WTHJiSVhQX2txQTdsMTJIYXF1UWQwS1ZQbDdvbWVidWtGTVpBSUFmZVdVSTloSEZuczlLczh1eElhNjQtMF9OY2Zqenc1VzRNbnB5NVZNSGVtUQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.97,
+      "evidence_text": "本文を確認したが、VTuber・監視対象組織・関連企画を主題としていない検索ノイズである。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE04dzF0cWlMbkxWTTV4bGV3dmJFdlozb2x3QkE4SWNKaXgzalZwM2hxZFF1d0xvNDlkLXR4cS1rTFFkTGtydjN2WFpaR1hELWV6SnZBZGI1dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスのカード性能、編成、楽曲またはガチャ情報を扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE0ydGV5dkVRTXR0VFJOQWlSYmE1MXlNTzVBWkgxUmJUQm5XWm5mSlB5V3NiMTQ4UUZrRDBvTndoSjVYQmZ2OWVjYzIwUV9USF9TbG9BTm9FRXV2dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.97,
+      "evidence_text": "本文を確認したが、VTuber・監視対象組織・関連企画を主題としていない検索ノイズである。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5ydm15eGJ4bGVZelFzY1VSS0FaMGt6RE5IVlhFS3FJWFUyMDBzZHhmNUhpWkc4QzVDVktuWTFEQmtwcVYxZmQ5YUhWWFh5cDdxNGFN?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.97,
+      "evidence_text": "本文を確認したが、VTuber・監視対象組織・関連企画を主題としていない検索ノイズである。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1yZ1NJMncwQXR0RUZCdWdDY01JQWF1eExvUGJrVmxlUmR3eXNJcEtaMzVUeGJvNnVQRkhtbUc0cnMyVU1xdXlZLUV5dmJsSENzei05U3gzZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスのカード性能、編成、楽曲またはガチャ情報を扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5RbjhWblB0TnBFUFdlcGFPRVU4TUxQMjV3T1BxS01lcWJUR1Fld3cxU3BROGdRUVozSlJNQW94WEYxbXV5dlRDQk5tSTVGODdmbDdaeWxnWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスのカード性能、編成、楽曲またはガチャ情報を扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/150359",
+      "article_type": "press_release",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.97,
+      "evidence_text": "Meta ProduceがMAHA5JAPAN事業を譲り受け、所属タレントの活動継続とIP・企業連携を強化すると本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBnVWlSZ2hNZjVrR3JWejVBeFJ0bm5DVWJjN2ZYSkRxX3lyUUxoRDhKNWR1Nmx0Q3NVOHF1R19IM2NoWXAxZHIzb1VwZTB1Q19hYk41bmppYw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスのカード性能、編成、楽曲またはガチャ情報を扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-07-30T23:42:05Z"
+    }
+  ]
+}

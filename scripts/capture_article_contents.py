@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Persist captured article text and public media metadata."""
 from __future__ import annotations
-import argparse,hashlib,json,os,sys,time
+import argparse,hashlib,json,os,re,sys,time
 from collections import defaultdict
 from datetime import datetime,timezone
 from pathlib import Path
@@ -105,8 +105,12 @@ def conn(env):
 def upsert(c,x):
  b,k,t=c;d={n:x.get(m,"") for n,m in [("article_key","article_key"),("original_url","original_url"),("resolved_url","resolved_url"),("source_domain","source_host"),("content_type","content_type"),("content_status","status"),("content_text","content_text"),("content_hash","content_hash"),("extraction_method","extraction_method"),("failure_reason","reason"),("content_path","content_path"),("fetched_at","processed_at")]};d["content_length"]=x["body_length"];api_request("POST",b,f"/data-tables/{t}/rows/upsert",k,{"filter":{"type":"and","filters":[{"columnName":"article_key","condition":"eq","value":d["article_key"]}]},"data":d,"returnData":False})
 def main():
- p=argparse.ArgumentParser();p.add_argument("--database",type=Path,default=old.DEFAULT_DATABASE_PATH);p.add_argument("--run-date",help="Capture all articles from one structured-record date, including rows not yet in the articles table.");p.add_argument("--limit",type=int);p.add_argument("--retry-unverified",action="store_true");p.add_argument("--refresh",action="store_true");p.add_argument("--google-delay",type=float,default=2.5);p.add_argument("--publisher-delay",type=float,default=.75);p.add_argument("--max-retries",type=int,default=4);p.add_argument("--env-file",type=Path,default=ROOT/".env");p.add_argument("--no-sync-contents",action="store_true");p.add_argument("--write",action="store_true");a=p.parse_args();db=a.database.expanduser();f=Fetch(a.google_delay,a.publisher_delay,a.max_retries);old.http_bytes=f
+ p=argparse.ArgumentParser();p.add_argument("--database",type=Path,default=old.DEFAULT_DATABASE_PATH);p.add_argument("--run-date",help="Capture all articles from one structured-record date, including rows not yet in the articles table.");p.add_argument("--limit",type=int);p.add_argument("--retry-unverified",action="store_true");p.add_argument("--refresh",action="store_true");p.add_argument("--title-pattern",help="Process only articles whose title or excerpt matches this regular expression.");p.add_argument("--exclude-pattern",help="Skip articles whose title or excerpt matches this regular expression.");p.add_argument("--google-delay",type=float,default=2.5);p.add_argument("--publisher-delay",type=float,default=.75);p.add_argument("--max-retries",type=int,default=4);p.add_argument("--env-file",type=Path,default=ROOT/".env");p.add_argument("--no-sync-contents",action="store_true");p.add_argument("--write",action="store_true");a=p.parse_args();db=a.database.expanduser();f=Fetch(a.google_delay,a.publisher_delay,a.max_retries);old.http_bytes=f
  db_arts=old.load_articles(db); record_arts=load_record_articles(a.run_date)
+ if a.title_pattern:
+  include=re.compile(a.title_pattern,re.IGNORECASE);record_arts={url:article for url,article in record_arts.items() if include.search(article.title+chr(10)+article.excerpt)}
+ if a.exclude_pattern:
+  exclude=re.compile(a.exclude_pattern,re.IGNORECASE);record_arts={url:article for url,article in record_arts.items() if not exclude.search(article.title+chr(10)+article.excerpt)}
  if a.run_date: arts=sorted(record_arts.values(),key=lambda x:(x.published_at,x.url),reverse=True)
  else:
   arts_by_url={x.url:x for x in db_arts};arts_by_url.update(record_arts);arts=sorted(arts_by_url.values(),key=lambda x:(x.run_date,x.published_at,x.url),reverse=True)

@@ -42,6 +42,11 @@ const elements = {
   keywordManagementForm: document.querySelector('#keyword-management-form'),
   keywordManagementInput: document.querySelector('#keyword-management-input'),
   keywordManagementScope: document.querySelector('#keyword-management-scope'),
+  activityDialog: document.querySelector('#activity-dialog'),
+  activityShowAll: document.querySelector('#activity-show-all'),
+  activityChartAll: document.querySelector('#activity-chart-all'),
+  activityDialogRange: document.querySelector('#activity-dialog-range'),
+  activityDialogScroll: document.querySelector('#activity-dialog-chart-scroll'),
 };
 
 function persistDashboardState() {
@@ -147,13 +152,36 @@ function renderMetrics(summary) {
   document.querySelector('#metric-articles').textContent = summary.articles.toLocaleString('ja-JP');
   document.querySelector('#metric-relations').textContent = summary.relations.toLocaleString('ja-JP');
   document.querySelector('#metric-summaries').textContent = summary.articleSummaries.toLocaleString('ja-JP');
-  const points = summary.dailyVolume;
+  const points = recentActivityPoints(summary.dailyVolume);
   document.querySelector('#activity-range').textContent = points.length ? `${points[0].date} - ${points[points.length - 1].date}` : 'データなし';
   drawActivity(points);
+  if (elements.activityDialog?.open) drawAllActivity();
 }
 
-function drawActivity(points) {
-  const canvas = document.querySelector('#activity-chart');
+function normalizedActivityPoints(points) {
+  return (Array.isArray(points) ? points : [])
+    .map((point) => ({ date: String(point?.date || '').slice(0, 10), count: Math.max(0, Number(point?.count) || 0) }))
+    .filter((point) => /^\d{4}-\d{2}-\d{2}$/.test(point.date))
+    .sort((left, right) => left.date.localeCompare(right.date));
+}
+
+function recentActivityPoints(points) {
+  const normalized = normalizedActivityPoints(points);
+  if (!normalized.length) return [];
+  const countByDate = new Map(normalized.map((point) => [point.date, point.count]));
+  const latest = new Date(`${normalized[normalized.length - 1].date}T00:00:00Z`);
+  const start = new Date(latest);
+  start.setUTCDate(start.getUTCDate() - 7);
+  return Array.from({ length: 8 }, (_, index) => {
+    const current = new Date(start);
+    current.setUTCDate(start.getUTCDate() + index);
+    const activityDate = current.toISOString().slice(0, 10);
+    return { date: activityDate, count: countByDate.get(activityDate) || 0 };
+  });
+}
+
+function drawActivity(points, canvas = document.querySelector('#activity-chart')) {
+  if (!canvas) return;
   const context = canvas.getContext('2d');
   const bounds = canvas.getBoundingClientRect();
   const ratio = window.devicePixelRatio || 1;
@@ -168,16 +196,36 @@ function drawActivity(points) {
   if (!points.length) { context.fillText('記事データがありません', 8, 24); return; }
   const maximum = Math.max(...points.map((point) => point.count), 1);
   const gap = 9;
-  const barWidth = Math.max(16, (width - gap * (points.length - 1)) / points.length);
+  const horizontalPadding = 6;
+  const barWidth = Math.max(16, (width - horizontalPadding * 2 - gap * (points.length - 1)) / points.length);
   points.forEach((point, index) => {
-    const barHeight = Math.max(5, ((height - 34) * point.count) / maximum);
-    const x = index * (barWidth + gap);
+    const barHeight = point.count ? Math.max(5, ((height - 34) * point.count) / maximum) : 0;
+    const x = horizontalPadding + index * (barWidth + gap);
     const y = height - 20 - barHeight;
     context.fillStyle = '#0d7d74';
-    context.fillRect(x, y, barWidth, barHeight);
+    if (barHeight) context.fillRect(x, y, barWidth, barHeight);
     context.fillStyle = '#66727f';
     context.fillText(String(point.count), x, Math.max(11, y - 5));
     context.fillText(point.date.slice(5), x, height - 4);
+  });
+}
+
+function drawAllActivity() {
+  const points = normalizedActivityPoints(state.dashboard?.summary?.dailyVolume);
+  const canvas = elements.activityChartAll;
+  const scroll = elements.activityDialogScroll;
+  if (!canvas || !scroll) return;
+  elements.activityDialogRange.textContent = points.length ? `${points[0].date} - ${points[points.length - 1].date}` : 'データなし';
+  canvas.style.width = `${Math.max(scroll.clientWidth, points.length * 64)}px`;
+  drawActivity(points, canvas);
+}
+
+function openActivityDialog() {
+  if (!elements.activityDialog || !state.dashboard) return;
+  elements.activityDialog.showModal();
+  window.requestAnimationFrame(() => {
+    drawAllActivity();
+    elements.activityDialogScroll.scrollLeft = elements.activityDialogScroll.scrollWidth;
   });
 }
 
@@ -537,6 +585,10 @@ if (currentPage === 'dashboard') {
     renderTable();
   });
   document.querySelector('#reload-button').addEventListener('click', loadDashboard);
+  elements.activityShowAll.addEventListener('click', openActivityDialog);
+  elements.activityDialog.addEventListener('click', (event) => {
+    if (event.target === elements.activityDialog) elements.activityDialog.close();
+  });
   document.querySelector('#close-detail').addEventListener('click', () => {
     state.selected = null;
     state.selectedKey = '';
@@ -544,7 +596,11 @@ if (currentPage === 'dashboard') {
     elements.detail.innerHTML = '<p class="empty-detail">選択なし</p>';
     renderTable();
   });
-  window.addEventListener('resize', () => state.dashboard && drawActivity(state.dashboard.summary.dailyVolume));
+  window.addEventListener('resize', () => {
+    if (!state.dashboard) return;
+    drawActivity(recentActivityPoints(state.dashboard.summary.dailyVolume));
+    if (elements.activityDialog.open) drawAllActivity();
+  });
   restoreDashboardControls();
   syncDashboardTabs();
   loadDashboard();

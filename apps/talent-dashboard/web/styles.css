@@ -44,7 +44,22 @@ main { max-width: 1600px; margin: 0 auto; padding: 28px clamp(18px, 4vw, 56px) 4
 .metric strong { font-size: 28px; line-height: 1; }
 .activity-panel { min-width: 0; padding: 14px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
 .panel-heading { justify-content: space-between; min-height: 28px; font-size: 13px; font-weight: 750; }
+.activity-panel > .panel-heading { align-items: flex-start; flex-direction: column; gap: 6px; }
+.activity-heading-actions { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+#activity-range { white-space: nowrap; }
+.activity-show-all-button { flex: 0 0 auto; padding: 3px 7px; border: 1px solid var(--line); border-radius: 4px; background: #fff; }
+.activity-show-all-button:hover { border-color: var(--accent); text-decoration: none; }
 #activity-chart { width: 100%; height: 112px; display: block; margin-top: 8px; }
+.activity-dialog { width: min(1120px, calc(100vw - 32px)); max-width: none; padding: 0; border: 0; border-radius: 8px; background: var(--surface); box-shadow: 0 24px 70px rgba(19, 33, 43, .24); }
+.activity-dialog::backdrop { background: rgba(23, 33, 43, .52); }
+.activity-dialog-panel { padding: 22px; }
+.activity-dialog-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+.activity-dialog-heading h2 { margin-bottom: 0; font-size: 21px; }
+.activity-dialog-heading form { margin: 0; }
+.activity-dialog-meta { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 18px; }
+.activity-dialog-chart-scroll { margin-top: 10px; overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: #fbfcfd; }
+.activity-dialog-chart-scroll:focus-visible { outline: 2px solid #b9ddd9; outline-offset: 2px; }
+#activity-chart-all { height: 260px; display: block; padding: 14px 8px 8px; }
 .data-notice { margin: 18px 0 0; padding: 10px 12px; border-left: 3px solid var(--amber); color: #65410a; background: #fff8ec; line-height: 1.5; }
 
 .workspace { display: grid; grid-template-columns: 218px minmax(0, 1fr) 330px; gap: 18px; margin-top: 24px; align-items: start; }
@@ -107,7 +122,7 @@ tbody tr { cursor: pointer; }
 .key-value dd { margin: 0; overflow-wrap: anywhere; }
 
 @media (max-width: 1180px) { .overview { grid-template-columns: minmax(240px, 1fr) minmax(350px, 1.3fr); } .activity-panel { grid-column: 1 / -1; } .workspace { grid-template-columns: 210px minmax(0, 1fr); } .detail-panel { position: static; grid-column: 1 / -1; } .detail-content { max-height: none; } }
-@media (max-width: 760px) { .topbar { align-items: flex-start; } .topbar-actions { flex-wrap: wrap; } .generated-at { display: none; } main { padding: 20px 14px 32px; } .overview, .workspace { grid-template-columns: 1fr; gap: 16px; } .metrics { grid-template-columns: repeat(2, 1fr); } .filter-panel { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 14px; } .filter-panel .panel-heading { grid-column: 1 / -1; } .filter-panel label { margin-top: 14px; } .table-scroll { max-height: 520px; min-height: 360px; } .detail-panel { grid-column: auto; } th, td { padding-left: 9px; padding-right: 9px; } .tab-button { flex: 1; min-width: 0; padding: 0 4px; } .table-toolbar .muted { display: none; } }
+@media (max-width: 760px) { .topbar { align-items: flex-start; } .topbar-actions { flex-wrap: wrap; } .generated-at { display: none; } main { padding: 20px 14px 32px; } .overview, .workspace { grid-template-columns: 1fr; gap: 16px; } .metrics { grid-template-columns: repeat(2, 1fr); } .activity-heading-actions { gap: 8px; } .activity-dialog { width: calc(100vw - 20px); } .activity-dialog-panel { padding: 16px; } .activity-dialog-meta { align-items: flex-start; flex-direction: column; gap: 5px; } .filter-panel { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 14px; } .filter-panel .panel-heading { grid-column: 1 / -1; } .filter-panel label { margin-top: 14px; } .table-scroll { max-height: 520px; min-height: 360px; } .detail-panel { grid-column: auto; } th, td { padding-left: 9px; padding-right: 9px; } .tab-button { flex: 1; min-width: 0; padding: 0 4px; } .table-toolbar .muted { display: none; } }
 
 
 .keyword-candidate-section { margin-top: 24px; padding: 20px 0 0; border-top: 1px solid var(--line); }

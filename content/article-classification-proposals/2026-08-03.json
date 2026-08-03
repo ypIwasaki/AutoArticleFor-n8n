@@ -1,0 +1,706 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-08-03",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9SNjViOXVCSzV0LTlabWVab2RrcGdtRDdaWEVMczVhNGowaU85VXpNUnhBTUNvaldLNGhwQVVPSTFvQ2EzWlpkN3ZRbDTSAU9BVV95cUxPVHVrUjhTb3ZyaHJzbDlIel9ETnR0blBTM1FhTWRXWktWNTJtbURodEg3TTN4MUNyN0RRUTN0eVlFUTdpemgtUHM0Z2t2U0dV?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「発表からわずか4日で受注5万台、異例の大ヒットとなったジムニーノマド。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "ホロライブドリームスのカード性能、編成または楽曲データを扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1GVXhKa092bkhMZkw4cVBFaTlZU1FuYzh4aWNLai0zWEltSEZfc0VzenpDQ3hRaVVueDJSQndXZlgtZ21xUzk5R3RGTHZ3NlFfeUVHc2RvVnBfdElJaXYyczln0gFnQVVfeXFMTVpmdVlfWjY4bEJ6Rl9CYi16bXc5ejZXQ3VDaDFZYzNUVHZ0MDJETEU0eG1KYlM1VUtDbTVHeVRyRnExWmMzT1Vib2dLNkdsQThERmNoTFA2WFJlNS13VFB1TTVYdTdMSQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「カジサックことお笑いコンビ・キングコングの梶原雄太の長女・梶原叶渚が、現在放送中のドラマ『GTO』（カンテレ・フジテレビ系）で若槻琴音役を好演し、話題を呼んでいる。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBvRE5Zbm1QTFBkXzUzdVVuN2oxVEo3Z0NaRUpJQng3R1JRWFIyWWNRNU1BdmpiVDY3dWJEcUlzeW04cmdQNHktVXV1WklHSEtKSGNsSVBCZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "ホロライブドリームスのカード性能、編成または楽曲データを扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1id09Da1Bxc016TnB1WC1obUJVU1RtOUFNTmEycmpzWERXSzlZdHcxVW5Va3FieVBYVVRkVVpyUEhlZ1hZc3RqQkFxWQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「2026年春の公立 高校入試 では、少子化や私立高校授業料完全無償化による「私立校人気」の影響もあり、140校のうち67校が定員割れとなった。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1RVkdqN1YzbzQyYUJETDZsQ0ItLXYwRU43bm9PVmFtUndmdmJhd0pHUlpaNGliaGhrYXBtNW8zYWU5WWFIbmUydnZORi1VaGxKVDJLU244bw?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "community_or_fan",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.88,
+      "evidence_text": "ホロライブの宝鐘マリンに扮したコスプレイヤーの取材・写真記事であることを本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE5ad3hkQkRlVVJMNU5RSFF0cVVGakFvdTVvNlhIbjlvNFZ1dTVuQkpsclhjc0kxalRQNWJTNlNwUFRDbmQwdGFWdVFQVEjSAUhBVV95cUxNR3k1clBIQUlHVlBPNUl0YVVtbkdyMktya1dzazdjdnZEa01lREo5N0JsR2lyLURHcGFkdnlyTHVIcFNfcWNxNWE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「俳優の 反町隆史 が主演を務める、カンテレ・フジテレビ系ドラマ「 GTO 」（毎週月曜よる10時～）の第3話が、8月3日に放送される。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9YTW8zbTN3bmtnMW45cTV0cUxyRTRpOVhtbFhyQUxYMlpwVFJlazJ2ZHFlMGV2cURPS0NLNzNDX3pzZVdOUmdaZGs5am0yV28?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「反町隆史主演ドラマ『GTO』（カンテレ／フジテレビ系／毎週月曜22時）の第3話が3日の今夜放送される。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBBM0hEenF5TWw2NmVvRTJ0VHFGR1piNHlQRjI5SlJoNEVXSkdSM3l4NmVPT21RcXltMjItc0pud2JoVXpJWG1kcjZIR3pMQkdxeDJoMXpPbw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "ホロライブドリームスのカード性能、編成または楽曲データを扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1ma3FqUFZoTnk3REtuTzBraVFWeExocWpoaVdzV2dGTk14RHBXX2I5ZDU2WjVRbEVzb2o5VUwwN3RLdjl6SmkxdzlsdjNaSWM?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「堺雅人が主演する日曜劇場『VIVANT』（TBS系／毎週日曜21時）の第12話が2日に放送され、ラストで乃木（堺）が驚きの人物と対面すると、ネット上には「鳥肌すごい」「別班!?どういうこと!?」「さすがに声出たわ」といった反響が寄せられた。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1kTlpvZFBWUmlhYjlFekJDb0FaZHVlelNQakstUUwtMnBFY2hqQTdBSlJXVUJoUHZ4WC1uN2w5N2JqeVZaSjI3TzJob2NZSVdrNG03MG52aG1IaF9EVTR6blkwMA?oc=5",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.84,
+      "evidence_text": "にじさんじ所属タレントの活動歴やSNS上の話題を解説する編集記事であることを本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE0xSWJTcU4zeURYcmt0WUNWNkFxeXBTOEFVemNOaHUtLVFzOGRwUXdQeDV2bC1ZMkh1Tnh6ZUtjQ0lMTHc2SW52NWRCZlUzWG1GaGM4M3NYOA?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "ホロライブドリームスのカード性能、編成または楽曲データを扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5ud3JIbjI5ZmFFSkhHZzZtTExVNGdlRllubFUwaFFSTU5FZG5EOGVWMV9tWW9NU3MwNExiYmVRSHpDYmF2N19DcmFsdVpIOEtMOHVIM0hSbnkwZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 明智光秀のイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 明智光秀のイベント内容や明智光秀の金特、声優(CV)についてまで掲載しています。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNdHd1X2l6UUpGbG8xNFhsSFdQR0lBeUZWSGxjVG9Md0FJZUxOVDZIODFZdmE2TC00QzdxbFBkZkZqN3hWUkFOQ0NNZDFibkEwc1lUWXJPeUhReFlaLUR1ZzNjaGVhT0pUa1hKT0tiQ1BLOFBFZlhIdkktUGkxTG9VX25fZF9zdll3dU5QZWtmX1BqUQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「ＢＳテレ東 2026年8月4日(火) 19時00分～21時00分 前へ 次へ 世界ランク上位32名が横浜に集結▼日本人トップ世界ランク3位の松島輝空＆張本美和を筆頭に昨年王者・張本智和ら最強日本が世界と激突！」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9TeWlKRjJkSk50dXRuZzRidncwUExYcTkxZkwxN0w2c1BYLUxzc3BONi1XQ245RUJMbXN4VXVkZmdRZFdQdGZnby1ZTlFMOFI1NjBLWWhLWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "ホロライブドリームスのカード性能、編成または楽曲データを扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9RdWlKOWsyR21HUlpkbkxMU3JCcTlib2NqY2ZHa3pwWl9NRm5LbGx6MnFyN3VscDVMWGQ1bWZJOUlQdXAxZFAxZERiNTR2RUw0VjdyaG1oNm0?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「神社仏閣を巡る「御朱印集め」は古くから多くの人に親しまれている。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBKZThXYm04UUNadjc3UDg0eGVlTjA3LU1YVUJkMU1meG9DUU5RR3hqeUlSSHdQVUlHYmdoUXNEbmxfdnMtRG1JcS1pdzhYNmtmRC01d0RJYw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "ホロライブドリームスのカード性能、編成または楽曲データを扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBfd0ZoWHJrcGJlckFRcWp2OHlOQ1lZT0NMTWFvQ0V1T1NlNzNpQlBSXzQxTjhEdDNydmFHUS1WRklKTllvQ0IxQXNHWDV2OU9qMWxCcEZGVHo?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.96,
+      "evidence_text": "ローレン・イロアスの1st LIVE『FACE』が7月30日に東京国際フォーラムで開催されたことを本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBWYVB1QmJMek9uV2liUjFzSlhEZU1kQXhhdlo3SWZ3QUk1OVVoNlJlaTFzcjFIRlhkSGk1MFFsbFNyRF96emZfMDF6TWUtUUk?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「【ウィザードリィダフネ】 | AppMedia ウィザードリィダフネ攻略wiki｜ウィズダフネ AppMediaトップ ウィザードリィダフネ攻略wiki｜ウィズダフネ FFコラボガチャは引くべき？」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBXMHMzcFNULXFFczljNEtZVEo5clpfa3lxU3o1ODJ4eWo3djlHeGpCSDNJd3JuaEVmaC1jY0hONmktSTA2cFN6SW9BdF92VUQtUng3cXBqSDhiVDNRZV9r?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「伊豆新聞デジタルに登録すると続きをお読みいただけます。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQdTBlS2ptT2U4S3JzenNmQ2VRVFNTYXNVRkduWkJjMFUtTldaVDRKNXhlMmNGOW92MXhpanlPR2FqQWFiYUlZZlUtZFE3YUZ5RUlUUHp2LXFRUVBrVGxXamJIU3RITkY0UlFVZXdFc1Z0VFVmaHlTUnJndkl2bDJHOXQ4SkFLdw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「2026年07月30日 12:49 (07月30日 16:00更新) 芸能 『ESSE』2026年9月号に登場した“りくりゅう”三浦璃来＆木原龍一 ミラノ・コルティナ2026冬季オリンピックで日本人ペア初となる金メダルを獲得した“りくりゅうペア”の三浦璃来＆木原龍一が、8月3日発売の生活情報誌『ESSE』9月号（扶桑社）の表紙とインタビューに初登場する。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE41SUZvN2JsZlFqTDVCV1VYRFA2QUQtdU9sd09EOXpXQzNkdi1OdE1ONTgzeHhZcW16RXlxMk9mcEdJSUFpT1VGWVBUYUh2VzZkOFMzNVdLWkQ1UQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "collaboration"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "パワプロ2026栄冠ナインに、にじさんじライバーまたはコラボ要素が登場することを本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5wSUc1WDBTZk5lb3kwdHpFLW1WUnNUUTFVZGVBOFA3eG5EdV9Fd2cybEZiczlGZWNFNkh0Y25NUksyYVNoVUd3V3M2SVRNeFk?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「｜骨を漁る男【ウィザードリィダフネ】 | AppMedia ウィザードリィダフネ攻略wiki｜ウィズダフネ AppMediaトップ ウィザードリィダフネ攻略wiki｜ウィズダフネ FFコラボキャラはどれを選ぶべき？」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFB6TWlrMFlIS21jSWRoTkxNU1JiVWxJZUQ4NUxpNGFkbkVhbG9vSkVBR0NTZVJLcEREQkNEWTkxR0JpbkxWVUxyMGRsYXJuMlVqMDI3M1hNNA?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "ホロライブドリームスのカード性能、編成または楽曲データを扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBibjF6MFY5R0Jvc0IySWN3VmxXakl6OFRYNUJ1djBRa1VTMnJnLXNVVklYRlJlVkZpckFJQjR4bHM1LTFlQ19kZFB6dFJUSXpjc3MyTHRFbw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "ホロライブドリームスのカード性能、編成または楽曲データを扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiQkFVX3lxTE1nWnNINlN1bWp2NXBrcXQzLVV2ZEpqbTRYOFBHejFGc3hnOWNFUjRRcDBXRkNsVVdrcVlabXFVRmI0dw?oc=5",
+      "article_type": "video_or_stream",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.88,
+      "evidence_text": "YouTube公開メタデータで、ミラナ・ラヴィーナ名義のVTuberゲーム配信を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5uLUltZVl2ZG93OXMyWVNFci1lSi1uZFBMZlZ4V3lGUmFWZzYzOE04eGp5dXJHZ3ZJZms5MHlMdVd0Z0UzNGRBemVIbWVEZjZpNkNiM2dicw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "ホロライブドリームスのカード性能、編成または楽曲データを扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFA0UjJqdGJ4anNRWTJEeU8xRlJZNmw4WUl2T3g5NGNRcE9GbnpxWkdpMkdoNS0yUTJacWFBU0pmSnFfcTV4cUprV0dZWUhLckdlRUtzeHhlaw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "ホロライブドリームスのカード性能、編成または楽曲データを扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMivwJBVV95cUxQcUc3cy1TRWZOMWdXR2FkY19MQnJENDJXOVg4cTQ1b0NFZVlyV2d0WW14NXkxN29kV3REdHJIZlBNTTNWSk5vdV9JUzY3TWp2S0ZWZnhlb29hZDlrakowNXBxaVktaGVuTkhEUVpndVBtNjQxU2VuY2xzSU50SU04eTNUeUE2V1FhZ1hyWmVBSUJEZENHUzBsV3ZmU2hlbHA2RGstTG05bGlZVTJIMXlCRnhxX0ZJWDE3eklQWVE3U29zWmJTb0thWFY0N1pJdzkwMzdleXpOTUhOdXFsZ1dVVld6Nkc3b3lIZlJpcXJFNHVOWjJUSXdJVlFFZTVxZ1ZXWVEzanlPdkxVazlJQXdKdTZIU0FtVzR3UEc3dXo0X0Q3aEZuT0ZFaXVRYm9vM2ZHN1VBQTZxTUF3MTN5Y2Jr?oc=5",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "中京テレビ所属VTuberアナウンサー大蔦エルが6月末で活動を終了したと本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB0eFdWRXByNWxJcEZqRHpIQ0M5NUgxNmVJQnhYLW9RREs0OXlPM0ZhUEYxbWVFZDByY2QzVWtnd0xCd1pBOWJNVU55Z1ptckg3S0c3MWY5SE1ndw?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.88,
+      "evidence_text": "HIMEHINA WORLD Tour 2026のグランドフィナーレ2公演をHuluが配信するとページ本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5ERllKSnBXV1dfYVhuMDZtRzJHMGluc0s2YnpPa0VhUmdsZ2NvZEdjazJuN2FtUmtpRTZRSE9SZWw0eFRoM29STFI0X0xEWV9CS3hucUxJalB6Zw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 特殊能力一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026新特殊能力(新特能)や金特、青特一覧など特殊能力を全て掲載。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://www.microsoft.com/en-us/security/blog/2026/07/31/captivecrunch-midnight-blizzard-targets-travelers-worldwide-for-malware-delivery-and-credential-theft/",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「Cyberattacker techniques, tools, and infrastructure Since early May 2026, Microsoft Threat Intelligence has observed Storm-2945, a sub-cluster of Midnight Blizzard, conducting wide」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiwwNBVV95cUxOOUxBMThwU3d6T3FycW1CQkNvbGo1X2xfOEg2YXdoZjd0Y1ZZSkFfcHpESVFDWnlBSHVzOU5NMDZ5cnVNXzRub2lHX2NMNUVXMU9SWmtBX2dKcVVBWG81NXJ1WDN4Wm4xNVp1UjRKVlpKLXdpSlp5TmlMYWJwUjFNRVpVakwyUHVVLWhvSXc3dmpDUlJieXhyWFBacnhRbENYQVViWjVuZDZuRXM3S2xCemxCQjdyVkRkQmJaV1hiNTNDYmtvekg4UGhzbXZRaFhIRWg2XzVHTUh6aWpPTkFfdzB0ZzFfSGdablVOUWdvT18zalBhN1hsbG83LW1IblRYd2Znd254b0E5OVFaaWZaSlBwbEpTU2FKZXhnZnV6NFltWWc0djIzSDQyZjZXRUNLUmtnbFU3bGdURTQ1bFowVmtDUUdWc3BtWVNfN2VZZktkaVdLbVROajhreUppMlE5MDEtb2JBOUt3WmZXOUUtRlpnZDhPRVpVQ19Za0xLTXhwNDVmemdYc2V5bUZKQTRsTXh5Z0tDSDgtRmVSQmxGU1d6OVZ6cU5YYVppM3JRMFpsLWM3Sll5V2p1LVN5NktCdk40?oc=5",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "にじさんじ所属ルンルンが6月23日に一時活動休止を告知した過去記事本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE0xUDItWi1xcjRzdy1CZmp3SFllRWNpSmYxU1FETEtfUWJXNURSMFpYbVdiSE5ORHZiRld5b2FQWkxudWJWTXF0OUtZRlE2cEZPTXBRemgwLUxwSHo2UFJ5bDBmdUJMa0Fod0lFZVhIb0RialhucDZrQW5WRjgxVUE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「BE:FIRST、ストリートダンス世界最高峰の大会でハーフタイムショーに登場 SEVENTEENジョンハン、メンバー13人の深い絆を明かす！」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNck1Iekdqd3RQeWQ3Zmx2VGdiRE9IU01MUlc4WUpoTUFwSWt6YXJSOUg0elhLNm1aMkxIMGdEUmp4VnZMZFhBRmF4UFFGWXhvOUFVNlRXaEMyOW5DYUk4V1Q5cDhsenBoQnVHR1BzM0JyaWxoREJaQlU0YVNtX1NLdm9wQXBibkR0WF9rV1hWZw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「テレ東 2026年8月9日(日) 18時00分～18時30分 前へ 次へ パズドラ部」 ■第10回対抗戦２日目 パズドラを楽しく学べる「超絶！」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPVkJFLXN4YllBakthdm5sOXpmdzVTak9CRWlTeTdZV3dkUGRlcmZHcHB0T3FBSS1lNHRCOEF1dFdicGFiS2p4YjhJSEo1aUxuQnNvNWtOQ2tycjBwOW83WjdiSzN4ZEFzMFZTUE1qTFBZRzEzUmotRHlkNl90a1dFZDh4cjdVdWd2b0E4bDR1NA?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「テレ東 2026年8月9日(日) 09時15分～09時30分 前へ 次へ 『ぷにすたるのかけら』をあつめて、じゅえるんは何を作ろうとしているんだろう？」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMi2AtBVV95cUxPSWpWbjdEZTFfRXBNb2VjM19vTEVOQlRVT19yRjNuXzQ4QVpfSktudWt4NjZMVXAzX3BtYkp6bFNsUW9RMjEyM1QwdnpnaXRscG9lOFVDWFl1MTIyVDAtYkg2U3FtVDFqRmVCNXQxcU5XbEFaLS1BN2hPWWVxN0V1VmxwSVFpeFVsZDlZOXNrLUdsY3BTWFhZQXdka2c4QXY2SGZSR2d0bWkyWGlWcldrZjR0U2c1TVdWWkszQ2hjYzJHc0pqdUxmTTR6OFVCQnBWVVFWT3FoeEVQYlNDRDg3QS1ZS3V0OGFfV3lnbm05MEs4WWdSZ29LSnduQkRGVkdUbW5NcWFVYk9VQW8zYWJXeDdXWko0bms2R0lEbThyNEpoOVV2VnkyM29IWWRNcFh2UlZRYVUtUnpORGR0SDZaMWM1bXM4ajk3WnROSFR0a3FydlRzQ3V2RUhKQWMySlZ2NXJzeDV2WVd3cS00SEpqaWRiRGZ1SXJNZ2JHQVJybWRUNnFQNThnRXV0MTdSUE5JSTBwMDlCNzlqdFVnaG5rRlpjTTZSM01aZFNMQUJhUHF5OTNxbHJ0Q0xHaXpzMFN6anBtNXpRRlJFaWNEa0NqQ2lTWUxqVDdobkd1UEhWMUhmSW9jc2R4S1hsLXRjQlJQU3FoWEpHWXlXZWhxQ1ctMUZzbHAyYWdyQVByR1lNRDVzQ2lPRDN1aEhQckllYXBCcGtyZ1pucDJvMWJ4dGtaVEs0XzhCWXZyUXZYdGdubTlnWHd4WUV3OUp2WFc1WE9fLVJSemZFY0NLR3FySDk3NmFnd0Y5al9hcnI3eGJkN2ZMYlZrRzlKelBXNFFVUUpZQ3NFQjF4aWY1a1hMa1FwQWRMclJlSUlhOW1tX3hVazdMaXJMZXV4NjFrUTBRUWRaUm5DaHU3MlE0ZWpmSk4wZjhXdXpfbXdGaURodV9Gbk96NWJLN3BaU3VhM2FSNTBaMUZrREhzbVNJTFgwSko3Qm9CcjRhUmJhZnBCYmZFcjM1OWFOajViWkFqSEJDRFhUdFZ3dzhGZHBHbkVBY1NISFJucW1icG54WXJiY3Z1d2hzajdRczBCQTNrMnFpZXM5djBjZTdPZkw4eFpsX3ZVRHlvcXhoYUNXMFFRNDRkTEY0RC1YMV9mS2N2OThTcjdUNEYwRUR5MFVicTB1YXBIS0JNRXM4MFZKTjFKc3JaQUxSbjBHN2NfUkpZOEp4cDVZZEh5Q3BDak0wLVhyWml6cDZPdDlxRzBtaXhjWkFFbFdPRVIzek9xMU4wUWJQVTBqZVkyUG9uMFB5aVNEVGdaVldrbW5WN1pDNHFVMWtqUFdIM3prekVmRmVYRG42NmFoSTRBTndpTWwxd2pja3B6RjB2LVBfNjNHVUJDQ1I3YV9wUTF3VTN5ZnRzMTdFVFlTellMSHNKaHZzeGxpSWpkTEpKaEgyRk1QejFDME9BZ2ZkRmM4VC0tZUEyQ3dsQ1BSNU5Qa0xPUUJLb0pXSGkyYmR6Wm9oUlk1UHBfSldVMHlvR2NOSEprWUJ2WHZvbmpITWZSUlFfWHg1X1Z1dHdabV9ybTVJNF84YTRFbngzUEpMUWNwRnluZlBTNm5iZ2E5SE5UQnozbWZjQ1JPbXJkQW5HUnhyMk01NHB3a0JOQnNDMjJfbXloVWFVWlZyLXZRc3BCM29zU3FmdzJIQTZtZXJWY3JraFFlMC1udEktMFcwR3ljVU1PQlZqeExIMzNDeWNXdzROWGFFclItRzVxRzJrRnk0YjEzOVBoRWozZGVUNEtQS2ltYXQ1cjZjTFI4S210VDNvQnYwNThBN1lSZTJGZnZPVGY4N1RER2ZlZS1zbEtHMHhPRlpNSlBFQTd6elZWaFlHSWpCNUc4b2hqcTY2RG9DTmxqellCcEJqdjRkWUUtSE9adjVpQTZpSmRPVmZ1TGJzdW9KYWxhTDhRNkgxVHpEeHkyVUR2TTNJNGVtVGZ1Wi03YQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "星街すいせいが7月20日のプロ野球試合でファーストピッチを務めた過去記事本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNZUozcjF1R2RrOVBsRHRyLU80NWhMOHNseExETEo4ZlNQcWM3UFV0eDhlZmI1WUlhRVFxS2daNGo0RG9ZdDdfYnYzTVQ3eGZZbVRmajlyanRrWTdxWEN0T0VWNzBQU0JyQ1FKbGlrMTVyNmhSZWN0N19QbXNudjBBQVFB?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「人気芸人がドッキリの隠しカメラをガン見する様子が映し出され、千鳥らが「ドッキリの隠しカメラこんな見るやつおる!?」などとツッコみまくる一幕があった。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1Pd3UzRk9qN01STHhnNW81WXI5eXZtdnJvRWlEQXkyM2o5OTQ4YnZad243bUhTdzhQckY2cWljN1VZSWNZWExlRmdMVk5paUhkOF91aUZ3WWRNMWlyZWJOTzRnRQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.84,
+      "evidence_text": "にじさんじ所属タレントの活動歴やSNS上の話題を解説する編集記事であることを本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMi4wtBVV95cUxOVFBGQlZ3RU9iNW1UZkkxcW56T1p3T2lULXViemNMLU94cjN2VGRnZVlOYnVPdmxDOXRnSVA1MFdtVDMza3NSYUdzWmppWWZNV1BZaXE5Rkpidk1OQXN3dTU1QzZibXB2Nk9PenpoZUNvT3FKaWFJQTV5Y1g1TEZFNDd3Y1dQbUFMS0tLTmo5YVlwTUM0UmtGcTktXzdRR05lQ3BXNzRnbTRVaWx4TGJYeXA1QnV1dlZNVms4QkcyczZ5RFVaUTJBeXFMSGZRckZBWFp2RXQ4YUFDSnlvcWEzbjc0WFloWFBra0NuTm5iS2lnZEx0S3F4NUdoR2RJYTdmdU5wQVBSWnRtTXhFZ2ZnX0ZsM2Y3cDBMSnowX3VFY2hNNnhzbzVlTlZQZDZDRzdZbHhaX3AzSzE3S0lfVG5zRzlJd2Z3V21za3pRRW02aXJjSFBSV2hoaEJfeFVLbVpYV2M3dmdXa1FHZDllUDVzWHZEbGljeWJtSUtHaTQ4cEdicDhISGxaTWxFOFdZc0xjVG16QWpIUlRHQnRjamNiUGUtUE85bTdLTVc1a0RQTTRXZW5qaERMWVV5NV8wb3ZpVk5tZW4tMWpIUExmY094d0M3N0dlcVFSNUJZRHJxVllKaElKVG5rU3gtRmpicFNHNFR3d3RaMU1tRExKRWhlMVUzdkxrVFlEQ3dDMjJIZzZraGt4U21UU0JQZXFJcmxQc2dHVUR3MDVIT3JKaWNKNjNVS2VTSFlBS3JsbmZ2TkI1YU50djVpRllHTHRoYVl0LU5pOHpvcG9lZGV0OGItdklsYkxQeHVwazJkbjZSX3JtSnl1UjFBQzFTRGJnZURZVjVXdGg3SjZPT3B1c2FLT2xWT3FWOUNqSklqek44eTZfdldjTjNrc2lxV2V1aU40QVFUTWY3WGhhWmRJTk1ONmdySWFrV3ZtWFVJc1lsSE5JQXpHMFF0bFp2eExkMlVYZkxXOUpxWEVKek5waE92YTlRQjdjd29lcHpZOWpEbW00cGhQV1BHVEJsa0hHQzRuVTJxLVlPRmFnMkY3aTI4Sk45RVozNWxWb2lKeFlBQ2F2SC1PLWpaamdjcU9IdS1rSFU0RkVQWmI4RmRaaE1Nc3duY0MwcFhjbVloengwWXNmWTVqRUQyZzAyUXN1WHp3bno4ZUliRS1sMVBsRHc4RWg5dEpYSFdYZ1hQcmxpQVZxX1dNVkt1bUNzSzNxMkpMQXNvaC0tLVp5bUowbVY1UjJUWl9EbEVQU0RGd1ZkZVU3ZkdrMl9RU2gwNjFxdXBQM3JOVDVaQ1lpRnVVWFBkamRQbkQwaW1GVnp4VnVtNGc1QzVUTDRwZDQxdnp6bHI0RTdZZUZDdmdObG1RYjBPeF9JNWxPMWdEYWNkRDk0SDliLTlnb0poVXpKY3R1cnZGeGZwc2J0eF9fRXItR21HbTdjVzZQc2x5YWpKVVFFVUJVb2ZDTXlUWEJGWndpZ3Y2TGRabWRSdGk0WTl2UVRkaUxpUEUweGg3c25WM201T0FZSEVhOVp5YVhVUjB5TWMwZnZMS3k4Mmx4V25aYWJwYXJYZFFnLUZSR3hfVzhXZVIydXp5NnliQlU3emVOZi1IZURhU1doWGNoRWF3N2xIT0hTRThvTXdnMG9XSW1PT2txdzJrcFdOR0VZbTd5dDJlSVNUTVNRaXdUWWg2TFo1Tjdrc0hXaGhZbGwtUHUyY2NWMEk5ZllDZmpzdDAwclNIaFgtRjBET0Q2SXFkaGVFRkk1bEhHTUwtenVHRWdMbWRiSUQxQ1Vpa0w0ZTFTWTFGcUlCNnQwUjJrMGZWZTNxQ2ZCSkdHdkR4ekZOMFU1TldoYVVWNk5OZFVyaVNtaWVFQVBHX3RXcEFHTDY5aVhGenlES19ZMWhUZl9NWTJDMDBmRmJvbnJabGJLdkdXWjM0M3FfbTJoQng2NG9sa1hNMDV0bWtVc1BBTW9JOFdHcjF5SjZVRUdPUG5uSTJFT0lmeWZ3?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「2026年07月28日 21:21 (07月29日 02:00更新) 芸能 “アイラップ炊飯”公式が紹介 熊本県で28日午後4時27分ごろ、最大震度7を観測する「令和8年熊本地震」が発生。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBoc2htd19TNWlBWWkyQktwSUR0cWU1ZEJ2Y1J1X3dSWUpWV0N1UzJ4VllGUTB6QnJmZ3p6TERXLXkySmd4MVJGVjljWkdfQVU3a0JpV0o5a2VZVVdkcjZoa0hkTFMzSEtXcUE?oc=5",
+      "article_type": "press_release",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.97,
+      "evidence_text": "VEE所属VTuber音門るきのアクリル商品、缶バッジ、バースデーボイス販売を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1SYlNmZ3lxaXgzbnZqaU9iVTdWOHRyV0FPZzhoRkxuNHZWbFlHQlk0bjZCVFZNMDBwaFlhZlNKUmppQ3BwcFVxM2wxUFI1bnN6LUdXdnZGMUpjdG5yUm9BeExfZjBxbGtDRktsd3cwaXg?oc=5",
+      "article_type": "press_release",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「AI活用・人手不足・採用難など経営環境が急変する今、「人を活かす経営」への転換は待ったなしの課題です。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE02UjRaYWhoYi00dDkwN1l0N3FpMUE3MHdzd3RQaFZ2VVJzMUI3cGdCRi1iTGxZalBxc01sY1drM3JtOHhSRlpjbVZoNUlUWkFjaHZkMG44QlZ2VUJNcjRoMGpGZms?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「キーワード・カテゴリ・年月のいずれかを入力してください。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1DSFRXUkkwYmFIdU9Rd3drV1VRY3ZicHR4LUN6SWdTQkZaS3RsVEliZ3o0QW5mODcxcWxCRGRLMTNnXzMzUkxiUnVRNFZfVUhvLWFnZFFtaWxENlBE?oc=5",
+      "article_type": "video_or_stream",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.9,
+      "evidence_text": "YouTube公開メタデータを確認したが、監視対象のVTuber活動との直接関係は確認できなかった。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9mOF9WMTVlRDZqampjbDVoTWhmU053N2o5V3dBOUtyM3R6a2VzdGc1dnZrSk5CMzNGbFVubDd1WlFadkFiN2swanFqcDI?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event",
+        "collaboration"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.97,
+      "evidence_text": "KMNZと龍ヶ崎リンのオンライン対バンライブを8月29日に開催すると本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5BTFVjUVRWMkw4azBxVEVadXgtbGFKdWhrdjFoYVE5ZGVadUJEYjRxVjl1VWs2enhmVEVfYm0xRTh1aU9xRnJRb0lHZVhqZU15dnNn?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「AppMediaトップ イナイレV攻略wiki｜イナズマイレブン英雄たちのヴィクトリーロード 属性相性の仕組み【ヴィクトリーロード】 AppMedia株式会社 https://appmedia.jp/ AppMedia 属性相性の仕組みをまとめていますので、イナズマイレブン(イナイレ)新作 英雄たちのヴィクトリーロードのプレイにお役立てください。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTFBjLWJ5ZEh1MmxyaXlUT19FTFM4QzY5dTRhZ3p1Tk1UcllsWlZPV3RWQ25SWTF4YlJGbUJwVHhYTk5qQi1m?oc=5",
+      "article_type": "press_release",
+      "primary_category": "collaboration",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "VTuberキャスティングサービス『ぶいきゃす』によるNIKKE配信キャンペーンへ21名が参加したことを本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE0ydGV5dkVRTXR0VFJOQWlSYmE1MXlNTzVBWkgxUmJUQm5XWm5mSlB5V3NiMTQ4UUZrRDBvTndoSjVYQmZ2OWVjYzIwUV9USF9TbG9BTm9FRXV2dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 二刀流育成理論と作り方 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026サクセスの二刀流選手育成理論です。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/150844",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「」とTVアニメ 【推しの子】 のコラボ動画第2弾が、8月2日にTVアニメ【推しの子】公式YouTubeチャンネルにて公開された。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBTZ0UyMmkzTGZYTjRHTG1sdENlSXM3bWdaTnNJUFlGLWlqWDdfNE1oeXd4TU9Ucnk2b2xwdkd0QlY1YlFLNDhvMnI2eHl3cS12R3VJc09KNThkZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "collaboration"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.86,
+      "evidence_text": "本文ににじさんじコラボキャラクターの入手導線があるが、記事の主題はゲーム内通貨の攻略である。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5ydm15eGJ4bGVZelFzY1VSS0FaMGt6RE5IVlhFS3FJWFUyMDBzZHhmNUhpWkc4QzVDVktuWTFEQmtwcVYxZmQ5YUhWWFh5cDdxNGFN?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「ブルアカの戦術対抗最強は「シュン」「水着シロコ」「ドレスミチル」の3人だ。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE04dzF0cWlMbkxWTTV4bGV3dmJFdlozb2x3QkE4SWNKaXgzalZwM2hxZFF1d0xvNDlkLXR4cS1rTFFkTGtydjN2WFpaR1hELWV6SnZBZGI1dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "ホロライブドリームスのカード性能、編成または楽曲データを扱う攻略本文を確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://sizu.me/kuroinu2501/posts/nw6hhwr46rso",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「社会福祉法人職員の視点から・亜月ねね『みいちゃんと山田さん』アニメ化に関する騒動について 「最初に自分の職業なり属性なりを断り書きの様に書いてから内容に入る記事」というのが正直嫌いだ。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBmak9VVk1FYW9wMzdOU24yWHpNU29FUjdrbXp3SXFuRUdQeE5FRHNJOU1kNnh6X3NGNVNsRDVCRXN3cFVZTDNqWmhhem9lbWJ3UDlBTXNBdDZ3dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 橘みずきのイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 橘みずきのイベント内容や橘みずきの金特、声優(CV)についてまで掲載しています。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE05MmlpWG95dEUyZlpJa1hCZlBGS1RmUWZzcENzU1ppMjJGcE1pdVh2MVhxT3dNMHhHVUxsRDk1NnJ5WjZUSlhZdEh4MHNKM3dpMWZUX1R6MWt5QQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 黒珠真のイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 黒珠真のイベント内容や黒珠真の金特、声優(CV)についてまで掲載しています。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://www.afpbb.com/articles/-/3646706",
+      "article_type": "image_gallery",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「画像作成中 この写真にはショッキングな表現、または18歳以上の年齢制限の対象となる内容が含まれます。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBTcHVZRkxVUjVaQkFLbU9obzFNWDlsdGg2RUpxcVc4T0pJdTc0MnBoUGk4bVJOakJ0Xzk1SERpek1CN3gzMEg3NUpxX3hhbGFXUVhuQUp3Q2RJZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "collaboration"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "パワプロ2026栄冠ナインに、にじさんじライバーまたはコラボ要素が登場することを本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://realsound.jp/book/2026/08/post-2478382.html",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「『ぼっち・ざ・ろっく』に『BanG Dream!』に『ガールズバンドクライ』に『ロックは淑女の嗜みでして』と、大はやりのガールズバンドものに、ライトノベルから参戦したのが岬鷺宮の『神懸かれ、キラーチューン。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://note.com/milkprincess17/n/nedef2d966f5c",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「962 いしかわゆき（ゆぴ） | ライター・エッセイスト 2026年8月1日 20:00 だってとりあえず行動していたら人生が前に進んでいるような気がするじゃん。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://onsenhajimemashita.com/entry/2026/08/02/091602",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「日進舘をチェックアウトした後は、初日に訪れた「万座しぜん情報館」へ向かいます！」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    },
+    {
+      "article_url": "https://note.com/reading_monkey/n/n2c22764e066d",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.96,
+      "evidence_text": "本文で「1877年創設時の東京大学文学部は、史学・哲学・政治学と和漢文学から成っていた。」を確認したが、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-02T23:39:18Z"
+    }
+  ]
+}

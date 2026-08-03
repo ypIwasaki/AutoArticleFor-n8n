@@ -48,7 +48,10 @@
         <div class="activity-panel">
           <div class="panel-heading">
             <span>取得記事量</span>
-            <span id="activity-range" class="muted"></span>
+            <div class="activity-heading-actions">
+              <span id="activity-range" class="muted"></span>
+              <button id="activity-show-all" class="text-button activity-show-all-button" type="button">全体表示</button>
+            </div>
           </div>
           <canvas id="activity-chart" width="700" height="118" aria-label="日別の記事数"></canvas>
         </div>
@@ -116,6 +119,27 @@
         </aside>
       </section>
     </main>
+
+    <dialog id="activity-dialog" class="activity-dialog" aria-labelledby="activity-dialog-title">
+      <div class="activity-dialog-panel">
+        <div class="activity-dialog-heading">
+          <div>
+            <p class="eyebrow">ARTICLE VOLUME HISTORY</p>
+            <h2 id="activity-dialog-title">取得記事量・全期間</h2>
+          </div>
+          <form method="dialog">
+            <button class="icon-button" type="submit" aria-label="全期間グラフを閉じる">×</button>
+          </form>
+        </div>
+        <div class="activity-dialog-meta">
+          <span id="activity-dialog-range" class="muted"></span>
+          <span class="muted">横にスクロールして全期間を確認できます</span>
+        </div>
+        <div id="activity-dialog-chart-scroll" class="activity-dialog-chart-scroll" tabindex="0" aria-label="全期間の取得記事量グラフ">
+          <canvas id="activity-chart-all" height="260" aria-label="全期間の日別記事数"></canvas>
+        </div>
+      </div>
+    </dialog>
     <script src="page-state.js"></script>
     <script src="app.js"></script>
   </body>

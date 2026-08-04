@@ -1,0 +1,496 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-08-04",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「キャラ 簡易性能 [Energeticスプラッシュ！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBvRE5Zbm1QTFBkXzUzdVVuN2oxVEo3Z0NaRUpJQng3R1JRWFIyWWNRNU1BdmpiVDY3dWJEcUlzeW04cmdQNHktVXV1WklHSEtKSGNsSVBCZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「最強リーダーキャラは、「ロボ子さん」「戌神ころね」「風真いろは」など」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/151182",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "event",
+        "company_or_business"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「株式会社コレカティス（本社：東京都渋谷区、代表取締役：高橋大樹、以下：当社）は、CORECATIS VIRTUAL PROJECT所属のバーチャルライバー「水瀬んきゃ」「月守ルナ」「柊めあり」の3名によるオリジナルリードディフューザーの販売を、本日より開始いたしましたことをお知らせいたします」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE1vNHNyX2dTNkpyY2FZeGpvTFR2SFhyd3c1clY0UmpTenFXWVpyUGlVSUFnTmU3LUFIWlAtUWM0VFkwRjFwb1lpQTg5eW8?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event",
+        "game_or_technology",
+        "company_or_business"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「株式会社Award（本社：東京都港区、代表取締役社長：長谷勇希）は、リアルとバーチャルの境界を越えた新感覚の“ファッションショー×音楽ライブ”イベント「X VORDER RUNWAY（クロスボーダーランウェイ）」を、2026年9月27日(日)に幕張メッセ国際展示場 展示ホール1～4にて開催いたします」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBMYUE0eS1JLTA0TDJLMUpWTVV6TUZISExwVUpHVlNoZHQ4S29ha2c3RmQ2VmdsSjVMSWJ2dE5PaWpyeTJDWDBvWk93Nk9xOU16bFJfVWVYMA?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「だいたい3分くらいで特撮関連最新ニュースがわかる！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1vdlBxbFhpcVZwSFYzX19UYmtadWtjWVVKbFpmTmRfU1Uyel9SUlJ3bGN6TWZuaThZRzhtWWI3OFN2aWM5dExnd3JyRQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "collaboration",
+      "secondary_categories_json": [
+        "live_or_music",
+        "event",
+        "media_or_editorial"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「📎 でか美ちゃん主催 “でか美祭2026”タイムテーブル公開！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/151164",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「MicroGIGAbyteは1日、配信者を探す人と活動を届けたい配信者をつなぐ 「 STST（ストステ） 」の大型リニューアルを実施」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBDUk1KNl95Z0ZYZkZhdXNjMm5aN1M1SjcwS1BER2Fwb0tWQ29McGtFSGJqNlpneVA5ODVjT0FLem9pdXhaMjBmcnBTV3FqUQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「on ICE』諏訪部順一さんによるヴィクトルの新規ナレーションを収録！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5wSUc1WDBTZk5lb3kwdHpFLW1WUnNUUTFVZGVBOFA3eG5EdV9Fd2cybEZiczlGZWNFNkh0Y25NUksyYVNoVUd3V3M2SVRNeFk?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "collaboration"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「｜骨を漁る男【ウィザードリィダフネ】 | AppMedia ウィザードリィダフネ攻略wiki｜ウィズダフネ AppMediaトップ ウィザードリィダフネ攻略wiki｜ウィズダフネ FFコラボキャラはどれを選ぶべき？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBWYVB1QmJMek9uV2liUjFzSlhEZU1kQXhhdlo3SWZ3QUk1OVVoNlJlaTFzcjFIRlhkSGk1MFFsbFNyRF96emZfMDF6TWUtUUk?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "collaboration"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「【ウィザードリィダフネ】 | AppMedia ウィザードリィダフネ攻略wiki｜ウィズダフネ AppMediaトップ ウィザードリィダフネ攻略wiki｜ウィズダフネ FFコラボガチャは引くべき？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBBM0hEenF5TWw2NmVvRTJ0VHFGR1piNHlQRjI5SlJoNEVXSkdSM3l4NmVPT21RcXltMjItc0pud2JoVXpJWG1kcjZIR3pMQkdxeDJoMXpPbw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「ホロドリのリセマラ当たりキャラは、「百鬼あやめ」「獅白ぼたん」「パヴォリア・レイネ」など」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBrTXRxUjA3ZHRFTEpqSHBZdklTQnZOQTItc1JxZTNvUmxxY2llNzZwS3FYQVA4U3JERXZFR091NHJhV0E3UG1vWlR5S2ZYRnZPeXN5cUtYSHZvcEh1U1VBb0FYM1RnZ3dicUE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「水戸はJ1残留争いにおいて、ジェフのライバルとなりえる相手ですから、そのクラブからこのタイミングに主力選手を引き抜いたというのは、かなり重い意味合いの補強ではないかと思います」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9TeWlKRjJkSk50dXRuZzRidncwUExYcTkxZkwxN0w2c1BYLUxzc3BONi1XQ245RUJMbXN4VXVkZmdRZFdQdGZnby1ZTlFMOFI1NjBLWWhLWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music",
+        "media_or_editorial"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス 最強編成とおすすめパーティ【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス/ほろどり)の最強編成(最強パーティ編成)とおすすめチーム編成です」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE04dzF0cWlMbkxWTTV4bGV3dmJFdlozb2x3QkE4SWNKaXgzalZwM2hxZFF1d0xvNDlkLXR4cS1rTFFkTGtydjN2WFpaR1hELWV6SnZBZGI1dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "product_or_goods",
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス リセマラ当たり ときのそらのカード・楽曲一覧【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)におけるときのそらのキャラ・カード一覧です」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://nuryouguda.hatenablog.com/entry/2026/08/04/013135",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「前回の記事では椅子を買ったとか風邪を引いたとか、そういうことを書いていたら読者が一人増えたり一人減ったりした」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9jWFJ4MDkxOW1nWkhiQzVaV0ZLdVNWMm5wQkMwb3RaUFpFT3hiendBR21aZTdxZ1ZyX1JZRnpaMS0tRngwSUR1NTV2aXdwRTVWeGY5OXRwSUZnQQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 四条澄香のイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 四条澄香のイベント内容や四条澄香の金特、声優(CV)についてまで掲載しています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE05MmlpWG95dEUyZlpJa1hCZlBGS1RmUWZzcENzU1ppMjJGcE1pdVh2MVhxT3dNMHhHVUxsRDk1NnJ5WjZUSlhZdEh4MHNKM3dpMWZUX1R6MWt5QQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 黒珠真のイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 黒珠真のイベント内容や黒珠真の金特、声優(CV)についてまで掲載しています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFB0eFdWRXByNWxJcEZqRHpIQ0M5NUgxNmVJQnhYLW9RREs0OXlPM0ZhUEYxbWVFZDByY2QzVWtnd0xCd1pBOWJNVU55Z1ptckg3S0c3MWY5SE1ndw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「画像・写真 HIMEHINA、VTuber初となる単独ワールドツアー・グランドフィナーレ公演のライブ配信＆見逃し国内独占配信決定(1/1) | WEBザテレビジョン 「HIMEHINA WORLD Tour 2026 GRAND FINALE 2Days」をHuluでライブ配信＆見逃し国内独占配信決定 (C)LaRa Inc. にじさんじ・叶がリスナーへ感謝を伝える「皆のおかげで幸せに過ごせました」関わりの深いゲストたちも登壇 2026」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBTZ0UyMmkzTGZYTjRHTG1sdENlSXM3bWdaTnNJUFlGLWlqWDdfNE1oeXd4TU9Ucnk2b2xwdkd0QlY1YlFLNDhvMnI2eHl3cS12R3VJc09KNThkZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.82,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 PP(パワポイント)の効率的な入手方法 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026でコラボしているにじさんじのキャラクターは、栄冠ナインでスカウトすることができる」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBmak9VVk1FYW9wMzdOU24yWHpNU29FUjdrbXp3SXFuRUdQeE5FRHNJOU1kNnh6X3NGNVNsRDVCRXN3cFVZTDNqWmhhem9lbWJ3UDlBTXNBdDZ3dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 橘みずきのイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 橘みずきのイベント内容や橘みずきの金特、声優(CV)についてまで掲載しています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1kTlpvZFBWUmlhYjlFekJDb0FaZHVlelNQakstUUwtMnBFY2hqQTdBSlJXVUJoUHZ4WC1uN2w5N2JqeVZaSjI3TzJob2NZSVdrNG03MG52aG1IaF9EVTR6blkwMA?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「バーチャルライバーグループ「にじさんじ」に所属し、圧倒的な歌唱力と精力的な音楽活動で高い人気を誇るVTuber・ 緑仙（りゅーしぇん）」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://ranchosmemo.hatenablog.com/entry/2026/08/03/190742",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「みなさんは、【◎文の枝豆豆腐】（写真 上）を見れば、どのようなお味を想像するでしょうか？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://www.tuberculin.net/entry/2026/08/03/%E3%80%90%E5%BE%A9%E8%88%88%E6%94%AF%E6%8F%B4%E3%80%91%E5%85%83%E6%B7%BB%E4%B9%97%E5%93%A1%E3%81%8C%E3%81%8A%E3%82%B9%E3%82%B9%E3%83%A1%E3%81%99%E3%82%8B%E7%86%8A%E6%9C%AC%E7%9C%8C%E3%81%AE%E3%81%8A",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「トップ > 【保存版】 > 【復興支援】元添乗員がおススメする熊本県のお土産まとめ このたびの令和8年熊本地震により被災された皆さまに心よりお見舞い申し上げます」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/150985",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "company_or_business",
+        "community_or_fan"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「株式会社サミーネットワークスが運営するPC向けパチンコ・パチスロオンラインゲーム「777TOWN.net」（スリーセブンタウン・ドットネット）は、2026年8月8日（土）、16日（日）の2日間にわたり総勢12名のVTuberによる『打って応援！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNdHd1X2l6UUpGbG8xNFhsSFdQR0lBeUZWSGxjVG9Md0FJZUxOVDZIODFZdmE2TC00QzdxbFBkZkZqN3hWUkFOQ0NNZDFibkEwc1lUWXJPeUhReFlaLUR1ZzNjaGVhT0pUa1hKT0tiQ1BLOFBFZlhIdkktUGkxTG9VX25fZF9zdll3dU5QZWtmX1BqUQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ＢＳテレ東 2026年8月4日(火) 19時00分～21時00分 前へ 次へ 世界ランク上位32名が横浜に集結▼日本人トップ世界ランク3位の松島輝空＆張本美和を筆頭に昨年王者・張本智和ら最強日本が世界と激突！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5BTFVjUVRWMkw4azBxVEVadXgtbGFKdWhrdjFoYVE5ZGVadUJEYjRxVjl1VWs2enhmVEVfYm0xRTh1aU9xRnJRb0lHZVhqZU15dnNn?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ イナイレV攻略wiki｜イナズマイレブン英雄たちのヴィクトリーロード 属性相性の仕組み【ヴィクトリーロード】 AppMedia株式会社 https://appmedia.jp/ AppMedia 属性相性の仕組みをまとめていますので、イナズマイレブン(イナイレ)新作 英雄たちのヴィクトリーロードのプレイにお役立てください」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE0ydGV5dkVRTXR0VFJOQWlSYmE1MXlNTzVBWkgxUmJUQm5XWm5mSlB5V3NiMTQ4UUZrRDBvTndoSjVYQmZ2OWVjYzIwUV9USF9TbG9BTm9FRXV2dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 二刀流育成理論と作り方 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026サクセスの二刀流選手育成理論です」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5pbnNZd1lQQzBSVDRjcGFKeUpmSjlTOFAwQ0VXN0pfLUtXSlV2TWlPR1RCQ0NDZGRUVkZMOFRrWV9vUTdYYTMtN1hkQmYwYVE5bWx1UXc5VVdhQQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 継承選手の作り方 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026サクセスにおける継承選手の作り方について掲載しています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBpTWhWb3NIQTg3c0h1LTZDUGY5Z0lFYUNSNzhRRm51bk1PcXJ4MUJTcjkwVEE4UkowWWFHMzczOWFhc21HajFfMm1NNDFjT1BObzBrM1NMLUFYZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 友沢亮のイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 友沢亮のイベント内容や友沢亮の金特、声優(CV)についてまで掲載しています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://note.com/aako_seo/n/ncd4cd73dc0a6",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [
+        "product_or_goods",
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「)MCPについて 非エンジニア,どなた様でも理解できるようにわかりやすく書きたいと思います」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/150646",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「東京タワー・フットタウン3階に「 VR BASE TOKYO 」が2026年7月18日（土）から9月6日（日）の期間限定でオープン」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/150925",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「株式会社KADOKAWA（以下：KADOKAWA）と株式会社mikai（以下：mikai）は、mikaiが運営する「Re:AcT」と「Re:AcT Gaming」、それぞれに所属するバーチャルタレント（VTuber）が、KADOKAWAが提供するYouTubeMCN「CSP（クリエイターサポートプログラム）」の利用を開始したことをお知らせいたします」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/150920",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「ANYCOLOR株式会社(本社：東京都港区 代表取締役：田角陸、以下「当社」)が運営するVTuber / バーチャルライバーグループ「にじさんじ」「NIJISANJI EN」は、「にじさんじ Christmas Wear 〜DD Sweater Style〜」グッズの受注販売を2026年8月3日(月)19時(JST)から開始いたします」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBTcHVZRkxVUjVaQkFLbU9obzFNWDlsdGg2RUpxcVc4T0pJdTc0MnBoUGk4bVJOakJ0Xzk1SERpek1CN3gzMEg3NUpxX3hhbGFXUVhuQUp3Q2RJZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.82,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 栄冠ナイン 新要素・変更点まとめ AppMedia株式会社 https://appmedia.jp/ AppMedia にじさんじ所属のVTuber「舞元啓介」「椎名唯華」「リゼ・ヘルエスタ」「五十嵐梨花」の4名が選手として栄冠ナイン本編に初登場」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/150900",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music",
+        "company_or_business",
+        "media_or_editorial"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「株式会社BiPSEE （本社：東京都渋谷区、代表取締役社長兼CEO：松村雅代、以下「BiPSEE」）は、東京大学の研究者らによる研究プロジェクトに参画し、Vライバー事務所を運営するボンド株式会社（本社：東京都渋谷区、代表取締役：住吉良介、以下「bond」）の協力のもと、bond所属のVライバー193名を対象とした質問紙調査の実施に協力しました」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/150895",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「株式会社ソニー・ミュージックエンタテインメント（本社：東京都千代田区、代表取締役社長：岩上 敦宏）は、バーチャルタレント育成&マネジメントプロジェクト「VEE」の公式オンラインショップ「VEE Official Shop」にて、所属バーチャルタレント「音門るき」のバースデーグッズの受注販売を開始したことをお知らせします」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE92bnA3elVrdnljdi1nbnZJRXNGZlVWbUNZWlBaS0ZCRXlnNGQ4bmZud2otOTlFLU5JNHNvb0pBbTczTDBOLXpNcU5hV1hQWG5BVkdyZGh1d015dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 虹谷誠のイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 虹谷誠のイベント内容や虹谷誠の金特、声優(CV)についてまで掲載しています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://www.akinonbiri.work/entry/breath-of-fire-3",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ブレスオブファイア初見攻略週刊まとめ - あきののんびりゲームブログ トップ > 【週刊まとめ】ディース＆モグが仲間に！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    },
+    {
+      "article_url": "https://mainichi.jp/articles/20260802/k00/00m/040/080000c",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「【夏得】最初の3カ月50%OFFで読み放題キャンペーン中！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-03T23:34:18Z"
+    }
+  ]
+}

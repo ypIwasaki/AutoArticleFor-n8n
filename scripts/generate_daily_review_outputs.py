@@ -186,6 +186,28 @@ MANUAL_NEW_TALENTS = (
     ("水瀬んきゃ", "CORECATIS VIRTUAL PROJECT"),
     ("月守ルナ", "CORECATIS VIRTUAL PROJECT"),
     ("柊めあり", "CORECATIS VIRTUAL PROJECT"),
+    ("葉桜めぐ", ""),
+    ("因幡はねる", ""),
+    ("羽流鷲りりり", ""),
+    ("絵葉ましろ", ""),
+    ("夢喰ゼロ", "Avivi"),
+    ("蒼真なひろ", ""),
+    ("小廻こま", "ミリプロ"),
+    ("小鳥遊こばと", ""),
+    ("あかつきるき", ""),
+    ("百瀬ヒバナ", ""),
+    ("メラ・アカル", ""),
+    ("天結ひいろ", ""),
+    ("ことりゆうい", ""),
+    ("柊さんた", ""),
+    ("雛森アンシア", ""),
+    ("ルチア・ラエティティア", ""),
+    ("碓氷ゆら", ""),
+    ("輝常うどん", ""),
+    ("花京院ちえり", ".LIVE"),
+    ("神楽すず", ".LIVE"),
+    ("カルロ・ピノ", ".LIVE"),
+    ("ヤマト イオリ", ".LIVE"),
 )
 
 
@@ -221,6 +243,7 @@ def build_talent_proposal(
     state: dict[str, dict[str, Any]],
 ) -> tuple[dict[str, Any], str]:
     registry = [normalized_talent(row) for row in load_existing_talents()]
+    registry_ids = {talent["talent_id"] for talent in registry}
     by_name = {talent["display_name"]: talent for talent in registry}
     for name, organization in MANUAL_NEW_TALENTS:
         if name not in by_name:
@@ -235,9 +258,16 @@ def build_talent_proposal(
         if status not in {"verified", "metadata_only"}:
             continue
         title_text = compact_text(article.title)
-        body_text = compact_text(verified_text)
+        # The saved summary is suitable for classification, but performer lists
+        # and multi-talent relationships often appear later in the verified body.
+        # Limit the review window so shared navigation/related-article blocks near
+        # the end of long pages do not become relationship evidence.
+        saved_body = str(capture.get("contentText") or state_entry.get("content_text") or verified_text)
+        body_text = compact_text(saved_body[:10000])
         context = f"{title_text}\n{body_text}"
         scope_context = bool(re.search(r"VTuber|Vチューバー|バーチャル(?:ライバー|YouTuber)|にじさんじ|ホロライブ", context, re.IGNORECASE))
+        if not scope_context:
+            continue
         for talent in by_name.values():
             title_matches = aliases_in_text(talent, title_text, allow_short=scope_context)
             body_matches = aliases_in_text(talent, body_text, allow_short=False)
@@ -248,7 +278,7 @@ def build_talent_proposal(
             if title_matches:
                 matched_fields.append("title")
             if body_matches:
-                matched_fields.append("verified_summary" if status == "verified" else "public_metadata")
+                matched_fields.append("verified_body" if status == "verified" else "public_metadata")
             used_talents[talent["talent_id"]] = talent
             relation_key = stable_id("relation", f"{article.article_key}|{talent['talent_id']}")
             relations[relation_key] = {
@@ -270,7 +300,11 @@ def build_talent_proposal(
         "talents": sorted(used_talents.values(), key=lambda row: (row["display_name"], row["talent_id"])),
         "articleTalents": sorted(relations.values(), key=lambda row: (row["article_key"], row["talent_id"])),
     }
-    new_talents = [row for row in payload["talents"] if row["status"] == "pending" and row["auto_discovered"]]
+    new_talents = [
+        row
+        for row in payload["talents"]
+        if row["status"] == "pending" and row["auto_discovered"] and row["talent_id"] not in registry_ids
+    ]
     markdown = [
         f"# Talent Index Proposal - {run_date}",
         "",
@@ -408,6 +442,12 @@ def build_classification_proposal(
         in_scope = title_scope or body_scope
         relevance = "in_scope" if title_scope else "low_relevance" if body_scope and kind == "guide_or_database" else "in_scope" if body_scope else "out_of_scope"
         found_categories = categories(article, source_text, kind, in_scope)
+        if "VTuber事務所" in article.title and "デビュー" in article.title:
+            found_categories = list(
+                dict.fromkeys(["company_or_business", "talent_activity", "game_or_technology", *found_categories])
+            )
+        elif "VTuber対応！キャラクターデザイン専攻" in article.title:
+            found_categories = list(dict.fromkeys(["company_or_business", "game_or_technology", *found_categories]))
         primary = found_categories[0]
         secondary = [item for item in found_categories[1:] if item != primary][:3]
         rows.append(

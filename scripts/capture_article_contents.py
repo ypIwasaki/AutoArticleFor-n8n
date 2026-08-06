@@ -120,11 +120,11 @@ def main():
   except Exception as x:print("warning: Data Table sync disabled: "+str(x),file=sys.stderr)
  print(f"articles={len(arts)} cached={len(e)} pending={len(todo)}")
  for i,x in enumerate(todo,1):
-  e[x.url]=capture(x,keys.get(x.url,""),f,ca,old.load_keywords());archive(e);save(e,ca)
+  e[x.url]=capture(x,keys.get(x.url,""),f,ca,old.load_keywords());archive_run(record_arts.values(),e);save(e,ca)
   if c:
    try:upsert(c,e[x.url])
    except Exception as z:print("warning: Data Table sync failed: "+str(z),file=sys.stderr)
   print(f"[{i}/{len(todo)}] {e[x.url]['status']}: {x.title[:90]}")
- archive(e);archive_run(record_arts.values(),e);save(e,ca)
+ archive_run(record_arts.values(),e) if a.run_date else archive(e);save(e,ca)
  if a.write:old.write_summaries(arts,e)
 if __name__=="__main__":main()

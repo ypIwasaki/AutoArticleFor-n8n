@@ -208,6 +208,16 @@ MANUAL_NEW_TALENTS = (
     ("神楽すず", ".LIVE"),
     ("カルロ・ピノ", ".LIVE"),
     ("ヤマト イオリ", ".LIVE"),
+    ("浅葱ルマ", ""),
+    ("ChumuNote", ""),
+    ("天使エル", ""),
+    ("結目ユイ", ""),
+    ("九条林檎", ""),
+    ("朔栖まよ", ""),
+    ("天川はの", "Re:AcT"),
+    ("レイラ・サマ", "Re:AcT"),
+    ("葵空かのん", "ラブボックス"),
+    ("狗森よもぎ", "ラブボックス"),
 )
 
 
@@ -439,9 +449,30 @@ def build_classification_proposal(
         kind = article_type(article, capture)
         if kind == "guide_or_database" and not title_scope:
             body_scope = re.search(r"にじさんじ所属のVTuber|コラボしているにじさんじ", verified_text[:500], re.IGNORECASE) is not None
+        elif not title_scope:
+            body_scope = re.search(
+                r"にじさんじ所属|ホロライブ(?:所属|プロダクション)|VTuber(?:プロダクション| / バーチャルライバーグループ)|バーチャルライバーグループ",
+                verified_text[:800],
+                re.IGNORECASE,
+            ) is not None
         in_scope = title_scope or body_scope
         relevance = "in_scope" if title_scope else "low_relevance" if body_scope and kind == "guide_or_database" else "in_scope" if body_scope else "out_of_scope"
+        official_talent_video = (
+            kind == "video_or_stream"
+            and "投稿者・チャンネル: 月ノ美兎" in verified_text
+        )
+        if official_talent_video:
+            in_scope = True
+            relevance = "in_scope"
         found_categories = categories(article, source_text, kind, in_scope)
+        if "ほの暮しの庭" in article.title:
+            found_categories = ["game_or_technology", "talent_activity", "media_or_editorial"]
+        elif "らびぱれ!!" in article.title and "Money Chance" in article.title:
+            found_categories = ["live_or_music", "event", "talent_activity"]
+        elif "よこてエンタメつくり手まつり" in article.title:
+            found_categories = ["event", "community_or_fan", "company_or_business"]
+        elif official_talent_video:
+            found_categories = ["media_or_editorial", "talent_activity"]
         if "VTuber事務所" in article.title and "デビュー" in article.title:
             found_categories = list(
                 dict.fromkeys(["company_or_business", "talent_activity", "game_or_technology", *found_categories])

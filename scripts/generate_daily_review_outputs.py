@@ -218,6 +218,22 @@ MANUAL_NEW_TALENTS = (
     ("レイラ・サマ", "Re:AcT"),
     ("葵空かのん", "ラブボックス"),
     ("狗森よもぎ", "ラブボックス"),
+    ("ゆめみなな", "ゆめかいろプロダクション"),
+    ("赤衣アカメ", "ハコネクト"),
+    ("星ノ音コロン", "ハコネクト"),
+    ("天海くりね", "ハコネクト"),
+    ("明堂しろね", "ハコネクト"),
+    ("華糖シェリー", "ハコネクト"),
+    ("雫川なのか", "ハコネクト"),
+    ("翠森アトリ", "ハコネクト"),
+    ("卯夢月めお", "ハコネクト"),
+    ("華埜エレノア", "クインテ"),
+    ("心奏みこ", "Espoiris"),
+    ("風花のぞみ", "Espoiris"),
+    ("闇月リリム", ""),
+    ("雛乃木まや", ""),
+    ("鯨野アイカ", ""),
+    ("虹深°ぬふ", "ミリプロ"),
 )
 
 
@@ -464,7 +480,24 @@ def build_classification_proposal(
         if official_talent_video:
             in_scope = True
             relevance = "in_scope"
+        reviewed_business = "Activ8" in article.title or "Kizuna AI、エージェント契約" in article.title
+        if reviewed_business:
+            in_scope = True
+            relevance = "in_scope"
+
         found_categories = categories(article, source_text, kind, in_scope)
+        if reviewed_business:
+            found_categories = ["company_or_business", "collaboration", "talent_activity"]
+        elif "デコって！ホロライブシールバトル" in article.title:
+            found_categories = ["game_or_technology", "product_or_goods", "talent_activity"]
+        elif "ダイジェスト映像" in article.title and "大型ビジョン" in article.title:
+            found_categories = ["live_or_music", "media_or_editorial", "talent_activity"]
+        elif "にじ甲2026" in article.title or "にじさんじ甲子園2026" in article.title:
+            if "協賛" in article.title:
+                found_categories = ["collaboration", "event", "product_or_goods"]
+            else:
+                found_categories = ["event", "game_or_technology", "live_or_music"]
+
         if "ほの暮しの庭" in article.title:
             found_categories = ["game_or_technology", "talent_activity", "media_or_editorial"]
         elif "らびぱれ!!" in article.title and "Money Chance" in article.title:

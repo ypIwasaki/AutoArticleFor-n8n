@@ -284,7 +284,7 @@ def weekly_report_metadata(markdown: str, path: Path) -> dict[str, str]:
         "weekStart": path.stem,
         "weekEnd": "",
         "coveredThrough": "",
-        "title": "Weekly News Research Report",
+        "title": "週次ニュース調査レポート",
         "generatedAt": "",
     }
     match = WEEKLY_REPORT_FRONT_MATTER_PATTERN.match(markdown)

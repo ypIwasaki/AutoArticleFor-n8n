@@ -156,7 +156,7 @@
     elements.list.innerHTML = state.reports.map((report) => {
       const active = report.weekStart === state.selectedWeekStart;
       const range = report.weekEnd ? report.weekStart + ' - ' + report.weekEnd : report.weekStart;
-      return '<button type="button" class="weekly-report-list-item' + (active ? ' is-active' : '') + '" data-week-start="' + html(report.weekStart) + '" aria-pressed="' + String(active) + '"><span class="weekly-report-list-date">' + html(range) + '</span><strong>' + html(report.title || 'Weekly News Research Report') + '</strong><span>' + html(report.summary || '内容を表示') + '</span></button>';
+      return '<button type="button" class="weekly-report-list-item' + (active ? ' is-active' : '') + '" data-week-start="' + html(report.weekStart) + '" aria-pressed="' + String(active) + '"><span class="weekly-report-list-date">' + html(range) + '</span><strong>' + html(report.title || '週次ニュース調査レポート') + '</strong><span>' + html(report.summary || '内容を表示') + '</span></button>';
     }).join('');
     elements.list.querySelectorAll('[data-week-start]').forEach((button) => {
       button.addEventListener('click', () => {
@@ -180,7 +180,7 @@
     try {
       const report = await requestJson('/api/weekly-reports/' + encodeURIComponent(state.selectedWeekStart));
       document.title = report.weekStart + ' 週間レポート | Talent Index';
-      elements.title.textContent = report.title || 'Weekly News Research Report';
+      elements.title.textContent = report.title || '週次ニュース調査レポート';
       elements.period.textContent = report.weekStart + (report.weekEnd ? ' - ' + report.weekEnd : '');
       elements.meta.textContent = '収集済み: ' + (report.coveredThrough || '-') + (report.generatedAt ? ' / 更新: ' + formatDate(report.generatedAt) : '');
       elements.content.innerHTML = markdownToHtml(report.markdown);

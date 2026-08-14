@@ -1,0 +1,468 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-08-14",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFAwNVh6dlByMV9fX1FSMWRmYmlzSTEySUFJY0Z2ZmwzeU1HMEFiZE1pcGhrYVRqWWJZOHJsRlJ2YjZ1d1dheEtZUDJ4MHk2VjBPLVlnci13ZlNkWW02MlNYNmgtMWdkd1BqdzBCZtIBdEFVX3lxTE81bjBIRm5pUWtNY2lqUlMzeTlUSDZlTXpWb0ZBTHc5NTJQX1RSOHRuX2U1QnNWdDg1akoycldPTUxxQlhYWElHT195UnR6Vi1OVHZXOWZzMkpMMEZkdlZaUzZVYXBUR0lSVGxDc3Zta0E3MWwx?oc=5",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「フランスギャロの公式Xは13日、ジャックルマロワ賞（G1、芝直線1600メートル、16日＝ドーヴィル）にシュトラウスを送り出す武井亮調教師（45）のインタビュー動画を投稿した」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9TeWlKRjJkSk50dXRuZzRidncwUExYcTkxZkwxN0w2c1BYLUxzc3BONi1XQ245RUJMbXN4VXVkZmdRZFdQdGZnby1ZTlFMOFI1NjBLWWhLWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスの編成例とチーム編成の考え方を掲載する攻略記事である。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ホロライブドリームスに登場するホロライブ所属キャラクターの性能と評価順位を掲載する攻略記事である。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1RS1lEQWNwNGR5ZzZKZENZcjY5S3EtMm81ZE43T2pUVThjTWozR0pEWVE1OUVqekJFSW5raVdvelJYamowcDdXanV3NDhSVEpqaFg4cDVSY2pOaVFDdDl1bHQ2UEdxaG9GRUNsOEVPTnE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「サッカーJ3のAC長野パルセイロでプレーする熊本県出身の樋口叶選手（25）が7月28日に故郷を襲った地震に心を痛めている」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE41bFgtMmdFQ1l1MkpHajlzZndCOUtiQUp0dzFMRFljUmVwVHd0TGxXRkN2NlFLbGVXNkMzOGZrVEZjRkFmbHlVUExKaUVoR19Ob1N2cEd4UElwejNDenJZMnRTTUtyeWxK?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [
+        "community_or_fan"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "カバーは、誹謗中傷の水準に達しない虚偽情報にも公式見解を適時に示せる仕組みを検討していると説明した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9acnctSjRMN2IyRmdpcDhORlVCXy16a0hmVVdqYzFjSkdIU0czLTBTdTVxM2hKRk55Skc5ME1icW5YTU40a1FsaVRVYUtlMTU2bzJJcUlTZVdOV1lRdktqbTJmRFh3czdkVUE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music",
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "KDDIはGalaxy Z Fold8と5Gミリ波を使ったVTuberスペシャル3Dトークライブを開催した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBZQVBnQVJ1dTFiUEdkRENxZXFoU3pzS3ZXa2dLQjZDRzRpVk9TU1RwSHVMSkl1aXB6RG5LSWxBaVNYaGk2M3pRNXpfT04?oc=5",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「現役看護師でラウンドガールなどとして活躍中の桃里れあが、14日までにXを更新」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE1yeHp6N1dVRFNtTFBJaUNGUDhoeW9UQm0wSURCQjNYalRJblpfQkIyemRpaUtESDJTb3lIaW41Nmt2QzJmSjdfaTMxYno?oc=5",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「気象予報士の吉井明子が12日にinstagramを更新し、タイトなニットワンピース姿を公開」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1TNTBrRXJMOVE1eDFqQjZ1bUxnYXZKOEg5WjBBWEFoX09Pb2xRdWttcVRmUDhrRDRfYWk4dnh1R0RpOHM1Q2NsbXdiZnBWbDlWUzhCaG91bWZIS2N1d0VGdnpDS21hLXdWck1oZzQ5d9IBdEFVX3lxTE95dG1SNXR6T3Via004dGZwSmtmMTdYWkxiVTNfOEJPVU90NW9PRnJEanFTcTBNQlg2NXdlUC1adkhXSTVsN0hwR2lfTlA5QkVmSUE2WUkwcG03dTJTbkswVHRDUmJ5ZGFmWUlZR2Q2R043T1Mx?oc=5",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「６回、坂本（手前）に逆転２ラン本塁打を打たれた西舘（カメラ・中島 傑） このカードは７勝１３敗となり、５試合を残してシーズンの負け越しが確定した」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE0yNmJzZ0JQUGs2ZnRFaG1JQVZ4eXdPVklOa21mOG5oeVVYclZsUWpuQWdYQ3RQdDhBU0hPRnZGcWppYmFUbTRBdkFERDF6aWF5VWkxcFc3Nzdodlhod2xLRHZTMA?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「気合いを入れるペルソナだったが、バトルを前にゼロから決戦進出を告げられ戸惑う」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE94SXE2bFFUVTBnU056aVZqSFV4UVRZMVFBbWVCRUctdEk5TG90NzhYdXhRYW8zUTI1ck9KZWhxTXRiVG9oRnZhNktGaVF2SEdWVHM1MjVoeEJPQmRNYmN1eg?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「■第６０回琉球古典芸能コンクール／舞踊・新人部門（２日目） 琉球新報ホール＝午前１０時 ■キッズビレッジカーニバルｉｎトミトン 豊崎ライフスタイルセンターＴＯＭＩＴＯＮ １階催事場＝午後１時～同６… 表示しているページは、琉球新報デジタルベーシック（月額1,500円税込）の購読が必要となります」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9uQU90bmF6NUxrR1RrWWZXVENpeWhjWWdzbGtSZV9yRmV2ZkpiNm5SRWRzV08yQU83T2dhQmNoQ0l5ZEwwYUJnTE5rX2pBUQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "8月27日放送の「ナインティナインのオールナイトニッポン」にレイザーラモンが出演し、盆踊り企画を行う。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1JN2ZvSzJmLVBvUUlkTUo5a0h1UXZnQ2xpVjZSTWZXd3pUaUVTa2FESFQya0RiMEdvczE1SmVsY3Qta3ppanJIR1BBdVFmX3F3RExwazZ4UXY3VUtWNExhc0hnMA?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「そんな時リコたちはねむりを研究するネロリ博士に出会う」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5SWDNvcnhqTlhmRlJoakRDUkpaVl85cWM5TjNBOFVteEZqTjlKTTRzMmtwWDdhaDRuRzZrOFlDVHpuWDZfanhERDRINmJhMG9yaDVSeg?oc=5",
+      "article_type": "official_announcement",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "にじさんじはSpecialeの5名による2周年記念商品11種類を8月13日18時から販売した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/152535",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event",
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「2026年8月7日（金）、「Zepp Namba」（大阪府大阪市）とライブ配信プラットフォーム・ASOBI STAGEでのxRライブストリーミング（以下、xRライブ）にて「 dual twin live tour 三浦 あずさ・秋月 律子 twin live “ つみまつよるまち ” 」の [OSAKA SILENTCITY LOVE] 公演が開催された（冒頭部分の無料配信は こちら ）」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://gigazine.net/news/20260813-tldv-data-hack/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "会議記録サービスtl;dvで、18万1874件の会議メタデータを横断取得できる脆弱性が報告された。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBWYVB1QmJMek9uV2liUjFzSlhEZU1kQXhhdlo3SWZ3QUk1OVVoNlJlaTFzcjFIRlhkSGk1MFFsbFNyRF96emZfMDF6TWUtUUk?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "collaboration"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「【ウィザードリィダフネ】 | AppMedia ウィザードリィダフネ攻略wiki｜ウィズダフネ AppMediaトップ ウィザードリィダフネ攻略wiki｜ウィズダフネ FFコラボガチャは引くべき？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://www.bengo4.com/c_23/n_20782/",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [
+        "talent_activity",
+        "community_or_fan"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.99,
+      "evidence_text": "にじさんじの夢月ロアがデマ配信による名誉毀損について提起した訴訟で和解が成立し、いじめをした事実は存在しないことが確認された。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://feel-interface.com/articles/002/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「最近、ChatGPTの音声機能 GPT-Live にはまっている」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://www.afpbb.com/articles/-/3648263",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "エトナ山の噴火で観光客が殺到し、地元ガイドは軽装や単独での登山に警戒を呼びかけた。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/152723",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「VRヘッドセットおよびXRデバイスを開発・製造するDPVR（大朋VR）は、商用PC VRヘッドセット「DPVR E4」を搭載したマルチセンサー型VRアトラクション「Hyperdeck」が、米国イリノイ州シャンバーグのAndretti Indoor Karting & Games最新大型複合エンターテインメント施設で稼働していることをお知らせします」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/152715",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "product_or_goods",
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「西日本旅客鉄道株式会社（本社：大阪市北区、代表取締役社長：倉坂 昇治）、株式会社JR西日本コミュニケーションズ（本社：大阪市北区、代表取締役社長：荻山 市朗)は、2026年8月14日(金)にVRChat上で展開する「バーチャル広島駅 2.u」において、ワールドのリニューアルを実施します」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/152707",
+      "article_type": "news_article",
+      "primary_category": "collaboration",
+      "secondary_categories_json": [
+        "product_or_goods",
+        "company_or_business"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「VTuberインフルエンサーマーケティングを手がける株式会社AttendMe（本社：東京都千代田区）は、27名のVTuberとコラボレーションしたオリジナルラベルの缶入りデニッシュパン「推カン」の受注受付を開始した」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/152700",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "company_or_business"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.98,
+      "evidence_text": "IRIAMはコミックマーケット108へ出展し、入賞ライバーの掲出と利用者投稿の切り抜き動画上映を案内した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://lethain.com/decisions-not-dates/",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「One thing that bothered me about Imprint’s product after joining was our lack of passkey support. Passkey support is a rare opportunity to increase resiliency to phishing attacks while simultaneously reducing login frict」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://kagenogori.hatenablog.jp/entry/2026/08/13/151723",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「日本の各地には 神社等の聖地を 「北斗七星」 の形に結び付けて、ある種の「結界」を形成 している例が、いくつもあるらしい」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE91Y2NlaHZzeXRzbmZGcW5hMHI3Y1d0MVlwMWQtZ181cDVYU0dMaVo5bWJ2WmtzTkRBZE1tb2V0SXZWb1U1VVBWSWFKWGU2MFd0QmJZ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ ブルアカ攻略wiki｜ブルーアーカイブ 天下一蟹・武術大会の攻略とおすすめキャラ｜カニキング AppMedia株式会社 https://appmedia.jp/ AppMedia ブルアカミニゲーム天下一蟹・武術大会の攻略のポイントとおすすめキャラを掲載しています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://www.anycolor.co.jp/news/sddqme5p5",
+      "article_type": "official_announcement",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [
+        "talent_activity",
+        "community_or_fan"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "ANYCOLORは夢月ロアに対するいじめの事実が存在せず、相手方が虚偽情報に基づく配信だったと認め謝罪する内容で和解したと発表した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://blog.helsing.ai/posts/on-comments/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「For the past decade or so, my syntax highlighting configuration has had an odd quirk in it: code comments are bright orange, not the standard faded grey. I wanted to force myself to get better at documenting code, and wh」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://www.businessinsider.jp/article/2608-how-much-did-major-generative-ai-service-fees/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「2026年7月の生成AIサービスのニュースと、8月時点の価格をまとめた」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://note.com/high_city/n/n376f7fefe27c",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "product_or_goods"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「１．概要 「琵琶湖三市同時花火大会」は、2025年12月に告知された」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://gigazine.net/news/20260813-google-sl2t/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "Google DeepMindは50を超える手話と10万時間超の映像で学習した手話テキスト変換モデルSL2Tを発表し、Pixel 11への搭載を案内した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/152679",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.98,
+      "evidence_text": "キズナアイの新衣装、専用モーション、専用音声を収録したDesktop Mate向け追加コンテンツが8月20日に配信される。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/152669",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "media_or_editorial",
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「株式会社V（本社：東京都品川区、代表取締役兼CEO：藤原光汰、以下「V」）は、株式会社東北新社が実施する「サンダーバード」日本放送60周年記念企画において、VRChat上の月面スマートコミュニティ「Lumarnity®」に設置される「サンダーバード3号」の巨大3Dモデルを制作しました」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://www.itmedia.co.jp/news/article/2608/13/2000000521/",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「米Googleは8月12日（現地時間）、ニューヨークで新製品発表イベント「Made by Google 2026」を開催した」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://blog.takaumada.com/entry/far-from-silicon-valley",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「いま、海外のスタートアップやテクノロジーの思想が日本に次々と入ってきています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5ibHZxaWF2WGJoUDVDSE1NcXkwUDN1RXZkY0JBWFlXb3FIaUxOOXVRajdScEdoUXNzdTUxYUNiUGllSnE4Y3pEY2E3OE5LZw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "event",
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "にじさんじ公式Xは、にじさんじ甲子園2026の優勝・準優勝記念パネルと各高校の敢闘賞記念アクリル色紙を含む3商品を案内した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    },
+    {
+      "article_url": "https://www.tetsu7017.com/blog/safari-pedals-review/",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "Safari Audioのエフェクト31本をCubase Pro 15で実際に使用し、バンドルの利点と単品購入の例外を検討したレビューである。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-13T23:37:34Z"
+    }
+  ]
+}

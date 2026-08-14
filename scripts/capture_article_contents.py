@@ -36,6 +36,7 @@ def load():
  try:d=json.loads(STATE.read_text(encoding="utf8"))
  except (OSError,json.JSONDecodeError):return {},{}
  return d.get("entries",{}),d.get("resolvedUrls",{})
+def has_verified_text(x):return x.get("status")=="verified" and bool(str(x.get("content_text","")).strip())
 
 def load_record_articles(run_date=None):
  paths=[RECORDS/f"{run_date}.jsonl"] if run_date else sorted(RECORDS.glob("????-??-??.jsonl"))
@@ -114,7 +115,7 @@ def main():
  if a.run_date: arts=sorted(record_arts.values(),key=lambda x:(x.published_at,x.url),reverse=True)
  else:
   arts_by_url={x.url:x for x in db_arts};arts_by_url.update(record_arts);arts=sorted(arts_by_url.values(),key=lambda x:(x.run_date,x.published_at,x.url),reverse=True)
- keys={str(x.get("url","")):str(x.get("article_key","")) for x in old.database_rows(db)};e,ca=load();todo=[x for x in arts if a.refresh or x.url not in e or(a.retry_unverified and e[x.url].get("status")!="verified")][:a.limit];c=None
+ keys={str(x.get("url","")):str(x.get("article_key","")) for x in old.database_rows(db)};e,ca=load();todo=[x for x in arts if a.refresh or x.url not in e or(a.retry_unverified and not has_verified_text(e[x.url]))][:a.limit];c=None
  if not a.no_sync_contents:
   try:c=conn(a.env_file)
   except Exception as x:print("warning: Data Table sync disabled: "+str(x),file=sys.stderr)

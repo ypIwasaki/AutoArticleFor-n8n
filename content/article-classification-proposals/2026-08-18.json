@@ -1,0 +1,476 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-08-18",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9TeWlKRjJkSk50dXRuZzRidncwUExYcTkxZkwxN0w2c1BYLUxzc3BONi1XQ245RUJMbXN4VXVkZmdRZFdQdGZnby1ZTlFMOFI1NjBLWWhLWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文は『ホロライブドリームス』の編成例を示し、水着白銀ノエルなどのリーダー・メンバー構成とスキル条件を解説している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBmT0xjRlJRdjhkV1doMTdNb2F5SnRDODQ5bDR0b2hsT0JMSUQ3WWlZQVQ5N0pjRzV6S0JRNzZVc2oyOHVpemVmX1hpSjdrUQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.98,
+      "evidence_text": "本文で、にじさんじ所属6名の『にじぱぺっと おきがえ ver.デコラモード PART2』を8月18日18時から販売すると確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5xbk5JSEFTdzhzNXR5T2F4STNiZmVfZEZmQ2ZCeUlhdDB2bTR6SWR0VUxDZ0lJWjdIak5yM3dhNDNXSTQ5WElXbDlBWVF4VkVQVWJCYVR2Y05RcERvOWpGU3pZRmU5OG9MVXc?oc=5",
+      "article_type": "press_release",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.99,
+      "evidence_text": "ドワンゴの発表本文で、3SKMのトークイベントと初ライブを8月22日・23日に横浜BUNTAIからニコニコ生放送で配信すると確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBrNWhMOXdmTGtXM29uYllGSFI4VUs3a0tPcm5ocWtHY0ctR1lSaFdmYnRYd0dPZDI2Q1lXcFFfYV85VXU5YjlTcTRfYzZ3U2JzU19WOHRSSU9IUGJXdUNTNno0eXk1VVRPWndLTlAzNXBVaXFxSlhJQ1BPLXdYaWM?oc=5",
+      "article_type": "news_article",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [
+        "event",
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、東京都の通販商談会『東京ものいちば』が通販・EC事業者の参加バイヤーを9月10日まで募集していると伝えている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE43UU92UExNdU9yOENiYk1NS05GLXZaZkxxMHJPUDliU05hV3JFOUZqQVBPa0xkdkF5THpnbmFMbDlLRFY3UjhCQXFkaG5LUnF5T21pbUFMZTBDdw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、和田フミ江さんが甲状腺腫瘍の発見から手術までに感じた不安を描いた体験マンガを紹介している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBvRE5Zbm1QTFBkXzUzdVVuN2oxVEo3Z0NaRUpJQng3R1JRWFIyWWNRNU1BdmpiVDY3dWJEcUlzeW04cmdQNHktVXV1WklHSEtKSGNsSVBCZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.98,
+      "evidence_text": "本文は『ホロライブドリームス』のリーダー性能を比較し、ロボ子さん、戌神ころね、風真いろはなどの評価理由を解説している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBpbE1NRXdzS0hXcDB2OVhXemVjZ3dIUkp1Q0NXOXRGaGxtR1pGZWFxTjdyZGd3X0hCYW4yTDJfTk9sWlZleWx4eHA1MVJLdEE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、俳優の柴咲コウさんがインスタグラムで愛猫の死を報告し、感謝の言葉を記したことを伝えている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE10dXNxemlNN2s5Um9ZNHBGTWZfYlJheEtNRXVxdmFVTlJyODA2MUEzOVE0bWRXa2wxMWVVZ1JWa1ZwSUIwVHc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "collaboration",
+      "secondary_categories_json": [
+        "product_or_goods",
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文で、『ロックマン』とホロライブゲーマーズ4名の描き下ろし企画として、カプコン直営店で景品と物販商品を展開すると確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE1WRFRBa1NzTzJxVkE2cmtsUmxVcThRY29iMVczUU96Z0pGZXI1OXRPUnlBVXNaTGVQYjMtTF9xdlFneXlE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、家事と育児に協力的だった夫が結婚後に変わったという設定の連載マンガ第2話を紹介している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.98,
+      "evidence_text": "本文は『ホロライブドリームス』のキャラクターをスキル・タイプ・衣装効果で比較し、水着ガチャ追加5名も評価している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBmak9VVk1FYW9wMzdOU24yWHpNU29FUjdrbXp3SXFuRUdQeE5FRHNJOU1kNnh6X3NGNVNsRDVCRXN3cFVZTDNqWmhhem9lbWJ3UDlBTXNBdDZ3dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は『パワプロ2026』の橘みずきについて、登場シナリオ、取得できる特殊能力、選択肢ごとの効果を一覧化している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://kumanichi.com/articles/2026080",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、陸上自衛隊の現地情報隊による個人情報収集を部隊関係者が公文書管理法違反などの疑いで公益通報したと報じている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://yasugad.hatenablog.com/entry/2026/08/17/190000",
+      "article_type": "guide_or_database",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は平面駆動ヘッドホンHIFIMAN Edition XSを実機レビューし、後継機との違いや価格、交換部品の入手性を説明している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://note.com/animmony/n/n924194cfee81",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は1987年のOVA『夢から、さめない。』について、資料ごとに句読点を含む題名表記が異なる問題を調査している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153100",
+      "article_type": "press_release",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.99,
+      "evidence_text": "発表本文で、NIJINアカデミーがVTuber佐佐咲キキさんと小中学生向けオンライン絵チャット交流を8月28日に開催すると確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://natalie.mu/owarai/news/685469",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は『キングオブコント2026』の準決勝進出35組と、9月3日・4日の準決勝および今秋の決勝予定を伝えている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://sake-konjiru.hatenablog.com/entry/2026/08/17/163903",
+      "article_type": "other",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.98,
+      "evidence_text": "本文は、ソプラノサックスのお披露目と贈り物の贈呈を含むバースデーライブの様子を個人ブログとして記録している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://gigazine.net/news/20260817-qwen3-8-27b/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、アリババのQwenチームが270億パラメーターのQwen3.8-27BをApache License 2.0で公開したと報じている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153071",
+      "article_type": "press_release",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [
+        "talent_activity",
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.99,
+      "evidence_text": "発表本文で、鹿乃まほろさんがMillion Productionに加入し、音楽と個性を軸にする新グループ『ミリプロSONA』の初期メンバーになったと確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153026",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、Meta Questを使うMRビームシューティング『裂界レゾナ』を東京ジョイポリスで8月17日から31日まで展開すると伝えている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://kaze2fukaretex.hatenablog.com/entry/2026/08/17/122235",
+      "article_type": "other",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、盆踊り大会での盆ジョビ、歌謡ショー、花火を見た体験を個人ブログとして振り返っている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://www.afpbb.com/articles/-/3648665",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、盗作疑惑を報じられた元ケンブリッジ大教授の死を受け、過熱報道の公的調査を求める署名が集まったと伝えている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://news.yahoo.co.jp/articles/22cc40013c546f3cd64480af5c6a2ccd8d0bffd3",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、1940年に精神疾患の日本兵10人へ感染蚊を刺させたマラリア人体実験の記録が確認されたと報じている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://natalie.mu/music/news/685436",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、特殊メイク、映像、音楽などで活動したスクリーミング・マッド・ジョージさんが2月に69歳で亡くなったと伝えている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://ikiumejapan.hatenablog.com/entry/2026/08/16/231607",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、中島健人さんのラジオ番組で使われた遊戯王の用語を、番組を理解するための基礎知識として解説している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://omocoro.jp/kiji/584378/",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、テレビ局のお蔵入り映像という設定を、固有名詞を伏せて創作した文字起こし企画であると説明している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153060",
+      "article_type": "press_release",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.99,
+      "evidence_text": "発表本文で、蒼瀬紫音さん、姫崎クトさん、すず音さんがのなめぷろだくしょん3期生に加わり、4名体制になったと確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://www.47news.jp/14799553.html",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、1940年に精神疾患の日本兵10人へ感染蚊を刺させたマラリア人体実験の記録が確認されたと報じている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://syounagon.hatenablog.com/entry/2026/08/17/114528",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は『古事記』中巻の神武東征について、速吸の門から熊野、八咫烏の導きに至る物語を抜粋・紹介している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153045",
+      "article_type": "press_release",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "発表本文で、イグニサスと横須賀市がRoblox用スカジャン全10種の有償販売を開始したと確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://techblog.enechain.com/entry/intro-prothea",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、enechainがKubernetesカスタムコントローラーで構築した全社向けPRプレビュー基盤の要件と設計判断を解説している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://rhonabwy.com/2026/08/15/software-engineering-fundamentals-matter-more-than-ever/",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、AIエージェント時代にもソフトウェア開発では設計上の選択と基礎知識が重要だと論じている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://news.jp/i/1461865443772874752",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、1940年に精神疾患の日本兵10人へ感染蚊を刺させたマラリア人体実験の記録が確認されたと報じている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://evidence.dev/blog/that-dashboard-should-be-a-skill",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、複雑化したダッシュボードを分析用スキルへ分割し、対話型の分岐処理として扱う設計を提案している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9yaGZyQ1FMRDU3YXNHTGhQRVVwVUdOYlByZTJlTlUtR0tteHNCRGZiNlRxX2Rra2REdWk5R0lpYXQyMXdnMy1WRVlqSUl1T3NYTDdQZDdidkNFMVlIS2xUZXpDS3B2cVI3ZVE?oc=5",
+      "article_type": "press_release",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [
+        "event",
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "札幌市の発表本文は、釧路で開く卸売企業と道内食品メーカーの商談会について、参加メーカーを9月16日まで募集している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://toushi.xn--w8j1at4m.tokyo/car-18/",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、筑波サーキットでFJ1600の体験試乗に参加し、車両性能や操作感、当日の進行を振り返った個人記録である。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFA4MjN2cWcwZjlUUXBBX0lCN0hBVWYyVENRTzRleGhOZndlbHJiZnhWQTNoZXZza1M1VjBjdExpWk80UFJaRFhGdGtJUTJLZTRn?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、モデルの梶原叶渚さんがTGC MATSUYAMA 2026のランウェイに登場し、観客や視聴者の反響を集めたと伝えている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://tbpgr.hatenablog.com/entry/2026/08/17/005949",
+      "article_type": "guide_or_database",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、仕事で提供する価値を技術、姿勢、動機の3分類で棚卸しする枠組みと筆者の具体例を解説している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    },
+    {
+      "article_url": "https://piyolog.hatenadiary.jp/entry/2026/08/17/053005",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.99,
+      "evidence_text": "本文は、偽のDeFi企業が北朝鮮IT労働者とみられる人物を採用して挙動を記録した調査と、既知の偽装手口を整理している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-18T00:02:19Z"
+    }
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-08-17",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9yaGZyQ1FMRDU3YXNHTGhQRVVwVUdOYlByZTJlTlUtR0tteHNCRGZiNlRxX2Rra2REdWk5R0lpYXQyMXdnMy1WRVlqSUl1T3NYTDdQZDdidkNFMVlIS2xUZXpDS3B2cVI3ZVE?oc=5",
+      "article_type": "press_release",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「札幌近郊の卸売企業と道内食品メーカーの商談会である「卸売キャラバン隊商談会in釧路」について、食品メーカーの参加者募集をしています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-17T02:34:35Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1GV2psRHVId3pDQnM1SzRxU2hDaEhOSG1RQ01vMjYyVEkwdV90M0JaQkJpX3ZjUzlIaVRPQXJac1hYNGotVU90bzBXYWtLVGFtbVk0VmVIN2VmOWptbTJrY3JHV3FxWDF3RXc?oc=5",
+      "article_type": "press_release",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ブランドコンセプト「tame the city」を体現する空間で、旗艦店限定アイテムも展開 AnyMind Group株式会社（読み：エニーマインドグループ、代表取締役CEO：十河 宏輔、以下「当社」）は、ブランドディレクターKotaが手がけるアパレルブランド「Jent Louis（ジェントルイス）」初の旗艦店を、2026年8月22日（土）、東京・原宿（神宮前）にオープンします」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-17T02:34:35Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFA4MjN2cWcwZjlUUXBBX0lCN0hBVWYyVENRTzRleGhOZndlbHJiZnhWQTNoZXZza1M1VjBjdExpWk80UFJaRFhGdGtJUTJLZTRn?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ファッションイベント「SBI証券 presents TGC MATSUYAMA 2026 by TOKYO GIRLS COLLECTION」が16日、愛媛・愛媛県武道館で開催された」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-17T02:34:35Z"
+    },
+    {
+      "article_url": "https://piyolog.hatenadiary.jp/entry/2026/08/17/053005",
+      "article_type": "news_article",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「セキュリティベンダのANY.RUNと、脅威インテリジェンス組織のBCA LTD、NorthScanの3者は2026年8月10日、偽のDeFiスタートアップを設立し、Famous Chollimaに属するとみられる北朝鮮IT労働者を実際に採用したうえで、取引先が用意したと説明した仮想デスクトップ環境を通じて採用後の挙動を記録したとする調査結果を公表しました」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-17T02:34:35Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9TeWlKRjJkSk50dXRuZzRidncwUExYcTkxZkwxN0w2c1BYLUxzc3BONi1XQ245RUJMbXN4VXVkZmdRZFdQdGZnby1ZTlFMOFI1NjBLWWhLWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス 最強編成とおすすめパーティ【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス/ほろどり)の最強編成(最強パーティ編成)とおすすめチーム編成です」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-17T02:34:35Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で、ホロドリの複数カードについて性能、スキル、編成上の評価が掲載されていることを確認し、対象のVTuber関連ゲーム企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-17T02:34:35Z"
+    },
+    {
+      "article_url": "https://nikkan-spa.jp/2179853",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で、8月5日の東京地裁公判において検察側が斉藤慎二被告に懲役7年を求刑し、弁護側が無罪を主張して結審したことを確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-17T02:34:35Z"
+    },
+    {
+      "article_url": "https://azukiazusa.dev/blog/usermedia-html-element/",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「宣言的にカメラ・マイク権限を要求する `<usermedia>` 要素 Back to blog 目次 <usermedia> 要素は 2026 年 8 月時点で Chrome 151 以降でのみ利用できます」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-17T02:34:35Z"
+    },
+    {
+      "article_url": "https://ohnosakiko.hatenablog.com/entry/2026/08/16/182313",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「去年ツイッターでちらほら断片情報を目にしていた頃の私の認識は、「知的障害のある女の子が酷い目に遭うのを楽しむような作りのマンガ？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-17T02:34:35Z"
+    },
+    {
+      "article_url": "https://github.com/jitpass/jit",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で、jitは平文の秘密情報をTouch IDで保護されたローカル暗号化保管庫へ移し、許可したプロセスにだけメモリ上で渡す開発者向けツールであることを確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-17T02:34:35Z"
+    },
+    {
+      "article_url": "https://note.com/tsubasa283live/n/n01e5cbdf39be",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「30年オタクをアイデンティティとして生きてきた中で、この投稿を読んで「もう自分はオタクではない」と悟りました」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-17T02:34:35Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/152910",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "product_or_goods"
+      ],
+      "relevance": "low_relevance",
+      "confidence": 0.82,
+      "evidence_text": "本文で、5人組アバターバンドFZMZの新曲がアニメのオープニングテーマに決まり、新作Tシャツの受注販売も始まったことを確認した。アバター表現を用いる音楽活動だが、VTuberとしての位置付けは本文で確認できないため低関連とした。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-17T02:34:35Z"
+    },
+    {
+      "article_url": "https://uzurabanashi.hatenablog.com/entry/2026/08/16/120058",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「今日は数週間ぶりに朝に小雨が降り気温が下がり、予報では1日曇り時々雨でこの涼しさが続く見込みです」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-17T02:34:35Z"
+    },
+    {
+      "article_url": "https://www.kankitsukeip.com/entry/2026/08/16/130950",
+      "article_type": "guide_or_database",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で、オニグルミの名の「オニ」は殻のごつごつした見た目と割りにくさに由来すると考えられる、という解説を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-17T02:34:35Z"
+    },
+    {
+      "article_url": "https://www.watto.nagoya/entry/2026/08/16/130000",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「2026年度上半期の仕事のキリが、だいたいついた」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-17T02:34:35Z"
+    }
+  ]
+}

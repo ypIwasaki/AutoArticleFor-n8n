@@ -1,0 +1,349 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-08-24",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBDRmZlYld4cWUtQjYwdGFKSGNEeTQ0c3REcGlxMHZLSUhlTGV6cVNUaTJqc1k1Z3pBdExQTW1pbFJvdWZFVEp6UExTalh6dw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「2026.08.24 08:03 この記事の画像をもっと見る（全12枚） Motor Fan のニュースをGoogle検索で優先表示 → 本格スモールオフローダーの現行ジムニーシリーズは、カスタムフリークの間でも絶大な人気を誇るクルマであり、タフな印象高めるパーツが人気」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE54Qng2TEhJMHYxWmFHUHRIWVVJdlVvSmRJUmwwSTVQbmp3amU0amY1ZGR5ckxUOHdod1BobGVwcGppR1NyOEx0MVN5U2pPZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「第2期を待ち望んでいたファンから「待っていたぞ」と放送を喜ぶ声が寄せられています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1ubTRxVlUwTUhpRTQyWENBUVhhV2xURWhYX2tYUkFkLThPTjBNdm5CR0tqYnF2ajFQN1pEcDk1MGMzTmswVFEwTlRRRVFvNldqZGxWNDBvc2pjc2s4V1k5WjNXVXF4cmtldTV0YS1WSTg2c2xtZmZQdHlKNTZVVnc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ホンダ渾身の新エンジンも投入 オランダGPは日本人にとって2026年の開幕か？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBzN1V2dXhuQ0hhVmpvYU9kMVVKdVAzMlJYbU9FbW9iZnNMNE1nRC11U1NWVUdNTnFSbXItTWdIR3JRN1RieWoxc2tITWRoOHdUbS1TN1FteHVFM1k?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「今日は 学内最大の就職イベント である 緑丘企業等セミナー（9月開催） についてお知らせするよ」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE03dWtLZ0RLM1JiWDRXTEsyZldESHhmQl8waEs3WUgxUTJvenZsak1LVktkMUw0STFOeVRBUzVRUmkzNGppNmctbUxXLXo1TmstT2JwV0NSTkZSZk0?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "live_or_music",
+        "game_or_technology",
+        "media_or_editorial"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「※配信会社から提供された企業や団体等のプレスリリースを原文のまま掲載しており、朝日新聞社が取材・執筆した記事ではありません」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9TeWlKRjJkSk50dXRuZzRidncwUExYcTkxZkwxN0w2c1BYLUxzc3BONi1XQ245RUJMbXN4VXVkZmdRZFdQdGZnby1ZTlFMOFI1NjBLWWhLWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music",
+        "media_or_editorial"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス 最強編成とおすすめパーティ【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス/ほろどり)の最強編成(最強パーティ編成)とおすすめチーム編成です」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE81S2RaeFR3TDlMLXE5R2VIWjkyYkU1LTdXSVg2TTRiMk1QdGdrOVlfaDIyTUJpRzdXR1FMX0JTeTQxbENEU3hhUHp3ODFNRW5XWTljU2tlRFhYZVluQzRXdXNaYzB6bGRGUVFnQjFRTl9vMzlFT1pBaVVoeFFnRFU?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「元サッカー日本代表ＦＷの城彰二さんの娘で、タレントの城夢叶（ゆめか）がヘアアレンジした姿を披露した」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBNblUtcFNZSHFFR0R3ZWpKUjlla193N3ZvLVVWWkhKQlBSSVU1QkItT1ZVMDFsNnpzb19mbjRHcU9MR2pGUjczN3VpUlpfWmdsRkxGUTZCbFRwRGpjWk5DVVc2YUs2VHJXTXE4NUxYT3Q?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「読売新聞をご購読の方が、お名前やメールアドレスなどの必要項目を入力すると、読売新聞オンラインの読者会員に登録でき、読売新聞オンラインのフルサービスを受けられます」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBwVWF0elBIN0NQVWlndDQ4VkdjTjA0MlpmRjlXWjVIUGc1aXlHOWViY1NZSUo4T2dyRUR3cXUxZmtGeEVvalhFUENFd3A4bDRGQ0pSd2lZbXdVR1ppUVE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「2011年、偶然立ち寄った上野動物園のパンダに魅せられ、以来ほぼ毎日パンダを撮影」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTFBCM0s0bzdLbUViY3VCb1liOWxpYTRoNjdUc1cyN2VOWXdxd2dwVG1OWDVpUm9CNXZ1eWRWOUR0bkFDOUIt?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「「今日こそ別れないと…」裏切り夫が妻の“探り”に戦々恐々！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE96dlgweU9rMTRaTlg4NENvVUxvcEhUbTNOYU84WVhXWkFZcGhPMXg1bTZuMU1VT0dlblBURHpJeHJUZEJ3?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「激安「2個で129円」「一人前127円」バンバン売れて棚空っぽ！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1sLTE1MUNTdDFjNUZldWF4cVNxY3dNSGNvMDBORmM2dWx4c2Q5dFpTbDJlT3g4azZNekJqb1FWUng3eTZOMEZBa3ltbGZLbHNST0lTRnljb1I3bGVKNEh2ZXlONVc5NlE1NmhvLWFkVkMxU2Vy0gF0QVVfeXFMTWwtMTUxQ1N0MWM1RmV1YXhxU3Fjd01IY28wME5GYzZ1bHhzZDl0WlNsMmVPeDhrNk16QmpvUVZSeDd5Nk4wRkFreW1sZktsc1JPSVNGeWNvUjdsZUo0SHZleU41Vzk2UTU2aG8tYWRWQzFTZXI?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「予選、本戦を合わせ、錦織にとって区切りとなる５０回目の４大大会」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「キャラ 簡易性能 [Energeticスプラッシュ！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE0xa0hhLTkwNE1qa2Eya0lrdEIwdjl6ZGUyeDVyNmJSZktDakhVWnFpaTZEdjNOdEZBd1MyS21xeWpUQUUyOVgtbVFWd3BHT0FyaTZYcmxPbw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス リセマラ当たり パヴォリア・レイネ [おすまし孔雀と嗜む一杯]パヴォリア・レイネのスキルとステータス【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)における[おすまし孔雀と嗜む一杯]パヴォリア・レイネの性能とスキルです」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE0ydGV5dkVRTXR0VFJOQWlSYmE1MXlNTzVBWkgxUmJUQm5XWm5mSlB5V3NiMTQ4UUZrRDBvTndoSjVYQmZ2OWVjYzIwUV9USF9TbG9BTm9FRXV2dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 二刀流育成理論と作り方 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026サクセスの二刀流選手育成理論です」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://darucoro9216kun.hatenablog.com/entry/2026/08/24/000000",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「●水無瀬神宮の風鈴● ●離宮の水● 今回もお越しいただきありがとうございます」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153713",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「2026年8月13日（木）～16日（日）、Shibuya LOVEZ（東京都渋谷区)とライブ配信プラットフォーム・ASOBI STAGEでのxRライブストリーミング（以下、xRライブ）にて、「 アイドルマスター シンデレラガールズ 」の、xRでのコンセプトライブ、「 Pop‘n ToyBox!」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://grk1.hatenablog.com/entry/2026/08/23/200558",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「とある唱歌の冒頭歌詞で唄われている「 今はもう秋 」の 秋 が待ち焦がれる」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://www.watto.nagoya/entry/2026/08/23/170000",
+      "article_type": "news_article",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「8月21日(金) 夜・名古屋発、23日(日) 朝・名古屋帰着 (いわゆるゼロ泊3日) の愛知ボランティアセンターさん主催熊本行きボランティアバスに乗ってきた」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://bontosyougatu.hatenablog.com/entry/2026/08/23/183000",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「その一日のうち、受粉に適した時間は午前中の９時から１１時だそうです」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://nekonotumekiri.hatenablog.com/entry/2026/08/23/140000",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「いろいろな年齢の馬がおり、牝馬もいれば牡馬もいる一緒に走って勝敗を決めることが出来るのは競馬の楽しみですね」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBpTWhWb3NIQTg3c0h1LTZDUGY5Z0lFYUNSNzhRRm51bk1PcXJ4MUJTcjkwVEE4UkowWWFHMzczOWFhc21HajFfMm1NNDFjT1BObzBrM1NMLUFYZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 友沢亮のイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 友沢亮のイベント内容や友沢亮の金特、声優(CV)についてまで掲載しています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE92bnA3elVrdnljdi1nbnZJRXNGZlVWbUNZWlBaS0ZCRXlnNGQ4bmZud2otOTlFLU5JNHNvb0pBbTczTDBOLXpNcU5hV1hQWG5BVkdyZGh1d015dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 虹谷誠のイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 虹谷誠のイベント内容や虹谷誠の金特、声優(CV)についてまで掲載しています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://artfoods.hatenablog.com/entry/2026/08/23/055001",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「お刺身が食べたくていつもの山梨県系スーパー某OGに出向きましたが、なんだか目ぼしいものがなくてぐじぐじと見まわしておりましたところ、もう何度か購入経歴のある「寿司種セット」が視界に飛び込んできました」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://shueisha.online/articles/-/258444",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「人物一覧を見る 教養・カルチャー 2026.08.23 特集 ルポ・ひきこもりからの脱出 ルポ・ひきこもりからの脱出 その頃からVTuberとしても活動を始め、うつ病や発達障害の動画を作成した」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://shueisha.online/articles/-/258443",
+      "article_type": "news_article",
+      "primary_category": "talent_activity",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「人物一覧を見る 教養・カルチャー 2026.08.23 特集 ルポ・ひきこもりからの脱出 ルポ・ひきこもりからの脱出 親に監視され無理やり勉強させられたが、成績は伸びなかった」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://boristane.com/blog/on-call-is-now-theatre/",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「On-Call Is Now Theatre | Boris Tane On-Call Is Now Theatre | Boris Tane Your on-call rotation has always been an admission of defeat. Every alert threshold, every escalation policy, every runbook is the same admission wr」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://piyolog.hatenadiary.jp/entry/2026/08/23/033006",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「Rustのパッケージレジストリcrates.ioで、広く使われている3つのクレートが改ざんされ、依存関係に追加されたタイポスクワットパッケージのビルドスクリプトを通じて、ビルドしただけでペイロードが実行される事案が2026年8月20日に発生しました」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    },
+    {
+      "article_url": "https://huyukiitoichi.hatenadiary.jp/entry/2026/08/23/080000",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「◀ ▶ トップ > 科学ノンフィクション > 川の氾濫がもたらす恩恵──『洪水礼讃──環境飼い慣らしの人類史』 Amazon この『洪水礼讃』は、『反穀物の人類史』などで知られるジェームズ・C・スコットの遺作となった一冊だ」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-23T23:25:07Z"
+    }
+  ]
+}

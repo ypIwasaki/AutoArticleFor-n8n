@@ -1,0 +1,658 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-08-21",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE45SjZyUlhNT3ZwN19DS1V1a3Z1el9KbzZ2S2otemYwdzdzMW5Lbi1FbmdvZ2Yxd3dnMGhEVnA0X2RGZnU0clMxNkZPMFRQUUNxZkpSU20yLUVDQXhv?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「株式会社アクアメント 制服を身にまとい、バックヤードでの調餌や給餌体験・水槽清掃などをリアル体験 神戸の港にある水族館「AQUARIUM×ART atoa」（以下、アトア：神戸市中央区）は、日本財団の助成を受けて、一般社団法人地域みらい創造センターが主催する「こどもわーく in 神戸2026」の一環として、2026年7月31日（金）に小・中学生を対象とした職業体験プログラム「劇場型アクアリウム『atoa』で飼育員のお仕事をしよう！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE4wQUJQbnRVcmdZNnVpeXRTUXNpQlp1OFhpb3J4djV6LTBvV0hKbVNYMmxhSndQRW0yd0gtZFNTWjlUMDFwMF9jcTFYQUNBbjlUUXBwU3B5NTc0dVFFaDRoWklOSDU5VlZtdkE?oc=5",
+      "article_type": "press_release",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "event",
+        "company_or_business",
+        "community_or_fan"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ガジェットや生活雑貨メーカーである株式会社39thanks(所在地：福岡県福岡市)は、アタラシイものや体験の応援購入サービス「Makuake」にて、MacBook Neoに対応したカバーとスタンドが一体になったフォリオ型ケース｜Neo Folio(ネオ・フォリオ)の予約応援購入を2026年10月29日(木)まで実施しています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1ZMVBUNGhXNGN3QjI1YXI4VzFEc05KXzg5YUxfdmZYaVlwSDVsZ3hpX0hBSFJudjZVenlYbDBtZG9FQU5TOEFIa2NsaG4wQXpKaHZWY1JiM2lwWGpORFM3SlBqVDQ4RnU2RXc?oc=5",
+      "article_type": "press_release",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "event",
+        "game_or_technology",
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「株式会社Game & Co.（本社：東京都港区、代表取締役：星 崇祥）は、株式会社Samurai工房（本社：東京都渋谷区、代表取締役：高野 大知）との共同事業で開発しているトレーディングカードゲーム『Xross Stars』（読み：クロススターズ、略称：クロスタ）の公式大型大会を運営しています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5yMDdVN1NvblNCdHhRY05vMWYxd3JMOGJ6aGFpakd0YkhHbjFoVFlleGxyc1VRTjhkSlpPc3VLZDBIZHljc0dzc3hGc1QtUmZkMXozaU5fQkZCY19aNWxrcl9BTU96RElGSWc?oc=5",
+      "article_type": "press_release",
+      "primary_category": "collaboration",
+      "secondary_categories_json": [
+        "event",
+        "company_or_business"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「理研ビタミン株式会社（本社：東京都新宿区、社長：望月敦）は、8月21日（金）より、にじさんじ所属の人気VTuber「赤城ウェン」とコラボレーションし、「禁断の青カラキャンペーン」を開催します」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5TdzhVVF9YN1doTEJlRFdvQWFiRGQtMTJQQ3A3OVRyVjJxemlsRGJqN1dSYnBySUhGZDBSOTZzRExIdHhuWFJxOGRnRWdqcDNSbWMwYWFzZERtX3Z0dk0tUWxHdFFNTWJwbHc?oc=5",
+      "article_type": "press_release",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「独立行政法人中小企業基盤整備機構（理事長：宮川正 本部：東京都港区）は、令和8年7月31日、女性活躍推進に積極的に取り組む事業主として、厚生労働省が定める女性活躍推進企業認定「えるぼし認定」において3つ星を取得しました 「えるぼし認定」とは、「女性の職業生活における活躍の推進に関する法律（女性活躍推進法）」に基づき、行動計画の策定及び届出を行った事業主のうち、厚生労働省より定められた5つの評価項目（採用、継続就業、労働時間等の働き方、管」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBsMDh2NmhHcHp1REVRS0FkTnJoNXRpa0JfcjgwWFN3YTJRcFNReXdqUm1TRVNjZ3NwMUpydmpubzNqMTdVYUs1UXBnb0k2SDFfN01aX2U3MWZpWWpSbjhoVG9fUzh3eXVSN3JGa1N3?oc=5",
+      "article_type": "news_article",
+      "primary_category": "community_or_fan",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「キュートな津軽弁と天然キャラで、バラエティー番組などで活躍する彼女だが、自身のSNSにはセクシーな姿が並ぶ」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE01SjNUR2JTUlpXNDVsaDdneGpBVnM1R1ZHYzUwNklSVW92OEpJVTNwbkxJZDlxMkljV0JWZW4zOEgzcXZVVWIxeXR2cmJDLXZLcmxRVHNIVm1JNmQ4dDhyOGNWVDVSZTBjcmc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「2026年8月28日 販売 ケンタッキーフライドチキン「とりの日パック」 日本ケンタッキー・フライド・チキンは「とりの日パック」を8月28日限定で販売する」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE16MWphejkxTHRkZ2ZFNEh2Sm45dm1jbG1LeWJ5cG1YYXpUSWJNNGJGV0hqaXMxalRucnJPdWtzMEQzc1l2bWxmSXVRWUtJZ3Y0YllkbDRwR0t4SVBrMXUtZF9oYW4yMjV0Wmc?oc=5",
+      "article_type": "press_release",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「入間くん』50巻発売記念フェアを2026年9月8日～10月4日まで開催いたします」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9PS1lrVVdDckJGdDA3a3pCX2pBUWNhaEMwNEpnc0ZMYklDR2dBWmJlTTEwOExyVlk5OGtEOHlvd3Y3REtQZmJLWWVpYm1NS0x0OS1CQVVELTVDRGpEZjVScGVXblVTcmI4alRqZzFxNTZKeEFvS3llejIxc2xGcW8?oc=5",
+      "article_type": "news_article",
+      "primary_category": "collaboration",
+      "secondary_categories_json": [
+        "product_or_goods"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「「ワンピース」せとうちブルー号との冒険の記憶を刻む宝物に！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE96Ty1tMFUtSVc0QldRRWVHSWJOZzhic0VOeHNpZjFBWVVySVZrSEhDb0Q4b3VSLTZNbTZPQkRhT2RPMC12aFpiRk5fWHdnZEJUV3pQVlJmNTRWNUUwcWp2UHF3eWFobUll?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「いつも名古屋ダイヤモンドドルフィンズへのご声援ありがとうございます」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE92bzU1cFQ1bXpNSktjUkI1ckJKTUtTNTJsTHowYzhBbDhBVFdlNjVtUDgxT0pYWldIRUhZMmxidkdBNjd4a3R1OHpDcExkdU51TGMxa2NheVJWcEJFdzFLY3VjS1RiSV9FLXVFSFl2TmNVQWZzWXc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "collaboration",
+        "product_or_goods",
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「台湾VMFi、世界初の完全エッジ処理型リアルタイムAI多言語システムをIFA 2026で発表 音声データをクラウドに送らず端末側で処理 2026-08-21 11:04 画像:https://newscast.jp/attachments/Ikfxb6oqZT8JNooRA569.jpg「声」と「価値」の融合：VMFiのTransDisplayは、AIを活用したリアル... 9/2発売『オレンジページ』の「サッポロ一番」コラボ付録、第3」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9wQU4xbGp0dUdKNWh3Ynd1MktJTnEyNWV4RGJsc3ZqdXNKVHpFNlVBMDNFT1lrR0F0LU1Hb191VVdZdnhYTGVITlJIMTZtWktiZTFILUVESDZON3JZd1dIZEktTEpaWWVTVFE?oc=5",
+      "article_type": "press_release",
+      "primary_category": "community_or_fan",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ママのコミュニティ「ママレ」が、2026年11月11日に宮崎で第1回を開催します」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5pSEFvZnZmSXRoa0ZMeUN2QTk0U293VzhhRFh4VXlLZG5XMndENlF3VzR5endGajFnNzZBc3BCcXFmZ3dISzg5eHlRcENsV05KVXc2REVIUkdqRGxURTl6LXRxOGk1TjJNbkE?oc=5",
+      "article_type": "press_release",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "company_or_business",
+        "community_or_fan"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「『メタスロット』『神々のコミュニティスペース』『神々の天空アトラクション』を体験・実況するイベントを実施 クラスター株式会社（本社：東京都品川区、代表取締役CEO：加藤直人、以下「クラスター」）は、株式会社ユニバーサルエンターテインメント（本社：東京都江東区、代表取締役社長：岡田知裕、以下「ユニバーサルエンターテインメント」）と協力し、2026年8月29日（土）20:00より、cluster内のメタバース空間「ユニバーチャルランド」にて」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5OSk1sNHZzcDk1Mzl2MkZENEhFMDVrR3ZULUE5TzZzaEdBbnNUNzRXaWhXaEFhOGJWdGlGRHFEYkd2cGh1aUY1Rkg4Z2owakxDZHdWZXhDSmJhM184OENUbnhkN1ZYOFZu?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「公開：2026/08/19 Mika Itoh │更新：2026/08/20 コメダ珈琲店を運営する株式会社コメダが、西日本エリアに初出店となるコメダの和喫茶「 おかげ庵 」を2026年8月25日に オープン します」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOYjloV2xEV0tvOUxGN05DeDJHY1hEdFMzV0Z3elMweTdOdDBybGhqRXA0aGF6RC1CSHlxWVRERy1GREVlb2M0R2pIZ1hqR1VOa1JXS1JFUVZtTzRta19FR2FUbE9SWkNIbnE5aWc0U3pDcmZ4ZUtrVVU1YkwwSmY2bGVRQ1FwV2E4X0drOHFza1VtUGNMNWlsOTNjZUZsQ0c3aG16US1vSjJUM2NfRkNHVDMxSThYZVJpdjBKVUNTdnVET3prWG8zcWdfemRsdFU?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「政府党委員会主催の第2回「2026年党思想基盤保護に関する政治評論コンテスト」組織委員会は、8,671件の応募作品の中から75点の優秀作品を選出し、賞を授与した」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://anond.hatelabo.jp/20260821100018",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「< anond:20260821094419 | anond:20260821094740 > 人がたくさん 死ぬ 映画 、 ホロコースト 、と出てたのでこういうのもありかな、と思って」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE52VUkwSW5jSWRaaFhsRWc4aXdqMG1pcWRjVmNnX19TeFh5OVBQRG1GaFpwUUc5S0Q1bVR4YzQxZUM2STNfZ19ScHl5ZVBHUQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「HOME > アニメ > アニメ『盗掘王』にじさんじ所属VTuberの魁星と樋口楓による第1話＆第2話同時視聴会が決定！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFByWi0tWW9WeUJpdHhzQjVMTks4bzFQeTdHS0tsWm5Namh5RUZwRy1vdk85dkNhSlhkNXdLQm42d1RvcjFxVG9KaFRzcDNHSUhpbGxmZHhUZGtiNDhUaUk0cjQ2ZTZEaTQ4MFE?oc=5",
+      "article_type": "press_release",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "company_or_business",
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「GPUクラウドサービス「GPUSOROBAN」を展開する株式会社ハイレゾ（本社：東京都新宿区、代表取締役：志倉喜幸、以下当社）は、2026年9月5日（土）・6日（日）に香川県高松市のサンポート高松 高松シンボルタワーで行われる「かがわスタートアップフェスタ2026」に東京海上日動火災保険株式会社、合同会社あづまーるとの共催により、小学生を対象としたプログラミング体験ワークショップ「キッズプログラミング教室」を9月6日（日）に開催します」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9ta2tnZ21fa3NwNTVzbUJGYzFCendiMTZVNjFXY3YtOVNSYzlneE5zX25xTXVUd0VJVmprQkVLaEY0MnVjT2dJMjA0Szc2Q1R4QXdjVDl6eWxJNWlIdXZOVDJDTzREMzgtSXc?oc=5",
+      "article_type": "press_release",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "live_or_music",
+        "game_or_technology",
+        "company_or_business"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「ホビーECサイト『FURYU HOBBY MALL』にて 本日8月21日予約開始！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9ZNUlHdVQ4VU16Mko5Uk14WUFnZzhnZkVWY3JKZ1o4dFZ3eGRfbnQxNzBRSVk0UlkzbDBsUm15N1RiU0tBUW1ZU25NenllalpSVE5ZMjNTeEdqS0xZZG1SU3R6eXhoZHhtRmc?oc=5",
+      "article_type": "press_release",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「ホビーECサイト『FURYU HOBBY MALL』にて 本日8月21日予約開始！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9LMEZrR3ZwSXVfenVldTFwNjVyMm44bDgxSS1YazhYUU5LQ1NqempBMGdkTzJTTTN4clBmUERyb1F4WGd0M3lfRExNeG5XZWx5OC10X3U5d1ROQ3FWMTJvRmlYcDFpS09UUWc?oc=5",
+      "article_type": "press_release",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「市内企業に「ASUENE」「ASUENE ACADEMY」を無料で提供、CO2排出量の算定から削減計画の実行までを実践的に学ぶ アスエネ株式会社（本社：東京都港区、Founder 代表取締役CEO：西和田浩平、以下「当社」）は、浜松市が主催する「令和8年度 浜松脱炭素経営塾」を運営します」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE85dnBkckJPQi1pRkNOLTdPWmVuLVVqalZrV010SzA4LW9xTjhQT2lpclRpbUtPUEhFMFpmSWNVa29ldGdQSXFPVWhkNkZqRy1vdXBWaHhfQUxwT1RZeXlrYmN6THNHYUdQckE?oc=5",
+      "article_type": "press_release",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「株式会社フロンティアワークス(アニメイトグループ)より新情報をお届けいたします！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE4zOUJtTFBacGEtTkNKUWdkaHNYYU55Nzl2Q0JMRzRGQ3RtcjBLYVREWDR2aUFYam9NWjRCWlhLTS1zVkJ5SGkxRU1XdlJDeWtFVDVZaFE0SGppeWhnZ0xxSmltY2RzQXRIZ0E?oc=5",
+      "article_type": "press_release",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「〜病院経営者の羅針盤・月刊『集中』が主催する月例勉強会を開催しました〜 2016年４月に発足した「日本の医療の未来を考える会」は、これ迄、行政担当者や研究者等、各分野の第一人者を講師に招き、医療政策への理解を深める情報や病院経営に役立つテーマ、最新の医療情報等、その時々の重要課題を取り上げてきた」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5ZNXlhbktkS1F4QjZfcjdIRHVJTkpSWkVOT0ZJRGZxbTJRNGVYUDdZQWI2QlpLblZ4OFBpUFdkaXhnRWVNRU9uRmp2V0R2T3NZMzlmaVBOaUNQd1BmUWZmSzYxVmVBd0xfb245RGk1ZEIwQ3FteVVCaEJwd3BKaG8?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "live_or_music",
+        "game_or_technology",
+        "media_or_editorial"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「フリューは、同社のホビーブランド「F:NEX」より「小清水透 1/7 スケールフィギュア」を発売する」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1JcFp1aUxkVTJ4dW5tdTBteFRFWWhDSkFFcEdfbjItd0lDUFFMZ2JOOVYySWFnWkpQVVBlYnF3MWIzaEFaTDg2cDh1Q3ZleDZzN1pxNXp2WEowNWlpZ3BWdm5feFJxRmpQMzVoZ3pWWHlQaVhqR2JSMjlwaTlhUVk?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "live_or_music",
+        "game_or_technology",
+        "media_or_editorial"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「フリューは、同社のホビーブランド「F:NEX」より「小柳ロウ 1/7 スケールフィギュア」を発売する」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFB1WjA3WmxNZzNwYi1EeFNwVG1pTm92N1gySkY5dFJoeEc2NzdvbS13LXpyM1A1QUl2VFFZTHAwV0ZVSzl2blBxTzh1R0N6amo2?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "live_or_music",
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「本ページはアフィリエイトプログラムによる収益を得ています リンクテキスト リンクテキスト リンクテキスト LINEに送信 フリューの高品質ホビーブランド「F:NEX（フェネクス）」の新商品として、大人気バーチャルライバーグループ『にじさんじ』に所属する「小柳ロウ」の1/7スケールフィギュアが登場」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5nZDIwM3h4MmVkcGxyT2ZJaVM2TmxZZkFPWEozR2t6NklXaXNtVXppNG5BUGJ5UHRqV1FwR0JZX0Fha2ozVXBsVUJxSE9sc2xE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "live_or_music",
+        "game_or_technology"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「本ページはアフィリエイトプログラムによる収益を得ています リンクテキスト リンクテキスト リンクテキスト LINEに送信 大人気バーチャルライバーグループ『にじさんじ』に所属するVTuber「小清水透」が、フリューの高品質ホビーブランド「F:NEX（フェネクス）」からフィギュア化」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://maccho5611-com.hatenablog.com/entry/2026/08/21/084026",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「トップ > ポイ活・懸賞 > WAONポイントの手持ちが少なかったので今月のウエル活は食材の買い足しのみ いつものようにVポイントから変換するもWAONポイントが663ポイントしかなくて、ささやかに994円分にしかならないけど、今月の食費の足しにしてきました」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9TeWlKRjJkSk50dXRuZzRidncwUExYcTkxZkwxN0w2c1BYLUxzc3BONi1XQ245RUJMbXN4VXVkZmdRZFdQdGZnby1ZTlFMOFI1NjBLWWhLWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music",
+        "media_or_editorial"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス 最強編成とおすすめパーティ【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス/ほろどり)の最強編成(最強パーティ編成)とおすすめチーム編成です」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「キャラ 簡易性能 [Energeticスプラッシュ！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE0ydGV5dkVRTXR0VFJOQWlSYmE1MXlNTzVBWkgxUmJUQm5XWm5mSlB5V3NiMTQ4UUZrRDBvTndoSjVYQmZ2OWVjYzIwUV9USF9TbG9BTm9FRXV2dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 二刀流育成理論と作り方 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026サクセスの二刀流選手育成理論です」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://kihaseason2015.hatenablog.com/entry/2026/08/21/000100",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「「8月21日は何の日?」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5wSUc1WDBTZk5lb3kwdHpFLW1WUnNUUTFVZGVBOFA3eG5EdV9Fd2cybEZiczlGZWNFNkh0Y25NUksyYVNoVUd3V3M2SVRNeFk?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "collaboration"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「｜骨を漁る男【ウィザードリィダフネ】 | AppMedia ウィザードリィダフネ攻略wiki｜ウィズダフネ AppMediaトップ ウィザードリィダフネ攻略wiki｜ウィズダフネ FFコラボキャラはどれを選ぶべき？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153557",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "community_or_fan",
+        "company_or_business"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「株式会社Brave group（本社：東京都港区、代表取締役：野口 圭登、以下「Brave group」）は、七乃羽すずと赤彩みあによるユニット「すずみあ」初のオフラインファンミーティング『すずみあと最強になりたい！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.yahoo.co.jp/articles/77c285ed181cd4d3f30c93150ae0f87995a0be8f",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「国会議事堂前で2026年8月19日、高市早苗政権に対する不満を表明する「強権政治に声をあげる！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://www.youtube.com/watch?v=bsv2lsEzqyk",
+      "article_type": "video_or_stream",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [
+        "talent_activity"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「タイトル: 【近未来の推し活】ディストピア飯を推しイメージで作ってみよう！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153530",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「Theia GamesとPolden Publishingは18日、協力プレイ対応のVRクライミングゲーム「 BAD GRIP CLUB ～握力よわよわ部 」（原題：Bad Grip Club）の無料デモ版を、Steamにて配信開始（ ストアページ ）」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153525",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "company_or_business",
+        "media_or_editorial"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「浅草で観光人力車や日本文化体験事業を展開する株式会社時代屋（本社：東京都台東区、代表取締役：藤原英則）は、厳しい残暑を乗り切るためのユニークな涼感企画として、伝統的な和風様式のスタジオ「江戸蔵」を完全貸し切りにした肝試しイベントを2026年8月21日（金）より20日間限定で開催いたします」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153486",
+      "article_type": "news_article",
+      "primary_category": "collaboration",
+      "secondary_categories_json": [
+        "product_or_goods",
+        "event",
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「「カラオケまねきねこ」を全国719店舗（2026年7月末時点）展開する株式会社コシダカ（東京本社：東京都渋谷区、代表取締役社長：腰髙 博）は、「海月雲ろあ」とのコラボキャンペーンを2026年8月20日（木）13：00から開催いたします」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5RbjhWblB0TnBFUFdlcGFPRVU4TUxQMjV3T1BxS01lcWJUR1Fld3cxU3BROGdRUVozSlJNQW94WEYxbXV5dlRDQk5tSTVGODdmbDdaeWxnWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス 曲一覧 カバー曲一覧｜収録曲【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)におけるカバー曲一覧です」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.denfaminicogamer.jp/news/2608202w",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「「TOKYO KEYBOARD EXPO 2026」が9月23日に開催」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153468",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "live_or_music",
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「パソコン工房・グッドウィルを運営するユニットコムは20日、iiyama PC ゲーミングPCシリーズ「LEVEL∞（レベル インフィニティ）」より、 VRChat 推奨スペックPC の販売を開始した（ 特集ページ ）」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://p.hatena.ne.jp/p/announcement/t/1539543336656834560",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「オリジナルグッズが当たるリリース記念キャンペーン実施中！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE92bnA3elVrdnljdi1nbnZJRXNGZlVWbUNZWlBaS0ZCRXlnNGQ4bmZud2otOTlFLU5JNHNvb0pBbTczTDBOLXpNcU5hV1hQWG5BVkdyZGh1d015dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 虹谷誠のイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 虹谷誠のイベント内容や虹谷誠の金特、声優(CV)についてまで掲載しています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBpTWhWb3NIQTg3c0h1LTZDUGY5Z0lFYUNSNzhRRm51bk1PcXJ4MUJTcjkwVEE4UkowWWFHMzczOWFhc21HajFfMm1NNDFjT1BObzBrM1NMLUFYZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 友沢亮のイベント一覧 AppMedia株式会社 https://appmedia.jp/ AppMedia 友沢亮のイベント内容や友沢亮の金特、声優(CV)についてまで掲載しています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://anond.hatelabo.jp/20260814223233",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「上司 の 裏切り を機に職と名を捨て、 隣国 の 王国 で ビクトリア という 一般市民 で 人生 をやり直すと決意」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.yahoo.co.jp/expert/articles/003c74243c4d7b80949382664df14f27ff75a357",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「2026年7月、オランダ・ハーグの国際刑事裁判所（ICC）本部で開かれたICCとNGOの年次円卓会議で発言する赤根智子ICC所長（写真：ICCのFacebookより） トランプ米政権が国際刑事裁判所（ICC）の赤根智子所長らを制裁対象に指定した」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1WTHJiSVhQX2txQTdsMTJIYXF1UWQwS1ZQbDdvbWVidWtGTVpBSUFmZVdVSTloSEZuczlLczh1eElhNjQtMF9OY2Zqenc1VzRNbnB5NVZNSGVtUQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 特殊能力 渾身の決勝打の効果と入手方法 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026の渾身の決勝打の効果と入手方法です」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://piyolog.hatenadiary.jp/entry/2026/08/20/113237",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「2026年8月4日、株式会社ドコモ・バイクシェアは、8月1日の新システムへの切替後に生じた不具合により、安定したサービス提供の見通しが立たないとして全国でサービス提供を一時停止したと公表しました」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://gigazine.net/news/20260820-live-past-100-cancer-killing-cells/",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ご存じの通り価格高騰などの悪影響でサーバー運営がとても苦しい状態です」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153462",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「次世代XRブランドVITURE Inc.（本社: 米国カリフォルニア州、代表: David Jiang）は、ブランド誕生5周年を記念した最新XRグラス「VITURE Pro 2 XRグラス」を、2026年8月20日（木）10時より、VITURE公式サイト、Amazon（VITURE JP自営店）、楽天市場、Yahoo!」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-21T02:41:07Z"
+    }
+  ]
+}

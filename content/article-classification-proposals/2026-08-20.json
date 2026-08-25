@@ -1,0 +1,293 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-08-20",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFA1bGpZRER1ZHJkSndaZVEtWXFDS1dtVkNMa05wS2lrbWdYUDR5VG9hNzhWTm5NUnlzN3o2ckI1U0FCUTc3cjQ1RzNNYmhHRkFlTi1xTXNHeGNhX0lrcnpvOHZYSmk?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「今回の大家列伝は、宮城県石巻市を拠点に、宮城県と岩手県で賃貸経営を行うフミさんです」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBtMHZYWXphQ25qQi10X1JpUGIyUTVLM2ZxRDRnWk1tNjBMMEJfUEpxNExnTUs0NklUT1BfRDZfWllMMVhrVUd2aVdydUtKdml6dUNUdEZudGFuZ1dxamxN?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「中島健人が主演を務めるNetflixシリーズ『SとX』の配信が本日よりスタート」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9TeWlKRjJkSk50dXRuZzRidncwUExYcTkxZkwxN0w2c1BYLUxzc3BONi1XQ245RUJMbXN4VXVkZmdRZFdQdGZnby1ZTlFMOFI1NjBLWWhLWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music",
+        "media_or_editorial"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス 最強編成とおすすめパーティ【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス/ほろどり)の最強編成(最強パーティ編成)とおすすめチーム編成です」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「キャラ 簡易性能 [Energeticスプラッシュ！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5RbjhWblB0TnBFUFdlcGFPRVU4TUxQMjV3T1BxS01lcWJUR1Fld3cxU3BROGdRUVozSlJNQW94WEYxbXV5dlRDQk5tSTVGODdmbDdaeWxnWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス 曲一覧 カバー曲一覧｜収録曲【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)におけるカバー曲一覧です」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://kihaseason2015.hatenablog.com/entry/2026/08/20/000308",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「「嵯峨の送り火」で祖先の霊を送る 「宵弘法」とは、お盆に迎えられ供養を受けられたご先祖を、再びみ仏の淨土へ送るため、 大覚寺大沢池を舞台に「嵯峨の送り火」としてつとめる法会です」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://www.youtube.com/watch?v=lOVZTh9p0VY",
+      "article_type": "video_or_stream",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「タイトル: Laura day romance / 素敵すぎる ‘Too good’ (official music video) 投稿者・チャンネル: Laura day romance 配信元: YouTube」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://news.yahoo.co.jp/articles/32c05ad6c0707add7fb3401b7cf3169cca817b96",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「崇峻天皇倉梯岡陵 拝所（画像＝Saigen Jiro／CC-Zero／Wikimedia Commons） 天皇家の歴史を変えた出来事はどのように起きたのだろうか」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://anond.hatelabo.jp/20260819213344",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「■ 年3回 しか 映画館 行かない 雑魚 だけど「小難しいこと言 わず に頭 空っぽ で楽しめる」 映画 10 選 年間 10 0本観てない奴とは 映画 の話をしたくないと かい う 増田 がバズってて、 普通に 腹立ったので書く」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE0ydGV5dkVRTXR0VFJOQWlSYmE1MXlNTzVBWkgxUmJUQm5XWm5mSlB5V3NiMTQ4UUZrRDBvTndoSjVYQmZ2OWVjYzIwUV9USF9TbG9BTm9FRXV2dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ パワプロ2026攻略 サクセス 二刀流育成理論と作り方 AppMedia株式会社 https://appmedia.jp/ AppMedia パワプロ2026サクセスの二刀流選手育成理論です」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153387",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「株式会社REJECT（本社：東京都港区、代表取締役：甲山翔也）が運営するeスポーツチーム「REJECT」は、所属ストリーマー・dtto.の誕生日を記念し、「dtto. 誕生日グッズ2026」を期間限定で受注販売することをお知らせいたします」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://kotaji-travel.com/entry/2026-JAL-FOP-RUN-No12-5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「トップ > JAL修行 > 【2026年JAL・FOP修行記録 ⑫】 からくり時計は素晴らしかった！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://automaton-media.com/articles/reportjp/20260819-461105/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AUTOMATON WEST (EN) AUTOMATON China (中文) 『ネプテューヌ』シリーズといえば、多くのゲーマーにとってお馴染みの名前だろう」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153367",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ツインエンジンは19日、 「“そんならかぐや、もう1回！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://www.javainthebox.com/2026/08/java-ring.html",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「Java in the Box Annex: 探偵！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153339",
+      "article_type": "news_article",
+      "primary_category": "collaboration",
+      "secondary_categories_json": [
+        "product_or_goods",
+        "live_or_music",
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「株式会社サイバーエージェント（本社：東京都渋谷区、代表取締役社長：山内隆裕、東証プライム市場：証券コード4751）は、人気VTuberグループ「にじさんじ」とアバターSNS「PIGG PARTY」のコラボレーション商品、『にじさんじPIGGPARTYチップス2 うすしお味』を2026年8月25日（火）より発売することをお知らせいたします」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFBmbUJ2Y0ZrUjFjMVE0dTZNQUdkUFZyajdzRVMwSnRqeVB6d2Z2QmphaHhuOWxSRlZpZGVCQ1hmaml1TkVYdnRNZWRB?oc=5",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AI審査・AI-OCR・公式ページ自動生成を提供開始」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153297",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「hololive DEV_IS所属ユニットFLOW GLOWが、8枚目のシングル「magic summer」を8月19日にリリースした」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://leaddev.com/leadership/staff-engineers-must-rebuild-team-culture",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「You have 1 article left to read this month before you need to register a free LeadDev.com account. AI-driven parallel work is eroding what makes a team: shared goals , interdependent work , and stability , leaving engine」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://panora.tokyo/archives/153292",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "live_or_music",
+        "game_or_technology",
+        "company_or_business"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「OTAGROUP株式会社（代表取締役：下西 竜二）は誰でもスマホ１つで2Dアバターを作成でき、そのまま簡単にライブ配信を始められるVTuberアバター作成・配信アプリ「Avvy」提携事務所「Avivi」所属VTuberの「霜影ガルフ」が2026年7月16日から7月21日にアプリ内で開催された「Avvy」×「VTuberスタイル」掲載権イベントにて1位を獲得したことをお知らせいたします」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://www.itmedia.co.jp/news/article/2608/19/2000000583/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「「対応が面倒だし、AIで営業電話をかけてくる相手と仕事したくない」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://zenn.dev/exwzd/articles/20260813-dogwood-agent-policy",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「2026年8月、AWS が Dogwood というオープンソースのポリシー言語を発表しました（ Introducing Dogwood: runtime verification for AI agents ）」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://anond.hatelabo.jp/20260819080332",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「< anond:20260819075029 | anond:20260818130938 > 何の話かというと、 インテリア ゲーム を遊ぶ Vtuber の話だ」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    },
+    {
+      "article_url": "https://ashunar0.dev/posts/saas-spa-vs-nextjs/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「この記事では、App Router の Next.js と、クライアントサイドで完結する SPA を比べます」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-19T23:43:53Z"
+    }
+  ]
+}

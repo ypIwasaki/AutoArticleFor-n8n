@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "current_commit": "5b4aaeaa75bc231002196bdebd1ad44da9ed24c0",
+  "worktree_has_uncommitted_changes": true,
+  "generated_at": "2026-08-06T08:15:52Z",
+  "scanned_scope": [
+    "Git-tracked root runtime files",
+    "apps/talent-dashboard/**",
+    "config/**",
+    "content/**/README.md data contracts only",
+    "docs/*.md excluding docs/codemap/**",
+    "n8n/workflows/*.workflow.json",
+    "scripts/**"
+  ],
+  "excluded_directories": [
+    ".git/",
+    ".agents/",
+    ".codex/",
+    "node_modules/",
+    "vendor/",
+    "build/",
+    "dist/",
+    "cache/",
+    ".cache/",
+    "__pycache__/",
+    ".pytest_cache/",
+    "coverage/",
+    "docs/codemap/ (self-generated output)",
+    "content/ dated/generated/runtime artifacts (README.md contracts retained)"
+  ],
+  "fingerprint_algorithm": {
+    "name": "sha256-path-content-v1",
+    "description": "For each module, sort tracked paths ordinally; for each path append UTF-8(path) + NUL + lowercase SHA-256(file bytes) + LF; SHA-256 the concatenated UTF-8 record stream. docs/codemap outputs and generated content artifacts are excluded.",
+    "path_order": "ordinal ascending Git path",
+    "content_hash": "SHA-256 over current file bytes",
+    "encoding": "UTF-8 for path records",
+    "separator": "NUL between path and content hash; LF between records"
+  },
+  "comparison": {
+    "prior_lock_found": false,
+    "changed_modules": [
+      {
+        "name": "root-runtime",
+        "status": "new",
+        "reason": "No prior docs/codemap/codemap.lock existed."
+      },
+      {
+        "name": "dashboard",
+        "status": "new",
+        "reason": "No prior docs/codemap/codemap.lock existed."
+      },
+      {
+        "name": "configuration",
+        "status": "new",
+        "reason": "No prior docs/codemap/codemap.lock existed."
+      },
+      {
+        "name": "content-contracts",
+        "status": "new",
+        "reason": "No prior docs/codemap/codemap.lock existed."
+      },
+      {
+        "name": "documentation",
+        "status": "new",
+        "reason": "No prior docs/codemap/codemap.lock existed."
+      },
+      {
+        "name": "n8n-workflows",
+        "status": "new",
+        "reason": "No prior docs/codemap/codemap.lock existed."
+      },
+      {
+        "name": "scripts",
+        "status": "new",
+        "reason": "No prior docs/codemap/codemap.lock existed."
+      }
+    ],
+    "removed_modules": []
+  },
+  "modules": {
+    "root-runtime": {
+      "fingerprint": "26ff826fde43f0663e8725648273d0417f82ce2caa377542f9d0d1d76d2552e5",
+      "tracked_files": [
+        ".env.example",
+        ".gitignore",
+        "docker-compose.yml",
+        "README.md"
+      ]
+    },
+    "dashboard": {
+      "fingerprint": "951d92bd7a3fb03f614a226bd3eef6bcdc2fc7b9b9c1ca1a1a6e945ddc5a54af",
+      "tracked_files": [
+        "apps/talent-dashboard/server.py",
+        "apps/talent-dashboard/web/app.js",
+        "apps/talent-dashboard/web/article.html",
+        "apps/talent-dashboard/web/articles.html",
+        "apps/talent-dashboard/web/index.html",
+        "apps/talent-dashboard/web/keyword-candidates.html",
+        "apps/talent-dashboard/web/keywords.html",
+        "apps/talent-dashboard/web/page-state.js",
+        "apps/talent-dashboard/web/records.js",
+        "apps/talent-dashboard/web/styles.css",
+        "apps/talent-dashboard/web/talent.html",
+        "apps/talent-dashboard/web/talents.html",
+        "apps/talent-dashboard/web/weekly-reports.html",
+        "apps/talent-dashboard/web/weekly-reports.js"
+      ]
+    },
+    "configuration": {
+      "fingerprint": "73a91d341a57cb06cbf48f90aff4394799b307a99093c6d867f81b381cffc1f4",
+      "tracked_files": [
+        "config/article-classification-taxonomy.json",
+        "config/keywords.json",
+        "config/organizations.json",
+        "config/README.md"
+      ]
+    },
+    "content-contracts": {
+      "fingerprint": "109d3078c312b8ba038beac12eecaa2ec4bc076a7147584b2e11159d48409375",
+      "tracked_files": [
+        "content/ai-article-classification-instructions/README.md",
+        "content/ai-extraction-instructions/README.md",
+        "content/ai-keyword-candidates/README.md",
+        "content/ai-summary-instructions/README.md",
+        "content/ai-talent-index-instructions/README.md",
+        "content/ai-weekly-report-instructions/README.md",
+        "content/analysis/keyword-quality/README.md",
+        "content/analysis/README.md",
+        "content/analysis/weekly-reports/README.md",
+        "content/article-body-captures/README.md",
+        "content/article-classification-proposals/README.md",
+        "content/article-feedback-instructions/README.md",
+        "content/article-summaries/README.md",
+        "content/daily-digests/README.md",
+        "content/keyword-candidates/README.md",
+        "content/official-talent-registry/README.md",
+        "content/README.md",
+        "content/structured-records/README.md",
+        "content/talent-index-proposals/README.md",
+        "content/weekly-reports/README.md"
+      ]
+    },
+    "documentation": {
+      "fingerprint": "42611e14cd7644fbc5639ee626b09946664493e5743e45247f0e84c33adf51fa",
+      "tracked_files": [
+        "docs/ai-keyword-extraction.md",
+        "docs/ai-summary-instructions.md",
+        "docs/analysis.md",
+        "docs/article-classifications.md",
+        "docs/automatic-keyword-promotion.md",
+        "docs/keyword-management.md",
+        "docs/n8n-api-sync.md",
+        "docs/n8n-setup.md",
+        "docs/official-talent-registry.md",
+        "docs/talent-article-index.md",
+        "docs/talent-dashboard.md"
+      ]
+    },
+    "n8n-workflows": {
+      "fingerprint": "40c81e66d8e6b051792cbc11cc817b2d6eb971c0f46b3b3d4f6691ed5fdae59e",
+      "tracked_files": [
+        "n8n/workflows/apply-article-classification-proposal.workflow.json",
+        "n8n/workflows/apply-article-feedback.workflow.json",
+        "n8n/workflows/apply-talent-index-proposal.workflow.json",
+        "n8n/workflows/auto-article-starter.workflow.json",
+        "n8n/workflows/daily-keyword-news-summary.workflow.json"
+      ]
+    },
+    "scripts": {
+      "fingerprint": "66c9d18cd80c82df5c6e6fd821e1b0b408bddca85f76485efa99bfad887c3f09",
+      "tracked_files": [
+        "scripts/backfill_article_summaries.py",
+        "scripts/backfill_structured_records.py",
+        "scripts/capture_article_contents.py",
+        "scripts/ensure_article_feedback_table.py",
+        "scripts/generate_analysis_reports.py",
+        "scripts/generate_article_feedback_instructions.py",
+        "scripts/generate_daily_review_outputs.py",
+        "scripts/start_n8n_with_file_access.sh",
+        "scripts/start_talent_dashboard.sh",
+        "scripts/sync_official_talent_registry.py",
+        "scripts/sync_workflow_to_n8n.py"
+      ]
+    }
+  }
+}

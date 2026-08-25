@@ -1,0 +1,2258 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AutoArticleFor-n8n — Interactive Codemap</title>
+<style>
+:root{color-scheme:dark;--bg:#071018;--panel:#0d1824;--panel2:#101f2e;--text:#e6f1ff;--muted:#8aa0b6;--line:#30465a;--accent:#66d9ef;--gold:#f6c85f;--up:#66a3ff;--down:#5bd6a2;--danger:#ff7b8b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 70% 5%,#10283b 0,#071018 38%);color:var(--text);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
+header{height:76px;padding:12px 20px;border-bottom:1px solid #203247;background:#08131dee;display:flex;align-items:center;gap:22px}
+h1{font-size:18px;margin:0}.meta{display:flex;gap:18px;color:var(--muted);font-size:12px;flex-wrap:wrap}.meta b{color:#cfe5f6;font-weight:600}.shell{height:calc(100vh - 76px);display:grid;grid-template-columns:320px 1fr}
+aside{background:#0a1520;border-right:1px solid #203247;overflow:auto;padding:16px}.canvas-wrap{position:relative;overflow:hidden}.canvas-wrap svg{width:100%;height:100%;display:block;touch-action:none;cursor:grab}.canvas-wrap svg.dragging{cursor:grabbing}
+section{margin:0 0 18px}h2{font-size:12px;text-transform:uppercase;letter-spacing:.11em;color:#7f98ae;margin:0 0 9px}
+input,select,button{font:inherit;color:var(--text);background:#111f2c;border:1px solid #2a4053;border-radius:8px;padding:8px 10px}input,select{width:100%}button{cursor:pointer}button:hover{border-color:#5b86a5;background:#172b3d}
+.controls{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}.controls button{padding:7px 4px}
+.filters{display:grid;grid-template-columns:1fr 1fr;gap:6px}.check{display:flex;gap:7px;align-items:center;color:#bfd0df}.check input{width:auto}
+.legend{display:flex;flex-wrap:wrap;gap:8px}.key{display:flex;align-items:center;gap:5px;color:#adc1d2;font-size:12px}.dot{width:9px;height:9px;border-radius:50%}
+.note{font-size:12px;color:var(--muted)}#status{position:absolute;top:12px;left:12px;background:#08131ddd;border:1px solid #294258;border-radius:20px;padding:6px 11px;color:#aac0d3;pointer-events:none}
+#empty{display:none;position:absolute;inset:0;place-items:center;color:#8fa8bd}.detail{border-top:1px solid #223548;padding-top:14px}.detail h3{font-size:15px;margin:0 0 7px}.detail p{margin:5px 0;color:#b6c8d7}.detail ul{margin:6px 0 0;padding-left:18px}.detail code{color:#8fddff;word-break:break-all}.badge{display:inline-block;border:1px solid #38546b;border-radius:999px;padding:2px 7px;margin:2px 4px 2px 0;font-size:11px;color:#bdd2e2}
+.boundary{fill:#0b172199;stroke:#3a617c;stroke-width:2;stroke-dasharray:8 7}.boundary-label{fill:#6f91aa;font-size:14px;font-weight:700;letter-spacing:.12em}
+.edge{fill:none;stroke:#40566a;stroke-width:1.45;opacity:.52;vector-effect:non-scaling-stroke}.edge.hidden{display:none}.edge.dim{opacity:.08}.edge.focus{stroke:var(--gold);opacity:1;stroke-width:3}.edge.up{stroke:var(--up);opacity:.95;stroke-width:2.5}.edge.down{stroke:var(--down);opacity:.95;stroke-width:2.5}
+.node{cursor:pointer}.node.hidden{display:none}.node.dim{opacity:.14}.node .box{stroke:#426078;stroke-width:1.5;rx:12;filter:url(#shadow)}.node:hover .box{stroke:#d7f1ff;stroke-width:2.5}.node.selected .box{stroke:#fff;stroke-width:3}.node.flow .box{stroke:var(--gold);stroke-width:3}.node.up .box{stroke:var(--up);stroke-width:3}.node.down .box{stroke:var(--down);stroke-width:3}.node text{pointer-events:none}.node .title{fill:#f3f8fb;font-size:14px;font-weight:750}.node .role{fill:#a9bdcd;font-size:11px}.node .path{fill:#7892a8;font-size:9.5px}
+.external .box{fill:#2b1e38}.ui .box{fill:#15304a}.service .box{fill:#133b3d}.workflow .box{fill:#27314d}.platform .box{fill:#3b2c19}.tool .box{fill:#243542}.data .box{fill:#2c263e}
+@media(max-width:820px){.shell{grid-template-columns:260px 1fr}header{height:92px;align-items:flex-start;flex-direction:column;gap:5px}.shell{height:calc(100vh - 92px)}}
+</style>
+</head>
+<body>
+<header>
+  <h1>AutoArticleFor-n8n · Interactive Codemap</h1>
+  <div class="meta"><span>generated <b id="generated"></b></span><span>commit <b id="commit"></b></span><span>scope <b id="scope-count"></b></span></div>
+</header>
+<div class="shell">
+<aside>
+  <section><h2>Search</h2><input id="search" type="search" placeholder="module, path, role, entrypoint…" autocomplete="off"></section>
+  <section><h2>Module types</h2><div id="filters" class="filters"></div></section>
+  <section><h2>End-to-end flow</h2><select id="flow"><option value="">All flows</option></select></section>
+  <section><h2>View</h2><div class="controls"><button id="zoom-in" title="Zoom in">＋</button><button id="zoom-out" title="Zoom out">−</button><button id="fit" title="Fit graph">Fit</button><button id="reset" title="Clear selection">Clear</button></div></section>
+  <section><h2>Legend</h2><div id="legend" class="legend"></div><p class="note">Click a module: blue = upstream callers, green = downstream dependencies, gold = selected flow. Wheel to zoom; drag empty canvas to pan.</p></section>
+  <section class="detail"><h2>Selection</h2><div id="detail"><p class="note">Select a module or flow. No tracked test files were found, so test lists are empty.</p></div></section>
+</aside>
+<main class="canvas-wrap">
+  <svg id="graph" role="img" aria-label="Interactive architecture graph">
+    <defs>
+      <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#000" flood-opacity=".38"/></filter>
+      <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#526b80"/></marker>
+    </defs>
+    <g id="viewport"><g id="boundaries"></g><g id="edges"></g><g id="nodes"></g></g>
+  </svg>
+  <div id="status"></div><div id="empty">No modules match the active filters.</div>
+</main>
+<script id="codemap-data" type="application/json">{
+  "generated_at": "2026-08-06T08:15:52Z",
+  "generated_from_commit": "5b4aaeaa75bc231002196bdebd1ad44da9ed24c0",
+  "scope": [
+    "Git-tracked root runtime files",
+    "apps/talent-dashboard/**",
+    "config/**",
+    "content/**/README.md data contracts only",
+    "docs/*.md excluding docs/codemap/**",
+    "n8n/workflows/*.workflow.json",
+    "scripts/**"
+  ],
+  "nodes": [
+    {
+      "id": "n8n-runtime",
+      "label": "n8n Runtime",
+      "path": "docker-compose.yml",
+      "type": "platform",
+      "role": "System execution boundary for the n8n UI, REST API, webhook endpoints, schedules, and imported workflows.",
+      "entrypoints": [
+        "docker compose up -d",
+        "scripts/start_n8n_with_file_access.sh",
+        "http://localhost:5678"
+      ],
+      "tests": [],
+      "constraints": [
+        "Local file access is constrained by N8N_RESTRICT_FILE_ACCESS_TO.",
+        "Secrets and the n8n SQLite database are intentionally not committed.",
+        "No Redis or external queue-mode configuration is present in tracked runtime files."
+      ],
+      "evidence": [
+        {
+          "path": "docker-compose.yml",
+          "symbol": "services:",
+          "detail": "Defines the official n8n container, port, environment, project mount, and persistent n8n_data volume.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/start_n8n_with_file_access.sh",
+          "symbol": "exec \"$N8N_BIN\"",
+          "detail": "Starts the locally installed n8n binary with project file access.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "docker-compose.yml",
+        "scripts/start_n8n_with_file_access.sh",
+        ".env.example"
+      ]
+    },
+    {
+      "id": "daily-workflow",
+      "label": "Daily Keyword News Summary",
+      "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+      "type": "workflow",
+      "role": "Primary collection workflow: accepts schedule/manual/webhook triggers, assembles keywords, fetches RSS, filters articles, writes review artifacts and structured records, and promotes automatic keywords.",
+      "entrypoints": [
+        "Daily Schedule",
+        "Manual Trigger",
+        "POST /webhook/daily-keyword-summary/request",
+        "POST /webhook/keyword-candidate/add",
+        "POST /webhook/keyword-management/update"
+      ],
+      "tests": [],
+      "constraints": [
+        "The workflow writes instructions but does not call an AI API.",
+        "Explicit webhook keywords override manual, automatic, and talent-derived defaults.",
+        "Promoted keywords affect later executions, not the execution that discovered them."
+      ],
+      "evidence": [
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Daily Schedule",
+          "detail": "Scheduled entrypoint.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Build Search RSS URLs",
+          "detail": "Builds Google News, Hatena, and PANORA feed requests.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Write Markdown Files",
+          "detail": "Writes digest and review instruction artifacts.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Promote Extracted Keywords",
+          "detail": "Updates workflow static autoKeywords.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "n8n/workflows/daily-keyword-news-summary.workflow.json"
+      ]
+    },
+    {
+      "id": "talent-apply-workflow",
+      "label": "Apply Talent Index Proposal",
+      "path": "n8n/workflows/apply-talent-index-proposal.workflow.json",
+      "type": "workflow",
+      "role": "Validates a reviewed talent/article proposal and upserts articles, talents, and many-to-many article_talents rows.",
+      "entrypoints": [
+        "POST /webhook/talent-index/apply"
+      ],
+      "tests": [],
+      "constraints": [
+        "Only reviewed JSON should be submitted.",
+        "New discovered talents must remain pending and search-disabled until approval.",
+        "Exported Data Table IDs are environment-specific."
+      ],
+      "evidence": [
+        {
+          "path": "n8n/workflows/apply-talent-index-proposal.workflow.json",
+          "symbol": "Apply Talent Index Proposal Webhook",
+          "detail": "Receives reviewed proposals.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/apply-talent-index-proposal.workflow.json",
+          "symbol": "Validate AI Proposal",
+          "detail": "Validates schema and references.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/apply-talent-index-proposal.workflow.json",
+          "symbol": "Upsert Proposed Relations",
+          "detail": "Writes article/talent relationships.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "n8n/workflows/apply-talent-index-proposal.workflow.json"
+      ]
+    },
+    {
+      "id": "classification-apply-workflow",
+      "label": "Apply Article Classification Proposal",
+      "path": "n8n/workflows/apply-article-classification-proposal.workflow.json",
+      "type": "workflow",
+      "role": "Resolves proposal URLs to existing articles, validates taxonomy fields, and upserts article classifications.",
+      "entrypoints": [
+        "POST /webhook/article-classification/apply"
+      ],
+      "tests": [],
+      "constraints": [
+        "Classification requires evidence and adequate confidence.",
+        "Secondary categories are limited and must differ from the primary category.",
+        "The classification table ID is supplied by environment variable."
+      ],
+      "evidence": [
+        {
+          "path": "n8n/workflows/apply-article-classification-proposal.workflow.json",
+          "symbol": "Apply Article Classification Proposal Webhook",
+          "detail": "Receives reviewed classification JSON.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/apply-article-classification-proposal.workflow.json",
+          "symbol": "Validate Article Classification Proposal",
+          "detail": "Validates proposals against existing articles and taxonomy.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/apply-article-classification-proposal.workflow.json",
+          "symbol": "Upsert Article Classifications",
+          "detail": "Writes classification rows.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "n8n/workflows/apply-article-classification-proposal.workflow.json"
+      ]
+    },
+    {
+      "id": "feedback-apply-workflow",
+      "label": "Apply Article Feedback",
+      "path": "n8n/workflows/apply-article-feedback.workflow.json",
+      "type": "workflow",
+      "role": "Validates dashboard article decisions and upserts approved/rejected feedback used to exclude rejected articles from later daily outputs.",
+      "entrypoints": [
+        "POST /webhook/article-feedback/reject"
+      ],
+      "tests": [],
+      "constraints": [
+        "The article must already exist.",
+        "Rejected decisions require one supported reason code.",
+        "Feedback upserts by article key."
+      ],
+      "evidence": [
+        {
+          "path": "n8n/workflows/apply-article-feedback.workflow.json",
+          "symbol": "Article Feedback Webhook",
+          "detail": "Receives dashboard feedback.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/apply-article-feedback.workflow.json",
+          "symbol": "Validate Article Feedback",
+          "detail": "Validates decision and article reference.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/apply-article-feedback.workflow.json",
+          "symbol": "Upsert Article Feedback",
+          "detail": "Writes feedback rows.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "n8n/workflows/apply-article-feedback.workflow.json"
+      ]
+    },
+    {
+      "id": "legacy-workflow",
+      "label": "Auto Article Starter (legacy)",
+      "path": "n8n/workflows/auto-article-starter.workflow.json",
+      "type": "workflow",
+      "role": "Earlier manual/webhook article-brief prototype retained for compatibility; superseded by the daily keyword workflow.",
+      "entrypoints": [
+        "Manual Trigger",
+        "POST /webhook/auto-article/brief"
+      ],
+      "tests": [],
+      "constraints": [
+        "README explicitly marks this workflow as an earlier prototype.",
+        "It has no persisted output node in the exported definition."
+      ],
+      "evidence": [
+        {
+          "path": "n8n/workflows/auto-article-starter.workflow.json",
+          "symbol": "Build Article Brief",
+          "detail": "Builds the legacy brief.",
+          "status": "verified"
+        },
+        {
+          "path": "README.md",
+          "symbol": "auto-article-starter.workflow.json",
+          "detail": "Documents the workflow as an earlier prototype.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "n8n/workflows/auto-article-starter.workflow.json"
+      ]
+    },
+    {
+      "id": "dashboard-server",
+      "label": "Talent Dashboard Server",
+      "path": "apps/talent-dashboard/server.py",
+      "type": "service",
+      "role": "Local HTTP service that serves static dashboard pages, aggregates n8n SQLite and file archives, manages manual keywords, proxies runtime keyword mutations and feedback, and emits feedback instructions.",
+      "entrypoints": [
+        "scripts/start_talent_dashboard.sh",
+        "GET /api/dashboard",
+        "GET /api/keywords",
+        "GET /api/keyword-candidates",
+        "GET /api/weekly-reports",
+        "POST /api/keywords",
+        "POST /api/keyword-candidates/add",
+        "POST /api/article-feedback"
+      ],
+      "tests": [],
+      "constraints": [
+        "Binds to 127.0.0.1 by default.",
+        "Reads n8n SQLite in mode=ro; mutations use config file replacement or n8n webhooks.",
+        "Falls back to reviewed proposal files when required Data Tables are unavailable."
+      ],
+      "evidence": [
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "class DashboardHandler",
+          "detail": "Defines HTTP routing and static-file serving.",
+          "status": "verified"
+        },
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def build_dashboard()",
+          "detail": "Builds the aggregated API payload.",
+          "status": "verified"
+        },
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def manage_keyword(",
+          "detail": "Handles manual and automatic keyword operations.",
+          "status": "verified"
+        },
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def evaluate_article(",
+          "detail": "Validates and submits article feedback.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "apps/talent-dashboard/server.py",
+        "scripts/start_talent_dashboard.sh"
+      ]
+    },
+    {
+      "id": "dashboard-web",
+      "label": "Talent Dashboard Web UI",
+      "path": "apps/talent-dashboard/web/index.html",
+      "type": "ui",
+      "role": "Multi-page browser UI for dashboard metrics, talents, articles, article feedback, keyword management, AI candidates, and weekly reports.",
+      "entrypoints": [
+        "index.html",
+        "talents.html",
+        "articles.html",
+        "keywords.html",
+        "keyword-candidates.html",
+        "weekly-reports.html"
+      ],
+      "tests": [],
+      "constraints": [
+        "Requires the local dashboard server APIs; direct file opening does not provide live data.",
+        "Page state is stored in browser sessionStorage.",
+        "All server writes are user initiated."
+      ],
+      "evidence": [
+        {
+          "path": "apps/talent-dashboard/web/app.js",
+          "symbol": "async function loadDashboard()",
+          "detail": "Loads dashboard data.",
+          "status": "verified"
+        },
+        {
+          "path": "apps/talent-dashboard/web/records.js",
+          "symbol": "async function loadDashboard()",
+          "detail": "Loads list/detail data.",
+          "status": "verified"
+        },
+        {
+          "path": "apps/talent-dashboard/web/weekly-reports.js",
+          "symbol": "async function loadReports()",
+          "detail": "Loads weekly report metadata.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "apps/talent-dashboard/web/index.html",
+        "apps/talent-dashboard/web/app.js",
+        "apps/talent-dashboard/web/records.js",
+        "apps/talent-dashboard/web/weekly-reports.js",
+        "apps/talent-dashboard/web/page-state.js",
+        "apps/talent-dashboard/web/styles.css",
+        "apps/talent-dashboard/web/article.html",
+        "apps/talent-dashboard/web/articles.html",
+        "apps/talent-dashboard/web/keyword-candidates.html",
+        "apps/talent-dashboard/web/keywords.html",
+        "apps/talent-dashboard/web/talent.html",
+        "apps/talent-dashboard/web/talents.html",
+        "apps/talent-dashboard/web/weekly-reports.html"
+      ]
+    },
+    {
+      "id": "workflow-sync",
+      "label": "Workflow API Sync",
+      "path": "scripts/sync_workflow_to_n8n.py",
+      "type": "tool",
+      "role": "CLI client that validates a local workflow export, finds or creates the target workflow, updates its structure through the n8n REST API, and optionally changes activation state.",
+      "entrypoints": [
+        "python3 scripts/sync_workflow_to_n8n.py",
+        "--list",
+        "--dry-run",
+        "--create-if-missing",
+        "--active-state"
+      ],
+      "tests": [],
+      "constraints": [
+        "Requires N8N_API_KEY for non-dry-run API operations.",
+        "Normal updates omit staticData and preserve runtime autoKeywords.",
+        "A remote workflow can contain newer UI edits that this tool overwrites."
+      ],
+      "evidence": [
+        {
+          "path": "scripts/sync_workflow_to_n8n.py",
+          "symbol": "def load_workflow(",
+          "detail": "Loads and validates the local JSON definition.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/sync_workflow_to_n8n.py",
+          "symbol": "def api_request(",
+          "detail": "Calls the n8n REST API.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/sync_workflow_to_n8n.py",
+          "symbol": "def main() -> int:",
+          "detail": "Coordinates lookup, update/create, and activation.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "scripts/sync_workflow_to_n8n.py"
+      ]
+    },
+    {
+      "id": "official-registry-sync",
+      "label": "Official Talent Registry Sync",
+      "path": "scripts/sync_official_talent_registry.py",
+      "type": "tool",
+      "role": "Fetches configured official roster pages, parses source-specific structures, compares with local talents, writes audit snapshots/proposals, and optionally posts the proposal.",
+      "entrypoints": [
+        "python3 scripts/sync_official_talent_registry.py",
+        "--apply"
+      ],
+      "tests": [],
+      "constraints": [
+        "Only configured official source URLs are fetched.",
+        "Roster sync never deletes talents or marks unmatched records inactive.",
+        "Official entries default to search_enabled=false."
+      ],
+      "evidence": [
+        {
+          "path": "scripts/sync_official_talent_registry.py",
+          "symbol": "def fetch_source(",
+          "detail": "Fetches roster HTML.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/sync_official_talent_registry.py",
+          "symbol": "def proposal_talents(",
+          "detail": "Builds reviewed-upsert candidates.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/sync_official_talent_registry.py",
+          "symbol": "def post_proposal(",
+          "detail": "Posts to the talent apply webhook.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "scripts/sync_official_talent_registry.py"
+      ]
+    },
+    {
+      "id": "article-capture",
+      "label": "Article Capture & Summary Backfill",
+      "path": "scripts/capture_article_contents.py",
+      "type": "tool",
+      "role": "Fetches saved article targets, resolves Google News URLs, captures normalized article text or public media metadata, writes resumable archives/summaries, and optionally upserts article_contents.",
+      "entrypoints": [
+        "python3 scripts/capture_article_contents.py",
+        "python3 scripts/backfill_article_summaries.py",
+        "--run-date",
+        "--retry-unverified",
+        "--refresh",
+        "--write"
+      ],
+      "tests": [],
+      "constraints": [
+        "Content is capped at 100,000 characters.",
+        "Google News and publisher requests are rate-limited and retried.",
+        "Partial runs cannot overwrite daily summaries in the older backfill path."
+      ],
+      "evidence": [
+        {
+          "path": "scripts/capture_article_contents.py",
+          "symbol": "def capture(",
+          "detail": "Captures one record with cache and content-type handling.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/capture_article_contents.py",
+          "symbol": "def upsert(",
+          "detail": "Upserts article_contents through the n8n Data Table API.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/backfill_article_summaries.py",
+          "symbol": "def resolve_google_url(",
+          "detail": "Resolves Google News redirect URLs.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/backfill_article_summaries.py",
+          "symbol": "def write_summaries(",
+          "detail": "Writes verified daily summary Markdown.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "scripts/capture_article_contents.py",
+        "scripts/backfill_article_summaries.py"
+      ]
+    },
+    {
+      "id": "review-generators",
+      "label": "Review Output Generators",
+      "path": "scripts/generate_daily_review_outputs.py",
+      "type": "tool",
+      "role": "Offline generators for talent/classification proposals and article-feedback instruction Markdown, using structured records, body captures, and existing n8n rows.",
+      "entrypoints": [
+        "python3 scripts/generate_daily_review_outputs.py --run-date YYYY-MM-DD",
+        "python3 scripts/generate_article_feedback_instructions.py"
+      ],
+      "tests": [],
+      "constraints": [
+        "Daily review generation refuses incomplete article/capture coverage.",
+        "Generated proposals remain review artifacts until explicitly applied.",
+        "The feedback generator imports dashboard server logic."
+      ],
+      "evidence": [
+        {
+          "path": "scripts/generate_daily_review_outputs.py",
+          "symbol": "def build_talent_proposal(",
+          "detail": "Builds talent/article proposal JSON and Markdown.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/generate_daily_review_outputs.py",
+          "symbol": "def build_classification_proposal(",
+          "detail": "Builds classification proposal JSON and Markdown.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/generate_article_feedback_instructions.py",
+          "symbol": "from server import write_article_feedback_instruction",
+          "detail": "Reuses the dashboard feedback-instruction writer.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "scripts/generate_daily_review_outputs.py",
+        "scripts/generate_article_feedback_instructions.py"
+      ]
+    },
+    {
+      "id": "analysis-pipeline",
+      "label": "Archive Backfill & Weekly Analysis",
+      "path": "scripts/generate_analysis_reports.py",
+      "type": "tool",
+      "role": "Backfills JSONL from historical digests and produces weekly trend and keyword-quality Markdown from structured records, reviewed classifications, and AI candidate decisions.",
+      "entrypoints": [
+        "python3 scripts/backfill_structured_records.py",
+        "python3 scripts/generate_analysis_reports.py",
+        "--week YYYY-Www"
+      ],
+      "tests": [],
+      "constraints": [
+        "Historical JSONL is not overwritten without --force.",
+        "Reports inherit RSS-only and review-coverage limitations.",
+        "Classification ratios exclude unclassified articles."
+      ],
+      "evidence": [
+        {
+          "path": "scripts/backfill_structured_records.py",
+          "symbol": "def records_for_digest(",
+          "detail": "Converts one digest to run/article records.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/generate_analysis_reports.py",
+          "symbol": "def load_records(",
+          "detail": "Loads structured records.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/generate_analysis_reports.py",
+          "symbol": "def build_weekly_report(",
+          "detail": "Builds weekly trend output.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/generate_analysis_reports.py",
+          "symbol": "def build_keyword_quality_report(",
+          "detail": "Builds keyword quality output.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "scripts/backfill_structured_records.py",
+        "scripts/generate_analysis_reports.py"
+      ]
+    },
+    {
+      "id": "table-bootstrap",
+      "label": "Article Feedback Table Bootstrap",
+      "path": "scripts/ensure_article_feedback_table.py",
+      "type": "tool",
+      "role": "Idempotent CLI that checks for and creates the article_feedback n8n Data Table through the REST API.",
+      "entrypoints": [
+        "python3 scripts/ensure_article_feedback_table.py",
+        "--env-file"
+      ],
+      "tests": [],
+      "constraints": [
+        "Requires N8N_API_KEY.",
+        "Only the article_feedback table is managed.",
+        "Existing tables are left unchanged."
+      ],
+      "evidence": [
+        {
+          "path": "scripts/ensure_article_feedback_table.py",
+          "symbol": "TABLE_NAME = \"article_feedback\"",
+          "detail": "Names the managed table.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/ensure_article_feedback_table.py",
+          "symbol": "def list_tables(",
+          "detail": "Queries existing Data Tables.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/ensure_article_feedback_table.py",
+          "symbol": "def main() -> int:",
+          "detail": "Creates the table only when absent.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "scripts/ensure_article_feedback_table.py"
+      ]
+    },
+    {
+      "id": "config-store",
+      "label": "Repository Configuration",
+      "path": "config/README.md",
+      "type": "data",
+      "role": "Git-tracked JSON configuration for manual/excluded keywords, organization roster sources/parsers, and the article classification taxonomy.",
+      "entrypoints": [
+        "config/keywords.json",
+        "config/organizations.json",
+        "config/article-classification-taxonomy.json"
+      ],
+      "tests": [],
+      "constraints": [
+        "Files must remain valid JSON.",
+        "Manual keywords are the durable source of truth.",
+        "Organization parsing is limited to configured official sources.",
+        "Taxonomy requires evidence and AI review."
+      ],
+      "evidence": [
+        {
+          "path": "config/keywords.json",
+          "symbol": "manualKeywords",
+          "detail": "Defines durable search keywords.",
+          "status": "verified"
+        },
+        {
+          "path": "config/organizations.json",
+          "symbol": "sourceUrl",
+          "detail": "Defines official roster sources and parser selection.",
+          "status": "verified"
+        },
+        {
+          "path": "config/article-classification-taxonomy.json",
+          "symbol": "articleTypes",
+          "detail": "Defines classification IDs and rules.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "config/README.md",
+        "config/keywords.json",
+        "config/organizations.json",
+        "config/article-classification-taxonomy.json"
+      ]
+    },
+    {
+      "id": "content-archive",
+      "label": "Content & Review Archive",
+      "path": "content/README.md",
+      "type": "data",
+      "role": "File-backed boundary for daily digests, structured records, body captures, AI instructions, reviewed proposals, summaries, weekly reports, and analysis outputs.",
+      "entrypoints": [
+        "content/daily-digests/",
+        "content/structured-records/",
+        "content/article-body-captures/",
+        "content/*-proposals/",
+        "content/weekly-reports/",
+        "content/analysis/"
+      ],
+      "tests": [],
+      "constraints": [
+        "Dated runtime artifacts are generated or manually reviewed and are excluded from the code fingerprint.",
+        "Same-date workflow runs may overwrite date-keyed outputs.",
+        "Proposal JSON must be reviewed before apply webhooks are called."
+      ],
+      "evidence": [
+        {
+          "path": "content/README.md",
+          "symbol": "# Content Archive",
+          "detail": "Documents the archive structure and ownership.",
+          "status": "verified"
+        },
+        {
+          "path": "content/structured-records/README.md",
+          "symbol": "# Structured Records",
+          "detail": "Defines the JSONL analysis contract.",
+          "status": "verified"
+        },
+        {
+          "path": "content/article-body-captures/README.md",
+          "symbol": "# Article Body Captures",
+          "detail": "Defines captured-content files and article_contents sync.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "content/README.md",
+        "content/structured-records/README.md",
+        "content/article-body-captures/README.md",
+        "content/talent-index-proposals/README.md",
+        "content/article-classification-proposals/README.md",
+        "content/article-summaries/README.md",
+        "content/weekly-reports/README.md",
+        "content/analysis/README.md"
+      ]
+    },
+    {
+      "id": "n8n-database",
+      "label": "n8n SQLite & Data Tables",
+      "path": "apps/talent-dashboard/server.py",
+      "type": "data",
+      "role": "Local n8n persistence: SQLite metadata/workflow static data and logical Data Tables talents, articles, article_talents, article_classifications, article_feedback, and optional article_contents.",
+      "entrypoints": [
+        "~/.n8n/database.sqlite",
+        "n8n Data Table nodes",
+        "n8n /api/v1/data-tables"
+      ],
+      "tests": [],
+      "constraints": [
+        "The SQLite file and table contents are outside Git.",
+        "Dashboard direct access is read-only.",
+        "Some exported workflow definitions contain local Data Table IDs.",
+        "article_classifications uses an environment-supplied table ID."
+      ],
+      "evidence": [
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def load_from_n8n()",
+          "detail": "Reads named Data Tables from SQLite in read-only mode.",
+          "status": "verified"
+        },
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def load_keyword_runtime()",
+          "detail": "Reads Daily Keyword News Summary staticData.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Load Talent Registry",
+          "detail": "Reads the talents Data Table.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "apps/talent-dashboard/server.py"
+      ]
+    },
+    {
+      "id": "rss-sources",
+      "label": "News RSS Sources",
+      "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+      "type": "external",
+      "role": "External Google News, Hatena Bookmark, and PANORA RSS endpoints queried for configured keywords.",
+      "entrypoints": [
+        "Google News RSS",
+        "Hatena Bookmark RSS",
+        "PANORA RSS"
+      ],
+      "tests": [],
+      "constraints": [
+        "Coverage is not a complete web search.",
+        "Feeds may return zero or noisy items.",
+        "No credentials are used by the current workflow."
+      ],
+      "evidence": [
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Build Search RSS URLs",
+          "detail": "Constructs external RSS URLs.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Read RSS Search Results",
+          "detail": "Fetches each rssUrl.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "n8n/workflows/daily-keyword-news-summary.workflow.json"
+      ]
+    },
+    {
+      "id": "official-roster-sites",
+      "label": "Official Roster Sites",
+      "path": "config/organizations.json",
+      "type": "external",
+      "role": "Configured public talent roster pages for Nijisanji, Hololive/Holostars, VSPO, Aogiri, Neo-Porte, Specialite, Replay, and Uomusume.",
+      "entrypoints": [
+        "HTTPS sourceUrl values in config/organizations.json"
+      ],
+      "tests": [],
+      "constraints": [
+        "Only configured sites are in scope.",
+        "Markup changes can break source-specific parsers.",
+        "Network content is not versioned in this repository."
+      ],
+      "evidence": [
+        {
+          "path": "config/organizations.json",
+          "symbol": "sourceUrl",
+          "detail": "Lists the official roster URLs.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/sync_official_talent_registry.py",
+          "symbol": "def parse_group(",
+          "detail": "Selects the configured source parser.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "config/organizations.json"
+      ]
+    },
+    {
+      "id": "article-publisher-sites",
+      "label": "Article & Media Publishers",
+      "path": "scripts/backfill_article_summaries.py",
+      "type": "external",
+      "role": "External article pages, Google News redirect endpoints, and public video/social metadata endpoints fetched during body capture.",
+      "entrypoints": [
+        "Saved article URLs",
+        "news.google.com redirect decoding",
+        "Public publisher/video/social pages"
+      ],
+      "tests": [],
+      "constraints": [
+        "Availability, robots policies, markup, and rate limits are external.",
+        "Unfetchable or short content is retained with failure/partial status.",
+        "Captured material is bounded and normalized."
+      ],
+      "evidence": [
+        {
+          "path": "scripts/backfill_article_summaries.py",
+          "symbol": "def http_bytes(",
+          "detail": "Fetches external HTTP content.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/backfill_article_summaries.py",
+          "symbol": "def capture_article(",
+          "detail": "Classifies and captures an article target.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/capture_article_contents.py",
+          "symbol": "class Fetch:",
+          "detail": "Applies host-aware delays and retries.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "scripts/backfill_article_summaries.py"
+      ]
+    },
+    {
+      "id": "manual-review",
+      "label": "Human / AI Review Boundary",
+      "path": "docs/talent-article-index.md",
+      "type": "external",
+      "role": "Manual evidence review step that converts generated AI instructions into approved proposal JSON/Markdown or weekly summaries before mutations are submitted.",
+      "entrypoints": [
+        "AI chat using generated instructions",
+        "Manual proposal review",
+        "Manual POST to apply webhooks"
+      ],
+      "tests": [],
+      "constraints": [
+        "Do not add facts absent from source evidence.",
+        "New talent candidates remain pending/search-disabled.",
+        "Only reviewed JSON is sent to apply workflows.",
+        "The specific AI provider and automation mechanism are not defined in repository code."
+      ],
+      "evidence": [
+        {
+          "path": "docs/talent-article-index.md",
+          "symbol": "## AI review flow",
+          "detail": "Defines reviewed talent proposal handling.",
+          "status": "verified"
+        },
+        {
+          "path": "docs/article-classifications.md",
+          "symbol": "## AI Review",
+          "detail": "Defines reviewed classification files.",
+          "status": "verified"
+        },
+        {
+          "path": "content/article-summaries/README.md",
+          "symbol": "# Article Summaries",
+          "detail": "Defines manual AI summary ownership.",
+          "status": "verified"
+        }
+      ],
+      "files": [
+        "docs/talent-article-index.md"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "n8n-runtime",
+      "to": "daily-workflow",
+      "type": "calls",
+      "label": "dispatches schedule/manual/webhook execution",
+      "evidence": [
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Daily Schedule",
+          "detail": "n8n trigger node starts the primary workflow.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "n8n-runtime",
+      "to": "talent-apply-workflow",
+      "type": "calls",
+      "label": "dispatches proposal webhook",
+      "evidence": [
+        {
+          "path": "n8n/workflows/apply-talent-index-proposal.workflow.json",
+          "symbol": "Apply Talent Index Proposal Webhook",
+          "detail": "Webhook trigger owned by n8n.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "n8n-runtime",
+      "to": "classification-apply-workflow",
+      "type": "calls",
+      "label": "dispatches classification webhook",
+      "evidence": [
+        {
+          "path": "n8n/workflows/apply-article-classification-proposal.workflow.json",
+          "symbol": "Apply Article Classification Proposal Webhook",
+          "detail": "Webhook trigger owned by n8n.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "n8n-runtime",
+      "to": "feedback-apply-workflow",
+      "type": "calls",
+      "label": "dispatches feedback webhook",
+      "evidence": [
+        {
+          "path": "n8n/workflows/apply-article-feedback.workflow.json",
+          "symbol": "Article Feedback Webhook",
+          "detail": "Webhook trigger owned by n8n.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "n8n-runtime",
+      "to": "legacy-workflow",
+      "type": "calls",
+      "label": "dispatches legacy manual/webhook trigger",
+      "evidence": [
+        {
+          "path": "n8n/workflows/auto-article-starter.workflow.json",
+          "symbol": "Article Request Webhook",
+          "detail": "Legacy webhook trigger owned by n8n.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "dashboard-web",
+      "to": "dashboard-server",
+      "type": "calls",
+      "label": "fetches JSON APIs",
+      "evidence": [
+        {
+          "path": "apps/talent-dashboard/web/app.js",
+          "symbol": "/api/dashboard",
+          "detail": "Browser fetches the dashboard API.",
+          "status": "verified"
+        },
+        {
+          "path": "apps/talent-dashboard/web/records.js",
+          "symbol": "/api/article-feedback",
+          "detail": "Article detail submits feedback.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "dashboard-server",
+      "to": "n8n-database",
+      "type": "reads",
+      "label": "reads Data Tables and workflow static data",
+      "evidence": [
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def load_from_n8n()",
+          "detail": "Opens SQLite with mode=ro and reads named Data Tables.",
+          "status": "verified"
+        },
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def load_keyword_runtime()",
+          "detail": "Reads workflow_entity.staticData.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "dashboard-server",
+      "to": "content-archive",
+      "type": "reads",
+      "label": "loads fallback proposals, summaries, captures, candidates, and reports",
+      "evidence": [
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def load_from_proposals()",
+          "detail": "Loads talent proposal fallback JSON.",
+          "status": "verified"
+        },
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def load_article_summaries()",
+          "detail": "Loads reviewed article summary Markdown.",
+          "status": "verified"
+        },
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def weekly_reports_payload()",
+          "detail": "Loads weekly report files.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "dashboard-server",
+      "to": "config-store",
+      "type": "reads",
+      "label": "loads keyword and taxonomy configuration",
+      "evidence": [
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def load_keyword_config()",
+          "detail": "Reads config/keywords.json.",
+          "status": "verified"
+        },
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def load_classification_taxonomy()",
+          "detail": "Reads the taxonomy JSON.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "dashboard-server",
+      "to": "config-store",
+      "type": "writes",
+      "label": "atomically updates manual keywords",
+      "evidence": [
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def write_keyword_config(",
+          "detail": "Writes a temporary JSON file then replaces config/keywords.json.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "dashboard-server",
+      "to": "daily-workflow",
+      "type": "calls",
+      "label": "submits candidate and automatic-keyword mutations",
+      "evidence": [
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def call_keyword_management_webhook(",
+          "detail": "POSTs to /webhook/keyword-management/update.",
+          "status": "verified"
+        },
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def add_keyword_candidate(",
+          "detail": "POSTs eligible candidates to /webhook/keyword-candidate/add.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "dashboard-server",
+      "to": "feedback-apply-workflow",
+      "type": "calls",
+      "label": "submits article evaluation",
+      "evidence": [
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def call_article_feedback_webhook(",
+          "detail": "POSTs feedback to the n8n webhook.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "dashboard-server",
+      "to": "content-archive",
+      "type": "writes",
+      "label": "writes article feedback instruction Markdown",
+      "evidence": [
+        {
+          "path": "apps/talent-dashboard/server.py",
+          "symbol": "def write_article_feedback_instruction(",
+          "detail": "Writes content/article-feedback-instructions/YYYY-MM-DD.md.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "daily-workflow",
+      "to": "config-store",
+      "type": "reads",
+      "label": "loads keywords JSON for collection and mutation webhooks",
+      "evidence": [
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Read Keyword Configuration",
+          "detail": "Reads the keyword configuration file.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "daily-workflow",
+      "to": "n8n-database",
+      "type": "reads",
+      "label": "loads talent registry and article feedback",
+      "evidence": [
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Load Talent Registry",
+          "detail": "Reads talents.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Load Article Feedback",
+          "detail": "Reads article_feedback.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "daily-workflow",
+      "to": "rss-sources",
+      "type": "calls",
+      "label": "requests feed URLs",
+      "evidence": [
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Build Search RSS URLs",
+          "detail": "Emits RSS requests.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Read RSS Search Results",
+          "detail": "Calls each rssUrl.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "rss-sources",
+      "to": "daily-workflow",
+      "type": "publishes",
+      "label": "returns RSS items",
+      "evidence": [
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Normalize and Deduplicate Articles",
+          "detail": "Consumes RSS items from the feed node.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "daily-workflow",
+      "to": "content-archive",
+      "type": "writes",
+      "label": "writes Markdown instructions/digests and structured JSONL",
+      "evidence": [
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Write Markdown Files",
+          "detail": "Writes file items.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Write Structured Records",
+          "detail": "Writes date-keyed JSONL.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "daily-workflow",
+      "to": "n8n-database",
+      "type": "writes",
+      "label": "persists automatic keyword static data",
+      "evidence": [
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Promote Extracted Keywords",
+          "detail": "Updates workflow global static data.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "talent-apply-workflow",
+      "to": "n8n-database",
+      "type": "writes",
+      "label": "upserts articles, talents, and relations",
+      "evidence": [
+        {
+          "path": "n8n/workflows/apply-talent-index-proposal.workflow.json",
+          "symbol": "Upsert Proposed Articles",
+          "detail": "Upserts articles.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/apply-talent-index-proposal.workflow.json",
+          "symbol": "Upsert Proposed Talents",
+          "detail": "Upserts talents.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/apply-talent-index-proposal.workflow.json",
+          "symbol": "Upsert Proposed Relations",
+          "detail": "Upserts article_talents.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "classification-apply-workflow",
+      "to": "n8n-database",
+      "type": "reads",
+      "label": "resolves proposal URLs against articles",
+      "evidence": [
+        {
+          "path": "n8n/workflows/apply-article-classification-proposal.workflow.json",
+          "symbol": "Load Existing Articles",
+          "detail": "Reads articles.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "classification-apply-workflow",
+      "to": "n8n-database",
+      "type": "writes",
+      "label": "upserts article classifications",
+      "evidence": [
+        {
+          "path": "n8n/workflows/apply-article-classification-proposal.workflow.json",
+          "symbol": "Upsert Article Classifications",
+          "detail": "Writes classification rows.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "feedback-apply-workflow",
+      "to": "n8n-database",
+      "type": "reads",
+      "label": "validates feedback article references",
+      "evidence": [
+        {
+          "path": "n8n/workflows/apply-article-feedback.workflow.json",
+          "symbol": "Load Articles for Feedback",
+          "detail": "Reads articles.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "feedback-apply-workflow",
+      "to": "n8n-database",
+      "type": "writes",
+      "label": "upserts article feedback",
+      "evidence": [
+        {
+          "path": "n8n/workflows/apply-article-feedback.workflow.json",
+          "symbol": "Upsert Article Feedback",
+          "detail": "Writes article_feedback.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "workflow-sync",
+      "to": "daily-workflow",
+      "type": "reads",
+      "label": "loads local workflow export",
+      "evidence": [
+        {
+          "path": "scripts/sync_workflow_to_n8n.py",
+          "symbol": "def load_workflow(",
+          "detail": "Loads the selected workflow file.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/daily-keyword-news-summary.workflow.json",
+          "symbol": "Daily Keyword News Summary",
+          "detail": "Local export name.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "workflow-sync",
+      "to": "talent-apply-workflow",
+      "type": "reads",
+      "label": "loads local workflow export",
+      "evidence": [
+        {
+          "path": "scripts/sync_workflow_to_n8n.py",
+          "symbol": "def load_workflow(",
+          "detail": "Loads the selected workflow file.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/apply-talent-index-proposal.workflow.json",
+          "symbol": "Apply Talent Index Proposal",
+          "detail": "Local export name.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "workflow-sync",
+      "to": "classification-apply-workflow",
+      "type": "reads",
+      "label": "loads local workflow export",
+      "evidence": [
+        {
+          "path": "scripts/sync_workflow_to_n8n.py",
+          "symbol": "def load_workflow(",
+          "detail": "Loads the selected workflow file.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/apply-article-classification-proposal.workflow.json",
+          "symbol": "Apply Article Classification Proposal",
+          "detail": "Local export name.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "workflow-sync",
+      "to": "feedback-apply-workflow",
+      "type": "reads",
+      "label": "loads local workflow export",
+      "evidence": [
+        {
+          "path": "scripts/sync_workflow_to_n8n.py",
+          "symbol": "def load_workflow(",
+          "detail": "Loads the selected workflow file.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/apply-article-feedback.workflow.json",
+          "symbol": "Apply Article Feedback",
+          "detail": "Local export name.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "workflow-sync",
+      "to": "legacy-workflow",
+      "type": "reads",
+      "label": "loads local workflow export",
+      "evidence": [
+        {
+          "path": "scripts/sync_workflow_to_n8n.py",
+          "symbol": "def load_workflow(",
+          "detail": "Loads the selected workflow file.",
+          "status": "verified"
+        },
+        {
+          "path": "n8n/workflows/auto-article-starter.workflow.json",
+          "symbol": "Auto Article Starter",
+          "detail": "Local export name.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "workflow-sync",
+      "to": "n8n-runtime",
+      "type": "calls",
+      "label": "uses the n8n REST API",
+      "evidence": [
+        {
+          "path": "scripts/sync_workflow_to_n8n.py",
+          "symbol": "def api_request(",
+          "detail": "Issues authenticated /api/v1 requests.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "official-registry-sync",
+      "to": "config-store",
+      "type": "reads",
+      "label": "loads configured roster sources and parsers",
+      "evidence": [
+        {
+          "path": "scripts/sync_official_talent_registry.py",
+          "symbol": "CONFIG_PATH",
+          "detail": "Points to config/organizations.json.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "official-registry-sync",
+      "to": "official-roster-sites",
+      "type": "calls",
+      "label": "fetches official roster HTML",
+      "evidence": [
+        {
+          "path": "scripts/sync_official_talent_registry.py",
+          "symbol": "def fetch_source(",
+          "detail": "GETs a configured source URL.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "official-registry-sync",
+      "to": "n8n-database",
+      "type": "reads",
+      "label": "loads existing talents for comparison",
+      "evidence": [
+        {
+          "path": "scripts/sync_official_talent_registry.py",
+          "symbol": "def load_existing_talents(",
+          "detail": "Reads the talents Data Table through SQLite.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "official-registry-sync",
+      "to": "content-archive",
+      "type": "writes",
+      "label": "writes snapshot, proposal, and review report",
+      "evidence": [
+        {
+          "path": "scripts/sync_official_talent_registry.py",
+          "symbol": "OUTPUT_DIR",
+          "detail": "Targets content/official-talent-registry.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "official-registry-sync",
+      "to": "talent-apply-workflow",
+      "type": "calls",
+      "label": "optionally posts the reviewed roster proposal",
+      "evidence": [
+        {
+          "path": "scripts/sync_official_talent_registry.py",
+          "symbol": "def post_proposal(",
+          "detail": "POSTs the proposal when --apply is used.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "article-capture",
+      "to": "workflow-sync",
+      "type": "imports",
+      "label": "reuses n8n API helpers",
+      "evidence": [
+        {
+          "path": "scripts/capture_article_contents.py",
+          "symbol": "from sync_workflow_to_n8n import",
+          "detail": "Imports api_request, load_env_file, and URL normalization.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "article-capture",
+      "to": "n8n-database",
+      "type": "reads",
+      "label": "loads stored articles",
+      "evidence": [
+        {
+          "path": "scripts/capture_article_contents.py",
+          "symbol": "old.load_articles",
+          "detail": "Loads articles via the backfill module's SQLite reader.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "article-capture",
+      "to": "content-archive",
+      "type": "reads",
+      "label": "loads structured records and resumable capture state",
+      "evidence": [
+        {
+          "path": "scripts/capture_article_contents.py",
+          "symbol": "def load_record_articles(",
+          "detail": "Reads structured-record JSONL.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/capture_article_contents.py",
+          "symbol": "def load(",
+          "detail": "Reads backfill-state.json.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "article-capture",
+      "to": "config-store",
+      "type": "reads",
+      "label": "loads active keywords for matching",
+      "evidence": [
+        {
+          "path": "scripts/capture_article_contents.py",
+          "symbol": "old.load_keywords",
+          "detail": "Reads config/keywords.json through the backfill module.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "article-capture",
+      "to": "article-publisher-sites",
+      "type": "calls",
+      "label": "fetches redirects, pages, and public metadata",
+      "evidence": [
+        {
+          "path": "scripts/capture_article_contents.py",
+          "symbol": "class Fetch:",
+          "detail": "Performs HTTP requests with retry/delay.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/backfill_article_summaries.py",
+          "symbol": "def resolve_google_url(",
+          "detail": "Calls Google News decoding endpoints.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "article-publisher-sites",
+      "to": "article-capture",
+      "type": "publishes",
+      "label": "returns page bytes, final URLs, and metadata",
+      "evidence": [
+        {
+          "path": "scripts/capture_article_contents.py",
+          "symbol": "request.urlopen",
+          "detail": "Returns response bytes, resolved URL, and content type.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "article-capture",
+      "to": "content-archive",
+      "type": "writes",
+      "label": "writes body captures, state, and optional summaries",
+      "evidence": [
+        {
+          "path": "scripts/capture_article_contents.py",
+          "symbol": "def save(",
+          "detail": "Writes backfill-state.json.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/capture_article_contents.py",
+          "symbol": "def archive(",
+          "detail": "Writes date-keyed capture JSONL.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/backfill_article_summaries.py",
+          "symbol": "def write_summaries(",
+          "detail": "Writes article summary Markdown.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "article-capture",
+      "to": "n8n-database",
+      "type": "writes",
+      "label": "upserts article_contents rows",
+      "evidence": [
+        {
+          "path": "scripts/capture_article_contents.py",
+          "symbol": "def upsert(",
+          "detail": "Calls the Data Table rows/upsert API.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "review-generators",
+      "to": "dashboard-server",
+      "type": "imports",
+      "label": "reuses Data Table and feedback instruction logic",
+      "evidence": [
+        {
+          "path": "scripts/generate_daily_review_outputs.py",
+          "symbol": "import server",
+          "detail": "Loads existing talents through dashboard server.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/generate_article_feedback_instructions.py",
+          "symbol": "from server import write_article_feedback_instruction",
+          "detail": "Imports the feedback writer.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "review-generators",
+      "to": "content-archive",
+      "type": "reads",
+      "label": "loads structured records and captures",
+      "evidence": [
+        {
+          "path": "scripts/generate_daily_review_outputs.py",
+          "symbol": "def load_articles(",
+          "detail": "Reads date-keyed structured records.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/generate_daily_review_outputs.py",
+          "symbol": "def load_captures(",
+          "detail": "Reads date-keyed body captures.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "review-generators",
+      "to": "content-archive",
+      "type": "writes",
+      "label": "writes proposal JSON/Markdown and feedback instructions",
+      "evidence": [
+        {
+          "path": "scripts/generate_daily_review_outputs.py",
+          "symbol": "def write_json(",
+          "detail": "Writes reviewed-output JSON candidates.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/generate_daily_review_outputs.py",
+          "symbol": "def write_markdown(",
+          "detail": "Writes review Markdown.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/generate_article_feedback_instructions.py",
+          "symbol": "write_article_feedback_instruction",
+          "detail": "Writes the feedback instruction through server logic.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "analysis-pipeline",
+      "to": "content-archive",
+      "type": "reads",
+      "label": "loads digests, structured records, classifications, and candidate reviews",
+      "evidence": [
+        {
+          "path": "scripts/backfill_structured_records.py",
+          "symbol": "def records_for_digest(",
+          "detail": "Reads and parses digest Markdown.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/generate_analysis_reports.py",
+          "symbol": "def load_records(",
+          "detail": "Reads JSONL.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/generate_analysis_reports.py",
+          "symbol": "def load_reviewed_classifications(",
+          "detail": "Reads reviewed proposal JSON.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "analysis-pipeline",
+      "to": "content-archive",
+      "type": "writes",
+      "label": "writes JSONL backfills and weekly analysis Markdown",
+      "evidence": [
+        {
+          "path": "scripts/backfill_structured_records.py",
+          "symbol": "target.write_text",
+          "detail": "Writes historical structured records.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/generate_analysis_reports.py",
+          "symbol": "weekly_path.write_text",
+          "detail": "Writes weekly trends.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/generate_analysis_reports.py",
+          "symbol": "quality_path.write_text",
+          "detail": "Writes keyword quality.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "table-bootstrap",
+      "to": "workflow-sync",
+      "type": "imports",
+      "label": "reuses REST API and environment helpers",
+      "evidence": [
+        {
+          "path": "scripts/ensure_article_feedback_table.py",
+          "symbol": "from sync_workflow_to_n8n import",
+          "detail": "Imports shared API helpers.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "table-bootstrap",
+      "to": "n8n-runtime",
+      "type": "calls",
+      "label": "queries and creates Data Tables through REST",
+      "evidence": [
+        {
+          "path": "scripts/ensure_article_feedback_table.py",
+          "symbol": "def list_tables(",
+          "detail": "Calls /data-tables.",
+          "status": "verified"
+        },
+        {
+          "path": "scripts/ensure_article_feedback_table.py",
+          "symbol": "created = api_request",
+          "detail": "Creates the table when absent.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "table-bootstrap",
+      "to": "n8n-database",
+      "type": "writes",
+      "label": "creates article_feedback schema",
+      "evidence": [
+        {
+          "path": "scripts/ensure_article_feedback_table.py",
+          "symbol": "COLUMNS",
+          "detail": "Defines the article_feedback columns.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "manual-review",
+      "to": "content-archive",
+      "type": "reads",
+      "label": "reviews generated instructions and source artifacts",
+      "evidence": [
+        {
+          "path": "docs/talent-article-index.md",
+          "symbol": "## AI review flow",
+          "detail": "Directs the reviewer to generated instructions and structured records.",
+          "status": "verified"
+        },
+        {
+          "path": "docs/article-classifications.md",
+          "symbol": "## AI Review",
+          "detail": "Directs the reviewer to article bodies and instructions.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "manual-review",
+      "to": "content-archive",
+      "type": "writes",
+      "label": "saves reviewed proposals, summaries, and weekly reports",
+      "evidence": [
+        {
+          "path": "content/talent-index-proposals/README.md",
+          "symbol": "# Talent Index Proposals",
+          "detail": "Defines reviewed JSON and Markdown artifacts.",
+          "status": "verified"
+        },
+        {
+          "path": "content/article-summaries/README.md",
+          "symbol": "# Article Summaries",
+          "detail": "Defines manual AI summary output.",
+          "status": "verified"
+        },
+        {
+          "path": "content/weekly-reports/README.md",
+          "symbol": "# Weekly Research Reports",
+          "detail": "Defines manual weekly report output.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "manual-review",
+      "to": "talent-apply-workflow",
+      "type": "calls",
+      "label": "submits reviewed talent proposal",
+      "evidence": [
+        {
+          "path": "docs/talent-article-index.md",
+          "symbol": "POST /webhook/talent-index/apply",
+          "detail": "Documents the reviewed proposal submission.",
+          "status": "verified"
+        }
+      ]
+    },
+    {
+      "from": "manual-review",
+      "to": "classification-apply-workflow",
+      "type": "calls",
+      "label": "submits reviewed classification proposal",
+      "evidence": [
+        {
+          "path": "docs/article-classifications.md",
+          "symbol": "POST /webhook/article-classification/apply",
+          "detail": "Documents the reviewed classification submission.",
+          "status": "verified"
+        }
+      ]
+    }
+  ],
+  "flows": [
+    {
+      "id": "daily-collection",
+      "name": "Daily collection & promotion",
+      "trigger": "08:00 JST schedule, n8n manual trigger, or POST /webhook/daily-keyword-summary/request",
+      "steps": [
+        "n8n-runtime",
+        "daily-workflow",
+        "config-store",
+        "n8n-database",
+        "rss-sources",
+        "daily-workflow",
+        "content-archive",
+        "n8n-database"
+      ],
+      "outcome": "Deduplicated daily archive, AI review instructions, structured JSONL, response paths, and next-run automatic keywords."
+    },
+    {
+      "id": "dashboard-read",
+      "name": "Dashboard exploration",
+      "trigger": "Browser opens a dashboard, list, detail, or weekly-report page",
+      "steps": [
+        "dashboard-web",
+        "dashboard-server",
+        "n8n-database",
+        "content-archive",
+        "dashboard-server",
+        "dashboard-web"
+      ],
+      "outcome": "Aggregated talents, articles, relations, classifications, feedback, summaries, keywords, and reports are rendered; proposal files are used if core Data Tables are unavailable."
+    },
+    {
+      "id": "manual-keywords",
+      "name": "Manual keyword management",
+      "trigger": "User adds, edits, or removes a manual keyword in the dashboard",
+      "steps": [
+        "dashboard-web",
+        "dashboard-server",
+        "config-store",
+        "daily-workflow",
+        "rss-sources"
+      ],
+      "outcome": "config/keywords.json changes atomically and the next default collection uses the new manual list."
+    },
+    {
+      "id": "automatic-keywords",
+      "name": "Automatic keyword management",
+      "trigger": "User edits the n8n automatic keyword list in the dashboard",
+      "steps": [
+        "dashboard-web",
+        "dashboard-server",
+        "daily-workflow",
+        "n8n-database",
+        "daily-workflow"
+      ],
+      "outcome": "Workflow staticData autoKeywords is updated and used by the next non-overridden collection."
+    },
+    {
+      "id": "candidate-promotion",
+      "name": "AI candidate promotion",
+      "trigger": "User accepts an Add: yes item from the newest AI candidate Markdown",
+      "steps": [
+        "content-archive",
+        "dashboard-web",
+        "dashboard-server",
+        "daily-workflow",
+        "n8n-database"
+      ],
+      "outcome": "The validated candidate is appended to automatic workflow keywords."
+    },
+    {
+      "id": "article-feedback",
+      "name": "Article feedback & exclusion",
+      "trigger": "User approves or rejects an article detail record",
+      "steps": [
+        "dashboard-web",
+        "dashboard-server",
+        "feedback-apply-workflow",
+        "n8n-database",
+        "dashboard-server",
+        "content-archive",
+        "daily-workflow"
+      ],
+      "outcome": "Feedback is persisted, an AI feedback instruction is regenerated, and rejected articles are excluded from later daily outputs/dashboard visibility."
+    },
+    {
+      "id": "talent-review",
+      "name": "Talent/article review & apply",
+      "trigger": "Daily workflow produces talent-index instructions or an offline generator produces a proposal",
+      "steps": [
+        "daily-workflow",
+        "content-archive",
+        "manual-review",
+        "content-archive",
+        "talent-apply-workflow",
+        "n8n-database",
+        "daily-workflow"
+      ],
+      "outcome": "Reviewed articles, talents, and relations are upserted; approved search-enabled names become later default search terms."
+    },
+    {
+      "id": "classification-review",
+      "name": "Article classification review & apply",
+      "trigger": "Daily workflow produces classification instructions or the offline generator produces a proposal",
+      "steps": [
+        "daily-workflow",
+        "content-archive",
+        "manual-review",
+        "content-archive",
+        "classification-apply-workflow",
+        "n8n-database",
+        "dashboard-server",
+        "dashboard-web"
+      ],
+      "outcome": "Evidence-backed type, category, and relevance rows are stored and displayed."
+    },
+    {
+      "id": "official-registry",
+      "name": "Official roster synchronization",
+      "trigger": "Operator runs sync_official_talent_registry.py, optionally followed by --apply after review",
+      "steps": [
+        "config-store",
+        "official-registry-sync",
+        "official-roster-sites",
+        "official-registry-sync",
+        "n8n-database",
+        "content-archive",
+        "manual-review",
+        "official-registry-sync",
+        "talent-apply-workflow",
+        "n8n-database"
+      ],
+      "outcome": "Dated official roster audit files are written and reviewed roster entries can be upserted without deletion or automatic individual search enablement."
+    },
+    {
+      "id": "article-capture",
+      "name": "Article body capture & summary backfill",
+      "trigger": "Operator runs capture_article_contents.py or backfill_article_summaries.py",
+      "steps": [
+        "n8n-database",
+        "content-archive",
+        "config-store",
+        "article-capture",
+        "article-publisher-sites",
+        "article-capture",
+        "content-archive",
+        "n8n-database"
+      ],
+      "outcome": "Normalized article content/status is archived, optionally synced to article_contents, and complete runs can regenerate verified summaries."
+    },
+    {
+      "id": "offline-review-output",
+      "name": "Offline review output generation",
+      "trigger": "Operator runs generate_daily_review_outputs.py or generate_article_feedback_instructions.py",
+      "steps": [
+        "content-archive",
+        "review-generators",
+        "dashboard-server",
+        "n8n-database",
+        "review-generators",
+        "content-archive",
+        "manual-review"
+      ],
+      "outcome": "Coverage-checked proposal files or current feedback instructions are produced for review."
+    },
+    {
+      "id": "weekly-analysis",
+      "name": "Structured backfill & weekly analysis",
+      "trigger": "Operator backfills historical digests or generates a selected/latest ISO week",
+      "steps": [
+        "content-archive",
+        "analysis-pipeline",
+        "content-archive",
+        "dashboard-server",
+        "dashboard-web"
+      ],
+      "outcome": "Structured JSONL, weekly trends, and keyword-quality reports are generated and weekly research reports are browsable."
+    },
+    {
+      "id": "workflow-deployment",
+      "name": "Workflow deployment",
+      "trigger": "Operator runs sync_workflow_to_n8n.py for a selected exported workflow",
+      "steps": [
+        "daily-workflow",
+        "talent-apply-workflow",
+        "classification-apply-workflow",
+        "feedback-apply-workflow",
+        "legacy-workflow",
+        "workflow-sync",
+        "n8n-runtime"
+      ],
+      "outcome": "The selected local workflow structure is validated and created/updated remotely while runtime static data is preserved by normal updates."
+    },
+    {
+      "id": "feedback-table-bootstrap",
+      "name": "Feedback table bootstrap",
+      "trigger": "Operator runs ensure_article_feedback_table.py",
+      "steps": [
+        "table-bootstrap",
+        "workflow-sync",
+        "n8n-runtime",
+        "n8n-database"
+      ],
+      "outcome": "article_feedback exists with the expected schema; an existing table is unchanged."
+    },
+    {
+      "id": "legacy-brief",
+      "name": "Legacy article brief",
+      "trigger": "n8n manual trigger or POST /webhook/auto-article/brief",
+      "steps": [
+        "n8n-runtime",
+        "legacy-workflow"
+      ],
+      "outcome": "A normalized article brief is produced in execution data; the repository marks this path as superseded."
+    }
+  ]
+}</script>
+<script>
+(function(){
+"use strict";
+const DATA=JSON.parse(document.getElementById("codemap-data").textContent);
+const COLORS={external:"#c27bd6",ui:"#4fa3ff",service:"#42c8b2",workflow:"#788be8",platform:"#e4a24e",tool:"#6fa0bd",data:"#9d82d7"};
+const TYPE_ORDER=["external","ui","tool","service","platform","workflow","data"];
+const RANK={external:0,ui:1,tool:1,service:2,platform:2,workflow:3,data:4};
+const svg=document.getElementById("graph"), viewport=document.getElementById("viewport"), edgeLayer=document.getElementById("edges"), nodeLayer=document.getElementById("nodes"), boundaryLayer=document.getElementById("boundaries");
+const byId=new Map(DATA.nodes.map(function(n){return[n.id,n]}));
+const edgeEls=[], nodeEls=new Map(), positions=new Map();
+let transform={x:0,y:0,k:1}, selectedNode="", selectedFlow="", dragging=false, dragStart=null;
+const enabled=new Set(TYPE_ORDER);
+document.getElementById("generated").textContent=DATA.generated_at;
+document.getElementById("commit").textContent=DATA.generated_from_commit.slice(0,12);
+document.getElementById("scope-count").textContent=DATA.nodes.length+" modules · "+DATA.edges.length+" edges · "+DATA.flows.length+" flows";
+
+function esc(v){return String(v==null?"":v).replace(/[&<>"']/g,function(c){return({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]})}
+function autoLayout(){
+  const columns=new Map();
+  DATA.nodes.forEach(function(n){const r=RANK[n.type] == null ? 2 : RANK[n.type];if(!columns.has(r))columns.set(r,[]);columns.get(r).push(n)});
+  columns.forEach(function(items){items.sort(function(a,b){return a.label.localeCompare(b.label,"ja")})});
+  for(let pass=0;pass<8;pass++){
+    [1,2,3,4,3,2,1,0].forEach(function(r){
+      const items=columns.get(r)||[];
+      const adjacent=new Map();
+      DATA.edges.forEach(function(e){
+        const a=byId.get(e.from),b=byId.get(e.to);if(!a||!b)return;
+        if(RANK[a.type]===r && positions.has(b.id)){if(!adjacent.has(a.id))adjacent.set(a.id,[]);adjacent.get(a.id).push(positions.get(b.id).y)}
+        if(RANK[b.type]===r && positions.has(a.id)){if(!adjacent.has(b.id))adjacent.set(b.id,[]);adjacent.get(b.id).push(positions.get(a.id).y)}
+      });
+      items.sort(function(a,b){const aa=adjacent.get(a.id)||[],bb=adjacent.get(b.id)||[];const av=aa.length?aa.reduce(function(x,y){return x+y},0)/aa.length:1e9;const bv=bb.length?bb.reduce(function(x,y){return x+y},0)/bb.length:1e9;return av-bv||a.label.localeCompare(b.label,"ja")});
+      const gap=118,top=105;items.forEach(function(n,i){positions.set(n.id,{x:70+r*390,y:top+i*gap})});
+    });
+  }
+  const maxCount=Math.max.apply(null,Array.from(columns.values()).map(function(x){return x.length}));
+  return {width:1900,height:Math.max(920,150+maxCount*118)};
+}
+const size=autoLayout();svg.setAttribute("viewBox","0 0 "+size.width+" "+size.height);
+
+function edgePath(e,i){
+  const a=positions.get(e.from),b=positions.get(e.to),w=270,h=82;
+  let sx=a.x+w,sy=a.y+h/2,tx=b.x,ty=b.y+h/2;
+  if(b.x<a.x){sx=a.x;tx=b.x+w}
+  if(Math.abs(b.x-a.x)<40){sx=a.x+w/2;tx=b.x+w/2;sy=a.y+h;ty=b.y}
+  const mid=(sx+tx)/2+((i%7)-3)*5;
+  return "M"+sx+" "+sy+" H"+mid+" V"+ty+" H"+tx;
+}
+function drawBoundary(){
+  const internal=DATA.nodes.filter(function(n){return n.type!=="external"}).map(function(n){return positions.get(n.id)});
+  const minX=Math.min.apply(null,internal.map(function(p){return p.x}))-35,minY=Math.min.apply(null,internal.map(function(p){return p.y}))-52;
+  const maxX=Math.max.apply(null,internal.map(function(p){return p.x+270}))+35,maxY=Math.max.apply(null,internal.map(function(p){return p.y+82}))+35;
+  boundaryLayer.innerHTML='<rect class="boundary" x="'+minX+'" y="'+minY+'" width="'+(maxX-minX)+'" height="'+(maxY-minY)+'" rx="22"></rect><text class="boundary-label" x="'+(minX+18)+'" y="'+(minY+28)+'">REPOSITORY / LOCAL N8N SYSTEM BOUNDARY</text>';
+}
+function draw(){
+  drawBoundary();
+  DATA.edges.forEach(function(e,i){
+    const p=document.createElementNS("http://www.w3.org/2000/svg","path");p.setAttribute("class","edge");p.setAttribute("d",edgePath(e,i));p.setAttribute("marker-end","url(#arrow)");p.dataset.from=e.from;p.dataset.to=e.to;p.dataset.index=i;edgeLayer.appendChild(p);edgeEls.push(p);
+  });
+  DATA.nodes.forEach(function(n){
+    const p=positions.get(n.id),g=document.createElementNS("http://www.w3.org/2000/svg","g");g.setAttribute("class","node "+n.type);g.setAttribute("transform","translate("+p.x+" "+p.y+")");g.dataset.id=n.id;
+    const shortRole=n.role.length>75?n.role.slice(0,72)+"…":n.role,shortPath=n.path.length>43?"…"+n.path.slice(-42):n.path;
+    g.innerHTML='<rect class="box" width="270" height="82"></rect><circle cx="18" cy="19" r="5" fill="'+COLORS[n.type]+'"></circle><text class="title" x="31" y="24">'+esc(n.label)+'</text><text class="role" x="16" y="47">'+esc(shortRole)+'</text><text class="path" x="16" y="68">'+esc(shortPath)+'</text>';
+    g.addEventListener("click",function(event){event.stopPropagation();selectedNode=selectedNode===n.id?"":n.id;selectedFlow="";document.getElementById("flow").value="";update()});
+    nodeLayer.appendChild(g);nodeEls.set(n.id,g);
+  });
+}
+function closure(start,reverse){
+  const out=new Set(),stack=[start];while(stack.length){const id=stack.pop();DATA.edges.forEach(function(e){const hit=reverse?e.to===id:e.from===id;if(hit){const next=reverse?e.from:e.to;if(!out.has(next)&&next!==start){out.add(next);stack.push(next)}}})}return out;
+}
+function activeFlow(){return DATA.flows.find(function(f){return f.id===selectedFlow})}
+function visible(n){
+  if(!enabled.has(n.type))return false;const q=document.getElementById("search").value.trim().toLocaleLowerCase("ja-JP");if(!q)return true;
+  return [n.label,n.id,n.path,n.role].concat(n.entrypoints||[]).concat(n.files||[]).join(" ").toLocaleLowerCase("ja-JP").includes(q);
+}
+function update(){
+  const visibleIds=new Set(DATA.nodes.filter(visible).map(function(n){return n.id})),up=selectedNode?closure(selectedNode,true):new Set(),down=selectedNode?closure(selectedNode,false):new Set(),flow=activeFlow(),flowIds=new Set(flow?flow.steps:[]);
+  nodeEls.forEach(function(el,id){el.setAttribute("class","node "+byId.get(id).type);if(!visibleIds.has(id))el.classList.add("hidden");if(selectedNode||flow){if(id===selectedNode)el.classList.add("selected");else if(flowIds.has(id))el.classList.add("flow");else if(up.has(id))el.classList.add("up");else if(down.has(id))el.classList.add("down");else el.classList.add("dim")}});
+  edgeEls.forEach(function(el,i){const e=DATA.edges[i];el.setAttribute("class","edge");if(!visibleIds.has(e.from)||!visibleIds.has(e.to)){el.classList.add("hidden");return}if(flow){const steps=flow.steps;let hit=false;for(let j=0;j<steps.length-1;j++)if(steps[j]===e.from&&steps[j+1]===e.to)hit=true;if(flowIds.has(e.from)&&flowIds.has(e.to))hit=true;el.classList.add(hit?"focus":"dim")}else if(selectedNode){if(e.to===selectedNode||up.has(e.from)&&up.has(e.to)||up.has(e.from)&&e.to===selectedNode)el.classList.add("up");else if(e.from===selectedNode||down.has(e.from)&&down.has(e.to)||e.from===selectedNode&&down.has(e.to))el.classList.add("down");else el.classList.add("dim")}});
+  document.getElementById("empty").style.display=visibleIds.size?"none":"grid";
+  document.getElementById("status").textContent=visibleIds.size+" / "+DATA.nodes.length+" modules";
+  renderDetail(up,down,flow);
+}
+function names(set){return Array.from(set).map(function(id){return byId.get(id).label}).sort(function(a,b){return a.localeCompare(b,"ja")})}
+function renderDetail(up,down,flow){
+  const box=document.getElementById("detail");
+  if(flow){box.innerHTML='<h3>'+esc(flow.name)+'</h3><p><span class="badge">trigger</span> '+esc(flow.trigger)+'</p><p><span class="badge">outcome</span> '+esc(flow.outcome)+'</p><p><b>Path</b></p><ul>'+flow.steps.map(function(id){return"<li>"+esc(byId.get(id).label)+"</li>"}).join("")+"</ul>";return}
+  if(!selectedNode){box.innerHTML='<p class="note">Select a module or flow. No tracked test files were found, so test lists are empty.</p>';return}
+  const n=byId.get(selectedNode),member=DATA.flows.filter(function(f){return f.steps.includes(n.id)});
+  box.innerHTML='<h3>'+esc(n.label)+'</h3><p><span class="badge">'+esc(n.type)+'</span><code>'+esc(n.path)+'</code></p><p>'+esc(n.role)+'</p><p><b>Entrypoints</b>: '+(n.entrypoints.map(function(x){return'<span class="badge">'+esc(x)+'</span>'}).join("")||"none")+'</p><p><b>Upstream</b>: '+(names(up).map(esc).join(", ")||"none")+'</p><p><b>Downstream</b>: '+(names(down).map(esc).join(", ")||"none")+'</p><p><b>Tests</b>: '+(n.tests.length?n.tests.map(esc).join(", "):"none found")+'</p><p><b>Flows</b>: '+(member.map(function(f){return esc(f.name)}).join(", ")||"none")+'</p><p><b>Constraints</b></p><ul>'+n.constraints.map(function(x){return"<li>"+esc(x)+"</li>"}).join("")+'</ul><p><b>Evidence</b></p><ul>'+n.evidence.map(function(e){return"<li><code>"+esc(e.path)+"</code> · "+esc(e.symbol)+"</li>"}).join("")+"</ul>";
+}
+function setTransform(){viewport.setAttribute("transform","translate("+transform.x+" "+transform.y+") scale("+transform.k+")")}
+function fit(){const rect=svg.getBoundingClientRect(),pad=28;transform.k=Math.min((rect.width-pad*2)/size.width,(rect.height-pad*2)/size.height);transform.x=(rect.width-size.width*transform.k)/2;transform.y=(rect.height-size.height*transform.k)/2;setTransform()}
+function zoom(f,cx,cy){const old=transform.k,n=Math.max(.2,Math.min(3,old*f));transform.x=cx-(cx-transform.x)*n/old;transform.y=cy-(cy-transform.y)*n/old;transform.k=n;setTransform()}
+function buildControls(){
+  const filters=document.getElementById("filters"),legend=document.getElementById("legend");
+  TYPE_ORDER.forEach(function(t){filters.insertAdjacentHTML("beforeend",'<label class="check"><input type="checkbox" value="'+t+'" checked><span>'+t+'</span></label>');legend.insertAdjacentHTML("beforeend",'<span class="key"><span class="dot" style="background:'+COLORS[t]+'"></span>'+t+"</span>")});
+  filters.addEventListener("change",function(e){if(e.target.checked)enabled.add(e.target.value);else enabled.delete(e.target.value);update()});
+  const select=document.getElementById("flow");DATA.flows.forEach(function(f){select.insertAdjacentHTML("beforeend",'<option value="'+esc(f.id)+'">'+esc(f.name)+"</option>")});
+  select.addEventListener("change",function(){selectedFlow=select.value;selectedNode="";update()});
+  document.getElementById("search").addEventListener("input",update);
+  document.getElementById("zoom-in").addEventListener("click",function(){const r=svg.getBoundingClientRect();zoom(1.22,r.width/2,r.height/2)});
+  document.getElementById("zoom-out").addEventListener("click",function(){const r=svg.getBoundingClientRect();zoom(.82,r.width/2,r.height/2)});
+  document.getElementById("fit").addEventListener("click",fit);
+  document.getElementById("reset").addEventListener("click",function(){selectedNode="";selectedFlow="";select.value="";document.getElementById("search").value="";enabled.clear();TYPE_ORDER.forEach(function(t){enabled.add(t)});filters.querySelectorAll("input").forEach(function(x){x.checked=true});update();fit()});
+}
+svg.addEventListener("wheel",function(e){e.preventDefault();const r=svg.getBoundingClientRect();zoom(e.deltaY<0?1.12:.89,e.clientX-r.left,e.clientY-r.top)},{passive:false});
+svg.addEventListener("pointerdown",function(e){if(e.target.closest&&e.target.closest(".node"))return;dragging=true;dragStart={x:e.clientX,y:e.clientY,tx:transform.x,ty:transform.y};svg.classList.add("dragging");svg.setPointerCapture(e.pointerId)});
+svg.addEventListener("pointermove",function(e){if(!dragging)return;transform.x=dragStart.tx+e.clientX-dragStart.x;transform.y=dragStart.ty+e.clientY-dragStart.y;setTransform()});
+svg.addEventListener("pointerup",function(){dragging=false;svg.classList.remove("dragging")});svg.addEventListener("click",function(e){if(e.target===svg||e.target.id==="viewport"){selectedNode="";update()}});
+window.addEventListener("keydown",function(e){if(e.key==="Escape"){selectedNode="";selectedFlow="";document.getElementById("flow").value="";update()}});
+window.addEventListener("resize",fit);
+draw();buildControls();update();requestAnimationFrame(fit);
+})();
+</script>
+</body>
+</html>

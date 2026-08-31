@@ -57,3 +57,14 @@ committed when you want to keep a historical archive in Git.
 - `analysis/keyword-quality`: Keyword coverage, noise, source-quality, and AI candidate-review reports.
 
 Create historical JSONL files with `python3 scripts/backfill_structured_records.py`, then generate reports with `python3 scripts/generate_analysis_reports.py`.
+
+## Article review archive
+
+- `article-body-captures`: 日付別の本文・意味構造付きMarkdown・取得状態のJSONL。
+- `article-review`: 記事正本とキーワード別参照。第三者の記事本文を含み得るためGit管理対象外。
+- `article-review-results`: Markdown判定の一括反映結果。Git管理対象外。
+- `article-refetch-requests`: `needs_refetch` 判定から作る再取得対象。Git管理対象外。
+
+レビュー正本は1記事につき `article-review/YYYY-MM-DD/articles/` の1ファイルだけです。
+複数キーワードに一致した記事は、各 `by-keyword/<keyword-id>/` から同じ正本へ参照されます。
+詳細は `docs/article-review-markdown.md` を参照してください。

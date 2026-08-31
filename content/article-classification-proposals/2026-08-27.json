@@ -1,0 +1,382 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-08-27",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFA4eDIzU3JHczU2YUVRck1yNEtfWGQ5VEptSktfNHhURWgweVdZXzcyOXVMdXBkTTJEblhqRjk3VkRTZi1nVmQxeGMzR3huTklvNTNFbW45V0tjOUZCZmhFSWhQQQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「FDA、2025年度の国内線定時運航率で第1位を獲得 2年連続で出発・到着の2冠達成 フジドリームエアラインズ（FDA）は2026年8月26日、2025年度における国内線の定時運航率で第1位となり、昨年度に続き2年連続で出発および到着の「2冠」を達成したと発表しました」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9aSHQtVnBJSUxRc2x1Z25xelZQSjZ6V3lCcW9namtmUTh0aXlRdG14dG8zLWtfdGpyNW1SZTdnNVIzSFZXbW10eGZpSVBYS3RyNFd2bVBWQQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス 水着ガチャは引くべき？」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1VNGVUTWttd0MtYUxmQ2xobDBTRHJENlo2anVjTkZmYlBsSE1nSXB4a1JjMEYyOUloQmtJVkp0YjduLTBRWXZyNlkzamI1VEwyekt3Y205eDdjNkNqVkVQb00za2dJd1J2ekhNSVhhYzlENmRpa0h2RWRTaE15clE?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「【コスプレ】8月27日は「ホロライブ」綺々羅々ヴィヴィの誕生日！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBKSFVYb3BISWJIOGtETlFwY3JoOUpucUVoTmpPY0gzbzVIbWppMU9XdFRDajVKQ1E1OWVfNS0tY2FoNGg5b2FGQnpRMEg?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「全米が熱狂したリアリティ番組の“裏側”を描く、衝撃の実話！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1vRm1LUE1qWHRGTHdhZmJ3YnZkVVV2NE5uQU4xbWZMRWQwY0daXzFYNmE4RkhTaXp5MG0xY2NweWdsdm0teXl5T1RHOGFsZE9iaENxU0huWHhSRXk2aVJTSGdlMWQ1WXFPSW9taW1DZVl4NDA?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "product_or_goods",
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「Nintendo Switch版を8月27日に配信開始『ぶいちゅ～バトル』 合同会社ワタリタマスタジオは、実在するVTuber350名以上が参戦する対戦型カードゲーム『ぶいちゅ～バトル 登録者数じゃない！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9hdWNMYTJtNWhFUjcwUXlBRDViRWswMVZZYnU0ejgyYkNtMENFdmtqV1BZZWJXdk8zYzN1QURWR3pZZmoxUm8zazZZd0N6c2R0RlV5bFJrSVB2bmVFSmI4LVQzUWZMUkhjVWhtdTI1aXlKRFN6cEdN?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "product_or_goods"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「ガンダムフィギュアの新ブランド「ABSOLUTE ACT」正式始動！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9Vd3RYRWJaaFdpM19oVzhwME1TM05RTVNuVnNHYUEyQWJmSS1jWERnbVZCT2Qzd3RKSlk2SmFMUHM1S0Vnc3I4ekpUOWx1bTlZVVgzcGluTDZoNmJSOGlZNGdXc0tSck42VlNlTnRIQzdwSjdoQVNJ?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "product_or_goods"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「ガンダムフィギュアの新ブランド「ABSOLUTE ACT」正式始動！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1ZQ0pfNWVOT0FBSGRhR3hDRmM4aVhiVFptMm12VUQyQ2dRdHN0VGR3WExOZVVhZ05wcUdOQXMxd3hGS3J1MzQzNlpSVkRTTTBERGtIRWZIREt6S2NLMmxJbUs5aEI2cVA1MF80ZzBiSjBMVUpKLU5r?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "product_or_goods"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「ガンダムフィギュアの新ブランド「ABSOLUTE ACT」正式始動！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBscHF0N0RBMDdjZTBwQ01KLXNDTnloX2N2Mi1kOFh3WHRBVVAyOWNTRVNUS1BPLXZBX1h2amRLZmp4M0I3eHN3SUd0Rl82YndORlcxTXg4QzZUb3RJMnI0Vk1QQl9iYlA3emc?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "community_or_fan"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「8月27日は「ホロライブ」綺々羅々ヴィヴィさんの誕生日です」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQZHoxamVpa0NNbkFQWjExX1VFOTlDcDBDZlcxZ3VSWFNveU1qWldXYUhuTUI5TG9VRmpVUW9DdDE2NF9CRm51UHFER0JOOHY3Rm1TTUdTM0gwTlBPcDA5YlBvazFSTGtXOEtnOE5YWG9Bdkg2Y1dSYUd3NWtTVVdTMFh3?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「RIAノーボスチ通信：米国とイランは停戦合意に達した」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「キャラ 簡易性能 [Energeticスプラッシュ！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9TeWlKRjJkSk50dXRuZzRidncwUExYcTkxZkwxN0w2c1BYLUxzc3BONi1XQ245RUJMbXN4VXVkZmdRZFdQdGZnby1ZTlFMOFI1NjBLWWhLWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music",
+        "media_or_editorial"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス 最強編成とおすすめパーティ【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス/ほろどり)の最強編成(最強パーティ編成)とおすすめチーム編成です」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://www.xn--vcki8dycvf.jp/entry/2026/08/26/233900",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「懐の深いストーリーとちいかわたちのかわいさにとても楽しめました！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://blog.suburin.jp/entry/2026/08/26/232000",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ウィキペディアに記載の 妖怪について記事を 読みながらバットを振りました」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://www.youtube.com/watch?v=IjBSo-kBtMg",
+      "article_type": "video_or_stream",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「タイトル: 【ライブ映像】夢限大みゅーたいぷ「これはぼくたちの生存のあらすじ」 投稿者・チャンネル: 夢限大みゅーたいぷ 配信元: YouTube」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5wSUc1WDBTZk5lb3kwdHpFLW1WUnNUUTFVZGVBOFA3eG5EdV9Fd2cybEZiczlGZWNFNkh0Y25NUksyYVNoVUd3V3M2SVRNeFk?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "collaboration"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「｜骨を漁る男【ウィザードリィダフネ】 | AppMedia ウィザードリィダフネ攻略wiki｜ウィズダフネ AppMediaトップ ウィザードリィダフネ攻略wiki｜ウィズダフネ FFコラボキャラはどれを選ぶべき？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBwaEVfZHBrT1YwZjJ3UGJzX0h0Tm1OQm5WUmpSTFE4Y2hTNUhYZjBqZ0ZkUm8xWlhReGg1X2RWRS1xSmZ3eUJIY2o3OEp4T3dFZHdpMEFPaERVVXhtYm80Wg?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "live_or_music",
+        "game_or_technology",
+        "company_or_business"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「『hololive Dreams』新ミニゲーム「くらやみチェイス」が8月28日に実装決定！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://gigazine.net/news/20260826-micro-bites-cookie-from-plastic-bottle/",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「プラスチックごみから生み出されたクッキー「μBites」 - GIGAZINE ▼サーバー運営を助ける支援をお願いします ▲サーバー運営を助ける支援をお願いします 毎月 825円(税込) 900円 (うち手数料33円) 毎月 1回 ご存じの通り価格高騰などの悪影響でサーバー運営がとても苦しい状態です」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://news.denfaminicogamer.jp/news/2608265e",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "company_or_business",
+        "collaboration",
+        "media_or_editorial"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「PCゲームを“スマホのブラウザ”で遊べちゃう「viviON GAMES」が本日8月26日サービス開始」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFAzNHFtUkZKaUZDSVo5MnlFU0ZmWUZDY002cE9FVVJFV1RyNVVXRGNhMjFubjQ5b3FsR040TXhlQ1c1R3JTckExM1ZhZGl0a21wVzhEOVhSRzRLRW96eHVsc0xVNTdZenR4b2w5VFJn?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「＜画像3 / 3＞三津家貴也主催のランニングイベント「Full house 熊本」が3月28日に開催！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://automaton-media.com/articles/newsjp/20260826-463032/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「「圧倒的に好評」ドラゴン娘育成ローグライト『DRAPLINE』9月24日に正式リリースへ」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://opencomputer.dev/",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「Firebase for agents – OpenComputer Write an agent as a TypeScript function, deploy it live in seconds. Your keys never enter the runtime.」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://note.com/anti_bookcurator/n/n662e11c46d37",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「三省堂書店神田神保町本店定点観測から考える、「何のために書店をやってるの？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://gori.me/macmini/169351",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「新型Mac miniとMac Studio、地味すぎて気付きにくい進化10選と1つの落とし穴 M6の「最大170GB/s」は、標準の16GBモデルでは出ないってよ！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://omocoro.jp/kiji/587923/",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「特集 #レポート 2026-08-26 秋葉原にドナルドがやってくる！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://m-nerds.com/airmastersaiki",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「「エアマスター」はストリートファイターの漫画で、空中を飛ぶように戦う通称エアマスター、相川摩季を主人公とした漫画です」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://automaton-media.com/articles/reportjp/20260826-462922/",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「バトルは本格、悪ふざけも本気、脳がついていけない「昭和アメリカ」先行プレイ 大きな注目を集める『昭和米国物語』の試遊プレイで確認できたゲームプレイを紹介しよう」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://anond.hatelabo.jp/20260826112713",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「そもそもクールジャパン機構ってアニメ業界大嫌いじゃん」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://github.com/oboroge0/hayamimi",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「Real-time, multilingual speech-to-text on CPU only. Live subtitles, a browser dashboard, speaker labels, and on-the-fly translation -- no GPU, no cloud API, under 2GB RAM. 日本語版 README は README.ja.md にあります」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://blog.perlassociation.org/entry/2026/08/26/100000",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [
+        "event",
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「一般社団法人Japan Perl Association理事の福本（ id:papix ）です」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    },
+    {
+      "article_url": "https://0115765.com/archives/202386",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「80作品もある夏アニメ、各世代が“特に観てる”作品がTVデータから判明」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T23:32:53Z"
+    }
+  ]
+}

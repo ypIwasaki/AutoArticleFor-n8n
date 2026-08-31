@@ -1,0 +1,298 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-08-31",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9TeWlKRjJkSk50dXRuZzRidncwUExYcTkxZkwxN0w2c1BYLUxzc3BONi1XQ245RUJMbXN4VXVkZmdRZFdQdGZnby1ZTlFMOFI1NjBLWWhLWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music",
+        "media_or_editorial"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス 最強編成とおすすめパーティ【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス/ほろどり)の最強編成(最強パーティ編成)とおすすめチーム編成です」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9vX1phd2lnbWxlX0Z6TjU1QlBTMXlsSUxSMzhSSmM1ek9FX3FtS3JhVzR3bFpRVEZyUFVJVWdiZnB3NmJZYVhZUm1qakFTczNlenRoTFRHcmF6QQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「情報技術センター主催「宇宙考古学から見たシルクロードの西と東」展で惠多谷研究員が講演しました 情報技術センター（TRIC、内田理所長）主催の展覧会「宇宙考古学から見たシルクロードの西と東」（共催：公益財団法人日中友好会館、淑徳大学）が、８月16日まで東京都・日中友好会館美術館で開催」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBwcWE0Rms1eXFfUG9TcHNHR3ZKc2o2dEt0d3JxTUN4N3J4dHM5Ym0wdExlY0oyeW1UYXVUZURzMU1FMXZGZl9hY1prclhEdUI4RGRGTU5aS09jdEdOYThES1hUU0bSAWpBVV95cUxPUnN4RlFHU0kxQlBtdDZfUGVvYk9EelZpSWNYd2dQcW5fNnNGYThmQnhaSF9ZbTlWb3RBS1RXT01MdUhvN193TWFKVDhGb2dNMDg2bXdybGlwWEhqazdDQmw3UE1qdjA3VGtn?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「《刑務所のほうがマシ》おぼっちゃま高須克弥にこき使われた少女の話【第11話後編】『YES！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE0tanJVRzJNQmhjS3pDXzFUY3JlclV5UmNGTlVEQWFZRHUtajhwb1BPYWtVT1dDdGgzWUUtUGlkOE5ZQnVJaW45b1gxMVFRd1k?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「Copyright 2006- SOCIALWIRE CO.,LTD. 「全国ご当地おみやげブックカバーコンテスト2026」に、大阪土産「月化粧」が参加いたします！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiQkFVX3lxTE1nX3p1LS1CSENDcnR0d0NOeU1lczRMa1ZpMFBERFIxQ3piZ284UGJPM2ZNVXlmeHgyM2NuaVpfSW56Zw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「「紛らわしい表現で配慮が」——不破湊の”緊急記者会見”告知、災害と間違われて謝罪に至った理由 – shiritomo TRENDING 「1ヶ月ごとに新ストーリー、新キャラを追加する国産ソシャゲ、ありますかね」——原神との差を生む開発体制の中身 「戦略性に乏しい」と言われ続けた『ゲキシンスクアドラ』、年末に俯瞰視点をやめる理由 「紛らわしい表現で配慮が」——不破湊の”緊急記者会見”告知、災害と間違われて謝罪に至った理由 「1人7役は面白」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiQkFVX3lxTFBQTHhkZzdHTXZ0YVRqeGJCOHl5TE1qaks5cGtVc0xnWk8yeWlIY21lQk5iZmpqWWsxamVMelA4REg4Zw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「「1人7役は面白すぎるwww」——マクドナルドの新動画、佐々木舞香が”全部の声”を担当した理由 – shiritomo TRENDING 「1ヶ月ごとに新ストーリー、新キャラを追加する国産ソシャゲ、ありますかね」——原神との差を生む開発体制の中身 「戦略性に乏しい」と言われ続けた『ゲキシンスクアドラ』、年末に俯瞰視点をやめる理由 「紛らわしい表現で配慮が」——不破湊の”緊急記者会見”告知、災害と間違われて謝罪に至った理由 「1人7役は面」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9BWnAyc21ROUVQRUxRZFNjZjJwUVp0V0VuX3ZCSHJWRFVybHhINkxlWVVXS3ZtajVfeC1NdTBjMl9LbzlDY1VLNVFyT2xJTXl2WEJOQmFzLWF5TE9B?oc=5",
+      "article_type": "video_or_stream",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「タイトル: 束縛ボイス好評販売中！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9GNlBfSS02Z3FkRk1BMW1aS2ZuRE12Vnh2ck1EbXdpQzgwaUFOX2NOcHZxZkZzNE1YVWF2a1JJRlNGZ2dOTGNRalBFWC1iaEprZk5fVmhR?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「【競輪無料予想】「和歌山競輪F2 モーニング 2日目」2026年08月31日 全レースの予想と注目ポイント※投票はみんなの競輪で！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「キャラ 簡易性能 [Energeticスプラッシュ！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://bluetoothcontrol.hafnertec.com/hidarihara-torakami-ast/8646823/",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ホーム Hidarihara Torakami Ast 伊藤 美咲 (Misaki Ito) • 2026年08月29日 • 読了約 分 目次 世界一美人な人は誰？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBBM0hEenF5TWw2NmVvRTJ0VHFGR1piNHlQRjI5SlJoNEVXSkdSM3l4NmVPT21RcXltMjItc0pud2JoVXpJWG1kcjZIR3pMQkdxeDJoMXpPbw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「ホロドリのリセマラ当たりキャラは、「百鬼あやめ」「獅白ぼたん」「パヴォリア・レイネ」など」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://blog.takaumada.com/entry/12-innovation-time",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ガソリン自動車の原型を作ったのは、1886年のドイツのベンツでした」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://bluetoothcontrol.hafnertec.com/hidarihara-torakami-ast/1197862/",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ホーム Hidarihara Torakami Ast 木村 あおい (Aoi Kimura) • 2026年08月28日 • 読了約 分 目次 花より男子F4キャストの現在と2026最新動向！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://bluetoothcontrol.hafnertec.com/hidarihara-torakami-ast/4495340/",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ホーム Hidarihara Torakami Ast 高橋 健太 (Kenta Takahashi) • 2026年08月29日 • 読了約 分 目次 浮所飛貴の大学は立教法学部！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://raymiyatake09.hatenablog.com/entry/2026/08/30/123201",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ネパール・中国の氷河崩落・土石流・洪水を中国のメガソーラーが原因だとしたがる参政党や日本保守党支持のネトウヨ陰謀論者」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://grk1.hatenablog.com/entry/2026/08/30/190228",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「それにしても、一昨夜の満月「 スタージョンムーン 」を眺めることができなかったのは、残念であった」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://www.sankei.com/article/20260830-IH3ADERH5BKAFNGGB23467VDGE/",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「天皇、皇后両陛下が臨席された全国戦没者追悼式で式辞を述べる高市早苗首相（左奥）＝8月15日、東京都千代田区の日本武道館（鴨川一也撮影） 終戦の日の政府主催の全国戦没者追悼式での高市早苗首相の式辞について、朝日新聞は16日付社説「危うい『反省』の風化」で、「首相式辞からは『反省』の文字が消えた」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://anond.hatelabo.jp/20181126191701",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「< anond:20181126191235 | anond:20181126191549 > 私は褒められることに向いてない、と思うようになった」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://lite-ra.com/2026/08/post-6401.html",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「読売テレビが子ども相手に竹田恒泰の「フェイク皇室史」と「女性天皇否定」を一方的に刷り込む偏向番組を放送！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5wa2l2eC1EZ1FRTmdveE1yLU5IMWd6bzgtYmNpQXdTeGdKVHBoMHduclZvSXJJSFhtdXAzZkgyRFRDZ082bGtFZHEwXzlRNmFBaGdxUnVfZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス リセマラ当たり 雪花ラミィ [さびしがり屋な雪夜の令嬢]雪花ラミィのスキルとステータス【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)における[さびしがり屋な雪夜の令嬢]雪花ラミィの性能とスキルです」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://www.youtube.com/watch?v=qaDwf54Z-fM",
+      "article_type": "video_or_stream",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「タイトル: 100カノRADIO 第53回 ｜ TVアニメ『君のことが大大大大大好きな100人の彼女』公式ラジオ 投稿者・チャンネル: バンダイナムコフィルムワークス チャンネル 配信元: YouTube」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://juju-chu.com/ja/agent-config",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「Git ではなく Jujutsu を AI エージェントに使わせる方法 このページでは、Claude Code と Codex CLI に Git ではなく Jujutsu を使わせるための、プロジェクト単位の設定ファイルを掲載しています」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://automaton-media.com/articles/columnjp/nununu-20260830-464035/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「実は役割いっぱい、ゲームデザイナーが解説するボス戦が担う“重要な役割” 今回の記事では「ボスの面白さ」の秘密に迫ってみる」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://susisu.hatenablog.com/entry/2026/08/29/235949",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「最近 [いつ?」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    },
+    {
+      "article_url": "https://derp.metint.com/akiba-news-tokyo/9019490/",
+      "article_type": "news_article",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「清水 陸 (Riku Shimizu) • 2026年08月25日 • 読了約 分 目次 名前募集中の注目公募まとめ！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-31T00:06:46Z"
+    }
+  ]
+}

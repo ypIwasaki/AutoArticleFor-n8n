@@ -1,0 +1,131 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-08-26",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBwaEVfZHBrT1YwZjJ3UGJzX0h0Tm1OQm5WUmpSTFE4Y2hTNUhYZjBqZ0ZkUm8xWlhReGg1X2RWRS1xSmZ3eUJIY2o3OEp4T3dFZHdpMEFPaERVVXhtYm80Wg?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "live_or_music",
+        "game_or_technology",
+        "company_or_business"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「『hololive Dreams』新ミニゲーム「くらやみチェイス」が8月28日に実装決定！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T00:03:54Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPVzUxQkI3ck05aTRYemFJT1YxWnRwdmxhTFlER1RtVzFpcHN6N1pKLXFVbmZ2NUJWV2xmc0dqV1M5TDRfdlIyQ3JrMVp5TndfSGNMQmE3WEZTLWNXamotcnFUb1ZHY0NBQXJ0UXloWlJqcDRIN0NoZFMyMG9CNndGaDAzZWpydjZudG84ZFU3ZU5fS0JvZHhzVV91YUh5RUhnVXfSAacBQVVfeXFMTU14TnhwYzZMUERQMmlBTDVMT1NKbmVkekh0THRxYlNUWnFjQThoRThReEQ1ZXdWXzB2QzFTRE5GZ2dlaG9lYm1UYk1USE9TaHlMZXU3aExSRzZzT3BHaThzeE9vTDQwa0JwZ0VnRzV6V3NwQWhOMjh1YXdDQ3Z3cXFUemw1T3VNQkY4aVdxUGFVMjlCaHJxWC1VVENFRUlTdXRWbDVMNUk?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ftn-fashion trend news- 8/26(水) 8:05 クオリティーの高いスイーツがずらりと並ぶ【ファミリーマート】」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T00:03:54Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「キャラ 簡易性能 [Energeticスプラッシュ！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T00:03:54Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9TeWlKRjJkSk50dXRuZzRidncwUExYcTkxZkwxN0w2c1BYLUxzc3BONi1XQ245RUJMbXN4VXVkZmdRZFdQdGZnby1ZTlFMOFI1NjBLWWhLWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music",
+        "media_or_editorial"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス 最強編成とおすすめパーティ【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス/ほろどり)の最強編成(最強パーティ編成)とおすすめチーム編成です」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T00:03:54Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBvRE5Zbm1QTFBkXzUzdVVuN2oxVEo3Z0NaRUpJQng3R1JRWFIyWWNRNU1BdmpiVDY3dWJEcUlzeW04cmdQNHktVXV1WklHSEtKSGNsSVBCZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「最強リーダーキャラは、「ロボ子さん」「戌神ころね」「風真いろは」など」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T00:03:54Z"
+    },
+    {
+      "article_url": "https://neko-office.com/entry/2026/08/25/220138",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「トップ > #ネコオフィス > まだ続く、梅干しの食レポ！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T00:03:54Z"
+    },
+    {
+      "article_url": "https://discoveringsounds.com/f-c-b-word",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「英語お役立ち情報 English Pronunciation Column ホーム 英語発音お役立ち情報 語彙力 海外で使ってはいけないFワード・Cワード・Bワードとは？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T00:03:54Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9BdlAyN2VhMlMteS1MZHN2TVpmX2ZvLTVncjI3MElpXzlGZDhRWHcyVnIycFczck9sTms5SzVTWmFKRjFTcTBaM1ZUT0JZMnlNbFNtQmxIVURSMTVYaVBjd2RoZVhJcWc4UFphV0tR?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「＜画像1 / 3＞たった4カ月で登録者7万人を突破！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T00:03:54Z"
+    },
+    {
+      "article_url": "https://togetter.com/li/2737270",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「動物病院で使われる猫の安全な保定方法「猫ブリトー」のやり方動画と飼い主たちの疑問「こんなに大人しく受け入れない子は…？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T00:03:54Z"
+    },
+    {
+      "article_url": "https://bookmark.hatenastaff.com/entry/2026/08/25/120049",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「今週のはてなブックマーク数ランキング（2026年8月第4週） はてなブックマークのブックマーク数が多い順に記事を紹介する「はてなブックマーク数ランキング」」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-26T00:03:54Z"
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="取得記事のMarkdownを確認し、キーワードと内容を評価するローカルレビュー画面">
+  <title>Article Review Desk</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">AR</span>
+        <div>
+          <p class="eyebrow">LOCAL REVIEW WORKSPACE</p>
+          <h1>Article Review Desk</h1>
+        </div>
+      </div>
+      <div class="topbar-progress" aria-live="polite">
+        <div class="progress-copy">
+          <span id="progress-label">レビューを読み込み中</span>
+          <strong id="progress-value">—</strong>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <span id="progress-bar"></span>
+        </div>
+      </div>
+      <button class="quiet-button" id="refresh-button" type="button" title="Markdownを再読み込み">
+        再読み込み
+      </button>
+    </header>
+
+    <main class="workspace">
+      <aside class="queue-panel" aria-label="記事一覧">
+        <div class="queue-controls">
+          <div class="control-row">
+            <label class="field compact-field">
+              <span>対象日</span>
+              <select id="date-select" aria-label="対象日"></select>
+            </label>
+            <label class="field compact-field">
+              <span>判定</span>
+              <select id="decision-filter">
+                <option value="pending">未評価</option>
+                <option value="">すべて</option>
+                <option value="approved">可</option>
+                <option value="rejected">不可</option>
+                <option value="needs_refetch">再取得</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="search-field">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <input id="search-input" type="search" placeholder="タイトル・配信元を検索" autocomplete="off">
+            <kbd>/</kbd>
+          </label>
+
+          <div class="control-row">
+            <label class="field compact-field">
+              <span>キーワード</span>
+              <select id="keyword-filter">
+                <option value="">すべて</option>
+              </select>
+            </label>
+            <label class="field compact-field">
+              <span>取得状態</span>
+              <select id="status-filter">
+                <option value="">すべて</option>
+                <option value="verified">本文あり</option>
+                <option value="partial">一部取得</option>
+                <option value="metadata_only">メタデータのみ</option>
+                <option value="unavailable">取得不能</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="queue-summary">
+          <span id="result-count">0件</span>
+          <button id="next-pending-button" class="text-button" type="button">次の未評価へ</button>
+        </div>
+
+        <div id="article-list" class="article-list" role="listbox" aria-label="記事"></div>
+        <div id="list-empty" class="empty-state hidden">
+          <span class="empty-symbol" aria-hidden="true">◌</span>
+          <strong>該当する記事がありません</strong>
+          <p>検索条件を変えてください。</p>
+        </div>
+      </aside>
+
+      <article class="reader-panel" aria-live="polite">
+        <div id="reader-empty" class="reader-placeholder">
+          <span class="reader-placeholder-mark" aria-hidden="true">文</span>
+          <h2>記事を選択してください</h2>
+          <p>左の一覧から記事を選ぶと、抽出された内容をここで確認できます。</p>
+        </div>
+
+        <div id="reader-content" class="hidden">
+          <header class="article-header">
+            <div class="article-kicker">
+              <span id="article-status" class="status-badge"></span>
+              <span id="article-publisher"></span>
+              <span id="article-date"></span>
+            </div>
+            <h2 id="article-title"></h2>
+            <div id="article-keywords" class="keyword-row"></div>
+            <div class="article-actions">
+              <div class="viewer-tabs" role="tablist" aria-label="記事表示">
+                <button id="original-tab" class="viewer-tab active" type="button" role="tab"
+                  aria-selected="true" aria-controls="original-view">元記事</button>
+                <button id="markdown-tab" class="viewer-tab" type="button" role="tab"
+                  aria-selected="false" aria-controls="markdown-view">抽出Markdown</button>
+              </div>
+              <button id="copy-key-button" class="text-button" type="button">記事キーをコピー</button>
+            </div>
+          </header>
+
+          <section id="original-view" class="original-view" role="tabpanel" aria-labelledby="original-tab">
+            <div class="embedded-toolbar">
+              <div>
+                <span class="live-dot" aria-hidden="true"></span>
+                <span id="original-domain">元記事</span>
+              </div>
+              <a id="original-external-link" class="source-link" target="_blank"
+                rel="noopener noreferrer">外部で開く <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="original-frame-shell">
+              <iframe id="original-frame" title="元記事"
+                sandbox="allow-forms allow-modals allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen referrerpolicy="no-referrer" loading="lazy"></iframe>
+            </div>
+            <section id="youtube-details" class="youtube-details hidden" aria-label="動画情報">
+              <p class="eyebrow">VIDEO INFORMATION</p>
+              <h3 id="youtube-title"></h3>
+              <dl class="video-facts">
+                <div><dt>チャンネル</dt><dd id="youtube-channel"></dd></div>
+                <div><dt>配信元</dt><dd id="youtube-provider"></dd></div>
+              </dl>
+              <div class="video-summary">
+                <h4>保存済みの動画概要</h4>
+                <p id="youtube-description"></p>
+              </div>
+            </section>
+            <p class="embed-note">
+              配信元のセキュリティ設定により表示できない場合は「外部で開く」を使用してください。
+            </p>
+          </section>
+
+          <div id="markdown-view" class="markdown-view hidden" role="tabpanel"
+            aria-labelledby="markdown-tab"></div>
+        </div>
+      </article>
+
+      <aside class="review-panel" aria-label="評価">
+        <div class="review-panel-header">
+          <div>
+            <p class="eyebrow">REVIEW</p>
+            <h2>この記事を評価</h2>
+          </div>
+          <span id="save-state" class="save-state">未選択</span>
+        </div>
+
+        <form id="review-form">
+          <fieldset class="review-fieldset">
+            <legend>記事の採否</legend>
+            <div class="decision-grid">
+              <label class="decision-option approved">
+                <input type="radio" name="decision" value="approved">
+                <span class="decision-icon" aria-hidden="true">✓</span>
+                <span><strong>可</strong><small>記事として採用</small></span>
+              </label>
+              <label class="decision-option rejected">
+                <input type="radio" name="decision" value="rejected">
+                <span class="decision-icon" aria-hidden="true">×</span>
+                <span><strong>不可</strong><small>対象から除外</small></span>
+              </label>
+              <label class="decision-option refetch">
+                <input type="radio" name="decision" value="needs_refetch">
+                <span class="decision-icon" aria-hidden="true">↻</span>
+                <span><strong>再取得</strong><small>本文を取り直す</small></span>
+              </label>
+              <label class="decision-option pending">
+                <input type="radio" name="decision" value="pending">
+                <span class="decision-icon" aria-hidden="true">…</span>
+                <span><strong>保留</strong><small>あとで判断</small></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="check-grid">
+            <label class="field">
+              <span>キーワード取得</span>
+              <select name="keyword_check">
+                <option value="pending">未確認</option>
+                <option value="correct">正しい</option>
+                <option value="incorrect">誤り</option>
+                <option value="uncertain">判断困難</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>記事内容</span>
+              <select name="content_check">
+                <option value="pending">未確認</option>
+                <option value="correct">正しい</option>
+                <option value="incorrect">誤り</option>
+                <option value="uncertain">判断困難</option>
+              </select>
+            </label>
+          </div>
+
+          <label id="reason-field" class="field hidden">
+            <span>不可理由 <em>必須</em></span>
+            <select name="reason_code">
+              <option value="">理由を選択</option>
+              <option value="irrelevant">キーワードと無関係</option>
+              <option value="suspicious_source">配信元を除外候補にする</option>
+              <option value="unavailable">内容を確認できない</option>
+              <option value="outdated">古い・再掲記事</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>レビュー・メモ</span>
+            <textarea name="note" rows="6" maxlength="10000" placeholder="判断根拠や後で確認したい点を記録"></textarea>
+            <small class="character-count"><span id="note-count">0</span> / 10,000</small>
+          </label>
+
+          <div id="validation-message" class="validation-message hidden" role="alert"></div>
+
+          <div class="save-actions">
+            <button id="save-button" class="secondary-button" type="submit">保存</button>
+            <button id="save-next-button" class="primary-button" type="button">
+              保存して次へ <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </form>
+
+        <div class="shortcut-card">
+          <strong>キーボード操作</strong>
+          <dl>
+            <div><dt><kbd>J</kbd> / <kbd>K</kbd></dt><dd>次 / 前の記事</dd></div>
+            <div><dt><kbd>A</kbd> / <kbd>R</kbd></dt><dd>可 / 不可</dd></div>
+            <div><dt><kbd>Ctrl</kbd> + <kbd>Enter</kbd></dt><dd>保存して次へ</dd></div>
+          </dl>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <div id="loading-overlay" class="loading-overlay">
+    <div class="loader" aria-hidden="true"></div>
+    <p id="loading-message">レビューを読み込んでいます</p>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

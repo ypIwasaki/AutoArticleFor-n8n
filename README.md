@@ -187,3 +187,35 @@ A week runs from Monday through Sunday in JST. Until Sunday, every daily run
 updates the same report file with the full collection range available so far.
 A new Monday starts a new report. Reports distinguish body-verified article
 summaries from video metadata summaries and document missing or noisy data.
+
+## Article review Markdown
+
+Collected article pages can be converted to reviewable Markdown while preserving
+headings, paragraphs, lists, links, and other semantic content. One canonical file
+and review field is created per article; keyword folders contain generated references
+so multi-keyword matches do not create conflicting copies.
+
+```bash
+python3 scripts/capture_article_contents.py --run-date YYYY-MM-DD --retry-unverified
+python3 scripts/generate_article_review_markdown.py --date YYYY-MM-DD --clean-generated
+python3 scripts/apply_article_markdown_reviews.py --date YYYY-MM-DD
+```
+
+For a long historical backfill, use the resumable runner. It checkpoints every
+article URL as well as every completed date.
+
+```bash
+python3 scripts/run_article_review_history.py --stop
+python3 -u scripts/run_article_review_history.py --resume --max-retries 1
+```
+
+See `docs/article-review-markdown.md` for grouping, tie handling, review values,
+and batch application instructions.
+
+Start the local browser reviewer to inspect and evaluate Markdown quickly:
+
+```bash
+python3 scripts/article_review_viewer.py
+```
+
+See `docs/article-review-viewer.md` for viewer usage and keyboard shortcuts.

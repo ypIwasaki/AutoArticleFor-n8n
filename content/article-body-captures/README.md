@@ -15,3 +15,14 @@ python3 scripts/capture_article_contents.py --retry-unverified
 Google News は最小 2.5 秒、配信元ページは最小 0.75 秒の間隔で取得します。429 などは待機後に再試行します。既存の本文も保存し直す場合は --refresh、日次要約も再作成する場合は --refresh --write を使います。
 
 N8N_API_KEY が設定された .env があれば、結果は article_contents Data Table にも article_key をキーとして upsert されます。
+
+JSONLには従来の `contentText` に加え、次の確認用フィールドも保存します。
+
+- `contentMarkdown`: 見出し、段落、リスト、引用、リンクなどを保持した抽出結果
+- `contentCompleteness`: `full` / `substantial` / `partial` / `metadata_only` / `unavailable`
+- `nonContentText`: ナビゲーション、ヘッダー、サイドバー、フッターから分離した文字列
+- `pageMetadata`: meta要素とJSON-LDから得た記事情報
+- `extractionScope`: `article`、`main`、JSON-LD、またはページ全体フォールバック
+
+このJSONLからキーワード別の確認用Markdownを作る手順は
+`docs/article-review-markdown.md` を参照してください。

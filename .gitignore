@@ -224,3 +224,13 @@ n8n/data/
 *.sqlite-shm
 *.sqlite-wal
 
+# Local article review artifacts (may contain copied third-party article text)
+content/article-review/
+content/article-review-results/
+content/article-refetch-requests/
+content/article-review-backfill-status.json
+content/article-review-backfill.log
+content/article-review-backfill-error.log
+content/article-review-backfill-progress.json
+content/article-review-backfill*.log
+

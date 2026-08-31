@@ -1,0 +1,311 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-08-28",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE16UE9UQkZPM3ZFUnVDSlFGNWhtNGVZOENPY2xOOFllUTZidVI1bHZpVlVvRm9rcE5UM1ZGZTdQaXIzRmR2dGVzT1diYWFicTJobThNYUNkWkpnWEVhU2hRaE84eG1QVTExVUYwd2h0RXdOd1dWcFJoUkFlR1RKdTA?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「ホロライブ・獅白ぼたん、ラプラス・ダークネスら全8種！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE84TEdVTHZmR3hwM0RIUFRmb1JsUXVUdkIyYURkRHd3V3B5TU9BUU9NWEFEZlgyUVVqdUVGYTZGUnh6T3kwYTE0aU9keG5KZDN1d1N2ZnVZa0IwcTZ5THNBbXhkMkZHM0RiQVE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「バンダイは、ガシャポン 「ホロライブ すわらせ隊 アクリルスタンド カラーライズ4」 を8月第5週より発売します」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1TUTQ0NjVmN1VVQkg3dVZDUm5nVVA5NGNWdXlCUnkxcjJQSXhVX1k2NDhzQmxveUZsSjRNMnRnbDV6eXd3VUxSQg?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "community_or_fan"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「「週刊少年サンデー」（小学館）にて連載中の漫画『界変の魔法使い』を原作とする新曲「薔薇ノ香」が、2026年8月26日(水)に配信リリースされた」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE80R2xRelhBSnJFLXNSa0ZBZDhlRkJHQmFpaXJCZ2lrdjFhSEJVR2oxeFV5bmxPNnk1Y2hqX25FUzB5WGNzQmtRellwXzVQbEVFRHcwUEJrZnRzQ1Y4U1dNWHMxY1RqYkJOS2c?oc=5",
+      "article_type": "press_release",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「日テレAI-HR主催・無料ウェビナー「なぜ優秀な経営者ほどAIに企業理念を教え込むのか」――「AI社長」導入50社超のTHA西山朝子が語る 効率化の先にある、\"この会社だから選ばれる\"の育て方」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE0zTUVvOW1sR0x6eXIzS1dHaDhWb1pHRWRnQ0xvWHhyZjY0UkNrNVBfd0Z6U1h1bE1PcEVVczh3MUtwdTY2ZjE3YW9kUDRyVms?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「-2nd Step-』セトリ＆写真付き福岡公演ファイナル ライブレポート - PASH!」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFA4cWNBU3NsYzg1enN5c3k1Ui1tdzNlT2JVRE5FWXFFblE2bU45ekJSTF84RUhCajlVeXhPdzI3cmhsU1ZCQngtbFJXQmI3UW0tZk1BcHhtWGc1Ny1aalUzelB0S0ZoR0VXbmNtU2ZWNzV0aWVuQ0E?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「欧州サッカー連盟「FIFA主催大会ボイコット」暫定停止 子会社設立計画撤回で 欧州サッカー連盟（UEFA）は27日、国際サッカー連盟（FIFA）主催大会のボイコットを暫定的に停止すると発表した」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://staging-office.varnz.ai/batgen/6807821/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「斉藤 桃子 (Momoka Saito) • 2026年08月27日 • 読了約 分 目次 幕張メッセ9〜11ホールの見え方検証！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://staging-office.varnz.ai/baseprime/8481079/",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「高橋 健太 (Kenta Takahashi) • 2026年08月27日 • 読了約 分 目次 犬飼貴丈の彼女と熱愛の真相は？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9UY1VwYnlEN0ZIa1pGY1BVWkNmVUNBWTdnY0RPaWlJem1adDRYQnR6aC1CVDJFbGVQeGJhTU0xVE8tOUQ5ODFpWUxpakowdHRERFQzOUFBWkM?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「香川県内で働く女性の皆さん、デジタルスキルアップしませんか？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9DN0ttTUFEVlRFY2s5TkFHMEZmYUZ0WDI5VUM5d0tiUU5VNk9Jb3gxbG5GM1NYSU10Y0FKWnczcjhhNTc5eWZ4ZnBCcUc3OVdnU0JBVmZGZlRmQVdKazdoMUx3czliRkZnN1E?oc=5",
+      "article_type": "press_release",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「筑波大学蹴球部主催「第4回きりの葉祭り」にSASSENが出展 学生が運営する地域密着イベントで次世代デジタルチャンバラを体験」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9TeWlKRjJkSk50dXRuZzRidncwUExYcTkxZkwxN0w2c1BYLUxzc3BONi1XQ245RUJMbXN4VXVkZmdRZFdQdGZnby1ZTlFMOFI1NjBLWWhLWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music",
+        "media_or_editorial"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス 最強編成とおすすめパーティ【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス/ほろどり)の最強編成(最強パーティ編成)とおすすめチーム編成です」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://note.com/nemeos/n/n69d8d18a52d4",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「「RIKU」はweb小説作家必携のゲームチェンジャー！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「キャラ 簡易性能 [Energeticスプラッシュ！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5wa2l2eC1EZ1FRTmdveE1yLU5IMWd6bzgtYmNpQXdTeGdKVHBoMHduclZvSXJJSFhtdXAzZkgyRFRDZ082bGtFZHEwXzlRNmFBaGdxUnVfZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス リセマラ当たり 雪花ラミィ [さびしがり屋な雪夜の令嬢]雪花ラミィのスキルとステータス【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス)における[さびしがり屋な雪夜の令嬢]雪花ラミィの性能とスキルです」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBvRE5Zbm1QTFBkXzUzdVVuN2oxVEo3Z0NaRUpJQng3R1JRWFIyWWNRNU1BdmpiVDY3dWJEcUlzeW04cmdQNHktVXV1WklHSEtKSGNsSVBCZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「最強リーダーキャラは、「ロボ子さん」「戌神ころね」「風真いろは」など」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://samavanaproject.dlf.in/japan-030/2629723/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「斉藤 桃子 (Momoka Saito) • 2026年08月18日 • 読了約 分 目次 新川優愛が待望の妊娠発表！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://tracker.aitoc.com/Japan-Financial-News-Updates/3829671/",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ホーム Japan Financial News Updates 加藤 雅人 (Masato Kato) • 2026年08月16日 • 読了約 分 目次 高田みづえの息子・勝信の現在！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://kabutomama.hatenadiary.com/entry/2026/08/27/210200",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「子どもの送迎だけで終わらせない、親自身の楽しみを」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://future-architect.github.io/articles/20260827b/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「設計 ドキュメント AIエージェント Markdown 夏休みの課題ということで、これまでの業務経験、Real World HTTP、Goならわかるシステムプログラミング、実用Go言語、 お客様と一緒に勉強したReact/Next.js の知識を全部詰め込んだ、自分史上最高のウェブアプリケーションサーバーを作ってみました」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://www.techno-edge.net/article/2026/08/27/5431.html",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「Googleは8月26日（日本時間27日未明）、音声テキスト変換モデル「Gemini 3.5 Transcribe」を発表しました」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://mybuzz.tokyo/12352",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「VRoidモデル最高峰のさーヤンが魅せるワールドイズマインのダンスステップが美しすぎて衝撃的」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://kai-you.net/article/96367",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「VTuber個人勢、成層圏まで“打ち上げられる” 星見まどかが宇宙の入り口を撮影 空気の層が薄く地球を覆っているのが手に取るようにわかる、何とも神秘的な光景です」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBHRVl0YURxNUltaWpET0IyT0NTR0dKa1M4U0FRTFczTmE3X19vS1VjUjVKcGNWUV9JMnUwMUgtNEJZc0ZDNkdmeTRyZnhhaW1OZmZMV1NxS0FhRHpqSzVZNUpRWmV0cGZWZXV3dDhLN3RFT3IwdFB6V2RB?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "collaboration",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「10神ACTORの澤柳亮介と山田健登が写真展＆イベントをナビゲート！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://www.nomulog.com/entry/property-registration-diy-failures",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「トップ > 不動産登記 > 素人が自力で不動産登記変更したときの失敗談４つ 2026 - 08 - 27 父親が亡くなり、父名義の不動産情報の変更が必要になりました」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    },
+    {
+      "article_url": "https://gihyo.jp/article/2026/08/yapc-tokyo-2026",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「2026年11月27日 （金⁠ ） ⁠～29日 （日） に 東京ビッグサイト で開催されるPerlを中心とした技術カンファレンス 「YAPC:: Tokyo 2026」 のスペシャルゲストとして、Perlの生みの親として知られるLarry Wall氏が参加することが発表された」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-08-28T00:48:35Z"
+    }
+  ]
+}

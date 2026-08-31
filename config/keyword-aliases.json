@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "keywords": [
+    {
+      "id": "vtuber",
+      "label": "VTuber",
+      "kind": "industry",
+      "aliases": ["VTuber", "Vtuber", "Vチューバー", "バーチャルYouTuber"],
+      "priority": 50
+    },
+    {
+      "id": "nijisanji",
+      "label": "にじさんじ",
+      "kind": "organization",
+      "aliases": ["にじさんじ", "NIJISANJI"],
+      "priority": 300
+    },
+    {
+      "id": "nijisanji-en",
+      "label": "NIJISANJI EN",
+      "kind": "organization",
+      "aliases": ["NIJISANJI EN", "にじさんじEN"],
+      "priority": 310
+    },
+    {
+      "id": "hololive",
+      "label": "ホロライブ",
+      "kind": "organization",
+      "aliases": ["ホロライブ", "hololive"],
+      "priority": 300
+    },
+    {
+      "id": "hololive-production",
+      "label": "ホロライブプロダクション",
+      "kind": "organization",
+      "aliases": ["ホロライブプロダクション", "hololive production"],
+      "priority": 310
+    },
+    {
+      "id": "vspo",
+      "label": "ぶいすぽっ！",
+      "kind": "organization",
+      "aliases": ["ぶいすぽ", "ぶいすぽっ！", "ぶいすぽっ!", "VSPO!"],
+      "priority": 300
+    },
+    {
+      "id": "neo-porte",
+      "label": "Neo-Porte",
+      "kind": "organization",
+      "aliases": ["Neo-Porte", "ネオポルテ"],
+      "priority": 300
+    },
+    {
+      "id": "replay-live",
+      "label": "りぷらい！",
+      "kind": "organization",
+      "aliases": ["りぷらい", "りぷらい！", "Replay Live"],
+      "priority": 300
+    },
+    {
+      "id": "aogiri-high-school",
+      "label": "あおぎり高校",
+      "kind": "organization",
+      "aliases": ["あおぎり高校"],
+      "priority": 300
+    },
+    {
+      "id": "specialite",
+      "label": "すぺしゃりて",
+      "kind": "organization",
+      "aliases": ["すぺしゃりて", "Specialite"],
+      "priority": 300
+    },
+    {
+      "id": "chrono-noir",
+      "label": "ChroNoiR",
+      "kind": "unit",
+      "aliases": ["ChroNoiR", "クロノワール"],
+      "priority": 400
+    },
+    {
+      "id": "rof-mao",
+      "label": "ROF-MAO",
+      "kind": "unit",
+      "aliases": ["ROF-MAO", "ROFMAO", "ろふまお"],
+      "priority": 400
+    }
+  ]
+}

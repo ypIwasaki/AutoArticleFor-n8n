@@ -1,0 +1,343 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-09-01",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1wME1pQ1FvZ0hSd2M1SXNqTlJHQWZWdGliVWJqakljWU9yUS1XcTFFUGhZd3dlY3lWQUZsS2JVcEtFazZPQnlRYm9oWFNpME5fSzJFTDd5bFNJTVZucEI0NEpBUEljbEswV294WHBOcFZJd2FQX3pYZjZlN1VOU3c?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「清涼飲料業界、「3分の1ルール」など商慣行見直しへ 物流効率化・食品ロス削減、全清飲が自主行動宣言 全国清涼飲料連合会(全清飲、井辻秀剛会長)は8月31日、「清涼飲料業界のフードサプライチェーンにおける商慣行の見直し・適正化に向けた自主行動宣言」を策定した」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE45SWlYc0pncnRwS3dnSlgtcEdYTmpBRjlLSHpEVGFWaHpDb01TaEJ3eUg1ZWR1Ti11U2FGTEgwdmVRMWFNNnphc1RlWkVpR0RJTlc3RlZYdTVWTHlJZGMwOHlKaTc2TFJpcDlXek9TcFBfUnRiem9vZC1LdXNzejQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「[Alexandros]主催フェス「THIS FES ’26 in Sagamihara」にSennaRin、澤野弘之のゲスト出演が決定」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE95UXQ2S190NWg0MjRzVWFEUVY4Y3YtR09XYmxGbHNFZERmQlU4S3o3Q3pPTGtNS1YxWWFNYm1obzZXOWVrVUNreFQtY09HeEZqTm1DYWlEY3MxUVR4UnREaGY2RlBVanMtanhUZ2djRWZRSWdRQ2xYX0NaQQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "company_or_business",
+        "collaboration",
+        "live_or_music"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「コロプラ新作『アクティブシネマRPG 369（ミロク）』が本日サービス開始！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9lRVFLVDV1eDJQdHJVdEF2OTI5bEJYaV9Zc3pNcFdpXzhJNkZJZG9VLWh5WF9URGtPTzhXQ2QxWGViekhhX29uajhyTmZ1dlJWbVYxTy1oOFdGVTRLYXBnYlFNRXEtQ1VpOWs3Rw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「【にじさんじ】「UN-DIMENSION」第9弾は弦月藤士郎・長尾景・甲斐田晴がプロデュース！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE9RTDhhQlZiWll4M21ncHZiQ09GZEFfYlJUVTJ4aE8xVGtSNmZJV2ZZT3pqTDRxU0p5ZU90RVFYTmRFZHd6azdz?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「オリヴィア・ロドリゴ初主催フェス、豪華レジェンド集結 BY FRONTROW Editorial Dept. オリヴィア・ロドリゴ が創設した女性アーティストを中心とする慈善音楽フェスティバル「デイジー・チェーン・フィールズ」が、2026年8月29日にカリフォルニア州アーバインのグレート・パークで初開催された」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1wREFMSUpsVHNwOGFwMVYxc21BZm5Gd0p6X2ZreVNUM2JEb1dSWHVkOUlsWXoxVUsyeTV3LVJubDVWaGl3SHpDdWY3N0E0VXBCRlhzd09PXy11VjU1OXFNRVV6Yw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「大型補強敢行のトッテナム、チェルシーで背番号剥奪のイングランド人DF獲得へ！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBoZnNySUI2ZHl1T1h0MnB1R1hvZElPaTd2WUhhQTdWMEdkN2FLb2J3ZjVDdVIxa2JVLW9EdFEwckoyaXNodnpBb3MxMElRWGJ3bS04Z01fOER6eW1tRDdnYlFYb3UweXc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「オランダ代表FWガクポのマンC移籍は破談か…リヴァプールが代役を確保できず 画像（1枚） リヴァプールに所属するオランダ代表FWコーディ・ガクポの マンチェスター・シティ への移籍は破談に終わったようだ」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMickFVX3lxTFAxOVdFX3V6c2dwR0N6aGhGVVVtZWl2MmQ2NUhKM2trM3NETVhKOEhuMWdTSU1saXFWZmFYWUEwWHpudEMyS1gzWE1NMWpDYnBVd2Y4MVU2djU3WGVxUGpQXzlGaHlGUEtQWXNkWmZCdVhRUdIBd0FVX3lxTE9DVDJCLTZqSFpkSUpEcldOQW9rT3lpUWF2MHVOSk5VSlJmM3FrN2JHWmxlcElZQmphdzNmTzNjZjhIVUtnY2RtRWhOaS1EaTQyckFkQ1Q4THd4MnNGN1FXYUlGVXF0bHc5Z0hrejdOZkNTVC1jWEUw?oc=5",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "product_or_goods",
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ゲーミングブランド「Pulsar Gaming Gears」が「TGS2026」に出展を発表！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5EcFNsbU9peG5DdERlT0I2YklramhSUGt5aG5Ec0ZVWlV0eUFBYXdmMkxvRXpVVzhmcjBoSk5DVENlQVFxZU01VmFNbDFORTJiaUlFYXZkTGt0dkoxMGs4ZWdvcDRyVWVSczNlOGJfMXNZME5peVE?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "audition_or_recruitment",
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「【新製品】カバー替えの“格闘”も、朝の“ズレ直し”も不要」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9xSW5mSG41b25oOWpGSkdIVkJRYm04VENGcERjcnotUkYtdE9oUW5USklKT3FtdFRXMWJ6S0NFb2lha0NoZ1h4TVgtQVZBR1p5eFVF?oc=5",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「Z世代が選ぶ!」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://omocoro.jp/kiji/587331/",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「100円ショップの商品だけで自転車を作ってレースしてみた！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9TeWlKRjJkSk50dXRuZzRidncwUExYcTkxZkwxN0w2c1BYLUxzc3BONi1XQ245RUJMbXN4VXVkZmdRZFdQdGZnby1ZTlFMOFI1NjBLWWhLWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music",
+        "media_or_editorial"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス 最強編成とおすすめパーティ【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス/ほろどり)の最強編成(最強パーティ編成)とおすすめチーム編成です」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://levtech.jp/media/detail_917/",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「「State of CSS 2026」で見る注目機能と軽量フレームワーク - レバテックLAB トップ > フロントエンド技術の今 > 位置決めもサイズ計算もCSSだけで」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://prtimes.jp/main/html/rd/p/000000267.000045379.html",
+      "article_type": "press_release",
+      "primary_category": "audition_or_recruitment",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「正解のない大規模案件に向き合うPM・SEが集う2日間」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「キャラ 簡易性能 [Energeticスプラッシュ！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://bluetoothcontrol.hafnertec.com/news-tokyo-dispatch/5641320/",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「田中 葵 (Aoi Tanaka) • 2026年08月26日 • 読了約 分 目次 舞台『千と千尋の神隠し』歴代キャスト徹底比較！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBBM0hEenF5TWw2NmVvRTJ0VHFGR1piNHlQRjI5SlJoNEVXSkdSM3l4NmVPT21RcXltMjItc0pud2JoVXpJWG1kcjZIR3pMQkdxeDJoMXpPbw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「ホロドリのリセマラ当たりキャラは、「百鬼あやめ」「獅白ぼたん」「パヴォリア・レイネ」など」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://www.nejimakiblog.com/entry/internet-has-no-benches-blog-web-future",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「トップ > ブログ > インターネットにはベンチが必要だ」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5BTFVjUVRWMkw4azBxVEVadXgtbGFKdWhrdjFoYVE5ZGVadUJEYjRxVjl1VWs2enhmVEVfYm0xRTh1aU9xRnJRb0lHZVhqZU15dnNn?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AppMediaトップ イナイレV攻略wiki｜イナズマイレブン英雄たちのヴィクトリーロード 属性相性の仕組み【ヴィクトリーロード】 AppMedia株式会社 https://appmedia.jp/ AppMedia 属性相性の仕組みをまとめていますので、イナズマイレブン(イナイレ)新作 英雄たちのヴィクトリーロードのプレイにお役立てください」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://standbyaokihidemitsu.weebly.com/",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「Stand by Aoki Hidemitsu - Home 私たちは、青木秀光さんの民事訴訟を支援する有志の集まりです」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://affilife.org/ai/claude-code-codex-ana/",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「クロードコードの埋められない穴とCodexの埋められる穴 今日は『クロードコードの埋められない穴とCodexの埋められる穴』について書いていきます」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://note.com/keizokuramoto/n/n592056d1b7e7",
+      "article_type": "news_article",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「「高市がバカだから」では何も解決しない―日本財政問題の本当の”ラスボス”とは何かについて話します」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://elearning.campioncollege.com/oacpjlsv/6692231/",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「井上 大輝 (Daiki Inoue) • 2026年08月27日 • 読了約 分 目次 伝説のカーレンジャーキャストは今どこに？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://www.famitsu.com/article/202608/80449",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「『カルドセプト ビギンズ』ってホントのところどうだった？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://menherahaha-hitomejinnsei.site/archives/14717830.html",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「WEST .（ウエスト）は、日本の男性アイドルグループ」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://reports.sksu.edu.ph/inunaka-tanikaku-tokyo/6598421/",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「ホーム Inunaka Tanikaku Tokyo 清水 陸 (Riku Shimizu) • 2026年08月30日 • 読了約 分 目次 「エモい」の語源と本質に迫る！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://blog.takaumada.com/entry/agent-rule-of-rules",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "media_or_editorial"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「AIが文章やコードを速く作るようになればなるほど、人間によるレビューや決裁、品質保証といった、人間の意思決定がボトルネックになっていきます」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    },
+    {
+      "article_url": "https://vee-official.jp/news/260831_project_close/",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [
+        "community_or_fan"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「2026 08.31 ソニーミュージックによるVTuberプロジェクト「VEE」運営体制終了のお知らせ 平素より、株式会社ソニー・ミュージックエンタテインメントが運営するバーチャルタレント育成＆マネジメントプロジェクト「VEE」ならびに所属タレントを応援いただき、誠にありがとうございます」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-01T05:19:47Z"
+    }
+  ]
+}

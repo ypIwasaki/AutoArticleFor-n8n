@@ -14,6 +14,9 @@ import urllib.parse
 import uuid
 from pathlib import Path
 
+import autoarticle_diagnostics as diagnostics
+import autoarticle_artifacts as artifacts
+import autoarticle_brief as brief
 import autoarticle_apply as db_apply
 import autoarticle_n8n as n8n
 import autoarticle_tokens as token_usage
@@ -25,6 +28,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 class Operations:
     def __init__(self, root=ROOT, run_date=None, client=None, startup_env=None):
+        self.active_step = None
         self.root = Path(root).resolve()
         self.client = client or n8n.Client(os.environ.get("N8N_API_BASE_URL") or os.environ.get("N8N_BASE_URL") or "http://127.0.0.1:5678", os.environ.get("N8N_API_KEY", ""))
         self.progress = Progress(self.root, run_date or today(), self.client.base)
@@ -88,9 +92,15 @@ class Operations:
     def resume(self):
         result = self.status()
         progress = {}
+        issues = {}
+        changes = {}
         saved = self.progress.load()["steps"]
         for step, entry in saved.items():
-            state = entry["status"] if self.progress.current(entry) else "stale"
+            change = self.progress.changes(entry)
+            if not change["current"]:
+                changes[step] = change
+                issues[step] = "dependency_changed"
+            state = entry["status"] if change["current"] else "stale"
             if state in ("completed", "starting", "submission_unknown"):
                 prior_state = state
                 try:
@@ -117,10 +127,15 @@ class Operations:
                         state = "completed"
                     elif step == "weekly":
                         self.check_weekly()
-                except (Blocked, KeyError, ValueError, OSError, sqlite3.Error, subprocess.TimeoutExpired):
+                except (Blocked, KeyError, ValueError, OSError, sqlite3.Error, subprocess.TimeoutExpired) as error:
+                    issues[step] = diagnostics.reason(error)
                     state = prior_state if prior_state in ("starting", "submission_unknown") else "unverified"
             progress[step] = state
         result["progress"] = {step: progress.get(step, "not_recorded") for step in ALL_STEPS}
+        result["issues"] = issues
+        result["dependencyChanges"] = changes
+        result["nextSteps"] = [step for step in ALL_STEPS if result["progress"][step] != "completed"]
+        result["nextStepsPolicy"] = "within_requested_scope_only; stale_requires_review; unknown_never_resubmit"
         result["evidenceFile"] = str(self.progress.file)
         result["reviewVerification"] = "operator_attested; see evidence notes for holds"
         if "weekly" in saved:
@@ -129,6 +144,7 @@ class Operations:
         return result
 
     def collect(self):
+        self.active_step = "collect"
         p = self.progress
         if p.date != today():
             raise Blocked("collection_only_supports_today_jst")
@@ -162,11 +178,24 @@ class Operations:
         p.record("collect", "completed", files=files, executionId=str(rows[0]["id"]), articles=count, webhookResponseVerified=response_verified)
         return {"step": "collect", "status": "completed", "articles": count, "verification": "execution_and_files", "webhookResponseVerified": response_verified}
 
+    def validate_artifact(self, step):
+        def existing():
+            workflow, _ = self.workflow("talent", require=True)
+            return db_apply.tables(self.client.base, workflow)
+        result = artifacts.validate(self.progress, step, existing=existing)
+        if step == "weekly":
+            result["metrics"] = self.check_weekly()
+        return result
+
     def checkpoint(self, step, evidence, note):
-        weekly = self.check_weekly() if step == "weekly" else None
+        self.active_step = step
+        validation = self.validate_artifact(step) if step in artifacts.STEPS else None
+        weekly = validation["metrics"] if step == "weekly" else None
         if step == "page":
             n8n.Client(self.dashboard, "").request("/api/health")
         result = self.progress.checkpoint(step, evidence, note)
+        if validation is not None:
+            result["artifactValidation"] = validation
         if step in ("weekly", "page"):
             entry = self.progress.load()["steps"][step]
             extra = {k: v for k, v in entry.items() if k not in ("status", "checkedAt", "target")}
@@ -180,6 +209,7 @@ class Operations:
     def apply(self, kind):
         if kind == "all":
             return {"steps": [self.apply("talent"), self.apply("classification")]}
+        self.active_step = "apply-" + kind
         p = self.progress
         review = "talent-review" if kind == "talent" else "classification-review"
         entry = p.load()["steps"].get(review, {})
@@ -192,24 +222,26 @@ class Operations:
             raise Blocked("apply_workflow_already_running")
         current = db_apply.tables(self.client.base, workflow)
         db_apply.preflight(kind, value, current)
+        dependencies = {key: entry[key] for key in ("dependencyVersion", "dependencyStep", "evidence") if key in entry}
         old = p.load()["steps"].get("apply-" + kind)
         if old:
             if not p.current(old):
                 raise Blocked("previous_apply_inputs_changed_requires_review")
             db_apply.verify(kind, value, current)
-            p.record("apply-" + kind, "completed", files=entry["files"], verification="db_content_match", workflowId=str(workflow["id"]))
+            p.record("apply-" + kind, "completed", files=entry["files"], **dependencies, verification="db_content_match", workflowId=str(workflow["id"]))
             return {"step": "apply-" + kind, "status": "reconciled", "verification": "db_content_match"}
-        p.record("apply-" + kind, "submission_unknown", files=entry["files"], workflowId=str(workflow["id"]))
+        p.record("apply-" + kind, "submission_unknown", files=entry["files"], **dependencies, workflowId=str(workflow["id"]))
         response = self.client.request("/webhook/" + n8n.WORKFLOWS[kind][1], value, timeout=850)
         fields = ("articles", "talents", "articleTalents") if kind == "talent" else ("classifications",)
         counts = {f: len(value[f]) for f in fields}
         if not isinstance(response, dict) or response.get("accepted") is not True or response.get("proposalDate") != p.date or response.get("counts") != counts:
             raise Blocked("apply_response_unverified_do_not_retry")
         db_apply.verify(kind, value, db_apply.tables(self.client.base, workflow))
-        p.record("apply-" + kind, "completed", files=entry["files"], verification="db_content_match", workflowId=str(workflow["id"]))
+        p.record("apply-" + kind, "completed", files=entry["files"], **dependencies, verification="db_content_match", workflowId=str(workflow["id"]))
         return {"step": "apply-" + kind, "status": "completed", "counts": counts, "verification": "db_content_match"}
 
     def start(self, service):
+        self.active_step = service
         client = self.client if service == "n8n" else n8n.Client(self.dashboard, "")
         url = urllib.parse.urlsplit(client.base)
         if url.hostname not in ("localhost", "127.0.0.1", "::1") or url.path or url.scheme != "http":
@@ -271,6 +303,15 @@ def main(argv=None):
     subs = parser.add_subparsers(dest="command", required=True)
     for command in ("status", "resume", "collect"):
         subs.add_parser(command)
+    entry = subs.add_parser("brief", help="Build fresh operation entry information without chat or diagnostic history")
+    entry.add_argument("--scope", choices=tuple(brief.SCOPES), required=True)
+    entry.add_argument("--save", action="store_true", help="Save a reference snapshot; never reusable authorization")
+    validate = subs.add_parser("validate", help="Validate saved artifacts before proceeding; no completion or DB writes")
+    validate.add_argument("step", choices=artifacts.STEPS)
+    preflight = subs.add_parser("preflight", help="Read-only connection, workflow and proposal readiness checks")
+    preflight.add_argument("--kind", choices=("collect", "talent", "classification", "dashboard", "all"), default="collect")
+    diagnose = subs.add_parser("diagnose", help="Save bounded read-only diagnostic checks; never retry")
+    diagnose.add_argument("--step", choices=ALL_STEPS, required=True)
     token_usage.add_arguments(subs.add_parser("tokens", help="Record per-step Codex tokens and daily Markdown"))
     start = subs.add_parser("start")
     start.add_argument("service", choices=("n8n", "dashboard"))
@@ -281,6 +322,7 @@ def main(argv=None):
     checkpoint.add_argument("--evidence", action="append", required=True, help="Existing project review/validation evidence file; repeatable")
     checkpoint.add_argument("--note", required=True, help="What was verified, including holds/provisional state; no secrets")
     args = parser.parse_args(argv)
+    ops = None
     try:
         startup_env = os.environ.copy()
         load_env_file(ROOT / ".env")
@@ -288,8 +330,18 @@ def main(argv=None):
             result = token_usage.execute(args, root=ROOT, run_date=args.date)
             print(json.dumps(result, ensure_ascii=False, separators=(",", ":")))
             return 0
-        ops = Operations(run_date=args.date, startup_env=startup_env)
-        if args.command in ("status", "resume"):
+        ops = Operations(root=ROOT, run_date=args.date, startup_env=startup_env)
+        if args.command == "brief":
+            result = brief.build(ops, args.scope, args.save)
+        elif args.command == "validate":
+            result = ops.validate_artifact(args.step)
+        elif args.command == "preflight":
+            kinds = ("collect", "talent", "classification", "dashboard") if args.kind == "all" else (args.kind,)
+            checks = [diagnostics.preflight(ops, kind) for kind in kinds]
+            result = {"status": "ready" if all(check["ready"] for check in checks) else "not_ready", "checks": checks, "readOnly": True}
+        elif args.command == "diagnose":
+            result = diagnostics.diagnose(ops, args.step)
+        elif args.command in ("status", "resume"):
             result = getattr(ops, args.command)()
         else:
             with ops.progress.lock():
@@ -304,10 +356,24 @@ def main(argv=None):
         if args.command == "checkpoint":
             result["tokenUsage"] = token_usage.checkpoint_finished(ROOT, args.step, ops.progress.date)
         print(json.dumps(result, ensure_ascii=False, separators=(",", ":")))
-        return 0
+        return 2 if result.get("status") == "not_ready" else 0
     except (Blocked, OSError, ValueError, KeyError, TypeError, sqlite3.Error, subprocess.TimeoutExpired) as error:
         reason = str(error) if isinstance(error, Blocked) else type(error).__name__
-        print(json.dumps({"status": "blocked", "reason": reason, "next": "inspect relevant configuration/evidence; do not retry POST blindly"}))
+        result = {"status": "blocked", "reason": reason, "next": "tokens begin investigation; diagnose failed step; do not retry POST blindly"}
+        if args.command == "validate":
+            result["step"] = args.step
+            result["next"] = "correct saved artifact or stale inputs, then validate the same step"
+        if isinstance(error, artifacts.ArtifactInvalid):
+            result["artifactValidation"] = error.result
+        if ops is not None and args.command in ("start", "collect", "apply", "checkpoint"):
+            fallback_step = args.service if args.command == "start" else args.step if args.command == "checkpoint" else "apply-" + ("talent" if args.kind == "all" else args.kind) if args.command == "apply" else args.command
+            step = ops.active_step or fallback_step
+            result["step"] = step
+            try:
+                result["diagnosticFile"] = diagnostics.snapshot(ops, step, reason)
+            except diagnostics.ERRORS as diagnostic_error:
+                result["diagnosticSaveError"] = diagnostics.reason(diagnostic_error)
+        print(json.dumps(result))
         return 2
 
 

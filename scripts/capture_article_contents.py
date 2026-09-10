@@ -135,6 +135,12 @@ def save_progress(path,payload):
  if not path:return
  atomic_write_text(path,json.dumps(payload,ensure_ascii=False,indent=2)+"\n")
 
+def progress_line(done, total, entries):
+ counts={}
+ for entry in entries:
+  status=entry.get("status","unknown");counts[status]=counts.get(status,0)+1
+ return json.dumps({"processed":done,"pendingTotal":total,"captureStatuses":counts,"verification":"capture_status_only"},ensure_ascii=False,separators=(",",":"))
+
 def main():
  p=argparse.ArgumentParser()
  p.add_argument("--database",type=Path,default=old.DEFAULT_DATABASE_PATH)
@@ -151,6 +157,7 @@ def main():
  p.add_argument("--env-file",type=Path,default=ROOT/".env")
  p.add_argument("--no-sync-contents",action="store_true")
  p.add_argument("--write",action="store_true")
+ p.add_argument("--verbose",action="store_true",help="Print each article title; default reports counts every 50 articles")
  p.add_argument("--progress-file",type=Path,help="日付・URL単位の再開チェックポイントJSON")
  p.add_argument("--reset-progress",action="store_true",help="対象日のチェックポイントを破棄して最初から試行する")
  a=p.parse_args();db=a.database.expanduser();f=Fetch(a.google_delay,a.publisher_delay,a.max_retries);old.http_bytes=f
@@ -179,6 +186,7 @@ def main():
   try:c=conn(a.env_file)
   except Exception as x:print("warning: Data Table sync disabled: "+str(x),file=sys.stderr)
  print(f"articles={len(arts)} cached={len(e)} pending={len(todo)} resumed={len(completed_urls)}")
+ processed_entries=[]
  for i,x in enumerate(todo,1):
   e[x.url]=capture(x,keys.get(x.url,""),f,ca,old.load_keywords());archive_run(record_arts.values(),e);save(e,ca)
   day_completed.add(x.url);global_completed.add(x.url);completed_urls.add(x.url)
@@ -188,10 +196,13 @@ def main():
   if c:
    try:upsert(c,e[x.url])
    except Exception as z:print("warning: Data Table sync failed: "+str(z),file=sys.stderr)
-  print(f"[{i}/{len(todo)}] {e[x.url]['status']}: {x.title[:90]}",flush=True)
+  processed_entries.append({"status":e[x.url]["status"]})
+  if a.verbose:print(f"[{i}/{len(todo)}] {e[x.url]['status']}: {x.title[:90]}",flush=True)
+  elif i % 50 == 0:print(progress_line(i,len(todo),processed_entries),flush=True)
  archive_run(record_arts.values(),e) if a.run_date else archive(e);save(e,ca)
  if a.progress_file:
   day_progress.update(completedUrls=sorted(day_completed),complete=all(x.url in completed_urls for x in arts),updatedAt=now())
   progress["completedUrls"]=sorted(global_completed);save_progress(a.progress_file,progress)
  if a.write:old.write_summaries(arts,e)
+ print(progress_line(len(todo),len(todo),processed_entries),flush=True)
 if __name__=="__main__":main()

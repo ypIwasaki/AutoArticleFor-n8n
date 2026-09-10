@@ -241,6 +241,37 @@ def build_payload(root: Path, run_date: str, task: str, offset: int = 0, limit: 
     return result
 
 
+def inventory_payload(payload: dict[str, Any]) -> dict[str, Any]:
+    """Navigation only. Omitted bodies/facts must still be read for review."""
+    result = {key: value for key, value in payload.items() if key not in ("articles", "context")}
+    result["view"] = "inventory"
+    result["reviewEvidenceOmitted"] = True
+    result["nextAction"] = "Read --view detail --offset recordOffset --limit 1 for evidence. This inventory is not a completed review."
+    articles = []
+    for position, article in enumerate(payload["articles"], payload["offset"]):
+        row = {key: article[key] for key in ("runDate", "articleIndex", "publishedAt", "sourceDomain", "contentStatus") if key in article}
+        row["recordOffset"] = position
+        for field, limit in (("title", 240), ("failureReason", 200)):
+            if field in article:
+                value = str(article[field])
+                row[field] = value[:limit]
+                if len(value) > limit:
+                    row[field + "Truncated"] = True
+        review = article.get("sharedReview", {})
+        row["sharedReview"] = {key: review[key] for key in ("status", "taskStatus") if key in review}
+        articles.append(row)
+    result["articles"] = articles
+    if "context" in payload:
+        context = payload["context"]
+        result["context"] = {key: context[key] for key in ("captureStatusCounts", "references") if key in context}
+        result["context"]["runs"] = [
+            {**{key: run[key] for key in ("runDate", "generatedAt", "period", "articleCount") if key in run},
+             "keywordCount": len(run.get("keywords", []))}
+            for run in context.get("runs", [])
+        ]
+    return result
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--run-date", required=True, help="Archive date in YYYY-MM-DD (JST)")
@@ -253,11 +284,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--include-body", action="store_true", help="Read saved body even when current shared facts are ready/held; use for re-review")
     parser.add_argument("--weekly-articles", action="store_true", help="Explicitly page raw, pre-exclusion weekly articles instead of reading fixed metrics")
     parser.add_argument("--as-of", help="Weekly evaluation cutoff; default is run-date")
+    parser.add_argument("--view", choices=("detail", "inventory"), default="detail", help="inventory: bounded navigation without URLs, bodies or evidence; detail: full review input")
     parser.add_argument("--pretty", action="store_true", help="Indent JSON; default is compact UTF-8 JSON")
     args = parser.parse_args(argv)
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
     try:
+        if args.view == "inventory" and (args.include_body or args.content_offset or (args.task == "weekly-report" and not args.weekly_articles)):
+            raise ValueError("inventory cannot read body continuations or weekly metrics; use --view detail")
         if args.task == "weekly-report" and not args.weekly_articles:
             if args.offset or args.article_url or args.content_offset:
                 raise ValueError("Use --weekly-articles for article selection or pagination")
@@ -272,6 +306,8 @@ def main(argv: list[str] | None = None) -> int:
     except (OSError, ValueError) as exc:
         print(json.dumps({"error": str(exc)}, ensure_ascii=False), file=sys.stderr)
         return 2
+    if args.view == "inventory":
+        payload = inventory_payload(payload)
     print(json.dumps(payload, ensure_ascii=False, indent=2 if args.pretty else None, separators=None if args.pretty else (",", ":")))
     return 0
 

@@ -109,3 +109,5 @@ finish後の最終返答を完全に捕捉する仕組みではない。生成�
 
 公式にはタスク使用量の通知が定義されているが、この実装が読むローカルJSONLの形はバージョン依存のアダプター。
 参考：[OpenAI Docs — App Serverの使用量通知](https://learn.chatgpt.com/docs/app-server#turn-events)。
+
+工程 `preflight` は「実行前チェック」、`investigation` は「障害調査」として別集計する。失敗後の調査を始める前に `tokens begin investigation`、修正後は通常工程の `tokens begin STEP` で切り替える。過去の観測値の移し替えや推定按分は行わない。

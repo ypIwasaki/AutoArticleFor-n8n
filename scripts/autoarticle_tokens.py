@@ -16,7 +16,7 @@ import codex_usage_log as usage
 from autoarticle_progress import ALL_STEPS, Blocked, Progress, now, read_json, timestamp, today, write_json
 
 ROOT = Path(__file__).resolve().parents[1]
-STEPS = ALL_STEPS + ("common", "prepare", "capture", "shared-review", "apply", "report")
+STEPS = ALL_STEPS + ("common", "prepare", "capture", "shared-review", "apply", "report", "preflight", "investigation")
 
 
 def date_value(value):

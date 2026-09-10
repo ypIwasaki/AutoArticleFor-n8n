@@ -13,7 +13,8 @@ description: "AutoArticleFor-n8nの運用を進める。n8nの起動・自動実
 - 対象のワークスペースからプロジェクトルートを特定し、`n8n/workflows/daily-keyword-news-summary.workflow.json`、`scripts/read_ai_inputs.py`、`docs/ai-rules/` を確認する。不明なら場所を尋ね、別プロジェクトを操作しない。
 - 以下のパス・コマンドはすべてそのルート基準。現在の構成ではWSLで実行する。別PCではユーザー名・絶対パス・DB・ポートを決め打ちしない。日次指示書は `content/ai-*-instructions/YYYY-MM-DD.md`、週次だけは `content/ai-weekly-report-instructions/WEEK_START.md`（JSTの月曜日）。
 - 最初に `docs/ai-rules/operation-result.md` を読む。各工程では以下で指定した資料だけを必要時に読む。既存の未コミット変更・成果物を保持する。
-- 通常の入口は `python3 scripts/autoarticle_ops.py`。`--date YYYY-MM-DD` はサブコマンドの前に置き、省略時はJSTの今日。最初に `--date YYYY-MM-DD resume` で状態と進捗を一括確認する。単なる状況照会は `--date YYYY-MM-DD status` だけでよい。どちらも読み取り専用。unknownを未実行、ファイル存在を完了と扱わない。
+- 通常の入口は `python3 scripts/autoarticle_ops.py`。`--date YYYY-MM-DD` はサブコマンドの前に置き、省略時はJSTの今日。同じチャット・新しいチャットとも、運用開始時は `--date YYYY-MM-DD brief --scope SCOPE` で現在の状態と依頼範囲内の工程を確認する。SCOPEは `prepare`（n8n準備）、`articles`（生成済み記事作業）、`articles-apply`（記事作業・反映・表示）、`full`（全工程）から今回の依頼に合わせる。単なる状況照会は `status` だけでよい。briefは内部で読み取り専用resumeを実行する。unknownを未実行、ファイル存在を完了と扱わない。
+- 運用の判断は今回の依頼→最新brief→対象工程の指示書・根拠の順に行う。過去の調査ログを一括再読しない。保存済みbriefは参考資料で、毎回再生成する。scopeは承認の代わりではない。未解決の問題だけdiagnoseへ進む。入口の詳細は `docs/operation-start.md`。
 - コマンドの設定・停止理由・根拠の書式が不明な場合だけ `docs/autoarticle-operations.md` を読む。本文やAPI応答の全量取得で手順を組み立て直さない。
 - 実運用の開始時は、このCodexタスクのログを `tokens bind` で選ぶ（既存選択を使う場合もタスクID一致を確認）。環境から取得できないWSL等では `docs/token-usage.md` の初回接続だけを参照し、別タスクの「最新ログ」を推測して選ばない。計測不可でも運用を妨げず、未計測を明示する。単なる状態照会では計測用ファイルも作らない。
 
@@ -33,6 +34,25 @@ description: "AutoArticleFor-n8nの運用を進める。n8nの起動・自動実
 6. **提案のDB反映（依頼範囲の場合だけ）**：人材・分類レビューのcheckpointを保存後、`python3 scripts/autoarticle_ops.py --date YYYY-MM-DD apply`。記事・人材→分類の順に反映し、応答と実DBを照合する。片方だけなら `--kind talent` または `--kind classification`。契約や保留の扱いを確認する場合だけ `docs/talent-article-index.md` / `docs/article-classifications.md` を読む。提案保存とDB反映を区別し、人物承認・検索有効化・候補語採用・Git操作を付随させない。
 
 7. **確認アプリ**：`python3 scripts/autoarticle_ops.py start dashboard`。返されたURL（既定 `http://127.0.0.1:8765/`）をブラウザで開き、対象日の記事・要約・分類・週次成果物と表示データソースを確認する。DB表示か提案JSONの代替表示か不明なら `docs/talent-dashboard.md` を読む。HTTP疎通だけを表示確認完了とせず、ブラウザ操作ができなければURLと未確認範囲を返す。
+
+## 通常運用と障害調査
+
+- 実行予定の工程直前に `tokens begin preflight` と `preflight --kind collect|talent|classification|dashboard` を使う。対象のkindを1つ選ぶ。収集チェックを記事作業だけの依頼へ付随させない。提案未作成時は反映チェックを要求しない。readyは事前条件であり、既存の実行時検証や意味的レビューを省略しない。
+- 通常コマンドが失敗したら、返されたreason・step・diagnosticFileだけをまず確認する。調査資料を読む前に `tokens begin investigation` へ切り替え、`diagnose --step 工程名` で関連チェックを保存する。本文・全履歴を一括再読せず、診断の差分・参照ログの必要箇所を読む。
+- 修正後はresumeのissues・nextStepsで依頼範囲内の再開箇所を判断し、対応工程のtokens beginを実行して通常経路へ戻る。完了済み工程は検証して再利用。未知の送信や不一致を再送・証跡削除で解消しない。詳細は `docs/autoarticle-operations.md` の「通常運用と障害調査の分離」を必要時だけ読む。
+
+## ツール出力の縮小
+
+- 最初の記事一覧は `read_ai_inputs.py --run-date YYYY-MM-DD --task article-summary --view inventory --limit 50` で読む。`nextOffset` で続け、全記事の状態を確認する。この表示は本文・URL・引用根拠を省略した移動用であり、レビュー完了の根拠にしない。
+- 判断に必要な記事は一覧の `recordOffset` を使い、`--view detail --offset N --limit 1 --max-content-chars 4000` で読む。必要な本文の続きは `nextOffset`（本文内）に従う。タイトルが切られた記事も詳細で確認する。既読の共通記録を再利用し、未確認記事を飛ばさない。
+- 本文をまとめて読む場合は1回2記事程度から始め、出力が省略されたら記事・本文の範囲を狭める。全ファイルや巨大なJSONをそのまま表示せず、必要なキー・差分だけを抽出する。
+- 本文取得の通常ログは50件ごとの件数と最終集計。個別タイトルが必要な調査時だけ `--verbose`。本文・失敗理由は保存キャプチャ、同期失敗は標準エラーで確認する。
+- その他の大量出力コマンドは `operation_result.py` を使い、全文はログへ保存する。既読ルールの再掲、長いURL・入力ハッシュ・実行履歴の全量出力を繰り返さない。
+
+## 保存直後の成果物検証
+
+- 要約・人材提案・分類提案・週次を保存または修正した直後に `autoarticle_ops.py --date YYYY-MM-DD validate STEP` を実行する。STEPは `summary`、`talent-review`、`classification-review`、`weekly`。不合格なら出力のコード・行番号を使って修正し、次工程へ進む前に再検証する。詳細は `docs/autoarticle-operations.md` の「成果物を保存した直後の検証」。
+- checkpointも同じ検証を実行し、不合格なら完了を記録しない。validを意味的レビューやDB反映の完了と扱わず、保留記事をreadyへ変更して検証を通さない。検証のトークンは作業中の工程へ記録し、不具合調査へ進む場合だけinvestigationへ切り替える。
 
 ## 工程記録と再開
 

@@ -141,3 +141,86 @@ DB照合では日時列だけをUTC・ミリ秒精度に正規化し、n8nがSQL
 ## 全工程を依頼された場合の継続
 
 記事作業・レビュー済み提案のDB反映を含む依頼では、追加の同意待ちにせず、成果物の保存・検証・checkpoint・apply・実DB照合まで進める。本文未取得は記事単位で理由を残し、確認できた関係・分類の反映を妨げない。未確認をreadyに変更しない。終了前のresumeで工程の未実施を検出したら、許可範囲内の残作業を継続する。
+
+## 通常運用と障害調査の分離
+
+### 通常経路
+
+対象工程の直前に読み取り専用チェックを行う。collectは接続・稼働定義・実行履歴・検索設定、talent/classificationはさらにレビュー証跡・提案の保存項目・DB参照先・既存送信の照合を確認する。提案作成前に反映チェックを合格させる必要はない。
+
+```bash
+python3 scripts/autoarticle_ops.py --date YYYY-MM-DD tokens begin preflight
+python3 scripts/autoarticle_ops.py --date YYYY-MM-DD preflight --kind collect
+# 記事・人物提案のレビュー後は --kind talent、分類レビュー後は --kind classification
+# 起動済み確認アプリの疎通は --kind dashboard
+```
+
+preflightはPOST・起動・同期・証跡の書換えを行わない。readyは軽い事前条件の成立を示すだけで、本文レビュー完了や全提案スキーマ検証・実行の成功保証ではない。not_readyは終了コード2。通常コマンドにも既存の直前検証を残す。過去の証跡が設定変更でstaleになった場合も、安易に消さず差分を確認する。
+
+### 異常時だけの調査経路
+
+start/collect/apply/checkpointが失敗すると、元の理由コードに加えて`.operation-logs/diagnostics/`の診断ファイルを返す。自動保存はローカルの工程状態・保存済み実行ID・変化したファイル最大10件・起動ログの場所のみ。本文、認証情報、API応答全体や過去ログは転載しない。診断保存が失敗しても元の失敗を保持する。
+
+```bash
+python3 scripts/autoarticle_ops.py --date YYYY-MM-DD tokens begin investigation
+python3 scripts/autoarticle_ops.py --date YYYY-MM-DD diagnose --step apply-talent
+```
+
+`--step`には失敗応答の工程名を使う。診断は関連する接続・ワーク・最近の実行ID（最大3件）・DB不一致の項目名（最大10行）を読み取り、別ファイルに保存する。実DBの本文や値は保存しない。通常の失敗応答では追加のネットワーク調査を自動実行せず、診断コマンドで必要時に取得する。summary等のレビュー工程はローカル証跡のみ、n8n起動の詳細は記録された起動ログを確認する。
+
+### 修正後の再開と計測
+
+```bash
+python3 scripts/autoarticle_ops.py --date YYYY-MM-DD resume
+python3 scripts/autoarticle_ops.py --date YYYY-MM-DD tokens begin apply
+python3 scripts/autoarticle_ops.py --date YYYY-MM-DD apply --kind talent
+```
+
+resumeは`issues`に照合失敗理由、`nextSteps`に再確認・未実施工程を返す。依頼範囲内だけを再開する。unknownは未実行扱いにせず、既存実行・ファイル・実DBを照合する。送信済みapplyは既存の照合経路のみで完了し、不一致なら再送せず停止する。調査中に証跡を削除・成功扱いに書換えない。
+
+次のtokens beginで前工程の計測が閉じる。調査資料を読み始める前にinvestigationへ切り替え、通常工程へ戻る前に対応する工程をbeginする。計測区分の分離であり、別タスクの自動作成や会話履歴の自動切り離しは行わない。
+
+## 成果物を保存した直後の検証
+
+要約・人材提案・分類提案・週次レポートを保存または修正した直後、次工程へ進む前に対象の検証を実行する。
+
+```bash
+python3 scripts/autoarticle_ops.py --date YYYY-MM-DD validate summary
+python3 scripts/autoarticle_ops.py --date YYYY-MM-DD validate talent-review
+python3 scripts/autoarticle_ops.py --date YYYY-MM-DD validate classification-review
+python3 scripts/autoarticle_ops.py --date YYYY-MM-DD validate weekly
+```
+
+これは保存後に呼び出す読み取り専用コマンドであり、ファイル監視の常駐処理ではない。日次運用の保存手順として実行し、`checkpoint` も同じ検証を再実行する。不合格なら新しい完了記録を保存せず、対象ファイルを修正して再検証する。以前の記録は保持され、変更済み成果物はハッシュ不一致で失効する。
+
+- 要約：確認アプリと共通のMarkdown解析処理で件数を照合する。URL、本文確認表示、要約ラベル、重複、現在の共通レビューのready件数との一致を確認する。全件保留でreadyが0件なら要約0件を許容する。
+- 人材・分類提案：日付、必須項目、キー重複、日時、配列・真偽値・確信度、記事URLと参照先を確認する。人物関係・分類の対象は現在のレビューが対応工程でreadyである必要がある。分類は設定の分類IDも照合する。同じJSONに含まれない参照は、必要時だけ接続先ワークフローとローカルDBを読み取り専用で確認する。
+- 週次：アプリが読み取る週の開始・終了・収集締切と、既存の集計・数値ブロック検証を併用する。集計が古い場合は週次作業の手順で再生成し、考察への影響も確認する。
+
+通常出力は件数と最大10件のエラーコード・行番号に限る。行番号はJSON配列または解析した要約の1始まりの番号。エラー総数は省略しない。本文・URL・入力ハッシュをログへ再出力しない。JSON構文エラー等は例外名だけ返す。
+
+合格は形式とレビュー記録の整合性の確認であり、意味的レビュー・DB反映・ブラウザでの表示確認の代わりにはならない。空の分類提案は保存可能だが、DB反映コマンドの空配列に関する既存条件は変わらない。キーワード考察と表示確認はこの形式検証の対象外で、既存の工程確認を続ける。
+
+## 変更が影響する工程だけを再検証する
+
+新しいcheckpointは `dependencyVersion: 1` と対象工程を記録し、工程ごとに入力ファイルを保存する。明示した `--evidence` と成果物自体は必ず照合する。反映証跡にもレビューの依存情報を引き継ぐ。
+
+| 変更対象 | 再確認の対象 |
+| --- | --- |
+| 検索語設定 | キーワード、週次、表示。既存の要約・人材・分類レビューには影響させない |
+| 分類設定 | 分類、週次、表示 |
+| 工程固有の生成指示書 | 該当工程、週次、表示 |
+| 構造化記事・本文・共通レビュー記録 | 日次記事作業、週次、表示 |
+| 保存した要約 | 要約、人材、分類、週次、表示 |
+| 人材提案 | 人材、分類、週次、表示 |
+| 明示的に追加した根拠 | その根拠を保存した工程 |
+
+共通レビュー記録のpolicyHashは要約・人材・分類のルールをまとめて参照するため、これらのルール変更は引き続き3工程に影響する。日次のファイル単位で照合し、同一ファイル内の記事単位の変更判定は行わない。実DB、実行履歴、週次数値、表示確認の既存検証も継続する。収集済み結果を検索語変更だけで再送することはない。
+
+`resume` は `dependencyChanges` に失効理由と変更ファイルを最大10件、総数を省略せず返す。診断の `changedFiles` も同じ判定を使う。設定・本文を戻して表示上の問題を隠したり、unknownを未送信として扱ったりしない。
+
+旧証跡は `legacy_exact` と表示し、従来どおり保存した全ファイルを照合する。新しい依存関係による自動的な再承認や履歴の書き換えはしない。次の通常レビュー・checkpointで `scoped_v1` に移行する。既存の反映証跡が失効している場合も、再送せず既存の実行とDBを調査する。新しい依存先が後から追加された場合は `dependency_baseline_missing` として再確認する。
+
+## 履歴に依存しない入口
+
+通常運用は `brief --scope SCOPE` から開始する。同じチャットでも開始手順を揃える。範囲の選択、参考スナップショット、証跡と調査ログの読む順序は [operation-start.md](operation-start.md) を参照。briefは状態照合と情報表示であり、運用を実行しない。

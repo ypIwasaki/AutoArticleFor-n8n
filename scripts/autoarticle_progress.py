@@ -101,15 +101,38 @@ class Progress:
         return {p: digest(self.path(p)) for p in sorted(set(paths))}
 
     def inputs(self, step):
-        inputs = list(self.generated().values())
-        inputs += ["content/article-body-captures/%s.jsonl" % self.date, "content/article-review-facts/%s.jsonl" % self.date]
+        generated = self.generated()
+        common = [generated["structured-records"], generated["daily-digests"],
+                  "content/article-body-captures/%s.jsonl" % self.date,
+                  "content/article-review-facts/%s.jsonl" % self.date,
+                  "docs/ai-rules/operation-result.md"]
+        # The shared review policy hashes all three task rules. Keep these dependencies
+        # together until the review format supports independent policy versions.
+        review_rules = ["docs/ai-rules/%s.md" % name for name in
+                        ("shared-article-review", "article-summary", "talent-index", "article-classification")]
+        instructions = {"summary": "ai-summary-instructions", "talent-review": "ai-talent-index-instructions",
+                        "classification-review": "ai-article-classification-instructions", "keywords": "ai-extraction-instructions"}
+        if step in instructions:
+            inputs = common + [generated[instructions[step]]]
+            if step == "keywords":
+                inputs += [generated["keyword-candidates"], "docs/ai-rules/keyword-extraction.md", "config/keywords.json"]
+            else:
+                inputs += review_rules
+            if step in ("talent-review", "classification-review"):
+                inputs += self.outputs("summary")
+            if step == "classification-review":
+                inputs += ["config/article-classification-taxonomy.json"] + self.outputs("talent-review")
+            return sorted(set(inputs))
+        # Weekly synthesis and display depend on all upstream results; retain the
+        # broader dependency set as well as their existing live/metrics checks.
+        inputs = common + list(generated.values()) + review_rules
         inputs += [str(p.relative_to(self.root)) for p in (self.root / "docs/ai-rules").glob("*.md")]
         inputs += ["config/article-classification-taxonomy.json", "config/keywords.json"]
         if step in ("weekly", "page"):
             for name in REVIEW_STEPS:
                 if name != step:
                     inputs += self.outputs(name)
-        return inputs
+        return sorted(set(inputs))
 
     def load(self):
         if not self.file.exists():
@@ -145,8 +168,35 @@ class Progress:
         write_json(self.file, state)
         return entry
 
+    def changes(self, entry):
+        files = entry.get("files")
+        reasons, changed = [], []
+        if entry.get("target") != self.target:
+            reasons.append("target_changed")
+        if not isinstance(files, dict):
+            reasons.append("file_evidence_missing")
+            files = {}
+        for path, expected in files.items():
+            if digest(self.path(path)) != expected:
+                changed.append(path)
+        step = entry.get("dependencyStep")
+        if step:
+            if entry.get("dependencyVersion") != 1 or step not in REVIEW_STEPS:
+                reasons.append("dependency_contract_changed")
+            else:
+                required = set(self.inputs(step) + self.outputs(step) + entry.get("evidence", []))
+                missing = required - files.keys()
+                if missing:
+                    reasons.append("dependency_baseline_missing")
+                    changed += sorted(missing)
+        if changed:
+            reasons.append("files_changed")
+        return {"current": not reasons, "reasons": reasons,
+                "changedFileCount": len(set(changed)), "changedFiles": sorted(set(changed))[:10],
+                "sampleLimit": 10, "dependencyMode": "scoped_v1" if step else "legacy_exact"}
+
     def current(self, entry):
-        return entry.get("target") == self.target and isinstance(entry.get("files"), dict) and all(digest(self.path(p)) == value for p, value in entry["files"].items())
+        return self.changes(entry)["current"]
 
     def checkpoint(self, step, evidence, note):
         if not evidence or not note.strip():
@@ -157,5 +207,5 @@ class Progress:
         if not self.path(self.generated()["structured-records"]).is_file():
             raise Blocked("source_archive_missing")
         files = self.fingerprints(paths + self.inputs(step))
-        self.record(step, "completed", files=files, verification="operator_attested", note=note[:1000], evidence=evidence)
+        self.record(step, "completed", files=files, dependencyVersion=1, dependencyStep=step, verification="operator_attested", note=note[:1000], evidence=evidence)
         return {"step": step, "status": "completed", "verification": "operator_attested", "fileCount": len(files)}

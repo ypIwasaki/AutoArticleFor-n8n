@@ -11,7 +11,7 @@ from autoarticle_progress import Blocked, JST, read_json, timestamp, write_json
 from codex_usage_log import FIELDS
 
 MARKER = "<!-- autoarticle-token-usage v1 -->"
-NAMES = {"n8n": "n8n起動", "collect": "収集", "summary": "記事要約", "talent-review": "人材索引",
+NAMES = {"preflight": "実行前チェック", "investigation": "障害調査", "n8n": "n8n起動", "collect": "収集", "summary": "記事要約", "talent-review": "人材索引",
          "classification-review": "記事分類", "keywords": "キーワード", "weekly": "週次レポート",
          "apply": "DB反映", "apply-talent": "人材DB反映", "apply-classification": "分類DB反映",
          "dashboard": "確認アプリ起動", "page": "画面確認", "common": "共通作業", "prepare": "事前確認",

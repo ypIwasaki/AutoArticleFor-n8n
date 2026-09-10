@@ -1,0 +1,320 @@
+{
+  "briefVersion": 1,
+  "runDate": "2026-09-10",
+  "checkedAt": "2026-09-10T08:26:55.785157+00:00",
+  "scope": "full",
+  "authorization": "scope_is_selection_only; follow_current_user_request; no_persisted_grant",
+  "verification": "fresh_resume_checks; operator_review_notes_are_not_full_article_completion",
+  "operationStateChanged": false,
+  "health": {
+    "n8n": "reachable",
+    "workflow": {
+      "id": "UHJ4LW3Oswhpj4zV",
+      "active": true,
+      "definitionMatches": true,
+      "timezone": "Asia/Tokyo",
+      "schedule": [
+        {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 8 * * *"
+            }
+          ]
+        }
+      ]
+    },
+    "executions": {
+      "status": "checked",
+      "counts": {
+        "success": 15
+      },
+      "running": 0,
+      "latest": [
+        {
+          "id": "175",
+          "status": "success",
+          "startedAt": "2026-09-10T07:36:15.515Z"
+        },
+        {
+          "id": "174",
+          "status": "success",
+          "startedAt": "2026-09-10T07:36:15.462Z"
+        },
+        {
+          "id": "173",
+          "status": "success",
+          "startedAt": "2026-09-10T07:36:15.386Z"
+        }
+      ]
+    }
+  },
+  "steps": [
+    {
+      "step": "n8n",
+      "state": "completed"
+    },
+    {
+      "step": "collect",
+      "state": "completed"
+    },
+    {
+      "step": "summary",
+      "state": "stale",
+      "reason": "dependency_changed",
+      "changes": {
+        "current": false,
+        "reasons": [
+          "files_changed"
+        ],
+        "changedFileCount": 1,
+        "changedFiles": [
+          "config/keywords.json"
+        ],
+        "sampleLimit": 10,
+        "dependencyMode": "legacy_exact"
+      },
+      "outputs": [
+        "content/article-summaries/2026-09-10.md"
+      ],
+      "operatorNote": "全627件確認、要約20件・保留607件。確認アプリのパーサーでも当日要約20件が認識されることを検証。",
+      "operatorNoteTruncated": false,
+      "evidence": [
+        "content/article-summaries/2026-09-10.md",
+        "content/article-review-facts/2026-09-10.jsonl"
+      ],
+      "evidenceCount": 2
+    },
+    {
+      "step": "talent-review",
+      "state": "stale",
+      "reason": "dependency_changed",
+      "changes": {
+        "current": false,
+        "reasons": [
+          "files_changed"
+        ],
+        "changedFileCount": 1,
+        "changedFiles": [
+          "config/keywords.json"
+        ],
+        "sampleLimit": 10,
+        "dependencyMode": "legacy_exact"
+      },
+      "outputs": [
+        "content/talent-index-proposals/2026-09-10.json",
+        "content/talent-index-proposals/2026-09-10.md"
+      ],
+      "operatorNote": "全627記事、87人物、198関係をレビュー。新規16人はpending検索無効。既存DBのID・承認・別名・検索設定維持。",
+      "operatorNoteTruncated": false,
+      "evidence": [
+        "content/talent-index-proposals/2026-09-10.md",
+        "content/talent-index-proposals/2026-09-10.json"
+      ],
+      "evidenceCount": 2
+    },
+    {
+      "step": "classification-review",
+      "state": "stale",
+      "reason": "dependency_changed",
+      "changes": {
+        "current": false,
+        "reasons": [
+          "files_changed"
+        ],
+        "changedFileCount": 1,
+        "changedFiles": [
+          "config/keywords.json"
+        ],
+        "sampleLimit": 10,
+        "dependencyMode": "legacy_exact"
+      },
+      "outputs": [
+        "content/article-classification-proposals/2026-09-10.json",
+        "content/article-classification-proposals/2026-09-10.md"
+      ],
+      "operatorNote": "本文確認済み20件のみ分類、607件保留。共通レビュー根拠と分類体系を照合。",
+      "operatorNoteTruncated": false,
+      "evidence": [
+        "content/article-classification-proposals/2026-09-10.md",
+        "content/article-classification-proposals/2026-09-10.json"
+      ],
+      "evidenceCount": 2
+    },
+    {
+      "step": "keywords",
+      "state": "stale",
+      "reason": "dependency_changed",
+      "changes": {
+        "current": false,
+        "reasons": [
+          "files_changed"
+        ],
+        "changedFileCount": 1,
+        "changedFiles": [
+          "config/keywords.json"
+        ],
+        "sampleLimit": 10,
+        "dependencyMode": "legacy_exact"
+      },
+      "outputs": [
+        "content/ai-keyword-candidates/2026-09-10.md"
+      ],
+      "operatorNote": "全627記事のメタデータと機械候補を確認。7候補、3語追加推奨。設定変更なし。",
+      "operatorNoteTruncated": false,
+      "evidence": [
+        "content/ai-keyword-candidates/2026-09-10.md"
+      ],
+      "evidenceCount": 1
+    },
+    {
+      "step": "weekly",
+      "state": "stale",
+      "reason": "dependency_changed",
+      "changes": {
+        "current": false,
+        "reasons": [
+          "files_changed"
+        ],
+        "changedFileCount": 1,
+        "changedFiles": [
+          "config/keywords.json"
+        ],
+        "sampleLimit": 10,
+        "dependencyMode": "legacy_exact"
+      },
+      "outputs": [
+        "content/weekly-reports/2026-09-07.md",
+        "content/analysis/weekly-metrics/2026-W37.json",
+        "content/analysis/weekly-reports/weekly-trends-2026-W37.md",
+        "content/analysis/keyword-quality/keyword-quality-2026-W37.md"
+      ],
+      "operatorNote": "画面用メタデータ追加。数値同期再検証済み。9/7-9欠損の部分レポート、旧分類警告を保持。",
+      "operatorNoteTruncated": false,
+      "evidence": [
+        "content/weekly-reports/2026-09-07.md",
+        "content/analysis/weekly-metrics/2026-W37.json"
+      ],
+      "evidenceCount": 2
+    },
+    {
+      "step": "apply-talent",
+      "state": "stale",
+      "reason": "dependency_changed",
+      "changes": {
+        "current": false,
+        "reasons": [
+          "files_changed"
+        ],
+        "changedFileCount": 1,
+        "changedFiles": [
+          "config/keywords.json"
+        ],
+        "sampleLimit": 10,
+        "dependencyMode": "legacy_exact"
+      }
+    },
+    {
+      "step": "apply-classification",
+      "state": "stale",
+      "reason": "dependency_changed",
+      "changes": {
+        "current": false,
+        "reasons": [
+          "files_changed"
+        ],
+        "changedFileCount": 1,
+        "changedFiles": [
+          "config/keywords.json"
+        ],
+        "sampleLimit": 10,
+        "dependencyMode": "legacy_exact"
+      }
+    },
+    {
+      "step": "dashboard",
+      "state": "completed"
+    },
+    {
+      "step": "page",
+      "state": "stale",
+      "reason": "dependency_changed",
+      "changes": {
+        "current": false,
+        "reasons": [
+          "files_changed"
+        ],
+        "changedFileCount": 1,
+        "changedFiles": [
+          "config/keywords.json"
+        ],
+        "sampleLimit": 10,
+        "dependencyMode": "legacy_exact"
+      },
+      "outputs": [],
+      "operatorNote": "ヘッドレスChromeで実描画・目視確認。n8n Data Tables表示、対象記事の当日要約・分類・人物関係、今週部分レポートを確認。",
+      "operatorNoteTruncated": false,
+      "evidence": [
+        ".operation-logs/display-2026-09-10/verification.md",
+        ".operation-logs/display-2026-09-10/article-final.png"
+      ],
+      "evidenceCount": 2
+    }
+  ],
+  "nextSteps": [
+    "summary",
+    "talent-review",
+    "classification-review",
+    "keywords",
+    "weekly",
+    "apply-talent",
+    "apply-classification",
+    "page"
+  ],
+  "nextAction": "inspect_first_in_scope_step_and_its_prerequisites",
+  "submissionGuards": [
+    {
+      "step": "collect",
+      "recordedState": "completed",
+      "checkedState": "completed",
+      "workflowId": null,
+      "executionId": "159",
+      "action": "reconcile_existing_execution_and_db; never_blindly_resubmit"
+    },
+    {
+      "step": "apply-talent",
+      "recordedState": "completed",
+      "checkedState": "stale",
+      "workflowId": "wdoTTKnHJ2r4ODlx",
+      "executionId": null,
+      "action": "reconcile_existing_execution_and_db; never_blindly_resubmit"
+    },
+    {
+      "step": "apply-classification",
+      "recordedState": "completed",
+      "checkedState": "stale",
+      "workflowId": "oaE1yyeE7iHlSjXg",
+      "executionId": null,
+      "action": "reconcile_existing_execution_and_db; never_blindly_resubmit"
+    }
+  ],
+  "references": {
+    "operationEvidence": ".operation-state/2026-09-10.json",
+    "operationEvidenceHash": "283e55da72c4a61c05635b3b059516d422cbae8c7e3a6bdb8bd70bd97c7a259d",
+    "instructions": {
+      "summary": "content/ai-summary-instructions/2026-09-10.md",
+      "talent-review": "content/ai-talent-index-instructions/2026-09-10.md",
+      "classification-review": "content/ai-article-classification-instructions/2026-09-10.md",
+      "keywords": "content/ai-extraction-instructions/2026-09-10.md",
+      "weekly": "content/ai-weekly-report-instructions/2026-09-07.md"
+    },
+    "sharedReviews": "content/article-review-facts/2026-09-10.jsonl",
+    "operationReport": "content/operation-reports/2026-09-10.md",
+    "rules": "docs/ai-rules/operation-result.md",
+    "entryGuide": "docs/operation-start.md"
+  },
+  "readingPolicy": "current_request -> brief -> current_step_instructions_and_evidence; investigation_logs_only_for_unresolved_issue",
+  "tokenPolicy": "verify_binding_matches_current_task_before_begin; never_copy_previous_task_binding",
+  "snapshotPolicy": "regenerate_at_each_start; saved_snapshot_is_not_current_state_or_authorization",
+  "savedSnapshot": "content/operation-start/2026-09-10.json"
+}

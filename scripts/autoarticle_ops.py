@@ -151,14 +151,16 @@ class Operations:
         response = self.client.request("/webhook/" + n8n.WORKFLOWS["collect"][1], {}, timeout=850)
         if isinstance(response, list) and len(response) == 1:
             response = response[0]
-        if not isinstance(response, dict) or response.get("saved") is not True or response.get("date") != p.date:
-            raise Blocked("collection_response_unverified_do_not_retry")
+        # Parallel terminal branches can return the file-writer output instead of
+        # the summary. The unique successful execution and file evidence below
+        # are authoritative; never resend a POST to obtain a different response.
+        response_verified = isinstance(response, dict) and response.get("saved") is True and response.get("date") == p.date
         rows, running = n8n.executions(self.client, workflow["id"], p.date)
         if running or len(rows) != 1:
             raise Blocked("collection_execution_unresolved_do_not_retry")
         files, count = self.verify_collection(rows[0]["id"])
-        p.record("collect", "completed", files=files, executionId=str(rows[0]["id"]), articles=count)
-        return {"step": "collect", "status": "completed", "articles": count}
+        p.record("collect", "completed", files=files, executionId=str(rows[0]["id"]), articles=count, webhookResponseVerified=response_verified)
+        return {"step": "collect", "status": "completed", "articles": count, "verification": "execution_and_files", "webhookResponseVerified": response_verified}
 
     def checkpoint(self, step, evidence, note):
         weekly = self.check_weekly() if step == "weekly" else None

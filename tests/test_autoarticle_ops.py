@@ -190,6 +190,50 @@ class OperationsTests(unittest.TestCase):
         with patch.object(ops, "today", return_value=DATE):
             self.assertEqual(self.operator.collect()["status"], "completed")
 
+    def test_collect_terminal_branch_response_uses_execution_evidence(self):
+        def complete(path, body):
+            self.collected()
+            return {"fileName": "records.jsonl"}
+        self.client.post = complete
+        with patch.object(ops, "today", return_value=DATE):
+            result = self.operator.collect()
+        self.assertEqual(result["status"], "completed")
+        self.assertFalse(result["webhookResponseVerified"])
+        self.assertEqual(sum(body is not None for _, body in self.client.calls), 1)
+
+    def test_collect_terminal_response_without_evidence_remains_unknown(self):
+        self.client.post = lambda path, body: {"fileName": "records.jsonl"}
+        with patch.object(ops, "today", return_value=DATE):
+            with self.assertRaisesRegex(Blocked, "execution_unresolved"):
+                self.operator.collect()
+        self.assertEqual(self.p.load()["steps"]["collect"]["status"], "submission_unknown")
+
+    def test_collect_terminal_response_rejects_tampered_files(self):
+        def complete(path, body):
+            self.collected()
+            self.file(self.p.generated()["ai-summary-instructions"], "tampered")
+            return None
+        self.client.post = complete
+        with patch.object(ops, "today", return_value=DATE):
+            with self.assertRaisesRegex(Blocked, "markdown_content_mismatch"):
+                self.operator.collect()
+        self.assertEqual(sum(body is not None for _, body in self.client.calls), 1)
+
+    def test_execution_detail_has_separate_bounded_response_limit(self):
+        response = Mock()
+        response.read.return_value = b"{}"
+        opened = Mock()
+        opened.__enter__ = Mock(return_value=response)
+        opened.__exit__ = Mock(return_value=False)
+        opener = Mock()
+        opener.open.return_value = opened
+        with patch.object(n8n.urllib.request, "build_opener", return_value=opener):
+            client = n8n.Client("http://localhost:5678", "test")
+            client.request("/executions/159?includeData=true", api=True)
+            response.read.assert_called_with(256 * 1024 * 1024 + 1)
+            client.request("/workflows/test", api=True)
+            response.read.assert_called_with(32 * 1024 * 1024 + 1)
+
     def test_resume_reconciles_unknown_collection_without_post_or_state_write(self):
         self.p.record("collect", "submission_unknown", files={}, workflowId="collect")
         self.collected()

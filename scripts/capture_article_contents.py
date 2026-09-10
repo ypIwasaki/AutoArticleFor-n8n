@@ -22,8 +22,9 @@ def host(u):
  h=urlparse(u).netloc.casefold().split(":")[0]; return h[4:] if h.startswith("www.") else h
 def isin(h,s): return any(h==x or h.endswith("."+x) for x in s)
 class Fetch:
- def __init__(self,g,p,r): self.d={"g":g,"p":p};self.next=defaultdict(float);self.r=r
+ def __init__(self,g,p,r): self.d={"g":g,"p":p};self.next=defaultdict(float);self.r=r;self.rate_limited_hosts=set()
  def __call__(self,u,*,data=None,content_type=None):
+  if host(u) in self.rate_limited_hosts: raise old.CaptureError("HTTP 429によるホスト制限のため、この実行中の追加取得を停止（当該URLは未試行）")
   k="g" if host(u)=="news.google.com" else "p"; hd={"User-Agent":old.USER_AGENT,"Accept-Language":"ja,en-US;q=0.8,en;q=0.6"}
   if content_type: hd["Content-Type"]=content_type
   for a in range(self.r):
@@ -31,7 +32,10 @@ class Fetch:
    try:
     with request.urlopen(request.Request(u,data=data,headers=hd),timeout=20) as x:return x.read(2500000),x.geturl(),x.headers.get("Content-Type","")
    except error.HTTPError as e:
-    if e.code not in {429,500,502,503,504} or a+1==self.r: raise old.CaptureError(f"HTTP {e.code}")
+    if e.code == 429:
+     self.rate_limited_hosts.add(host(u))
+     raise old.CaptureError("HTTP 429; この実行中は同一ホストへの追加取得を停止")
+    if e.code not in {500,502,503,504} or a+1==self.r: raise old.CaptureError(f"HTTP {e.code}")
     self.next[k]=time.monotonic()+max(2**(a+1)*2,float(e.headers.get("Retry-After","0") or 0))
    except error.URLError as e:
     if a+1==self.r: raise old.CaptureError(f"接続失敗: {e.reason}")

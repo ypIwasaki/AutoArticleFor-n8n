@@ -34,6 +34,9 @@ class Client:
         self.key, self.timeout = key, timeout
 
     def request(self, path, body=None, api=False, timeout=None):
+        # Execution detail includes every RSS item and node output. Keep the larger
+        # bounded allowance restricted to read-only, single-execution inspection.
+        limit = 256 * 1024 * 1024 if api and body is None and re.fullmatch(r"/executions/[^/?]+\?includeData=true", path) else 32 * 1024 * 1024
         if api and not self.key:
             raise Blocked("api_key_missing")
         headers = {"Accept": "application/json"}
@@ -46,8 +49,8 @@ class Client:
         request = urllib.request.Request(self.base + path, data=data, headers=headers)
         try:
             with urllib.request.build_opener(NoRedirect).open(request, timeout=timeout or self.timeout) as response:
-                raw = response.read(32 * 1024 * 1024 + 1)
-            if len(raw) > 32 * 1024 * 1024:
+                raw = response.read(limit + 1)
+            if len(raw) > limit:
                 raise Blocked("response_too_large")
             return json.loads(raw) if raw else None
         except urllib.error.HTTPError as error:

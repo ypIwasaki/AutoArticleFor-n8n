@@ -1,0 +1,226 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-09-10",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBXQ1RZdnRNNC1wc3hvX0E1ZWpDZzJfWm1iMXJaMFlvSHZBSWJ0dFZZbkRrWDhhVS1BRU9LZE51dWJyNDBpU0d2ZHVZT1JrU2hONktVV3VQaEV4cFVlSnlxcXhLN3NjdWVPNEhWOVlBaWVCUQ?oc=5",
+      "article_type": "press_release",
+      "primary_category": "collaboration",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.94,
+      "evidence_text": "ジャックダニエル主催の「Jack & Music」は9月26日に渋谷で開催され、TACOS 3Hermanosと初のブランドコラボを実施する。イベント会場でのメニュー提供に加え、原宿・恵比寿の2店舗でも9月19日から10月2日まで限定ドリンクを提供する。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9HV1NQMWZnUXVjOFVpVnc3VjFmQWZhTW9USnBtbnBmYlIzTG5RWmM4UGlRTWNQclphWU5HbjQ4WndNYTVLd1VBS0IxeDZkODVZTVVSME5BQjNsblpZa3E2TjF2NHNGX0FwS0JyRDJSX2poQQ?oc=5",
+      "article_type": "press_release",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.94,
+      "evidence_text": "ペッツオーライの「Wan!Pass」が、10月10～12日に大阪・WHATAWONで開かれるABCペットパーク for Dogに採用される。アプリでチケット販売から入場時の証明書提出・同意取得までまとめて扱い、受付の効率化を図る。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5idGE5YVZZUG84ZktfUTg2aVZyNVhBS2VEdmlsRDdlQWlwb083TzNjV3Z5bjE0XzFXYmJmYnh1Ykx5dnJOaWJsb0c1TzFhRUpXT05RbnIzdzZ0b0lHRFJv?oc=5",
+      "article_type": "official_announcement",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.94,
+      "evidence_text": "天理教の都賀大教会は8月22日、栃木県小山市で30回目の都賀祭を開き、120人が参加した。おつとめまなび、会長の講話、鼓笛隊の演奏などを通じて信者の親睦を図った。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1CeEZMMEltX19ZOVpqSXd5MDNTOVdqWVRmUjBpT3I3ZlBySm41bVRTb1NRWU1RcGliYnczb251eEJGWXpJUFFock42OGZjWWxvTGFGZ2RiLTIxLU51dVdsMDdSSllsZUE1dnRFNjhHTUNqZXcyT0Q3N09MaG1WaUU?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.94,
+      "evidence_text": "NOMELON NOLEMONは初主催ツーマンライブの大阪公演で、the cabsとの共演を発表した。公演は11月3日にBIGCATで開かれ、9月10日からオフィシャル先行を受け付ける。9月19日にはROCK IN JAPAN FESTIVAL 2026への出演も予定している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1kV1dSVjdmVTRBZUxwczV2eVNxSmlJVkhadjJidzlYU002TjJRSkVnYUFPeFBYUWtQekQyN2xVQmwydGZwLVRIU0JZdzUtamRYLU1PUWFWTQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "collaboration",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "KRAFTON JAPANは『PUBG MOBILE』で、にじさんじの葛葉とのコラボを開始した。葛葉デザインの衣装やボイスカードなどを展開し、期間は9月9日から11月6日8時59分まで。ミッション達成で交換アイテムを集めるプレイイベントも実施する。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPNHZxMW9CWXN3NVJxQkVFbVN0NUxOQUhuelVOdWdfYVBiRHhReWVucDZqZTVSaTFfYk1zcF9aOE12WDBjMzZMaDhGWUNfdUxZTGFlSFJ3d1NFMGlMSHVYckctX2dRUjBlaU5JWmY1OGdJS2o3M0JrQjhpNFdnekZDSXRHYlFnQ3NSWlhXeV9tbHpYVEVtck5GYzdGUkhKaHB6UElQQ3NuanpWVHlJUjlNb0VaRmNSdmpHbWc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "event",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.94,
+      "evidence_text": "ベトナム文化新聞主催のピックルボール大会は9月26～27日にハノイで開催され、252人の参加を予定する。オンライン登録は9月8～20日で、アマチュア部門には年齢・競技歴・レーティングなどの参加条件が設けられている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9TeWlKRjJkSk50dXRuZzRidncwUExYcTkxZkwxN0w2c1BYLUxzc3BONi1XQ245RUJMbXN4VXVkZmdRZFdQdGZnby1ZTlFMOFI1NjBLWWhLWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "保存本文は『ホロライブドリームス』のパーティ編成を、ハイスコア・クリア・フルコンボの目的別に解説する。衣装スキルを軸にタイプ・所属条件を満たし、回復や判定強化などのスキルを使い分ける構成を紹介している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://anond.hatelabo.jp/20260910112223",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.94,
+      "evidence_text": "匿名の投稿者が、レンタカーや同乗で経験した複数車種の静粛性・乗り心地などを主観的に比較している。エスティマやクラウン・ロイヤルサルーンを高く評価する一方、NBOXやフォレスターなどには不満を述べており、客観的な性能試験ではない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://anond.hatelabo.jp/20260910072140",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.94,
+      "evidence_text": "匿名の投稿者は、人が自分の得意分野になると他者にも同水準の能力を求め、強い態度を取りがちだと論じる。教える際には相手ができる前提を置かず、手順を細分化して伝えるという自身の姿勢を述べている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://www.itmedia.co.jp/news/article/2609/10/2000001342/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.94,
+      "evidence_text": "Anthropicの研究者2人が、元同僚のAI開発リスクへの懸念に個人として同意する見解をXで示したとITmediaが報じた。記事は超知能の制御や競争圧力への懸念を紹介し、所属企業の公式見解ではないことも明記している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "保存本文はホロドリのカードをスコア重視・初心者向け・リーダー向けに評価する攻略記事。初心者には回復や判定強化を重視し、好きなメンバーで遊ぶことも勧めている。保存時点の評価であり、今日の最新順位や開催中ガチャを保証するものではない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://ettolrach.com/blog/rust_when_empty_isnt_bottom.html",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.94,
+      "evidence_text": "Rustのnever型を空型とボトム型の違いから説明する技術記事。Scalaのサブタイピングと比較し、Rustでは複合型の内部にあるnever型が任意の型へ自動変換されるわけではないと例示する。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://zakizakizaki.hateblo.jp/entry/2026/09/09/222953",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.94,
+      "evidence_text": "芸能人の目元の印象変化について、メイク・照明・成長などの可能性を論じる個人記事。著者自身も写真比較だけでは美容整形の有無を断定できないとしており、外見についての推測を事実扱いしない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBBM0hEenF5TWw2NmVvRTJ0VHFGR1piNHlQRjI5SlJoNEVXSkdSM3l4NmVPT21RcXltMjItc0pud2JoVXpJWG1kcjZIR3pMQkdxeDJoMXpPbw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.94,
+      "evidence_text": "ホロドリのリセマラで、スコア上昇の確率や複数効果、衣装スキルを基準にカードを評価する攻略記事。好きなメンバーを編成する遊び方も認めている。保存時点の評価であり、現在の順位や数値を保証しない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://yurucaharamascot.com/seibulions",
+      "article_type": "image_gallery",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.94,
+      "evidence_text": "埼玉西武ライオンズのマスコット「レオ」「ライナ」を紹介する写真記事。グランエミオ所沢の1日館長の写真を中心に、キャラクター設定と公式プロフィールへの案内を掲載する。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://gigazine.net/news/20260909-sns-algorithm-opt-out-australian-law/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.94,
+      "evidence_text": "豪州政府がSNSの個人向け推薦を利用者自身で選べる法案を準備していると報じる記事。「My Feed, My Way」構想で、推薦表示かフォロー先中心の表示かを選ぶ仕組みを説明している。成立済みの制度としては扱わない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://anond.hatelabo.jp/20260909180318",
+      "article_type": "other",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.94,
+      "evidence_text": "匿名筆者が国内外の株式などを「バブル」の例として列挙する意見記事。ANYCOLORを含む複数企業を将来期待と調整の観点で比較しているが、掲載された騰落率や因果関係は独立検証済みの金融情報として扱わない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBmak9VVk1FYW9wMzdOU24yWHpNU29FUjdrbXp3SXFuRUdQeE5FRHNJOU1kNnh6X3NGNVNsRDVCRXN3cFVZTDNqWmhhem9lbWJ3UDlBTXNBdDZ3dw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.94,
+      "evidence_text": "パワプロ2026のゲームキャラクター橘みずきについて、イベント選択肢と能力取得を整理した攻略資料。投手・野手の選択や猪狩守とのイベントを表形式で示しており、VTuber本人の活動情報ではない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://anond.hatelabo.jp/20260909162140",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.94,
+      "evidence_text": "匿名筆者が2010年代の政治的議論への不満を、架空の会話で風刺する投稿。政権批判への反応を戯画化した意見であり、記載の会話を実際の発言記録とは扱わない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    },
+    {
+      "article_url": "https://anond.hatelabo.jp/20260909161310",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.94,
+      "evidence_text": "匿名筆者が受験時の勉強量を振り返り、大学入試に費やす時間へ疑問を述べる投稿。本人の体験談と意見であり、合格歴や他の受験生の平均勉強時間を確かめた記事ではない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-10T07:05:23.032235+00:00"
+    }
+  ]
+}

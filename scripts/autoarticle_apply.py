@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import contextlib
+from datetime import datetime, timezone
 import json
 import os
 import re
@@ -101,6 +102,22 @@ def expected(kind, value, current):
 
 
 def equal(field, actual, wanted):
+    if field in ("published_at", "last_seen_at", "classified_at") and actual != wanted:
+        # n8n Date values are persisted in SQLite as UTC, at millisecond precision.
+        # Restrict this normalization to timestamp columns; text stays exact.
+        def instant(value, stored=False):
+            if not isinstance(value, str):
+                raise ValueError("not a timestamp")
+            parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+            if parsed.tzinfo is None:
+                if not stored or not re.fullmatch(r"\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3}", value):
+                    raise ValueError("ambiguous timezone")
+                parsed = parsed.replace(tzinfo=timezone.utc)
+            return parsed.astimezone(timezone.utc).replace(microsecond=parsed.microsecond // 1000 * 1000)
+        try:
+            return instant(actual, stored=True) == instant(wanted)
+        except (ValueError, TypeError, OverflowError):
+            return False
     if field.endswith("_json"):
         try:
             actual = json.loads(actual) if isinstance(actual, str) else actual

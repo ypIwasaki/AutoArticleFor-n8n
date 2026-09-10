@@ -1,0 +1,23 @@
+{
+  "reportKind": "autoarticle-token-usage",
+  "schemaVersion": 1,
+  "workDate": "2026-09-10",
+  "timezone": "Asia/Tokyo",
+  "status": "provisional_observations",
+  "rows": [],
+  "knownTotals": {
+    "input_tokens": null,
+    "output_tokens": null,
+    "total_tokens": null,
+    "cached_input_tokens": null,
+    "cache_write_input_tokens": null,
+    "reasoning_output_tokens": null
+  },
+  "intervals": [],
+  "sources": [],
+  "scope": "registered_windows_with_boundary_intervals; final_reply_after_finish_excluded",
+  "dayPolicy": "usage_notification_day; cross-day intervals remain unassigned",
+  "detailPolicy": "cached input and reasoning output are breakdowns, not additional totals",
+  "snapshotId": "7894ecfa802eab334a74df242df7047e145421202e1fbe799a4cac0735848019",
+  "generatedAt": "2026-09-10T06:07:24.828599+00:00"
+}

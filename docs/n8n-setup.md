@@ -1,5 +1,16 @@
 # n8n Setup
 
+## Shared review facts
+
+The three review tasks now follow
+[shared verification rules](ai-rules/shared-article-review.md) and reuse
+validated records under `content/article-review-facts/`.
+The first reviewer records source-grounded facts, not the RSS capture node.
+The input reader and `save_article_review_facts.py` do not start workflows or
+write Data Tables. This extension uses the existing version 2 instruction
+paths and updated local task rules; it requires no new n8n node. If the earlier
+version 2 workflow change has not yet been synced, that sync is still required.
+
 ## Local runtime options
 
 Use the npm install you already completed. To allow Markdown output under this project, start n8n with:
@@ -50,8 +61,8 @@ The workflow is designed for daily keyword monitoring.
 8. `Read RSS Search Results` reads matching RSS items.
 9. `Normalize and Deduplicate Articles` filters recent items and removes duplicates.
 10. `Build Daily Digest` creates the source-based digest and LLM prompt.
-11. `Write Markdown Files` writes the digest, keyword candidates, and all AI review instructions under `content/`.
-12. `Build Markdown Files` also creates instructions for article summaries, talent-index updates, and article classifications. The daily workflow does not automatically extract talent data or apply article classifications.
+11. `Build Markdown Files` creates the digest, keyword candidates, and compact version 2 instructions for keyword extraction, article summaries, talent-index updates, article classifications, and weekly reports.
+12. `Write Markdown Files` writes these files under `content/`. The daily workflow does not automatically extract talent data or apply article classifications.
 13. `Summarize Saved Markdown Files` returns the saved file paths as the webhook response.
 
 ## Default keywords
@@ -139,21 +150,26 @@ For Docker, `docker-compose.yml` sets `N8N_RESTRICT_FILE_ACCESS_TO=/project/cont
 
 ## Markdown output
 
-Each successful run writes four files:
+Each successful run writes these Markdown files. The weekly instruction is
+named by the week's Monday in JST and updated through the current run date.
 
 ```text
 content/daily-digests/YYYY-MM-DD.md
 content/keyword-candidates/YYYY-MM-DD.md
 content/ai-extraction-instructions/YYYY-MM-DD.md
 content/ai-summary-instructions/YYYY-MM-DD.md
+content/ai-talent-index-instructions/YYYY-MM-DD.md
+content/ai-article-classification-instructions/YYYY-MM-DD.md
+content/ai-weekly-report-instructions/WEEK_START.md
 ```
 
 The first file contains the captured article list, source URLs, digest metadata,
 and LLM prompt. The second file extracts candidate follow-up keywords from the
-saved digest with deterministic rules. The third file is a prompt/instruction
-Markdown file for manual semantic keyword extraction. The fourth file is a
-prompt/instruction Markdown file for manual article summarization. The workflow
-does not call AI APIs automatically.
+saved digest with deterministic rules. The remaining files contain task metadata
+and references to fixed rules, source files, and output paths. They do not embed
+article lists, the full digest, or the search keyword list. Structured article
+JSONL is written separately as described below. The workflow does not call AI
+APIs automatically.
 
 For npm/WSL usage, the workflow defaults to this project path:
 
@@ -163,6 +179,94 @@ For npm/WSL usage, the workflow defaults to this project path:
 
 For Docker usage, `docker-compose.yml` mounts the project at `/project` and sets
 `PROJECT_ROOT=/project`.
+
+## Version 2 AI instruction files
+
+Read the generated instruction's `instructionVersion: 2` metadata and `rulesPath`
+before reading the article data. Repository-relative paths resolve from the
+project root. Fixed policies are stored in:
+
+| Task | Rules |
+| --- | --- |
+| `article-summary` | `docs/ai-rules/article-summary.md` |
+| `keyword-extraction` | `docs/ai-rules/keyword-extraction.md` |
+| `talent-index` | `docs/ai-rules/talent-index.md` |
+| `article-classification` | `docs/ai-rules/article-classification.md` |
+| `weekly-report` | `docs/ai-rules/weekly-report.md` |
+
+Use the read-only reader to obtain relevant article fields and saved body
+status without loading every embedded copy of the input:
+
+```bash
+python3 scripts/read_ai_inputs.py --run-date YYYY-MM-DD --task article-summary --offset 0 --limit 20
+```
+
+Pass the returned top-level `nextOffset` as `--offset` until `nextOffset` is
+`null`, completing the article list. Shared run metadata and
+input references are included on the first batch; long body slices have their
+own `content.nextOffset`. Keyword and weekly views omit body text; switch to
+the summary task with the article's run date and URL when it is needed.
+See `docs/ai-summary-instructions.md` for continuation and capture-state handling.
+
+For weekly reporting, first run `generate_analysis_reports.py --through SOURCE_RUN_DATE`.
+The default `weekly-report` reader returns validated compact metrics rather than
+article pages; request `--weekly-articles` only when raw metadata is needed.
+Weekly instructions reference `content/analysis/weekly-metrics/{isoWeek}.json`.
+Full feedback is exported as dated JSON alongside the example-based Markdown
+by the dashboard or `generate_article_feedback_instructions.py`. Missing or
+incomplete feedback keeps weekly totals provisional. See `docs/analysis.md`
+for evaluation cutoffs, report synchronization, and read-only validation.
+
+Keep the rules, reader, and workflow definition together when moving this
+project to another PC. External AI chats need the referenced fixed rules and
+relevant input data attached; a compact instruction alone is insufficient.
+Version 2 preserves existing instruction output paths, article JSONL, digest,
+body capture, and proposal formats. Past generated files are not rewritten.
+
+All five instructions also reference `resultRulesPath`:
+`docs/ai-rules/operation-result.md`. This shared, short policy limits routine
+completion replies while preserving failures, holds and provisional results.
+For bulky command output, use `scripts/operation_result.py` as documented in
+`docs/operation-results.md`; the n8n webhook response itself is unchanged.
+
+### Integrated instruction metadata and commands
+
+The current generator keeps `instructionVersion: 2` and adds reference fields;
+existing output paths and older instruction files remain compatible.
+
+| Instruction | Input mode and handoff |
+| --- | --- |
+| Summary / talent index / classification | `inputMode: shared-review-first`; `sharedReviewRulesPath`, `sourceSharedReviewsPattern`, `sharedReviewOutputPath`, and `sharedReviewWriter` identify the shared review contract |
+| Keyword extraction | `inputMode: article-metadata`; uses its existing input reader and candidate references, without claiming to consume shared review facts |
+| Weekly report | `inputMode: weekly-metrics`; `sourceMetricsPath` identifies the actual ISO-week JSON, in addition to the existing pattern |
+
+Daily instructions explicitly carry `sourceRunDate`. The shared review pattern
+can include earlier dates when the reader validates reuse; it is not an instruction
+to read all historical review files. The usual order is summary/shared review,
+talent and classification reuse, keyword work, then weekly reporting. A standalone
+task can create missing shared facts under its own rules; absent facts do not
+authorize skipping review or labelling other tasks ready.
+
+Weekly instructions include `sourceClassificationsJsonPattern`,
+`sourceFeedbackSnapshotPattern`, and `reviewAsOf` (default: `coveredThrough`).
+They provide two separate command blocks:
+
+1. Generate metrics through the short-result wrapper, then read the compact metrics directly.
+2. After the AI saves its interpretation, synchronize the numeric block and verify it through the wrapper.
+
+All four commands share the same collection/evaluation cutoffs. For later
+evaluations, update `reviewAsOf` and every `--as-of` together. Optional raw
+`--weekly-articles` reads are separate and do not accept `--as-of`.
+Do not wrap the input reader: its output is the evidence the AI needs to read.
+Final-use commands require `--require-feedback`; otherwise missing feedback is
+explicitly provisional. Approval, search activation and DB application remain
+separate authorized operations.
+
+After validating repository changes, use the existing API sync procedure to
+update the deployed n8n workflow. Editing the JSON on disk alone does not change
+an already imported workflow. The next run after sync generates version 2
+instructions; a new collection run is not needed to test the generator against
+saved data.
 
 ## Adding AI summarization
 

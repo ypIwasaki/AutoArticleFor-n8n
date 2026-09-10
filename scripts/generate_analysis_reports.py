@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from collections import Counter, defaultdict
 from datetime import date
 from pathlib import Path
@@ -485,7 +486,8 @@ def build_keyword_quality_report(
     return "\n".join(lines)
 
 
-def main() -> int:
+def legacy_main() -> int:
+    """Historical Markdown-only entry point; kept for compatibility, not used by CLI."""
     parser = argparse.ArgumentParser(
         description="Generate weekly trend and keyword-quality Markdown reports."
     )
@@ -559,5 +561,14 @@ def main() -> int:
     return 0
 
 
+def main() -> int:
+    from weekly_metrics import main as generate_metrics
+    return generate_metrics(PROJECT_ROOT)
+
+
 if __name__ == "__main__":
-    raise SystemExit(main())
+    try:
+        raise SystemExit(main())
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        raise SystemExit(2)

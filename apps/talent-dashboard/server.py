@@ -8,6 +8,7 @@ import json
 import os
 import re
 import sqlite3
+import sys
 import threading
 from datetime import datetime, timedelta, timezone
 from http import HTTPStatus
@@ -20,6 +21,8 @@ from urllib.parse import urlparse
 
 APP_ROOT = Path(__file__).resolve().parent
 PROJECT_ROOT = APP_ROOT.parents[1]
+sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
+from article_feedback_snapshot import atomic_text, build_snapshot
 STATIC_ROOT = APP_ROOT / "web"
 TABLE_ID_PATTERN = re.compile(r"^[A-Za-z0-9_]+$")
 MARKDOWN_LINK_PATTERN = re.compile(r"\[([^\]]+)\]\((https?://[^\s)]+)\)")
@@ -95,6 +98,7 @@ def load_from_n8n() -> tuple[dict[str, Any], str]:
             ]
         else:
             payload["article_feedback"] = []
+        payload["_article_feedback_available"] = "article_feedback" in identifiers
         return payload, "n8n-data-tables"
     finally:
         connection.close()
@@ -827,12 +831,10 @@ def write_article_feedback_instruction(
     output_dir = PROJECT_ROOT / "content" / "article-feedback-instructions"
     output_dir.mkdir(parents=True, exist_ok=True)
     output_path = output_dir / f"{generated_at.date().isoformat()}.md"
-    temporary_path = output_path.with_suffix(".md.tmp")
-    temporary_path.write_text(
-        build_article_feedback_instruction_markdown(payload, generated_at),
-        encoding="utf-8",
-    )
-    temporary_path.replace(output_path)
+    instruction = build_article_feedback_instruction_markdown(payload, generated_at)
+    snapshot = build_snapshot(payload, generated_at, instruction)
+    atomic_text(output_path, instruction)
+    atomic_text(output_path.with_suffix(".json"), json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n")
     return output_path
 
 

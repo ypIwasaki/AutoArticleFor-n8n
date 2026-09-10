@@ -217,6 +217,8 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 # n8n local state and secrets
+.operation-logs/
+.operation-state/
 .n8n/
 n8n/.data/
 n8n/data/
@@ -233,4 +235,3 @@ content/article-review-backfill.log
 content/article-review-backfill-error.log
 content/article-review-backfill-progress.json
 content/article-review-backfill*.log
-

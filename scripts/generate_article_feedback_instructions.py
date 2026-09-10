@@ -16,6 +16,7 @@ from server import write_article_feedback_instruction  # noqa: E402
 def main() -> int:
     path = write_article_feedback_instruction()
     print(f"Generated article feedback instruction: {path.relative_to(PROJECT_ROOT)}")
+    print(f"Generated full feedback snapshot: {path.with_suffix('.json').relative_to(PROJECT_ROOT)}")
     return 0
 
 

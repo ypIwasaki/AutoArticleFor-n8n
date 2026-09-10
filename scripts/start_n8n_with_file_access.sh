@@ -12,7 +12,7 @@ export N8N_BLOCK_ENV_ACCESS_IN_NODE="${N8N_BLOCK_ENV_ACCESS_IN_NODE:-false}"
 
 # Keep environment-specific Data Table IDs out of committed workflow exports.
 if [[ -f "$PROJECT_ROOT/.env" ]]; then
-  table_id="$(grep -m1 "^N8N_ARTICLE_CLASSIFICATIONS_TABLE_ID=" "$PROJECT_ROOT/.env" | cut -d= -f2-)"
+  table_id="$(grep -m1 "^N8N_ARTICLE_CLASSIFICATIONS_TABLE_ID=" "$PROJECT_ROOT/.env" | cut -d= -f2- || true)"
   if [[ -n "$table_id" ]]; then
     export N8N_ARTICLE_CLASSIFICATIONS_TABLE_ID="$table_id"
   fi

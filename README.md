@@ -34,8 +34,10 @@ keyword-based news and web-content summarization project.
 
 ## Quick start with npm
 
+With n8n installed, start it with project file access:
+
 ```bash
-n8n
+bash scripts/start_n8n_with_file_access.sh
 ```
 
 Open `http://localhost:5678`, then import:
@@ -124,6 +126,12 @@ To let n8n write generated Markdown into this project, start n8n with:
 ```
 
 If n8n is already running, stop it first and start it again with this script.
+The script detects the checkout root as `PROJECT_ROOT`; Docker Compose uses
+the container mount `/project`. Workflow configuration reads and archive
+writes use this root, so cloning to another directory needs no path edits.
+Existing n8n workflows must be imported/synced after this definition changes.
+Data Table initialization and environment-specific table IDs still need setup;
+see [file access settings](docs/n8n-setup.md#file-access-setting).
 
 ## AI extraction instructions
 

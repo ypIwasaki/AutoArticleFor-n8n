@@ -27,7 +27,7 @@ TASKS = {
 NODE_RUNNER = (
     "const fs = require('fs');"
     "const payload = JSON.parse(fs.readFileSync(0, 'utf8'));"
-    "const result = new Function('$json', payload.code)(payload.input);"
+    "const result = new Function('$json', '$env', payload.code)(payload.input, payload.env || {PROJECT_ROOT: '/test/project'});"
     "process.stdout.write(JSON.stringify(result));"
 )
 

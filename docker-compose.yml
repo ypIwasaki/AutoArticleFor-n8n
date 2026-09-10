@@ -13,8 +13,10 @@ services:
       N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: ${N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS:-true}
       N8N_RUNNERS_ENABLED: ${N8N_RUNNERS_ENABLED:-true}
       N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY:-change-me-before-production}
-      PROJECT_ROOT: ${PROJECT_ROOT:-/project}
-      N8N_RESTRICT_FILE_ACCESS_TO: ${N8N_RESTRICT_FILE_ACCESS_TO:-/project/content}
+      # Container paths match the bind mount, independent of host paths in .env.
+      PROJECT_ROOT: /project
+      N8N_RESTRICT_FILE_ACCESS_TO: /project
+      N8N_BLOCK_ENV_ACCESS_IN_NODE: "false"
     volumes:
       - n8n_data:/home/node/.n8n
       - ./:/project

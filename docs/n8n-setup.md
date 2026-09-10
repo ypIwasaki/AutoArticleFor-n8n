@@ -133,20 +133,40 @@ The workflow searches Google News and Hatena Bookmark for each keyword. It also 
 
 ## File access setting
 
-n8n restricts local file access for file nodes. This workflow writes generated
-Markdown under `content/`, so n8n must be started with:
+The workflow resolves configuration reads and archive writes from
+`$env.PROJECT_ROOT`, which must be an absolute path visible to n8n.
+Relative paths inside generated AI instructions remain repository-relative.
+
+For npm/WSL, use the startup script. It detects the repository root from its
+own location, permits file access there by default, and enables node environment
+access:
 
 ```bash
-N8N_RESTRICT_FILE_ACCESS_TO=/home/raimu/N8N/AutoArticleFor-n8n/content
+bash scripts/start_n8n_with_file_access.sh
 ```
 
-The easiest npm/WSL start command is:
+For direct startup from the repository root, export these variables first:
 
 ```bash
-./scripts/start_n8n_with_file_access.sh
+export PROJECT_ROOT="$(pwd -P)"
+export N8N_RESTRICT_FILE_ACCESS_TO="$PROJECT_ROOT"
+export N8N_BLOCK_ENV_ACCESS_IN_NODE=false
+n8n
 ```
 
-For Docker, `docker-compose.yml` sets `N8N_RESTRICT_FILE_ACCESS_TO=/project/content`.
+Docker Compose mounts the repository at `/project` and explicitly sets all
+three values for that container. Host paths in `.env` do not override these
+container paths. The allowed root includes both `config/` reads and
+`content/` writes. If an existing shell exports a narrower file-access
+restriction, update it to include both directories before using the startup
+script. The script only reads the classification table ID from `.env`;
+it does not load general runtime variables from that file.
+
+Missing or relative `PROJECT_ROOT` values cause a clear error rather than
+falling back to the current working directory or another user's path.
+After changing these settings, restart n8n and import/sync the updated workflow.
+Restarting alone does not update a workflow already stored in n8n.
+This path setup does not initialize Data Tables or migrate their IDs.
 
 ## Markdown output
 
@@ -171,14 +191,9 @@ article lists, the full digest, or the search keyword list. Structured article
 JSONL is written separately as described below. The workflow does not call AI
 APIs automatically.
 
-For npm/WSL usage, the workflow defaults to this project path:
-
-```text
-/home/raimu/N8N/AutoArticleFor-n8n
-```
-
-For Docker usage, `docker-compose.yml` mounts the project at `/project` and sets
-`PROJECT_ROOT=/project`.
+For npm/WSL, output paths use the repository root detected by the startup
+script. For Docker, they use the `/project` bind mount. Moving the checkout
+therefore does not require editing workflow file paths.
 
 ## Version 2 AI instruction files
 

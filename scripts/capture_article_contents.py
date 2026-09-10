@@ -21,25 +21,78 @@ def atomic_write_text(path,text):
 def host(u):
  h=urlparse(u).netloc.casefold().split(":")[0]; return h[4:] if h.startswith("www.") else h
 def isin(h,s): return any(h==x or h.endswith("."+x) for x in s)
+class RateDeferred(old.CaptureError):
+ def __init__(self,until):
+  self.until=until
+  super().__init__("HTTP 429; アクセス間隔を調整して再試行予定を保存")
+
+def retry_delay(headers):
+ from email.utils import parsedate_to_datetime
+ value=(headers or {}).get("Retry-After", "")
+ try:
+  import math
+  seconds=float(value)
+  return max(0,seconds) if math.isfinite(seconds) else 0
+ except (ValueError,TypeError):
+  try:return max(0,parsedate_to_datetime(value).timestamp()-time.time())
+  except (ValueError,TypeError,OverflowError):return 0
+
 class Fetch:
- def __init__(self,g,p,r): self.d={"g":g,"p":p};self.next=defaultdict(float);self.r=r;self.rate_limited_hosts=set()
+ def __init__(self,g,p,r,state_path=None,max_wait=60):
+  import math
+  if not all(math.isfinite(v) and v>=0 for v in (g,p,max_wait)) or r<1:raise ValueError("delays must be finite and nonnegative; attempts >= 1")
+  self.d={"g":g,"p":p};self.next=defaultdict(float);self.r=r;self.state_path=state_path;self.max_wait=max_wait;self.hosts={};self.cache={}
+  if state_path and state_path.exists():
+   self.hosts=json.loads(state_path.read_text(encoding="utf8"))["hosts"]
+ def persist(self):
+  if self.state_path:atomic_write_text(self.state_path,json.dumps({"hosts":self.hosts},ensure_ascii=False))
  def __call__(self,u,*,data=None,content_type=None):
-  if host(u) in self.rate_limited_hosts: raise old.CaptureError("HTTP 429によるホスト制限のため、この実行中の追加取得を停止（当該URLは未試行）")
-  k="g" if host(u)=="news.google.com" else "p"; hd={"User-Agent":old.USER_AGENT,"Accept-Language":"ja,en-US;q=0.8,en;q=0.6"}
-  if content_type: hd["Content-Type"]=content_type
+  h=host(u);base=self.d["g" if h=="news.google.com" else "p"]
+  key=(u,data,content_type)
+  if key in self.cache:return self.cache[key]
+  hd={"User-Agent":old.USER_AGENT,"Accept-Language":"ja,en-US;q=0.8,en;q=0.6"}
+  if content_type:hd["Content-Type"]=content_type
   for a in range(self.r):
-   time.sleep(max(0,self.next[k]-time.monotonic()));self.next[k]=time.monotonic()+self.d[k]
+   state=self.hosts.setdefault(h,{"interval":base,"until":0})
+   delay=max(0,self.next[h]-time.time(),state["until"]-time.time())
+   if delay>self.max_wait:raise RateDeferred(time.time()+delay)
+   if delay:time.sleep(delay)
+   self.next[h]=time.time()+max(base,state["interval"])
    try:
-    with request.urlopen(request.Request(u,data=data,headers=hd),timeout=20) as x:return x.read(2500000),x.geturl(),x.headers.get("Content-Type","")
+    with request.urlopen(request.Request(u,data=data,headers=hd),timeout=20) as x:
+     result=(x.read(2500000),x.geturl(),x.headers.get("Content-Type",""))
+    if len(self.cache)>=16:self.cache.pop(next(iter(self.cache)))
+    self.cache[key]=result
+    return result
    except error.HTTPError as e:
-    if e.code == 429:
-     self.rate_limited_hosts.add(host(u))
-     raise old.CaptureError("HTTP 429; この実行中は同一ホストへの追加取得を停止")
-    if e.code not in {500,502,503,504} or a+1==self.r: raise old.CaptureError(f"HTTP {e.code}")
-    self.next[k]=time.monotonic()+max(2**(a+1)*2,float(e.headers.get("Retry-After","0") or 0))
+    if e.code==429:
+     interval=max(5,base*2,state["interval"]*2)
+     wait=max(interval,retry_delay(e.headers))
+     state.update(interval=min(interval,3600),until=time.time()+wait)
+     # The final host may differ after redirects. Preserve both cooldowns.
+     self.hosts[host(e.filename)]=dict(state)
+     self.persist()
+     print(json.dumps({"event":"rate_adjusted","host":h,"retryInSeconds":round(wait),"attempt":a+1},ensure_ascii=False),flush=True)
+     if a+1==self.r or wait>self.max_wait:raise RateDeferred(state["until"])
+     continue
+    if e.code not in {500,502,503,504} or a+1==self.r:raise old.CaptureError(f"HTTP {e.code}")
+    wait=max(2**(a+1)*2,retry_delay(e.headers))
+    if wait>self.max_wait:raise old.CaptureError(f"HTTP {e.code}; Retry-After待機が上限を超過")
+    self.next[h]=time.time()+wait
    except error.URLError as e:
-    if a+1==self.r: raise old.CaptureError(f"接続失敗: {e.reason}")
-    self.next[k]=time.monotonic()+2**a
+    if a+1==self.r:raise old.CaptureError(f"接続失敗: {e.reason}")
+    self.next[h]=time.time()+2**a
+
+def deferred(a,key,u,exc):
+ result=make(a,key,"unavailable","unknown",u,str(exc),method="rate-limited")
+ result["retry_after"]=exc.until
+ return result
+
+def eligible_article(entry,refresh=False,retry=False):
+ if entry and entry.get("retry_after"):
+  return time.time()>=entry["retry_after"]
+ return refresh or not entry or (retry and not has_verified_text(entry))
+
 def load():
  try:d=json.loads(STATE.read_text(encoding="utf8"))
  except (OSError,json.JSONDecodeError):return {},{}
@@ -74,6 +127,7 @@ def media(a,key,u,kind,f):
   else:
    b,u,t=f(u);_,desc=old.meaningful_blocks(b.decode("utf8","replace"),a.title);text="タイトル: "+a.title+("\n概要: "+desc if desc else "")
   return make(a,key,"metadata_only",kind,u,"公開メタデータを保存しました。動画本編・非公開投稿は保存していません。",text,"oembed-or-page-metadata",content_markdown=text,completeness="metadata_only")
+ except RateDeferred as x:return deferred(a,key,u,x)
  except Exception as x:return make(a,key,"unavailable",kind,u,"公開メタデータを取得できませんでした: "+str(x),method="public-metadata")
 def capture(a,key,f,cache,kw):
  try:
@@ -95,6 +149,7 @@ def capture(a,key,f,cache,kw):
   if extracted["completeness"]=="metadata_only":
    details["content_markdown"]=details["content_markdown"] or description;return make(a,key,"metadata_only","article",u,"本文ではなく公開メタデータだけを保存しました。",text or description,"semantic-publisher-html",summary,**details)
   return make(a,key,"unavailable","article",u,"本文として十分なテキストを取得できませんでした",text or description,"semantic-publisher-html",summary,**details)
+ except RateDeferred as x:return deferred(a,key,cache.get(a.url,a.url),x)
  except old.CaptureError as x:return make(a,key,"unavailable","unknown",cache.get(a.url),"{}".format(x),method="url-resolution")
  except Exception as x:return make(a,key,"unavailable","article",cache.get(a.url),"本文解析失敗: {}".format(x),method="semantic-publisher-html")
 def archive_record(entry,original_url=None,article_key=None):
@@ -151,16 +206,23 @@ def main():
  p.add_argument("--refresh",action="store_true")
  p.add_argument("--title-pattern",help="Process only articles whose title or excerpt matches this regular expression.")
  p.add_argument("--exclude-pattern",help="Skip articles whose title or excerpt matches this regular expression.")
- p.add_argument("--google-delay",type=float,default=2.5)
- p.add_argument("--publisher-delay",type=float,default=.75)
- p.add_argument("--max-retries",type=int,default=4)
+ p.add_argument("--google-delay",type=float,default=5.0)
+ p.add_argument("--publisher-delay",type=float,default=2.0)
+ p.add_argument("--max-retries",type=int,default=4,help="Maximum attempts per URL, including the first")
+ p.add_argument("--max-rate-wait",type=float,default=60,help="Longer cooldowns are persisted for a later invocation")
  p.add_argument("--env-file",type=Path,default=ROOT/".env")
  p.add_argument("--no-sync-contents",action="store_true")
  p.add_argument("--write",action="store_true")
  p.add_argument("--verbose",action="store_true",help="Print each article title; default reports counts every 50 articles")
  p.add_argument("--progress-file",type=Path,help="日付・URL単位の再開チェックポイントJSON")
  p.add_argument("--reset-progress",action="store_true",help="対象日のチェックポイントを破棄して最初から試行する")
- a=p.parse_args();db=a.database.expanduser();f=Fetch(a.google_delay,a.publisher_delay,a.max_retries);old.http_bytes=f
+ a=p.parse_args()
+ import fcntl
+ DIR.mkdir(parents=True,exist_ok=True)
+ capture_lock=(DIR/"capture.lock").open("a")
+ try:fcntl.flock(capture_lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+ except BlockingIOError:raise SystemExit("本文取得が既に実行中です。同時取得は開始しません。")
+ db=a.database.expanduser();f=Fetch(a.google_delay,a.publisher_delay,a.max_retries,DIR/"rate-limit-state.json",a.max_rate_wait);old.http_bytes=f
  if a.progress_file and not a.run_date:raise SystemExit("--progress-file には --run-date が必要です")
  db_arts=old.load_articles(db);record_arts=load_record_articles(a.run_date)
  if a.refetch_file:
@@ -174,12 +236,14 @@ def main():
  else:
   arts_by_url={x.url:x for x in db_arts};arts_by_url.update(record_arts);arts=sorted(arts_by_url.values(),key=lambda x:(x.run_date,x.published_at,x.url),reverse=True)
  keys={str(x.get("url","")):str(x.get("article_key","")) for x in old.database_rows(db)};e,ca=load()
- eligible=[x for x in arts if a.refresh or x.url not in e or(a.retry_unverified and not has_verified_text(e[x.url]))]
+ eligible=[x for x in arts if eligible_article(e.get(x.url),a.refresh,a.retry_unverified)]
  progress=load_progress(a.progress_file);day_progress={"completedUrls":[],"complete":False};global_completed=set(progress.get("completedUrls",[]))
  if a.progress_file:
   if a.reset_progress:progress["dates"].pop(a.run_date,None);global_completed=set()
   day_progress=progress["dates"].setdefault(a.run_date,{"completedUrls":[],"complete":False})
  day_completed=set(day_progress.get("completedUrls",[]));day_completed.update(x.url for x in arts if x not in eligible)
+ retry_urls={x.url for x in arts if e.get(x.url,{}).get("retry_after")}
+ day_completed-=retry_urls;global_completed-=retry_urls
  completed_urls=day_completed|global_completed
  todo=[x for x in eligible if x.url not in completed_urls][:a.limit];c=None
  if not a.no_sync_contents:
@@ -189,7 +253,8 @@ def main():
  processed_entries=[]
  for i,x in enumerate(todo,1):
   e[x.url]=capture(x,keys.get(x.url,""),f,ca,old.load_keywords());archive_run(record_arts.values(),e);save(e,ca)
-  day_completed.add(x.url);global_completed.add(x.url);completed_urls.add(x.url)
+  if not e[x.url].get("retry_after"):
+   day_completed.add(x.url);global_completed.add(x.url);completed_urls.add(x.url)
   if a.progress_file:
    day_progress.update(completedUrls=sorted(day_completed),complete=False,updatedAt=now())
    progress["completedUrls"]=sorted(global_completed);save_progress(a.progress_file,progress)
@@ -205,4 +270,6 @@ def main():
   progress["completedUrls"]=sorted(global_completed);save_progress(a.progress_file,progress)
  if a.write:old.write_summaries(arts,e)
  print(progress_line(len(todo),len(todo),processed_entries),flush=True)
+ waiting=[e[x.url]["retry_after"] for x in arts if e.get(x.url,{}).get("retry_after")]
+ if waiting:print(json.dumps({"deferredByRateLimit":len(waiting),"nextRetryAt":datetime.fromtimestamp(min(waiting),timezone.utc).isoformat(),"resume":"rerun the same command at or after nextRetryAt; completed URLs stay cached"}),flush=True)
 if __name__=="__main__":main()

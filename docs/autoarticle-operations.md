@@ -224,3 +224,17 @@ python3 scripts/autoarticle_ops.py --date YYYY-MM-DD validate weekly
 ## 履歴に依存しない入口
 
 通常運用は `brief --scope SCOPE` から開始する。同じチャットでも開始手順を揃える。範囲の選択、参考スナップショット、証跡と調査ログの読む順序は [operation-start.md](operation-start.md) を参照。briefは状態照合と情報表示であり、運用を実行しない。
+
+## 本文取得の負荷調整とChrome直接確認
+
+本文取得はホスト別に間隔を空け、既定でGoogle Newsは5秒、出版社は2秒。同時に複数の取得プロセスを起動しない。保存済み本文を再利用し、同一プロセスの同じリクエストは直近16件まで再利用する。明示的なrefresh以外で確認済み本文を取り直さない。
+
+429ではRetry-After（秒数・HTTP日時）を尊重し、間隔を倍増して同じURLを再試行する。既定は最大4試行、1回60秒まで待機。長い待機・試行上限ではURLごとのretry_afterとホストの待機期限・調整間隔を保存し、他の記事へ進む。再試行予定のURLは完了チェックポイントに入れない。最後にdeferredByRateLimitとnextRetryAtを返す。期限後に同じコマンドを再実行すると、期限が来たURLを通常のキャッシュ設定のまま再開する。429に対する再開では--refreshや--reset-progressは不要。実行時間内は他工程後に再開し、制限が続く場合は予定を次回へ引き継ぐ。永続状態はcontent/article-body-captures/rate-limit-state.json。429の発生ゼロや取得成功を保証するものではない。
+
+Windowsの表示確認はPowerShellから以下を第一手段として実行する。
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/verify_dashboard_chrome.ps1
+```
+
+-Urlsで対象のローカル記事・週次URL、-OutputDirectoryでプロジェクト内の証跡保存先、-ChromePathでChrome実行ファイルを指定できる。独立した一時プロファイルで描画後DOMとPNGを保存する。通常のブラウザプロファイルには接続しない。出力ファイルの存在は表示内容の検証ではない。DOM・スクリーンショットで日付、データソース、要約・分類・週次表示を確認してからpageのcheckpointを記録する。一時プロファイルと起動ログは出力のtemporaryLogsに残る。

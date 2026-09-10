@@ -1,0 +1,321 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-09-03",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1fekh2Sk1GZk83QzUxajNUMlJRelFjTkRsLWJuRjFFbFYtLTctYm5pUU5hMGlGYWduTy1zZ0JVRndpRGltQU10Q3lMcVIxWmhzWk5ZSmVR?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「アキ・ローゼンタールさんが主催する 「AKIROSE CAMP -SURVIVAL BLOOM in ARK-（#ロゼキャンARK）」 が、2026年9月4日（金）から9月6日（日）まで開催されます」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBhODM3UXJDZXF4RnVlei04cEVtTmVGRV9DTjJ0Q2o5ekY3S0NoQmI2T2dZeXZ6VjB3dUFvYm1ZVHBtbkMwSVJKUWxBTWVtX1NLTFNtUldHTVl0eGJiVVg3c3d3ZTc3RXJDdGc?oc=5",
+      "article_type": "press_release",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "event",
+        "game_or_technology"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「【ライブ配信/ZOOM】「生成AI時代に生き残るための思考力：「C3思考法 ～ 創造的・批判的思考法からプレゼン技法まで ～」」セミナー開催！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE16QlpqNzloY1FJVERsUWd2SmNpQzZNMnd1ckJmU1ZIS3Q1YzQ0bVF3MU1hUVRCb0pxUnR5UFpUZ180aG0yQ2trVThURF9pQzE1N0hKcUYyRHg2Y2FYT0ZIXzBfU0gwRHRDUkg1ZV80c3dQUHJ4dEx3VE1Bcmp3VFk?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "game_or_technology",
+        "company_or_business"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「JTが提案するもうひとつの“一服”「スピード休息アイマスク」 日本たばこ産業(JT)の100%子会社でウェルネス事業を手掛けるMENTAGRAPHは、“スピード休息アイマスク”として展開している「Relaxonic Cover」(リラソニック カバー)の専用アプリをリニューアルした」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBvOGVjZWFoZ1lDczVidFE1Y1FiMnVPWG9CbVFlT0ROTjNPeTl0cExzUUYwaUpxb3lhREgzcmNxcXFJZndIVExSejN3Slp3QVUyZlhQSklCaGRpdW0tSF84aHBTdmw0RVVUWHhRX2dXT0VBZmtpY2lJWTVLOA?oc=5",
+      "article_type": "image_gallery",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「描き起こしイラスト＆本人による描き下ろし自画像グッズも必見！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9PRG1zUXNmT3RXNXkwR05uUGdOVmNISk9ESjFMX3ktanBXM3VHVmU4RkN2QWczSUh0OWd1OWRRbjc1cE8zT1BFWmptSmsycjE5UE5vSWY2NUpRVVN3Q3ozUnVSUU5HVXA2?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [
+        "company_or_business"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「「にじぱぺっと 共通衣装シリーズ」が2026年9月7日(月)18時(JST)よりにじストアにて販売決定！」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9CbGExWkpaNmdkTDQtVXNoZlNFcENkUXA1cGFjcFVvQ2FjTEljcTBEN1JrMkpuaFctMHNrRXZUT2JuNlh1VVRLLW1rR1BCN2xLdTVKdTRTWmxacGhTbnZoTEhkYkNqNG9salA2TENxMGVMUk9QSDJ6ZA?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [
+        "community_or_fan"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「イム・ヨンウン、独自のカリスマ..'IM HERO 10' アルバムカバー公開 歌手のイム·ヨンウンがスペシャルデジタルアルバムカバーを公開し、ファンの期待感を高めた」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://ioritorei.com/entry/260903/special_247_word",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「【心に沁みる名言『人形使い(アニメ映画「GHOST IN THE SHELL / 攻殻機動隊」より)』】今日を精一杯生きるために…」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1PZHhxRGtlVFdvOGhhR3hiQkMyQm5lODRlOENrZUc4UEs3TjZvZkpQWGtXeDJwVDF5dkktUHlKWjlxTlpsZUN5X0pjMnd5M0ox?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「作家11人の秀作22点 日立市郷土博物館で絵画展 6日まで 茨城 幻想的かつ独創的な絵画作品を並べた展覧会「絵空事のラビリンス-白昼夢へつづく『絵画』という扉-」が、茨城県日立市宮田町の市郷土博物館で開かれている」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5IUUI3Q0Z0VlNDeXBoLWlBVFVEYnY3WXRfUm9QdTE0QlhmUTVka1ptWHpxa3FmWE9xVS1JVjlOU2JVMXNWUW9KVG1fcjhmbHlzY0dKT3BZSXl3SHlXWnF6OFpMYlNGNTVzRkMySmFBNXZiekRlUk5ZNk9zaXZfMm8?oc=5",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「マイクラで再現されたJR大阪駅に脱帽……細部までこだわった脅威の完成度に「本物と変わらない」の声 サンドボックスゲーム『Minecraft』（マインクラフト）で都市を再現するYouTuber「とろぼ制建」が8月28日、チャンネルを更新」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBwTHF3c3FzbEE4Q3R0TG1Fbk1tZ1lWZlF5TUlUdDQtTzRZNjVIaUg1MzJ2MlRZcjdSeHdIYzFzT1Vidk5kUmlFTjg5UV9uZXZJVkhSY1NPWnpMbVZ3TEhV?oc=5",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「ホロライブ・AZKi、生活道路の法定速度引き下げを注意「お知らせありがとう」「知らずにいる人が結構いそう」 「ホロライブ」所属Vtuber・AZKiさんが、3日までにXを更新」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9ZaWktcWlSeHRFa2lVbVYtYnZ0eEdGckN2RS1UTDRUOWVwV1NRMVdBZ3czWmo0QXdieGVsZDFLQzBCNTR3MVVDXzZTTkgzdm5nSEdTZTg1X3Juc0ZvYmhlSC1tU3hwSzlGd3RBcXJiSDFXbnFWRHc?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「＜Qoo10「二季化と働く女性の秋支度に関する調査」結果発表＞Qoo10「二季化と働く女性の秋支度に関する調査」結果発表！」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNQUgzanhtZ0VtNzljTVFsVU5vT1FLRlgwWEdVbnhKRVJyNmlNcnhteTBlaUUtYXZQTWllNVM4RVBVb0J1Wl9ITnBNLTNacTZRcFhjZXVDYjJrMkRLY0ttRkR0MEM2Q0VWUmE2ckdSQTZFbWIyT1hjdmFhOEpsWERzNHU4TXMzY29nTzVyZ1FVamhhajdIdzdZQnhWQl9tNXPSAaQBQVVfeXFMTnFjdHZJLWcxNE1lVjZnNlQxaFgybFhXUDBDZUN5VzRkcTQ3TjNQakU3UXhDa254TGxUMlp3b1RmTnlLd3Fvc1JPUHB6d0NaYTRwdF9OMUpYR0JIUS1FYXJvQlBabFo3QjIzaW5LcjhFQTNHeHFZTElnRFlsNlozNXpFX1hESDdTVzhkNjdMT1U2M1lLS0RTeV9WSzhnX1pqQVhPVnI?oc=5",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「53歳友近、衝撃の“１カ月で4.5キロ体重減”を告白 「２つの方法」明かし驚嘆の声続々 お笑いタレント友近（53）が演歌歌手の水谷千重子名で開設しているインスタグラムを3日までに更新」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5WVkVGTW1WU1pLemZyQmE2MGwtV3ZfZXcwU3dxdHpKWXFsUzVOS3NRTUk4VXpRM19zd2d3R1JZY0dXMHNjSGt5YWh0UlVNc0cwZ0E0Zy1ST09XNGtG?oc=5",
+      "article_type": "video_or_stream",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「タイトル: 2026夏祭り会場を案内､失言でENメンバー達をざわつかせる､ジュノの叫び声がヤバすぎて爆笑するみみたやw【兎咲ミミ/ぶいすぽ切り抜き/VSPO EN/Minecraft】 投稿者・チャンネル: フロル【切り抜き】 配信元: YouTube」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE01VUE0WDhOTFFnZzNldmJ3azJMcDB6aEJNajF3N0c2NFJ4cm1TeGw3WkUtdTNFRnVkTHpPMXc0YkxZNWtKQ3BVeU9jUzhrdWpucS1yS1VLNkx1UnB4WVlXUVVxQ1RTQQ?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「2026年9月3日 6時00分 エキサイトニュース 被害者ヅラする郁夫にドン引きしたユナ」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5wSUc1WDBTZk5lb3kwdHpFLW1WUnNUUTFVZGVBOFA3eG5EdV9Fd2cybEZiczlGZWNFNkh0Y25NUksyYVNoVUd3V3M2SVRNeFk?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "collaboration"
+      ],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「｜骨を漁る男【ウィザードリィダフネ】 | AppMedia ウィザードリィダフネ攻略wiki｜ウィズダフネ AppMediaトップ ウィザードリィダフネ攻略wiki｜ウィズダフネ FFコラボキャラはどれを選ぶべき？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://cloudmoon.hatenablog.com/entry/20260903/1788361200",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「トップ > Pixel 7a > 信州の棚田 2026 - 09 - 03 すずらんの里から富士見パノラマリゾートまで歩く途中にちょっとした棚田が見えてきた」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://darucoro9216kun.hatenablog.com/entry/2026/09/03/000000",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「● ●こんなパンです● 今回もお越しいただきありがとうございます」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBBM0hEenF5TWw2NmVvRTJ0VHFGR1piNHlQRjI5SlJoNEVXSkdSM3l4NmVPT21RcXltMjItc0pud2JoVXpJWG1kcjZIR3pMQkdxeDJoMXpPbw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「ホロドリのリセマラ当たりキャラは、「百鬼あやめ」「獅白ぼたん」「パヴォリア・レイネ」など」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://na2hiro.hatenablog.com/entry/2026/09/02/%E9%80%80%E8%81%B7%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%E5%B0%B1%E8%81%B7%E3%81%97%E3%81%BE%E3%81%9B%E3%82%93%E3%80%82",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「Indeed Technologies Japan(株)を11月に退職します」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE90OVJINWl0bTZoQVlCZW5wTU1iQ0Z6YUp6NlE4Z1owcEJqMlRVSnFFUFhPckwxVTZyV2J1S2VxNUxVLUlYVU5lZ0RyblA4WGM0VEMwc1BZZw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [
+        "live_or_music"
+      ],
+      "relevance": "in_scope",
+      "confidence": 0.92,
+      "evidence_text": "本文で「AppMediaトップ ホロドリ攻略サイト｜ホロライブドリームス 楽曲一覧と解放条件｜収録曲【ホロライブドリームス】 AppMedia株式会社 https://appmedia.jp/ AppMedia ホロドリ(ホロライブドリームス/ほろどり)における楽曲一覧と解放条件です」を確認し、対象のVTuber・団体・関連企画を本文で確認した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://note.com/mediologic/n/nc6f30cde07cc",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「デザインとは何か〜東大の価値創造学部に関するコメント群を見て｜高広伯彦（Ph.D. デザインとは何か〜東大の価値創造学部に関するコメント群を見て of Management Science） 2026年9月1日 23:47」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://togetter.com/li/2740335",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「中学受験で34泊35日の勉強合宿に行かせている親がいたが、学力のためではなく、出張と残業が夫婦でできてありがたかった話→「子どもの気持ちは？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://gendai.media/articles/-/169964",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「「落語家が多すぎるのに寄席は減った」…三遊亭好楽が指摘する「令和の落語界」の大問題…4団体統一の可能性は 1978年の「落語協会分裂騒動」で落語協会と袂を分かった五代目圓楽」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://gigazine.net/news/20260902-android-sep-2026-new-features/",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「Androidの2026年9月アップデートで乗り物酔い防止の「モーションアシスト」など追加へ - GIGAZINE ▼サーバー運営を助ける支援をお願いします ▲サーバー運営を助ける支援をお願いします 毎月 825円(税込) 900円 (うち手数料33円) 毎月 1回 ご存じの通り価格高騰などの悪影響でサーバー運営がとても苦しい状態です」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://bbs.bengo4.com/topics/c_3/n_20805/",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「「話が違うじゃないか」不倫相手と示談したのに…まさかの「裏切り継続」 慰謝料とは別に“再請求”できる？」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://www.jcp.or.jp/akahata/aik26/2026-09-02/2026090201_02_0.php",
+      "article_type": "news_article",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「沖縄県知事選（９月１３日投票）に立候補している古謝玄太氏＝自民党などが推薦＝が８月５日に那覇市のホテルで開いた決起集会で、ビールや泡盛、ハイボールなどを含む「飲み放題」が、本来の価格とみられる２４２０円から約６割引きとなる１人１０００円の参加費で提供されていたことが分かりました」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    },
+    {
+      "article_url": "https://www.makeuseof.com/mastered-excel-shortcuts-cant-live-without/",
+      "article_type": "news_article",
+      "primary_category": "live_or_music",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "本文で「I use Excel every day and these are the shortcuts I can’t live without a woman using excel on her pc with a shortcut in front. Kaspars Grinvalds / Shutterstock」を確認し、VTuber・関連団体・関連企画を主題としていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-03T00:41:05Z"
+    }
+  ]
+}

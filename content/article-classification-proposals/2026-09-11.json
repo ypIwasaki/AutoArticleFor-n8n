@@ -1,0 +1,138 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-09-11",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9oVk1YeFNyZ0lQRVdub0MzbmVFOUxNQjRxNTdVQV9Za2NWNnlBSlF3cjBWdC1tZzk4NkJSRG1UNUk5R2pneU5sZjJHRGJFdDJVNktDTGtwVEw1RDFfX0l6ZVRSZmw2eUM3Rlhz?oc=5",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.95,
+      "evidence_text": "カバーは8月25日、カードゲーム公式サイトへの不正アクセスの可能性を発表した。改ざんは確認されていないが、問い合わせ情報が外部取得された可能性を否定できないとしている。 対象は7月4～19日に問い合わせフォームを利用した顧客の情報。同社は個別に案内し、CMS更新後も調査・監視を続けている。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-11T01:34:17.281415+00:00"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBmbUpVUnVINXJtSWpxams2d2U5bHBRSjRIeVZHYkd5Mjc2TWl4V0lVTGJVa1dJOElTaW42NGxIcGZVUU5LTXdXb2p1ZTVHSUNTMDlWcVBPOTVpU0FYNG9za29oU0FYSS1nckx5RE9GZ1FPNEJYa3dIaWpOeDc2dlU?oc=5",
+      "article_type": "news_article",
+      "primary_category": "product_or_goods",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "BANDAI SPIRITSがプーさん100周年の一番くじの全ラインナップを公開した。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-11T01:34:17.281415+00:00"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.95,
+      "evidence_text": "ホロドリの攻略本文は水着衣装5人の性能を紹介し、スコアや初心者向けスキル、リーダー効果を評価している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-11T01:34:17.281415+00:00"
+    },
+    {
+      "article_url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
+      "article_type": "official_announcement",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "Anthropicは2025年12月～2026年8月に阻止したClaude悪用の事例を7領域に分けて報告する。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-11T01:34:17.281415+00:00"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5wSUc1WDBTZk5lb3kwdHpFLW1WUnNUUTFVZGVBOFA3eG5EdV9Fd2cybEZiczlGZWNFNkh0Y25NUksyYVNoVUd3V3M2SVRNeFk?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "ウィザードリィダフネのFF11コラボで、依頼により入手するキャラクターの選択を解説している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-11T01:34:17.281415+00:00"
+    },
+    {
+      "article_url": "https://zrabsk.hatenablog.com/entry/20260910/1789044590",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "筆者は職場仲間とのハゼ釣り用に、スパンコールとチューブを使う簡単なプロペラ仕掛けを紹介する。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-11T01:34:17.281415+00:00"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBWYVB1QmJMek9uV2liUjFzSlhEZU1kQXhhdlo3SWZ3QUk1OVVoNlJlaTFzcjFIRlhkSGk1MFFsbFNyRF96emZfMDF6TWUtUUk?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "ウィザードリィダフネのFFコラボガチャについて、プリッシュ・イロハ・ザイドと装備の性能を解説している。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-11T01:34:17.281415+00:00"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBBM0hEenF5TWw2NmVvRTJ0VHFGR1piNHlQRjI5SlJoNEVXSkdSM3l4NmVPT21RcXltMjItc0pud2JoVXpJWG1kcjZIR3pMQkdxeDJoMXpPbw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.95,
+      "evidence_text": "ホロドリのリセマラ攻略はスコア上昇や判定強化などの能力でキャラクターを評価し、好きなメンバーで楽しむ選択肢も示す。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-11T01:34:17.281415+00:00"
+    },
+    {
+      "article_url": "https://anond.hatelabo.jp/20260910112223",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "匿名の筆者が乗車経験のある自動車について静粛性や乗り心地の個人的感想を述べる。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-11T01:34:17.281415+00:00"
+    },
+    {
+      "article_url": "https://leaddev.com/software-quality/were-on-call-for-code-nobody-wrote",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "Thomas JohnsonはAI生成コードの増加により、人間の記憶や逐行理解への依存を減らし、実行時の観測と障害の影響範囲の制限を重視すべきだと論じる。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-11T01:34:17.281415+00:00"
+    },
+    {
+      "article_url": "https://gigazine.net/news/20260910-openai-astra-high-growth/",
+      "article_type": "news_article",
+      "primary_category": "company_or_business",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "GIGAZINEは、Astraの需要増でProの新規登録を一時停止する可能性を開発スタッフが述べたと報じる。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-11T01:34:17.281415+00:00"
+    },
+    {
+      "article_url": "https://gigazine.net/news/20260910-apple-watch-explaining-audio-intelligence/",
+      "article_type": "news_article",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.95,
+      "evidence_text": "GIGAZINEはApple Watchの音声理解機能について、利用者による有効化の制御と暗号化転送を紹介する。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-11T01:34:17.281415+00:00"
+    }
+  ]
+}

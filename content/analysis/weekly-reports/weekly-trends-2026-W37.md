@@ -1,26 +1,26 @@
 <!-- weekly-metrics:start -->
 ## 確定集計（自動生成・直接編集しない）
 
-- Snapshot: `8f7ae3ed546fa246993347fe0390688b56b7590db23434960f129da21a743777`
-- 対象期間: 2026-09-07 ～ 2026-09-10 (JST)
-- 評価参照日: 2026-09-10
+- Snapshot: `d8927109c1e963909c357e125be493b3061fa51e45415b8c127f42e9dae46da4`
+- 対象期間: 2026-09-07 ～ 2026-09-11 (JST)
+- 評価参照日: 2026-09-11
 - 状態: 採否反映済み
 - 欠損日: 2026-09-07, 2026-09-08, 2026-09-09
 
 | 指標 | 件数 |
 | --- | --- |
-| reportedArticles | 627 |
-| archivedRecords | 627 |
-| uniqueArticles | 627 |
-| duplicateRecords | 0 |
-| changedInputUrls | 0 |
+| reportedArticles | 1169 |
+| archivedRecords | 1169 |
+| uniqueArticles | 1072 |
+| duplicateRecords | 97 |
+| changedInputUrls | 57 |
 | excludedArticles | 0 |
-| eligibleArticles | 627 |
-| classifiedArticles | 28 |
-| unclassifiedArticles | 599 |
+| eligibleArticles | 1072 |
+| classifiedArticles | 37 |
+| unclassifiedArticles | 1035 |
 | invalidClassificationArticles | 0 |
-| unboundClassifications | 28 |
-| bodyReviewReadyArticles | 20 |
+| unboundClassifications | 37 |
+| bodyReviewReadyArticles | 29 |
 | videoMetadataSummaries | 未計測 |
 
 | 日付 | 収集データあり | 報告件数 | 保存行数 | URL数 |
@@ -29,76 +29,79 @@
 | 2026-09-08 | False | 未計測 | 未計測 | 未計測 |
 | 2026-09-09 | False | 未計測 | 未計測 | 未計測 |
 | 2026-09-10 | True | 627 | 627 | 627 |
+| 2026-09-11 | True | 542 | 542 | 542 |
 
 ### 主カテゴリ（分類提案ありを分母）
 
 | 項目 | 件数 | 分母 | % |
 | --- | --- | --- | --- |
-| game_or_technology | 15 | 28 | 53.57 |
-| media_or_editorial | 6 | 28 | 21.43 |
-| event | 3 | 28 | 10.71 |
-| collaboration | 2 | 28 | 7.14 |
-| company_or_business | 1 | 28 | 3.57 |
-| live_or_music | 1 | 28 | 3.57 |
+| game_or_technology | 19 | 37 | 51.35 |
+| media_or_editorial | 7 | 37 | 18.92 |
+| company_or_business | 3 | 37 | 8.11 |
+| event | 3 | 37 | 8.11 |
+| collaboration | 2 | 37 | 5.41 |
+| live_or_music | 1 | 37 | 2.7 |
+| other | 1 | 37 | 2.7 |
+| product_or_goods | 1 | 37 | 2.7 |
 
 ### 記事種別（同分母）
 
 | 項目 | 件数 | 分母 | % |
 | --- | --- | --- | --- |
-| guide_or_database | 13 | 28 | 46.43 |
-| other | 6 | 28 | 21.43 |
-| news_article | 5 | 28 | 17.86 |
-| press_release | 2 | 28 | 7.14 |
-| image_gallery | 1 | 28 | 3.57 |
-| official_announcement | 1 | 28 | 3.57 |
+| guide_or_database | 15 | 37 | 40.54 |
+| news_article | 9 | 37 | 24.32 |
+| other | 8 | 37 | 21.62 |
+| official_announcement | 2 | 37 | 5.41 |
+| press_release | 2 | 37 | 5.41 |
+| image_gallery | 1 | 37 | 2.7 |
 
 ### 関連度（同分母）
 
 | 項目 | 件数 | 分母 | % |
 | --- | --- | --- | --- |
-| out_of_scope | 18 | 28 | 64.29 |
-| in_scope | 6 | 28 | 21.43 |
-| low_relevance | 4 | 28 | 14.29 |
+| out_of_scope | 26 | 37 | 70.27 |
+| in_scope | 7 | 37 | 18.92 |
+| low_relevance | 4 | 37 | 10.81 |
 
 ### 媒体・上位20（対象記事を分母）
 
 | 項目 | 件数 | 分母 | % |
 | --- | --- | --- | --- |
-| AppMedia | 43 | 627 | 6.86 |
-| PR TIMES | 43 | 627 | 6.86 |
-| YouTube | 43 | 627 | 6.86 |
-| ニコニコニュース | 36 | 627 | 5.74 |
-| Yahoo!ニュース | 26 | 627 | 4.15 |
-| (unknown) | 20 | 627 | 3.19 |
-| GameWith | 20 | 627 | 3.19 |
-| ｄメニューニュース | 16 | 627 | 2.55 |
-| Mshale | 15 | 627 | 2.39 |
-| Vietnam.vn | 12 | 627 | 1.91 |
-| Infoseek | 11 | 627 | 1.75 |
-| FX \| 株式市場 \| ファイナンス \| 金融ニュース | 10 | 627 | 1.59 |
-| ライブドアニュース | 8 | 627 | 1.28 |
-| Excite エキサイト | 7 | 627 | 1.12 |
-| au Webポータル | 7 | 627 | 1.12 |
-| ナタリー | 7 | 627 | 1.12 |
-| PASH! PLUS | 6 | 627 | 0.96 |
-| gamebiz【ゲームビズ】 | 6 | 627 | 0.96 |
-| news.infoseek.co.jp | 6 | 627 | 0.96 |
-| otsuka | 6 | 627 | 0.96 |
+| YouTube | 116 | 1072 | 10.82 |
+| t.co | 73 | 1072 | 6.81 |
+| AppMedia | 68 | 1072 | 6.34 |
+| (unknown) | 55 | 1072 | 5.13 |
+| PR TIMES | 50 | 1072 | 4.66 |
+| ニコニコニュース | 43 | 1072 | 4.01 |
+| Yahoo!ニュース | 39 | 1072 | 3.64 |
+| GameWith | 31 | 1072 | 2.89 |
+| Infoseek | 28 | 1072 | 2.61 |
+| ｄメニューニュース | 24 | 1072 | 2.24 |
+| Mshale | 15 | 1072 | 1.4 |
+| ライブドアニュース | 14 | 1072 | 1.31 |
+| Excite エキサイト | 13 | 1072 | 1.21 |
+| au Webポータル | 13 | 1072 | 1.21 |
+| FX \| 株式市場 \| ファイナンス \| 金融ニュース | 12 | 1072 | 1.12 |
+| Vietnam.vn | 12 | 1072 | 1.12 |
+| panora.tokyo | 10 | 1072 | 0.93 |
+| KAI-YOU | 9 | 1072 | 0.84 |
+| news.nicovideo.jp | 9 | 1072 | 0.84 |
+| otsuka | 9 | 1072 | 0.84 |
 
 ### 確認状態（対象記事）
 
 | 取得状態 | 件数 |
 | --- | --- |
-| metadata_only | 1 |
-| partial | 23 |
-| unavailable | 583 |
-| verified | 20 |
+| metadata_only | 2 |
+| partial | 39 |
+| unavailable | 1000 |
+| verified | 31 |
 
 | 工程 | ready | held | needs_review |
 | --- | --- | --- | --- |
-| article-summary | 20 | 607 | 0 |
-| talent-index | 85 | 542 | 0 |
-| article-classification | 20 | 607 | 0 |
+| article-summary | 29 | 1043 | 0 |
+| talent-index | 187 | 885 | 0 |
+| article-classification | 29 | 1043 | 0 |
 
 ### 確認済み人物・団体等（上位20、URL単位）
 

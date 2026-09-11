@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>工程別トークン比較 | AutoArticle</title><link rel="stylesheet" href="styles.css"><script type="module" src="app.js"></script></head>
+<body>
+<header><a class="brand" href="/">A<span>AUTO ARTICLE <small>OPERATIONS INSIGHTS</small></span></a><div class="header-actions"><a href="http://127.0.0.1:8765/">記事の確認アプリ ↗</a><button id="reload">↻ 再読み込み</button></div></header>
+<main>
+<section class="intro"><div><p class="eyebrow">TOKEN USAGE / DAILY COMPARISON</p><h1>削減の変化を、内訳から確かめる。</h1><p class="muted">合計だけでなく、非キャッシュ入力・出力・キャッシュ入力を分けて比較します。</p></div><span class="tag">ローカル記録 · 読み取り専用</span></section>
+<p id="status" role="status" aria-live="polite">記録を読み込んでいます…</p>
+<div id="content" hidden>
+<section class="controls" aria-label="比較条件">
+<label><span><i class="dot base"></i>基準の作業日</span><select id="baseline"></select></label>
+<button id="swap" class="swap" aria-label="基準日と比較日を入れ替える">⇄</button>
+<label><span><i class="dot current"></i>比較する作業日</span><select id="current"></select></label>
+<label><span>工程別に見る指標</span><select id="metric"></select></label>
+<label><span>記事の対象日</span><select id="run-date"><option value="all">すべての対象日</option></select></label>
+</section>
+<section id="effect" class="effect" aria-live="polite"></section>
+<section class="cards" aria-label="使用量サマリー" id="cards"></section>
+<p class="notice">観測できた分の暫定比較です。未計測は0として扱いません。合計は入力＋出力で、キャッシュ入力・推論出力は内数です。課金額や記事1件あたりの効率を示すものではありません。</p>
+<section id="conditions" class="conditions"></section>
+<section class="panel history"><div class="panel-title"><div><p class="eyebrow">DAILY OVERVIEW</p><h2>作業日ごとの推移</h2></div><span class="muted">棒を選ぶと比較日を変更</span></div><div id="history"></div></section>
+<section class="panel"><div class="panel-title"><div><p class="eyebrow">STEP BREAKDOWN</p><h2>工程別の比較</h2><p id="selected-metric" class="muted"></p></div><div class="table-tools"><input id="search" type="search" placeholder="工程を検索" aria-label="工程を検索"><select id="sort" aria-label="並び順"><option value="current">比較日の使用量順</option><option value="delta">増減の大きい順</option><option value="name">工程名順</option></select><button id="export">CSVを書き出す</button></div></div>
+<div class="legend"><span><i class="dot base"></i><span id="base-label"></span></span><span><i class="dot current"></i><span id="current-label"></span></span><span>— 記録なし / 未計測</span></div>
+<div class="table-wrap"><table><thead><tr><th>工程</th><th>使用量の比較</th><th id="base-heading">基準日</th><th id="current-heading">比較日</th><th>差分 / 増減率</th><th>試行回数<br><small>基準 → 比較</small></th></tr></thead><tbody id="rows"></tbody></table></div><p id="empty" hidden>この条件に一致する工程がありません。</p>
+</section>
+<footer><p id="metadata"></p><p>未割当は工程を特定できない観測差分です。作業日はJST基準で、記事対象日とは異なる場合があります。計測終了後の最終返答や未観測分は含みません。</p></footer>
+</div></main></body></html>

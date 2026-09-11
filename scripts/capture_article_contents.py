@@ -37,15 +37,34 @@ def retry_delay(headers):
   try:return max(0,parsedate_to_datetime(value).timestamp()-time.time())
   except (ValueError,TypeError,OverflowError):return 0
 
+class PacedRedirect(request.HTTPRedirectHandler):
+ def __init__(self,fetch):self.fetch=fetch
+ def redirect_request(self,req,fp,code,msg,headers,newurl):
+  redirected=super().redirect_request(req,fp,code,msg,headers,newurl)
+  if redirected is not None:self.fetch.reserve(redirected.full_url)
+  return redirected
+
 class Fetch:
- def __init__(self,g,p,r,state_path=None,max_wait=60):
+ def __init__(self,g,p,r,state_path=None,max_wait=60,global_delay=0,cooldown=0):
   import math
-  if not all(math.isfinite(v) and v>=0 for v in (g,p,max_wait)) or r<1:raise ValueError("delays must be finite and nonnegative; attempts >= 1")
+  if not all(math.isfinite(v) and v>=0 for v in (g,p,max_wait,global_delay,cooldown)) or r<1:raise ValueError("delays must be finite and nonnegative; attempts >= 1")
+  self.global_delay=global_delay;self.cooldown=cooldown;self.global_next=0
+  self.opener=request.build_opener(PacedRedirect(self))
   self.d={"g":g,"p":p};self.next=defaultdict(float);self.r=r;self.state_path=state_path;self.max_wait=max_wait;self.hosts={};self.cache={}
   if state_path and state_path.exists():
-   self.hosts=json.loads(state_path.read_text(encoding="utf8"))["hosts"]
+   saved=json.loads(state_path.read_text(encoding="utf8"));self.hosts=saved["hosts"];self.global_next=saved.get("globalNext",0)
  def persist(self):
-  if self.state_path:atomic_write_text(self.state_path,json.dumps({"hosts":self.hosts},ensure_ascii=False))
+  if self.state_path:atomic_write_text(self.state_path,json.dumps({"hosts":self.hosts,"globalNext":self.global_next},ensure_ascii=False))
+ def reserve(self,u):
+  h=host(u);base=self.d["g" if h=="news.google.com" else "p"]
+  state=self.hosts.setdefault(h,{"interval":base,"until":0})
+  delay=max(0,self.next[h]-time.time(),state.get("next",0)-time.time(),state["until"]-time.time(),self.global_next-time.time())
+  if delay>self.max_wait:raise RateDeferred(time.time()+delay)
+  if delay:time.sleep(delay)
+  self.next[h]=time.time()+max(base,state["interval"])
+  state["next"]=self.next[h];self.global_next=time.time()+self.global_delay
+  self.persist()
+ def open(self,req):return self.opener.open(req,timeout=20)
  def __call__(self,u,*,data=None,content_type=None):
   h=host(u);base=self.d["g" if h=="news.google.com" else "p"]
   key=(u,data,content_type)
@@ -54,12 +73,9 @@ class Fetch:
   if content_type:hd["Content-Type"]=content_type
   for a in range(self.r):
    state=self.hosts.setdefault(h,{"interval":base,"until":0})
-   delay=max(0,self.next[h]-time.time(),state["until"]-time.time())
-   if delay>self.max_wait:raise RateDeferred(time.time()+delay)
-   if delay:time.sleep(delay)
-   self.next[h]=time.time()+max(base,state["interval"])
+   self.reserve(u)
    try:
-    with request.urlopen(request.Request(u,data=data,headers=hd),timeout=20) as x:
+    with self.open(request.Request(u,data=data,headers=hd)) as x:
      result=(x.read(2500000),x.geturl(),x.headers.get("Content-Type",""))
     if len(self.cache)>=16:self.cache.pop(next(iter(self.cache)))
     self.cache[key]=result
@@ -67,7 +83,7 @@ class Fetch:
    except error.HTTPError as e:
     if e.code==429:
      interval=max(5,base*2,state["interval"]*2)
-     wait=max(interval,retry_delay(e.headers))
+     wait=max(self.cooldown,interval,retry_delay(e.headers))
      state.update(interval=min(interval,3600),until=time.time()+wait)
      # The final host may differ after redirects. Preserve both cooldowns.
      self.hosts[host(e.filename)]=dict(state)
@@ -196,6 +212,14 @@ def progress_line(done, total, entries):
   status=entry.get("status","unknown");counts[status]=counts.get(status,0)+1
  return json.dumps({"processed":done,"pendingTotal":total,"captureStatuses":counts,"verification":"capture_status_only"},ensure_ascii=False,separators=(",",":"))
 
+def write_new_summary_drafts(articles,entries):
+ # Captures may change during retries; never replace an operator's saved review.
+ fresh=[a for a in articles if not (old.SUMMARY_DIRECTORY/f"{a.run_date}.md").exists()]
+ if fresh:
+  old.SUMMARY_DIRECTORY.mkdir(parents=True,exist_ok=True)
+  old.write_summaries(fresh,entries)
+
+
 def main():
  p=argparse.ArgumentParser()
  p.add_argument("--database",type=Path,default=old.DEFAULT_DATABASE_PATH)
@@ -206,9 +230,11 @@ def main():
  p.add_argument("--refresh",action="store_true")
  p.add_argument("--title-pattern",help="Process only articles whose title or excerpt matches this regular expression.")
  p.add_argument("--exclude-pattern",help="Skip articles whose title or excerpt matches this regular expression.")
- p.add_argument("--google-delay",type=float,default=5.0)
- p.add_argument("--publisher-delay",type=float,default=2.0)
- p.add_argument("--max-retries",type=int,default=4,help="Maximum attempts per URL, including the first")
+ p.add_argument("--google-delay",type=float,default=30.0)
+ p.add_argument("--publisher-delay",type=float,default=10.0)
+ p.add_argument("--global-delay",type=float,default=2.0,help="Minimum interval across all publisher requests, including redirects")
+ p.add_argument("--rate-cooldown",type=float,default=60,help="Minimum host cooldown after HTTP 429 (seconds)")
+ p.add_argument("--max-retries",type=int,default=2,help="Maximum attempts per URL, including the first")
  p.add_argument("--max-rate-wait",type=float,default=60,help="Longer cooldowns are persisted for a later invocation")
  p.add_argument("--env-file",type=Path,default=ROOT/".env")
  p.add_argument("--no-sync-contents",action="store_true")
@@ -222,7 +248,7 @@ def main():
  capture_lock=(DIR/"capture.lock").open("a")
  try:fcntl.flock(capture_lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
  except BlockingIOError:raise SystemExit("本文取得が既に実行中です。同時取得は開始しません。")
- db=a.database.expanduser();f=Fetch(a.google_delay,a.publisher_delay,a.max_retries,DIR/"rate-limit-state.json",a.max_rate_wait);old.http_bytes=f
+ db=a.database.expanduser();f=Fetch(a.google_delay,a.publisher_delay,a.max_retries,DIR/"rate-limit-state.json",a.max_rate_wait,a.global_delay,a.rate_cooldown);old.http_bytes=f
  if a.progress_file and not a.run_date:raise SystemExit("--progress-file には --run-date が必要です")
  db_arts=old.load_articles(db);record_arts=load_record_articles(a.run_date)
  if a.refetch_file:
@@ -268,7 +294,7 @@ def main():
  if a.progress_file:
   day_progress.update(completedUrls=sorted(day_completed),complete=all(x.url in completed_urls for x in arts),updatedAt=now())
   progress["completedUrls"]=sorted(global_completed);save_progress(a.progress_file,progress)
- if a.write:old.write_summaries(arts,e)
+ if a.write:write_new_summary_drafts(arts,e)
  print(progress_line(len(todo),len(todo),processed_entries),flush=True)
  waiting=[e[x.url]["retry_after"] for x in arts if e.get(x.url,{}).get("retry_after")]
  if waiting:print(json.dumps({"deferredByRateLimit":len(waiting),"nextRetryAt":datetime.fromtimestamp(min(waiting),timezone.utc).isoformat(),"resume":"rerun the same command at or after nextRetryAt; completed URLs stay cached"}),flush=True)

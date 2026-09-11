@@ -115,7 +115,7 @@ class Progress:
         if step in instructions:
             inputs = common + [generated[instructions[step]]]
             if step == "keywords":
-                inputs += [generated["keyword-candidates"], "docs/ai-rules/keyword-extraction.md", "config/keywords.json"]
+                inputs = [generated["structured-records"], generated["daily-digests"], generated[instructions[step]], generated["keyword-candidates"], "docs/ai-rules/operation-result.md", "docs/ai-rules/keyword-extraction.md", "config/keywords.json"]
             else:
                 inputs += review_rules
             if step in ("talent-review", "classification-review"):
@@ -132,7 +132,22 @@ class Progress:
             for name in REVIEW_STEPS:
                 if name != step:
                     inputs += self.outputs(name)
+        if step == "page":
+            inputs += ["apps/talent-dashboard/server.py"]
+            inputs += [str(p.relative_to(self.root)) for p in (self.root / "apps/talent-dashboard/web").rglob("*") if p.is_file()]
         return sorted(set(inputs))
+
+    def display_context(self):
+        return {s: self.load()["steps"].get(s, {}).get("checkedAt") for s in
+                ("apply-talent", "apply-classification", "dashboard")}
+
+    def display_recent(self, entry):
+        try:
+            age = (timestamp(now()) - timestamp(entry["checkedAt"])).total_seconds()
+            return (0 <= age <= 600 and entry.get("displayContext") == self.display_context()
+                    and entry.get("verification") == "operator_attested")
+        except (KeyError, ValueError, TypeError):
+            return False
 
     def load(self):
         if not self.file.exists():

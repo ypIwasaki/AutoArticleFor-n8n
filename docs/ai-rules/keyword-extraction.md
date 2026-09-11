@@ -41,3 +41,5 @@ keywords: [
 ````
 
 `Category` は `vtuber_agency / vtuber_group / company / talent / event / collaboration / product_or_goods / platform_or_media / topic / other`、`Confidence` は0.00–1.00、`Add` は `yes/no` とする。Evidenceには記事タイトル・抜粋・URLなど根拠を記載する。候補0件ならその旨を記載する。
+
+本文取得ファイルや共通レビューを判断根拠として参照した場合は、キーワードcheckpointの追加 `--evidence` にそのファイルを指定する。タイトル・RSS抜粋のみの場合は不要。

@@ -311,6 +311,17 @@ class OperationsTests(unittest.TestCase):
         with patch.object(n8n.Client, "request", return_value=None):
             self.assertEqual(self.operator.resume()["progress"]["page"], "needs_display_recheck")
 
+    def test_recent_display_reused_but_expiry_and_new_apply_require_recheck(self):
+        self.review("page")
+        with patch.object(n8n.Client,"request",return_value=None):
+            self.operator.checkpoint("page",["content/page-check.json"],"Screenshots and DOM checked")
+            self.assertEqual(self.operator.resume()["progress"]["page"],"completed")
+            entry=self.p.load()["steps"]["page"]
+            with patch("autoarticle_progress.now",return_value="2099-01-01T00:00:00+00:00"):
+                self.assertFalse(self.p.display_recent(entry))
+            self.p.record("dashboard","completed",files={},url=self.operator.dashboard)
+            self.assertFalse(self.p.display_recent(entry))
+
     def test_start_reachable_does_not_launch_or_collect(self):
         with patch.object(ops.subprocess, "Popen") as launch:
             result = self.operator.start("n8n")
@@ -336,6 +347,16 @@ class OperationsTests(unittest.TestCase):
         self.assertTrue(launch.call_args.kwargs["start_new_session"])
         self.assertNotIn("N8N_ENCRYPTION_KEY", launch.call_args.kwargs["env"])
         self.assertTrue(Path(result["log"]).is_file())
+
+    def test_slow_start_returns_pending_without_false_failure(self):
+        self.client.request=Mock(side_effect=Blocked("offline"))
+        process=Mock(pid=23456);process.poll.return_value=None
+        with patch.object(ops.socket,"create_connection",side_effect=ConnectionRefusedError), patch.object(ops.subprocess,"Popen",return_value=process) as launch, patch.object(ops.time,"sleep"):
+            result=self.operator.start("n8n")
+        self.assertEqual(result["status"],"starting")
+        self.assertEqual(result["retryAfterSeconds"],30)
+        self.assertEqual(self.p.load()["steps"]["n8n"]["status"],"starting")
+        launch.assert_called_once()
 
     def test_apply_requires_current_review(self):
         with self.assertRaisesRegex(Blocked, "review_missing"):

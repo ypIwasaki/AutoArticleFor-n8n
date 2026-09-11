@@ -17,13 +17,13 @@ class RateLimitTests(unittest.TestCase):
  def sleep(self,seconds):self.clock+=seconds
  def test_retry_after_then_resume_and_cache(self):
   f=c.Fetch(5,2,4)
-  with patch.object(c.request,'urlopen',side_effect=[self.limited({'Retry-After':'12'}),self.response()]) as opened:
+  with patch.object(c.Fetch,'open',side_effect=[self.limited({'Retry-After':'12'}),self.response()]) as opened:
    self.assertEqual(f('https://publisher.example/a')[0],b'ok')
    self.assertEqual(self.clock,1012)
    f('https://publisher.example/a');self.assertEqual(opened.call_count,2)
  def test_host_pacing_independent(self):
   f=c.Fetch(5,2,4)
-  with patch.object(c.request,'urlopen',side_effect=[self.response() for _ in range(3)]):
+  with patch.object(c.Fetch,'open',side_effect=[self.response() for _ in range(3)]):
    f('https://publisher.example/a');f('https://other.example/a');self.assertEqual(self.clock,1000)
    f('https://publisher.example/b');self.assertEqual(self.clock,1002)
  def test_date_retry_after(self):
@@ -32,17 +32,17 @@ class RateLimitTests(unittest.TestCase):
  def test_long_wait_persisted_and_other_host_continues(self):
   with tempfile.TemporaryDirectory() as tmp:
    state=Path(tmp)/'rate.json';f=c.Fetch(5,2,4,state)
-   with patch.object(c.request,'urlopen',side_effect=[self.limited({'Retry-After':'120'}),self.response()]) as opened:
+   with patch.object(c.Fetch,'open',side_effect=[self.limited({'Retry-After':'120'}),self.response()]) as opened:
     with self.assertRaises(c.RateDeferred) as error:f('https://publisher.example/a')
     self.assertEqual(error.exception.until,1120)
     g=c.Fetch(5,2,4,state)
     with self.assertRaises(c.RateDeferred):g('https://publisher.example/b')
     g('https://other.example/a');self.assertEqual(opened.call_count,2)
     self.clock=1120
-   with patch.object(c.request,'urlopen',return_value=self.response()):g('https://publisher.example/b')
+   with patch.object(c.Fetch,'open',return_value=self.response()):g('https://publisher.example/b')
  def test_retry_exhausted_is_due_next_run(self):
   f=c.Fetch(5,2,2)
-  with patch.object(c.request,'urlopen',side_effect=[self.limited(),self.limited()]) as opened:
+  with patch.object(c.Fetch,'open',side_effect=[self.limited(),self.limited()]) as opened:
    with self.assertRaises(c.RateDeferred) as error:f('https://publisher.example/a')
    self.assertEqual(opened.call_count,2)
   entry={'retry_after':error.exception.until}
@@ -56,4 +56,43 @@ class RateLimitTests(unittest.TestCase):
   self.assertFalse(c.eligible_article({'status':'verified','content_text':'saved'},retry=True))
   for args in [(0,0,0),(-1,1,2),(float('nan'),1,2)]:
    with self.assertRaises(ValueError):c.Fetch(*args)
+ def test_one_minute_cooldown_then_retry(self):
+  f=c.Fetch(30,10,2,global_delay=2,cooldown=60)
+  with patch.object(c.Fetch,'open',side_effect=[self.limited(),self.response()]) as opened:
+   self.assertEqual(f('https://publisher.example/a')[0],b'ok')
+   self.assertEqual(opened.call_count,2);self.assertEqual(self.clock,1060)
+ def test_shorter_default_still_respects_long_retry_after(self):
+  f=c.Fetch(30,10,2,global_delay=2,cooldown=60)
+  with patch.object(c.Fetch,'open',side_effect=self.limited({'Retry-After':'120'})) as opened:
+   with self.assertRaises(c.RateDeferred) as failure:f('https://publisher.example/a')
+   self.assertEqual(opened.call_count,1);self.assertEqual(failure.exception.until,1120)
+ def test_redirects_use_target_host_and_global_pacing(self):
+  f=c.Fetch(30,10,2,global_delay=2)
+  f.reserve('https://publisher.example/first')
+  handler=c.PacedRedirect(f)
+  redirected=handler.redirect_request(c.request.Request('https://short.example/a'),None,302,'found',{},'https://publisher.example/next')
+  self.assertEqual(redirected.full_url,'https://publisher.example/next')
+  self.assertEqual(self.clock,1010)
+  f.reserve('https://other.example/a');self.assertEqual(self.clock,1012)
+ def test_successful_request_spacing_survives_restart(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   state=Path(tmp)/'rate.json'
+   c.Fetch(30,10,2,state).reserve('https://publisher.example/a')
+   c.Fetch(30,10,2,state).reserve('https://publisher.example/b')
+   self.assertEqual(self.clock,1010)
+ def test_global_pacing_survives_restart_on_another_host(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   state=Path(tmp)/'rate.json'
+   c.Fetch(30,10,2,state,global_delay=2).reserve('https://publisher.example/a')
+   c.Fetch(30,10,2,state,global_delay=2).reserve('https://other.example/a')
+   self.assertEqual(self.clock,1002)
+ def test_retry_capture_does_not_replace_saved_summary(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   directory=Path(tmp);saved=directory/'2026-09-11.md';saved.write_text('reviewed')
+   article=Mock(run_date='2026-09-11')
+   with patch.object(c.old,'SUMMARY_DIRECTORY',directory),patch.object(c.old,'write_summaries') as write:
+    c.write_new_summary_drafts([article],{});write.assert_not_called()
+    self.assertEqual(saved.read_text(),'reviewed')
+    fresh=Mock(run_date='2026-09-12')
+    c.write_new_summary_drafts([article,fresh],{});write.assert_called_once_with([fresh],{})
 if __name__=='__main__':unittest.main()

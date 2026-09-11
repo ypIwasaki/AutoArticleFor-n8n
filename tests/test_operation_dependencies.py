@@ -67,4 +67,21 @@ class DependencyTests(unittest.TestCase):
         change=self.p.changes(entry)
         self.assertGreater(change['changedFileCount'],10);self.assertEqual(len(change['changedFiles']),10)
 
+    def test_metadata_keywords_survive_body_and_shared_review_changes(self):
+        entry=self.checkpoint('keywords')
+        self.put('content/article-body-captures/2026-09-10.jsonl','new body')
+        self.put('content/article-review-facts/2026-09-10.jsonl','new review')
+        self.assertTrue(self.p.current(entry))
+        self.put(self.p.generated()['structured-records'],'new titles')
+        self.assertFalse(self.p.current(entry))
+    def test_body_evidence_used_for_keywords_remains_protected(self):
+        body='content/article-body-captures/2026-09-10.jsonl';self.put(body)
+        entry=self.checkpoint('keywords',[body]);self.put(body,'changed')
+        self.assertFalse(self.p.current(entry))
+    def test_display_code_change_invalidates_checkpoint(self):
+        page='apps/talent-dashboard/web/app.js';self.put(page)
+        evidence='content/display.md';self.put(evidence)
+        entry=self.checkpoint('page',[evidence]);self.put(page,'changed')
+        self.assertFalse(self.p.current(entry))
+
 if __name__=='__main__':unittest.main()

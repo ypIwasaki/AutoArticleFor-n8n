@@ -109,7 +109,7 @@ class Operations:
                         if step in ("dashboard", "page") and entry.get("url") != self.dashboard:
                             raise Blocked("dashboard_target_changed")
                         client.request("/healthz" if step == "n8n" else "/api/health")
-                        state = "needs_display_recheck" if step == "page" else "completed"
+                        state = "needs_display_recheck" if step == "page" and not self.progress.display_recent(entry) else "completed"
                     elif step.startswith("apply-"):
                         kind = step[6:]
                         workflow, _ = self.workflow(kind)
@@ -201,6 +201,7 @@ class Operations:
             extra = {k: v for k, v in entry.items() if k not in ("status", "checkedAt", "target")}
             if step == "page":
                 extra["url"] = self.dashboard
+                extra["displayContext"] = self.progress.display_context()
             else:
                 extra["metricsStatus"] = weekly.get("status", "unknown")
             self.progress.record(step, "completed", **extra)
@@ -294,7 +295,8 @@ class Operations:
                 continue
             self.progress.record(service, "completed", files={}, verification="http_reachable", pid=process.pid, log=str(log), url=client.base)
             return {"step": service, "status": "reachable", "url": client.base, "log": str(log)}
-        raise Blocked("startup_not_ready_process_may_still_be_running")
+        return {"step": service, "status": "starting", "url": client.base, "log": str(log),
+                "retryAfterSeconds": 30, "next": "wait 30 seconds, then resume; do not start another process"}
 
 
 def main(argv=None):

@@ -31,11 +31,10 @@ only in `config/keywords.json`.
 ## Talent-derived keywords
 
 The Daily Keyword News Summary workflow reads the n8n `talents` Data Table at
-run time. Every registered `display_name` except a row whose `status` is
-`rejected` is added to the default search keywords. This list is not stored in
-`autoKeywords`, is not subject to `maxAutoKeywords`, and is refreshed whenever
-a talent proposal is applied. New talent records therefore become searchable on
-the next scheduled or keyword-unspecified run.
+run time. Only rows with `status: approved` and `search_enabled: true` contribute
+`display_name` keywords. Excluded terms are filtered out. This derived list is not
+stored in `autoKeywords` and is not subject to `maxAutoKeywords`. Registering a
+pending talent alone does not enable searching.
 
 ## Webhook override
 

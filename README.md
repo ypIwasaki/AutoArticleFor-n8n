@@ -3,6 +3,10 @@
 This repository stores n8n workflow definitions and operating notes for a daily
 keyword-based news and web-content summarization project.
 
+## 利用マニュアル
+
+[HTML利用マニュアル](docs/user-manual.html)：キーワード管理、記事の採否判断、DB反映、日次運用、トークン比較を検索・目次付きで確認できます。HTMLファイルをブラウザで直接開けます。ローカルで閲覧する場合は `python3 scripts/serve_user_manual.py` を実行し、`http://127.0.0.1:8878/docs/user-manual.html` を開いてください。
+
 ## What is included
 
 - `n8n/workflows/daily-keyword-news-summary.workflow.json`

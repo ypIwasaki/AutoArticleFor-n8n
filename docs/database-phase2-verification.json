@@ -1,0 +1,140 @@
+{
+  "phase": 2,
+  "status": "complete",
+  "verified_at": "2026-09-14T04:32:14.342403+00:00",
+  "scope": "Phase 2 only; no migration or legacy cutover",
+  "environment": {
+    "python": "3.8.10",
+    "sqlite": "3.31.1",
+    "platform": "Linux",
+    "clean_environment": "new temporary project and pip-free venv on same host"
+  },
+  "previous_stop": {
+    "phase": 2,
+    "status": "stopped",
+    "check": "foreign_keys_enabled_on_every_backup_and_restore_connection",
+    "observations": [
+      {
+        "source_foreign_keys": 1,
+        "destination_foreign_keys": 0
+      },
+      {
+        "source_foreign_keys": 1,
+        "destination_foreign_keys": 0
+      }
+    ],
+    "legacy_modified": false
+  },
+  "test_command": "python3 -m unittest discover -s scripts -p 'test_project_database*.py' -v",
+  "tests_run": 14,
+  "failures": 0,
+  "errors": 0,
+  "tests": [
+    {
+      "test": "test_project_database.FoundationTests.test_atomic_invalid_reference_and_retry",
+      "status": "passed"
+    },
+    {
+      "test": "test_project_database.FoundationTests.test_constraints_and_immutable_id",
+      "status": "passed"
+    },
+    {
+      "test": "test_project_database.FoundationTests.test_external_configuration_rejected",
+      "status": "passed"
+    },
+    {
+      "test": "test_project_database.FoundationTests.test_http_contract",
+      "status": "passed"
+    },
+    {
+      "test": "test_project_database.FoundationTests.test_legacy_database_rejected_before_wal",
+      "status": "passed"
+    },
+    {
+      "test": "test_project_database.FoundationTests.test_migration_transaction_and_checksum",
+      "status": "passed"
+    },
+    {
+      "test": "test_project_database.FoundationTests.test_no_proposal_approval_or_sql",
+      "status": "passed"
+    },
+    {
+      "test": "test_project_database.FoundationTests.test_repeat_and_backup_restore",
+      "status": "passed"
+    },
+    {
+      "test": "test_project_database_acceptance.Phase2AcceptanceTests.test_backup_restore_all_connection_settings",
+      "status": "passed"
+    },
+    {
+      "test": "test_project_database_acceptance.Phase2AcceptanceTests.test_cli_and_service_in_clean_stdlib_environment",
+      "status": "passed"
+    },
+    {
+      "test": "test_project_database_acceptance.Phase2AcceptanceTests.test_configuration_rejects_invalid_values",
+      "status": "passed"
+    },
+    {
+      "test": "test_project_database_acceptance.Phase2AcceptanceTests.test_destination_failure_closes_source",
+      "status": "passed"
+    },
+    {
+      "test": "test_project_database_acceptance.Phase2AcceptanceTests.test_disabled_foreign_keys_fail_closed",
+      "status": "passed"
+    },
+    {
+      "test": "test_project_database_acceptance.Phase2AcceptanceTests.test_schema_snapshot_and_reproducible_upgrade",
+      "status": "passed"
+    }
+  ],
+  "foreign_key_regression": {
+    "backup": {
+      "source": 1,
+      "destination": 1
+    },
+    "restore": {
+      "source": 1,
+      "destination": 1
+    },
+    "verified_by": "test_backup_restore_all_connection_settings"
+  },
+  "phase1_backup": {
+    "path": ".operation-state/database-consolidation/20260914T040750.644763Z",
+    "sha256_unchanged": true,
+    "baseline_record_retained": true,
+    "file_inventory_retained": true,
+    "restore_test_retained": true
+  },
+  "git_ignore_checks": {
+    "data/autoarticle.sqlite": true,
+    "data/autoarticle.sqlite-wal": true,
+    "data/autoarticle.sqlite-shm": true,
+    "data/autoarticle.sqlite-journal": true,
+    "data/backups/acceptance.sqlite": true,
+    ".operation-state/database-consolidation/20260914T040750.644763Z/n8n.sqlite": true
+  },
+  "artifact_sha256": {
+    ".gitignore": "d8caef7037ffdd005640131b8f640fc3c067fb02a13dce57e56f241e56fcd839",
+    "database/schema.sql": "a14af4234486e082b7dabb915c19bb2fd6325537fa719c3e397d9d6dab5d8473",
+    "database/migrations/001_initial.sql": "a14af4234486e082b7dabb915c19bb2fd6325537fa719c3e397d9d6dab5d8473",
+    "scripts/project_database.py": "f8ee64f39f371f4a5a807ee5ff73a6aa3a59906e8756c0a7a4fe125c15a8de57",
+    "scripts/autoarticle_db.py": "40d10efffff45853b79aa759e79b27b6b2eb11881555db25f3c006d07e101363",
+    "scripts/autoarticle_db_service.py": "3aa302500273ebbb7e589d0e1b231d4b20e9b3b09556477311614c2801199222",
+    "scripts/test_project_database.py": "512d661cbbbf06beb50b53e78c8000d85f429f6ba44cbc02df26247399664d11",
+    "scripts/test_project_database_acceptance.py": "4e35160e4c6a5069a1862d6ba42106ae7fae24ad7aaf0ee00ed3088a79a31b97",
+    "docs/database-phase2-development.md": "39bc48fe7414a6c0ce2fcd90c0b8a177ea8ae079116af21158c1b12cc81a2c45"
+  },
+  "acceptance": {
+    "new_environment_empty_database": true,
+    "repeated_migration_unchanged": true,
+    "external_sql_interface_absent": true,
+    "all_phase2_deliverables_present": true
+  },
+  "legacy_modified": false,
+  "phase3_started": false,
+  "operational_service_started": false,
+  "test_services_stopped": true,
+  "unresolved_phase2_items": [],
+  "next_phase_gate": "Before phase 3, recheck idle writers and obtain a fresh recovery point and baseline if inputs changed.",
+  "final_review": "Git ignore line endings normalized; no behavior change after tests."
+}

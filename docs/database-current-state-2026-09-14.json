@@ -1,0 +1,760 @@
+{
+  "schema": {
+    "observedAt": "2026-09-14T02:02:42.974276+00:00",
+    "databasePath": "/home/raimu/.n8n/database.sqlite",
+    "sqliteVersion": "3.31.1",
+    "journalMode": "wal",
+    "tables": [
+      {
+        "name": "article_classifications",
+        "tableId": "D8O0LdG5wjlFd615",
+        "physicalTable": "data_table_user_D8O0LdG5wjlFd615",
+        "count": 830,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "integer",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "article_key",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "article_type",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "primary_category",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "secondary_categories_json",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "relevance",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "confidence",
+            "type": "real",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "evidence_text",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "classification_method",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "classified_at",
+            "type": "datetime(3)",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 10,
+            "name": "createdAt",
+            "type": "datetime(3)",
+            "notnull": 1,
+            "dflt_value": "STRFTIME('%Y-%m-%d %H:%M:%f', 'NOW')",
+            "pk": 0
+          },
+          {
+            "cid": 11,
+            "name": "updatedAt",
+            "type": "datetime(3)",
+            "notnull": 1,
+            "dflt_value": "STRFTIME('%Y-%m-%d %H:%M:%f', 'NOW')",
+            "pk": 0
+          }
+        ],
+        "indexes": [],
+        "foreignKeys": []
+      },
+      {
+        "name": "article_contents",
+        "tableId": "zcsbkDjtHx8ixldU",
+        "physicalTable": "data_table_user_zcsbkDjtHx8ixldU",
+        "count": 14822,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "integer",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "article_key",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "original_url",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "resolved_url",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "source_domain",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "content_type",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "content_status",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "content_text",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "content_length",
+            "type": "real",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "content_hash",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 10,
+            "name": "extraction_method",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 11,
+            "name": "failure_reason",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 12,
+            "name": "content_path",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 13,
+            "name": "fetched_at",
+            "type": "datetime(3)",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 14,
+            "name": "createdAt",
+            "type": "datetime(3)",
+            "notnull": 1,
+            "dflt_value": "STRFTIME('%Y-%m-%d %H:%M:%f', 'NOW')",
+            "pk": 0
+          },
+          {
+            "cid": 15,
+            "name": "updatedAt",
+            "type": "datetime(3)",
+            "notnull": 1,
+            "dflt_value": "STRFTIME('%Y-%m-%d %H:%M:%f', 'NOW')",
+            "pk": 0
+          }
+        ],
+        "indexes": [],
+        "foreignKeys": []
+      },
+      {
+        "name": "article_feedback",
+        "tableId": "tpNuI6usWl5x1wnR",
+        "physicalTable": "data_table_user_tpNuI6usWl5x1wnR",
+        "count": 16,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "integer",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "article_key",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "article_url",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "is_rejected",
+            "type": "boolean",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "reason_code",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "source_domain",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "publisher_label",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "title_signature",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "reviewed_at",
+            "type": "datetime(3)",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "review_source",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 10,
+            "name": "createdAt",
+            "type": "datetime(3)",
+            "notnull": 1,
+            "dflt_value": "STRFTIME('%Y-%m-%d %H:%M:%f', 'NOW')",
+            "pk": 0
+          },
+          {
+            "cid": 11,
+            "name": "updatedAt",
+            "type": "datetime(3)",
+            "notnull": 1,
+            "dflt_value": "STRFTIME('%Y-%m-%d %H:%M:%f', 'NOW')",
+            "pk": 0
+          }
+        ],
+        "indexes": [],
+        "foreignKeys": []
+      },
+      {
+        "name": "article_talents",
+        "tableId": "yRjO5ajn72B5hvxA",
+        "physicalTable": "data_table_user_yRjO5ajn72B5hvxA",
+        "count": 1675,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "integer",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "relation_key",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "article_key",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "talent_id",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "matched_aliases_json",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "matched_fields",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "evidence_text",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "confidence",
+            "type": "real",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "detection_method",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "last_seen_at",
+            "type": "datetime(3)",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 10,
+            "name": "createdAt",
+            "type": "datetime(3)",
+            "notnull": 1,
+            "dflt_value": "STRFTIME('%Y-%m-%d %H:%M:%f', 'NOW')",
+            "pk": 0
+          },
+          {
+            "cid": 11,
+            "name": "updatedAt",
+            "type": "datetime(3)",
+            "notnull": 1,
+            "dflt_value": "STRFTIME('%Y-%m-%d %H:%M:%f', 'NOW')",
+            "pk": 0
+          }
+        ],
+        "indexes": [],
+        "foreignKeys": []
+      },
+      {
+        "name": "articles",
+        "tableId": "SxxxaIzNRCuyag42",
+        "physicalTable": "data_table_user_SxxxaIzNRCuyag42",
+        "count": 18009,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "integer",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "article_key",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "url",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "title",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "excerpt",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "source",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "published_at",
+            "type": "datetime(3)",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "last_seen_at",
+            "type": "datetime(3)",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "createdAt",
+            "type": "datetime(3)",
+            "notnull": 1,
+            "dflt_value": "STRFTIME('%Y-%m-%d %H:%M:%f', 'NOW')",
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "updatedAt",
+            "type": "datetime(3)",
+            "notnull": 1,
+            "dflt_value": "STRFTIME('%Y-%m-%d %H:%M:%f', 'NOW')",
+            "pk": 0
+          }
+        ],
+        "indexes": [],
+        "foreignKeys": []
+      },
+      {
+        "name": "talents",
+        "tableId": "OF29JuraLMGFrnxt",
+        "physicalTable": "data_table_user_OF29JuraLMGFrnxt",
+        "count": 604,
+        "columns": [
+          {
+            "cid": 0,
+            "name": "id",
+            "type": "integer",
+            "notnull": 1,
+            "dflt_value": null,
+            "pk": 1
+          },
+          {
+            "cid": 1,
+            "name": "talent_id",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 2,
+            "name": "display_name",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 3,
+            "name": "organization",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 4,
+            "name": "aliases_json",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 5,
+            "name": "status",
+            "type": "text",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 6,
+            "name": "search_enabled",
+            "type": "boolean",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 7,
+            "name": "auto_discovered",
+            "type": "boolean",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 8,
+            "name": "last_seen_at",
+            "type": "datetime(3)",
+            "notnull": 0,
+            "dflt_value": null,
+            "pk": 0
+          },
+          {
+            "cid": 9,
+            "name": "createdAt",
+            "type": "datetime(3)",
+            "notnull": 1,
+            "dflt_value": "STRFTIME('%Y-%m-%d %H:%M:%f', 'NOW')",
+            "pk": 0
+          },
+          {
+            "cid": 10,
+            "name": "updatedAt",
+            "type": "datetime(3)",
+            "notnull": 1,
+            "dflt_value": "STRFTIME('%Y-%m-%d %H:%M:%f', 'NOW')",
+            "pk": 0
+          }
+        ],
+        "indexes": [],
+        "foreignKeys": []
+      }
+    ]
+  },
+  "audit": {
+    "duplicates": {
+      "articles:article_key": {
+        "groups": 0,
+        "extraRows": 0
+      },
+      "articles:url": {
+        "groups": 114,
+        "extraRows": 139
+      },
+      "talents:talent_id": {
+        "groups": 0,
+        "extraRows": 0
+      },
+      "article_talents:relation_key": {
+        "groups": 0,
+        "extraRows": 0
+      },
+      "article_talents:article_key,talent_id": {
+        "groups": 27,
+        "extraRows": 27
+      },
+      "article_classifications:article_key": {
+        "groups": 0,
+        "extraRows": 0
+      },
+      "article_contents:article_key": {
+        "groups": 0,
+        "extraRows": 0
+      },
+      "article_contents:original_url": {
+        "groups": 37,
+        "extraRows": 37
+      },
+      "article_feedback:article_key": {
+        "groups": 0,
+        "extraRows": 0
+      }
+    },
+    "orphanRows": {
+      "article_talents:article_key": 0,
+      "article_classifications:article_key": 0,
+      "article_contents:article_key": 13624,
+      "article_feedback:article_key": 0,
+      "article_talents:talent_id": 0
+    },
+    "statusCounts": {
+      "article_contents": {
+        "metadata_only": 17,
+        "partial": 277,
+        "unavailable": 13884,
+        "unverified": 3,
+        "verified": 641
+      },
+      "talents": {
+        "approved": 389,
+        "pending": 215
+      }
+    },
+    "files": {
+      "structured-records": {
+        "files": 38,
+        "bytes": 156067194
+      },
+      "article-body-captures": {
+        "files": 41,
+        "bytes": 88427342
+      },
+      "article-review-facts": {
+        "files": 3,
+        "bytes": 1780819
+      },
+      "article-summaries": {
+        "files": 38,
+        "bytes": 9094361
+      },
+      "talent-index-proposals": {
+        "files": 73,
+        "bytes": 17966051
+      },
+      "article-classification-proposals": {
+        "files": 63,
+        "bytes": 1811360
+      },
+      "article-feedback-instructions": {
+        "files": 6,
+        "bytes": 23247
+      },
+      "weekly-reports": {
+        "files": 9,
+        "bytes": 95858
+      },
+      "operation-usage": {
+        "files": 7,
+        "bytes": 499367
+      }
+    },
+    "contentUrlMatchedButKeyNotMatched": 13624,
+    "blankKeys": {
+      "articles": 0,
+      "article_contents": 0,
+      "article_classifications": 0,
+      "article_feedback": 0,
+      "article_talents": 0
+    }
+  }
+}

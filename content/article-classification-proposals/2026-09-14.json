@@ -1,0 +1,138 @@
+{
+  "proposalVersion": 1,
+  "proposalDate": "2026-09-14",
+  "classifications": [
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9TeWlKRjJkSk50dXRuZzRidncwUExYcTkxZkwxN0w2c1BYLUxzc3BONi1XQ245RUJMbXN4VXVkZmdRZFdQdGZnby1ZTlFMOFI1NjBLWWhLWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.93,
+      "evidence_text": "AppMediaは、ホロライブドリームスの編成をスコア重視・回復重視・判定強化などの目的別に紹介している。リーダーの衣装スキルとメンバーのタイプ・所属条件を合わせ、パッシブの発動条件を満たす考え方を説明する。保存本文は過去取得のため、現在の性能や開催中ガチャの確認には使わない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-14T00:18:37Z",
+      "inputHash": "fc9e05064b4f021ef5b83df801cf6ebaa73baa25daf697ec4230b46fe9efec84"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5jd3FBN0RKa1duMy1ySFM2MGotM0pKOFNoTmo0YzQtSGxTWndRNlFQbURqR2dFczl3N21vRTlCRGx3S1gyUWhJc1g5a19vR1RuVmRZZHlsWQ?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.93,
+      "evidence_text": "AppMediaの保存版ランキングは、スコア上昇効果を持つキャラと、初心者向けの回復・判定強化キャラを分けて評価している。リーダーには汎用的なパラメータ上昇などを評価軸として示す一方、好きなメンバーで遊ぶことも勧めている。過去に取得したページであり、今日の最新順位や票数を示すものではない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-14T00:18:37Z",
+      "inputHash": "fd2e9ffa4c92cba3cc85a29172d59b78955ac29141de3df2bfc149a01e2d1f0b"
+    },
+    {
+      "article_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBBM0hEenF5TWw2NmVvRTJ0VHFGR1piNHlQRjI5SlJoNEVXSkdSM3l4NmVPT21RcXltMjItc0pud2JoVXpJWG1kcjZIR3pMQkdxeDJoMXpPbw?oc=5",
+      "article_type": "guide_or_database",
+      "primary_category": "game_or_technology",
+      "secondary_categories_json": [],
+      "relevance": "in_scope",
+      "confidence": 0.93,
+      "evidence_text": "AppMediaのリセマラ解説は、高確率かつ複数のスコア上昇効果を持つキャラを評価する。スコアを追わずクリアを目指す場合には、ライフ回復や判定強化も選択肢として挙げ、好きなキャラを選ぶことを認めている。保存本文に別ゲーム名などの不整合があるため、細かな性能・確率や最新順位は採用しない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-14T00:18:37Z",
+      "inputHash": "226a1b817ae3dd5dcb50d7d7edc83113b8c55e837d1347d26fb02976ec93d20b"
+    },
+    {
+      "article_url": "https://tails-of-devil.hatenablog.com/entry/2026/09/13/222311",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.93,
+      "evidence_text": "筆者は、9月1日に始まった入院中の食事を写真とともに振り返る。薄味や献立の好みについて個人的な感想を述べ、9月10日の退院後に普段の食事を楽しめたと記す。VTuberの活動を扱う記事ではない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-14T00:18:37Z",
+      "inputHash": "a51f19fd8ee09fe71cb63405de321d2da4c238072cd9acfc54fab041de65bd13"
+    },
+    {
+      "article_url": "https://kabumatome.doorblog.jp/archives/66032963.html",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.93,
+      "evidence_text": "市況かぶ全力２階建は、沖縄県知事選を巡るSNS投稿をまとめている。経済・雇用や基地問題についての投稿を掲載しているが、投稿者の意見を選挙結果の一次確認や事実認定とは扱わない。VTuberの活動との直接の関連は確認できない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-14T00:18:37Z",
+      "inputHash": "b4487cd4d172b8d3354d4c90067dbf0a7be7c2298c60eaa99287a5469c301e8b"
+    },
+    {
+      "article_url": "https://kaz-ataka.hatenablog.com/entry/2026/09/13/175045",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.93,
+      "evidence_text": "筆者は、AIによる数学研究を巡る議論を題材に、答えを得ることと理解を育てることの違いを論じる。問題と向き合う過程や研究者間の共有が、次世代の知識・技能につながると強調する。紹介された証明や声明の真偽を独立に検証した記事ではなく、筆者の考察として整理する。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-14T00:18:37Z",
+      "inputHash": "e1784a5d88e7c8d2c1b8151024b94c28069f7032eae86e6e19c98909a3903dc6"
+    },
+    {
+      "article_url": "https://omocoro.jp/bros/kiji/588936/",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.93,
+      "evidence_text": "ライターのナ月は、子供の頃に果たせなかった電子工作への思いから、LEDキットの組立てに挑戦する。多数の部品をはんだ付けして音に反応する装置を完成させ、作業は大変だったものの楽しかったと振り返る。VTuberの長時間配信を作業中に流した言及はあるが、主題は工作体験である。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-14T00:18:37Z",
+      "inputHash": "1a64726ab9c087351fd04910aa107fcb17676779c0459731f0cae20b118f67a3"
+    },
+    {
+      "article_url": "https://anond.hatelabo.jp/20260913180138",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "low_relevance",
+      "confidence": 0.93,
+      "evidence_text": "匿名筆者は、家族との会話をきっかけに、うまい棒のキャラクターの見え方や商品選択との関係を考察する。長年の親しみや味への評価を仮説として挙げ、最後には自身の類似性に対する思い込みを見直している。権利関係やバーチャルタレントに関する記述は独立確認されていない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-14T00:18:37Z",
+      "inputHash": "49c6687e7db0611bb6c9b82376ca0a42c8d552077cbb5517b6e5890148baf6f4"
+    },
+    {
+      "article_url": "https://anond.hatelabo.jp/20260913171115",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.93,
+      "evidence_text": "匿名筆者は、将来のLLMを振り返るという設定で、意識の有無と権利の扱いを論じる創作的な文章を掲載している。マルチエージェントの報酬や仕事を終了する権利をめぐる筋書きが中心であり、現在のAIの状態を報じたニュースではない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-14T00:18:37Z",
+      "inputHash": "91134b12053554e7adea0ea9968fff551fe3aa010f78748d73058be04f304744"
+    },
+    {
+      "article_url": "https://europalove2.hatenadiary.com/entry/2026/09/12/110000",
+      "article_type": "other",
+      "primary_category": "other",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.93,
+      "evidence_text": "ドイツ在住の筆者は、求人への問い合わせで不自然な宛名や返信先の問題に遭遇した経験を記す。メールのやり取りから職場でのPC利用について感想を述べる個人の体験記であり、国籍や地域一般の能力を示す根拠とは扱わない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-14T00:18:37Z",
+      "inputHash": "9b428aaca6e0d18124ea7dc9d3adae0f5accbb4063e10313c7d013a71eda30bb"
+    },
+    {
+      "article_url": "https://xn--p9jk3ds84vno2b4vj.com/amelia-bedelia-makes-a-friend.html",
+      "article_type": "other",
+      "primary_category": "media_or_editorial",
+      "secondary_categories_json": [],
+      "relevance": "out_of_scope",
+      "confidence": 0.93,
+      "evidence_text": "記事は絵本「Amelia Bedelia Makes a Friend」のあらすじと英語学習のポイントを紹介する。親友との別れから新しい隣人との交流へ進む物語を題材に、日常表現や読み聞かせ向け情報を整理している。VTuberの活動とは直接関係しない。",
+      "classification_method": "ai_review",
+      "classified_at": "2026-09-14T00:18:37Z",
+      "inputHash": "191360f8d7f3124c9bf82f9e353d31961458d5b534c66c8406cd970344065536"
+    }
+  ]
+}

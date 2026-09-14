@@ -1,0 +1,5088 @@
+{
+  "reportKind": "autoarticle-token-usage",
+  "schemaVersion": 1,
+  "workDate": "2026-09-14",
+  "timezone": "Asia/Tokyo",
+  "status": "provisional_observations",
+  "rows": [
+    {
+      "runDate": "2026-09-14",
+      "step": "apply-classification",
+      "attempts": 1,
+      "open": false,
+      "tokens": {
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null
+      },
+      "sampleCount": 0,
+      "derivedIntervals": 0,
+      "status": "unmeasured"
+    },
+    {
+      "runDate": "2026-09-14",
+      "step": "apply-talent",
+      "attempts": 1,
+      "open": false,
+      "tokens": {
+        "input_tokens": 74297,
+        "output_tokens": 53,
+        "total_tokens": 74350,
+        "cached_input_tokens": 73728,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 12
+      },
+      "sampleCount": 1,
+      "derivedIntervals": 0,
+      "status": "observed_partial"
+    },
+    {
+      "runDate": "2026-09-14",
+      "step": "capture",
+      "attempts": 2,
+      "open": false,
+      "tokens": {
+        "input_tokens": 1223363,
+        "output_tokens": 2610,
+        "total_tokens": 1225973,
+        "cached_input_tokens": 1209088,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 326
+      },
+      "sampleCount": 19,
+      "derivedIntervals": 0,
+      "status": "observed_partial"
+    },
+    {
+      "runDate": "2026-09-14",
+      "step": "classification-review",
+      "attempts": 3,
+      "open": false,
+      "tokens": {
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null
+      },
+      "sampleCount": 0,
+      "derivedIntervals": 0,
+      "status": "unmeasured"
+    },
+    {
+      "runDate": "2026-09-14",
+      "step": "collect",
+      "attempts": 1,
+      "open": false,
+      "tokens": {
+        "input_tokens": 1100316,
+        "output_tokens": 2761,
+        "total_tokens": 1103077,
+        "cached_input_tokens": 1081600,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 359
+      },
+      "sampleCount": 24,
+      "derivedIntervals": 0,
+      "status": "observed_partial"
+    },
+    {
+      "runDate": "2026-09-14",
+      "step": "dashboard",
+      "attempts": 1,
+      "open": false,
+      "tokens": {
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null
+      },
+      "sampleCount": 0,
+      "derivedIntervals": 0,
+      "status": "unmeasured"
+    },
+    {
+      "runDate": "2026-09-14",
+      "step": "keywords",
+      "attempts": 1,
+      "open": false,
+      "tokens": {
+        "input_tokens": 906635,
+        "output_tokens": 2097,
+        "total_tokens": 908732,
+        "cached_input_tokens": 873216,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 276
+      },
+      "sampleCount": 7,
+      "derivedIntervals": 0,
+      "status": "observed_partial"
+    },
+    {
+      "runDate": "2026-09-14",
+      "step": "n8n",
+      "attempts": 1,
+      "open": false,
+      "tokens": {
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null
+      },
+      "sampleCount": 0,
+      "derivedIntervals": 0,
+      "status": "unmeasured"
+    },
+    {
+      "runDate": "2026-09-14",
+      "step": "page",
+      "attempts": 1,
+      "open": false,
+      "tokens": {
+        "input_tokens": 238864,
+        "output_tokens": 622,
+        "total_tokens": 239486,
+        "cached_input_tokens": 230144,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 67
+      },
+      "sampleCount": 3,
+      "derivedIntervals": 0,
+      "status": "observed_partial"
+    },
+    {
+      "runDate": "2026-09-14",
+      "step": "preflight",
+      "attempts": 4,
+      "open": false,
+      "tokens": {
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null
+      },
+      "sampleCount": 0,
+      "derivedIntervals": 0,
+      "status": "unmeasured"
+    },
+    {
+      "runDate": "2026-09-14",
+      "step": "report",
+      "attempts": 1,
+      "open": false,
+      "tokens": {
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null
+      },
+      "sampleCount": 0,
+      "derivedIntervals": 0,
+      "status": "unmeasured"
+    },
+    {
+      "runDate": "2026-09-14",
+      "step": "shared-review",
+      "attempts": 4,
+      "open": false,
+      "tokens": {
+        "input_tokens": 4552593,
+        "output_tokens": 10901,
+        "total_tokens": 4563494,
+        "cached_input_tokens": 4433920,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 2570
+      },
+      "sampleCount": 25,
+      "derivedIntervals": 0,
+      "status": "observed_partial"
+    },
+    {
+      "runDate": "2026-09-14",
+      "step": "summary",
+      "attempts": 3,
+      "open": false,
+      "tokens": {
+        "input_tokens": 542970,
+        "output_tokens": 805,
+        "total_tokens": 543775,
+        "cached_input_tokens": 531584,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 272
+      },
+      "sampleCount": 3,
+      "derivedIntervals": 0,
+      "status": "observed_partial"
+    },
+    {
+      "runDate": "2026-09-14",
+      "step": "talent-review",
+      "attempts": 3,
+      "open": false,
+      "tokens": {
+        "input_tokens": null,
+        "output_tokens": null,
+        "total_tokens": null,
+        "cached_input_tokens": null,
+        "cache_write_input_tokens": null,
+        "reasoning_output_tokens": null
+      },
+      "sampleCount": 0,
+      "derivedIntervals": 0,
+      "status": "unmeasured"
+    },
+    {
+      "runDate": "2026-09-14",
+      "step": "unassigned",
+      "attempts": 0,
+      "open": false,
+      "tokens": {
+        "input_tokens": 2914661,
+        "output_tokens": 11281,
+        "total_tokens": 2925942,
+        "cached_input_tokens": 2862976,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 895
+      },
+      "sampleCount": 26,
+      "derivedIntervals": 0,
+      "status": "observed_partial"
+    },
+    {
+      "runDate": "2026-09-14",
+      "step": "weekly",
+      "attempts": 3,
+      "open": false,
+      "tokens": {
+        "input_tokens": 356705,
+        "output_tokens": 3367,
+        "total_tokens": 360072,
+        "cached_input_tokens": 326272,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 91
+      },
+      "sampleCount": 8,
+      "derivedIntervals": 0,
+      "status": "observed_partial"
+    }
+  ],
+  "knownTotals": {
+    "input_tokens": 11910404,
+    "output_tokens": 34497,
+    "total_tokens": 11944901,
+    "cached_input_tokens": 11622528,
+    "cache_write_input_tokens": 0,
+    "reasoning_output_tokens": 4868
+  },
+  "intervals": [
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "measurement_window_boundary",
+      "candidates": [
+        "n8n"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 333877,
+      "start": "2026-09-14T00:00:00.080000+00:00",
+      "end": "2026-09-14T00:00:19.946000+00:00",
+      "tokens": {
+        "input_tokens": 38117,
+        "output_tokens": 260,
+        "total_tokens": 38377,
+        "cached_input_tokens": 37888,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 219113,
+        "output_tokens": 611,
+        "total_tokens": 219724,
+        "cached_input_tokens": 199296,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 15
+      },
+      "after": {
+        "input_tokens": 257230,
+        "output_tokens": 871,
+        "total_tokens": 258101,
+        "cached_input_tokens": 237184,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 15
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "n8n",
+        "preflight"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 353309,
+      "start": "2026-09-14T00:00:19.946000+00:00",
+      "end": "2026-09-14T00:00:33.560000+00:00",
+      "tokens": {
+        "input_tokens": 38740,
+        "output_tokens": 240,
+        "total_tokens": 38980,
+        "cached_input_tokens": 37888,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 17
+      },
+      "before": {
+        "input_tokens": 257230,
+        "output_tokens": 871,
+        "total_tokens": 258101,
+        "cached_input_tokens": 237184,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 15
+      },
+      "after": {
+        "input_tokens": 295970,
+        "output_tokens": 1111,
+        "total_tokens": 297081,
+        "cached_input_tokens": 275072,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 32
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "collect",
+        "preflight"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 356880,
+      "start": "2026-09-14T00:00:33.560000+00:00",
+      "end": "2026-09-14T00:00:51.445000+00:00",
+      "tokens": {
+        "input_tokens": 39487,
+        "output_tokens": 136,
+        "total_tokens": 39623,
+        "cached_input_tokens": 38528,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 295970,
+        "output_tokens": 1111,
+        "total_tokens": 297081,
+        "cached_input_tokens": 275072,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 32
+      },
+      "after": {
+        "input_tokens": 335457,
+        "output_tokens": 1247,
+        "total_tokens": 336704,
+        "cached_input_tokens": 313600,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 32
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 363483,
+      "start": "2026-09-14T00:00:51.445000+00:00",
+      "end": "2026-09-14T00:01:02.801000+00:00",
+      "tokens": {
+        "input_tokens": 39817,
+        "output_tokens": 67,
+        "total_tokens": 39884,
+        "cached_input_tokens": 39296,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 335457,
+        "output_tokens": 1247,
+        "total_tokens": 336704,
+        "cached_input_tokens": 313600,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 32
+      },
+      "after": {
+        "input_tokens": 375274,
+        "output_tokens": 1314,
+        "total_tokens": 376588,
+        "cached_input_tokens": 352896,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 32
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 374880,
+      "start": "2026-09-14T00:01:02.801000+00:00",
+      "end": "2026-09-14T00:01:14.476000+00:00",
+      "tokens": {
+        "input_tokens": 40719,
+        "output_tokens": 123,
+        "total_tokens": 40842,
+        "cached_input_tokens": 39680,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 12
+      },
+      "before": {
+        "input_tokens": 375274,
+        "output_tokens": 1314,
+        "total_tokens": 376588,
+        "cached_input_tokens": 352896,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 32
+      },
+      "after": {
+        "input_tokens": 415993,
+        "output_tokens": 1437,
+        "total_tokens": 417430,
+        "cached_input_tokens": 392576,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 44
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 377651,
+      "start": "2026-09-14T00:01:14.476000+00:00",
+      "end": "2026-09-14T00:01:22.380000+00:00",
+      "tokens": {
+        "input_tokens": 41191,
+        "output_tokens": 40,
+        "total_tokens": 41231,
+        "cached_input_tokens": 40576,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 415993,
+        "output_tokens": 1437,
+        "total_tokens": 417430,
+        "cached_input_tokens": 392576,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 44
+      },
+      "after": {
+        "input_tokens": 457184,
+        "output_tokens": 1477,
+        "total_tokens": 458661,
+        "cached_input_tokens": 433152,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 44
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 383801,
+      "start": "2026-09-14T00:01:22.380000+00:00",
+      "end": "2026-09-14T00:01:31.146000+00:00",
+      "tokens": {
+        "input_tokens": 41289,
+        "output_tokens": 125,
+        "total_tokens": 41414,
+        "cached_input_tokens": 40960,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 12
+      },
+      "before": {
+        "input_tokens": 457184,
+        "output_tokens": 1477,
+        "total_tokens": 458661,
+        "cached_input_tokens": 433152,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 44
+      },
+      "after": {
+        "input_tokens": 498473,
+        "output_tokens": 1602,
+        "total_tokens": 500075,
+        "cached_input_tokens": 474112,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 56
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 388676,
+      "start": "2026-09-14T00:01:31.146000+00:00",
+      "end": "2026-09-14T00:02:03.668000+00:00",
+      "tokens": {
+        "input_tokens": 41473,
+        "output_tokens": 29,
+        "total_tokens": 41502,
+        "cached_input_tokens": 41088,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 8
+      },
+      "before": {
+        "input_tokens": 498473,
+        "output_tokens": 1602,
+        "total_tokens": 500075,
+        "cached_input_tokens": 474112,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 56
+      },
+      "after": {
+        "input_tokens": 539946,
+        "output_tokens": 1631,
+        "total_tokens": 541577,
+        "cached_input_tokens": 515200,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 64
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 391445,
+      "start": "2026-09-14T00:02:03.668000+00:00",
+      "end": "2026-09-14T00:02:11.459000+00:00",
+      "tokens": {
+        "input_tokens": 41525,
+        "output_tokens": 40,
+        "total_tokens": 41565,
+        "cached_input_tokens": 41344,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 539946,
+        "output_tokens": 1631,
+        "total_tokens": 541577,
+        "cached_input_tokens": 515200,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 64
+      },
+      "after": {
+        "input_tokens": 581471,
+        "output_tokens": 1671,
+        "total_tokens": 583142,
+        "cached_input_tokens": 556544,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 64
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 400922,
+      "start": "2026-09-14T00:02:11.459000+00:00",
+      "end": "2026-09-14T00:02:19.880000+00:00",
+      "tokens": {
+        "input_tokens": 41621,
+        "output_tokens": 120,
+        "total_tokens": 41741,
+        "cached_input_tokens": 41344,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 12
+      },
+      "before": {
+        "input_tokens": 581471,
+        "output_tokens": 1671,
+        "total_tokens": 583142,
+        "cached_input_tokens": 556544,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 64
+      },
+      "after": {
+        "input_tokens": 623092,
+        "output_tokens": 1791,
+        "total_tokens": 624883,
+        "cached_input_tokens": 597888,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 76
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 407002,
+      "start": "2026-09-14T00:02:19.880000+00:00",
+      "end": "2026-09-14T00:02:28.364000+00:00",
+      "tokens": {
+        "input_tokens": 41992,
+        "output_tokens": 114,
+        "total_tokens": 42106,
+        "cached_input_tokens": 41472,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 13
+      },
+      "before": {
+        "input_tokens": 623092,
+        "output_tokens": 1791,
+        "total_tokens": 624883,
+        "cached_input_tokens": 597888,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 76
+      },
+      "after": {
+        "input_tokens": 665084,
+        "output_tokens": 1905,
+        "total_tokens": 666989,
+        "cached_input_tokens": 639360,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 89
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 412035,
+      "start": "2026-09-14T00:02:28.364000+00:00",
+      "end": "2026-09-14T00:03:00.811000+00:00",
+      "tokens": {
+        "input_tokens": 42162,
+        "output_tokens": 43,
+        "total_tokens": 42205,
+        "cached_input_tokens": 41856,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 22
+      },
+      "before": {
+        "input_tokens": 665084,
+        "output_tokens": 1905,
+        "total_tokens": 666989,
+        "cached_input_tokens": 639360,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 89
+      },
+      "after": {
+        "input_tokens": 707246,
+        "output_tokens": 1948,
+        "total_tokens": 709194,
+        "cached_input_tokens": 681216,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 111
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 414812,
+      "start": "2026-09-14T00:03:00.811000+00:00",
+      "end": "2026-09-14T00:03:08.202000+00:00",
+      "tokens": {
+        "input_tokens": 42228,
+        "output_tokens": 40,
+        "total_tokens": 42268,
+        "cached_input_tokens": 41984,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 707246,
+        "output_tokens": 1948,
+        "total_tokens": 709194,
+        "cached_input_tokens": 681216,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 111
+      },
+      "after": {
+        "input_tokens": 749474,
+        "output_tokens": 1988,
+        "total_tokens": 751462,
+        "cached_input_tokens": 723200,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 111
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 422784,
+      "start": "2026-09-14T00:03:08.202000+00:00",
+      "end": "2026-09-14T00:03:22.195000+00:00",
+      "tokens": {
+        "input_tokens": 42327,
+        "output_tokens": 163,
+        "total_tokens": 42490,
+        "cached_input_tokens": 42112,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 13
+      },
+      "before": {
+        "input_tokens": 749474,
+        "output_tokens": 1988,
+        "total_tokens": 751462,
+        "cached_input_tokens": 723200,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 111
+      },
+      "after": {
+        "input_tokens": 791801,
+        "output_tokens": 2151,
+        "total_tokens": 793952,
+        "cached_input_tokens": 765312,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 124
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 436057,
+      "start": "2026-09-14T00:03:22.195000+00:00",
+      "end": "2026-09-14T00:03:33.222000+00:00",
+      "tokens": {
+        "input_tokens": 42643,
+        "output_tokens": 121,
+        "total_tokens": 42764,
+        "cached_input_tokens": 42112,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 791801,
+        "output_tokens": 2151,
+        "total_tokens": 793952,
+        "cached_input_tokens": 765312,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 124
+      },
+      "after": {
+        "input_tokens": 834444,
+        "output_tokens": 2272,
+        "total_tokens": 836716,
+        "cached_input_tokens": 807424,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 124
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 454386,
+      "start": "2026-09-14T00:03:33.222000+00:00",
+      "end": "2026-09-14T00:03:44.047000+00:00",
+      "tokens": {
+        "input_tokens": 43447,
+        "output_tokens": 271,
+        "total_tokens": 43718,
+        "cached_input_tokens": 42496,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 16
+      },
+      "before": {
+        "input_tokens": 834444,
+        "output_tokens": 2272,
+        "total_tokens": 836716,
+        "cached_input_tokens": 807424,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 124
+      },
+      "after": {
+        "input_tokens": 877891,
+        "output_tokens": 2543,
+        "total_tokens": 880434,
+        "cached_input_tokens": 849920,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 140
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 510295,
+      "start": "2026-09-14T00:03:44.047000+00:00",
+      "end": "2026-09-14T00:03:52.641000+00:00",
+      "tokens": {
+        "input_tokens": 44475,
+        "output_tokens": 184,
+        "total_tokens": 44659,
+        "cached_input_tokens": 43264,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 32
+      },
+      "before": {
+        "input_tokens": 877891,
+        "output_tokens": 2543,
+        "total_tokens": 880434,
+        "cached_input_tokens": 849920,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 140
+      },
+      "after": {
+        "input_tokens": 922366,
+        "output_tokens": 2727,
+        "total_tokens": 925093,
+        "cached_input_tokens": 893184,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 172
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 531673,
+      "start": "2026-09-14T00:03:52.641000+00:00",
+      "end": "2026-09-14T00:04:01.572000+00:00",
+      "tokens": {
+        "input_tokens": 47974,
+        "output_tokens": 181,
+        "total_tokens": 48155,
+        "cached_input_tokens": 44288,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 34
+      },
+      "before": {
+        "input_tokens": 922366,
+        "output_tokens": 2727,
+        "total_tokens": 925093,
+        "cached_input_tokens": 893184,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 172
+      },
+      "after": {
+        "input_tokens": 970340,
+        "output_tokens": 2908,
+        "total_tokens": 973248,
+        "cached_input_tokens": 937472,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 206
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 559269,
+      "start": "2026-09-14T00:04:01.572000+00:00",
+      "end": "2026-09-14T00:04:10.882000+00:00",
+      "tokens": {
+        "input_tokens": 49147,
+        "output_tokens": 158,
+        "total_tokens": 49305,
+        "cached_input_tokens": 47744,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 970340,
+        "output_tokens": 2908,
+        "total_tokens": 973248,
+        "cached_input_tokens": 937472,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 206
+      },
+      "after": {
+        "input_tokens": 1019487,
+        "output_tokens": 3066,
+        "total_tokens": 1022553,
+        "cached_input_tokens": 985216,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 206
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 564301,
+      "start": "2026-09-14T00:04:10.882000+00:00",
+      "end": "2026-09-14T00:04:20.556000+00:00",
+      "tokens": {
+        "input_tokens": 50813,
+        "output_tokens": 79,
+        "total_tokens": 50892,
+        "cached_input_tokens": 49024,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 37
+      },
+      "before": {
+        "input_tokens": 1019487,
+        "output_tokens": 3066,
+        "total_tokens": 1022553,
+        "cached_input_tokens": 985216,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 206
+      },
+      "after": {
+        "input_tokens": 1070300,
+        "output_tokens": 3145,
+        "total_tokens": 1073445,
+        "cached_input_tokens": 1034240,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 243
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 570861,
+      "start": "2026-09-14T00:04:20.556000+00:00",
+      "end": "2026-09-14T00:05:15.352000+00:00",
+      "tokens": {
+        "input_tokens": 50950,
+        "output_tokens": 149,
+        "total_tokens": 51099,
+        "cached_input_tokens": 50688,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 41
+      },
+      "before": {
+        "input_tokens": 1070300,
+        "output_tokens": 3145,
+        "total_tokens": 1073445,
+        "cached_input_tokens": 1034240,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 243
+      },
+      "after": {
+        "input_tokens": 1121250,
+        "output_tokens": 3294,
+        "total_tokens": 1124544,
+        "cached_input_tokens": 1084928,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 284
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 573647,
+      "start": "2026-09-14T00:05:15.352000+00:00",
+      "end": "2026-09-14T00:05:23.889000+00:00",
+      "tokens": {
+        "input_tokens": 51122,
+        "output_tokens": 40,
+        "total_tokens": 51162,
+        "cached_input_tokens": 50816,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 1121250,
+        "output_tokens": 3294,
+        "total_tokens": 1124544,
+        "cached_input_tokens": 1084928,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 284
+      },
+      "after": {
+        "input_tokens": 1172372,
+        "output_tokens": 3334,
+        "total_tokens": 1175706,
+        "cached_input_tokens": 1135744,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 284
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 581151,
+      "start": "2026-09-14T00:05:23.889000+00:00",
+      "end": "2026-09-14T00:05:33.609000+00:00",
+      "tokens": {
+        "input_tokens": 51219,
+        "output_tokens": 215,
+        "total_tokens": 51434,
+        "cached_input_tokens": 50944,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 41
+      },
+      "before": {
+        "input_tokens": 1172372,
+        "output_tokens": 3334,
+        "total_tokens": 1175706,
+        "cached_input_tokens": 1135744,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 284
+      },
+      "after": {
+        "input_tokens": 1223591,
+        "output_tokens": 3549,
+        "total_tokens": 1227140,
+        "cached_input_tokens": 1186688,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 325
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 595782,
+      "start": "2026-09-14T00:05:33.609000+00:00",
+      "end": "2026-09-14T00:05:44.070000+00:00",
+      "tokens": {
+        "input_tokens": 51554,
+        "output_tokens": 178,
+        "total_tokens": 51732,
+        "cached_input_tokens": 51072,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 37
+      },
+      "before": {
+        "input_tokens": 1223591,
+        "output_tokens": 3549,
+        "total_tokens": 1227140,
+        "cached_input_tokens": 1186688,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 325
+      },
+      "after": {
+        "input_tokens": 1275145,
+        "output_tokens": 3727,
+        "total_tokens": 1278872,
+        "cached_input_tokens": 1237760,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 362
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 619387,
+      "start": "2026-09-14T00:05:44.070000+00:00",
+      "end": "2026-09-14T00:05:51.969000+00:00",
+      "tokens": {
+        "input_tokens": 52380,
+        "output_tokens": 130,
+        "total_tokens": 52510,
+        "cached_input_tokens": 51328,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 13
+      },
+      "before": {
+        "input_tokens": 1275145,
+        "output_tokens": 3727,
+        "total_tokens": 1278872,
+        "cached_input_tokens": 1237760,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 362
+      },
+      "after": {
+        "input_tokens": 1327525,
+        "output_tokens": 3857,
+        "total_tokens": 1331382,
+        "cached_input_tokens": 1289088,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 375
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 628498,
+      "start": "2026-09-14T00:05:51.969000+00:00",
+      "end": "2026-09-14T00:06:46.730000+00:00",
+      "tokens": {
+        "input_tokens": 54057,
+        "output_tokens": 111,
+        "total_tokens": 54168,
+        "cached_input_tokens": 52224,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 16
+      },
+      "before": {
+        "input_tokens": 1327525,
+        "output_tokens": 3857,
+        "total_tokens": 1331382,
+        "cached_input_tokens": 1289088,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 375
+      },
+      "after": {
+        "input_tokens": 1381582,
+        "output_tokens": 3968,
+        "total_tokens": 1385550,
+        "cached_input_tokens": 1341312,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 391
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "collect",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "collect"
+      ],
+      "spanId": "3d202c9d4bbd46f891ea810ffe1a5941",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 631455,
+      "start": "2026-09-14T00:06:46.730000+00:00",
+      "end": "2026-09-14T00:06:51.327000+00:00",
+      "tokens": {
+        "input_tokens": 54191,
+        "output_tokens": 40,
+        "total_tokens": 54231,
+        "cached_input_tokens": 53888,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 1381582,
+        "output_tokens": 3968,
+        "total_tokens": 1385550,
+        "cached_input_tokens": 1341312,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 391
+      },
+      "after": {
+        "input_tokens": 1435773,
+        "output_tokens": 4008,
+        "total_tokens": 1439781,
+        "cached_input_tokens": 1395200,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 391
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "collect",
+        "summary"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 735078,
+      "start": "2026-09-14T00:06:51.327000+00:00",
+      "end": "2026-09-14T00:07:01.008000+00:00",
+      "tokens": {
+        "input_tokens": 54314,
+        "output_tokens": 164,
+        "total_tokens": 54478,
+        "cached_input_tokens": 54016,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 1435773,
+        "output_tokens": 4008,
+        "total_tokens": 1439781,
+        "cached_input_tokens": 1395200,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 391
+      },
+      "after": {
+        "input_tokens": 1490087,
+        "output_tokens": 4172,
+        "total_tokens": 1494259,
+        "cached_input_tokens": 1449216,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 391
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "summary",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "summary"
+      ],
+      "spanId": "84b1f991ffc34d1fb9293d5222e2f670",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 806721,
+      "start": "2026-09-14T00:07:01.008000+00:00",
+      "end": "2026-09-14T00:07:10.797000+00:00",
+      "tokens": {
+        "input_tokens": 61305,
+        "output_tokens": 217,
+        "total_tokens": 61522,
+        "cached_input_tokens": 54144,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 13
+      },
+      "before": {
+        "input_tokens": 1490087,
+        "output_tokens": 4172,
+        "total_tokens": 1494259,
+        "cached_input_tokens": 1449216,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 391
+      },
+      "after": {
+        "input_tokens": 1551392,
+        "output_tokens": 4389,
+        "total_tokens": 1555781,
+        "cached_input_tokens": 1503360,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 404
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "capture",
+        "summary"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 812449,
+      "start": "2026-09-14T00:07:10.797000+00:00",
+      "end": "2026-09-14T00:07:33.298000+00:00",
+      "tokens": {
+        "input_tokens": 65625,
+        "output_tokens": 167,
+        "total_tokens": 65792,
+        "cached_input_tokens": 61184,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 26
+      },
+      "before": {
+        "input_tokens": 1551392,
+        "output_tokens": 4389,
+        "total_tokens": 1555781,
+        "cached_input_tokens": 1503360,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 404
+      },
+      "after": {
+        "input_tokens": 1617017,
+        "output_tokens": 4556,
+        "total_tokens": 1621573,
+        "cached_input_tokens": 1564544,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 430
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "capture",
+        "shared-review"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 899341,
+      "start": "2026-09-14T00:07:33.298000+00:00",
+      "end": "2026-09-14T00:07:44.362000+00:00",
+      "tokens": {
+        "input_tokens": 65987,
+        "output_tokens": 144,
+        "total_tokens": 66131,
+        "cached_input_tokens": 65408,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 1617017,
+        "output_tokens": 4556,
+        "total_tokens": 1621573,
+        "cached_input_tokens": 1564544,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 430
+      },
+      "after": {
+        "input_tokens": 1683004,
+        "output_tokens": 4700,
+        "total_tokens": 1687704,
+        "cached_input_tokens": 1629952,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 430
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "335fc434c06142b0b1982fbaec1f3819",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 1068937,
+      "start": "2026-09-14T00:07:44.362000+00:00",
+      "end": "2026-09-14T00:07:55.591000+00:00",
+      "tokens": {
+        "input_tokens": 71632,
+        "output_tokens": 181,
+        "total_tokens": 71813,
+        "cached_input_tokens": 65792,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 27
+      },
+      "before": {
+        "input_tokens": 1683004,
+        "output_tokens": 4700,
+        "total_tokens": 1687704,
+        "cached_input_tokens": 1629952,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 430
+      },
+      "after": {
+        "input_tokens": 1754636,
+        "output_tokens": 4881,
+        "total_tokens": 1759517,
+        "cached_input_tokens": 1695744,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 457
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "335fc434c06142b0b1982fbaec1f3819",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 1239521,
+      "start": "2026-09-14T00:07:55.591000+00:00",
+      "end": "2026-09-14T00:08:06.249000+00:00",
+      "tokens": {
+        "input_tokens": 82720,
+        "output_tokens": 219,
+        "total_tokens": 82939,
+        "cached_input_tokens": 71424,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 66
+      },
+      "before": {
+        "input_tokens": 1754636,
+        "output_tokens": 4881,
+        "total_tokens": 1759517,
+        "cached_input_tokens": 1695744,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 457
+      },
+      "after": {
+        "input_tokens": 1837356,
+        "output_tokens": 5100,
+        "total_tokens": 1842456,
+        "cached_input_tokens": 1767168,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 523
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "335fc434c06142b0b1982fbaec1f3819",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 1360739,
+      "start": "2026-09-14T00:08:06.249000+00:00",
+      "end": "2026-09-14T00:08:17.393000+00:00",
+      "tokens": {
+        "input_tokens": 93933,
+        "output_tokens": 221,
+        "total_tokens": 94154,
+        "cached_input_tokens": 82560,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 60
+      },
+      "before": {
+        "input_tokens": 1837356,
+        "output_tokens": 5100,
+        "total_tokens": 1842456,
+        "cached_input_tokens": 1767168,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 523
+      },
+      "after": {
+        "input_tokens": 1931289,
+        "output_tokens": 5321,
+        "total_tokens": 1936610,
+        "cached_input_tokens": 1849728,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 583
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "335fc434c06142b0b1982fbaec1f3819",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 1468327,
+      "start": "2026-09-14T00:08:17.393000+00:00",
+      "end": "2026-09-14T00:08:34.597000+00:00",
+      "tokens": {
+        "input_tokens": 101840,
+        "output_tokens": 279,
+        "total_tokens": 102119,
+        "cached_input_tokens": 93696,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 8
+      },
+      "before": {
+        "input_tokens": 1931289,
+        "output_tokens": 5321,
+        "total_tokens": 1936610,
+        "cached_input_tokens": 1849728,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 583
+      },
+      "after": {
+        "input_tokens": 2033129,
+        "output_tokens": 5600,
+        "total_tokens": 2038729,
+        "cached_input_tokens": 1943424,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 591
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "shared-review",
+        "talent-review"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 1513530,
+      "start": "2026-09-14T00:08:34.597000+00:00",
+      "end": "2026-09-14T00:08:46.190000+00:00",
+      "tokens": {
+        "input_tokens": 109298,
+        "output_tokens": 246,
+        "total_tokens": 109544,
+        "cached_input_tokens": 101632,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 82
+      },
+      "before": {
+        "input_tokens": 2033129,
+        "output_tokens": 5600,
+        "total_tokens": 2038729,
+        "cached_input_tokens": 1943424,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 591
+      },
+      "after": {
+        "input_tokens": 2142427,
+        "output_tokens": 5846,
+        "total_tokens": 2148273,
+        "cached_input_tokens": 2045056,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 673
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "classification-review",
+        "talent-review"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 1549433,
+      "start": "2026-09-14T00:08:46.190000+00:00",
+      "end": "2026-09-14T00:08:56.383000+00:00",
+      "tokens": {
+        "input_tokens": 112124,
+        "output_tokens": 167,
+        "total_tokens": 112291,
+        "cached_input_tokens": 109056,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 25
+      },
+      "before": {
+        "input_tokens": 2142427,
+        "output_tokens": 5846,
+        "total_tokens": 2148273,
+        "cached_input_tokens": 2045056,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 673
+      },
+      "after": {
+        "input_tokens": 2254551,
+        "output_tokens": 6013,
+        "total_tokens": 2260564,
+        "cached_input_tokens": 2154112,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 698
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "classification-review",
+        "keywords"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 1593217,
+      "start": "2026-09-14T00:08:56.383000+00:00",
+      "end": "2026-09-14T00:09:06.909000+00:00",
+      "tokens": {
+        "input_tokens": 114302,
+        "output_tokens": 182,
+        "total_tokens": 114484,
+        "cached_input_tokens": 112000,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 28
+      },
+      "before": {
+        "input_tokens": 2254551,
+        "output_tokens": 6013,
+        "total_tokens": 2260564,
+        "cached_input_tokens": 2154112,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 698
+      },
+      "after": {
+        "input_tokens": 2368853,
+        "output_tokens": 6195,
+        "total_tokens": 2375048,
+        "cached_input_tokens": 2266112,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 726
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "keywords",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "keywords"
+      ],
+      "spanId": "fa2d7df0b41d4cccacde48c935c949ff",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 1626003,
+      "start": "2026-09-14T00:09:06.909000+00:00",
+      "end": "2026-09-14T00:09:19.149000+00:00",
+      "tokens": {
+        "input_tokens": 117049,
+        "output_tokens": 323,
+        "total_tokens": 117372,
+        "cached_input_tokens": 114176,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 136
+      },
+      "before": {
+        "input_tokens": 2368853,
+        "output_tokens": 6195,
+        "total_tokens": 2375048,
+        "cached_input_tokens": 2266112,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 726
+      },
+      "after": {
+        "input_tokens": 2485902,
+        "output_tokens": 6518,
+        "total_tokens": 2492420,
+        "cached_input_tokens": 2380288,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 862
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "keywords",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "keywords"
+      ],
+      "spanId": "fa2d7df0b41d4cccacde48c935c949ff",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 1638823,
+      "start": "2026-09-14T00:09:19.149000+00:00",
+      "end": "2026-09-14T00:09:42.061000+00:00",
+      "tokens": {
+        "input_tokens": 119692,
+        "output_tokens": 517,
+        "total_tokens": 120209,
+        "cached_input_tokens": 116864,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 91
+      },
+      "before": {
+        "input_tokens": 2485902,
+        "output_tokens": 6518,
+        "total_tokens": 2492420,
+        "cached_input_tokens": 2380288,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 862
+      },
+      "after": {
+        "input_tokens": 2605594,
+        "output_tokens": 7035,
+        "total_tokens": 2612629,
+        "cached_input_tokens": 2497152,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 953
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "keywords",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "keywords"
+      ],
+      "spanId": "fa2d7df0b41d4cccacde48c935c949ff",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 1801465,
+      "start": "2026-09-14T00:09:42.061000+00:00",
+      "end": "2026-09-14T00:10:04.948000+00:00",
+      "tokens": {
+        "input_tokens": 120461,
+        "output_tokens": 515,
+        "total_tokens": 120976,
+        "cached_input_tokens": 119552,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 7
+      },
+      "before": {
+        "input_tokens": 2605594,
+        "output_tokens": 7035,
+        "total_tokens": 2612629,
+        "cached_input_tokens": 2497152,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 953
+      },
+      "after": {
+        "input_tokens": 2726055,
+        "output_tokens": 7550,
+        "total_tokens": 2733605,
+        "cached_input_tokens": 2616704,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 960
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "keywords",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "keywords"
+      ],
+      "spanId": "fa2d7df0b41d4cccacde48c935c949ff",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 1886922,
+      "start": "2026-09-14T00:10:04.948000+00:00",
+      "end": "2026-09-14T00:10:22.932000+00:00",
+      "tokens": {
+        "input_tokens": 128257,
+        "output_tokens": 322,
+        "total_tokens": 128579,
+        "cached_input_tokens": 120320,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 42
+      },
+      "before": {
+        "input_tokens": 2726055,
+        "output_tokens": 7550,
+        "total_tokens": 2733605,
+        "cached_input_tokens": 2616704,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 960
+      },
+      "after": {
+        "input_tokens": 2854312,
+        "output_tokens": 7872,
+        "total_tokens": 2862184,
+        "cached_input_tokens": 2737024,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1002
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "keywords",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "keywords"
+      ],
+      "spanId": "fa2d7df0b41d4cccacde48c935c949ff",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 1968061,
+      "start": "2026-09-14T00:10:22.932000+00:00",
+      "end": "2026-09-14T00:10:35.192000+00:00",
+      "tokens": {
+        "input_tokens": 134350,
+        "output_tokens": 129,
+        "total_tokens": 134479,
+        "cached_input_tokens": 128128,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 2854312,
+        "output_tokens": 7872,
+        "total_tokens": 2862184,
+        "cached_input_tokens": 2737024,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1002
+      },
+      "after": {
+        "input_tokens": 2988662,
+        "output_tokens": 8001,
+        "total_tokens": 2996663,
+        "cached_input_tokens": 2865152,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1002
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "keywords",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "keywords"
+      ],
+      "spanId": "fa2d7df0b41d4cccacde48c935c949ff",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 2056615,
+      "start": "2026-09-14T00:10:35.192000+00:00",
+      "end": "2026-09-14T00:10:46.060000+00:00",
+      "tokens": {
+        "input_tokens": 140255,
+        "output_tokens": 130,
+        "total_tokens": 140385,
+        "cached_input_tokens": 134144,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 2988662,
+        "output_tokens": 8001,
+        "total_tokens": 2996663,
+        "cached_input_tokens": 2865152,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1002
+      },
+      "after": {
+        "input_tokens": 3128917,
+        "output_tokens": 8131,
+        "total_tokens": 3137048,
+        "cached_input_tokens": 2999296,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1002
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "keywords",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "keywords"
+      ],
+      "spanId": "fa2d7df0b41d4cccacde48c935c949ff",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 2115753,
+      "start": "2026-09-14T00:10:46.060000+00:00",
+      "end": "2026-09-14T00:11:03.832000+00:00",
+      "tokens": {
+        "input_tokens": 146571,
+        "output_tokens": 161,
+        "total_tokens": 146732,
+        "cached_input_tokens": 140032,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 3128917,
+        "output_tokens": 8131,
+        "total_tokens": 3137048,
+        "cached_input_tokens": 2999296,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1002
+      },
+      "after": {
+        "input_tokens": 3275488,
+        "output_tokens": 8292,
+        "total_tokens": 3283780,
+        "cached_input_tokens": 3139328,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1002
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "keywords",
+        "shared-review"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 2137990,
+      "start": "2026-09-14T00:11:03.832000+00:00",
+      "end": "2026-09-14T00:11:41.642000+00:00",
+      "tokens": {
+        "input_tokens": 150882,
+        "output_tokens": 1415,
+        "total_tokens": 152297,
+        "cached_input_tokens": 146432,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 101
+      },
+      "before": {
+        "input_tokens": 3275488,
+        "output_tokens": 8292,
+        "total_tokens": 3283780,
+        "cached_input_tokens": 3139328,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1002
+      },
+      "after": {
+        "input_tokens": 3426370,
+        "output_tokens": 9707,
+        "total_tokens": 3436077,
+        "cached_input_tokens": 3285760,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1103
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "c4b09449a9cf45e7a98611ab45dac1cd",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 2156012,
+      "start": "2026-09-14T00:11:41.642000+00:00",
+      "end": "2026-09-14T00:11:59.783000+00:00",
+      "tokens": {
+        "input_tokens": 152662,
+        "output_tokens": 415,
+        "total_tokens": 153077,
+        "cached_input_tokens": 150656,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 22
+      },
+      "before": {
+        "input_tokens": 3426370,
+        "output_tokens": 9707,
+        "total_tokens": 3436077,
+        "cached_input_tokens": 3285760,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1103
+      },
+      "after": {
+        "input_tokens": 3579032,
+        "output_tokens": 10122,
+        "total_tokens": 3589154,
+        "cached_input_tokens": 3436416,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1125
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "c4b09449a9cf45e7a98611ab45dac1cd",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 2237423,
+      "start": "2026-09-14T00:11:59.783000+00:00",
+      "end": "2026-09-14T00:12:13.532000+00:00",
+      "tokens": {
+        "input_tokens": 153706,
+        "output_tokens": 295,
+        "total_tokens": 154001,
+        "cached_input_tokens": 152448,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 119
+      },
+      "before": {
+        "input_tokens": 3579032,
+        "output_tokens": 10122,
+        "total_tokens": 3589154,
+        "cached_input_tokens": 3436416,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1125
+      },
+      "after": {
+        "input_tokens": 3732738,
+        "output_tokens": 10417,
+        "total_tokens": 3743155,
+        "cached_input_tokens": 3588864,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1244
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "c4b09449a9cf45e7a98611ab45dac1cd",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 2345220,
+      "start": "2026-09-14T00:12:13.532000+00:00",
+      "end": "2026-09-14T00:12:30.632000+00:00",
+      "tokens": {
+        "input_tokens": 160256,
+        "output_tokens": 406,
+        "total_tokens": 160662,
+        "cached_input_tokens": 153472,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 37
+      },
+      "before": {
+        "input_tokens": 3732738,
+        "output_tokens": 10417,
+        "total_tokens": 3743155,
+        "cached_input_tokens": 3588864,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1244
+      },
+      "after": {
+        "input_tokens": 3892994,
+        "output_tokens": 10823,
+        "total_tokens": 3903817,
+        "cached_input_tokens": 3742336,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1281
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "c4b09449a9cf45e7a98611ab45dac1cd",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 2421459,
+      "start": "2026-09-14T00:12:30.632000+00:00",
+      "end": "2026-09-14T00:12:42.822000+00:00",
+      "tokens": {
+        "input_tokens": 167302,
+        "output_tokens": 168,
+        "total_tokens": 167470,
+        "cached_input_tokens": 160128,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 36
+      },
+      "before": {
+        "input_tokens": 3892994,
+        "output_tokens": 10823,
+        "total_tokens": 3903817,
+        "cached_input_tokens": 3742336,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1281
+      },
+      "after": {
+        "input_tokens": 4060296,
+        "output_tokens": 10991,
+        "total_tokens": 4071287,
+        "cached_input_tokens": 3902464,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1317
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "c4b09449a9cf45e7a98611ab45dac1cd",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 2511939,
+      "start": "2026-09-14T00:12:42.822000+00:00",
+      "end": "2026-09-14T00:12:53.398000+00:00",
+      "tokens": {
+        "input_tokens": 172393,
+        "output_tokens": 212,
+        "total_tokens": 172605,
+        "cached_input_tokens": 167168,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 81
+      },
+      "before": {
+        "input_tokens": 4060296,
+        "output_tokens": 10991,
+        "total_tokens": 4071287,
+        "cached_input_tokens": 3902464,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1317
+      },
+      "after": {
+        "input_tokens": 4232689,
+        "output_tokens": 11203,
+        "total_tokens": 4243892,
+        "cached_input_tokens": 4069632,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1398
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "c4b09449a9cf45e7a98611ab45dac1cd",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 2594301,
+      "start": "2026-09-14T00:12:53.398000+00:00",
+      "end": "2026-09-14T00:13:04.335000+00:00",
+      "tokens": {
+        "input_tokens": 178880,
+        "output_tokens": 191,
+        "total_tokens": 179071,
+        "cached_input_tokens": 172160,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 59
+      },
+      "before": {
+        "input_tokens": 4232689,
+        "output_tokens": 11203,
+        "total_tokens": 4243892,
+        "cached_input_tokens": 4069632,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1398
+      },
+      "after": {
+        "input_tokens": 4411569,
+        "output_tokens": 11394,
+        "total_tokens": 4422963,
+        "cached_input_tokens": 4241792,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1457
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "c4b09449a9cf45e7a98611ab45dac1cd",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 2701040,
+      "start": "2026-09-14T00:13:04.335000+00:00",
+      "end": "2026-09-14T00:13:15.248000+00:00",
+      "tokens": {
+        "input_tokens": 184358,
+        "output_tokens": 171,
+        "total_tokens": 184529,
+        "cached_input_tokens": 178688,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 22
+      },
+      "before": {
+        "input_tokens": 4411569,
+        "output_tokens": 11394,
+        "total_tokens": 4422963,
+        "cached_input_tokens": 4241792,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1457
+      },
+      "after": {
+        "input_tokens": 4595927,
+        "output_tokens": 11565,
+        "total_tokens": 4607492,
+        "cached_input_tokens": 4420480,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1479
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "c4b09449a9cf45e7a98611ab45dac1cd",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 2790432,
+      "start": "2026-09-14T00:13:15.248000+00:00",
+      "end": "2026-09-14T00:13:26.506000+00:00",
+      "tokens": {
+        "input_tokens": 191842,
+        "output_tokens": 259,
+        "total_tokens": 192101,
+        "cached_input_tokens": 184192,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 42
+      },
+      "before": {
+        "input_tokens": 4595927,
+        "output_tokens": 11565,
+        "total_tokens": 4607492,
+        "cached_input_tokens": 4420480,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1479
+      },
+      "after": {
+        "input_tokens": 4787769,
+        "output_tokens": 11824,
+        "total_tokens": 4799593,
+        "cached_input_tokens": 4604672,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1521
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "c4b09449a9cf45e7a98611ab45dac1cd",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 2862124,
+      "start": "2026-09-14T00:13:26.506000+00:00",
+      "end": "2026-09-14T00:13:43.929000+00:00",
+      "tokens": {
+        "input_tokens": 197786,
+        "output_tokens": 193,
+        "total_tokens": 197979,
+        "cached_input_tokens": 191616,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 24
+      },
+      "before": {
+        "input_tokens": 4787769,
+        "output_tokens": 11824,
+        "total_tokens": 4799593,
+        "cached_input_tokens": 4604672,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1521
+      },
+      "after": {
+        "input_tokens": 4985555,
+        "output_tokens": 12017,
+        "total_tokens": 4997572,
+        "cached_input_tokens": 4796288,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1545
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "c4b09449a9cf45e7a98611ab45dac1cd",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 2902713,
+      "start": "2026-09-14T00:13:43.929000+00:00",
+      "end": "2026-09-14T00:13:54.286000+00:00",
+      "tokens": {
+        "input_tokens": 202599,
+        "output_tokens": 209,
+        "total_tokens": 202808,
+        "cached_input_tokens": 197632,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 86
+      },
+      "before": {
+        "input_tokens": 4985555,
+        "output_tokens": 12017,
+        "total_tokens": 4997572,
+        "cached_input_tokens": 4796288,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1545
+      },
+      "after": {
+        "input_tokens": 5188154,
+        "output_tokens": 12226,
+        "total_tokens": 5200380,
+        "cached_input_tokens": 4993920,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1631
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "c4b09449a9cf45e7a98611ab45dac1cd",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 2971500,
+      "start": "2026-09-14T00:13:54.286000+00:00",
+      "end": "2026-09-14T00:14:03.551000+00:00",
+      "tokens": {
+        "input_tokens": 205082,
+        "output_tokens": 155,
+        "total_tokens": 205237,
+        "cached_input_tokens": 202368,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 30
+      },
+      "before": {
+        "input_tokens": 5188154,
+        "output_tokens": 12226,
+        "total_tokens": 5200380,
+        "cached_input_tokens": 4993920,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1631
+      },
+      "after": {
+        "input_tokens": 5393236,
+        "output_tokens": 12381,
+        "total_tokens": 5405617,
+        "cached_input_tokens": 5196288,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1661
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "c4b09449a9cf45e7a98611ab45dac1cd",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3012797,
+      "start": "2026-09-14T00:14:03.551000+00:00",
+      "end": "2026-09-14T00:14:20.292000+00:00",
+      "tokens": {
+        "input_tokens": 209436,
+        "output_tokens": 200,
+        "total_tokens": 209636,
+        "cached_input_tokens": 204928,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 24
+      },
+      "before": {
+        "input_tokens": 5393236,
+        "output_tokens": 12381,
+        "total_tokens": 5405617,
+        "cached_input_tokens": 5196288,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1661
+      },
+      "after": {
+        "input_tokens": 5602672,
+        "output_tokens": 12581,
+        "total_tokens": 5615253,
+        "cached_input_tokens": 5401216,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1685
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "shared-review",
+        "weekly"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3063847,
+      "start": "2026-09-14T00:14:20.292000+00:00",
+      "end": "2026-09-14T00:14:31.065000+00:00",
+      "tokens": {
+        "input_tokens": 211922,
+        "output_tokens": 209,
+        "total_tokens": 212131,
+        "cached_input_tokens": 209280,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 53
+      },
+      "before": {
+        "input_tokens": 5602672,
+        "output_tokens": 12581,
+        "total_tokens": 5615253,
+        "cached_input_tokens": 5401216,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1685
+      },
+      "after": {
+        "input_tokens": 5814594,
+        "output_tokens": 12790,
+        "total_tokens": 5827384,
+        "cached_input_tokens": 5610496,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1738
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "shared-review",
+        "weekly"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3095934,
+      "start": "2026-09-14T00:14:31.065000+00:00",
+      "end": "2026-09-14T00:14:42.223000+00:00",
+      "tokens": {
+        "input_tokens": 215241,
+        "output_tokens": 198,
+        "total_tokens": 215439,
+        "cached_input_tokens": 211712,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 20
+      },
+      "before": {
+        "input_tokens": 5814594,
+        "output_tokens": 12790,
+        "total_tokens": 5827384,
+        "cached_input_tokens": 5610496,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1738
+      },
+      "after": {
+        "input_tokens": 6029835,
+        "output_tokens": 12988,
+        "total_tokens": 6042823,
+        "cached_input_tokens": 5822208,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1758
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "9c3cd67921b149bb92e7adaab8254a9a",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3129855,
+      "start": "2026-09-14T00:14:42.223000+00:00",
+      "end": "2026-09-14T00:14:54.124000+00:00",
+      "tokens": {
+        "input_tokens": 216901,
+        "output_tokens": 336,
+        "total_tokens": 217237,
+        "cached_input_tokens": 215040,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 98
+      },
+      "before": {
+        "input_tokens": 6029835,
+        "output_tokens": 12988,
+        "total_tokens": 6042823,
+        "cached_input_tokens": 5822208,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1758
+      },
+      "after": {
+        "input_tokens": 6246736,
+        "output_tokens": 13324,
+        "total_tokens": 6260060,
+        "cached_input_tokens": 6037248,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1856
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "9c3cd67921b149bb92e7adaab8254a9a",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3154299,
+      "start": "2026-09-14T00:14:54.124000+00:00",
+      "end": "2026-09-14T00:15:04.827000+00:00",
+      "tokens": {
+        "input_tokens": 219024,
+        "output_tokens": 177,
+        "total_tokens": 219201,
+        "cached_input_tokens": 216704,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 15
+      },
+      "before": {
+        "input_tokens": 6246736,
+        "output_tokens": 13324,
+        "total_tokens": 6260060,
+        "cached_input_tokens": 6037248,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1856
+      },
+      "after": {
+        "input_tokens": 6465760,
+        "output_tokens": 13501,
+        "total_tokens": 6479261,
+        "cached_input_tokens": 6253952,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1871
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "9c3cd67921b149bb92e7adaab8254a9a",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3172972,
+      "start": "2026-09-14T00:15:04.827000+00:00",
+      "end": "2026-09-14T00:15:27.253000+00:00",
+      "tokens": {
+        "input_tokens": 220391,
+        "output_tokens": 813,
+        "total_tokens": 221204,
+        "cached_input_tokens": 218880,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 397
+      },
+      "before": {
+        "input_tokens": 6465760,
+        "output_tokens": 13501,
+        "total_tokens": 6479261,
+        "cached_input_tokens": 6253952,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 1871
+      },
+      "after": {
+        "input_tokens": 6686151,
+        "output_tokens": 14314,
+        "total_tokens": 6700465,
+        "cached_input_tokens": 6472832,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 2268
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "9c3cd67921b149bb92e7adaab8254a9a",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3232229,
+      "start": "2026-09-14T00:15:27.253000+00:00",
+      "end": "2026-09-14T00:15:43.484000+00:00",
+      "tokens": {
+        "input_tokens": 221826,
+        "output_tokens": 488,
+        "total_tokens": 222314,
+        "cached_input_tokens": 220160,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 191
+      },
+      "before": {
+        "input_tokens": 6686151,
+        "output_tokens": 14314,
+        "total_tokens": 6700465,
+        "cached_input_tokens": 6472832,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 2268
+      },
+      "after": {
+        "input_tokens": 6907977,
+        "output_tokens": 14802,
+        "total_tokens": 6922779,
+        "cached_input_tokens": 6692992,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 2459
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "9c3cd67921b149bb92e7adaab8254a9a",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3262462,
+      "start": "2026-09-14T00:15:43.484000+00:00",
+      "end": "2026-09-14T00:15:56.354000+00:00",
+      "tokens": {
+        "input_tokens": 225891,
+        "output_tokens": 250,
+        "total_tokens": 226141,
+        "cached_input_tokens": 221696,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 82
+      },
+      "before": {
+        "input_tokens": 6907977,
+        "output_tokens": 14802,
+        "total_tokens": 6922779,
+        "cached_input_tokens": 6692992,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 2459
+      },
+      "after": {
+        "input_tokens": 7133868,
+        "output_tokens": 15052,
+        "total_tokens": 7148920,
+        "cached_input_tokens": 6914688,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 2541
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "9c3cd67921b149bb92e7adaab8254a9a",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3280924,
+      "start": "2026-09-14T00:15:56.354000+00:00",
+      "end": "2026-09-14T00:16:11.817000+00:00",
+      "tokens": {
+        "input_tokens": 227643,
+        "output_tokens": 578,
+        "total_tokens": 228221,
+        "cached_input_tokens": 225664,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 205
+      },
+      "before": {
+        "input_tokens": 7133868,
+        "output_tokens": 15052,
+        "total_tokens": 7148920,
+        "cached_input_tokens": 6914688,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 2541
+      },
+      "after": {
+        "input_tokens": 7361511,
+        "output_tokens": 15630,
+        "total_tokens": 7377141,
+        "cached_input_tokens": 7140352,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 2746
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "9c3cd67921b149bb92e7adaab8254a9a",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3310939,
+      "start": "2026-09-14T00:16:11.817000+00:00",
+      "end": "2026-09-14T00:16:24.301000+00:00",
+      "tokens": {
+        "input_tokens": 229009,
+        "output_tokens": 287,
+        "total_tokens": 229296,
+        "cached_input_tokens": 227456,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 189
+      },
+      "before": {
+        "input_tokens": 7361511,
+        "output_tokens": 15630,
+        "total_tokens": 7377141,
+        "cached_input_tokens": 7140352,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 2746
+      },
+      "after": {
+        "input_tokens": 7590520,
+        "output_tokens": 15917,
+        "total_tokens": 7606437,
+        "cached_input_tokens": 7367808,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 2935
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "9c3cd67921b149bb92e7adaab8254a9a",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3355922,
+      "start": "2026-09-14T00:16:24.301000+00:00",
+      "end": "2026-09-14T00:17:34.075000+00:00",
+      "tokens": {
+        "input_tokens": 230749,
+        "output_tokens": 3871,
+        "total_tokens": 234620,
+        "cached_input_tokens": 228864,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 592
+      },
+      "before": {
+        "input_tokens": 7590520,
+        "output_tokens": 15917,
+        "total_tokens": 7606437,
+        "cached_input_tokens": 7367808,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 2935
+      },
+      "after": {
+        "input_tokens": 7821269,
+        "output_tokens": 19788,
+        "total_tokens": 7841057,
+        "cached_input_tokens": 7596672,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 3527
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "shared-review",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "shared-review"
+      ],
+      "spanId": "9c3cd67921b149bb92e7adaab8254a9a",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3397591,
+      "start": "2026-09-14T00:17:34.075000+00:00",
+      "end": "2026-09-14T00:17:46.252000+00:00",
+      "tokens": {
+        "input_tokens": 234732,
+        "output_tokens": 327,
+        "total_tokens": 235059,
+        "cached_input_tokens": 230528,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 58
+      },
+      "before": {
+        "input_tokens": 7821269,
+        "output_tokens": 19788,
+        "total_tokens": 7841057,
+        "cached_input_tokens": 7596672,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 3527
+      },
+      "after": {
+        "input_tokens": 8056001,
+        "output_tokens": 20115,
+        "total_tokens": 8076116,
+        "cached_input_tokens": 7827200,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 3585
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "shared-review",
+        "summary"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3440229,
+      "start": "2026-09-14T00:17:46.252000+00:00",
+      "end": "2026-09-14T00:18:41.818000+00:00",
+      "tokens": {
+        "input_tokens": 237160,
+        "output_tokens": 2747,
+        "total_tokens": 239907,
+        "cached_input_tokens": 234496,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 154
+      },
+      "before": {
+        "input_tokens": 8056001,
+        "output_tokens": 20115,
+        "total_tokens": 8076116,
+        "cached_input_tokens": 7827200,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 3585
+      },
+      "after": {
+        "input_tokens": 8293161,
+        "output_tokens": 22862,
+        "total_tokens": 8316023,
+        "cached_input_tokens": 8061696,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 3739
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "summary",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "summary"
+      ],
+      "spanId": "69daad71f90043699b4dfe5c9cc54d55",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3449302,
+      "start": "2026-09-14T00:18:41.818000+00:00",
+      "end": "2026-09-14T00:18:50.855000+00:00",
+      "tokens": {
+        "input_tokens": 240640,
+        "output_tokens": 154,
+        "total_tokens": 240794,
+        "cached_input_tokens": 236928,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 10
+      },
+      "before": {
+        "input_tokens": 8293161,
+        "output_tokens": 22862,
+        "total_tokens": 8316023,
+        "cached_input_tokens": 8061696,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 3739
+      },
+      "after": {
+        "input_tokens": 8533801,
+        "output_tokens": 23016,
+        "total_tokens": 8556817,
+        "cached_input_tokens": 8298624,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 3749
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "summary",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "summary"
+      ],
+      "spanId": "69daad71f90043699b4dfe5c9cc54d55",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3471044,
+      "start": "2026-09-14T00:18:50.855000+00:00",
+      "end": "2026-09-14T00:19:06.548000+00:00",
+      "tokens": {
+        "input_tokens": 241025,
+        "output_tokens": 434,
+        "total_tokens": 241459,
+        "cached_input_tokens": 240512,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 249
+      },
+      "before": {
+        "input_tokens": 8533801,
+        "output_tokens": 23016,
+        "total_tokens": 8556817,
+        "cached_input_tokens": 8298624,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 3749
+      },
+      "after": {
+        "input_tokens": 8774826,
+        "output_tokens": 23450,
+        "total_tokens": 8798276,
+        "cached_input_tokens": 8539136,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 3998
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "summary",
+        "talent-review"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3483575,
+      "start": "2026-09-14T00:19:06.548000+00:00",
+      "end": "2026-09-14T00:19:23.160000+00:00",
+      "tokens": {
+        "input_tokens": 242374,
+        "output_tokens": 510,
+        "total_tokens": 242884,
+        "cached_input_tokens": 240896,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 145
+      },
+      "before": {
+        "input_tokens": 8774826,
+        "output_tokens": 23450,
+        "total_tokens": 8798276,
+        "cached_input_tokens": 8539136,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 3998
+      },
+      "after": {
+        "input_tokens": 9017200,
+        "output_tokens": 23960,
+        "total_tokens": 9041160,
+        "cached_input_tokens": 8780032,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4143
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "classification-review",
+        "talent-review"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3497148,
+      "start": "2026-09-14T00:19:23.160000+00:00",
+      "end": "2026-09-14T00:19:37.850000+00:00",
+      "tokens": {
+        "input_tokens": 243141,
+        "output_tokens": 460,
+        "total_tokens": 243601,
+        "cached_input_tokens": 242176,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 51
+      },
+      "before": {
+        "input_tokens": 9017200,
+        "output_tokens": 23960,
+        "total_tokens": 9041160,
+        "cached_input_tokens": 8780032,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4143
+      },
+      "after": {
+        "input_tokens": 9260341,
+        "output_tokens": 24420,
+        "total_tokens": 9284761,
+        "cached_input_tokens": 9022208,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4194
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "classification-review",
+        "weekly"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 3537918,
+      "start": "2026-09-14T00:19:37.850000+00:00",
+      "end": "2026-09-14T00:19:49.885000+00:00",
+      "tokens": {
+        "input_tokens": 243920,
+        "output_tokens": 264,
+        "total_tokens": 244184,
+        "cached_input_tokens": 242944,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 41
+      },
+      "before": {
+        "input_tokens": 9260341,
+        "output_tokens": 24420,
+        "total_tokens": 9284761,
+        "cached_input_tokens": 9022208,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4194
+      },
+      "after": {
+        "input_tokens": 9504261,
+        "output_tokens": 24684,
+        "total_tokens": 9528945,
+        "cached_input_tokens": 9265152,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4235
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "weekly",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "weekly"
+      ],
+      "spanId": "f4a67d640b0c4d7a9e6c0ab1530ef469",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 4399731,
+      "start": "2026-09-14T00:19:49.885000+00:00",
+      "end": "2026-09-14T00:21:23.791000+00:00",
+      "tokens": {
+        "input_tokens": 32967,
+        "output_tokens": 133,
+        "total_tokens": 33100,
+        "cached_input_tokens": 25600,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 9504261,
+        "output_tokens": 24684,
+        "total_tokens": 9528945,
+        "cached_input_tokens": 9265152,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4235
+      },
+      "after": {
+        "input_tokens": 9537228,
+        "output_tokens": 24817,
+        "total_tokens": 9562045,
+        "cached_input_tokens": 9290752,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4235
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "weekly",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "weekly"
+      ],
+      "spanId": "f4a67d640b0c4d7a9e6c0ab1530ef469",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 4495648,
+      "start": "2026-09-14T00:21:23.791000+00:00",
+      "end": "2026-09-14T00:21:35.121000+00:00",
+      "tokens": {
+        "input_tokens": 33590,
+        "output_tokens": 226,
+        "total_tokens": 33816,
+        "cached_input_tokens": 32768,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 11
+      },
+      "before": {
+        "input_tokens": 9537228,
+        "output_tokens": 24817,
+        "total_tokens": 9562045,
+        "cached_input_tokens": 9290752,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4235
+      },
+      "after": {
+        "input_tokens": 9570818,
+        "output_tokens": 25043,
+        "total_tokens": 9595861,
+        "cached_input_tokens": 9323520,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4246
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "weekly",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "weekly"
+      ],
+      "spanId": "f4a67d640b0c4d7a9e6c0ab1530ef469",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 4584682,
+      "start": "2026-09-14T00:21:35.121000+00:00",
+      "end": "2026-09-14T00:21:44.291000+00:00",
+      "tokens": {
+        "input_tokens": 39948,
+        "output_tokens": 140,
+        "total_tokens": 40088,
+        "cached_input_tokens": 33408,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 9570818,
+        "output_tokens": 25043,
+        "total_tokens": 9595861,
+        "cached_input_tokens": 9323520,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4246
+      },
+      "after": {
+        "input_tokens": 9610766,
+        "output_tokens": 25183,
+        "total_tokens": 9635949,
+        "cached_input_tokens": 9356928,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4246
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "weekly",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "weekly"
+      ],
+      "spanId": "f4a67d640b0c4d7a9e6c0ab1530ef469",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 4630749,
+      "start": "2026-09-14T00:21:44.291000+00:00",
+      "end": "2026-09-14T00:21:53.825000+00:00",
+      "tokens": {
+        "input_tokens": 45529,
+        "output_tokens": 185,
+        "total_tokens": 45714,
+        "cached_input_tokens": 39808,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 12
+      },
+      "before": {
+        "input_tokens": 9610766,
+        "output_tokens": 25183,
+        "total_tokens": 9635949,
+        "cached_input_tokens": 9356928,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4246
+      },
+      "after": {
+        "input_tokens": 9656295,
+        "output_tokens": 25368,
+        "total_tokens": 9681663,
+        "cached_input_tokens": 9396736,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4258
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "weekly",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "weekly"
+      ],
+      "spanId": "f4a67d640b0c4d7a9e6c0ab1530ef469",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 4637766,
+      "start": "2026-09-14T00:21:53.825000+00:00",
+      "end": "2026-09-14T00:22:06.854000+00:00",
+      "tokens": {
+        "input_tokens": 48679,
+        "output_tokens": 290,
+        "total_tokens": 48969,
+        "cached_input_tokens": 45312,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 9656295,
+        "output_tokens": 25368,
+        "total_tokens": 9681663,
+        "cached_input_tokens": 9396736,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4258
+      },
+      "after": {
+        "input_tokens": 9704974,
+        "output_tokens": 25658,
+        "total_tokens": 9730632,
+        "cached_input_tokens": 9442048,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4258
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "weekly",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "weekly"
+      ],
+      "spanId": "f4a67d640b0c4d7a9e6c0ab1530ef469",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6255064,
+      "start": "2026-09-14T00:22:06.854000+00:00",
+      "end": "2026-09-14T00:22:19.209000+00:00",
+      "tokens": {
+        "input_tokens": 49077,
+        "output_tokens": 200,
+        "total_tokens": 49277,
+        "cached_input_tokens": 48512,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 18
+      },
+      "before": {
+        "input_tokens": 9704974,
+        "output_tokens": 25658,
+        "total_tokens": 9730632,
+        "cached_input_tokens": 9442048,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4258
+      },
+      "after": {
+        "input_tokens": 9754051,
+        "output_tokens": 25858,
+        "total_tokens": 9779909,
+        "cached_input_tokens": 9490560,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4276
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "weekly",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "weekly"
+      ],
+      "spanId": "f4a67d640b0c4d7a9e6c0ab1530ef469",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6290207,
+      "start": "2026-09-14T00:22:19.209000+00:00",
+      "end": "2026-09-14T00:22:58.062000+00:00",
+      "tokens": {
+        "input_tokens": 52128,
+        "output_tokens": 1939,
+        "total_tokens": 54067,
+        "cached_input_tokens": 48896,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 17
+      },
+      "before": {
+        "input_tokens": 9754051,
+        "output_tokens": 25858,
+        "total_tokens": 9779909,
+        "cached_input_tokens": 9490560,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4276
+      },
+      "after": {
+        "input_tokens": 9806179,
+        "output_tokens": 27797,
+        "total_tokens": 9833976,
+        "cached_input_tokens": 9539456,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4293
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "weekly",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "weekly"
+      ],
+      "spanId": "f4a67d640b0c4d7a9e6c0ab1530ef469",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6345853,
+      "start": "2026-09-14T00:22:58.062000+00:00",
+      "end": "2026-09-14T00:23:10.373000+00:00",
+      "tokens": {
+        "input_tokens": 54787,
+        "output_tokens": 254,
+        "total_tokens": 55041,
+        "cached_input_tokens": 51968,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 33
+      },
+      "before": {
+        "input_tokens": 9806179,
+        "output_tokens": 27797,
+        "total_tokens": 9833976,
+        "cached_input_tokens": 9539456,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4293
+      },
+      "after": {
+        "input_tokens": 9860966,
+        "output_tokens": 28051,
+        "total_tokens": 9889017,
+        "cached_input_tokens": 9591424,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4326
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "capture",
+        "weekly"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6360985,
+      "start": "2026-09-14T00:23:10.373000+00:00",
+      "end": "2026-09-14T00:23:20.835000+00:00",
+      "tokens": {
+        "input_tokens": 58290,
+        "output_tokens": 190,
+        "total_tokens": 58480,
+        "cached_input_tokens": 54656,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 36
+      },
+      "before": {
+        "input_tokens": 9860966,
+        "output_tokens": 28051,
+        "total_tokens": 9889017,
+        "cached_input_tokens": 9591424,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4326
+      },
+      "after": {
+        "input_tokens": 9919256,
+        "output_tokens": 28241,
+        "total_tokens": 9947497,
+        "cached_input_tokens": 9646080,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4362
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6365928,
+      "start": "2026-09-14T00:23:20.835000+00:00",
+      "end": "2026-09-14T00:24:23.112000+00:00",
+      "tokens": {
+        "input_tokens": 59140,
+        "output_tokens": 34,
+        "total_tokens": 59174,
+        "cached_input_tokens": 58112,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 13
+      },
+      "before": {
+        "input_tokens": 9919256,
+        "output_tokens": 28241,
+        "total_tokens": 9947497,
+        "cached_input_tokens": 9646080,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4362
+      },
+      "after": {
+        "input_tokens": 9978396,
+        "output_tokens": 28275,
+        "total_tokens": 10006671,
+        "cached_input_tokens": 9704192,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4375
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6372237,
+      "start": "2026-09-14T00:24:23.112000+00:00",
+      "end": "2026-09-14T00:25:26.684000+00:00",
+      "tokens": {
+        "input_tokens": 59197,
+        "output_tokens": 112,
+        "total_tokens": 59309,
+        "cached_input_tokens": 59008,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 15
+      },
+      "before": {
+        "input_tokens": 9978396,
+        "output_tokens": 28275,
+        "total_tokens": 10006671,
+        "cached_input_tokens": 9704192,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4375
+      },
+      "after": {
+        "input_tokens": 10037593,
+        "output_tokens": 28387,
+        "total_tokens": 10065980,
+        "cached_input_tokens": 9763200,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4390
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6378453,
+      "start": "2026-09-14T00:25:26.684000+00:00",
+      "end": "2026-09-14T00:26:29.775000+00:00",
+      "tokens": {
+        "input_tokens": 59332,
+        "output_tokens": 94,
+        "total_tokens": 59426,
+        "cached_input_tokens": 59008,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 13
+      },
+      "before": {
+        "input_tokens": 10037593,
+        "output_tokens": 28387,
+        "total_tokens": 10065980,
+        "cached_input_tokens": 9763200,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4390
+      },
+      "after": {
+        "input_tokens": 10096925,
+        "output_tokens": 28481,
+        "total_tokens": 10125406,
+        "cached_input_tokens": 9822208,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4403
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6422838,
+      "start": "2026-09-14T00:26:29.775000+00:00",
+      "end": "2026-09-14T00:26:41.520000+00:00",
+      "tokens": {
+        "input_tokens": 59449,
+        "output_tokens": 189,
+        "total_tokens": 59638,
+        "cached_input_tokens": 59136,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 25
+      },
+      "before": {
+        "input_tokens": 10096925,
+        "output_tokens": 28481,
+        "total_tokens": 10125406,
+        "cached_input_tokens": 9822208,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4403
+      },
+      "after": {
+        "input_tokens": 10156374,
+        "output_tokens": 28670,
+        "total_tokens": 10185044,
+        "cached_input_tokens": 9881344,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4428
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6428996,
+      "start": "2026-09-14T00:26:41.520000+00:00",
+      "end": "2026-09-14T00:27:45.049000+00:00",
+      "tokens": {
+        "input_tokens": 62164,
+        "output_tokens": 92,
+        "total_tokens": 62256,
+        "cached_input_tokens": 59264,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 10
+      },
+      "before": {
+        "input_tokens": 10156374,
+        "output_tokens": 28670,
+        "total_tokens": 10185044,
+        "cached_input_tokens": 9881344,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4428
+      },
+      "after": {
+        "input_tokens": 10218538,
+        "output_tokens": 28762,
+        "total_tokens": 10247300,
+        "cached_input_tokens": 9940608,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4438
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6435159,
+      "start": "2026-09-14T00:27:45.049000+00:00",
+      "end": "2026-09-14T00:28:48.911000+00:00",
+      "tokens": {
+        "input_tokens": 62279,
+        "output_tokens": 93,
+        "total_tokens": 62372,
+        "cached_input_tokens": 61952,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 10
+      },
+      "before": {
+        "input_tokens": 10218538,
+        "output_tokens": 28762,
+        "total_tokens": 10247300,
+        "cached_input_tokens": 9940608,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4438
+      },
+      "after": {
+        "input_tokens": 10280817,
+        "output_tokens": 28855,
+        "total_tokens": 10309672,
+        "cached_input_tokens": 10002560,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4448
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6438406,
+      "start": "2026-09-14T00:28:48.911000+00:00",
+      "end": "2026-09-14T00:29:11.245000+00:00",
+      "tokens": {
+        "input_tokens": 62395,
+        "output_tokens": 109,
+        "total_tokens": 62504,
+        "cached_input_tokens": 62080,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 10280817,
+        "output_tokens": 28855,
+        "total_tokens": 10309672,
+        "cached_input_tokens": 10002560,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4448
+      },
+      "after": {
+        "input_tokens": 10343212,
+        "output_tokens": 28964,
+        "total_tokens": 10372176,
+        "cached_input_tokens": 10064640,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4448
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6443276,
+      "start": "2026-09-14T00:29:11.245000+00:00",
+      "end": "2026-09-14T00:29:19.749000+00:00",
+      "tokens": {
+        "input_tokens": 62606,
+        "output_tokens": 61,
+        "total_tokens": 62667,
+        "cached_input_tokens": 62208,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 20
+      },
+      "before": {
+        "input_tokens": 10343212,
+        "output_tokens": 28964,
+        "total_tokens": 10372176,
+        "cached_input_tokens": 10064640,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4448
+      },
+      "after": {
+        "input_tokens": 10405818,
+        "output_tokens": 29025,
+        "total_tokens": 10434843,
+        "cached_input_tokens": 10126848,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4468
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6469485,
+      "start": "2026-09-14T00:29:19.749000+00:00",
+      "end": "2026-09-14T00:29:34.774000+00:00",
+      "tokens": {
+        "input_tokens": 62723,
+        "output_tokens": 264,
+        "total_tokens": 62987,
+        "cached_input_tokens": 62464,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 39
+      },
+      "before": {
+        "input_tokens": 10405818,
+        "output_tokens": 29025,
+        "total_tokens": 10434843,
+        "cached_input_tokens": 10126848,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4468
+      },
+      "after": {
+        "input_tokens": 10468541,
+        "output_tokens": 29289,
+        "total_tokens": 10497830,
+        "cached_input_tokens": 10189312,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4507
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6479446,
+      "start": "2026-09-14T00:29:34.774000+00:00",
+      "end": "2026-09-14T00:29:46.567000+00:00",
+      "tokens": {
+        "input_tokens": 64287,
+        "output_tokens": 166,
+        "total_tokens": 64453,
+        "cached_input_tokens": 62592,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 21
+      },
+      "before": {
+        "input_tokens": 10468541,
+        "output_tokens": 29289,
+        "total_tokens": 10497830,
+        "cached_input_tokens": 10189312,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4507
+      },
+      "after": {
+        "input_tokens": 10532828,
+        "output_tokens": 29455,
+        "total_tokens": 10562283,
+        "cached_input_tokens": 10251904,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4528
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6488204,
+      "start": "2026-09-14T00:29:46.567000+00:00",
+      "end": "2026-09-14T00:30:04.211000+00:00",
+      "tokens": {
+        "input_tokens": 64698,
+        "output_tokens": 177,
+        "total_tokens": 64875,
+        "cached_input_tokens": 64128,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 10532828,
+        "output_tokens": 29455,
+        "total_tokens": 10562283,
+        "cached_input_tokens": 10251904,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4528
+      },
+      "after": {
+        "input_tokens": 10597526,
+        "output_tokens": 29632,
+        "total_tokens": 10627158,
+        "cached_input_tokens": 10316032,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4528
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6529744,
+      "start": "2026-09-14T00:30:04.211000+00:00",
+      "end": "2026-09-14T00:30:15.200000+00:00",
+      "tokens": {
+        "input_tokens": 65212,
+        "output_tokens": 219,
+        "total_tokens": 65431,
+        "cached_input_tokens": 64512,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 10
+      },
+      "before": {
+        "input_tokens": 10597526,
+        "output_tokens": 29632,
+        "total_tokens": 10627158,
+        "cached_input_tokens": 10316032,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4528
+      },
+      "after": {
+        "input_tokens": 10662738,
+        "output_tokens": 29851,
+        "total_tokens": 10692589,
+        "cached_input_tokens": 10380544,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4538
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6534786,
+      "start": "2026-09-14T00:30:15.200000+00:00",
+      "end": "2026-09-14T00:30:22.828000+00:00",
+      "tokens": {
+        "input_tokens": 67832,
+        "output_tokens": 63,
+        "total_tokens": 67895,
+        "cached_input_tokens": 65024,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 22
+      },
+      "before": {
+        "input_tokens": 10662738,
+        "output_tokens": 29851,
+        "total_tokens": 10692589,
+        "cached_input_tokens": 10380544,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4538
+      },
+      "after": {
+        "input_tokens": 10730570,
+        "output_tokens": 29914,
+        "total_tokens": 10760484,
+        "cached_input_tokens": 10445568,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4560
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6539907,
+      "start": "2026-09-14T00:30:22.828000+00:00",
+      "end": "2026-09-14T00:31:26.183000+00:00",
+      "tokens": {
+        "input_tokens": 67979,
+        "output_tokens": 62,
+        "total_tokens": 68041,
+        "cached_input_tokens": 67712,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 41
+      },
+      "before": {
+        "input_tokens": 10730570,
+        "output_tokens": 29914,
+        "total_tokens": 10760484,
+        "cached_input_tokens": 10445568,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4560
+      },
+      "after": {
+        "input_tokens": 10798549,
+        "output_tokens": 29976,
+        "total_tokens": 10828525,
+        "cached_input_tokens": 10513280,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4601
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6552160,
+      "start": "2026-09-14T00:31:26.183000+00:00",
+      "end": "2026-09-14T00:31:47.517000+00:00",
+      "tokens": {
+        "input_tokens": 68064,
+        "output_tokens": 652,
+        "total_tokens": 68716,
+        "cached_input_tokens": 67840,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 59
+      },
+      "before": {
+        "input_tokens": 10798549,
+        "output_tokens": 29976,
+        "total_tokens": 10828525,
+        "cached_input_tokens": 10513280,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4601
+      },
+      "after": {
+        "input_tokens": 10866613,
+        "output_tokens": 30628,
+        "total_tokens": 10897241,
+        "cached_input_tokens": 10581120,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4660
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6557523,
+      "start": "2026-09-14T00:31:47.517000+00:00",
+      "end": "2026-09-14T00:31:55.297000+00:00",
+      "tokens": {
+        "input_tokens": 68773,
+        "output_tokens": 61,
+        "total_tokens": 68834,
+        "cached_input_tokens": 67840,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 21
+      },
+      "before": {
+        "input_tokens": 10866613,
+        "output_tokens": 30628,
+        "total_tokens": 10897241,
+        "cached_input_tokens": 10581120,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4660
+      },
+      "after": {
+        "input_tokens": 10935386,
+        "output_tokens": 30689,
+        "total_tokens": 10966075,
+        "cached_input_tokens": 10648960,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4681
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6562430,
+      "start": "2026-09-14T00:31:55.297000+00:00",
+      "end": "2026-09-14T00:32:27.791000+00:00",
+      "tokens": {
+        "input_tokens": 68974,
+        "output_tokens": 28,
+        "total_tokens": 69002,
+        "cached_input_tokens": 68608,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 7
+      },
+      "before": {
+        "input_tokens": 10935386,
+        "output_tokens": 30689,
+        "total_tokens": 10966075,
+        "cached_input_tokens": 10648960,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4681
+      },
+      "after": {
+        "input_tokens": 11004360,
+        "output_tokens": 30717,
+        "total_tokens": 11035077,
+        "cached_input_tokens": 10717568,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4688
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6570022,
+      "start": "2026-09-14T00:32:27.791000+00:00",
+      "end": "2026-09-14T00:32:30.675000+00:00",
+      "tokens": {
+        "input_tokens": 69025,
+        "output_tokens": 39,
+        "total_tokens": 69064,
+        "cached_input_tokens": 68736,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 11004360,
+        "output_tokens": 30717,
+        "total_tokens": 11035077,
+        "cached_input_tokens": 10717568,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4688
+      },
+      "after": {
+        "input_tokens": 11073385,
+        "output_tokens": 30756,
+        "total_tokens": 11104141,
+        "cached_input_tokens": 10786304,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4688
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "capture",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "capture"
+      ],
+      "spanId": "dc6cb9d4346049cbbeb045c3423a3693",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6575140,
+      "start": "2026-09-14T00:32:30.675000+00:00",
+      "end": "2026-09-14T00:32:41.120000+00:00",
+      "tokens": {
+        "input_tokens": 69234,
+        "output_tokens": 95,
+        "total_tokens": 69329,
+        "cached_input_tokens": 68864,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 11073385,
+        "output_tokens": 30756,
+        "total_tokens": 11104141,
+        "cached_input_tokens": 10786304,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4688
+      },
+      "after": {
+        "input_tokens": 11142619,
+        "output_tokens": 30851,
+        "total_tokens": 11173470,
+        "cached_input_tokens": 10855168,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4688
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "capture",
+        "shared-review"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6589045,
+      "start": "2026-09-14T00:32:41.120000+00:00",
+      "end": "2026-09-14T00:33:01.217000+00:00",
+      "tokens": {
+        "input_tokens": 69471,
+        "output_tokens": 646,
+        "total_tokens": 70117,
+        "cached_input_tokens": 68992,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 32
+      },
+      "before": {
+        "input_tokens": 11142619,
+        "output_tokens": 30851,
+        "total_tokens": 11173470,
+        "cached_input_tokens": 10855168,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4688
+      },
+      "after": {
+        "input_tokens": 11212090,
+        "output_tokens": 31497,
+        "total_tokens": 11243587,
+        "cached_input_tokens": 10924160,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4720
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "classification-review",
+        "shared-review",
+        "summary",
+        "talent-review"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6614009,
+      "start": "2026-09-14T00:33:01.217000+00:00",
+      "end": "2026-09-14T00:33:18.603000+00:00",
+      "tokens": {
+        "input_tokens": 70351,
+        "output_tokens": 440,
+        "total_tokens": 70791,
+        "cached_input_tokens": 69248,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 12
+      },
+      "before": {
+        "input_tokens": 11212090,
+        "output_tokens": 31497,
+        "total_tokens": 11243587,
+        "cached_input_tokens": 10924160,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4720
+      },
+      "after": {
+        "input_tokens": 11282441,
+        "output_tokens": 31937,
+        "total_tokens": 11314378,
+        "cached_input_tokens": 10993408,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4732
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "preflight",
+        "weekly"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6644773,
+      "start": "2026-09-14T00:33:18.603000+00:00",
+      "end": "2026-09-14T00:33:32.617000+00:00",
+      "tokens": {
+        "input_tokens": 71922,
+        "output_tokens": 337,
+        "total_tokens": 72259,
+        "cached_input_tokens": 70144,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 11282441,
+        "output_tokens": 31937,
+        "total_tokens": 11314378,
+        "cached_input_tokens": 10993408,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4732
+      },
+      "after": {
+        "input_tokens": 11354363,
+        "output_tokens": 32274,
+        "total_tokens": 11386637,
+        "cached_input_tokens": 11063552,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4732
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "apply-talent",
+        "preflight"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6648420,
+      "start": "2026-09-14T00:33:32.617000+00:00",
+      "end": "2026-09-14T00:33:52.430000+00:00",
+      "tokens": {
+        "input_tokens": 73945,
+        "output_tokens": 151,
+        "total_tokens": 74096,
+        "cached_input_tokens": 71680,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 11354363,
+        "output_tokens": 32274,
+        "total_tokens": 11386637,
+        "cached_input_tokens": 11063552,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4732
+      },
+      "after": {
+        "input_tokens": 11428308,
+        "output_tokens": 32425,
+        "total_tokens": 11460733,
+        "cached_input_tokens": 11135232,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4732
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "apply-talent",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "apply-talent"
+      ],
+      "spanId": "a0cff9c6e83a4b239fcbe73b8fb9a66c",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6656375,
+      "start": "2026-09-14T00:33:52.430000+00:00",
+      "end": "2026-09-14T00:33:59.352000+00:00",
+      "tokens": {
+        "input_tokens": 74297,
+        "output_tokens": 53,
+        "total_tokens": 74350,
+        "cached_input_tokens": 73728,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 12
+      },
+      "before": {
+        "input_tokens": 11428308,
+        "output_tokens": 32425,
+        "total_tokens": 11460733,
+        "cached_input_tokens": 11135232,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4732
+      },
+      "after": {
+        "input_tokens": 11502605,
+        "output_tokens": 32478,
+        "total_tokens": 11535083,
+        "cached_input_tokens": 11208960,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4744
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "apply-classification",
+        "apply-talent",
+        "preflight"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6668442,
+      "start": "2026-09-14T00:33:59.352000+00:00",
+      "end": "2026-09-14T00:34:26.125000+00:00",
+      "tokens": {
+        "input_tokens": 74441,
+        "output_tokens": 183,
+        "total_tokens": 74624,
+        "cached_input_tokens": 74112,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 11502605,
+        "output_tokens": 32478,
+        "total_tokens": 11535083,
+        "cached_input_tokens": 11208960,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4744
+      },
+      "after": {
+        "input_tokens": 11577046,
+        "output_tokens": 32661,
+        "total_tokens": 11609707,
+        "cached_input_tokens": 11283072,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4744
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "apply-classification",
+        "preflight"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6679270,
+      "start": "2026-09-14T00:34:26.125000+00:00",
+      "end": "2026-09-14T00:34:37.913000+00:00",
+      "tokens": {
+        "input_tokens": 75156,
+        "output_tokens": 264,
+        "total_tokens": 75420,
+        "cached_input_tokens": 74240,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 7
+      },
+      "before": {
+        "input_tokens": 11577046,
+        "output_tokens": 32661,
+        "total_tokens": 11609707,
+        "cached_input_tokens": 11283072,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4744
+      },
+      "after": {
+        "input_tokens": 11652202,
+        "output_tokens": 32925,
+        "total_tokens": 11685127,
+        "cached_input_tokens": 11357312,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4751
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "dashboard",
+        "preflight"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6688172,
+      "start": "2026-09-14T00:34:37.913000+00:00",
+      "end": "2026-09-14T00:34:49.030000+00:00",
+      "tokens": {
+        "input_tokens": 75663,
+        "output_tokens": 148,
+        "total_tokens": 75811,
+        "cached_input_tokens": 75008,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 15
+      },
+      "before": {
+        "input_tokens": 11652202,
+        "output_tokens": 32925,
+        "total_tokens": 11685127,
+        "cached_input_tokens": 11357312,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4751
+      },
+      "after": {
+        "input_tokens": 11727865,
+        "output_tokens": 33073,
+        "total_tokens": 11760938,
+        "cached_input_tokens": 11432320,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4766
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "dashboard",
+        "page"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6703465,
+      "start": "2026-09-14T00:34:49.030000+00:00",
+      "end": "2026-09-14T00:35:12.708000+00:00",
+      "tokens": {
+        "input_tokens": 76077,
+        "output_tokens": 280,
+        "total_tokens": 76357,
+        "cached_input_tokens": 75520,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 0
+      },
+      "before": {
+        "input_tokens": 11727865,
+        "output_tokens": 33073,
+        "total_tokens": 11760938,
+        "cached_input_tokens": 11432320,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4766
+      },
+      "after": {
+        "input_tokens": 11803942,
+        "output_tokens": 33353,
+        "total_tokens": 11837295,
+        "cached_input_tokens": 11507840,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4766
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "page",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "page"
+      ],
+      "spanId": "59aadfe7e9ed4f67905d066e6d5489a8",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 6708623,
+      "start": "2026-09-14T00:35:12.708000+00:00",
+      "end": "2026-09-14T00:35:19.222000+00:00",
+      "tokens": {
+        "input_tokens": 77186,
+        "output_tokens": 93,
+        "total_tokens": 77279,
+        "cached_input_tokens": 75904,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 23
+      },
+      "before": {
+        "input_tokens": 11803942,
+        "output_tokens": 33353,
+        "total_tokens": 11837295,
+        "cached_input_tokens": 11507840,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4766
+      },
+      "after": {
+        "input_tokens": 11881128,
+        "output_tokens": 33446,
+        "total_tokens": 11914574,
+        "cached_input_tokens": 11583744,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4789
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "page",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "page"
+      ],
+      "spanId": "59aadfe7e9ed4f67905d066e6d5489a8",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 10259137,
+      "start": "2026-09-14T00:35:19.222000+00:00",
+      "end": "2026-09-14T00:35:45.194000+00:00",
+      "tokens": {
+        "input_tokens": 77377,
+        "output_tokens": 178,
+        "total_tokens": 77555,
+        "cached_input_tokens": 77056,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 16
+      },
+      "before": {
+        "input_tokens": 11881128,
+        "output_tokens": 33446,
+        "total_tokens": 11914574,
+        "cached_input_tokens": 11583744,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4789
+      },
+      "after": {
+        "input_tokens": 11958505,
+        "output_tokens": 33624,
+        "total_tokens": 11992129,
+        "cached_input_tokens": 11660800,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4805
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "page",
+      "runDate": "2026-09-14",
+      "reason": "contained_in_step",
+      "candidates": [
+        "page"
+      ],
+      "spanId": "59aadfe7e9ed4f67905d066e6d5489a8",
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 10295589,
+      "start": "2026-09-14T00:35:45.194000+00:00",
+      "end": "2026-09-14T00:36:00.570000+00:00",
+      "tokens": {
+        "input_tokens": 84301,
+        "output_tokens": 351,
+        "total_tokens": 84652,
+        "cached_input_tokens": 77184,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 28
+      },
+      "before": {
+        "input_tokens": 11958505,
+        "output_tokens": 33624,
+        "total_tokens": 11992129,
+        "cached_input_tokens": 11660800,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4805
+      },
+      "after": {
+        "input_tokens": 12042806,
+        "output_tokens": 33975,
+        "total_tokens": 12076781,
+        "cached_input_tokens": 11737984,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4833
+      },
+      "calculation": "after_minus_before"
+    },
+    {
+      "step": "unassigned",
+      "runDate": "2026-09-14",
+      "reason": "step_boundary",
+      "candidates": [
+        "page",
+        "report"
+      ],
+      "spanId": null,
+      "includedInTotals": true,
+      "workDate": "2026-09-14",
+      "measurement": "observed_counter_difference",
+      "source": "source-32c4417d2029afa1",
+      "offset": 10323164,
+      "start": "2026-09-14T00:36:00.570000+00:00",
+      "end": "2026-09-14T00:36:32.877000+00:00",
+      "tokens": {
+        "input_tokens": 86711,
+        "output_tokens": 1133,
+        "total_tokens": 87844,
+        "cached_input_tokens": 83840,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 50
+      },
+      "before": {
+        "input_tokens": 12042806,
+        "output_tokens": 33975,
+        "total_tokens": 12076781,
+        "cached_input_tokens": 11737984,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4833
+      },
+      "after": {
+        "input_tokens": 12129517,
+        "output_tokens": 35108,
+        "total_tokens": 12164625,
+        "cached_input_tokens": 11821824,
+        "cache_write_input_tokens": 0,
+        "reasoning_output_tokens": 4883
+      },
+      "calculation": "after_minus_before"
+    }
+  ],
+  "sources": [
+    {
+      "source": "source-32c4417d2029afa1",
+      "status": "readable",
+      "lastReadAt": "2026-09-14T00:36:43.327908+00:00",
+      "issues": []
+    }
+  ],
+  "scope": "registered_windows_with_boundary_intervals; final_reply_after_finish_excluded",
+  "dayPolicy": "usage_notification_day; cross-day intervals remain unassigned",
+  "detailPolicy": "cached input and reasoning output are breakdowns, not additional totals",
+  "snapshotId": "a2ba8f08ead006a57fce060669b3b533982679ae08fd59cc89e4cb4d0ef1c3db",
+  "generatedAt": "2026-09-14T00:36:43.403489+00:00"
+}

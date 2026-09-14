@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "snapshotDate": "2026-09-14",
+  "generatedAt": "2026-09-14T09:19:49.345389+09:00",
+  "complete": true,
+  "source": "n8n-data-tables",
+  "feedback": [
+    {
+      "articleUrl": "https://news.google.com/rss/articles/CBMiO0FVX3lxTFBwTnhmWkU0X3BvSThyNmlXaDBZMFhuR1pIRkFuRTdad0lQOVVJNGdKSEpWdEVQckRZY2pN?oc=5",
+      "decision": "rejected",
+      "reasonCode": "outdated",
+      "sourceDomain": "",
+      "publisherLabel": "",
+      "reviewedAt": "2026-07-24 06:20:21.924"
+    },
+    {
+      "articleUrl": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE8wWHNsNUJUSnh2Sm5SYl9Lb19WX3U5QWMzLWh5Z2xNRk1rdU9hdDlJYTBFdGpzRU5jNjJmVS1FMHhzSzNvRVNZTmcxN19DQQ?oc=5",
+      "decision": "approved",
+      "reasonCode": "approved",
+      "sourceDomain": "",
+      "publisherLabel": "",
+      "reviewedAt": "2026-07-24 06:33:07.796"
+    },
+    {
+      "articleUrl": "https://news.google.com/rss/articles/CBMi0gJBVV95cUxPa0pMLVR6aDBJcGJscGMwV2Y4d1Fxb1haNVNlNlZ3TkpXejFRSlloRUljWU8zRDZaQUJYV1FvVmRZSXlEdjdvSVJQQ0Q2Wm1ydE01OUlVT0F6cmlXRlhsOFRlM2RGMWZENmdEUElMNTJ6b3NlNnhOaGYyR3gtSmE0UXFoVF9YUHZadk5FRkZGVUFraXU0NXJmblNKQ0FmZURqd3RIRGF5SVU2dHdTZjFwVFQ1bXBtZ0gwTUhtajkzTWk3TDBSYVYycnpHRFY3UEZOWkJQTmUtUUtVX25uU3F5bFNBQ19RdEg5eFI2RkJTTmpjYVZFblJqQWtZWUcwaTZTOElTbkFlQTl3NlZTLUlvX2hvdUpYVU9KTmlucTBoM0ZfSXoxbUxRb0E2c2huV000ek9ZdWF6aWYtdW1kbFBRVkJrOVl5UTh1T1FtYU4ycWF2QQ?oc=5",
+      "decision": "approved",
+      "reasonCode": "approved",
+      "sourceDomain": "",
+      "publisherLabel": "",
+      "reviewedAt": "2026-07-24 06:44:24.959"
+    },
+    {
+      "articleUrl": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBnTm9temNVclFhUHFjZ2Z6RGRoOW1DcktoN1UwTTZsdHFKTTZSS1RsMzNlLWEzcDdSVlFhVDhRM1B3OF9WbXU3MUgwVG80VHo2cUR4TTBXWFA1clV4XzNvd2dwOXBMSzhBUGc?oc=5",
+      "decision": "approved",
+      "reasonCode": "approved",
+      "sourceDomain": "",
+      "publisherLabel": "",
+      "reviewedAt": "2026-07-24 07:18:00.461"
+    },
+    {
+      "articleUrl": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE1SNWZrUl81MnNXRWlGNklGSVpZdHp3SU9CNWx0YmJDbnNweTBFYnRVMnh4NFpSSnE3cTU4?oc=5",
+      "decision": "approved",
+      "reasonCode": "approved",
+      "sourceDomain": "",
+      "publisherLabel": "",
+      "reviewedAt": "2026-07-24 07:18:56.465"
+    },
+    {
+      "articleUrl": "https://news.google.com/rss/articles/CBMiO0FVX3lxTFBnRXE1VVlFM1BFRHBxTVl0UnZUZWhRS2d3MHNGUEtLNnJMcnk0S1d5X1MyN1VkRTJTRHlR?oc=5",
+      "decision": "approved",
+      "reasonCode": "approved",
+      "sourceDomain": "",
+      "publisherLabel": "",
+      "reviewedAt": "2026-07-24 07:20:08.464"
+    },
+    {
+      "articleUrl": "https://news.google.com/rss/articles/CBMiO0FVX3lxTFBLNWlrWnd5M0RLSmNWNGFhMUwtcDViZmFLa3pqTG5aU21ESWEtSEIwQVkyY0gzSzlMcG9n?oc=5",
+      "decision": "approved",
+      "reasonCode": "approved",
+      "sourceDomain": "",
+      "publisherLabel": "",
+      "reviewedAt": "2026-07-24 07:31:00.296"
+    },
+    {
+      "articleUrl": "https://news.google.com/rss/articles/CBMizwNBVV95cUxQaGFRdFdpbVVEWEM5Q2VvOUR0alZTanl0TXgySFpqeG5YclRra29sU3ZpNlppdm04eERMMm1kbUNULWJ4U0cwN29aX3lCYmUxNGZSaTVudDRVM01KMmZtemcwRzFwMDY3VlNPWVFSa0trZ3lQemNyNkxpaWFDLTN1OF9FWnBNZGFwNUFSUi1hQVJFcjRwZjlZS2xSc2lnUHk0UG1vcnhfNEFMYnh4YlJJT1NsQksyVlJWZWVXYUcyS19ldzl0eDd0U0ljSDExMmlSUkJyNm9pcDVmQVlpZUZCOUhwTVAtR3hGMEp6aXpUN0lXMkVXcF9sTjdyR1dRVk9tNUN2Mm4tRWtfRzE3THVtNDRfOE4wOF81enNfWEM0WVBsQ1JPSWp2akxRTFplWEpLQXZUUHcxTkRTUmRCcTM1NWhtRlZ4NkNnaFl6dU02ZVNiNzJ3c2p3YjZkZGc3Mmw4SFdaaUhYU3RGYmFNejE3WXpCdVByMDZiUWl6NHlZaVBVaGFGRjZRNVk3aHlIRFczNlpMRzIzTlFLRUl3Vkc2ZzdvSjlSeTdsSkhsNm5PbHJTS29qV2RNRFd4Z3N5dVRBT3NGNDRoVTdWX1FCMUh3?oc=5",
+      "decision": "approved",
+      "reasonCode": "approved",
+      "sourceDomain": "",
+      "publisherLabel": "",
+      "reviewedAt": "2026-07-24 07:31:27.578"
+    },
+    {
+      "articleUrl": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1GSGdNUjdUR1ctY2llb3lsNUVMUVVrNTQwMTVycG5CUkVUN1NXZk44UHkxTUxZb0JDRlBvWE0zWkF2Y0pPMjB0YmFBMnJFa2dORkJLVkdTdnQ?oc=5",
+      "decision": "approved",
+      "reasonCode": "approved",
+      "sourceDomain": "",
+      "publisherLabel": "",
+      "reviewedAt": "2026-07-24 07:32:17.045"
+    },
+    {
+      "articleUrl": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBwMGhjMzBIMXltX3cxempld3VrX1pHUEVZd2kyTVctSWtBUkRYdUgxRW5GOGw0Z2JEdUxHamFSM3ZtSTdIaDhXdUxhQklkbkxRbmEzVDZhc1ZyUQ?oc=5",
+      "decision": "rejected",
+      "reasonCode": "irrelevant",
+      "sourceDomain": "",
+      "publisherLabel": "",
+      "reviewedAt": "2026-07-24 07:32:59.602"
+    },
+    {
+      "articleUrl": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFB5MndOcWNKVENiOUp0UjBrX1ppR2xJb0cyLWRGRXF1bnpoVERuc054Qlk3X0tNMUZPbTNiYUd2Z3ozMGk0dXd3bXFhYzNJVDJSOEE?oc=5",
+      "decision": "approved",
+      "reasonCode": "approved",
+      "sourceDomain": "",
+      "publisherLabel": "",
+      "reviewedAt": "2026-07-24 07:45:16.500"
+    },
+    {
+      "articleUrl": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE5CU28zanoyRF85VzRpOEMxVGhaT1hfRXVnem0yeGVNSWFWMXVERlBCMVlab19JZVAyRXBB?oc=5",
+      "decision": "approved",
+      "reasonCode": "approved",
+      "sourceDomain": "",
+      "publisherLabel": "",
+      "reviewedAt": "2026-07-24 07:46:43.865"
+    },
+    {
+      "articleUrl": "https://news.google.com/rss/articles/CBMiO0FVX3lxTFBoT2lQSVEyZ0FsRnRMSkF6RV9SeU1hNjBLVnNLc0VSV0pLQlFOYTdzb0lVbGFRejZCdEZF?oc=5",
+      "decision": "approved",
+      "reasonCode": "approved",
+      "sourceDomain": "",
+      "publisherLabel": "",
+      "reviewedAt": "2026-07-24 07:47:23.915"
+    },
+    {
+      "articleUrl": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE1LbDlqdDBkQ0JnWmJyaF9nRTFfdElNSzEwZ1pBZmNIanBycjVtQ1A3S1kwcGw3TWpYenhF?oc=5",
+      "decision": "approved",
+      "reasonCode": "approved",
+      "sourceDomain": "",
+      "publisherLabel": "",
+      "reviewedAt": "2026-07-24 08:16:21.571"
+    },
+    {
+      "articleUrl": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE1JQlNPdk1ZQmpKZVQwTkRUeWxIa2hjX1R2WHc0Z0E1S0MzS2hydjN3LWQzZmZpcUpYd2NV?oc=5",
+      "decision": "approved",
+      "reasonCode": "approved",
+      "sourceDomain": "",
+      "publisherLabel": "",
+      "reviewedAt": "2026-07-24 08:17:18.496"
+    },
+    {
+      "articleUrl": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE9OZE93Ml9kN1VoNWtNQjlXYmlBMGdzWWx3N2J6NVdsN0JWWTdYVW1ZT0pxZC0wd19MLVFB?oc=5",
+      "decision": "approved",
+      "reasonCode": "approved",
+      "sourceDomain": "",
+      "publisherLabel": "",
+      "reviewedAt": "2026-07-24 08:17:55.761"
+    }
+  ],
+  "issues": [],
+  "instructionHash": "6ac140d73ca0768579b871cd26200d986f7152287be6b9d9244f9724003fc4d1"
+}

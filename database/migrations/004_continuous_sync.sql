@@ -1,0 +1,6 @@
+-- Phase 5 audit; existing migrations and sync_runs statuses are preserved.
+ALTER TABLE sync_runs ADD COLUMN outcome TEXT NOT NULL DEFAULT 'pending' CHECK(outcome IN ('pending','success','difference','failure','conflict'));
+ALTER TABLE sync_runs ADD COLUMN replay_count INTEGER NOT NULL DEFAULT 0;
+CREATE TABLE sync_attempts(id TEXT PRIMARY KEY NOT NULL, operation_id TEXT NOT NULL REFERENCES sync_runs(id), request_hash TEXT NOT NULL, outcome TEXT NOT NULL CHECK(outcome IN ('success','replayed','difference','failure','conflict')), observed_at TEXT NOT NULL, details_json TEXT NOT NULL CHECK(json_valid(details_json)));
+CREATE TABLE sync_row_history(operation_id TEXT NOT NULL REFERENCES sync_runs(id), entity TEXT NOT NULL, row_key TEXT NOT NULL CHECK(json_valid(row_key)), old_json TEXT CHECK(old_json IS NULL OR json_valid(old_json)), new_json TEXT NOT NULL CHECK(json_valid(new_json)), source_json TEXT NOT NULL CHECK(json_valid(source_json)), PRIMARY KEY(operation_id,entity,row_key));
+CREATE TABLE sync_source_receipts(operation_id TEXT PRIMARY KEY NOT NULL REFERENCES sync_runs(id), completed_at TEXT NOT NULL, receipt_hash TEXT NOT NULL, receipt_json TEXT NOT NULL CHECK(json_valid(receipt_json)));

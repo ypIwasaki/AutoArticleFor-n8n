@@ -1,0 +1,192 @@
+{
+  "phase": 5,
+  "status": "stopped",
+  "phase5_complete": false,
+  "phase6_started": false,
+  "phase4_commit": "734eee2752e16fbd13db3ab8f873ffe426a1ab32",
+  "checked_at": "2026-09-15T03:07:41.470692+00:00",
+  "entry_gate": {
+    "phase": 5,
+    "status": "baseline_passed",
+    "phase4_commit": "734eee2752e16fbd13db3ab8f873ffe426a1ab32",
+    "started_at": "2026-09-15T02:44:35.833149+00:00",
+    "sync_started": false,
+    "phase6_started": false,
+    "idle": {
+      "observed_at": "2026-09-15T02:44:35.845264+00:00",
+      "processes": [],
+      "unfinished_executions": []
+    },
+    "pending_source_differences": 0,
+    "project_database_equal": true,
+    "checked_at": "2026-09-15T02:45:45.510991+00:00"
+  },
+  "windows_matching_writer_processes_at_entry": 0,
+  "services_at_entry": {
+    "processes": []
+  },
+  "pending_business_input_differences_at_entry": 0,
+  "backup_restore": {
+    "status": "passed",
+    "dedicated_backup": {
+      "path": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5/20260915T024435Z/project.sqlite",
+      "sha256": "2513b485b634090e6ff1dd7cc3e3b7239bdba431baa8fda583fdca74c9a49c80",
+      "foreign_keys": {
+        "source": 1,
+        "destination": 1
+      }
+    },
+    "dedicated_restore": {
+      "path": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5/20260915T024435Z/project-restored.sqlite",
+      "sha256": "2513b485b634090e6ff1dd7cc3e3b7239bdba431baa8fda583fdca74c9a49c80",
+      "foreign_keys": {
+        "source": 1,
+        "destination": 1
+      },
+      "integrity": "ok",
+      "schema": [
+        {
+          "version": "001",
+          "applied_at": "2026-09-15T01:05:58.189199Z",
+          "checksum": "a14af4234486e082b7dabb915c19bb2fd6325537fa719c3e397d9d6dab5d8473"
+        },
+        {
+          "version": "002",
+          "applied_at": "2026-09-15T01:05:58.190375Z",
+          "checksum": "27b21c2b31eac2307efd873edb247456cbf3097cfe2ae1614411845e05a92d4b"
+        },
+        {
+          "version": "003",
+          "applied_at": "2026-09-15T01:05:58.193886Z",
+          "checksum": "d2d7410b6ad5e336c170b7a2a1f993baf663f468ba52bb44bd8ac9a39cdbf47e"
+        }
+      ]
+    },
+    "source_files": 266,
+    "source_six_tables_restored": true,
+    "project_all_tables_and_schema_equal": true,
+    "n8n_sha256": "817486414d77b281f7341a903cb89e5b422c8765ee285ea14b3451c46e074b77",
+    "checked_at": "2026-09-15T02:48:42.860917+00:00"
+  },
+  "complete_recovery_bundle": false,
+  "backup_limitation": "Database and 266 business files were captured and database restores match. Policy dependencies required for a reproducible projection were omitted, so the complete phase 5 recovery bundle is not accepted.",
+  "baseline_projection": {
+    "status": "stopped",
+    "production_modified": false,
+    "changes": 4614,
+    "by_entity": {
+      "review": 1538,
+      "sourceRecord": 1538,
+      "conflict": 1538
+    },
+    "checked_at": "2026-09-15T03:03:07.725197+00:00"
+  },
+  "stop_analysis": {
+    "root_policy_hash": "8e3823cbf1c958c156db4eda10c9af6fba7d34ffe75b7dfb38bc0b66b7e5a009",
+    "phase3_snapshot_policy_hash": "8e3823cbf1c958c156db4eda10c9af6fba7d34ffe75b7dfb38bc0b66b7e5a009",
+    "phase5_projection_policy_hash": null,
+    "phase5_policy_directory_exists": false,
+    "changed_review_sources": {
+      "content/article-review-facts/2026-09-10.jsonl": 627,
+      "content/article-review-facts/2026-09-11.jsonl": 542,
+      "content/article-review-facts/2026-09-14.jsonl": 369
+    },
+    "cause": "Phase 5 snapshot contains target data directories but omits policy-hash dependencies. Importer recalculates policy hash under snapshot/files and marks 1538 reviews needs_review.",
+    "production_modified": false,
+    "fix_applied": false,
+    "policy_dependencies": [
+      {
+        "path": "docs/ai-rules/shared-article-review.md",
+        "live_sha256": "21a6feca3ecc2543f3853a25243071349f78e139fbf491f7b74b0eac36e15d2e",
+        "phase3_sha256": "21a6feca3ecc2543f3853a25243071349f78e139fbf491f7b74b0eac36e15d2e",
+        "present_in_phase5_snapshot": false
+      },
+      {
+        "path": "docs/ai-rules/article-summary.md",
+        "live_sha256": "5e1afd423ef776a53735dcd6463c001b2eb3d7d443880f2b64da32a235a54764",
+        "phase3_sha256": "5e1afd423ef776a53735dcd6463c001b2eb3d7d443880f2b64da32a235a54764",
+        "present_in_phase5_snapshot": false
+      },
+      {
+        "path": "docs/ai-rules/talent-index.md",
+        "live_sha256": "c8ad0b808a240349dfec242cfd38cb30a1357fccb79f7a03cc0053a9880effd7",
+        "phase3_sha256": "c8ad0b808a240349dfec242cfd38cb30a1357fccb79f7a03cc0053a9880effd7",
+        "present_in_phase5_snapshot": false
+      },
+      {
+        "path": "docs/ai-rules/article-classification.md",
+        "live_sha256": "7de55dddb019b833ccb8b5a93a10b6a7634156642e1ee95e620e4fa31fbe56bf",
+        "phase3_sha256": "7de55dddb019b833ccb8b5a93a10b6a7634156642e1ee95e620e4fa31fbe56bf",
+        "present_in_phase5_snapshot": false
+      }
+    ]
+  },
+  "unapproved_difference_rows": 4614,
+  "affected_reviews": 1538,
+  "difference_ledger": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5/20260915T024435Z/differences.jsonl",
+  "difference_ledger_sha256": "fbc68607440ee7238e03ec9f73c5c5c6271f19a370cb6d0c2a955f9c8f5de7f0",
+  "production_sync_started": false,
+  "production_migration_004_applied": false,
+  "production_business_data_modified": false,
+  "normal_daily_runs_performed": 0,
+  "regression_tests": {
+    "status": "passed",
+    "tests_run": 46,
+    "log": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5/20260915T024435Z/regression-tests.log",
+    "scope": "Temporary DB tests; not evidence of production sync completion"
+  },
+  "draft_files": [
+    "database/migrations/004_continuous_sync.sql",
+    "database/schema.sql",
+    "scripts/continuous_database_sync.py",
+    "scripts/legacy_sync_projection.py",
+    "scripts/prepare_legacy_sync.py",
+    "scripts/autoarticle_db.py",
+    "scripts/test_continuous_database_sync.py"
+  ],
+  "excluded_files": [
+    "scripts/start_n8n_with_file_access.sh",
+    "scripts/start_talent_dashboard.sh"
+  ],
+  "legacy_read_write_routes": "legacy",
+  "evidence_directory": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5/20260915T024435Z",
+  "remaining": [
+    "Capture policy dependencies and implementation versions in the snapshot and its manifest; reject missing dependencies before projection",
+    "Add regression tests for policy hash reproduction and missing policy refusal",
+    "Rebuild a fresh isolated projection from the same business snapshot and require zero unapproved baseline changes",
+    "Complete all category update/version/provenance and independent legacy comparison acceptance tests",
+    "Only after acceptance apply migration 004 and validate real synchronization, same-ID replay, deliberate failure recovery and restored synchronization state",
+    "Perform and verify multiple normal daily operations; do not count retrospective or synthetic operations as normal daily runs",
+    "Resume phase 5 within an independent change set; current independent commit records a stopped draft, not phase completion"
+  ],
+  "stopped_state_verification": {
+    "status": "passed",
+    "checked_at": "2026-09-15T03:06:21.856644+00:00",
+    "source_tables_unchanged": true,
+    "source_files_unchanged": true,
+    "project_database_unchanged": true,
+    "applied_schema_versions": [
+      "001",
+      "002",
+      "003"
+    ],
+    "sync_runs": 0,
+    "unresolved_conflicts": 18305,
+    "missing_bodies": 13,
+    "cutover": "legacy",
+    "idle": {
+      "observed_at": "2026-09-15T03:05:38.774952+00:00",
+      "processes": [],
+      "unfinished_executions": []
+    }
+  },
+  "implementation_hashes": {
+    "database/schema.sql": "283b1592353db0149b8558cf129d6add474f7d96dae16575105fc6e47b78fb72",
+    "database/migrations/004_continuous_sync.sql": "a1ef3b3dd71100fd3049f640c4ad6abdf6e209beb03d1040a6935cab72099bb5",
+    "scripts/autoarticle_db.py": "1dea3dd178a9781e41661f579826bb4defdfa060f60234a6ee1301a7231497ae",
+    "scripts/continuous_database_sync.py": "80c997e37027a3af132aaac9eae9eace0bd8d4990ab56578db69b3f068e64ebf",
+    "scripts/legacy_sync_projection.py": "ca8de6d5cf4fc4a43a4bcf68cb332306fd0cb786aeec7efd898d5ae6d6e7cc73",
+    "scripts/prepare_legacy_sync.py": "85973764f9fcd61fa77e8f5f97f4d1ae4efea618c4175d487821a0108c704cbb",
+    "scripts/test_continuous_database_sync.py": "b6b6f47b8bd08daf3caef1fd94321073ffa6f5b6353d886ade0eda693b5c58a5"
+  }
+}

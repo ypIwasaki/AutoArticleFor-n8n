@@ -79,7 +79,7 @@ class Phase2AcceptanceTests(unittest.TestCase):
                 db.backup(self.root/'disabled.sqlite',self.path)
         self.assertFalse((self.root/'disabled.sqlite').exists())
     def test_schema_snapshot_and_reproducible_upgrade(self):
-        self.assertEqual((db.ROOT/'database/schema.sql').read_bytes(),(db.MIGRATIONS/'001_initial.sql').read_bytes())
+        self.assertEqual((db.ROOT/'database/schema.sql').read_bytes(),b''.join(p.read_bytes() for p in sorted(db.MIGRATIONS.glob('*.sql'))))
         directory=self.root/'migrations'
         shutil.copytree(db.MIGRATIONS,directory)
         fixed='2026-09-14T00:00:00.000000Z'
@@ -87,9 +87,9 @@ class Phase2AcceptanceTests(unittest.TestCase):
         fresh=self.root/'fresh.sqlite'
         with patch.object(db,'now',return_value=fixed):
             db.migrate(upgraded,directory)
-            (directory/'002_acceptance.sql').write_text('CREATE TABLE acceptance_upgrade(id TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL);\n')
-            self.assertEqual(db.migrate(upgraded,directory),{'applied':['002']})
-            self.assertEqual(db.migrate(fresh,directory),{'applied':['001','002']})
+            (directory/'900_acceptance.sql').write_text('CREATE TABLE acceptance_upgrade(id TEXT PRIMARY KEY NOT NULL, value TEXT NOT NULL);\n')
+            self.assertEqual(db.migrate(upgraded,directory),{'applied':['900']})
+            self.assertEqual(db.migrate(fresh,directory),{'applied':[p.name.split('_')[0] for p in sorted(directory.glob('*.sql'))]})
             with contextlib.closing(db.connect(upgraded,readonly=True)) as a, contextlib.closing(db.connect(fresh,readonly=True)) as b:
                 self.assertEqual(list(a.iterdump()),list(b.iterdump()))
             before=upgraded.read_bytes()
@@ -112,7 +112,7 @@ class Phase2AcceptanceTests(unittest.TestCase):
             proc=subprocess.run(cli+list(args),cwd=self.root,env=custom_env or env,capture_output=True,text=True,timeout=20)
             self.assertEqual(proc.returncode,0,proc.stderr)
             return json.loads(proc.stdout)
-        self.assertEqual(run('init'),{'applied':['001']})
+        self.assertEqual(run('init'),{'applied':[p.name.split('_')[0] for p in sorted(db.MIGRATIONS.glob('*.sql'))]})
         before=database.read_bytes()
         self.assertEqual(run('init'),{'applied':[]})
         self.assertEqual(run('migrate'),{'applied':[]})
@@ -131,7 +131,7 @@ class Phase2AcceptanceTests(unittest.TestCase):
             tables=[r[0] for r in b.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT IN ('schema_migrations','cutover_state')")]
             self.assertTrue(all(b.execute('SELECT count(*) FROM '+t).fetchone()[0]==0 for t in tables))
         alternate=dict(env,AUTOARTICLE_DATABASE_PATH=str(self.root/'explicit.sqlite'))
-        self.assertEqual(run('init',custom_env=alternate),{'applied':['001']})
+        self.assertEqual(run('init',custom_env=alternate),{'applied':[p.name.split('_')[0] for p in sorted(db.MIGRATIONS.glob('*.sql'))]})
         token='synthetic-service-token-'+os.urandom(20).hex()
         with socket.socket() as s:
             s.bind(('127.0.0.1',0))

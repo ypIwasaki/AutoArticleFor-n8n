@@ -63,13 +63,13 @@ class FoundationTests(unittest.TestCase):
     def test_migration_transaction_and_checksum(self):
         directory=self.root/'migrations'
         shutil.copytree(db.MIGRATIONS,directory)
-        (directory/'002_test.sql').write_text('CREATE TABLE test_upgrade(id TEXT PRIMARY KEY);\n')
-        self.assertEqual(db.migrate(self.path,directory)['applied'],['002'])
-        (directory/'003_failure.sql').write_text('CREATE TABLE should_rollback(id TEXT);\nINSERT INTO absent_table VALUES (1);\n')
+        (directory/'900_test.sql').write_text('CREATE TABLE test_upgrade(id TEXT PRIMARY KEY);\n')
+        self.assertEqual(db.migrate(self.path,directory)['applied'],['900'])
+        (directory/'901_failure.sql').write_text('CREATE TABLE should_rollback(id TEXT);\nINSERT INTO absent_table VALUES (1);\n')
         with self.assertRaises(sqlite3.OperationalError): db.migrate(self.path,directory)
         with db.connect(self.path,readonly=True) as c:
             self.assertIsNone(c.execute("SELECT name FROM sqlite_master WHERE name='should_rollback'").fetchone())
-            self.assertEqual(c.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],2)
+            self.assertEqual(c.execute('SELECT count(*) FROM schema_migrations').fetchone()[0],len(list(db.MIGRATIONS.glob('*.sql')))+1)
         (directory/'001_initial.sql').write_text('-- modified\n'+(directory/'001_initial.sql').read_text())
         with self.assertRaises(ValueError): db.migrate(self.path,directory)
     def test_no_proposal_approval_or_sql(self):

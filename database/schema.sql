@@ -93,3 +93,23 @@ CREATE TRIGGER utc_article_feedback_reviewed_at_insert BEFORE INSERT ON article_
 CREATE TRIGGER utc_article_feedback_reviewed_at_update BEFORE UPDATE ON article_feedback WHEN NEW.reviewed_at IS NOT NULL AND (NEW.reviewed_at NOT GLOB '????-??-??T??:??:??*Z' OR strftime('%s',NEW.reviewed_at) IS NULL) BEGIN SELECT RAISE(ABORT,'UTC timestamp required'); END;
 CREATE TRIGGER utc_consolidation_conflicts_created_at_insert BEFORE INSERT ON consolidation_conflicts WHEN NEW.created_at IS NOT NULL AND (NEW.created_at NOT GLOB '????-??-??T??:??:??*Z' OR strftime('%s',NEW.created_at) IS NULL) BEGIN SELECT RAISE(ABORT,'UTC timestamp required'); END;
 CREATE TRIGGER utc_consolidation_conflicts_created_at_update BEFORE UPDATE ON consolidation_conflicts WHEN NEW.created_at IS NOT NULL AND (NEW.created_at NOT GLOB '????-??-??T??:??:??*Z' OR strftime('%s',NEW.created_at) IS NULL) BEGIN SELECT RAISE(ABORT,'UTC timestamp required'); END;
+-- Preserve identity uncertainty and byte-exact input provenance during phase 3.
+ALTER TABLE articles ADD COLUMN identity_state TEXT NOT NULL DEFAULT 'identified' CHECK(identity_state IN ('identified','held','needs_review'));
+CREATE TABLE migration_source_files(path TEXT PRIMARY KEY NOT NULL, migration_run_id TEXT NOT NULL REFERENCES migration_runs(id), sha256 TEXT NOT NULL, size INTEGER NOT NULL CHECK(size>=0), content BLOB NOT NULL, state TEXT NOT NULL CHECK(state IN ('imported','held')), reason TEXT);
+CREATE TABLE article_source_provenance(source_record_id TEXT PRIMARY KEY NOT NULL REFERENCES source_records(id), article_id TEXT NOT NULL REFERENCES articles(id), source_table TEXT, source_row_id TEXT NOT NULL, old_article_key TEXT, original_url TEXT, input_hash TEXT NOT NULL, stored_content_hash TEXT, fetch_status TEXT);
+CREATE TABLE article_identity_assessments(source_record_id TEXT PRIMARY KEY NOT NULL REFERENCES source_records(id), article_id TEXT NOT NULL REFERENCES articles(id), strategy TEXT NOT NULL CHECK(strategy IN ('legacy_key','corroborated','held')), reason TEXT NOT NULL, candidates_json TEXT NOT NULL CHECK(json_valid(candidates_json)), checks_json TEXT NOT NULL CHECK(json_valid(checks_json)));
+CREATE TABLE legacy_history_records(id TEXT PRIMARY KEY NOT NULL, source_record_id TEXT NOT NULL REFERENCES source_records(id), kind TEXT NOT NULL, article_id TEXT REFERENCES articles(id), talent_id TEXT REFERENCES talents(id), raw_json TEXT NOT NULL CHECK(json_valid(raw_json)));
+CREATE TABLE content_runtime_state(id TEXT PRIMARY KEY NOT NULL, source_record_id TEXT NOT NULL REFERENCES source_records(id), state_key TEXT NOT NULL, state_json TEXT NOT NULL CHECK(json_valid(state_json)));
+CREATE TABLE review_entity_facts(entity_id TEXT NOT NULL REFERENCES review_entities(id), fact_id TEXT NOT NULL REFERENCES review_facts(id), PRIMARY KEY(entity_id,fact_id));
+CREATE TABLE review_input_snapshots(review_id TEXT PRIMARY KEY NOT NULL REFERENCES review_records(id), input_hash TEXT NOT NULL, article_json TEXT NOT NULL CHECK(json_valid(article_json)), capture_json TEXT NOT NULL CHECK(json_valid(capture_json)));
+CREATE TRIGGER immutable_legacy_history_id BEFORE UPDATE OF id ON legacy_history_records WHEN NEW.id!=OLD.id BEGIN SELECT RAISE(ABORT,'immutable id'); END;
+CREATE TRIGGER immutable_runtime_id BEFORE UPDATE OF id ON content_runtime_state WHEN NEW.id!=OLD.id BEGIN SELECT RAISE(ABORT,'immutable id'); END;
+-- Source claims are distinct from usable body verification.
+ALTER TABLE content_fetch_attempts ADD COLUMN body_integrity TEXT NOT NULL DEFAULT 'unassessed' CHECK(body_integrity IN ('unassessed','consistent','no_body','held_missing_body','held_hash_mismatch'));
+ALTER TABLE content_fetch_attempts ADD COLUMN source_status TEXT;
+ALTER TABLE content_fetch_attempts ADD COLUMN stored_body_hash TEXT;
+ALTER TABLE content_fetch_attempts ADD COLUMN stored_body_length INTEGER;
+ALTER TABLE content_fetch_attempts ADD COLUMN source_content_path TEXT;
+ALTER TABLE content_fetch_attempts ADD COLUMN computed_body_hash TEXT;
+CREATE TRIGGER held_body_insert BEFORE INSERT ON content_fetch_attempts WHEN NEW.body_integrity IN ('held_missing_body','held_hash_mismatch') AND (NEW.version_id IS NOT NULL OR NEW.status='verified') BEGIN SELECT RAISE(ABORT,'held body cannot claim verified payload'); END;
+CREATE TRIGGER held_body_update BEFORE UPDATE ON content_fetch_attempts WHEN NEW.body_integrity IN ('held_missing_body','held_hash_mismatch') AND (NEW.version_id IS NOT NULL OR NEW.status='verified') BEGIN SELECT RAISE(ABORT,'held body cannot claim verified payload'); END;

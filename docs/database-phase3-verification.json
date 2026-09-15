@@ -1,0 +1,817 @@
+{
+  "status": "complete",
+  "phase": 3,
+  "phase3_complete": true,
+  "checked_at": "2026-09-15T00:00:08.319807Z",
+  "phase4_started": false,
+  "legacy_modified": false,
+  "source_files": 266,
+  "source_records": 127814,
+  "source_dispositions": [
+    {
+      "state": "held",
+      "count": 26647
+    },
+    {
+      "state": "imported",
+      "count": 101167
+    }
+  ],
+  "derived_missing_body_count": 13,
+  "metadata_updates": 15,
+  "replay_added_rows": 0,
+  "replay_all_table_and_schema_hashes_equal": true,
+  "restored_all_table_and_schema_hashes_equal": true,
+  "foreign_key_violations": 0,
+  "all_cutover_legacy": true,
+  "tests": 25,
+  "test_failures": 0,
+  "existing_database_retained": true,
+  "new_migration": false,
+  "importer_unchanged": true,
+  "previous_attempt": {
+    "phase": 3,
+    "status": "stopped",
+    "phase3_complete": false,
+    "stage": "post_import_body_integrity_scope_verification",
+    "checked_at": "2026-09-14T05:47:59.862391Z",
+    "reason": "Two additional reference-only cache records require source-body identification or a separate disposition decision; approved 11 legacy records verified",
+    "previous_attempt": {
+      "phase": 3,
+      "status": "stopped",
+      "stage": "content_import_body_hash_validation",
+      "phase3_complete": false,
+      "previous_attempt": {
+        "phase": 3,
+        "status": "stopped",
+        "stage": "pre_import_identity_check",
+        "foundation_commit": "d084201b2df220980fff2adf72d1413d820239b1",
+        "gate": {
+          "stage": "entry_gate",
+          "status": "passed",
+          "checked_at": "2026-09-14T04:43:25.276961+00:00",
+          "checks": {
+            "fresh_backup_complete": true,
+            "fresh_backup_hash_verified": true,
+            "original_backup_unchanged": true,
+            "restored_six_tables": true,
+            "current_inventory_matches_fresh_backup": true,
+            "windows_writers_absent": true,
+            "phase2_artifacts_match_verified_hashes": true,
+            "phase12_committed": true,
+            "wsl_writers_and_executions_absent": true
+          },
+          "foundation_commit": "d084201b2df220980fff2adf72d1413d820239b1",
+          "fresh_backup_directory": ".operation-state/database-consolidation/20260914T044027.140127Z",
+          "fresh_backup_sha256": "817486414d77b281f7341a903cb89e5b422c8765ee285ea14b3451c46e074b77",
+          "original_backup_directory": ".operation-state/database-consolidation/20260914T040750.644763Z",
+          "refresh_reason": "Five phase 2 supporting scripts added; existing 397 files and six data tables unchanged",
+          "fresh_input_files": 402,
+          "source_database_times_recorded": true,
+          "all_process_fd_check": {
+            "all_processes_checked": true,
+            "write_handles": [],
+            "unreadable_processes": [],
+            "method": "read-only /proc fd check as root after user-level check"
+          },
+          "legacy_modified": false,
+          "operational_project_database_exists": false
+        },
+        "identity_preflight": {
+          "phase": 3,
+          "stage": "pre_import_identity_check",
+          "status": "stopped",
+          "checked_at": "2026-09-14T04:43:37.900182+00:00",
+          "method_version": "phase3-identity-preflight-v1",
+          "method_sha256": "6486a3593c392c22d47a61baf7ad86adf301210be78be727c881f606dce1c7d3",
+          "scope": "article_contents legacy keys -> articles keys, then exact original URL candidates; no automatic selection",
+          "source_snapshot": ".operation-state/database-consolidation/20260914T044027.140127Z/n8n.sqlite",
+          "source_snapshot_sha256": "817486414d77b281f7341a903cb89e5b422c8765ee285ea14b3451c46e074b77",
+          "checked_content_rows": 14822,
+          "counts": {
+            "exact_legacy_key_candidate": 1198,
+            "single_url_candidate_not_approved": 13610,
+            "multiple_article_keys_for_original_url": 14
+          },
+          "conflicts": 14,
+          "conflicts_with_different_titles": 8,
+          "conflicts_with_different_publication_times": 14,
+          "migration_execution": "not_started",
+          "rows_inserted": 0,
+          "new_article_ids_allocated": 0,
+          "old_to_new_mapping": "not_created; unresolved rows keep new_article_id=null",
+          "migration_idempotency": "not_tested; migration blocked before writes",
+          "legacy_modified": false,
+          "phase4_started": false
+        },
+        "stop_condition": "User instruction: interrupt phase 3 if a migration target cannot be uniquely identified; do not infer or auto-merge",
+        "private_evidence_directory": ".operation-state/database-phase3/20260914T043911.997421Z",
+        "private_artifacts": {
+          "entry-gate-initial.json": "033defbc1fbe5fb8e23fe2edbcd5ebe3804d34502dbf40d94461e716892db41e",
+          "entry-gate-final.json": "12fdf7f1cb9d6e598e85f8831e0e9cb037f9dffdd43d5d8acbe181ced485650c",
+          "input-comparison.json": "0a914f7fc5f8155eb65c02028e654b9471e3ade9fb90948f702845d5c7dc8929",
+          "input-files-with-mtime.json": "2a9800ec6ecc79ae1f2c95a9b494e6e5d8a4c6183ceb265fc829c65038d1dd88",
+          "fresh-input-files-with-mtime.json": "2a9800ec6ecc79ae1f2c95a9b494e6e5d8a4c6183ceb265fc829c65038d1dd88",
+          "database-current-baseline.json": "e221c4f54d1c53b933283127f669b0abde972ac926d86176a40a0f280b1fdc54",
+          "database-update-time-ranges.json": "ff63e5d59706f8611627603880b814e578a92cdbf03ff21eeb8351d1d36edd19",
+          "windows-writer-check.json": "80e699aca6bf9b6b004ff620c14409326759783c8b35e109e76d1c7464ad76a7",
+          "identity-preflight.py": "6486a3593c392c22d47a61baf7ad86adf301210be78be727c881f606dce1c7d3",
+          "identity-conflicts.json": "a163736df629962f431faaf221aa158ba42292cf982d456b4fb2ee666a5895b8",
+          "phase3-preflight-result.json": "3b081cb92f5ebda1a6384c200b951e30e71fcd6af5bb967dc3aa92c96ef81209"
+        },
+        "preserved_old_keys_and_candidates": true,
+        "new_article_ids_allocated": 0,
+        "rows_imported": 0,
+        "migration_idempotency_test": {
+          "status": "not_run",
+          "reason": "No migration writes permitted while identity ambiguity remains"
+        },
+        "other_input_domains": "Not audited for identity/content migration after the stop condition",
+        "phase3_completion_conditions_met": false,
+        "phase4_started": false,
+        "read_write_cutover": false,
+        "legacy_deletion": false,
+        "automatic_merge": false,
+        "ai_input_minimization": false,
+        "resume_conditions": [
+          "Resolve each of the 14 ambiguous source rows with evidence-backed explicit mapping, or obtain an explicit decision allowing unresolved rows to remain separate and held.",
+          "Keep all legacy keys and source rows; do not choose a candidate by order, URL alone, computed key similarity, or newest timestamp.",
+          "Recheck idle writers and current source hashes; refresh recovery point and baseline if inputs changed.",
+          "Only after the identity stop condition is cleared, implement and execute migration, then verify a repeated run adds zero rows."
+        ]
+      },
+      "resume_authorization": {
+        "ambiguous_14": "independent held articles; no candidate selection",
+        "single_url_13610": "corroborate title/publication/nonempty body using a matching cache record; otherwise independent held",
+        "exact_legacy_key_1198": "same article"
+      },
+      "resume_gate": {
+        "checked_at": "2026-09-14T04:51:53.088258+00:00",
+        "source_database_unchanged": true,
+        "files_unchanged": true,
+        "source_files": 402,
+        "idle": {
+          "observed_at": "2026-09-14T04:51:16.835495+00:00",
+          "processes": [],
+          "unfinished_executions": []
+        },
+        "baseline": ".operation-state/database-consolidation/20260914T044027.140127Z",
+        "status": "passed"
+      },
+      "refreshed_baseline": ".operation-state/database-consolidation/20260914T045958.376672Z",
+      "refreshed_baseline_files": 404,
+      "implementation": {
+        "version": "phase3-held-import-v1",
+        "migration": "002_migration_provenance.sql",
+        "artifact_sha256": {
+          "database/schema.sql": "edc552886b1aa8bbb25ff826d1a6f4d69c173d1a8663b24269a78ccecb464d6b",
+          "database/migrations/002_migration_provenance.sql": "27b21c2b31eac2307efd873edb247456cbf3097cfe2ae1614411845e05a92d4b",
+          "scripts/import_legacy_database.py": "6b99bb8a2e93eebcfcbed1e0cb3d516a3022a0d700009cf7cbb8c5af52cadd21",
+          "scripts/autoarticle_db.py": "e8c57df2ea271646df6e7288fb24365622764aa482f08aa912ed7f4b2f25fea8",
+          "scripts/test_import_legacy_database.py": "93a88071548843a1408705849daaada3ce2631b5f01a4ea0fa18706ed6f7016e",
+          "scripts/test_project_database.py": "f97d2cc67a614b9cc3611c7a5b4a6bbd36e00c9085056e3269f4770b98aca739",
+          "scripts/test_project_database_acceptance.py": "6c8a5d3ca7995be6389f16c411ed32386c7e27d2544835f52c4ec427c59f1f44"
+        }
+      },
+      "tests": {
+        "command": "python3 -m unittest discover -s scripts -p 'test_*database*.py' -v",
+        "run": 21,
+        "failures": 0,
+        "errors": 0,
+        "scope": "synthetic identity, preservation, rollback, replay and existing foundation tests"
+      },
+      "real_import": {
+        "attempts": 1,
+        "result": "rolled_back",
+        "committed_business_rows": 0,
+        "committed_migration_runs": 0,
+        "original_14_committed": false,
+        "source_records_committed": 0
+      },
+      "stop_evidence": {
+        "rollback_matches_empty_backup": true,
+        "retained_backups": {
+          "20260914T040750.644763Z": true,
+          "20260914T044027.140127Z": true,
+          "20260914T045958.376672Z": true
+        },
+        "hash_mismatch_rows": 11,
+        "empty_body_rows": 11,
+        "nonzero_saved_length_rows": 11,
+        "statuses": {
+          "verified": 11
+        },
+        "source_row_ids": [
+          1843,
+          2169,
+          2170,
+          2173,
+          2174,
+          2175,
+          2176,
+          2178,
+          7292,
+          7293,
+          7294
+        ]
+      },
+      "error": {
+        "phase": 3,
+        "status": "stopped",
+        "checked_at": "2026-09-14T05:04:46.960046Z",
+        "error_type": "RuntimeError",
+        "reason": "Stored body hash mismatch",
+        "legacy_modified": false,
+        "phase4_started": false
+      },
+      "private_evidence_directory": ".operation-state/database-phase3/20260914T045116.827966Z",
+      "private_artifact_sha256": {
+        "resume-gate.json": "5a6f184734414948f9f65cab9967335016b0151ff5b7bca06701d9281a0f7821",
+        "empty-backup.json": "abd127f32b863222fb6fe456134c215a9fd6758d2e62f6e5e91f3e586506bb16",
+        "empty-restore.json": "1425f5665a46c81d59c127bab9b06cc6b1debd6fb511191dc7af40b5bba5af24",
+        "phase3-resume-result.json": "91117d003f42623ccb12adacb3fdc7b7b100960ab08e58188023e529f33d8ba3",
+        "rollback-verification.json": "e3bbed7abc9f3cff8d5df497a2a34e24f6f9ce89ea9dd4f132b9485eefeea38e",
+        "body-hash-mismatches.json": "1da3a954463578b2d27293e9ed10a53dffb02d7208388eeeddfe6168b5b1bb1a",
+        "stop-summary.json": "293aad9d02b644d49a67deb9c6405d953ee26b1beaa209b72e71ac0d05ff9c8b",
+        "run-import.py": "139b0340f910cd9468571d929a6cfa9f916597d4ef41608c9fb8af61beb8d6b2"
+      },
+      "real_replay": {
+        "status": "not_run",
+        "reason": "First real import failed source-body hash validation and rolled back"
+      },
+      "full_input_disposition": {
+        "status": "not_complete",
+        "reason": "No business input rows were committed"
+      },
+      "legacy_modified": false,
+      "cutover_performed": false,
+      "legacy_deleted": false,
+      "automatic_merge": false,
+      "ai_input_minimized": false,
+      "phase4_started": false,
+      "resume_conditions": [
+        "Investigate the 11 source rows whose saved text is empty while stored hash/length and verified status describe nonempty content.",
+        "Do not silently replace source body, hash, length or fetch status. Establish an evidence-backed recovery/preservation policy before accepting inconsistent records.",
+        "Recheck idle writers and source hashes; retain all old backups and refresh the recovery point if sources changed.",
+        "Retry migration only after the new hash-discrepancy stop is addressed, then complete full disposition and same-input zero-row replay checks."
+      ]
+    },
+    "gate": {
+      "status": "passed",
+      "checked_at": "2026-09-14T05:35:01.958423+00:00",
+      "idle": {
+        "observed_at": "2026-09-14T05:35:01.740311+00:00",
+        "processes": [],
+        "unfinished_executions": []
+      },
+      "changed_files": [
+        "scripts/import_legacy_database.py",
+        "scripts/test_import_legacy_database.py"
+      ],
+      "added_files": [],
+      "retained_backups": [
+        "20260914T040750.644763Z",
+        "20260914T044027.140127Z",
+        "20260914T045958.376672Z",
+        "20260914T053221.807062Z"
+      ],
+      "source_database_unchanged": true,
+      "business_files_unchanged": true,
+      "windows_relevant_writers": 0,
+      "previous_phase_commit": "d084201b2df220980fff2adf72d1413d820239b1",
+      "fresh_snapshot": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-consolidation/20260914T053221.807062Z"
+    },
+    "test_count": 23,
+    "test_failures": 0,
+    "source_files": 266,
+    "source_records": 127814,
+    "source_dispositions": {
+      "imported": 101167,
+      "held": 26647
+    },
+    "identity_strategies": [
+      {
+        "strategy": "corroborated",
+        "reason": "title_publication_and_body_corroborated",
+        "count": 765
+      },
+      {
+        "strategy": "held",
+        "reason": "held_missing_body",
+        "count": 11
+      },
+      {
+        "strategy": "held",
+        "reason": "insufficient_or_inconsistent_identity_evidence",
+        "count": 12845
+      },
+      {
+        "strategy": "held",
+        "reason": "multiple_candidates",
+        "count": 3
+      },
+      {
+        "strategy": "legacy_key",
+        "reason": "exact_legacy_key",
+        "count": 1198
+      }
+    ],
+    "unresolved_conflicts": 18305,
+    "migration_run_id": "7d1384a1-d758-57be-af6d-52fbc661a8db",
+    "migration_transaction_committed": true,
+    "migration_run_status": "complete",
+    "phase_status_distinct_from_import_transaction": true,
+    "input_hash": "ebf60567d077453c9d05b65e08f4c12f7ee9c1f6dc6260415b4535cf3149fb36",
+    "implementation": "phase3-held-import-v2:b4f8105162d7749acc28d123a40c61aa659a1b80fcd18d1c753c0f1e3af7acd2",
+    "replay_added_rows": 0,
+    "replay_row_deltas": {
+      "schema_migrations": 0,
+      "migration_runs": 0,
+      "sync_runs": 0,
+      "cutover_state": 0,
+      "articles": 0,
+      "article_identifiers": 0,
+      "collection_runs": 0,
+      "article_occurrences": 0,
+      "content_payloads": 0,
+      "article_content_versions": 0,
+      "content_fetch_attempts": 0,
+      "review_records": 0,
+      "review_task_statuses": 0,
+      "review_evidence": 0,
+      "review_facts": 0,
+      "review_fact_evidence": 0,
+      "review_entities": 0,
+      "review_entity_evidence": 0,
+      "article_summaries": 0,
+      "talents": 0,
+      "talent_aliases": 0,
+      "article_talents": 0,
+      "article_classifications": 0,
+      "classification_secondary_categories": 0,
+      "article_feedback": 0,
+      "consolidation_conflicts": 0,
+      "source_records": 0,
+      "migration_source_files": 0,
+      "article_source_provenance": 0,
+      "article_identity_assessments": 0,
+      "legacy_history_records": 0,
+      "content_runtime_state": 0,
+      "review_entity_facts": 0,
+      "review_input_snapshots": 0
+    },
+    "replay_all_table_hashes_equal": true,
+    "assertions": {
+      "all_14_independent_held_and_candidates_preserved": true,
+      "1198_exact_old_keys": true,
+      "13610_single_url_candidates_accounted": true,
+      "corroborated_rows_have_complete_checks": true,
+      "talent_states_search_flags_aliases_preserved": true,
+      "review_hashes_task_states_and_quotes_preserved": true,
+      "source_fetch_claims_preserved_and_unavailable_bodies_not_verified": true,
+      "exactly_11_missing_bodies": false,
+      "all_cutover_states_legacy": true,
+      "foreign_key_check": true,
+      "all_source_records_disposed": true
+    },
+    "approved_11_verification": {
+      "status": "passed",
+      "missing_body_records": 11,
+      "missing_body_payload_references": 0,
+      "source_claims_and_raw_preserved": true,
+      "partial_capture_attempts": 27,
+      "distinct_partial_body_hashes": 1,
+      "partial_is_separate_attempt": true,
+      "proposal_json_records_verified": 27446
+    },
+    "additional_cache_records": [
+      {
+        "source_path": "content/article-body-captures/backfill-state.json",
+        "source_record_id": "77906c69-4e1b-52db-932c-5449453585be",
+        "input_hash": "65dbd76fe0912403b858e839fda03e8d3d86aca07f3b5188d4a304fb2677cfa0",
+        "content_path": "content/article-body-captures/2026-07-27.jsonl",
+        "stored_body_length": 449,
+        "stored_body_hash": "6a0a3ccb7790849efb86d8c88e7abde14ead4ad39760242f85bf2d150fa1e4a1",
+        "source_status": "verified",
+        "inline_body_field_present": false,
+        "version_id": null,
+        "state": "held",
+        "reason": "held_missing_body"
+      },
+      {
+        "source_path": "content/article-body-captures/backfill-state.json",
+        "source_record_id": "1698119c-e908-5bf2-b447-0d7845cf8abd",
+        "input_hash": "2f1e48024e3badb3aa3b2fece10052de1f3dc64596718bf574ff386574881d35",
+        "content_path": "content/article-body-captures/2026-07-27.jsonl",
+        "stored_body_length": 762,
+        "stored_body_hash": "0ca7a4e7c8ab1bbf8330f14edaf6bf389e8a0a6013476ccd00a94781cb721439",
+        "source_status": "verified",
+        "inline_body_field_present": false,
+        "version_id": null,
+        "state": "held",
+        "reason": "held_missing_body"
+      }
+    ],
+    "cache_reference_investigation": [
+      {
+        "content_path": "content/article-body-captures/2026-07-27.jsonl",
+        "declared_length": 449,
+        "referenced_file_exists": true,
+        "matches": []
+      },
+      {
+        "content_path": "content/article-body-captures/2026-07-27.jsonl",
+        "declared_length": 762,
+        "referenced_file_exists": true,
+        "matches": []
+      }
+    ],
+    "stopped_backup": {
+      "path": "/home/raimu/N8N/AutoArticleFor-n8n/data/backups/phase3-20260914T053300-stopped.sqlite",
+      "sha256": "c05594d71213771136aba655854768ec7bf6d4a9a941b642bdecea322733cbc6",
+      "foreign_keys": {
+        "source": 1,
+        "destination": 1
+      }
+    },
+    "restoration": {
+      "status": "passed",
+      "logical_hash_equal": true,
+      "checked_at": "2026-09-14T05:47:03.631860Z"
+    },
+    "evidence_directory": ".operation-state/database-phase3/20260914T053300-resume",
+    "old_new_mapping": ".operation-state/database-phase3/20260914T053300-resume/old-to-new-article-keys.jsonl",
+    "conflict_records": ".operation-state/database-phase3/20260914T053300-resume/consolidation-conflicts.jsonl",
+    "legacy_modified": false,
+    "phase4_started": false,
+    "cutover_performed": false,
+    "auto_merge_performed": false,
+    "ai_input_minimization_performed": false,
+    "remaining": [
+      "Determine the actual body source of the two reference-only cache records or explicitly authorize preserving their unresolved state",
+      "Revalidate all phase 3 completion conditions after the disposition is settled"
+    ],
+    "post_stop_source_check": {
+      "status": "passed",
+      "idle": {
+        "observed_at": "2026-09-14T05:47:45.275774+00:00",
+        "processes": [],
+        "unfinished_executions": []
+      },
+      "source_baseline_equal": true,
+      "all_inventory_files_unchanged": true,
+      "note": "Live physical database hash is not compared with SQLite backup hash; the backup can have different page layout/header. Six-table full row and schema baselines compared."
+    }
+  },
+  "gate": {
+    "status": "passed",
+    "idle": {
+      "observed_at": "2026-09-14T23:54:53.244792+00:00",
+      "processes": [],
+      "unfinished_executions": []
+    },
+    "database_equal": true,
+    "files_equal": true,
+    "windows_target_writers": 0,
+    "snapshot": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-consolidation/20260914T053221.807062Z",
+    "checked_at": "2026-09-14T23:55:28.045190+00:00"
+  },
+  "missing_body_acceptance": {
+    "status": "passed",
+    "derived_missing_body_count": 13,
+    "targets": [
+      {
+        "source_record_id": "1698119c-e908-5bf2-b447-0d7845cf8abd",
+        "source_path": "content/article-body-captures/backfill-state.json",
+        "position": "entries/https://www.afpbb.com/articles/-/3645590",
+        "input_hash": "2f1e48024e3badb3aa3b2fece10052de1f3dc64596718bf574ff386574881d35",
+        "fetch_id": "7c628e08-6fd7-5477-8ce2-5b2d16f2647d",
+        "article_id": "e936d231-271d-52e5-9841-d621dd57dc44",
+        "stored_body_hash": "0ca7a4e7c8ab1bbf8330f14edaf6bf389e8a0a6013476ccd00a94781cb721439",
+        "stored_body_length": 762,
+        "body_integrity": "held_missing_body",
+        "source_status": "verified",
+        "status": "unverified",
+        "version_id": null
+      },
+      {
+        "source_record_id": "30247112-e331-5264-b4d2-0551ee0eee9f",
+        "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+        "position": "7292",
+        "input_hash": "1b24dc4a1156e93ac7754b874224a639a1c205e29a1a11d86d85fe34ffb1439c",
+        "fetch_id": "eea73cfd-3ed2-5c40-9aac-3c618b7f72f7",
+        "article_id": "ba92b301-2536-5009-8df3-f33023ba96f9",
+        "stored_body_hash": "6b85c6c6e8d54b27af38fb73e7a996053a01aff2cbdcb2889adcc50162a11a2f",
+        "stored_body_length": 2386.0,
+        "body_integrity": "held_missing_body",
+        "source_status": "verified",
+        "status": "unverified",
+        "version_id": null
+      },
+      {
+        "source_record_id": "3bd24dfd-5cb3-543a-a2cf-ced7a53fc107",
+        "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+        "position": "2178",
+        "input_hash": "dd8d68f9bb397e7252077737fe1b17bf123748ed020dc3ebd481322b96a3d5f8",
+        "fetch_id": "fb7ac9f7-3282-5c28-843b-b79cc15a97ed",
+        "article_id": "4443c98e-f151-5cc3-adab-e7d871f724ad",
+        "stored_body_hash": "643de533b622c169fb0fbbfc9b258b0e8e88f1cc2367b376d3f7764366e7c135",
+        "stored_body_length": 3152.0,
+        "body_integrity": "held_missing_body",
+        "source_status": "verified",
+        "status": "unverified",
+        "version_id": null
+      },
+      {
+        "source_record_id": "3f22c6a5-0a91-5180-a8b1-25f40ef0139c",
+        "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+        "position": "7294",
+        "input_hash": "2f78021711815547bf70282924dcfd58cab26caad06d2b8c0e81e7fde9b8146d",
+        "fetch_id": "7602514a-337c-5328-adf3-8be32e65355e",
+        "article_id": "8e83fbb4-fc1d-5422-9df4-a5cf6cd76a83",
+        "stored_body_hash": "56e94dabfc5ac6898db64205fe3414b9fcf1f143f75365aafd97160e5b51e730",
+        "stored_body_length": 471.0,
+        "body_integrity": "held_missing_body",
+        "source_status": "verified",
+        "status": "unverified",
+        "version_id": null
+      },
+      {
+        "source_record_id": "51df2af2-d601-517f-901d-6bcfa2b235c5",
+        "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+        "position": "2173",
+        "input_hash": "cfdfbef8a99ff6891310f9c0eb18f43e3bf0306e378244be13956f5931def90d",
+        "fetch_id": "0bd8296b-c482-5c4b-a5d2-6335d7f6871e",
+        "article_id": "cba3f127-4a03-5dc2-8e11-73e3c7380a59",
+        "stored_body_hash": "0370c77cdd9f5475e658be99d97f86d625ffc9c21870b031172a875db2a025c0",
+        "stored_body_length": 5446.0,
+        "body_integrity": "held_missing_body",
+        "source_status": "verified",
+        "status": "unverified",
+        "version_id": null
+      },
+      {
+        "source_record_id": "77906c69-4e1b-52db-932c-5449453585be",
+        "source_path": "content/article-body-captures/backfill-state.json",
+        "position": "entries/https://news.google.com/rss/articles/CBMiakFVX3lxTE95Sy1DSjRsOTVGclU2aXRncDRNQU1nVkRpVzR2bmdLemJOMFlVSXRZenNSS0RGY2VoUGhza2RQcHVpRlNucWxVRDJjeXVLSXlZNDNZTmNxM0I5dHlQYy1fZ2Nvd0QxYkpLc2c?oc=5",
+        "input_hash": "65dbd76fe0912403b858e839fda03e8d3d86aca07f3b5188d4a304fb2677cfa0",
+        "fetch_id": "1c97f422-8f26-5bf3-8269-c405a53e83d5",
+        "article_id": "c8c086d4-98df-5c85-a97c-ec604a6280ef",
+        "stored_body_hash": "6a0a3ccb7790849efb86d8c88e7abde14ead4ad39760242f85bf2d150fa1e4a1",
+        "stored_body_length": 449,
+        "body_integrity": "held_missing_body",
+        "source_status": "verified",
+        "status": "unverified",
+        "version_id": null
+      },
+      {
+        "source_record_id": "9bf522ae-305c-5752-a849-24c5818927c3",
+        "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+        "position": "2176",
+        "input_hash": "37f905d2dc72bb40991d8fee96971b97f52dfb7740cc1d6d8d8bdfb517999483",
+        "fetch_id": "c2a799ff-403d-592a-935c-535bc12b4362",
+        "article_id": "f6879663-5d4a-5cb7-b0c3-1856133ac4e7",
+        "stored_body_hash": "69568f2272b8489446f981e3f02997c8cef0e808db7d0aa32a40cbc5fe78d35a",
+        "stored_body_length": 2196.0,
+        "body_integrity": "held_missing_body",
+        "source_status": "verified",
+        "status": "unverified",
+        "version_id": null
+      },
+      {
+        "source_record_id": "d0fd3001-1341-5351-a94f-c74e4aff6c07",
+        "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+        "position": "2169",
+        "input_hash": "7cf6258086377e8c4905d5a9a2c5eea00bc91d1570e1acf0fadd74fc5878a164",
+        "fetch_id": "ced5dc4e-9693-5348-9de5-b954ca433756",
+        "article_id": "2ba6b825-7250-53db-8365-9d22afbaba88",
+        "stored_body_hash": "edd4c4d0d8a7d0d846a30c83270b9d991ddbdf7edc84acdfbf542b34a985e4a2",
+        "stored_body_length": 2322.0,
+        "body_integrity": "held_missing_body",
+        "source_status": "verified",
+        "status": "unverified",
+        "version_id": null
+      },
+      {
+        "source_record_id": "d1a92b57-04fd-5214-a62d-853c89916482",
+        "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+        "position": "1843",
+        "input_hash": "480fa4acef10f3c2d03b21729d7511dcbedda54af3a1affc71221ea63ed5fef1",
+        "fetch_id": "fd5f97ea-3c63-5ed7-8e6a-76407f0b347e",
+        "article_id": "b89f4863-5bfc-56a9-802f-c964078088cb",
+        "stored_body_hash": "4fc7a6cd1e832b229fbafede1c90f44292d3016b8a2c694c1cc44efc24dab102",
+        "stored_body_length": 2232.0,
+        "body_integrity": "held_missing_body",
+        "source_status": "verified",
+        "status": "unverified",
+        "version_id": null
+      },
+      {
+        "source_record_id": "d2da3c93-a429-5894-9afb-b23d301a376f",
+        "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+        "position": "2175",
+        "input_hash": "7a0f58429aa64586cf0f28f772d49184637fffb3b11e12e5d90b3eb2cd148a94",
+        "fetch_id": "ef64940f-90b5-56ae-b0c3-dcef551df234",
+        "article_id": "7f4fee34-7018-5020-b435-8e3be27d9118",
+        "stored_body_hash": "66bb1db9b64c41a3e6aa8f01b821cf84e8e2a0510c890b0aeaaafb30f0c7efa1",
+        "stored_body_length": 2540.0,
+        "body_integrity": "held_missing_body",
+        "source_status": "verified",
+        "status": "unverified",
+        "version_id": null
+      },
+      {
+        "source_record_id": "d495223a-a885-5a10-9967-caf318599084",
+        "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+        "position": "2170",
+        "input_hash": "e9c0e047f0a7adb0f4c508f06f13868ee830b71d2860d67ace2085b837a700f2",
+        "fetch_id": "1f91aff7-6754-5dc5-961e-af9f9a2762ab",
+        "article_id": "ba4d6cb1-e921-5abf-a2f6-ee17ea7fcb5f",
+        "stored_body_hash": "54b3b8d29aacb5d3e14d086a734fd75735f08e80afaf9e87cfd4fd051eac2aa3",
+        "stored_body_length": 2825.0,
+        "body_integrity": "held_missing_body",
+        "source_status": "verified",
+        "status": "unverified",
+        "version_id": null
+      },
+      {
+        "source_record_id": "e7617a49-2867-5b25-8e10-1b4f32f39712",
+        "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+        "position": "7293",
+        "input_hash": "82bdce55b49c00dd60d24f070b2e02dd319dfd39a4543bca6a4207de72887715",
+        "fetch_id": "91845eb7-0417-521f-adbe-3f764817c100",
+        "article_id": "1aff5fc4-e8be-5986-b42e-dae173456ed2",
+        "stored_body_hash": "4ed3917f8e7e2614101a0ab08878f6169ed332f7506fec47a78ca99524a4273d",
+        "stored_body_length": 2418.0,
+        "body_integrity": "held_missing_body",
+        "source_status": "verified",
+        "status": "unverified",
+        "version_id": null
+      },
+      {
+        "source_record_id": "fc450d74-df9d-57ab-a4ba-c666b2c37c8e",
+        "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+        "position": "2174",
+        "input_hash": "1d1139ea3e12d6a94b311f11f822009206c00e3c95759fea65a32f7d40d34d99",
+        "fetch_id": "dea66af6-77b5-582f-a178-4a020ac93958",
+        "article_id": "72f74c03-9892-5cb9-80bd-09ca30e9b862",
+        "stored_body_hash": "d846ec5c99cafcd89c58419df792b7449446d9a15a3e6f1cd1d7a0cdd5b3776a",
+        "stored_body_length": 2948.0,
+        "body_integrity": "held_missing_body",
+        "source_status": "verified",
+        "status": "unverified",
+        "version_id": null
+      }
+    ],
+    "no_payload_references": true,
+    "source_values_preserved": true,
+    "all_sources_disposed": true,
+    "foreign_key_violations": 0,
+    "all_cutover_legacy": true
+  },
+  "acceptance_updates": {
+    "updated_metadata_rows": 15,
+    "source_records_unchanged": true,
+    "research": {
+      "policy": "All source records with absent/empty body, positive saved length and nonempty-body hash, without matching body evidence, remain held_missing_body",
+      "additional_cache_research": {
+        "reported_by": "user",
+        "current_captures": "No matching body found",
+        "git_capture_versions_examined": 87,
+        "git_result": "No body matching either stored hash found",
+        "historical_same_url": "Source verified but empty body"
+      },
+      "original_legacy_research": {
+        "reported_by": "user",
+        "result": "No matching body found in current files and Git history"
+      },
+      "substitution_performed": false
+    }
+  },
+  "replay_row_deltas": {
+    "schema_migrations": 0,
+    "migration_runs": 0,
+    "sync_runs": 0,
+    "cutover_state": 0,
+    "articles": 0,
+    "article_identifiers": 0,
+    "collection_runs": 0,
+    "article_occurrences": 0,
+    "content_payloads": 0,
+    "article_content_versions": 0,
+    "content_fetch_attempts": 0,
+    "review_records": 0,
+    "review_task_statuses": 0,
+    "review_evidence": 0,
+    "review_facts": 0,
+    "review_fact_evidence": 0,
+    "review_entities": 0,
+    "review_entity_evidence": 0,
+    "article_summaries": 0,
+    "talents": 0,
+    "talent_aliases": 0,
+    "article_talents": 0,
+    "article_classifications": 0,
+    "classification_secondary_categories": 0,
+    "article_feedback": 0,
+    "consolidation_conflicts": 0,
+    "source_records": 0,
+    "migration_source_files": 0,
+    "article_source_provenance": 0,
+    "article_identity_assessments": 0,
+    "legacy_history_records": 0,
+    "content_runtime_state": 0,
+    "review_entity_facts": 0,
+    "review_input_snapshots": 0
+  },
+  "backup": {
+    "path": "/home/raimu/N8N/AutoArticleFor-n8n/data/backups/phase3-20260914T235453-acceptance-accepted.sqlite",
+    "sha256": "bc34347d545a8cf0af8535f53ac0f2667487e0e2eae6097530be15f578a39d10",
+    "foreign_keys": {
+      "source": 1,
+      "destination": 1
+    }
+  },
+  "restore": {
+    "path": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase3/20260914T235453-acceptance/accepted-restored.sqlite",
+    "sha256": "bc34347d545a8cf0af8535f53ac0f2667487e0e2eae6097530be15f578a39d10",
+    "foreign_keys": {
+      "source": 1,
+      "destination": 1
+    },
+    "integrity": "ok",
+    "schema": [
+      {
+        "version": "001",
+        "applied_at": "2026-09-14T05:03:53.290735Z",
+        "checksum": "a14af4234486e082b7dabb915c19bb2fd6325537fa719c3e397d9d6dab5d8473"
+      },
+      {
+        "version": "002",
+        "applied_at": "2026-09-14T05:03:53.292048Z",
+        "checksum": "27b21c2b31eac2307efd873edb247456cbf3097cfe2ae1614411845e05a92d4b"
+      },
+      {
+        "version": "003",
+        "applied_at": "2026-09-14T05:35:03.069314Z",
+        "checksum": "d2d7410b6ad5e336c170b7a2a1f993baf663f468ba52bb44bd8ac9a39cdbf47e"
+      }
+    ]
+  },
+  "evidence_directory": ".operation-state/database-phase3/20260914T235453-acceptance",
+  "source_coverage_record": ".operation-state/database-phase3/20260914T235453-acceptance/source-coverage.json",
+  "old_new_mapping": ".operation-state/database-phase3/20260914T235453-acceptance/old-to-new-article-keys.jsonl",
+  "conflict_records": ".operation-state/database-phase3/20260914T235453-acceptance/consolidation-conflicts.jsonl",
+  "schema_and_implementation_hashes": {
+    "database/migrations/003_body_integrity.sql": "d2d7410b6ad5e336c170b7a2a1f993baf663f468ba52bb44bd8ac9a39cdbf47e",
+    "scripts/import_legacy_database.py": "b4f8105162d7749acc28d123a40c61aa659a1b80fcd18d1c753c0f1e3af7acd2",
+    "scripts/accept_phase3_database.py": "eff18856d78f227828db0f3cf193b5c853cffb3ccb0c9801e7034716d7ba5736",
+    "scripts/test_phase3_acceptance_database.py": "e5c73ec7bd0adf472b05442cf9845f17a0c22b778addb8fb52aaf10c8c2aebbd"
+  },
+  "unresolved_conflicts": 18305,
+  "source_snapshot_reused": true,
+  "auto_merge_performed": false,
+  "ai_input_minimization_performed": false,
+  "metadata_only_change_verification": {
+    "status": "passed",
+    "changed_tables": [
+      "consolidation_conflicts",
+      "content_fetch_attempts"
+    ],
+    "all_table_row_counts_unchanged": true,
+    "source_records_hash_unchanged": true,
+    "schema_hash_unchanged": true
+  },
+  "final_source_and_retention_check": {
+    "status": "passed",
+    "idle": {
+      "observed_at": "2026-09-14T23:59:27.533240+00:00",
+      "processes": [],
+      "unfinished_executions": []
+    },
+    "business_file_hashes_unchanged": true,
+    "retained_snapshots": [
+      {
+        "path": ".operation-state/database-consolidation/20260914T040750.644763Z",
+        "exists": true,
+        "restore_exists": true
+      },
+      {
+        "path": ".operation-state/database-consolidation/20260914T044027.140127Z",
+        "exists": true,
+        "restore_exists": true
+      },
+      {
+        "path": ".operation-state/database-consolidation/20260914T045958.376672Z",
+        "exists": true,
+        "restore_exists": true
+      },
+      {
+        "path": ".operation-state/database-consolidation/20260914T053221.807062Z",
+        "exists": true,
+        "restore_exists": true
+      }
+    ],
+    "checked_at": "2026-09-14T23:59:29.561192+00:00"
+  }
+}

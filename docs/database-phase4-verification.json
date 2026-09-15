@@ -1,0 +1,525 @@
+{
+  "phase": 4,
+  "status": "complete",
+  "phase4_complete": true,
+  "phase5_started": false,
+  "checked_at": "2026-09-15T01:36:47.068818+00:00",
+  "phase3_commit": "b18ae4bd2a0ab765c8dadcea3c16328018bb80c9",
+  "previous_attempt": {
+    "phase": 4,
+    "status": "stopped",
+    "phase4_complete": false,
+    "phase3_commit": "b18ae4bd2a0ab765c8dadcea3c16328018bb80c9",
+    "phase3_commit_scope": {
+      "files": 13,
+      "excluded": [
+        "scripts/start_n8n_with_file_access.sh",
+        "scripts/start_talent_dashboard.sh"
+      ],
+      "phase3_files_clean_after_commit": true,
+      "working_tree_clean_at_phase3_checkpoint": true
+    },
+    "checked_at": "2026-09-15T00:24:47.275971+00:00",
+    "gate": {
+      "status": "passed",
+      "phase3_commit": "b18ae4bd2a0ab765c8dadcea3c16328018bb80c9",
+      "snapshot": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-consolidation/20260914T053221.807062Z",
+      "idle": {
+        "observed_at": "2026-09-15T00:15:21.267621+00:00",
+        "processes": [],
+        "unfinished_executions": []
+      },
+      "database_baseline_equal": true,
+      "file_hashes_equal": true,
+      "checked_at": "2026-09-15T00:15:59.591877+00:00",
+      "source_files": 266
+    },
+    "windows_target_writers_at_entry": 0,
+    "project_backup": {
+      "path": "/home/raimu/N8N/AutoArticleFor-n8n/data/backups/phase4-20260915T001521-before.sqlite",
+      "sha256": "bc34347d545a8cf0af8535f53ac0f2667487e0e2eae6097530be15f578a39d10",
+      "foreign_keys": {
+        "source": 1,
+        "destination": 1
+      }
+    },
+    "core_comparison": {
+      "phase": 4,
+      "status": "core_checks_passed",
+      "stages_completed": [],
+      "phase5_started": false,
+      "field_checks": {
+        "source_files": 799,
+        "all_source_units": 519894,
+        "current_n8n_fields": 161720,
+        "collection_history": 81320
+      },
+      "field_hashes": {
+        "source_files": "cc77c25c0cddf75bf0d13269469cc6de69337ffb3a5dccaf3423d2a8ca5d3219",
+        "all_source_units": "e4c8772b40378df1db56b69e1d4163944eab12ba73d82d77484b4799b5ce4f14",
+        "current_n8n_fields": "b817d42d948869339f5a57125551d2d1a734dbe0009902c71064bdeea5b226f4",
+        "collection_history": "570056024f19c0405d85b3743acb10fc05fdca44f0eec4c2493739bea76ad126"
+      },
+      "last_stage": "collection_history",
+      "project_database_unchanged": true,
+      "checked_at": "2026-09-15T00:19:57.303408+00:00"
+    },
+    "details_comparison": {
+      "phase": 4,
+      "status": "stopped",
+      "phase5_started": false,
+      "reason": "bodies_versions_attempts: stored_body_length",
+      "difference_record": "details/differences.jsonl",
+      "field_checks": {
+        "bodies_versions_attempts": 295074
+      },
+      "last_stage": "bodies_versions_attempts",
+      "field_hashes": {
+        "bodies_versions_attempts": "0d90468c6d7cc66a54df530faf20fc7aa32fbf60ae92193680c084b304fae56e"
+      },
+      "project_database_unchanged": true,
+      "checked_at": "2026-09-15T00:20:50.815333+00:00"
+    },
+    "unexplained_difference_count_detected": 1,
+    "stopped_on_first_unexplained_difference": true,
+    "total_affected_population_not_yet_scanned": true,
+    "differences": [
+      {
+        "approval_status": "unapproved",
+        "field": "stored_body_length",
+        "new_value": null,
+        "old_value": 1014,
+        "reason": null,
+        "source": "content/article-body-captures/backfill-state.json",
+        "stage": "bodies_versions_attempts",
+        "target": {
+          "position": "entries/http://blog.livedoor.jp/cdn50310-takatyansan/archives/91646695.html",
+          "source_path": "content/article-body-captures/backfill-state.json",
+          "target_id": "831c0720-8f11-502a-8a6d-93f787c05058"
+        }
+      }
+    ],
+    "investigation": {
+      "source_record_id": "a73e9536-4992-5f46-9a3f-8f782152222c",
+      "source_path": "content/article-body-captures/backfill-state.json",
+      "position": "entries/http://blog.livedoor.jp/cdn50310-takatyansan/archives/91646695.html",
+      "raw_keys": [
+        "article_key",
+        "body_length",
+        "content_completeness",
+        "content_hash",
+        "content_markdown",
+        "content_text",
+        "content_type",
+        "extraction_method",
+        "extraction_scope",
+        "non_content_text",
+        "original_url",
+        "page_metadata",
+        "processed_at",
+        "published_at",
+        "reason",
+        "resolved_url",
+        "run_date",
+        "source_host",
+        "status",
+        "summary",
+        "title"
+      ],
+      "source_body_length": 1014,
+      "source_content_length": null,
+      "source_status": "verified",
+      "source_hash": "12f711b4421cc4d3e16bb32068b5cbc6304975ebc322443de327c72739a36b7e",
+      "input_hash": "8f59620491d5b74f85c0c36869defd46b69e4ac779993e87e71942cb6b177803",
+      "raw_source_preserved": true,
+      "target_stored_body_length": null,
+      "target_body_integrity": "consistent",
+      "target_source_status": "verified",
+      "target_status": "verified",
+      "payload": {
+        "text_hash": "12f711b4421cc4d3e16bb32068b5cbc6304975ebc322443de327c72739a36b7e",
+        "text_length": 1014
+      }
+    },
+    "integrity": {
+      "status": "passed",
+      "phase3_target_logical_hash_equal": true,
+      "backup_logical_hash_equal": true,
+      "source_database_baseline_unchanged": true,
+      "source_file_hashes_unchanged": true,
+      "idle": {
+        "observed_at": "2026-09-15T00:23:40.686713+00:00",
+        "processes": [],
+        "unfinished_executions": []
+      },
+      "checked_at": "2026-09-15T00:24:16.470842+00:00"
+    },
+    "project_database_unchanged": true,
+    "source_unit_count_verified": 127814,
+    "source_files_verified": 266,
+    "phase3_unresolved_conflicts_expected": 18305,
+    "not_completed": [
+      "Remaining body fields and all content-version time bounds",
+      "All review facts/entities/evidence links and quote positions",
+      "Summary version/current selection",
+      "All unresolved conflicts and holds in phase 4",
+      "Phase 4 full missing-body 13-record comparison",
+      "Daily/weekly/dashboard aggregate and representative-output equivalence"
+    ],
+    "representative_outputs_verified": false,
+    "read_cutover_eligible": false,
+    "phase5_started": false,
+    "legacy_modified": false,
+    "cutover_performed": false,
+    "auto_merge_performed": false,
+    "body_substitution_performed": false,
+    "ai_input_minimization_performed": false,
+    "evidence_directory": ".operation-state/database-phase4/20260915T001521",
+    "comparison_test": {
+      "tests": 1,
+      "failures": 0,
+      "purpose": "Detect missing dedicated body length even when raw record and body remain intact; read-only connection verified"
+    }
+  },
+  "cause": "Bulk importer omitted body_length as a saved body length alias; not an individually tolerated difference",
+  "importer_version": "phase4-length-alias-import-v3",
+  "aliases": [
+    "contentLength",
+    "content_length",
+    "body_length"
+  ],
+  "alias_conflict_policy": "Stop transaction when present aliases disagree; retain zero; do not guess",
+  "repair_scope": {
+    "status": "passed",
+    "fetch_attempts_compared": 52985,
+    "changed_saved_lengths": 17868,
+    "all_other_fetch_fields_unchanged": true
+  },
+  "migrations_001_to_003_unchanged": true,
+  "source_snapshot": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-consolidation/20260914T053221.807062Z",
+  "repair_entry_gate": {
+    "status": "passed",
+    "idle": {
+      "observed_at": "2026-09-15T01:04:46.795579+00:00",
+      "processes": [],
+      "unfinished_executions": []
+    },
+    "snapshot": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-consolidation/20260914T053221.807062Z",
+    "existing_target_unchanged": true,
+    "comparison_backup": {
+      "path": "/home/raimu/N8N/AutoArticleFor-n8n/data/backups/phase4-20260915T001521-before.sqlite",
+      "sha256": "bc34347d545a8cf0af8535f53ac0f2667487e0e2eae6097530be15f578a39d10",
+      "foreign_keys": {
+        "source": 1,
+        "destination": 1
+      }
+    },
+    "source_baseline_equal": true,
+    "source_files_equal": true
+  },
+  "candidate_acceptance": {
+    "status": "passed",
+    "cache_counts": {
+      "entries": 17870,
+      "no_body": 16627,
+      "with_body": 1241,
+      "held_missing_body": 2
+    },
+    "missing_count": 13,
+    "source_units": 127814,
+    "conflicts": 18305,
+    "existing_conflicts_exactly_equal": true,
+    "identities_and_holds_exactly_equal": true,
+    "foreign_key_violations": 0
+  },
+  "candidate_replay_and_restore": {
+    "status": "passed",
+    "candidate": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase4/20260915T010446-length-fix/candidate.sqlite",
+    "replay_added_rows": 0,
+    "logical_hash_equal": true,
+    "restoration_equal": true,
+    "checked_at": "2026-09-15T01:17:23.248355+00:00"
+  },
+  "candidate_backup": {
+    "path": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase4/20260915T010446-length-fix/candidate-backup.sqlite",
+    "sha256": "2513b485b634090e6ff1dd7cc3e3b7239bdba431baa8fda583fdca74c9a49c80",
+    "foreign_keys": {
+      "source": 1,
+      "destination": 1
+    }
+  },
+  "candidate_restore": {
+    "path": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase4/20260915T010446-length-fix/candidate-restored.sqlite",
+    "sha256": "2513b485b634090e6ff1dd7cc3e3b7239bdba431baa8fda583fdca74c9a49c80",
+    "foreign_keys": {
+      "source": 1,
+      "destination": 1
+    },
+    "integrity": "ok",
+    "schema": [
+      {
+        "version": "001",
+        "applied_at": "2026-09-15T01:05:58.189199Z",
+        "checksum": "a14af4234486e082b7dabb915c19bb2fd6325537fa719c3e397d9d6dab5d8473"
+      },
+      {
+        "version": "002",
+        "applied_at": "2026-09-15T01:05:58.190375Z",
+        "checksum": "27b21c2b31eac2307efd873edb247456cbf3097cfe2ae1614411845e05a92d4b"
+      },
+      {
+        "version": "003",
+        "applied_at": "2026-09-15T01:05:58.193886Z",
+        "checksum": "d2d7410b6ad5e336c170b7a2a1f993baf663f468ba52bb44bd8ac9a39cdbf47e"
+      }
+    ]
+  },
+  "replacement": {
+    "status": "passed",
+    "original_database_preserved_at": "/home/raimu/N8N/AutoArticleFor-n8n/data/backups/phase4-20260915T010446-length-fix-original.sqlite",
+    "candidate_database": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase4/20260915T010446-length-fix/candidate.sqlite",
+    "dedicated_database": "/home/raimu/N8N/AutoArticleFor-n8n/data/autoarticle.sqlite",
+    "candidate_logical_hash_equal": true,
+    "foreign_key_violations": 0,
+    "integrity_check": "ok",
+    "cutover_states": "legacy",
+    "checked_at": "2026-09-15T01:19:26.096812+00:00"
+  },
+  "restarted_gate": {
+    "status": "passed",
+    "snapshot": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-consolidation/20260914T053221.807062Z",
+    "idle": {
+      "observed_at": "2026-09-15T01:24:48.745235+00:00",
+      "processes": [],
+      "unfinished_executions": []
+    },
+    "source_database_equal": true,
+    "source_files_equal": true,
+    "dedicated_database_equals_verified_candidate": true,
+    "precomparison_backup": {
+      "path": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase4/20260915T010446-length-fix/candidate-backup.sqlite",
+      "sha256": "2513b485b634090e6ff1dd7cc3e3b7239bdba431baa8fda583fdca74c9a49c80",
+      "foreign_keys": {
+        "source": 1,
+        "destination": 1
+      }
+    },
+    "checked_at": "2026-09-15T01:25:40.138323+00:00"
+  },
+  "comparison": {
+    "core": {
+      "phase": 4,
+      "status": "core_checks_passed",
+      "stages_completed": [],
+      "phase5_started": false,
+      "field_checks": {
+        "source_files": 799,
+        "all_source_units": 519894,
+        "current_n8n_fields": 165087,
+        "collection_history": 81320,
+        "old_new_identifiers": 365148
+      },
+      "field_hashes": {
+        "source_files": "cc77c25c0cddf75bf0d13269469cc6de69337ffb3a5dccaf3423d2a8ca5d3219",
+        "all_source_units": "e4c8772b40378df1db56b69e1d4163944eab12ba73d82d77484b4799b5ce4f14",
+        "current_n8n_fields": "fb8d12622061bc42a59dede3a4f19d32c7ea7e61f8cdcee05513253c724d333a",
+        "collection_history": "570056024f19c0405d85b3743acb10fc05fdca44f0eec4c2493739bea76ad126",
+        "old_new_identifiers": "e4a495d91432c4be8d5121682f1401cbf2caa2b2df598980ab90eccfc66f5574"
+      },
+      "last_stage": "old_new_identifiers",
+      "project_database_unchanged": true,
+      "checked_at": "2026-09-15T01:26:48.000147+00:00"
+    },
+    "details": {
+      "phase": 4,
+      "status": "detail_checks_passed",
+      "phase5_started": false,
+      "field_checks": {
+        "bodies_versions_attempts": 775535,
+        "reviews_facts_entities_quotes": 21951,
+        "summaries_conflicts": 28451
+      },
+      "last_stage": "summaries_conflicts",
+      "field_hashes": {
+        "bodies_versions_attempts": "8cefe0a1907fc8ee638e4652d824ebe430751d02bcd11f91e7ba75ae79678b4f",
+        "reviews_facts_entities_quotes": "4ed0f645927069f29c6383245745298a20e70d716dbc17c0a5c451b9ed9e61c8",
+        "summaries_conflicts": "dd66da7064e44578ed757dbbb35b4137698d207644d71a8c3387ed5689cb828c"
+      },
+      "project_database_unchanged": true,
+      "checked_at": "2026-09-15T01:27:33.013357+00:00"
+    },
+    "outputs": {
+      "phase": 4,
+      "status": "passed",
+      "phase5_started": false,
+      "mode": "Read-only legacy-compatible projection; operational held/unverified states remain separately recorded",
+      "daily_dates": 37,
+      "weekly_outputs": 37,
+      "weekly_successful_outputs": 24,
+      "weekly_existing_error_parity": 13,
+      "weekly_error_dates": [
+        "2026-07-23",
+        "2026-07-24",
+        "2026-08-06",
+        "2026-08-07",
+        "2026-08-10",
+        "2026-08-12",
+        "2026-08-13",
+        "2026-08-14",
+        "2026-08-17",
+        "2026-08-18",
+        "2026-08-19",
+        "2026-08-20",
+        "2026-08-21"
+      ],
+      "latest_weekly_successful": true,
+      "reader_representatives": 15,
+      "dashboard_business_fields_equal": true,
+      "field_checks": {
+        "daily_aggregates": 74,
+        "weekly_outputs": 37,
+        "daily_reader_representatives": 15,
+        "dashboard_complete_output": 4
+      },
+      "field_hashes": {
+        "daily_aggregates": "f1d6600ce7211d2f32d571351920d1a24bd7158c05935a0a2dc4422a6cd4b4d7",
+        "weekly_outputs": "c104a95e8c246ab2a264b21e27ed8de742fff0cad2939439ccf72b5a818aa186",
+        "daily_reader_representatives": "3acfdf1ab445a027073f98d2f8c0e975edfc14c7130f5e559d862803bf4dcfc9",
+        "dashboard_complete_output": "3b71c7397e16ef5d48ef646c8c650bccab4abbb12da9a66bb315c55ac58742e7"
+      },
+      "project_database_unchanged": true,
+      "checked_at": "2026-09-15T01:31:49.119357+00:00"
+    }
+  },
+  "final_verification": {
+    "status": "passed",
+    "checked_at": "2026-09-15T01:35:42.596841+00:00",
+    "source_database_equal": true,
+    "source_files_equal": true,
+    "dedicated_database_equals_candidate": true,
+    "integrity_check": "ok",
+    "foreign_key_violations": 0,
+    "cutover_states": [
+      {
+        "feature": "comparison",
+        "read_source": "legacy",
+        "write_target": "legacy",
+        "changed_at": "2026-09-15T01:05:58.193934Z",
+        "rollback_state": "not-started"
+      },
+      {
+        "feature": "dashboard",
+        "read_source": "legacy",
+        "write_target": "legacy",
+        "changed_at": "2026-09-15T01:05:58.193978Z",
+        "rollback_state": "not-started"
+      },
+      {
+        "feature": "weekly",
+        "read_source": "legacy",
+        "write_target": "legacy",
+        "changed_at": "2026-09-15T01:05:58.193993Z",
+        "rollback_state": "not-started"
+      },
+      {
+        "feature": "ai-reader",
+        "read_source": "legacy",
+        "write_target": "legacy",
+        "changed_at": "2026-09-15T01:05:58.194002Z",
+        "rollback_state": "not-started"
+      },
+      {
+        "feature": "n8n-daily",
+        "read_source": "legacy",
+        "write_target": "legacy",
+        "changed_at": "2026-09-15T01:05:58.194011Z",
+        "rollback_state": "not-started"
+      }
+    ],
+    "idle": {
+      "observed_at": "2026-09-15T01:34:56.611662+00:00",
+      "processes": [],
+      "unfinished_executions": []
+    },
+    "migrations_001_to_003_unchanged": true,
+    "original_backups_retained": true,
+    "difference_ledgers": {
+      "comparison/differences.jsonl": {
+        "count": 0,
+        "unexplained": 0,
+        "reasons": {},
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "comparison/details/differences.jsonl": {
+        "count": 14835,
+        "unexplained": 0,
+        "reasons": {
+          "User-approved missing-body policy: source claim retained, unavailable body is unverified": 13,
+          "Schema 003 INTEGER representation of an equal integral legacy numeric value; original row representation retained": 14822
+        },
+        "sha256": "2b46e5ff4414f61d21b52e33153810a6ff8ecf4daeaed59d18f856ae1a32fbed"
+      },
+      "comparison/outputs/differences.jsonl": {
+        "count": 0,
+        "unexplained": 0,
+        "reasons": {},
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  "regression_tests": {
+    "count": 30,
+    "status": "passed",
+    "log": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase4/20260915T010446-length-fix/final-regression-tests.log"
+  },
+  "unexplained_differences": 0,
+  "approved_difference_count": 14835,
+  "approval_basis": {
+    "missing_body_status": "User-approved source verified / operational unverified separation for 13 missing bodies",
+    "numeric_representation": "Approved migration 003 INTEGER stored length: 14,822 integral REAL source values compare numerically equal; original raw row retained. No value change approved or performed."
+  },
+  "known_existing_output_limitations": {
+    "weekly_errors": 13,
+    "dates": [
+      "2026-07-23",
+      "2026-07-24",
+      "2026-08-06",
+      "2026-08-07",
+      "2026-08-10",
+      "2026-08-12",
+      "2026-08-13",
+      "2026-08-14",
+      "2026-08-17",
+      "2026-08-18",
+      "2026-08-19",
+      "2026-08-20",
+      "2026-08-21"
+    ],
+    "reason": "Unchanged AI keyword candidate markdown has pre-existing invalid confidence or incomplete rows; legacy and candidate projection return identical error type/message",
+    "normal_weekly_outputs": 24,
+    "latest_weekly_output_equal": true,
+    "evidence": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase4/20260915T010446-length-fix/comparison/outputs/weekly-existing-errors.json",
+    "treatment": "Error parity recorded, not claimed as successful numeric weekly output; no parser or source file repair"
+  },
+  "read_cutover_assessment": {
+    "phase4_content_equivalence": "passed",
+    "business_cutover_performed": false,
+    "read_source": "legacy",
+    "write_target": "legacy",
+    "production_read_switch_ready": false,
+    "reason": "Phase 5 continuous synchronization and phase 6 per-feature switch/rollback tests have not been performed. This comparison uses read-only legacy-compatible projections."
+  },
+  "prohibited_actions_performed": [],
+  "evidence_directory": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase4/20260915T010446-length-fix",
+  "implementation_hashes": {
+    "scripts/import_legacy_database.py": "855f357e4eba678699d1bcd0ecca0608117fb826047b7d67e9bdf45c9d63c809",
+    "scripts/accept_phase3_database.py": "030e91021206cf296dd97c183f0c563b9667c085d942aee4e12289d0458c2f29",
+    "scripts/compare_phase4_database.py": "65e8d43d249833936371cfeec8b848c06d3289ae555589ba05a03c911031c451",
+    "scripts/compare_phase4_details.py": "c69a36aff25ab798b34545397b1774a9610d2c6b02b70df1fe8dcfe7ecdeddb7",
+    "scripts/compare_phase4_outputs.py": "4a0d8e70727a509878445d2c16044db344e835af7d68d80082634572c7b60a8f",
+    "scripts/test_phase4_database.py": "d300ea412833d08ef8f89e070e5bf00ba9c9a06509b41a953029afada44b25be",
+    "database/migrations/001_initial.sql": "a14af4234486e082b7dabb915c19bb2fd6325537fa719c3e397d9d6dab5d8473",
+    "database/migrations/002_migration_provenance.sql": "27b21c2b31eac2307efd873edb247456cbf3097cfe2ae1614411845e05a92d4b",
+    "database/migrations/003_body_integrity.sql": "d2d7410b6ad5e336c170b7a2a1f993baf663f468ba52bb44bd8ac9a39cdbf47e"
+  }
+}

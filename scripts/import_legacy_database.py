@@ -15,7 +15,7 @@ import database_phase1 as baseline
 import article_review_facts as review_rules
 from article_artifact_formats import parsed_summaries
 
-VERSION='phase3-held-import-v2'
+VERSION='phase4-length-alias-import-v3'
 NS=uuid.UUID('520e98ee-e2d9-4c73-a2d5-535e16f6ce61')
 
 def ident(*parts): return str(uuid.uuid5(NS,db.canonical(parts)))
@@ -33,6 +33,14 @@ def array(value):
     if not isinstance(value,list):raise ValueError('Expected saved JSON array')
     return value
 
+def stored_length(raw):
+    values={k:raw[k] for k in ('contentLength','content_length','body_length') if k in raw}
+    if not values:return None
+    first=next(iter(values.values()))
+    if any(type(v)!=type(first) or v!=first for v in values.values()):
+        raise RuntimeError('Conflicting saved body length aliases: '+','.join(values))
+    return first
+
 def content_values(raw):
     def val(a,b,default=''):return raw.get(a,raw.get(b,default))
     return dict(key=val('articleKey','article_key'),url=val('originalUrl','original_url'),
@@ -42,7 +50,7 @@ def content_values(raw):
         stored_hash=val('contentHash','content_hash'),fetched=val('fetchedAt','fetched_at',raw.get('processed_at')),
         resolved=val('resolvedUrl','resolved_url'),method=val('extractionMethod','extraction_method'),
         reason=val('failureReason','failure_reason',raw.get('reason')),completeness=val('contentCompleteness','content_completeness'),
-        retry=raw.get('retry_after'),stored_length=val('contentLength','content_length',None),content_path=raw.get('content_path'))
+        retry=raw.get('retry_after'),stored_length=stored_length(raw),content_path=raw.get('content_path'))
 
 def body_integrity(raw):
     v=content_values(raw);computed=db.checksum(v['text'].encode())
@@ -226,7 +234,8 @@ class Importer:
                     cv=content_values(entry)
                     if cv['key']==v['key'] or cv['url']==v['url']:
                         references.append(dict(path=capture_path,position=capture_pos,input_hash=hashrow(entry),computed_body_hash=db.checksum(cv['text'].encode()),body_length=len(cv['text']),source_status=cv['status'],matches_saved_hash=db.checksum(cv['text'].encode())==v['stored_hash']))
-            self.conflict(aid,'body_integrity',integrity,dict(source_record_id=sid,source_path=path,source_position=str(pos),body_empty=not bool(v['text']),stored_body_hash=v['stored_hash'],stored_body_length=v['stored_length'],computed_body_hash=db.checksum(v['text'].encode()),source_status=v['status'],content_path=v['content_path'],capture_references=references,recovery_evidence='No matching body located; no substitution performed',git_investigation=dict(result='No body matching stored hashes found in current files or Git history for the 11 legacy rows',reported_by='user',policy_reference='docs/database-consolidation-progress.md#phase3-missing-body-policy')))
+            # Preserve existing conflict IDs/history; acceptance records all length aliases in preserved_missing_body_claim.
+            self.conflict(aid,'body_integrity',integrity,dict(source_record_id=sid,source_path=path,source_position=str(pos),body_empty=not bool(v['text']),stored_body_hash=v['stored_hash'],stored_body_length=raw.get('contentLength',raw.get('content_length')),computed_body_hash=db.checksum(v['text'].encode()),source_status=v['status'],content_path=v['content_path'],capture_references=references,recovery_evidence='No matching body located; no substitution performed',git_investigation=dict(result='No body matching stored hashes found in current files or Git history for the 11 legacy rows',reported_by='user',policy_reference='docs/database-consolidation-progress.md#phase3-missing-body-policy')))
 
         if v['status'] not in ('verified','partial','unavailable','unverified','metadata_only','pending','failed'):
             self.finish(sid,None,None,'unknown_fetch_status');self.conflict(aid,'fetch_status','Unknown saved fetch status',{'source_record_id':sid,'status':v['status']});return

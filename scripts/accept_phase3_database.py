@@ -5,7 +5,7 @@ import import_legacy_database as imp
 
 def claims(raw):
     v=imp.content_values(raw)
-    length=raw.get('contentLength',raw.get('content_length',raw.get('body_length')))
+    length=imp.stored_length(raw)
     return v,length
 
 def missing_claim(raw):

@@ -3,45 +3,12 @@ import json
 import project_database as db
 import import_legacy_database as imp
 
-def claims(raw):
-    v=imp.content_values(raw)
-    length=imp.stored_length(raw)
-    return v,length
+from missing_body_acceptance import claims, missing_claim, candidates
+import missing_body_acceptance as acceptance
 
-def missing_claim(raw):
-    v,length=claims(raw)
-    return not v['text'] and isinstance(length,(int,float)) and length>0 and bool(v['stored_hash']) and v['stored_hash']!=db.checksum(b'')
-
-def candidates(c):
-    # Derive the population from every preserved source record, never a fixed count.
-    for row in c.execute('SELECT * FROM source_records ORDER BY id'):
-        raw=json.loads(row['raw_json'])
-        if isinstance(raw,dict) and missing_claim(raw):yield dict(row),raw
-
-def reconcile(c,research):
-    updates=0
-    with db.transaction(c):
-        for source,raw in list(candidates(c)):
-            v,length=claims(raw)
-            f=c.execute('SELECT * FROM content_fetch_attempts WHERE id=?',(source['target_id'],)).fetchone()
-            if not f or f['version_id'] is not None or f['body_integrity']!='held_missing_body' or f['status']!='unverified':
-                raise RuntimeError('Unexpected missing-body disposition; no automatic correction')
-            if source['state']!='held' or not source['reason']:raise RuntimeError('Missing source hold reason')
-            if f['stored_body_length'] is None:
-                c.execute('UPDATE content_fetch_attempts SET stored_body_length=? WHERE id=?',(length,f['id']));updates+=1
-            elif f['stored_body_length']!=length:raise RuntimeError('Stored length differs from source')
-            found=False
-            for conflict in c.execute("SELECT * FROM consolidation_conflicts WHERE article_id=? AND kind='body_integrity'",(f['article_id'],)).fetchall():
-                detail=json.loads(conflict['details_json'])
-                if detail.get('source_record_id')!=source['id']:continue
-                found=True
-                detail['preserved_missing_body_claim']=dict(source_path=source['source_path'],record_position=source['record_position'],input_hash=source['input_hash'],stored_body_hash=v['stored_hash'],stored_body_length=length,source_status=v['status'],original_url=v['url'],resolved_url=v['resolved'],content_path=v['content_path'],body_field_present=any(k in raw for k in ('content_text','contentText')),computed_empty_hash=db.checksum(b''))
-                detail['acceptance_research']=research
-                encoded=db.canonical(detail)
-                if encoded!=conflict['details_json']:
-                    c.execute('UPDATE consolidation_conflicts SET details_json=? WHERE id=?',(encoded,conflict['id']));updates+=1
-            if not found:raise RuntimeError('Missing conflict record')
-    return updates
+def reconcile(c,ledger_path):
+    ledger=acceptance.load(ledger_path)
+    return acceptance.apply(c,ledger,db.checksum(__import__('pathlib').Path(ledger_path).read_bytes()))['updated_rows']
 
 def verify(c):
     targets=[]

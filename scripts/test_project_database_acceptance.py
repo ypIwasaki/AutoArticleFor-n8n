@@ -27,6 +27,21 @@ class Phase2AcceptanceTests(unittest.TestCase):
         db.migrate(self.path)
     def tearDown(self):
         self.temp.cleanup()
+    def test_legacy_read_connection_preserves_bytes_and_rejects_writes(self):
+        import database_phase1 as baseline
+        p=self.root/'legacy-read.sqlite'
+        with contextlib.closing(sqlite3.connect(p)) as c:
+            c.execute('CREATE TABLE records(id INTEGER PRIMARY KEY,value TEXT)')
+            c.execute("INSERT INTO records VALUES(1,'retained')");c.commit()
+        before=p.read_bytes()
+        with contextlib.closing(baseline.ro(p)) as c:
+            self.assertEqual(c.execute('PRAGMA query_only').fetchone()[0],1)
+            self.assertEqual(c.execute('PRAGMA foreign_keys').fetchone()[0],1)
+            self.assertEqual(c.execute('PRAGMA cache_size').fetchone()[0],-524288)
+            self.assertEqual(tuple(c.execute('SELECT * FROM records').fetchone()),(1,'retained'))
+            with self.assertRaises(sqlite3.OperationalError):c.execute('DELETE FROM records')
+        self.assertEqual(p.read_bytes(),before)
+
     def test_backup_restore_all_connection_settings(self):
         observations=[]
         opened=[]
@@ -49,18 +64,22 @@ class Phase2AcceptanceTests(unittest.TestCase):
             result=db.backup(self.root/'backup.sqlite',self.path)
             restored=db.restore_check(self.root/'backup.sqlite',self.root/'restored.sqlite')
         expected={'source':{'foreign_keys':1,'busy_timeout':10000,'journal_mode':'wal','query_only':1},
-                  'destination':{'foreign_keys':1,'busy_timeout':10000,'journal_mode':'wal','query_only':0}}
-        self.assertEqual(observations,[expected,expected])
+                  'destination':{'foreign_keys':1,'busy_timeout':10000,'journal_mode':'delete','query_only':0}}
+        second={**expected,'source':{**expected['source'],'journal_mode':'delete'}}
+        self.assertEqual(observations,[expected,second])
+        for name in ('backup.sqlite','restored.sqlite'):
+            self.assertFalse((self.root/(name+'-wal')).exists())
+            self.assertFalse((self.root/(name+'-shm')).exists())
         self.assertEqual(result['foreign_keys'],{'source':1,'destination':1})
         self.assertEqual(restored['foreign_keys'],{'source':1,'destination':1})
         self.assertEqual(restored['integrity'],'ok')
-        self.assertEqual(len(opened),6)  # two pairs, restored validation and status
+        self.assertEqual(len(opened),8)  # backup pairs, normalizers, validation and status
         for c in opened:
             with self.assertRaises(sqlite3.ProgrammingError): c.execute('SELECT 1')
         self.assertEqual(result['sha256'],hashlib.sha256((self.root/'backup.sqlite').read_bytes()).hexdigest())
     def test_destination_failure_closes_source(self):
         source=db.connect(self.path,readonly=True)
-        with patch.object(db,'connect',side_effect=[source,RuntimeError('simulated destination failure')]):
+        with patch.object(db,'connect',return_value=source), patch.object(sqlite3,'connect',side_effect=RuntimeError('simulated destination failure')):
             with self.assertRaises(RuntimeError): db.backup(self.root/'failed.sqlite',self.path)
         with self.assertRaises(sqlite3.ProgrammingError): source.execute('SELECT 1')
         # Preserve the failed candidate; never overwrite it on retry.

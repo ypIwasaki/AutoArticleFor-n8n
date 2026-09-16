@@ -19,7 +19,10 @@ def inventory(root):
 
 
 def live_guard(snapshot,root,database):
+    import sync_snapshot_dependencies as dependencies
     snapshot=Path(snapshot)
+    ledgers=dependencies.verify(snapshot)
+    dependencies.assert_live_unchanged(root,ledgers['policy_dependencies'],ledgers['implementation_dependencies'])
     expected=json.loads((snapshot/'database-baseline.json').read_text())
     with closing(base.ro(database)) as c:
         if c.execute("SELECT count(*) FROM execution_entity WHERE status IN ('new','running','waiting')").fetchone()[0]:
@@ -30,7 +33,7 @@ def live_guard(snapshot,root,database):
         raise sync.SyncStopped('live_files_changed')
 
 
-def prepare(operation_id,run_date,step,root,database,folder):
+def prepare(operation_id,run_date,step,root,database,folder,supersedes_snapshot=None,supersedes_hash=None):
     from autoarticle_ops import Operations
     from sync_workflow_to_n8n import load_env_file
     if not db.ID_PATTERN.fullmatch(operation_id):raise ValueError('Stable operation ID required')
@@ -47,19 +50,20 @@ def prepare(operation_id,run_date,step,root,database,folder):
     evidence={'kind':'validated-checkpoint','status':'complete','step':step,'entry_hash':sync.digest(entry),'completed_at':entry['checkedAt'],'operation_id':operation_id}
     if step=='collect':
         evidence.update(kind='n8n-execution',execution_id=entry['executionId'])
-    os.umask(0o077);folder.mkdir(parents=True)
-    base.save(folder/'legacy-completion.json',evidence);base.save(folder/'operation-state.json',ops.progress.load())
-    files=inventory(root);base.save(folder/'input-files.json',files)
-    for item in files:
-        dest=folder/'files'/item['path'];dest.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(root/item['path'],dest)
-        if base.sha(dest)!=item['sha256']:raise sync.SyncStopped('source_changed_during_snapshot')
-    with closing(base.ro(database)) as source,closing(sqlite3.connect(folder/'n8n.sqlite')) as dest:
-        dest.execute('PRAGMA foreign_keys=ON');source.backup(dest)
-    with closing(base.ro(folder/'n8n.sqlite')) as c:
-        if c.execute('PRAGMA integrity_check').fetchone()[0]!='ok':raise sync.SyncStopped('source_snapshot_integrity_failed')
-        base.save(folder/'database-baseline.json',base.baseline(c))
+    if bool(supersedes_snapshot)!=bool(supersedes_hash):raise ValueError('Both superseded snapshot and request hash are required')
+    if supersedes_snapshot:
+        old_request=json.loads((Path(supersedes_snapshot)/'sync-request.json').read_text())
+        old=old_request['receipt']['legacy_completion']
+        if sync.digest(old_request)!=supersedes_hash:raise sync.SyncStopped('superseded_request_hash_mismatch')
+        if old.get('entry_hash')!=evidence.get('entry_hash') or old.get('step')!=step or old.get('operation_id')==operation_id:raise sync.SyncStopped('superseded_request_not_same_business')
+        if sync.operation_status(old['operation_id'],db.database_path()) is not None:raise sync.SyncStopped('superseded_operation_has_database_state')
+        evidence['supersedes']={'operation_id':old['operation_id'],'request_hash':supersedes_hash,'snapshot_hash':old_request['receipt']['snapshot_hash'],'same_business_entry_hash':evidence['entry_hash'],'verified_no_sync_run':True}
+
+    import complete_sync_snapshot as complete
+    import sync_snapshot_dependencies as dependencies
+    result=complete.capture(root,database,db.database_path(),folder,evidence,ops.progress.load())
     live_guard(folder,root,database)
     if sync.digest(ops.progress.load()['steps'].get(step,{}))!=evidence['entry_hash']:
         raise sync.SyncStopped('legacy_completion_changed')
-    base.save(folder/'phase1-result.json',{'status':'complete','backup_sha256':base.sha(folder/'n8n.sqlite'),'finished_at':base.now(),'purpose':'phase5_completed_operation_snapshot'})
-    return {'operationId':operation_id,'snapshot':str(folder),'status':'prepared'}
+    dependencies.verify(folder)
+    return dict(result,operationId=operation_id,status='prepared')

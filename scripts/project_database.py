@@ -10,6 +10,7 @@ import sqlite3
 
 ROOT = Path(__file__).resolve().parents[1]
 MIGRATIONS = ROOT / 'database/migrations'
+BACKUP_VERSION = 'standalone-backup-v2-delete-journal'
 ENTITIES = {
  'article': 'articles', 'identifier': 'article_identifiers',
  'collection': 'collection_runs', 'occurrence': 'article_occurrences',
@@ -190,6 +191,20 @@ def status(path=None):
     finally:
         c.close()
 
+def _backup_connection(destination):
+    c=sqlite3.connect(destination,isolation_level=None,timeout=10)
+    try:
+        c.execute('PRAGMA foreign_keys=ON')
+        c.execute('PRAGMA busy_timeout=10000')
+        if c.execute('PRAGMA journal_mode=DELETE').fetchone()[0]!='delete':
+            raise RuntimeError('Standalone backup journal mode unavailable')
+        c.execute('PRAGMA synchronous=FULL')
+        c.execute('PRAGMA cache_size=-131072')
+        return c
+    except Exception:
+        c.close()
+        raise
+
 def backup(destination,path=None):
     destination=Path(destination).resolve()
     if '.n8n' in destination.parts:
@@ -201,7 +216,10 @@ def backup(destination,path=None):
         destination.parent.mkdir(parents=True,exist_ok=True)
         descriptor=os.open(str(destination),os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
         os.close(descriptor)
-        target=connect(destination)
+        # Recovery copies are standalone files, never live WAL databases.
+        # Keep durable SQLite transactions and foreign-key enforcement, while
+        # avoiding a large WAL and shared-memory index on Windows-mounted storage.
+        target=_backup_connection(destination)
         foreign_keys={
             'source': source.execute('PRAGMA foreign_keys').fetchone()[0],
             'destination': target.execute('PRAGMA foreign_keys').fetchone()[0],
@@ -209,6 +227,10 @@ def backup(destination,path=None):
         if any(value!=1 for value in foreign_keys.values()):
             raise RuntimeError('Foreign keys unavailable for backup')
         source.backup(target)
+        # Reopen to recognize the copied source header, then persist DELETE
+        # mode before validating. Every reopened connection also enforces FKs.
+        target.close()
+        target=_backup_connection(destination)
         if [r[0] for r in target.execute('PRAGMA integrity_check')]!=['ok']:
             raise RuntimeError('Backup integrity failure')
         if target.execute('PRAGMA foreign_key_check').fetchall():
@@ -218,7 +240,7 @@ def backup(destination,path=None):
     finally:
         source.close()
         if target is not None: target.close()
-    return dict(path=str(destination),sha256=checksum(destination.read_bytes()),foreign_keys=foreign_keys)
+    return dict(path=str(destination),sha256=checksum(destination.read_bytes()),foreign_keys=foreign_keys,backup_version=BACKUP_VERSION)
 
 def restore_check(snapshot,destination):
     result=backup(destination,path=snapshot)

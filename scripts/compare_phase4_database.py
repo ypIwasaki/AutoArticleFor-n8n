@@ -17,6 +17,7 @@ def stamp(v):
 def fingerprint(path):
     result={}
     with contextlib.closing(db.connect(path,readonly=True)) as c:
+        c.execute('PRAGMA cache_size=-262144')
         c.execute('BEGIN')
         for name, in c.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name").fetchall():
             cols=list(c.execute('PRAGMA table_info('+name+')'));keys=[x['name'] for x in sorted(cols,key=lambda x:x['pk']) if x['pk']];h=hashlib.sha256();count=0

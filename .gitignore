@@ -237,5 +237,5 @@ content/article-review-backfill-progress.json
 content/article-review-backfill*.log
 
 # Project DB recovery copies (may include article bodies)
-data/backups/
+/data/backups
 data/autoarticle.sqlite-journal

@@ -15,7 +15,7 @@ import database_phase1 as baseline
 import article_review_facts as review_rules
 from article_artifact_formats import parsed_summaries
 
-VERSION='phase4-length-alias-import-v3'
+VERSION='phase5-capture-history-import-v5'
 NS=uuid.UUID('520e98ee-e2d9-4c73-a2d5-535e16f6ce61')
 
 def ident(*parts): return str(uuid.uuid5(NS,db.canonical(parts)))
@@ -82,7 +82,9 @@ def assess_content(row,candidates,cache_entries):
     return False,'insufficient_or_inconsistent_identity_evidence',checks
 
 class Importer:
-    def __init__(self,c,snapshot,run_id,stamp,files):
+    def __init__(self,c,snapshot,run_id,stamp,files,identity_context=None,missing_body_context=None):
+        self.identity_context=identity_context
+        self.missing_body_context=missing_body_context
         self.c=c;self.snapshot=snapshot;self.root=snapshot/'files';self.run_id=run_id;self.stamp=stamp;self.files=files
         self.tables={};self.old_articles={};self.by_url=collections.defaultdict(list);self.content_map={};self.content_urls={}
         self.daily=[];self.day_inputs=collections.defaultdict(list);self.capture_by_day={};self.review_inputs=collections.defaultdict(list)
@@ -235,7 +237,9 @@ class Importer:
                     if cv['key']==v['key'] or cv['url']==v['url']:
                         references.append(dict(path=capture_path,position=capture_pos,input_hash=hashrow(entry),computed_body_hash=db.checksum(cv['text'].encode()),body_length=len(cv['text']),source_status=cv['status'],matches_saved_hash=db.checksum(cv['text'].encode())==v['stored_hash']))
             # Preserve existing conflict IDs/history; acceptance records all length aliases in preserved_missing_body_claim.
-            self.conflict(aid,'body_integrity',integrity,dict(source_record_id=sid,source_path=path,source_position=str(pos),body_empty=not bool(v['text']),stored_body_hash=v['stored_hash'],stored_body_length=raw.get('contentLength',raw.get('content_length')),computed_body_hash=db.checksum(v['text'].encode()),source_status=v['status'],content_path=v['content_path'],capture_references=references,recovery_evidence='No matching body located; no substitution performed',git_investigation=dict(result='No body matching stored hashes found in current files or Git history for the 11 legacy rows',reported_by='user',policy_reference='docs/database-consolidation-progress.md#phase3-missing-body-policy')))
+            details=dict(source_record_id=sid,source_path=path,source_position=str(pos),body_empty=not bool(v['text']),stored_body_hash=v['stored_hash'],stored_body_length=raw.get('contentLength',raw.get('content_length')),computed_body_hash=db.checksum(v['text'].encode()),source_status=v['status'],content_path=v['content_path'],capture_references=references,recovery_evidence='No matching body located; no substitution performed',git_investigation=dict(result='No body matching stored hashes found in current files or Git history for the 11 legacy rows',reported_by='user',policy_reference='docs/database-consolidation-progress.md#phase3-missing-body-policy'))
+            if self.missing_body_context:details=self.missing_body_context.initial_details(sid,aid,details)
+            self.conflict(aid,'body_integrity',integrity,details)
 
         if v['status'] not in ('verified','partial','unavailable','unverified','metadata_only','pending','failed'):
             self.finish(sid,None,None,'unknown_fetch_status');self.conflict(aid,'fetch_status','Unknown saved fetch status',{'source_record_id':sid,'status':v['status']});return
@@ -243,22 +247,29 @@ class Importer:
         self.identifier(aid,path,'legacy_key',v['key'],bool(reason))
         self.identifier(aid,path,'original_url',v['url'],bool(reason));self.identifier(aid,path,'resolved_url',v['resolved'],bool(reason))
         self.provenance(sid,aid,path,pos,raw);self.finish(sid,'content_fetch_attempts',iid,reason)
+    def identity_decision(self,r):
+        path='n8n:'+self.tables['article_contents'];key=r['article_key'];candidates=self.by_url.get(r['original_url'],[]);checks={}
+        if body_integrity(r).startswith('held_'):
+            assessment=body_integrity(r);strategy='held'
+            checks={'legacy_key_match':key in self.old_articles,'candidate_count':len(candidates)}
+            aid=ident('held-article',path,str(r['id']))
+        elif key in self.old_articles:
+            aid=ident('n8n-article',key);strategy='legacy_key';assessment='exact_legacy_key'
+        else:
+            accepted,assessment,checks=assess_content(r,candidates,self.cache_by_key.get(key,[]))
+            if accepted:aid=ident('n8n-article',candidates[0]['article_key']);strategy='corroborated'
+            else:aid=ident('held-article',path,str(r['id']));strategy='held'
+        return dict(source_record_id=ident('source',path,str(r['id']),hashrow(r)),article_id=aid,strategy=strategy,reason=assessment,candidates_json=db.canonical(self.candidate_refs(candidates)),checks_json=db.canonical(checks))
     def contents(self):
         path='n8n:'+self.tables['article_contents']
         for r in self.dbrows['article_contents']:
-            sid=self.source(path,r['id'],r);key=r['article_key'];candidates=self.by_url.get(r['original_url'],[]);checks={}
-            if body_integrity(r).startswith('held_'):
-                assessment=body_integrity(r);reason=assessment;strategy='held'
-                checks={'legacy_key_match':key in self.old_articles,'candidate_count':len(candidates)}
-                aid=self.held(path,r['id'],r,reason,self.candidate_refs(candidates))
-            elif key in self.old_articles:
-                aid=ident('n8n-article',key);strategy='legacy_key';reason=None;assessment='exact_legacy_key'
-            else:
-                accepted,assessment,checks=assess_content(r,candidates,self.cache_by_key.get(key,[]))
-                if accepted:aid=ident('n8n-article',candidates[0]['article_key']);strategy='corroborated';reason=None
-                else:aid=self.held(path,r['id'],r,assessment,self.candidate_refs(candidates));strategy='held';reason=assessment
-            self.content_map[key]=aid;self.content_urls[key]=r['original_url'];self.body_rows[key]=r
-            self.put('article_identity_assessments',source_record_id=sid,article_id=aid,strategy=strategy,reason=assessment,candidates_json=db.canonical(self.candidate_refs(candidates)),checks_json=db.canonical(checks))
+            sid=self.source(path,r['id'],r);current=self.identity_decision(r)
+            applied=self.identity_context.choose(sid,r,current) if self.identity_context else current
+            aid=applied['article_id'];reason=applied['reason'] if applied['strategy']=='held' else None
+            if reason:
+                if self.held(path,r['id'],r,reason,json.loads(applied['candidates_json']))!=aid:raise RuntimeError('historical_held_mapping_changed')
+            self.content_map[r['article_key']]=aid;self.content_urls[r['article_key']]=r['original_url'];self.body_rows[r['article_key']]=r
+            self.put('article_identity_assessments',**applied)
             self.fetch(path,r['id'],r,aid,reason,sid)
         for path in self.paths('article-body-captures','.jsonl'):
             for pos,r in self.jsonl(path):self.file_fetch(path,pos,r)
@@ -359,20 +370,21 @@ class Importer:
         for row in self.c.execute('SELECT path,sha256,size,content FROM migration_source_files'):
             if len(row['content'])!=row['size'] or db.checksum(row['content'])!=row['sha256']:raise RuntimeError('Stored file hash mismatch')
         for name,rows in self.dbrows.items():
-            records={r['record_position']:r for r in self.c.execute('SELECT record_position,input_hash,raw_json FROM source_records WHERE source_path=?',('n8n:'+self.tables[name],))}
-            if len(records)!=len(rows):raise RuntimeError('n8n coverage mismatch')
+            records={(r['record_position'],r['input_hash']):r for r in self.c.execute('SELECT record_position,input_hash,raw_json FROM source_records WHERE source_path=?',('n8n:'+self.tables[name],))}
+            if {k[0] for k in records}!={str(row['id']) for row in rows}:raise RuntimeError('n8n coverage mismatch')
             for row in rows:
-                saved=records[str(row['id'])]
+                saved=records.get((str(row['id']),hashrow(row)))
+                if saved is None:raise RuntimeError('n8n current source version missing')
                 if saved['input_hash']!=hashrow(row) or json.loads(saved['raw_json'])!=row:raise RuntimeError('n8n source preservation mismatch')
         # Verify each JSONL record independently, not just per-file or DB counts.
         for item in self.files:
             path=item['path']
             if path.endswith('.jsonl'):
                 expected={pos:raw for pos,raw in self.jsonl(path)}
-                stored={row['record_position']:row for row in self.c.execute('SELECT record_position,input_hash,raw_json FROM source_records WHERE source_path=?',(path,))}
-                if set(expected)!=set(stored):raise RuntimeError('JSONL record coverage mismatch: '+path)
+                stored={(row['record_position'],row['input_hash']):row for row in self.c.execute('SELECT record_position,input_hash,raw_json FROM source_records WHERE source_path=?',(path,))}
+                if set(expected)!={k[0] for k in stored}:raise RuntimeError('JSONL record coverage mismatch: '+path)
                 for pos,raw in expected.items():
-                    if hashrow(raw)!=stored[pos]['input_hash'] or json.loads(stored[pos]['raw_json'])!=raw:raise RuntimeError('JSONL record preservation mismatch: '+path)
+                    if (pos,hashrow(raw)) not in stored or json.loads(stored[(pos,hashrow(raw))]['raw_json'])!=raw:raise RuntimeError('JSONL record preservation mismatch: '+path)
         return {'source_files':len(self.files),'source_records':self.c.execute('SELECT count(*) FROM source_records').fetchone()[0],
             'dispositions':[dict(r) for r in self.c.execute('SELECT source_path,state,reason,count(*) AS count FROM source_records GROUP BY source_path,state,reason ORDER BY source_path,state,reason')],
             'identity_strategies':[dict(r) for r in self.c.execute('SELECT strategy,reason,count(*) AS count FROM article_identity_assessments GROUP BY strategy,reason')],

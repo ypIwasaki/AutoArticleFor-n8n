@@ -1,0 +1,11 @@
+{
+  "format": "identity-history-registry-v1",
+  "origins": [
+    {
+      "id": "0b219d4d4d07adfcf21834d9af395554eaa99894bbe005fe45ded1cf6d0c4d46",
+      "root": ".operation-state/database/identity-origins/0b219d4d4d07adfcf21834d9af395554eaa99894bbe005fe45ded1cf6d0c4d46",
+      "manifest_sha256": "711dec9d4fc5de584f06b8ae9cec52c2f1b2fd5d231a39c8e2909905b900b17f",
+      "processor_version": "phase4-length-alias-import-v3"
+    }
+  ]
+}

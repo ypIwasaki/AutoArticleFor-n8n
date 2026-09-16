@@ -1,50 +1,1743 @@
 {
   "phase": 5,
-  "status": "stopped",
-  "phase5_complete": false,
+  "status": "complete_representative_acceptance",
+  "phase5_complete": true,
   "phase6_started": false,
+  "base_commit": "74f6e87c11c0e89613f6f66f9dd4e7b31a0177a0",
   "phase4_commit": "734eee2752e16fbd13db3ab8f873ffe426a1ab32",
-  "checked_at": "2026-09-15T03:07:41.470692+00:00",
-  "entry_gate": {
+  "checked_at": "2026-09-16T07:27:35.480499+00:00",
+  "previous_attempt": {
     "phase": 5,
-    "status": "baseline_passed",
-    "phase4_commit": "734eee2752e16fbd13db3ab8f873ffe426a1ab32",
-    "started_at": "2026-09-15T02:44:35.833149+00:00",
-    "sync_started": false,
+    "status": "stopped",
+    "phase5_complete": false,
     "phase6_started": false,
+    "base_commit": "74f6e87c11c0e89613f6f66f9dd4e7b31a0177a0",
+    "phase4_commit": "734eee2752e16fbd13db3ab8f873ffe426a1ab32",
+    "checked_at": "2026-09-15T06:33:04.079959+00:00",
+    "previous_attempt": {
+      "phase": 5,
+      "status": "stopped",
+      "phase5_complete": false,
+      "phase6_started": false,
+      "phase4_commit": "734eee2752e16fbd13db3ab8f873ffe426a1ab32",
+      "checked_at": "2026-09-15T03:07:41.470692+00:00",
+      "entry_gate": {
+        "phase": 5,
+        "status": "baseline_passed",
+        "phase4_commit": "734eee2752e16fbd13db3ab8f873ffe426a1ab32",
+        "started_at": "2026-09-15T02:44:35.833149+00:00",
+        "sync_started": false,
+        "phase6_started": false,
+        "idle": {
+          "observed_at": "2026-09-15T02:44:35.845264+00:00",
+          "processes": [],
+          "unfinished_executions": []
+        },
+        "pending_source_differences": 0,
+        "project_database_equal": true,
+        "checked_at": "2026-09-15T02:45:45.510991+00:00"
+      },
+      "windows_matching_writer_processes_at_entry": 0,
+      "services_at_entry": {
+        "processes": []
+      },
+      "pending_business_input_differences_at_entry": 0,
+      "backup_restore": {
+        "status": "passed",
+        "dedicated_backup": {
+          "path": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5/20260915T024435Z/project.sqlite",
+          "sha256": "2513b485b634090e6ff1dd7cc3e3b7239bdba431baa8fda583fdca74c9a49c80",
+          "foreign_keys": {
+            "source": 1,
+            "destination": 1
+          }
+        },
+        "dedicated_restore": {
+          "path": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5/20260915T024435Z/project-restored.sqlite",
+          "sha256": "2513b485b634090e6ff1dd7cc3e3b7239bdba431baa8fda583fdca74c9a49c80",
+          "foreign_keys": {
+            "source": 1,
+            "destination": 1
+          },
+          "integrity": "ok",
+          "schema": [
+            {
+              "version": "001",
+              "applied_at": "2026-09-15T01:05:58.189199Z",
+              "checksum": "a14af4234486e082b7dabb915c19bb2fd6325537fa719c3e397d9d6dab5d8473"
+            },
+            {
+              "version": "002",
+              "applied_at": "2026-09-15T01:05:58.190375Z",
+              "checksum": "27b21c2b31eac2307efd873edb247456cbf3097cfe2ae1614411845e05a92d4b"
+            },
+            {
+              "version": "003",
+              "applied_at": "2026-09-15T01:05:58.193886Z",
+              "checksum": "d2d7410b6ad5e336c170b7a2a1f993baf663f468ba52bb44bd8ac9a39cdbf47e"
+            }
+          ]
+        },
+        "source_files": 266,
+        "source_six_tables_restored": true,
+        "project_all_tables_and_schema_equal": true,
+        "n8n_sha256": "817486414d77b281f7341a903cb89e5b422c8765ee285ea14b3451c46e074b77",
+        "checked_at": "2026-09-15T02:48:42.860917+00:00"
+      },
+      "complete_recovery_bundle": false,
+      "backup_limitation": "Database and 266 business files were captured and database restores match. Policy dependencies required for a reproducible projection were omitted, so the complete phase 5 recovery bundle is not accepted.",
+      "baseline_projection": {
+        "status": "stopped",
+        "production_modified": false,
+        "changes": 4614,
+        "by_entity": {
+          "review": 1538,
+          "sourceRecord": 1538,
+          "conflict": 1538
+        },
+        "checked_at": "2026-09-15T03:03:07.725197+00:00"
+      },
+      "stop_analysis": {
+        "root_policy_hash": "8e3823cbf1c958c156db4eda10c9af6fba7d34ffe75b7dfb38bc0b66b7e5a009",
+        "phase3_snapshot_policy_hash": "8e3823cbf1c958c156db4eda10c9af6fba7d34ffe75b7dfb38bc0b66b7e5a009",
+        "phase5_projection_policy_hash": null,
+        "phase5_policy_directory_exists": false,
+        "changed_review_sources": {
+          "content/article-review-facts/2026-09-10.jsonl": 627,
+          "content/article-review-facts/2026-09-11.jsonl": 542,
+          "content/article-review-facts/2026-09-14.jsonl": 369
+        },
+        "cause": "Phase 5 snapshot contains target data directories but omits policy-hash dependencies. Importer recalculates policy hash under snapshot/files and marks 1538 reviews needs_review.",
+        "production_modified": false,
+        "fix_applied": false,
+        "policy_dependencies": [
+          {
+            "path": "docs/ai-rules/shared-article-review.md",
+            "live_sha256": "21a6feca3ecc2543f3853a25243071349f78e139fbf491f7b74b0eac36e15d2e",
+            "phase3_sha256": "21a6feca3ecc2543f3853a25243071349f78e139fbf491f7b74b0eac36e15d2e",
+            "present_in_phase5_snapshot": false
+          },
+          {
+            "path": "docs/ai-rules/article-summary.md",
+            "live_sha256": "5e1afd423ef776a53735dcd6463c001b2eb3d7d443880f2b64da32a235a54764",
+            "phase3_sha256": "5e1afd423ef776a53735dcd6463c001b2eb3d7d443880f2b64da32a235a54764",
+            "present_in_phase5_snapshot": false
+          },
+          {
+            "path": "docs/ai-rules/talent-index.md",
+            "live_sha256": "c8ad0b808a240349dfec242cfd38cb30a1357fccb79f7a03cc0053a9880effd7",
+            "phase3_sha256": "c8ad0b808a240349dfec242cfd38cb30a1357fccb79f7a03cc0053a9880effd7",
+            "present_in_phase5_snapshot": false
+          },
+          {
+            "path": "docs/ai-rules/article-classification.md",
+            "live_sha256": "7de55dddb019b833ccb8b5a93a10b6a7634156642e1ee95e620e4fa31fbe56bf",
+            "phase3_sha256": "7de55dddb019b833ccb8b5a93a10b6a7634156642e1ee95e620e4fa31fbe56bf",
+            "present_in_phase5_snapshot": false
+          }
+        ]
+      },
+      "unapproved_difference_rows": 4614,
+      "affected_reviews": 1538,
+      "difference_ledger": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5/20260915T024435Z/differences.jsonl",
+      "difference_ledger_sha256": "fbc68607440ee7238e03ec9f73c5c5c6271f19a370cb6d0c2a955f9c8f5de7f0",
+      "production_sync_started": false,
+      "production_migration_004_applied": false,
+      "production_business_data_modified": false,
+      "normal_daily_runs_performed": 0,
+      "regression_tests": {
+        "status": "passed",
+        "tests_run": 46,
+        "log": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5/20260915T024435Z/regression-tests.log",
+        "scope": "Temporary DB tests; not evidence of production sync completion"
+      },
+      "draft_files": [
+        "database/migrations/004_continuous_sync.sql",
+        "database/schema.sql",
+        "scripts/continuous_database_sync.py",
+        "scripts/legacy_sync_projection.py",
+        "scripts/prepare_legacy_sync.py",
+        "scripts/autoarticle_db.py",
+        "scripts/test_continuous_database_sync.py"
+      ],
+      "excluded_files": [
+        "scripts/start_n8n_with_file_access.sh",
+        "scripts/start_talent_dashboard.sh"
+      ],
+      "legacy_read_write_routes": "legacy",
+      "evidence_directory": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5/20260915T024435Z",
+      "remaining": [
+        "Capture policy dependencies and implementation versions in the snapshot and its manifest; reject missing dependencies before projection",
+        "Add regression tests for policy hash reproduction and missing policy refusal",
+        "Rebuild a fresh isolated projection from the same business snapshot and require zero unapproved baseline changes",
+        "Complete all category update/version/provenance and independent legacy comparison acceptance tests",
+        "Only after acceptance apply migration 004 and validate real synchronization, same-ID replay, deliberate failure recovery and restored synchronization state",
+        "Perform and verify multiple normal daily operations; do not count retrospective or synthetic operations as normal daily runs",
+        "Resume phase 5 within an independent change set; current independent commit records a stopped draft, not phase completion"
+      ],
+      "stopped_state_verification": {
+        "status": "passed",
+        "checked_at": "2026-09-15T03:06:21.856644+00:00",
+        "source_tables_unchanged": true,
+        "source_files_unchanged": true,
+        "project_database_unchanged": true,
+        "applied_schema_versions": [
+          "001",
+          "002",
+          "003"
+        ],
+        "sync_runs": 0,
+        "unresolved_conflicts": 18305,
+        "missing_bodies": 13,
+        "cutover": "legacy",
+        "idle": {
+          "observed_at": "2026-09-15T03:05:38.774952+00:00",
+          "processes": [],
+          "unfinished_executions": []
+        }
+      },
+      "implementation_hashes": {
+        "database/schema.sql": "283b1592353db0149b8558cf129d6add474f7d96dae16575105fc6e47b78fb72",
+        "database/migrations/004_continuous_sync.sql": "a1ef3b3dd71100fd3049f640c4ad6abdf6e209beb03d1040a6935cab72099bb5",
+        "scripts/autoarticle_db.py": "1dea3dd178a9781e41661f579826bb4defdfa060f60234a6ee1301a7231497ae",
+        "scripts/continuous_database_sync.py": "80c997e37027a3af132aaac9eae9eace0bd8d4990ab56578db69b3f068e64ebf",
+        "scripts/legacy_sync_projection.py": "ca8de6d5cf4fc4a43a4bcf68cb332306fd0cb786aeec7efd898d5ae6d6e7cc73",
+        "scripts/prepare_legacy_sync.py": "85973764f9fcd61fa77e8f5f97f4d1ae4efea618c4175d487821a0108c704cbb",
+        "scripts/test_continuous_database_sync.py": "b6b6f47b8bd08daf3caef1fd94321073ffa6f5b6353d886ade0eda693b5c58a5"
+      }
+    },
+    "evidence_directory": ".operation-state/database-phase5-resume/20260915T044826Z",
+    "dependency_repair": {
+      "policy_files": 4,
+      "implementation_files": 62,
+      "policy_hash": "8e3823cbf1c958c156db4eda10c9af6fba7d34ffe75b7dfb38bc0b66b7e5a009",
+      "request_identity_includes": [
+        "business_input",
+        "policy_dependencies",
+        "implementation_dependencies"
+      ],
+      "live_policy_fallback": false,
+      "regression_tests": {
+        "passed": 62,
+        "log": ".operation-state/database-phase5-resume/20260915T044826Z/regression-tests.log"
+      }
+    },
+    "environment_incident": {
+      "phase": 5,
+      "status": "stopped_environment_io_error",
+      "phase5_complete": false,
+      "phase6_started": false,
+      "base_commit": "74f6e87c11c0e89613f6f66f9dd4e7b31a0177a0",
+      "recorded_at": "2026-09-15T05:02:16.3056862Z",
+      "evidence_directory": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5-resume/20260915T044826Z",
+      "retained_prior_evidence": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5/20260915T024435Z",
+      "entry_gate": {
+        "active_writers": 0,
+        "source_tables_equal": true,
+        "source_files_equal": true,
+        "unfinished_executions": 0,
+        "project_database_equal": true
+      },
+      "dependency_fix": {
+        "reject_missing_changed_or_wrong_version_before_projection": true,
+        "implementation_files": 62,
+        "policy_files": 4,
+        "dependency_ledgers_bound_to_request_hash": true,
+        "snapshot_rules_only": true
+      },
+      "regression_tests": {
+        "log": "regression-tests.log",
+        "status": "passed",
+        "executed": 62
+      },
+      "complete_snapshot": {
+        "status_before_io_failure": "complete",
+        "implementation_files": 62,
+        "policy_files": 4,
+        "business_files": 266,
+        "path": "complete-snapshot"
+      },
+      "restore": {
+        "legacy_equal": true,
+        "project_equal": true,
+        "files": 343,
+        "implementation_equal": true,
+        "status_before_io_failure": "passed",
+        "path": "restored-bundle",
+        "policies_equal": true
+      },
+      "isolated_projection": {
+        "completed_response_received": false,
+        "status": "unknown_after_process_exit",
+        "path": "candidate.sqlite",
+        "exit_code": 1
+      },
+      "errors": [
+        "WSL execvpe(/usr/bin/uptime) failed: I/O error",
+        "Windows Get-Content on repository acceptance.json failed with I/O device error"
+      ],
+      "production_migration_004_executed": false,
+      "production_sync_executed": false,
+      "normal_daily_runs": 0,
+      "post_failure_database_integrity": "unverified",
+      "post_failure_filesystem_state": "unverified",
+      "repository_progress_update": "blocked_by_io_error",
+      "new_commit_created": false,
+      "prior_4614_differences_approved": false,
+      "remaining": [
+        "Restore WSL/storage access without discarding retained databases or snapshots.",
+        "Read acceptance.json and inspect whether the isolated transaction completed; do not blindly replay.",
+        "Verify source and project DB integrity, hashes, prior backups and complete recovery bundle.",
+        "Compare all reconstructed rows including the 1538 reviews and existing conflict investigation details.",
+        "Verify projection replay, candidate backup and restore before applying 004.",
+        "Finish all production synchronization checks and multiple real completed business operations.",
+        "Update repository progress and verification records; commit only after all phase 5 conditions are met."
+      ]
+    },
+    "environment_recovery": {
+      "checked_at": "2026-09-15T06:26:25.030389+00:00",
+      "candidate_transaction_committed": false,
+      "candidate_preserved": "outage-preserved",
+      "production_modified": false,
+      "idle": {
+        "observed_at": "2026-09-15T06:26:25.038556+00:00",
+        "processes": [],
+        "unfinished_executions": []
+      },
+      "legacy_integrity": "ok",
+      "source_tables_equal": true,
+      "source_files_equal": true,
+      "project_equal": true,
+      "project_integrity": "ok",
+      "foreign_key_violations": 0,
+      "schema_versions": [
+        "001",
+        "002",
+        "003"
+      ],
+      "cutover": [
+        {
+          "feature": "comparison",
+          "read_source": "legacy",
+          "write_target": "legacy",
+          "changed_at": "2026-09-15T01:05:58.193934Z",
+          "rollback_state": "not-started"
+        },
+        {
+          "feature": "dashboard",
+          "read_source": "legacy",
+          "write_target": "legacy",
+          "changed_at": "2026-09-15T01:05:58.193978Z",
+          "rollback_state": "not-started"
+        },
+        {
+          "feature": "weekly",
+          "read_source": "legacy",
+          "write_target": "legacy",
+          "changed_at": "2026-09-15T01:05:58.193993Z",
+          "rollback_state": "not-started"
+        },
+        {
+          "feature": "ai-reader",
+          "read_source": "legacy",
+          "write_target": "legacy",
+          "changed_at": "2026-09-15T01:05:58.194002Z",
+          "rollback_state": "not-started"
+        },
+        {
+          "feature": "n8n-daily",
+          "read_source": "legacy",
+          "write_target": "legacy",
+          "changed_at": "2026-09-15T01:05:58.194011Z",
+          "rollback_state": "not-started"
+        }
+      ],
+      "complete-snapshot": "verified",
+      "restored-bundle": "verified"
+    },
+    "acceptance": {
+      "status": "stopped",
+      "production_modified": false,
+      "capture": {
+        "status": "complete",
+        "snapshot": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5-resume/20260915T044826Z/complete-snapshot",
+        "business_files": 266,
+        "policy_files": 4,
+        "implementation_files": 62
+      },
+      "restore": {
+        "status": "passed",
+        "restored_files": 343,
+        "legacy_equal": true,
+        "project_equal": true,
+        "policies_equal": true,
+        "implementation_equal": true
+      },
+      "recovery": {
+        "checked_at": "2026-09-15T06:26:25.030389+00:00",
+        "candidate_transaction_committed": false,
+        "candidate_preserved": "outage-preserved",
+        "production_modified": false,
+        "idle": {
+          "observed_at": "2026-09-15T06:26:25.038556+00:00",
+          "processes": [],
+          "unfinished_executions": []
+        },
+        "legacy_integrity": "ok",
+        "source_tables_equal": true,
+        "source_files_equal": true,
+        "project_equal": true,
+        "project_integrity": "ok",
+        "foreign_key_violations": 0,
+        "schema_versions": [
+          "001",
+          "002",
+          "003"
+        ],
+        "cutover": [
+          {
+            "feature": "comparison",
+            "read_source": "legacy",
+            "write_target": "legacy",
+            "changed_at": "2026-09-15T01:05:58.193934Z",
+            "rollback_state": "not-started"
+          },
+          {
+            "feature": "dashboard",
+            "read_source": "legacy",
+            "write_target": "legacy",
+            "changed_at": "2026-09-15T01:05:58.193978Z",
+            "rollback_state": "not-started"
+          },
+          {
+            "feature": "weekly",
+            "read_source": "legacy",
+            "write_target": "legacy",
+            "changed_at": "2026-09-15T01:05:58.193993Z",
+            "rollback_state": "not-started"
+          },
+          {
+            "feature": "ai-reader",
+            "read_source": "legacy",
+            "write_target": "legacy",
+            "changed_at": "2026-09-15T01:05:58.194002Z",
+            "rollback_state": "not-started"
+          },
+          {
+            "feature": "n8n-daily",
+            "read_source": "legacy",
+            "write_target": "legacy",
+            "changed_at": "2026-09-15T01:05:58.194011Z",
+            "rollback_state": "not-started"
+          }
+        ],
+        "complete-snapshot": "verified",
+        "restored-bundle": "verified"
+      },
+      "candidate": "candidate-after-recovery.sqlite",
+      "projection": {
+        "replayed": false
+      },
+      "stop_reason": "historical_acceptance_evidence_missing_from_projection",
+      "full_comparison": {
+        "status": "stopped",
+        "unapproved_differences": 13,
+        "by_table": {
+          "consolidation_conflicts": 13
+        },
+        "counts": {
+          "article_classifications": {
+            "old": 830,
+            "new": 830
+          },
+          "article_content_versions": {
+            "old": 2009,
+            "new": 2009
+          },
+          "article_feedback": {
+            "old": 16,
+            "new": 16
+          },
+          "article_identifiers": {
+            "old": 148881,
+            "new": 148881
+          },
+          "article_identity_assessments": {
+            "old": 14822,
+            "new": 14822
+          },
+          "article_occurrences": {
+            "old": 20293,
+            "new": 20293
+          },
+          "article_source_provenance": {
+            "old": 91287,
+            "new": 91287
+          },
+          "article_summaries": {
+            "old": 2029,
+            "new": 2029
+          },
+          "article_talents": {
+            "old": 1675,
+            "new": 1675
+          },
+          "articles": {
+            "old": 35876,
+            "new": 35876
+          },
+          "classification_secondary_categories": {
+            "old": 631,
+            "new": 631
+          },
+          "collection_runs": {
+            "old": 37,
+            "new": 37
+          },
+          "consolidation_conflicts": {
+            "old": 18305,
+            "new": 18305
+          },
+          "content_fetch_attempts": {
+            "old": 52985,
+            "new": 52985
+          },
+          "content_payloads": {
+            "old": 1892,
+            "new": 1892
+          },
+          "content_runtime_state": {
+            "old": 1592,
+            "new": 1592
+          },
+          "cutover_state": {
+            "old": 5,
+            "new": 5
+          },
+          "legacy_history_records": {
+            "old": 27922,
+            "new": 27922
+          },
+          "migration_runs": {
+            "old": 1,
+            "new": 1
+          },
+          "migration_source_files": {
+            "old": 266,
+            "new": 266
+          },
+          "review_entities": {
+            "old": 729,
+            "new": 729
+          },
+          "review_entity_evidence": {
+            "old": 0,
+            "new": 0
+          },
+          "review_entity_facts": {
+            "old": 729,
+            "new": 729
+          },
+          "review_evidence": {
+            "old": 772,
+            "new": 772
+          },
+          "review_fact_evidence": {
+            "old": 772,
+            "new": 772
+          },
+          "review_facts": {
+            "old": 772,
+            "new": 772
+          },
+          "review_input_snapshots": {
+            "old": 1538,
+            "new": 1538
+          },
+          "review_records": {
+            "old": 1822,
+            "new": 1822
+          },
+          "review_task_statuses": {
+            "old": 5466,
+            "new": 5466
+          },
+          "schema_migrations": {
+            "old": 3,
+            "new": 4
+          },
+          "source_records": {
+            "old": 127814,
+            "new": 127814
+          },
+          "sync_attempts": {
+            "old": 0,
+            "new": 0
+          },
+          "sync_row_history": {
+            "old": 0,
+            "new": 0
+          },
+          "sync_runs": {
+            "old": 0,
+            "new": 0
+          },
+          "sync_source_receipts": {
+            "old": 0,
+            "new": 0
+          },
+          "talent_aliases": {
+            "old": 836,
+            "new": 836
+          },
+          "talents": {
+            "old": 604,
+            "new": 604
+          }
+        },
+        "checks": {
+          "reviews": {
+            "old": 1822,
+            "new": 1822
+          },
+          "source_records": {
+            "old": 127814,
+            "new": 127814
+          },
+          "conflicts": {
+            "old": 18305,
+            "new": 18305
+          },
+          "missing_bodies": 13,
+          "foreign_key_violations": 0
+        },
+        "expected_reconstruction_metadata": {
+          "cutover_state.changed_at": 5,
+          "isolated_projection_run": 1,
+          "migration_source_files.migration_run_id": 266,
+          "planned_schema_004": 1,
+          "source_records.migration_run_id": 127814,
+          "empty_004_table": 3
+        },
+        "production_modified": false,
+        "checked_at": "2026-09-15T06:31:04.765863+00:00"
+      },
+      "projection_replay": "not_run_due_to_unapproved_differences",
+      "candidate_backup_restore": "not_run_due_to_unapproved_differences",
+      "production_migration_004_applied": false,
+      "production_sync_started": false,
+      "normal_daily_operations": 0
+    },
+    "stop_analysis": {
+      "status": "stopped",
+      "reason": "historical_acceptance_evidence_missing_from_projection",
+      "affected_rows": 13,
+      "missing_fields": {
+        "acceptance_research": 13,
+        "preserved_missing_body_claim": 13
+      },
+      "source_implementation": "scripts/accept_phase3_database.py:38-39",
+      "projection_omission": "build_projection runs importer stages but does not reproduce the historical acceptance evidence",
+      "approval_status": "unapproved",
+      "direct_patch_performed": false,
+      "evidence": [
+        {
+          "conflict_id": "02ed0e63-0ae8-5050-97cb-50a27a356615",
+          "source_record_id": "3f22c6a5-0a91-5180-a8b1-25f40ef0139c",
+          "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+          "source_position": "7294",
+          "input_hash": "2f78021711815547bf70282924dcfd58cab26caad06d2b8c0e81e7fde9b8146d",
+          "missing_fields": [
+            "acceptance_research",
+            "preserved_missing_body_claim"
+          ],
+          "approval_status": "unapproved"
+        },
+        {
+          "conflict_id": "098662ce-cfb2-50d9-a4d8-12e439796c0e",
+          "source_record_id": "fc450d74-df9d-57ab-a4ba-c666b2c37c8e",
+          "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+          "source_position": "2174",
+          "input_hash": "1d1139ea3e12d6a94b311f11f822009206c00e3c95759fea65a32f7d40d34d99",
+          "missing_fields": [
+            "acceptance_research",
+            "preserved_missing_body_claim"
+          ],
+          "approval_status": "unapproved"
+        },
+        {
+          "conflict_id": "2727a172-52ac-5c21-9250-a0734a452b7f",
+          "source_record_id": "51df2af2-d601-517f-901d-6bcfa2b235c5",
+          "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+          "source_position": "2173",
+          "input_hash": "cfdfbef8a99ff6891310f9c0eb18f43e3bf0306e378244be13956f5931def90d",
+          "missing_fields": [
+            "acceptance_research",
+            "preserved_missing_body_claim"
+          ],
+          "approval_status": "unapproved"
+        },
+        {
+          "conflict_id": "44a42829-6caa-54ed-bdd8-ef35c34ee609",
+          "source_record_id": "d1a92b57-04fd-5214-a62d-853c89916482",
+          "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+          "source_position": "1843",
+          "input_hash": "480fa4acef10f3c2d03b21729d7511dcbedda54af3a1affc71221ea63ed5fef1",
+          "missing_fields": [
+            "acceptance_research",
+            "preserved_missing_body_claim"
+          ],
+          "approval_status": "unapproved"
+        },
+        {
+          "conflict_id": "75d28053-2d9a-579a-8e14-c8c10d984b70",
+          "source_record_id": "9bf522ae-305c-5752-a849-24c5818927c3",
+          "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+          "source_position": "2176",
+          "input_hash": "37f905d2dc72bb40991d8fee96971b97f52dfb7740cc1d6d8d8bdfb517999483",
+          "missing_fields": [
+            "acceptance_research",
+            "preserved_missing_body_claim"
+          ],
+          "approval_status": "unapproved"
+        },
+        {
+          "conflict_id": "89900a1e-a01e-5bab-9dcf-01e6f92897c4",
+          "source_record_id": "1698119c-e908-5bf2-b447-0d7845cf8abd",
+          "source_path": "content/article-body-captures/backfill-state.json",
+          "source_position": "entries/https://www.afpbb.com/articles/-/3645590",
+          "input_hash": "2f1e48024e3badb3aa3b2fece10052de1f3dc64596718bf574ff386574881d35",
+          "missing_fields": [
+            "acceptance_research",
+            "preserved_missing_body_claim"
+          ],
+          "approval_status": "unapproved"
+        },
+        {
+          "conflict_id": "9c0b5099-4a55-5fba-89a7-dcda2973831e",
+          "source_record_id": "d0fd3001-1341-5351-a94f-c74e4aff6c07",
+          "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+          "source_position": "2169",
+          "input_hash": "7cf6258086377e8c4905d5a9a2c5eea00bc91d1570e1acf0fadd74fc5878a164",
+          "missing_fields": [
+            "acceptance_research",
+            "preserved_missing_body_claim"
+          ],
+          "approval_status": "unapproved"
+        },
+        {
+          "conflict_id": "a7ffc091-0412-5c73-bf7b-0695528474ad",
+          "source_record_id": "d2da3c93-a429-5894-9afb-b23d301a376f",
+          "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+          "source_position": "2175",
+          "input_hash": "7a0f58429aa64586cf0f28f772d49184637fffb3b11e12e5d90b3eb2cd148a94",
+          "missing_fields": [
+            "acceptance_research",
+            "preserved_missing_body_claim"
+          ],
+          "approval_status": "unapproved"
+        },
+        {
+          "conflict_id": "b5817fb0-74cb-5a93-992b-2f7b7ae5c177",
+          "source_record_id": "d495223a-a885-5a10-9967-caf318599084",
+          "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+          "source_position": "2170",
+          "input_hash": "e9c0e047f0a7adb0f4c508f06f13868ee830b71d2860d67ace2085b837a700f2",
+          "missing_fields": [
+            "acceptance_research",
+            "preserved_missing_body_claim"
+          ],
+          "approval_status": "unapproved"
+        },
+        {
+          "conflict_id": "b9dd72b6-1991-56ac-ae67-2eb21e32d9dc",
+          "source_record_id": "e7617a49-2867-5b25-8e10-1b4f32f39712",
+          "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+          "source_position": "7293",
+          "input_hash": "82bdce55b49c00dd60d24f070b2e02dd319dfd39a4543bca6a4207de72887715",
+          "missing_fields": [
+            "acceptance_research",
+            "preserved_missing_body_claim"
+          ],
+          "approval_status": "unapproved"
+        },
+        {
+          "conflict_id": "ec78a3f8-6a09-566e-ac1b-e8b1e91918b8",
+          "source_record_id": "77906c69-4e1b-52db-932c-5449453585be",
+          "source_path": "content/article-body-captures/backfill-state.json",
+          "source_position": "entries/https://news.google.com/rss/articles/CBMiakFVX3lxTE95Sy1DSjRsOTVGclU2aXRncDRNQU1nVkRpVzR2bmdLemJOMFlVSXRZenNSS0RGY2VoUGhza2RQcHVpRlNucWxVRDJjeXVLSXlZNDNZTmNxM0I5dHlQYy1fZ2Nvd0QxYkpLc2c?oc=5",
+          "input_hash": "65dbd76fe0912403b858e839fda03e8d3d86aca07f3b5188d4a304fb2677cfa0",
+          "missing_fields": [
+            "acceptance_research",
+            "preserved_missing_body_claim"
+          ],
+          "approval_status": "unapproved"
+        },
+        {
+          "conflict_id": "f6903cfc-0ad3-5e47-b17d-bd1ef0a3e741",
+          "source_record_id": "30247112-e331-5264-b4d2-0551ee0eee9f",
+          "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+          "source_position": "7292",
+          "input_hash": "1b24dc4a1156e93ac7754b874224a639a1c205e29a1a11d86d85fe34ffb1439c",
+          "missing_fields": [
+            "acceptance_research",
+            "preserved_missing_body_claim"
+          ],
+          "approval_status": "unapproved"
+        },
+        {
+          "conflict_id": "fece3890-94a7-54ab-9315-9152bc6c0d79",
+          "source_record_id": "3bd24dfd-5cb3-543a-a2cf-ced7a53fc107",
+          "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+          "source_position": "2178",
+          "input_hash": "dd8d68f9bb397e7252077737fe1b17bf123748ed020dc3ebd481322b96a3d5f8",
+          "missing_fields": [
+            "acceptance_research",
+            "preserved_missing_body_claim"
+          ],
+          "approval_status": "unapproved"
+        }
+      ]
+    },
+    "review_regression": {
+      "previous_affected_reviews": 1538,
+      "review_row_differences": 0,
+      "source_record_differences": 0,
+      "additional_conflicts": 0,
+      "all_reviews_compared": 1822
+    },
+    "differences_ledger": ".operation-state/database-phase5-resume/20260915T044826Z/full-comparison-differences.jsonl",
+    "unapproved_differences": 13,
+    "production_modified": false,
+    "production_migration_004_applied": false,
+    "production_sync_started": false,
+    "normal_daily_operations": 0,
+    "business_read_source": "legacy",
+    "business_write_target": "legacy",
+    "completion_commit_created": false,
+    "remaining": [
+      "Preserve historical acceptance evidence reproducibly without direct projection patches or blanket conflict masking",
+      "Full comparison with zero unapproved differences",
+      "Projection replay: zero additions and equal all-table/schema logical hashes",
+      "Candidate backup and restore",
+      "Production migration 004 only after isolated acceptance passes",
+      "All production sync acceptance cases",
+      "Multiple actually completed distinct normal daily business operations"
+    ],
+    "final_preservation_check": {
+      "project_logical_equal": true,
+      "source_files_equal": true,
+      "idle": {
+        "observed_at": "2026-09-15T06:33:33.197326+00:00",
+        "processes": [],
+        "unfinished_executions": []
+      },
+      "source_tables_equal": true,
+      "checked_at": "2026-09-15T06:34:06.141481+00:00"
+    }
+  },
+  "evidence_directory": "/mnt/d/N8N/database/phase5-capture-history-20260916T044305Z/v4",
+  "acceptance_ledger": {
+    "path": "docs/database-missing-body-decisions.json",
+    "git_staged": true,
+    "contains_body_payloads": false,
+    "acceptance": {
+      "ledger_sha256": "02659cfe703836c76fa352461e708690a1fed554e50445e9d428bfcf9f6041ad",
+      "matched_decisions": 13,
+      "updated_rows": 13,
+      "version": "missing-body-acceptance-v1"
+    },
+    "acceptance_replay": {
+      "ledger_sha256": "02659cfe703836c76fa352461e708690a1fed554e50445e9d428bfcf9f6041ad",
+      "matched_decisions": 13,
+      "updated_rows": 0,
+      "version": "missing-body-acceptance-v1"
+    },
+    "input_hash": "787d3323c9a80fa9bec571d72dac109dadce770611d0107e6efa8f4f705f6340"
+  },
+  "regression_tests": {
+    "status": "passed",
+    "test_count": 111,
+    "evidence": "/mnt/d/N8N/database/phase5-capture-history-20260916T044305Z/regression-final-complete.json"
+  },
+  "start_gate": {
     "idle": {
-      "observed_at": "2026-09-15T02:44:35.845264+00:00",
+      "observed_at": "2026-09-15T09:02:29.115699+00:00",
       "processes": [],
       "unfinished_executions": []
     },
-    "pending_source_differences": 0,
-    "project_database_equal": true,
-    "checked_at": "2026-09-15T02:45:45.510991+00:00"
+    "source_tables_equal": true,
+    "source_files_equal": true,
+    "project_equal": true,
+    "checked_at": "2026-09-15T09:02:50.961659+00:00"
   },
-  "windows_matching_writer_processes_at_entry": 0,
-  "services_at_entry": {
-    "processes": []
+  "snapshot_and_projection": {
+    "status": "projection_ready",
+    "production_modified": false,
+    "capture": {
+      "status": "complete",
+      "snapshot": "/mnt/d/N8N/database/phase5-acceptance-20260915T090011Z/complete-snapshot",
+      "business_files": 266,
+      "policy_files": 4,
+      "implementation_files": 64
+    },
+    "restore": {
+      "status": "passed",
+      "restored_files": 344,
+      "legacy_equal": true,
+      "project_equal": true,
+      "policies_equal": true,
+      "implementation_equal": true
+    },
+    "projection": {
+      "replayed": false
+    }
   },
-  "pending_business_input_differences_at_entry": 0,
-  "backup_restore": {
+  "full_comparison": {
     "status": "passed",
-    "dedicated_backup": {
-      "path": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5/20260915T024435Z/project.sqlite",
-      "sha256": "2513b485b634090e6ff1dd7cc3e3b7239bdba431baa8fda583fdca74c9a49c80",
-      "foreign_keys": {
-        "source": 1,
-        "destination": 1
+    "field_checks": 1997203,
+    "unapproved_differences": 0,
+    "environment": "fresh_isolated_candidate",
+    "evidence": "/mnt/d/N8N/database/phase5-capture-history-20260916T044305Z/v4/candidate-acceptance.json"
+  },
+  "missing_body_acceptance": {
+    "missing_body_records": 13,
+    "version_reference_null": true,
+    "status_unverified": true,
+    "source_status_verified": true,
+    "article_content_versions": 0,
+    "payload_references": 0
+  },
+  "projection_replay": {
+    "result": {
+      "replayed": true,
+      "added_rows": 0
+    },
+    "all_table_and_schema_hash_equal": true,
+    "additional_rows": 0
+  },
+  "candidate_backup_restore": {
+    "status": "passed",
+    "identical_file_hashes": true,
+    "candidate_backup": {
+      "source": "/mnt/d/N8N/database/phase5-capture-history-20260916T044305Z/v4/candidate-v4.sqlite",
+      "path": "/mnt/d/N8N/database/phase5-capture-history-20260916T044305Z/v4/candidate-offline-backup.sqlite",
+      "sha256": "9573ee4a46a558b13bb71b4216121cc601d3c73f00835db06054050bc5ce0116",
+      "bytes": 1398611968,
+      "method": "closed_database_byte_copy_with_before_after_sha256",
+      "equal": true
+    },
+    "candidate_restore": {
+      "source": "/mnt/d/N8N/database/phase5-capture-history-20260916T044305Z/v4/candidate-offline-backup.sqlite",
+      "path": "/mnt/d/N8N/database/phase5-capture-history-20260916T044305Z/v4/candidate-offline-restored.sqlite",
+      "sha256": "9573ee4a46a558b13bb71b4216121cc601d3c73f00835db06054050bc5ce0116",
+      "bytes": 1398611968,
+      "method": "closed_database_byte_copy_with_before_after_sha256",
+      "equal": true
+    },
+    "evidence": "/mnt/d/N8N/database/phase5-capture-history-20260916T044305Z/v4/representative-sync-acceptance-v2.json"
+  },
+  "production_gate": {
+    "idle": {
+      "observed_at": "2026-09-15T09:53:18.533151+00:00",
+      "processes": [],
+      "unfinished_executions": []
+    },
+    "source_tables_equal": true,
+    "business_files_equal": true,
+    "project_equal": true,
+    "checked_at": "2026-09-15T09:54:02.953852+00:00"
+  },
+  "production_schema_acceptance": {
+    "status": "passed",
+    "applied_migrations": [
+      "001",
+      "002",
+      "003",
+      "004",
+      "005",
+      "006"
+    ],
+    "migrations_001_to_005_unchanged": true,
+    "foreign_key_violations": 0,
+    "integrity": "ok",
+    "pre_migration_backup": {
+      "source": "/home/raimu/N8N/AutoArticleFor-n8n/data/autoarticle.sqlite",
+      "path": "/mnt/d/N8N/backups/phase5-summary-20260916-v4/before-005-006.sqlite",
+      "sha256": "f44767e080820650e8eb44d2c60efd3e1d17316c6b520c95ecef8026ba2f8eee",
+      "bytes": 1281036288,
+      "method": "closed_database_byte_copy_with_before_after_sha256",
+      "equal": true
+    },
+    "pre_migration_restore": {
+      "source": "/mnt/d/N8N/backups/phase5-summary-20260916-v4/before-005-006.sqlite",
+      "path": "/mnt/d/N8N/backups/phase5-summary-20260916-v4/before-005-006-restored.sqlite",
+      "sha256": "f44767e080820650e8eb44d2c60efd3e1d17316c6b520c95ecef8026ba2f8eee",
+      "bytes": 1281036288,
+      "method": "closed_database_byte_copy_with_before_after_sha256",
+      "equal": true
+    }
+  },
+  "final_preservation_check": {
+    "checked_at": "2026-09-16T07:26:00.722622+00:00",
+    "legacy_inputs_and_dependencies_unchanged": true,
+    "missing_body_records_preserved": 13,
+    "old_missing_body_conflicts_exact": 13,
+    "existing_conflicts_preserved_by_candidate_full_comparison": 18769,
+    "original_phase3_conflicts_included": 18305,
+    "body_versions_null": true,
+    "payload_assignment_absent": true,
+    "cutover_all_legacy": true,
+    "foreign_key_violations": 0,
+    "integrity": "ok",
+    "writer_gate": {
+      "observed_at": "2026-09-16T07:25:23.932575+00:00",
+      "processes": [],
+      "unfinished_executions": [],
+      "db_services": [],
+      "other_writable_database_handles": []
+    },
+    "evidence": "/mnt/d/N8N/database/phase5-capture-history-20260916T044305Z/v4/production-summary-sync.json"
+  },
+  "differences_ledger": "/mnt/d/N8N/database/phase5-acceptance-20260915T090011Z/full-comparison-differences.jsonl",
+  "unapproved_differences": 0,
+  "production_modified": true,
+  "production_modification_scope": "migrations 004/005/006 and completed real collection 182 plus completed real summary; latest summary adds immutable evidence/history and business rows",
+  "production_business_modified": true,
+  "legacy_modified": true,
+  "production_migration_004_applied": true,
+  "production_sync_started": true,
+  "normal_daily_operations": 2,
+  "business_read_source": "legacy",
+  "business_write_target": "legacy",
+  "completion_commit_created": true,
+  "retained_attempts": [
+    ".operation-state/database-phase5-decisions/20260915T064116Z",
+    "/mnt/d/N8N/database/phase5-acceptance-20260915T082734Z",
+    "/mnt/d/N8N/database/phase5-acceptance-20260915T084905Z"
+  ],
+  "remaining": [],
+  "production_sync_cases": {
+    "all_entities_new_update_version_provenance": "passed_representative_patterns: all-domain synthetic regression plus actual collection and summary, with full independently verified candidate",
+    "mutable_update_coverage": "isolated representative tests; actual summary request contains additions only",
+    "same_id_replay": "passed_production_collection_and_summary; summary additional_rows=0",
+    "same_id_conflict": "passed_isolated_restored_copy; live operation ID not quarantined",
+    "transaction_rollback_resume": "passed_complete_summary_request_in_isolation; also earlier actual collection acceptance",
+    "independent_scope_comparison": "passed_candidate_full_semantics and final 42-pattern / 121-row transfer comparison",
+    "sync_state_backup_restore": "passed_with_two_actual_operations_and_005_006_evidence_history",
+    "legacy_only_after_sync_stop": "passed_actual_summary_and_keyword_work_before_summary_sync",
+    "sync_runs_failure_success_replay": "passed",
+    "sync_runs_difference": "passed_isolated_independent_difference_regression",
+    "identity_history": "initial 14822 plus reevaluation 14822 preserved; source version updates tested",
+    "missing_body_conflict_consistency": "13 unchanged parents; 183 original observations plus 2 new observations in separate history"
+  },
+  "resume_20260916": {
+    "status": "incomplete_waiting_additional_actual_business_and_acceptance",
+    "evidence_directory": "/mnt/d/N8N/database/phase5-resume-20260916T003542Z",
+    "start_gate": {
+      "evidence": "/mnt/d/N8N/database/phase5-resume-20260916T003542Z",
+      "free_bytes": 284492718080,
+      "started_at": "2026-09-16T00:35:42.941461+00:00",
+      "idle": {
+        "observed_at": "2026-09-16T00:35:42.951505+00:00",
+        "processes": [],
+        "unfinished_executions": []
+      },
+      "source_tables_equal": true,
+      "source_files_equal": true,
+      "project_equal": true
+    },
+    "recovery": {
+      "status": "passed",
+      "capture": {
+        "status": "complete",
+        "snapshot": "/mnt/d/N8N/database/phase5-resume-20260916T003542Z/pre-operation-snapshot",
+        "business_files": 266,
+        "policy_files": 4,
+        "implementation_files": 64
+      },
+      "restore": {
+        "status": "passed",
+        "restored_files": 344,
+        "legacy_equal": true,
+        "project_equal": true,
+        "policies_equal": true,
+        "implementation_equal": true
       }
     },
-    "dedicated_restore": {
-      "path": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5/20260915T024435Z/project-restored.sqlite",
-      "sha256": "2513b485b634090e6ff1dd7cc3e3b7239bdba431baa8fda583fdca74c9a49c80",
-      "foreign_keys": {
-        "source": 1,
-        "destination": 1
+    "normal_daily_operations": 1,
+    "legacy_operations_completed": 1,
+    "operation": {
+      "run_date": "2026-09-16",
+      "kind": "collect",
+      "operation_id": "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+      "completed_legacy_operation": {
+        "status": "completed",
+        "checkedAt": "2026-09-16T01:05:30.684702+00:00",
+        "target": "http://localhost:5678",
+        "files": {
+          "content/ai-article-classification-instructions/2026-09-16.md": "fc3d430adf89739cb4039ec7d7484cd4e1c037483d4693eebc3814aa0b512774",
+          "content/ai-extraction-instructions/2026-09-16.md": "52a2ec5e0ad956a6c9463a44b9822aae2030b16c8eea9c399d134bb47ce394c1",
+          "content/ai-summary-instructions/2026-09-16.md": "38140dc29dff43112a41870dde1c02662e936d4a9ff5d8e3404eecb6f7da81a4",
+          "content/ai-talent-index-instructions/2026-09-16.md": "7dd5646b2fc2c6119437b2de0e46cbdc0375f777848f85713423572d03077891",
+          "content/ai-weekly-report-instructions/2026-09-14.md": "0cc5a7edc04b6065828a27a688744327ce37b0b6d8fb91362815dff5bc072718",
+          "content/daily-digests/2026-09-16.md": "52cc27d7da38ef782355ee53b23a04964a4f56f6eace48cb3de083cc1065cbdf",
+          "content/keyword-candidates/2026-09-16.md": "6e310412b921bbf2bd0ac40932a8d522253b3117c1543796f7ea720262bdca08",
+          "content/structured-records/2026-09-16.jsonl": "ec715895853709efa9db8572b319f6fb2556eb02557681c2f28e7530463d086f"
+        },
+        "executionId": "182",
+        "articles": 464,
+        "webhookResponseVerified": false
       },
+      "synchronized": true,
+      "sync_result": {
+        "operationId": "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+        "added": 2322,
+        "updated": 0,
+        "unexplainedDifferences": 0,
+        "requestHash": "85991bd5d564670f419bdbf4cecb47491f49966806d8d653c2ce378abcac20d4"
+      },
+      "sync_completed_at": "2026-09-16T02:00:18.560330Z"
+    },
+    "pending_source_changes": {
+      "operation_id": "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+      "source_file_count_before": 266,
+      "source_file_count_after": 267,
+      "changes": [
+        {
+          "path": "content/structured-records/2026-09-16.jsonl",
+          "old": null,
+          "new": {
+            "path": "content/structured-records/2026-09-16.jsonl",
+            "size": 3983289,
+            "sha256": "ec715895853709efa9db8572b319f6fb2556eb02557681c2f28e7530463d086f"
+          },
+          "reason": "completed_normal_collection_execution_182",
+          "approval_status": "pending_sync_verification"
+        }
+      ]
+    },
+    "operation_snapshot": "/mnt/d/N8N/database/phase5-resume-20260916T003542Z/operation-182-snapshot",
+    "preflight": {
+      "status": "ready_for_sync",
+      "operation_id": "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+      "production_business_written": false,
+      "restore": {
+        "status": "passed",
+        "restored_files": 347,
+        "legacy_equal": true,
+        "project_equal": true,
+        "policies_equal": true,
+        "implementation_equal": true
+      },
+      "projection": {
+        "replayed": false
+      },
+      "request_hash": "85991bd5d564670f419bdbf4cecb47491f49966806d8d653c2ce378abcac20d4",
+      "change_counts": {
+        "article": 464,
+        "collection": 1,
+        "occurrence": 464,
+        "sourceRecord": 465,
+        "provenance": 464,
+        "conflict": 464
+      }
+    },
+    "sync_acceptance": {
+      "status": "passed",
+      "operation_id": "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+      "request_hash": "85991bd5d564670f419bdbf4cecb47491f49966806d8d653c2ce378abcac20d4",
+      "intentional_fault": true,
+      "sync_completed": true,
+      "rollback": {
+        "business_and_schema_unchanged": true,
+        "partial_history_rows": 0,
+        "state": {
+          "id": "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+          "status": "failed",
+          "outcome": "failure",
+          "request_hash": "85991bd5d564670f419bdbf4cecb47491f49966806d8d653c2ce378abcac20d4",
+          "replay_count": 0,
+          "result_json": "{\"reason\":\"IntentionalAcceptanceRollback\"}"
+        }
+      },
+      "result": {
+        "operationId": "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+        "added": 2322,
+        "updated": 0,
+        "unexplainedDifferences": 0,
+        "requestHash": "85991bd5d564670f419bdbf4cecb47491f49966806d8d653c2ce378abcac20d4"
+      },
+      "replay_result": {
+        "added": 2322,
+        "operationId": "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+        "requestHash": "85991bd5d564670f419bdbf4cecb47491f49966806d8d653c2ce378abcac20d4",
+        "unexplainedDifferences": 0,
+        "updated": 0
+      },
+      "replay": {
+        "all_table_additional_rows": 0,
+        "business_and_schema_hash_equal": true,
+        "audit_only_change": "sync_runs.replay_count increment",
+        "state": {
+          "id": "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+          "status": "complete",
+          "outcome": "success",
+          "request_hash": "85991bd5d564670f419bdbf4cecb47491f49966806d8d653c2ce378abcac20d4",
+          "replay_count": 1,
+          "result_json": "{\"added\":2322,\"operationId\":\"phase5-collect-UHJ4LW3Oswhpj4zV-182\",\"requestHash\":\"85991bd5d564670f419bdbf4cecb47491f49966806d8d653c2ce378abcac20d4\",\"unexplainedDifferences\":0,\"updated\":0}"
+        }
+      }
+    },
+    "independent_comparison": {
+      "status": "passed",
+      "field_checks": 9288,
+      "source_units": 465,
+      "article_count": 464,
+      "unapproved_differences": 0,
+      "source": "content/structured-records/2026-09-16.jsonl"
+    },
+    "original_data_preservation": {
+      "status": "passed",
+      "original_business_tables_equal": true,
+      "original_table_fingerprints": {
+        "article_classifications": {
+          "rows": 830,
+          "sha256": "3c60ba0f0475c29d28be605df558e2824fbf645d52c35fa00f792593682c75c4"
+        },
+        "article_content_versions": {
+          "rows": 2009,
+          "sha256": "fb9e2d4d0a2ca938bf443b319767191e2b7dcd1231d857ec2e5e4debc7eef4fa"
+        },
+        "article_feedback": {
+          "rows": 16,
+          "sha256": "4548b6fdd1ef332d83c4f4956f0c8a18b5c4589e7615ec9996af563a86d093dc"
+        },
+        "article_identifiers": {
+          "rows": 148881,
+          "sha256": "9b47a15fc55c89580a13e4c6116e3a557ad9826e6991fb32fb96dcf50c6b3490"
+        },
+        "article_identity_assessments": {
+          "rows": 14822,
+          "sha256": "57b35f2970de835531d5fa396241ffd5a4bd411b6bc9dee3dd912a58f193c554"
+        },
+        "article_occurrences": {
+          "rows": 20293,
+          "sha256": "5e6cab7f128841098208daeff5c783e0e57460829a5cbab8839d16be352cb299"
+        },
+        "article_source_provenance": {
+          "rows": 91287,
+          "sha256": "1dfbe8b49d5adb858e02e70f66a752a0e59bb80bbdc8708209478d532d3b787b"
+        },
+        "article_summaries": {
+          "rows": 2029,
+          "sha256": "3681834809afa765056fd960bcb7371890b80897d7d3d410170c448765862f9f"
+        },
+        "article_talents": {
+          "rows": 1675,
+          "sha256": "f65b8111f974f79f15ad2cb5721744e24674658b03e4792af25855b594787e50"
+        },
+        "articles": {
+          "rows": 35876,
+          "sha256": "4a1d1ac60874b8dc9b3b2f701e62cadb1edd6eb03ac03dc5c12357ea805206d9"
+        },
+        "classification_secondary_categories": {
+          "rows": 631,
+          "sha256": "7afcba88f60c6c0c72138ef0d1be650e69a16007287338270abf8c8c7747cb4f"
+        },
+        "collection_runs": {
+          "rows": 37,
+          "sha256": "7a841e95c2d9f354e0f69b0d7090f9de7816c6d09f12487c7a5604debd86eec7"
+        },
+        "consolidation_conflicts": {
+          "rows": 18305,
+          "sha256": "35073587a0108f4f018eb15e7d98f1eb8b9e714d3956332b658dead6ba158125"
+        },
+        "content_fetch_attempts": {
+          "rows": 52985,
+          "sha256": "25a8334f3b340798cd75420efdf70caf6fb3ff6dc58db943d5ab10cff4dd5e65"
+        },
+        "content_payloads": {
+          "rows": 1892,
+          "sha256": "3c0947be51c73d8b3b619b827201db60fe424359e53f650fb4f1a71e1c73340a"
+        },
+        "content_runtime_state": {
+          "rows": 1592,
+          "sha256": "60d3b4c65de9e34f590c2bf24a99171537ff25f317a8a93b4939d1ec2b0ce043"
+        },
+        "cutover_state": {
+          "rows": 5,
+          "sha256": "a96340f7ee6f9452c8990804a45703bcffbd6dbc84d3e6eb5c921e3d914aed8c"
+        },
+        "legacy_history_records": {
+          "rows": 27922,
+          "sha256": "a507241d74b03155d32dc026ac3679b3b47cc358af07fc969080d25d9312565d"
+        },
+        "migration_runs": {
+          "rows": 1,
+          "sha256": "ff2c03d870aa32707b6f78ca0e7f685c81d2208dd9ef85654e8c423f3d373dca"
+        },
+        "migration_source_files": {
+          "rows": 266,
+          "sha256": "1d9d9b303faa0cba9fc926b3e6e029fd76ff489acffadec72c0bdf0108691706"
+        },
+        "review_entities": {
+          "rows": 729,
+          "sha256": "13d22b5be68d91430a4e05d7c95cc8f66d50307e6a826b9aaee5f876e447a4d0"
+        },
+        "review_entity_evidence": {
+          "rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "review_entity_facts": {
+          "rows": 729,
+          "sha256": "fd0961b619a9b075231c242b4c4b3e63057b556a5952184298665933a6c30f7f"
+        },
+        "review_evidence": {
+          "rows": 772,
+          "sha256": "3856a77a913416e2b7dc510e62a86cbdf5ef050251b94549de08685a5cd3bb70"
+        },
+        "review_fact_evidence": {
+          "rows": 772,
+          "sha256": "eb9429000ec67b0e48f28c7bc1a9f00be50d5af0768fe3118193057cb9803f7c"
+        },
+        "review_facts": {
+          "rows": 772,
+          "sha256": "d776b86bbbfc5281f57800cc066ba2dfb247dc80b307fed077d3ff321bd4dce7"
+        },
+        "review_input_snapshots": {
+          "rows": 1538,
+          "sha256": "6c65c6dabb311193d3919f141427dd49cfbeb3096eb7c9bf63db34bfe505ef0a"
+        },
+        "review_records": {
+          "rows": 1822,
+          "sha256": "2c4a9fd6c8496fb5ba5e3a26dbbb9cc922b1a2b4d255237c2aeff94e4316979c"
+        },
+        "review_task_statuses": {
+          "rows": 5466,
+          "sha256": "5306e51dd5f1b425673b621f03bee0698d23e6edc38f2bdd5760762b7547ec88"
+        },
+        "schema_migrations": {
+          "rows": 4,
+          "sha256": "655079ebeaafb34dc357ef358186b1ec347cb4428eaf7aace3ad32073149a599"
+        },
+        "source_records": {
+          "rows": 127814,
+          "sha256": "c47474312056d26e8ba2dab8d27e4840a65604458be9d74104c6c75aaf96c705"
+        },
+        "talent_aliases": {
+          "rows": 836,
+          "sha256": "3566baced246683a49a8a11d748614ce757c158870b71094d90245bdc4a9a76c"
+        },
+        "talents": {
+          "rows": 604,
+          "sha256": "fefc33137e3f197862eed61fed798280a38333d7cdba746d0e19ea9f04aa266b"
+        }
+      },
+      "original_conflicts_unchanged": 18305,
+      "new_held_article_conflicts": 464,
+      "total_conflicts": 18769,
+      "missing_body_records_preserved": 13,
+      "cutover_all_legacy": true,
+      "checked_at": "2026-09-16T02:03:35.296748+00:00"
+    },
+    "backup_restore": {
+      "status": "passed",
+      "operation_id": "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+      "production_conflict_injected": false,
+      "backup": {
+        "path": "/mnt/d/N8N/database/phase5-resume-20260916T003542Z/after-operation-182.sqlite",
+        "sha256": "714e343ff5f530f0a437d0b59d7a12fbd0948b23ced4b6689f46ce3b9fc8d9aa",
+        "foreign_keys": {
+          "source": 1,
+          "destination": 1
+        },
+        "backup_version": "standalone-backup-v2-delete-journal"
+      },
+      "restore": {
+        "path": "/mnt/d/N8N/database/phase5-resume-20260916T003542Z/after-operation-182-restored.sqlite",
+        "sha256": "f5520df1faf7690ab6f07ab94c5b5a4cab10baf9deefd2fbb7726815eeb7f7da",
+        "foreign_keys": {
+          "source": 1,
+          "destination": 1
+        },
+        "backup_version": "standalone-backup-v2-delete-journal",
+        "integrity": "ok",
+        "schema": [
+          {
+            "version": "001",
+            "applied_at": "2026-09-15T01:05:58.189199Z",
+            "checksum": "a14af4234486e082b7dabb915c19bb2fd6325537fa719c3e397d9d6dab5d8473"
+          },
+          {
+            "version": "002",
+            "applied_at": "2026-09-15T01:05:58.190375Z",
+            "checksum": "27b21c2b31eac2307efd873edb247456cbf3097cfe2ae1614411845e05a92d4b"
+          },
+          {
+            "version": "003",
+            "applied_at": "2026-09-15T01:05:58.193886Z",
+            "checksum": "d2d7410b6ad5e336c170b7a2a1f993baf663f468ba52bb44bd8ac9a39cdbf47e"
+          },
+          {
+            "version": "004",
+            "applied_at": "2026-09-15T09:54:02.967330Z",
+            "checksum": "a1ef3b3dd71100fd3049f640c4ad6abdf6e209beb03d1040a6935cab72099bb5"
+          }
+        ]
+      },
+      "all_table_and_schema_hash_equal": true,
+      "restored_sync_counts": {
+        "sync_runs": 1,
+        "sync_attempts": 2,
+        "sync_row_history": 2322,
+        "sync_source_receipts": 1
+      },
+      "restored_state": {
+        "id": "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+        "status": "complete",
+        "outcome": "success",
+        "request_hash": "85991bd5d564670f419bdbf4cecb47491f49966806d8d653c2ce378abcac20d4",
+        "replay_count": 1,
+        "result_json": "{\"added\":2322,\"operationId\":\"phase5-collect-UHJ4LW3Oswhpj4zV-182\",\"requestHash\":\"85991bd5d564670f419bdbf4cecb47491f49966806d8d653c2ce378abcac20d4\",\"unexplainedDifferences\":0,\"updated\":0}"
+      }
+    },
+    "same_id_conflict_on_restored_copy": {
+      "status": "passed",
+      "environment": "verified_restored_production_copy",
+      "changed_input": "acceptance_decision.sha256 only",
+      "business_and_schema_unchanged": true,
+      "production_modified": false,
+      "normal_operation_count_contribution": 0,
+      "state": {
+        "id": "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+        "status": "complete",
+        "outcome": "conflict",
+        "request_hash": "85991bd5d564670f419bdbf4cecb47491f49966806d8d653c2ce378abcac20d4",
+        "replay_count": 1,
+        "result_json": "{\"added\":2322,\"operationId\":\"phase5-collect-UHJ4LW3Oswhpj4zV-182\",\"requestHash\":\"85991bd5d564670f419bdbf4cecb47491f49966806d8d653c2ce378abcac20d4\",\"unexplainedDifferences\":0,\"updated\":0}"
+      }
+    },
+    "final_preservation": {
+      "unfinished_executions": [],
+      "legacy_six_tables_equal": true,
+      "business_files_equal_operation_snapshot": true,
+      "production_equal_after_verified_replay": true,
+      "cutover_all_legacy": true,
+      "foreign_key_violations": 0,
       "integrity": "ok",
-      "schema": [
+      "operation_source_dispositions": [
+        {
+          "state": "held",
+          "reason": "observation_identity_not_proven",
+          "count": 464
+        },
+        {
+          "state": "imported",
+          "reason": null,
+          "count": 1
+        }
+      ],
+      "sync_runs": [
+        {
+          "id": "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+          "status": "complete",
+          "outcome": "success",
+          "replay_count": 1
+        }
+      ],
+      "normal_daily_operations": 1,
+      "checked_at": "2026-09-16T02:18:14.153959+00:00",
+      "database_service_started": false
+    },
+    "legacy_status_after_sync": {
+      "runDate": "2026-09-16",
+      "n8n": "reachable",
+      "workflow": {
+        "id": "UHJ4LW3Oswhpj4zV",
+        "active": true,
+        "definitionMatches": true,
+        "timezone": "Asia/Tokyo",
+        "schedule": [
+          {
+            "interval": [
+              {
+                "field": "cronExpression",
+                "expression": "0 8 * * *"
+              }
+            ]
+          }
+        ]
+      },
+      "executions": {
+        "status": "checked",
+        "counts": {
+          "success": 1
+        },
+        "running": 0,
+        "latest": [
+          {
+            "id": "182",
+            "status": "success",
+            "startedAt": "2026-09-16T00:58:49.572Z"
+          }
+        ]
+      },
+      "generated": {
+        "structured-records": true,
+        "daily-digests": true,
+        "keyword-candidates": true,
+        "ai-summary-instructions": true,
+        "ai-extraction-instructions": true,
+        "ai-talent-index-instructions": true,
+        "ai-article-classification-instructions": true,
+        "ai-weekly-report-instructions": true
+      },
+      "outputs": {
+        "summary": false,
+        "talent-review": false,
+        "classification-review": false,
+        "keywords": false,
+        "weekly": true
+      },
+      "artifactVerification": "existence_only"
+    }
+  },
+  "legacy_existing_business_data_modified": false,
+  "legacy_normal_artifacts_added": 1,
+  "legacy_modification_scope": "Earlier authorized normal collection and summary generated/updated legacy business artifacts. This repair, migration and synchronization did not change legacy inputs.",
+  "full_comparison_scope": "Full independent comparison on fresh candidate reused. Final isolated and production acceptance uses user-approved 42 patterns / 121 representative changes plus all 13 protected missing-body claims.",
+  "remaining_acceptance_20260916": {
+    "evidence_directory": "/mnt/d/N8N/database/phase5-remaining-20260916T022509Z",
+    "checked_at": "2026-09-16T02:26:00.393553+00:00",
+    "environment": "isolated_temporary_databases",
+    "production_modified": false,
+    "normal_operation_count_contribution": 0,
+    "normal_daily_operations": 1,
+    "tests": {
+      "run": 18,
+      "failures": 0,
+      "errors": 0,
+      "passed": true
+    },
+    "harness_correction": "Passed tests retained; read-only guard restarted with required pathlib.Path argument.",
+    "unfinished_executions": [],
+    "legacy_six_tables_equal": true,
+    "business_files_equal": true,
+    "production_logical_equal": true,
+    "foreign_key_violations": 0,
+    "integrity": "ok",
+    "all_routes_legacy": true,
+    "completed_syncs": [
+      {
+        "id": "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+        "status": "complete",
+        "outcome": "success",
+        "replay_count": 1
+      }
+    ],
+    "dependency_change": {
+      "new_test_file": "scripts/test_phase5_remaining_acceptance.py",
+      "sha256": "6a1e75fb563039171befd6c411a378667f3db6ee1d0fdbf847f9c1258f91992f",
+      "runtime_modified": false,
+      "new_snapshot_required_for_next_operation": true
+    },
+    "operation_steps": {
+      "n8n": "completed",
+      "collect": "completed"
+    },
+    "status": "passed",
+    "cases": {
+      "all_business_domains_insert": {
+        "status": "passed",
+        "rows": 22,
+        "environment": "synthetic_isolated"
+      },
+      "new_versions_and_mutable_updates": {
+        "status": "passed",
+        "added": 18,
+        "updated": 7,
+        "preserves_original_immutable_rows": true,
+        "source_and_old_new_history_equal": true
+      },
+      "same_id_replay": {
+        "status": "passed",
+        "additional_rows": 0
+      },
+      "independent_comparison_difference": {
+        "status": "passed",
+        "injected_differences": 1,
+        "partial_business_rows": 0,
+        "partial_history_rows": 0,
+        "audit_outcomes": [
+          "difference",
+          "success"
+        ],
+        "same_id_resume_added": 22
+      },
+      "normal_operations": {
+        "actual_completed_and_synced": 1,
+        "new_operations_this_verification": 0,
+        "minimum_required": 2
+      }
+    },
+    "fixture_corrections": [
+      "Unique source_record required for a new occurrence in the same collection",
+      "Article-talent relation is updated under its existing unique pair, not inserted with another ID",
+      "Audit order uses rowid; schema has observed_at, not created_at"
+    ]
+  },
+  "normal_articles_20260916": {
+    "checked_at": "2026-09-16T03:42:13.535784+00:00",
+    "status": "stopped_before_production_sync",
+    "operation_id": "phase5-summary-20260916-v1",
+    "evidence_directory": "/mnt/d/N8N/database/normal-articles-20260916",
+    "normal_business": {
+      "run_date": "2026-09-16",
+      "collected_articles": 464,
+      "collection_execution_id": 182,
+      "capture_statuses": {
+        "verified": 7,
+        "partial": 15,
+        "unavailable": 442
+      },
+      "shared_reviews_saved": 464,
+      "summary_ready": 7,
+      "summary_held": 457,
+      "summary_checkpoint": "completed",
+      "keywords_checkpoint": "completed",
+      "keyword_candidates": 6,
+      "recommended_keywords": 4,
+      "keyword_settings_changed": false,
+      "talent_review": "not_completed_draft_only",
+      "classification_review": "not_completed_draft_only",
+      "weekly": "not_started_daily_reviews_incomplete"
+    },
+    "snapshot": {
+      "path": "/mnt/d/N8N/database/normal-articles-20260916/summary-snapshot",
+      "business_files": 270,
+      "rule_files": 4,
+      "implementation_files": 65,
+      "business_changed_files": 5,
+      "changes_record": "/mnt/d/N8N/database/normal-articles-20260916/business-input-changes.json",
+      "restore": {
+        "status": "passed",
+        "restored_files": 351,
+        "legacy_equal": true,
+        "project_equal": true,
+        "policies_equal": true,
+        "implementation_equal": true
+      }
+    },
+    "projection": {
+      "completed": true,
+      "candidate_database": "/mnt/d/N8N/database/normal-articles-20260916/summary-snapshot/projection.sqlite",
+      "request_hash": "c06a4451d5551f32d18b960fa8e7a322b609ff619e3af6685996a412dbbf5869",
+      "planned_changes": 9685,
+      "validation_rejections": 5,
+      "rejection_entity": "identityAssessment",
+      "rejection_reason": "immutable_history_requires_new_record",
+      "changed_field": "checks_json",
+      "source_table": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+      "source_positions": [
+        "14161",
+        "14165",
+        "14523",
+        "14692",
+        "14701"
+      ],
+      "strategy_and_hold_reason_unchanged": true,
+      "difference_details": "/mnt/d/N8N/database/normal-articles-20260916/all-preflight-rejections.jsonl",
+      "cache_root_cause": "/mnt/d/N8N/database/normal-articles-20260916/identity-assessment-cache-analysis.json",
+      "all_semantic_comparisons_completed": false
+    },
+    "production_sync_attempted": false,
+    "production_business_rows_written": 0,
+    "production_sync_runs_added": 0,
+    "normal_daily_operations_total": 1,
+    "missing_body_preservation": {
+      "checked_at": "2026-09-16T03:28:07.956968+00:00",
+      "status": "passed",
+      "source_claims_and_null_versions_match_ledger": true,
+      "conflicts": 18769,
+      "validated_decisions": 13,
+      "annotation_differences": 0
+    },
+    "final_preservation": {
+      "checked_at": "2026-09-16T03:39:53.395369+00:00",
+      "snapshot_inputs_still_equal": true,
+      "production_unchanged_since_operation_182": true,
+      "foreign_key_violations": 0,
+      "integrity": "ok",
+      "cutover": [
+        {
+          "feature": "ai-reader",
+          "read_source": "legacy",
+          "write_target": "legacy",
+          "changed_at": "2026-09-15T01:05:58.194002Z",
+          "rollback_state": "not-started"
+        },
+        {
+          "feature": "comparison",
+          "read_source": "legacy",
+          "write_target": "legacy",
+          "changed_at": "2026-09-15T01:05:58.193934Z",
+          "rollback_state": "not-started"
+        },
+        {
+          "feature": "dashboard",
+          "read_source": "legacy",
+          "write_target": "legacy",
+          "changed_at": "2026-09-15T01:05:58.193978Z",
+          "rollback_state": "not-started"
+        },
+        {
+          "feature": "n8n-daily",
+          "read_source": "legacy",
+          "write_target": "legacy",
+          "changed_at": "2026-09-15T01:05:58.194011Z",
+          "rollback_state": "not-started"
+        },
+        {
+          "feature": "weekly",
+          "read_source": "legacy",
+          "write_target": "legacy",
+          "changed_at": "2026-09-15T01:05:58.193993Z",
+          "rollback_state": "not-started"
+        }
+      ],
+      "sync_runs": [
+        {
+          "id": "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+          "status": "complete",
+          "outcome": "success",
+          "replay_count": 1
+        }
+      ],
+      "unfinished_executions": [],
+      "preservation_passed": true
+    },
+    "legacy_only_operation_after_sync_stop": {
+      "status": "passed",
+      "evidence": "Actual summary and keyword checkpoints completed while synchronization was not running; full production fingerprint remained identical to successful operation 182."
+    },
+    "next_requirement": "Preserve old identity assessment evidence and define versioned assessment of updated cache dependencies; do not overwrite immutable history, infer identity from key similarity, ignore checks_json, or approve the five differences wholesale. Resume only with a fresh verified snapshot after the stop is addressed.",
+    "phase5_complete": false,
+    "phase6_started": false
+  },
+  "identity_history_resume_20260916": {
+    "checked_at": "2026-09-16T04:20:46.099221+00:00",
+    "status": "stopped_additional_missing_body_conflict_contract",
+    "evidence_directory": "/mnt/d/N8N/database/phase5-identity-20260916T035030Z",
+    "start_gate": {
+      "checked_at": "2026-09-16T03:50:30.153546+00:00",
+      "snapshot": "/mnt/d/N8N/database/normal-articles-20260916/summary-snapshot",
+      "status": "passed",
+      "free_bytes": 264526016512,
+      "business_rules_implementation_legacy_unchanged": true,
+      "production_unchanged": true,
+      "assessments": 14822,
+      "migrations": [
         {
           "version": "001",
           "applied_at": "2026-09-15T01:05:58.189199Z",
@@ -59,134 +1752,1614 @@
           "version": "003",
           "applied_at": "2026-09-15T01:05:58.193886Z",
           "checksum": "d2d7410b6ad5e336c170b7a2a1f993baf663f468ba52bb44bd8ac9a39cdbf47e"
+        },
+        {
+          "version": "004",
+          "applied_at": "2026-09-15T09:54:02.967330Z",
+          "checksum": "a1ef3b3dd71100fd3049f640c4ad6abdf6e209beb03d1040a6935cab72099bb5"
         }
       ]
     },
-    "source_files": 266,
-    "source_six_tables_restored": true,
-    "project_all_tables_and_schema_equal": true,
-    "n8n_sha256": "817486414d77b281f7341a903cb89e5b422c8765ee285ea14b3451c46e074b77",
-    "checked_at": "2026-09-15T02:48:42.860917+00:00"
-  },
-  "complete_recovery_bundle": false,
-  "backup_limitation": "Database and 266 business files were captured and database restores match. Policy dependencies required for a reproducible projection were omitted, so the complete phase 5 recovery bundle is not accepted.",
-  "baseline_projection": {
-    "status": "stopped",
-    "production_modified": false,
-    "changes": 4614,
-    "by_entity": {
-      "review": 1538,
-      "sourceRecord": 1538,
-      "conflict": 1538
+    "historical_reproduction": {
+      "status": "passed",
+      "historical_snapshot": "/mnt/d/N8N/database/database-consolidation/20260914T053221.807062Z",
+      "implementation_archive": "/mnt/d/N8N/database/phase5-resume-20260916T003542Z/operation-182-snapshot",
+      "implementation_version": "phase4-length-alias-import-v3",
+      "implementation_sha256": "855f357e4eba678699d1bcd0ecca0608117fb826047b7d67e9bdf45c9d63c809",
+      "assessments": 14822,
+      "field_checks": 163042,
+      "differences": 0,
+      "source_candidates_cache_from_historical_snapshot": true,
+      "saved_implementation_used": true,
+      "live_implementation_fallback": false,
+      "current_target_used_only_for_comparison": true
     },
-    "checked_at": "2026-09-15T03:03:07.725197+00:00"
-  },
-  "stop_analysis": {
-    "root_policy_hash": "8e3823cbf1c958c156db4eda10c9af6fba7d34ffe75b7dfb38bc0b66b7e5a009",
-    "phase3_snapshot_policy_hash": "8e3823cbf1c958c156db4eda10c9af6fba7d34ffe75b7dfb38bc0b66b7e5a009",
-    "phase5_projection_policy_hash": null,
-    "phase5_policy_directory_exists": false,
-    "changed_review_sources": {
-      "content/article-review-facts/2026-09-10.jsonl": 627,
-      "content/article-review-facts/2026-09-11.jsonl": 542,
-      "content/article-review-facts/2026-09-14.jsonl": 369
+    "exact_historical_implementation": {
+      "status": "passed",
+      "implementation_commit": "734eee2752e16fbd13db3ab8f873ffe426a1ab32",
+      "origin": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database/identity-origins/5d623020a45b4a21886383cd040cb2c3e16780d74fe56b7a7f8e3cfdd9b4319f",
+      "origin_manifest_sha256": "b23e92dd2218d769c26b0930b0bc82875a62f0e1192f7a03d31886ab1a665a0f",
+      "files": 60,
+      "assessments": 14822,
+      "differences": 0,
+      "all_transitive_implementation_files_from_exact_commit": true,
+      "previous_provisional_origin_preserved": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database/identity-origins/0ba714f237c7827022fba3f2ede726dbffff4c1905554abd9b4b53992cd5a93d",
+      "previous_evidence_not_modified": true
     },
-    "cause": "Phase 5 snapshot contains target data directories but omits policy-hash dependencies. Importer recalculates policy hash under snapshot/files and marks 1538 reviews needs_review.",
-    "production_modified": false,
-    "fix_applied": false,
-    "policy_dependencies": [
-      {
-        "path": "docs/ai-rules/shared-article-review.md",
-        "live_sha256": "21a6feca3ecc2543f3853a25243071349f78e139fbf491f7b74b0eac36e15d2e",
-        "phase3_sha256": "21a6feca3ecc2543f3853a25243071349f78e139fbf491f7b74b0eac36e15d2e",
-        "present_in_phase5_snapshot": false
+    "current_decision_component": {
+      "status": "passed_component_only",
+      "assessments": 14822,
+      "changed_checks": 5,
+      "other_decision_fields_equal": true,
+      "report": "/mnt/d/N8N/database/phase5-identity-20260916T035030Z/current-decision-component/comparison.json"
+    },
+    "schema": {
+      "migration": "005_identity_assessment_history.sql",
+      "production_applied": false,
+      "existing_migrations_unchanged": true,
+      "new_tables": 7,
+      "compatibility_table_retained": true,
+      "stable_ids_include_source_input_evidence_processor": true,
+      "automatic_adoption": false,
+      "immutable_source_references_and_implementation_bytes_in_database": true
+    },
+    "regression": {
+      "tests": 98,
+      "failures": 0,
+      "result": {
+        "checked_at": "2026-09-16T04:14:04.955709+00:00",
+        "exit_code": 0,
+        "log": "/mnt/d/N8N/database/phase5-identity-20260916T035030Z/regression-final.log",
+        "summary": [
+          "",
+          "----------------------------------------------------------------------",
+          "Ran 98 tests in 162.566s",
+          "",
+          "OK"
+        ]
       },
-      {
-        "path": "docs/ai-rules/article-summary.md",
-        "live_sha256": "5e1afd423ef776a53735dcd6463c001b2eb3d7d443880f2b64da32a235a54764",
-        "phase3_sha256": "5e1afd423ef776a53735dcd6463c001b2eb3d7d443880f2b64da32a235a54764",
-        "present_in_phase5_snapshot": false
-      },
-      {
-        "path": "docs/ai-rules/talent-index.md",
-        "live_sha256": "c8ad0b808a240349dfec242cfd38cb30a1357fccb79f7a03cc0053a9880effd7",
-        "phase3_sha256": "c8ad0b808a240349dfec242cfd38cb30a1357fccb79f7a03cc0053a9880effd7",
-        "present_in_phase5_snapshot": false
-      },
-      {
-        "path": "docs/ai-rules/article-classification.md",
-        "live_sha256": "7de55dddb019b833ccb8b5a93a10b6a7634156642e1ee95e620e4fa31fbe56bf",
-        "phase3_sha256": "7de55dddb019b833ccb8b5a93a10b6a7634156642e1ee95e620e4fa31fbe56bf",
-        "present_in_phase5_snapshot": false
-      }
-    ]
-  },
-  "unapproved_difference_rows": 4614,
-  "affected_reviews": 1538,
-  "difference_ledger": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5/20260915T024435Z/differences.jsonl",
-  "difference_ledger_sha256": "fbc68607440ee7238e03ec9f73c5c5c6271f19a370cb6d0c2a955f9c8f5de7f0",
-  "production_sync_started": false,
-  "production_migration_004_applied": false,
-  "production_business_data_modified": false,
-  "normal_daily_runs_performed": 0,
-  "regression_tests": {
-    "status": "passed",
-    "tests_run": 46,
-    "log": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5/20260915T024435Z/regression-tests.log",
-    "scope": "Temporary DB tests; not evidence of production sync completion"
-  },
-  "draft_files": [
-    "database/migrations/004_continuous_sync.sql",
-    "database/schema.sql",
-    "scripts/continuous_database_sync.py",
-    "scripts/legacy_sync_projection.py",
-    "scripts/prepare_legacy_sync.py",
-    "scripts/autoarticle_db.py",
-    "scripts/test_continuous_database_sync.py"
-  ],
-  "excluded_files": [
-    "scripts/start_n8n_with_file_access.sh",
-    "scripts/start_talent_dashboard.sh"
-  ],
-  "legacy_read_write_routes": "legacy",
-  "evidence_directory": "/home/raimu/N8N/AutoArticleFor-n8n/.operation-state/database-phase5/20260915T024435Z",
-  "remaining": [
-    "Capture policy dependencies and implementation versions in the snapshot and its manifest; reject missing dependencies before projection",
-    "Add regression tests for policy hash reproduction and missing policy refusal",
-    "Rebuild a fresh isolated projection from the same business snapshot and require zero unapproved baseline changes",
-    "Complete all category update/version/provenance and independent legacy comparison acceptance tests",
-    "Only after acceptance apply migration 004 and validate real synchronization, same-ID replay, deliberate failure recovery and restored synchronization state",
-    "Perform and verify multiple normal daily operations; do not count retrospective or synthetic operations as normal daily runs",
-    "Resume phase 5 within an independent change set; current independent commit records a stopped draft, not phase completion"
-  ],
-  "stopped_state_verification": {
-    "status": "passed",
-    "checked_at": "2026-09-15T03:06:21.856644+00:00",
-    "source_tables_unchanged": true,
-    "source_files_unchanged": true,
-    "project_database_unchanged": true,
-    "applied_schema_versions": [
-      "001",
-      "002",
-      "003"
+      "scope": "isolated synthetic databases and retained evidence; not actual normal operations"
+    },
+    "new_stop": {
+      "checked_at": "2026-09-16T04:10:18.177572+00:00",
+      "status": "stopped",
+      "reason": "acceptance_conflict_not_unique",
+      "fixture": "/mnt/d/N8N/database/phase5-identity-20260916T035030Z/missing-body-conflict-contract.sqlite",
+      "original_missing_body_sources": 13,
+      "original_conflicts": 13,
+      "planned_additional_conflicts": 2,
+      "post_sync_conflicts_if_applied": 15,
+      "foreign_key_violations": 0,
+      "integrity": "ok",
+      "production_modified": false,
+      "details": [
+        {
+          "source_record_id": "d1a92b57-04fd-5214-a62d-853c89916482",
+          "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+          "source_position": "1843",
+          "old_conflict_ids": [
+            "44a42829-6caa-54ed-bdd8-ef35c34ee609"
+          ],
+          "new_conflict_id": "88b0e5f5-b9fa-5718-90c3-666c4601eace",
+          "old_capture_references": [
+            [
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "3037e64332b4994f8fe88b4295c1bd74b141b97e65edd50a4557148f423c5c80",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-17.jsonl",
+                "position": "line:125",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-22.jsonl",
+                "position": "line:353",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-23.jsonl",
+                "position": "line:16",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-24.jsonl",
+                "position": "line:409",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-27.jsonl",
+                "position": "line:77",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-28.jsonl",
+                "position": "line:12",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-29.jsonl",
+                "position": "line:15",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-30.jsonl",
+                "position": "line:649",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-04.jsonl",
+                "position": "line:388",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-05.jsonl",
+                "position": "line:150",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-06.jsonl",
+                "position": "line:282",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-07.jsonl",
+                "position": "line:361",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-10.jsonl",
+                "position": "line:287",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-17.jsonl",
+                "position": "line:185",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-18.jsonl",
+                "position": "line:31",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-19.jsonl",
+                "position": "line:62",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-25.jsonl",
+                "position": "line:612",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-26.jsonl",
+                "position": "line:172",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-27.jsonl",
+                "position": "line:164",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-28.jsonl",
+                "position": "line:137",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-09-01.jsonl",
+                "position": "line:705",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-09-10.jsonl",
+                "position": "line:273",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-09-11.jsonl",
+                "position": "line:77",
+                "source_status": "unavailable"
+              },
+              {
+                "body_length": 0,
+                "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-09-14.jsonl",
+                "position": "line:103",
+                "source_status": "unavailable"
+              }
+            ]
+          ],
+          "new_capture_references": [
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "3037e64332b4994f8fe88b4295c1bd74b141b97e65edd50a4557148f423c5c80",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-17.jsonl",
+              "position": "line:125",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-22.jsonl",
+              "position": "line:353",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-23.jsonl",
+              "position": "line:16",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-24.jsonl",
+              "position": "line:409",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-27.jsonl",
+              "position": "line:77",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-28.jsonl",
+              "position": "line:12",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-29.jsonl",
+              "position": "line:15",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-30.jsonl",
+              "position": "line:649",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-04.jsonl",
+              "position": "line:388",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-05.jsonl",
+              "position": "line:150",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-06.jsonl",
+              "position": "line:282",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-07.jsonl",
+              "position": "line:361",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-10.jsonl",
+              "position": "line:287",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-17.jsonl",
+              "position": "line:185",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-18.jsonl",
+              "position": "line:31",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-19.jsonl",
+              "position": "line:62",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-25.jsonl",
+              "position": "line:612",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-26.jsonl",
+              "position": "line:172",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-27.jsonl",
+              "position": "line:164",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-28.jsonl",
+              "position": "line:137",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-09-01.jsonl",
+              "position": "line:705",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-09-10.jsonl",
+              "position": "line:273",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-09-11.jsonl",
+              "position": "line:77",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-09-14.jsonl",
+              "position": "line:103",
+              "source_status": "unavailable"
+            },
+            {
+              "body_length": 0,
+              "computed_body_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "input_hash": "bc0923891835e9274362e8413bbe5d7d137d398bf53e9e7c22856b5797084b16",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-09-16.jsonl",
+              "position": "line:457",
+              "source_status": "unavailable"
+            }
+          ],
+          "old_value": 1,
+          "new_value": 2,
+          "reason": "acceptance_conflict_not_unique",
+          "approval_status": "unapproved"
+        },
+        {
+          "source_record_id": "fc450d74-df9d-57ab-a4ba-c666b2c37c8e",
+          "source_path": "n8n:data_table_user_zcsbkDjtHx8ixldU",
+          "source_position": "2174",
+          "old_conflict_ids": [
+            "098662ce-cfb2-50d9-a4d8-12e439796c0e"
+          ],
+          "new_conflict_id": "3d6b0996-1087-5857-8d32-52629edf19c3",
+          "old_capture_references": [
+            [
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "b749d5d9b9de98c081aba54c25b96fd8bb26f4cdc2ae808b8cec93b7617521d8",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-14.jsonl",
+                "position": "line:8",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "6e0093ae2085dddc7e6bb76ee3f9f4325dc0fddb0ee3a96fb8a761ced75ce46e",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-15.jsonl",
+                "position": "line:12",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7840a1a1c7098862b5ad0a590108b2af147ae9e625d9ccdf27b76345f7f56849",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-16.jsonl",
+                "position": "line:9",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "a7463f5e3eb7193d20e07b0dfdf0229eddb4c067a30a16d4a492aedd931e9a3c",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-17.jsonl",
+                "position": "line:4",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-22.jsonl",
+                "position": "line:306",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-23.jsonl",
+                "position": "line:293",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-24.jsonl",
+                "position": "line:411",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-28.jsonl",
+                "position": "line:225",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-29.jsonl",
+                "position": "line:41",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-07-30.jsonl",
+                "position": "line:648",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-03.jsonl",
+                "position": "line:139",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-04.jsonl",
+                "position": "line:104",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-05.jsonl",
+                "position": "line:94",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-10.jsonl",
+                "position": "line:722",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-12.jsonl",
+                "position": "line:152",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-14.jsonl",
+                "position": "line:426",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-17.jsonl",
+                "position": "line:184",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-19.jsonl",
+                "position": "line:63",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-24.jsonl",
+                "position": "line:475",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-25.jsonl",
+                "position": "line:473",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-26.jsonl",
+                "position": "line:707",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-27.jsonl",
+                "position": "line:568",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-08-31.jsonl",
+                "position": "line:28",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-09-03.jsonl",
+                "position": "line:67",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-09-10.jsonl",
+                "position": "line:201",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-09-11.jsonl",
+                "position": "line:47",
+                "source_status": "partial"
+              },
+              {
+                "body_length": 2670,
+                "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+                "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+                "matches_saved_hash": false,
+                "path": "content/article-body-captures/2026-09-14.jsonl",
+                "position": "line:179",
+                "source_status": "partial"
+              }
+            ]
+          ],
+          "new_capture_references": [
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "b749d5d9b9de98c081aba54c25b96fd8bb26f4cdc2ae808b8cec93b7617521d8",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-14.jsonl",
+              "position": "line:8",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "6e0093ae2085dddc7e6bb76ee3f9f4325dc0fddb0ee3a96fb8a761ced75ce46e",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-15.jsonl",
+              "position": "line:12",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7840a1a1c7098862b5ad0a590108b2af147ae9e625d9ccdf27b76345f7f56849",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-16.jsonl",
+              "position": "line:9",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "a7463f5e3eb7193d20e07b0dfdf0229eddb4c067a30a16d4a492aedd931e9a3c",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-17.jsonl",
+              "position": "line:4",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-22.jsonl",
+              "position": "line:306",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-23.jsonl",
+              "position": "line:293",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-24.jsonl",
+              "position": "line:411",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-28.jsonl",
+              "position": "line:225",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-29.jsonl",
+              "position": "line:41",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-07-30.jsonl",
+              "position": "line:648",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-03.jsonl",
+              "position": "line:139",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-04.jsonl",
+              "position": "line:104",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-05.jsonl",
+              "position": "line:94",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-10.jsonl",
+              "position": "line:722",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-12.jsonl",
+              "position": "line:152",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-14.jsonl",
+              "position": "line:426",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-17.jsonl",
+              "position": "line:184",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-19.jsonl",
+              "position": "line:63",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-24.jsonl",
+              "position": "line:475",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-25.jsonl",
+              "position": "line:473",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-26.jsonl",
+              "position": "line:707",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-27.jsonl",
+              "position": "line:568",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-08-31.jsonl",
+              "position": "line:28",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-09-03.jsonl",
+              "position": "line:67",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-09-10.jsonl",
+              "position": "line:201",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-09-11.jsonl",
+              "position": "line:47",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-09-14.jsonl",
+              "position": "line:179",
+              "source_status": "partial"
+            },
+            {
+              "body_length": 2670,
+              "computed_body_hash": "bf7cd5fac1013dd300e5e30cc0285ea27d553b38c8b201d1bdd08f43350a1b2f",
+              "input_hash": "7a973654a25355def69e100d07329b5bb97694a42fe4384c1f744ad7e8912615",
+              "matches_saved_hash": false,
+              "path": "content/article-body-captures/2026-09-16.jsonl",
+              "position": "line:345",
+              "source_status": "partial"
+            }
+          ],
+          "old_value": 1,
+          "new_value": 2,
+          "reason": "acceptance_conflict_not_unique",
+          "approval_status": "unapproved"
+        }
+      ]
+    },
+    "stopped_candidate_preservation": {
+      "status": "passed",
+      "saved_request_hash": "c06a4451d5551f32d18b960fa8e7a322b609ff619e3af6685996a412dbbf5869",
+      "recomputed_request_hash": "c06a4451d5551f32d18b960fa8e7a322b609ff619e3af6685996a412dbbf5869",
+      "candidate_all_planned_business_values_unchanged": true,
+      "saved_runtime_used": true,
+      "changes": 9685
+    },
+    "final_preservation": {
+      "checked_at": "2026-09-16T04:12:38.939955+00:00",
+      "business_inputs_unchanged": true,
+      "legacy_six_tables_unchanged": true,
+      "unfinished_executions": [],
+      "production_all_logical_hashes_unchanged": true,
+      "foreign_key_violations": 0,
+      "integrity": "ok",
+      "applied_migrations": [
+        "001",
+        "002",
+        "003",
+        "004"
+      ],
+      "cutover_all_legacy": true,
+      "summary_sync_run": null,
+      "implementation_changes": [
+        "scripts/autoarticle_db.py",
+        "scripts/continuous_database_sync.py",
+        "scripts/import_legacy_database.py",
+        "scripts/legacy_sync_projection.py",
+        "scripts/prepare_legacy_sync.py",
+        "scripts/sync_snapshot_dependencies.py",
+        "scripts/test_missing_body_decisions_database.py",
+        "scripts/test_sync_dependencies_database.py"
+      ],
+      "implementation_additions": [
+        "database/migrations/005_identity_assessment_history.sql",
+        "scripts/identity_assessment_history.py",
+        "scripts/identity_assessment_worker.py",
+        "scripts/identity_history_dependencies.py",
+        "scripts/test_identity_assessment_history.py"
+      ],
+      "unknown_implementation_changes": [],
+      "migrations_001_to_004_unchanged": true,
+      "old_request_hash": "c06a4451d5551f32d18b960fa8e7a322b609ff619e3af6685996a412dbbf5869",
+      "old_request_unchanged": true,
+      "known_business_or_db_service_processes": [],
+      "status": "passed",
+      "rule_files_unchanged": true,
+      "missing_body_decision_ledger_unchanged": true
+    },
+    "new_complete_snapshot_created": false,
+    "full_repaired_candidate_acceptance_completed": false,
+    "production_sync_attempted": false,
+    "new_summary_request_issued": false,
+    "normal_daily_operations_total": 1,
+    "phase5_complete": false,
+    "phase6_started": false,
+    "completion_commit_created": false,
+    "remaining": [
+      "Define immutable history for new capture references without duplicating/replacing the 13 existing missing-body conflicts or relaxing acceptance uniqueness.",
+      "Create a fresh complete snapshot and empty candidate; validate every planned business change independently, including reviews, summaries, fetches, provenance and conflicts, not only identity versions.",
+      "Verify full real-data replay, backup/restore and preserved state before production migration 005 or summary sync.",
+      "Validate generic updates where historical source IDs disappear from current subject population; current implementation safely rejects this case.",
+      "Complete all remaining phase5 production acceptance and distinct normal business synchronizations; only then create completion commit."
     ],
-    "sync_runs": 0,
-    "unresolved_conflicts": 18305,
-    "missing_bodies": 13,
-    "cutover": "legacy",
-    "idle": {
-      "observed_at": "2026-09-15T03:05:38.774952+00:00",
-      "processes": [],
-      "unfinished_executions": []
+    "supplemental_regression": {
+      "tests": 27,
+      "failures": 0,
+      "log": "/mnt/d/N8N/database/phase5-identity-20260916T035030Z/regression-supplemental.log",
+      "scope": "identity history and closed dependencies after processor version and registry ID hardening"
     }
   },
-  "implementation_hashes": {
-    "database/schema.sql": "283b1592353db0149b8558cf129d6add474f7d96dae16575105fc6e47b78fb72",
-    "database/migrations/004_continuous_sync.sql": "a1ef3b3dd71100fd3049f640c4ad6abdf6e209beb03d1040a6935cab72099bb5",
-    "scripts/autoarticle_db.py": "1dea3dd178a9781e41661f579826bb4defdfa060f60234a6ee1301a7231497ae",
-    "scripts/continuous_database_sync.py": "80c997e37027a3af132aaac9eae9eace0bd8d4990ab56578db69b3f068e64ebf",
-    "scripts/legacy_sync_projection.py": "ca8de6d5cf4fc4a43a4bcf68cb332306fd0cb786aeec7efd898d5ae6d6e7cc73",
-    "scripts/prepare_legacy_sync.py": "85973764f9fcd61fa77e8f5f97f4d1ae4efea618c4175d487821a0108c704cbb",
-    "scripts/test_continuous_database_sync.py": "b6b6f47b8bd08daf3caef1fd94321073ffa6f5b6353d886ade0eda693b5c58a5"
+  "capture_history_resume_20260916": {
+    "status": "complete",
+    "evidence_directory": "/mnt/d/N8N/database/phase5-capture-history-20260916T044305Z",
+    "historical_conflicts_reproduced": 13,
+    "historical_conflicts_all_fields_equal": true,
+    "regression_full": {
+      "tests": 105,
+      "failures": 0
+    },
+    "regression_supplemental": {
+      "tests": 44,
+      "failures": 0
+    },
+    "migration_006_production_applied": true,
+    "migration_005_production_applied": true,
+    "normal_daily_operations_total": 2,
+    "phase5_complete": true,
+    "phase6_started": false,
+    "prior_evidence_preserved": true,
+    "writer_gate_correction": "Previously observed idle state was inaccurate; n8n predating prior stop was gracefully stopped with zero unfinished executions.",
+    "regression_final": {
+      "passed": 111,
+      "exit_code": 0,
+      "evidence": "/mnt/d/N8N/database/phase5-capture-history-20260916T044305Z/regression-final-complete.json"
+    },
+    "snapshot_attempt": "v4",
+    "prior_snapshot_project_hash_required": true,
+    "source_version_update_tests": "passed_in_isolation",
+    "production_migration_005_applied": true,
+    "production_migration_006_applied": true,
+    "complete_snapshot_and_restore": "passed",
+    "full_candidate_comparison": {
+      "status": "passed",
+      "field_checks": 1997203,
+      "unapproved_differences": 0,
+      "identity": {
+        "status": "passed",
+        "versions": 29644,
+        "initial": 14822,
+        "scopes": [
+          {
+            "evidence_set_id": "74b2d4fd772326bd0f62924e338fa5a7fef59ee5041929dbd6c1a64f5554cb7b",
+            "versions": 14822,
+            "members": 51099
+          },
+          {
+            "evidence_set_id": "8c8c5c7298fb0ae19f209a5f7d43d323fcd67ecabc627a9d4e0f1cbbc080cf03",
+            "versions": 14822,
+            "members": 50701
+          }
+        ],
+        "differences": 0
+      },
+      "captures": {
+        "status": "passed",
+        "scopes": 2,
+        "reference_checks": 368,
+        "differences": 0
+      },
+      "counts": {
+        "source_records": 129633,
+        "article_identity_assessments": 14822,
+        "identity_assessment_versions": 29644,
+        "review_records": 2286,
+        "consolidation_conflicts": 19567,
+        "missing_body_capture_observations": 185,
+        "missing_body_capture_sets": 26
+      },
+      "missing_body_records": 13,
+      "replay_added_rows": 0,
+      "replay_all_tables_and_schema_equal": true,
+      "evidence": "/mnt/d/N8N/database/phase5-capture-history-20260916T044305Z/v4/candidate-acceptance.json"
+    },
+    "representative_validation": {
+      "status": "passed",
+      "patterns": 42,
+      "sampled_changes": 121,
+      "full_request_rollback": "passed",
+      "same_id_resume": "passed",
+      "same_id_replay_additional_rows": 0,
+      "different_content_rejected": true,
+      "restored_business_history_and_sync_state_equal": true,
+      "evidence": "/mnt/d/N8N/database/phase5-capture-history-20260916T044305Z/v4/representative-sync-acceptance-v2.json"
+    },
+    "production_acceptance": {
+      "status": "passed",
+      "operation_id": "phase5-summary-20260916-v4",
+      "request_hash": "6cfd60c7e7e645fe67dec422cfe24eabd0395b6154af5b0a35fc62a880bdc940",
+      "result": {
+        "operationId": "phase5-summary-20260916-v4",
+        "added": 212627,
+        "updated": 0,
+        "unexplainedDifferences": 0,
+        "requestHash": "6cfd60c7e7e645fe67dec422cfe24eabd0395b6154af5b0a35fc62a880bdc940"
+      },
+      "replay_additional_rows": 0,
+      "foreign_key_violations": 0,
+      "integrity": "ok",
+      "backup": {
+        "source": "/home/raimu/N8N/AutoArticleFor-n8n/data/autoarticle.sqlite",
+        "path": "/mnt/d/N8N/backups/phase5-summary-20260916-v4/after-summary.sqlite",
+        "sha256": "1a4abf83ce16625e7483b06a70952d43347c19ae69a9d5e5f30f854e9c5e2b0b",
+        "bytes": 2040864768,
+        "method": "closed_database_byte_copy_with_before_after_sha256",
+        "equal": true
+      },
+      "restore": {
+        "source": "/mnt/d/N8N/backups/phase5-summary-20260916-v4/after-summary.sqlite",
+        "path": "/mnt/d/N8N/backups/phase5-summary-20260916-v4/after-summary-restored.sqlite",
+        "sha256": "1a4abf83ce16625e7483b06a70952d43347c19ae69a9d5e5f30f854e9c5e2b0b",
+        "bytes": 2040864768,
+        "method": "closed_database_byte_copy_with_before_after_sha256",
+        "equal": true
+      },
+      "evidence": "/mnt/d/N8N/database/phase5-capture-history-20260916T044305Z/v4/production-summary-sync.json"
+    }
+  },
+  "validation_scope_change_20260916": {
+    "at": "2026-09-16T06:49:01.646619+00:00",
+    "authority": "User: すべての項目を照合する必要はないです。パターンがある程度問題無ければ合格としてよいです。",
+    "remaining_coverage": "representative patterns",
+    "known_differences_waived": false,
+    "safety_contracts_unchanged": true,
+    "already_completed_full_candidate_field_checks": 1997203,
+    "full_candidate_unapproved_differences": 0,
+    "projection_replay_added_rows": 0,
+    "projection_replay_all_logical_hashes_equal": true,
+    "evidence": "/mnt/d/N8N/database/phase5-capture-history-20260916T044305Z/v4/candidate-acceptance.json"
+  },
+  "historical_top_level_before_completion_20260916": {
+    "status": "phase5_capture_history_acceptance_in_progress",
+    "checked_at": "2026-09-16T07:03:20.763991+00:00",
+    "evidence_directory": "/mnt/d/N8N/database/phase5-resume-20260916T003542Z",
+    "regression_tests": {
+      "status": "passed",
+      "test_count": 69
+    },
+    "full_comparison": {
+      "status": "passed",
+      "unapproved_differences": 0,
+      "by_table": {},
+      "counts": {
+        "article_classifications": {
+          "old": 830,
+          "new": 830
+        },
+        "article_content_versions": {
+          "old": 2009,
+          "new": 2009
+        },
+        "article_feedback": {
+          "old": 16,
+          "new": 16
+        },
+        "article_identifiers": {
+          "old": 148881,
+          "new": 148881
+        },
+        "article_identity_assessments": {
+          "old": 14822,
+          "new": 14822
+        },
+        "article_occurrences": {
+          "old": 20293,
+          "new": 20293
+        },
+        "article_source_provenance": {
+          "old": 91287,
+          "new": 91287
+        },
+        "article_summaries": {
+          "old": 2029,
+          "new": 2029
+        },
+        "article_talents": {
+          "old": 1675,
+          "new": 1675
+        },
+        "articles": {
+          "old": 35876,
+          "new": 35876
+        },
+        "classification_secondary_categories": {
+          "old": 631,
+          "new": 631
+        },
+        "collection_runs": {
+          "old": 37,
+          "new": 37
+        },
+        "consolidation_conflicts": {
+          "old": 18305,
+          "new": 18305
+        },
+        "content_fetch_attempts": {
+          "old": 52985,
+          "new": 52985
+        },
+        "content_payloads": {
+          "old": 1892,
+          "new": 1892
+        },
+        "content_runtime_state": {
+          "old": 1592,
+          "new": 1592
+        },
+        "cutover_state": {
+          "old": 5,
+          "new": 5
+        },
+        "legacy_history_records": {
+          "old": 27922,
+          "new": 27922
+        },
+        "migration_runs": {
+          "old": 1,
+          "new": 1
+        },
+        "migration_source_files": {
+          "old": 266,
+          "new": 266
+        },
+        "review_entities": {
+          "old": 729,
+          "new": 729
+        },
+        "review_entity_evidence": {
+          "old": 0,
+          "new": 0
+        },
+        "review_entity_facts": {
+          "old": 729,
+          "new": 729
+        },
+        "review_evidence": {
+          "old": 772,
+          "new": 772
+        },
+        "review_fact_evidence": {
+          "old": 772,
+          "new": 772
+        },
+        "review_facts": {
+          "old": 772,
+          "new": 772
+        },
+        "review_input_snapshots": {
+          "old": 1538,
+          "new": 1538
+        },
+        "review_records": {
+          "old": 1822,
+          "new": 1822
+        },
+        "review_task_statuses": {
+          "old": 5466,
+          "new": 5466
+        },
+        "schema_migrations": {
+          "old": 3,
+          "new": 4
+        },
+        "source_records": {
+          "old": 127814,
+          "new": 127814
+        },
+        "sync_attempts": {
+          "old": 0,
+          "new": 0
+        },
+        "sync_row_history": {
+          "old": 0,
+          "new": 0
+        },
+        "sync_runs": {
+          "old": 0,
+          "new": 0
+        },
+        "sync_source_receipts": {
+          "old": 0,
+          "new": 0
+        },
+        "talent_aliases": {
+          "old": 836,
+          "new": 836
+        },
+        "talents": {
+          "old": 604,
+          "new": 604
+        }
+      },
+      "checks": {
+        "reviews": {
+          "old": 1822,
+          "new": 1822
+        },
+        "source_records": {
+          "old": 127814,
+          "new": 127814
+        },
+        "conflicts": {
+          "old": 18305,
+          "new": 18305
+        },
+        "missing_bodies": 13,
+        "foreign_key_violations": 0
+      },
+      "expected_reconstruction_metadata": {
+        "cutover_state.changed_at": 5,
+        "isolated_projection_run": 1,
+        "migration_source_files.migration_run_id": 266,
+        "planned_schema_004": 1,
+        "source_records.migration_run_id": 127814,
+        "empty_004_table": 3
+      },
+      "production_modified": false,
+      "checked_at": "2026-09-15T09:39:09.447829+00:00"
+    },
+    "production_schema_acceptance": {
+      "status": "schema_ready_waiting_actual_business",
+      "migration_004_applied": true,
+      "business_sync_started": false,
+      "normal_daily_operations": 0,
+      "migration_result": {
+        "applied": [
+          "004"
+        ]
+      },
+      "business_tables_unchanged": true,
+      "foreign_key_violations": 0,
+      "integrity": "ok",
+      "schema_versions": [
+        {
+          "version": "001",
+          "applied_at": "2026-09-15T01:05:58.189199Z",
+          "checksum": "a14af4234486e082b7dabb915c19bb2fd6325537fa719c3e397d9d6dab5d8473"
+        },
+        {
+          "version": "002",
+          "applied_at": "2026-09-15T01:05:58.190375Z",
+          "checksum": "27b21c2b31eac2307efd873edb247456cbf3097cfe2ae1614411845e05a92d4b"
+        },
+        {
+          "version": "003",
+          "applied_at": "2026-09-15T01:05:58.193886Z",
+          "checksum": "d2d7410b6ad5e336c170b7a2a1f993baf663f468ba52bb44bd8ac9a39cdbf47e"
+        },
+        {
+          "version": "004",
+          "applied_at": "2026-09-15T09:54:02.967330Z",
+          "checksum": "a1ef3b3dd71100fd3049f640c4ad6abdf6e209beb03d1040a6935cab72099bb5"
+        }
+      ],
+      "cutover": [
+        {
+          "feature": "comparison",
+          "read_source": "legacy",
+          "write_target": "legacy",
+          "changed_at": "2026-09-15T01:05:58.193934Z",
+          "rollback_state": "not-started"
+        },
+        {
+          "feature": "dashboard",
+          "read_source": "legacy",
+          "write_target": "legacy",
+          "changed_at": "2026-09-15T01:05:58.193978Z",
+          "rollback_state": "not-started"
+        },
+        {
+          "feature": "weekly",
+          "read_source": "legacy",
+          "write_target": "legacy",
+          "changed_at": "2026-09-15T01:05:58.193993Z",
+          "rollback_state": "not-started"
+        },
+        {
+          "feature": "ai-reader",
+          "read_source": "legacy",
+          "write_target": "legacy",
+          "changed_at": "2026-09-15T01:05:58.194002Z",
+          "rollback_state": "not-started"
+        },
+        {
+          "feature": "n8n-daily",
+          "read_source": "legacy",
+          "write_target": "legacy",
+          "changed_at": "2026-09-15T01:05:58.194011Z",
+          "rollback_state": "not-started"
+        }
+      ],
+      "pre_sync_recovery_bundle": "/mnt/d/N8N/database/phase5-acceptance-20260915T090011Z/complete-snapshot",
+      "checked_at": "2026-09-15T09:54:14.144746+00:00"
+    },
+    "final_preservation_check": {
+      "idle": {
+        "observed_at": "2026-09-15T09:54:54.951473+00:00",
+        "processes": [],
+        "unfinished_executions": []
+      },
+      "source_tables_equal": true,
+      "business_files_equal": true,
+      "cutover_all_legacy": true,
+      "sync_table_counts": {
+        "sync_runs": 0,
+        "sync_attempts": 0,
+        "sync_row_history": 0,
+        "sync_source_receipts": 0
+      },
+      "normal_daily_operations": 0,
+      "current_daily_checkpoint_present": false,
+      "checked_at": "2026-09-15T09:55:07.369960+00:00"
+    },
+    "production_sync_cases": {
+      "all_entities_new_update_version_provenance": "passed_in_isolated_synthetic_database_pending_actual_business_production",
+      "same_id_replay": "passed_on_production_operation_182",
+      "same_id_conflict": "passed_on_verified_restored_production_copy_not_injected_into_live_database",
+      "transaction_rollback_resume": "passed_on_production_operation_182",
+      "independent_scope_comparison": "passed_on_production_operation_182",
+      "sync_state_backup_restore": "passed_with_actual_operation_182_sync_state",
+      "legacy_only_after_sync_stop": "passed_actual_summary_and_keyword_operations_with_unchanged_production_database",
+      "note": "Only collection execution 182 has been synchronized as actual normal business. Identity history repair remains unapplied to production; summary synchronization is blocked by two additional missing-body conflicts and incomplete full-scope acceptance.",
+      "sync_runs_failure_success_replay": "passed_on_production_operation_182",
+      "sync_runs_difference": "passed_in_isolated_synthetic_database_not_live_production",
+      "identity_history": "passed_component_reproduction_and_small_database_regressions_pending_full_candidate_and_production",
+      "missing_body_conflict_consistency": "stopped_acceptance_conflict_not_unique_for_source_rows_1843_2174"
+    },
+    "production_modification_scope": "migration_004_and_verified_normal_collection_182_sync",
+    "legacy_modification_scope": "Normal collection 182 execution audit and new daily artifacts only; existing six business tables and prior business files unchanged.",
+    "full_comparison_scope": "Historical isolated acceptance before operation 182; current coverage is original-data preservation plus independent comparison of all new operation-182 units.",
+    "remaining": [
+      "Finish representative synchronization acceptance and sync-state restoration on the isolated restored DB.",
+      "If isolation passes, recheck writers/input/backup, apply 005/006 and synchronize the completed normal summary.",
+      "Confirm actual-operation count and phase5 completion under the user-approved representative coverage."
+    ]
+  },
+  "completion_commit_status": "Recorded by the independent phase5 completion commit containing this file.",
+  "production_migration_005_applied": true,
+  "production_migration_006_applied": true,
+  "current_resume_legacy_modified": false,
+  "phase5_completion_20260916": {
+    "completed_at": "2026-09-16T07:26:00.722622+00:00",
+    "acceptance_basis": "User-approved representative coverage; no known difference waived",
+    "criteria": {
+      "closed_dependencies_and_restore": "passed",
+      "historical_identity_and_missing_body_reconstruction": "passed",
+      "new_capture_observations_and_successive_source_versions": "passed",
+      "all_domain_insert_update_version_patterns": "passed_isolated_regression",
+      "actual_distinct_normal_businesses": "passed_2",
+      "idempotency_id_conflict_atomicity_and_resume": "passed",
+      "comparison_and_preservation": "passed",
+      "business_evidence_and_sync_state_restore": "passed",
+      "foreign_keys_integrity": "passed",
+      "legacy_routes_and_sync_stop": "passed"
+    },
+    "real_operations": [
+      {
+        "id": "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+        "status": "complete",
+        "outcome": "success",
+        "request_hash": "85991bd5d564670f419bdbf4cecb47491f49966806d8d653c2ce378abcac20d4",
+        "replay_count": 1
+      },
+      {
+        "id": "phase5-summary-20260916-v4",
+        "status": "complete",
+        "outcome": "success",
+        "request_hash": "6cfd60c7e7e645fe67dec422cfe24eabd0395b6154af5b0a35fc62a880bdc940",
+        "replay_count": 1
+      }
+    ],
+    "retries_preparations_and_tests_counted": false,
+    "n8n_state_at_finish": "stopped_with_no_unfinished_execution",
+    "database_service_state": "stopped",
+    "excluded_commit_paths": [
+      "scripts/start_n8n_with_file_access.sh",
+      "scripts/start_talent_dashboard.sh"
+    ],
+    "remaining": [],
+    "phase6_started": false,
+    "completion_commit_created": true
   }
 }

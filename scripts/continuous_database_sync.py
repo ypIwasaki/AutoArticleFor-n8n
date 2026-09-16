@@ -7,14 +7,16 @@ from contextlib import closing
 import json
 import uuid
 import project_database as db
+import identity_assessment_history as identity_history
+import missing_body_capture_history as capture_history
 
-VERSION = 'continuous-sync-v1'
+VERSION = 'continuous-sync-v6-prior-evidence'
 ENTITIES = dict(db.ENTITIES, sourceRecord='source_records', provenance='article_source_provenance',
     identityAssessment='article_identity_assessments', history='legacy_history_records',
     runtime='content_runtime_state', reviewInput='review_input_snapshots',
-    entityFact='review_entity_facts', conflict='consolidation_conflicts')
+    entityFact='review_entity_facts', conflict='consolidation_conflicts', **identity_history.ENTITIES, **capture_history.ENTITIES)
 IMMUTABLE = {'body','fetchAttempt','review','evidence','fact','entity','sourceRecord',
-             'provenance','identityAssessment','history','reviewInput','conflict'}
+             'provenance','identityAssessment','history','reviewInput','conflict'} | set(identity_history.ENTITIES) | set(capture_history.ENTITIES)
 
 class SyncStopped(RuntimeError):
     pass
@@ -63,6 +65,10 @@ def validate_change(c, change):
         for field, held in [('identity_state',{'held','needs_review'}),('state',{'held','proposed'}),('status',{'held','needs_review','pending','unverified','partial','unavailable'})]:
             if before.get(field) in held and after.get(field) != before[field]:
                 raise SyncStopped('held_or_unverified_state_change_requires_explicit_review')
+    if entity in identity_history.ENTITIES:
+        identity_history.validate_change_row(c,entity,after)
+    if entity in capture_history.ENTITIES:
+        capture_history.validate_change_row(c,entity,after)
     if entity=='body':
         if db.checksum(after['text'].encode()) != after['text_hash']:
             raise SyncStopped('invalid_body_payload')
@@ -110,7 +116,7 @@ def synchronize(operation_id, request, path, verify_legacy, compare, fault=None)
     """
     if not isinstance(operation_id,str) or not db.ID_PATTERN.fullmatch(operation_id):
         raise ValueError('Stable operation ID required')
-    if set(request) != {'version','receipt','changes'} or request['version'] != VERSION:
+    if set(request) != {'version','receipt','changes'}:
         raise ValueError('Unsupported synchronization contract')
     receipt=request['receipt']
     if receipt.get('status')!='complete' or not receipt.get('completed_at'):
@@ -130,6 +136,9 @@ def synchronize(operation_id, request, path, verify_legacy, compare, fault=None)
                 if existing and existing['status']=='complete':
                     c.execute('UPDATE sync_runs SET replay_count=replay_count+1 WHERE id=?',(operation_id,))
                     return json.loads(existing['result_json'])
+                if request['version'] != VERSION:raise ValueError('Unsupported synchronization contract for uncompleted request')
+                supersedes=receipt.get('legacy_completion',{}).get('supersedes')
+                if supersedes and c.execute('SELECT 1 FROM sync_runs WHERE id=?',(supersedes['operation_id'],)).fetchone():raise SyncStopped('superseded_operation_has_database_state')
                 if not existing:
                     c.execute("INSERT INTO sync_runs(id,request_hash,operation,status,started_at) VALUES (?,?,?,'running',?)",(operation_id,request_hash,'legacy-sync',db.now()))
         if conflict:

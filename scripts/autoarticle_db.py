@@ -24,6 +24,8 @@ def main():
     prepare.add_argument('--date',required=True)
     prepare.add_argument('--step',required=True)
     prepare.add_argument('--output',type=Path,required=True)
+    prepare.add_argument('--supersedes-snapshot',type=Path)
+    prepare.add_argument('--supersedes-request-hash')
     synchronize=sub.add_parser('sync')
     synchronize.add_argument('--operation-id',required=True)
     synchronize.add_argument('--snapshot',type=Path,required=True)
@@ -40,7 +42,7 @@ def main():
         result={k:v for k,v in result.items() if k!='dispositions'}
     elif args.command=='prepare-sync':
         from prepare_legacy_sync import prepare
-        result=prepare(args.operation_id,args.date,args.step,db.ROOT,Path.home()/'.n8n/database.sqlite',args.output)
+        result=prepare(args.operation_id,args.date,args.step,db.ROOT,Path.home()/'.n8n/database.sqlite',args.output,args.supersedes_snapshot,args.supersedes_request_hash)
     elif args.command=='sync':
         from legacy_sync_projection import synchronize_snapshot
         from prepare_legacy_sync import live_guard

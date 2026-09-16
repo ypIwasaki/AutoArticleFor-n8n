@@ -31,6 +31,10 @@ def ro(p):
     c=sqlite3.connect(p.resolve().as_uri()+'?mode=ro',uri=True,timeout=10)
     c.row_factory=sqlite3.Row
     c.execute('PRAGMA query_only=ON')
+    c.execute('PRAGMA foreign_keys=ON')
+    # Keep repeated read-only legacy baseline scans in memory on external storage.
+    # This is connection-local and does not change database pages or query results.
+    c.execute('PRAGMA cache_size=-524288')
     return c
 
 def q(s):

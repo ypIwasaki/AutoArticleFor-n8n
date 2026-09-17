@@ -10,7 +10,7 @@ import re
 import sqlite3
 import sys
 import threading
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from http import HTTPStatus
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -22,157 +22,37 @@ from urllib.parse import urlparse
 APP_ROOT = Path(__file__).resolve().parent
 PROJECT_ROOT = APP_ROOT.parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
-from article_feedback_snapshot import atomic_text, build_snapshot
+import article_feedback_service as feedback_service
+import talent_dashboard_data as dashboard_data
+from talent_dashboard_data import database_path, normalise_row, quoted_table_name
+from article_feedback_service import (
+    article_publisher_label,
+    canonical_article_title,
+    feedback_is_rejected,
+    source_domain_for_article,
+)
 STATIC_ROOT = APP_ROOT / "web"
-TABLE_ID_PATTERN = re.compile(r"^[A-Za-z0-9_]+$")
-from article_artifact_formats import (MARKDOWN_LINK_PATTERN, SOURCE_NOTES_HEADING,
-    SOURCE_NOTE_ITEM_PATTERN, SOURCE_NOTE_SUMMARY_PATTERN, BODY_VERIFIED_PATTERN,
-    WEEKLY_REPORT_FILENAME_PATTERN, WEEKLY_REPORT_FRONT_MATTER_PATTERN,
-    source_note_items, parsed_summaries, weekly_report_metadata)
+from article_artifact_formats import (
+    WEEKLY_REPORT_FILENAME_PATTERN,
+    WEEKLY_REPORT_FRONT_MATTER_PATTERN,
+    weekly_report_metadata,
+)
 KEYWORD_MUTATION_LOCK = threading.RLock()
-ARTICLE_FEEDBACK_MUTATION_LOCK = threading.RLock()
-
-
-def normalise_row(row: sqlite3.Row) -> dict[str, Any]:
-    result = dict(row)
-    for key, value in list(result.items()):
-        if isinstance(value, bool):
-            result[key] = value
-        elif key in {"search_enabled", "auto_discovered"}:
-            result[key] = bool(value)
-    return result
-
-
-def database_path() -> Path:
-    explicit = os.environ.get("N8N_DATABASE_PATH")
-    if explicit:
-        return Path(explicit).expanduser()
-
-    user_folder = Path(os.environ.get("N8N_USER_FOLDER", "~/.n8n")).expanduser()
-    return user_folder / "database.sqlite"
-
-
-def quoted_table_name(table_id: str) -> str:
-    if not TABLE_ID_PATTERN.fullmatch(table_id):
-        raise ValueError("Invalid n8n data table identifier")
-    return f'"data_table_user_{table_id}"'
 
 
 def load_from_n8n() -> tuple[dict[str, Any], str]:
-    import project_readers as project
-    if project.source(PROJECT_ROOT, "dashboard") == "project-db":
-        with project.reader(PROJECT_ROOT) as reader:
-            return reader.dashboard(), "project-db"
-    path = database_path()
-    if not path.exists():
-        raise FileNotFoundError(f"n8n database was not found: {path}")
-
-    connection = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
-    connection.row_factory = sqlite3.Row
-    try:
-        rows = connection.execute(
-            "SELECT id, name FROM data_table "
-            "WHERE name IN ('talents', 'articles', 'article_talents', 'article_classifications', 'article_feedback')"
-        ).fetchall()
-        identifiers = {row["name"]: row["id"] for row in rows}
-        missing = {"talents", "articles", "article_talents"}.difference(identifiers)
-        if missing:
-            raise RuntimeError(f"Missing n8n Data Tables: {', '.join(sorted(missing))}")
-
-        payload: dict[str, Any] = {}
-        for name in ("talents", "articles", "article_talents"):
-            table = quoted_table_name(identifiers[name])
-            payload[name] = [normalise_row(row) for row in connection.execute(f"SELECT * FROM {table}")]
-        if "article_classifications" in identifiers:
-            table = quoted_table_name(identifiers["article_classifications"])
-            payload["article_classifications"] = [
-                normalise_row(row) for row in connection.execute(f"SELECT * FROM {table}")
-            ]
-        else:
-            payload["article_classifications"] = []
-        if "article_feedback" in identifiers:
-            table = quoted_table_name(identifiers["article_feedback"])
-            payload["article_feedback"] = [
-                normalise_row(row) for row in connection.execute(f"SELECT * FROM {table}")
-            ]
-        else:
-            payload["article_feedback"] = []
-        payload["_article_feedback_available"] = "article_feedback" in identifiers
-        return payload, "n8n-data-tables"
-    finally:
-        connection.close()
+    return dashboard_data.load_dashboard_records(PROJECT_ROOT)
 
 
 def load_from_proposals() -> tuple[dict[str, Any], str]:
-    proposal_dir = PROJECT_ROOT / "content" / "talent-index-proposals"
-    articles: dict[str, dict[str, Any]] = {}
-    talents: dict[str, dict[str, Any]] = {}
-    relations: dict[str, dict[str, Any]] = {}
-
-    for path in sorted(proposal_dir.glob("*.json")):
-        try:
-            proposal = json.loads(path.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
-            continue
-
-        for article in proposal.get("articles", []):
-            key = str(article.get("article_key", ""))
-            if key:
-                articles[key] = article
-        for talent in proposal.get("talents", []):
-            key = str(talent.get("talent_id", ""))
-            if key:
-                talents[key] = talent
-        for relation in proposal.get("articleTalents", []):
-            key = str(relation.get("relation_key", ""))
-            if key:
-                relations[key] = relation
-
-    return {
-        "articles": list(articles.values()),
-        "talents": list(talents.values()),
-        "article_talents": list(relations.values()),
-        "article_classifications": load_classification_proposals(),
-        "article_feedback": [],
-    }, "proposal-files"
+    return dashboard_data.load_from_proposals(PROJECT_ROOT)
 
 
 def load_classification_proposals() -> list[dict[str, Any]]:
-    """Load reviewed classification proposals when no Data Table row exists yet."""
-    import project_readers as project
-    if project.source(PROJECT_ROOT, "dashboard") == "project-db":
-        with project.reader(PROJECT_ROOT) as reader:
-            return [row for row, _ in reader.classifications().values()]
-    proposal_dir = PROJECT_ROOT / "content" / "article-classification-proposals"
-    classifications: dict[str, dict[str, Any]] = {}
-    for path in sorted(proposal_dir.glob("*.json")):
-        try:
-            proposal = json.loads(path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError):
-            continue
-        for item in proposal.get("classifications", []):
-            if not isinstance(item, dict):
-                continue
-            article_key = str(item.get("article_key", "")).strip()
-            article_url = str(item.get("article_url", "")).strip()
-            identifier = article_key or article_url
-            if identifier:
-                classifications[identifier] = item
-    return list(classifications.values())
+    return dashboard_data.load_classification_proposals(PROJECT_ROOT)
 
 def load_classification_taxonomy() -> dict[str, Any]:
-    path = PROJECT_ROOT / "config" / "article-classification-taxonomy.json"
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
-        return {"articleTypes": [], "categories": [], "relevance": []}
-    if not isinstance(data, dict):
-        return {"articleTypes": [], "categories": [], "relevance": []}
-    return {
-        "articleTypes": data.get("articleTypes", []),
-        "categories": data.get("categories", []),
-        "relevance": data.get("relevance", []),
-    }
+    return dashboard_data.load_classification_taxonomy(PROJECT_ROOT)
 
 
 def official_identity(value: Any) -> str:
@@ -192,71 +72,15 @@ def value_list(value: Any) -> list[str]:
 
 
 def load_official_talent_registry() -> dict[str, Any]:
-    import project_readers as project
-    if project.source(PROJECT_ROOT, "dashboard") == "project-db":
-        with project.reader(PROJECT_ROOT) as reader:
-            documents = list(reader.documents("official-talent-registry"))
-            return documents[-1][1] if documents else {"generatedAt": "", "talents": []}
-    registry_dir = PROJECT_ROOT / "content" / "official-talent-registry"
-    for path in sorted(registry_dir.glob("????-??-??.json"), reverse=True):
-        try:
-            data = json.loads(path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError):
-            continue
-        if isinstance(data, dict) and isinstance(data.get("talents"), list):
-            return data
-    return {"generatedAt": "", "talents": []}
+    return dashboard_data.load_official_talent_registry(PROJECT_ROOT)
 
 
 def load_article_summaries() -> dict[str, dict[str, Any]]:
-    """Map source-note URLs to their manually reviewed AI summaries."""
-    import project_readers as project
-    if project.source(PROJECT_ROOT, "dashboard") == "project-db":
-        with project.reader(PROJECT_ROOT) as reader:
-            return reader.summaries()
-    summary_dir = PROJECT_ROOT / "content" / "article-summaries"
-    summaries: dict[str, dict[str, Any]] = {}
-
-    for path in sorted(summary_dir.glob("????-??-??.md")):
-        try:
-            markdown = path.read_text(encoding="utf-8")
-        except OSError:
-            continue
-
-        for links, entry in parsed_summaries(markdown, path.stem):
-            for _, url in links:
-                summaries[url.strip()] = entry
-
-    return summaries
+    return dashboard_data.load_article_summaries(PROJECT_ROOT)
 
 
 def load_article_capture_metadata() -> dict[str, dict[str, str]]:
-    """Map saved article URLs to resolved source details captured during review."""
-    import project_readers as project
-    if project.source(PROJECT_ROOT, "dashboard") == "project-db":
-        with project.reader(PROJECT_ROOT) as reader:
-            return reader.capture_metadata()
-    path = PROJECT_ROOT / "content" / "article-body-captures" / "backfill-state.json"
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
-        return {}
-    entries = data.get("entries", {}) if isinstance(data, dict) else {}
-    if not isinstance(entries, dict):
-        return {}
-
-    metadata: dict[str, dict[str, str]] = {}
-    for original_url, entry in entries.items():
-        if not isinstance(entry, dict):
-            continue
-        key = str(original_url or "").strip()
-        if not key:
-            continue
-        metadata[key] = {
-            "resolved_url": str(entry.get("resolved_url") or "").strip(),
-            "source_host": str(entry.get("source_host") or "").strip(),
-        }
-    return metadata
+    return dashboard_data.load_article_capture_metadata(PROJECT_ROOT)
 
 
 def weekly_report_directory() -> Path:
@@ -295,34 +119,6 @@ def weekly_reports_payload() -> dict[str, Any]:
             continue
         reports.append({**weekly_report_metadata(markdown, path), "summary": weekly_report_summary(markdown)})
     return {"reports": reports}
-
-
-def canonical_article_title(value: Any) -> str:
-    title = re.sub(r"\s+(?:-|｜|–|—)\s+\S.*$", "", str(value or "").strip())
-    return re.sub(r"\s+", " ", title).casefold().strip()
-
-
-def article_publisher_label(article: dict[str, Any]) -> str:
-    source = str(article.get("source") or "").strip()
-    if source:
-        return re.sub(r"\s+", " ", source).casefold()
-    title = str(article.get("title") or "").strip()
-    match = re.search(r"\s+(?:-|｜|–|—)\s+(.+)$", title)
-    return re.sub(r"\s+", " ", match.group(1)).casefold().strip() if match else ""
-
-
-def source_domain_for_article(article: dict[str, Any], capture_metadata: dict[str, dict[str, str]]) -> str:
-    url = str(article.get("url") or "").strip()
-    capture = capture_metadata.get(url, {})
-    host = str(capture.get("source_host") or "").strip()
-    if not host:
-        candidate = str(capture.get("resolved_url") or url).strip()
-        try:
-            host = urlparse(candidate).hostname or ""
-        except ValueError:
-            host = ""
-    host = host.casefold().removeprefix("www.")
-    return "" if host in {"", "news.google.com", "b.hatena.ne.jp"} else host
 
 
 def date_key(value: Any) -> str:
@@ -459,7 +255,6 @@ def keyword_candidates_payload() -> dict[str, Any]:
         "currentKeywordCount": len(current_by_identity),
         "runtimeError": runtime_error,
     }
-
 
 
 def keyword_config_path() -> Path:
@@ -646,236 +441,19 @@ def add_keyword_candidate(keyword: str) -> dict[str, Any]:
     return result
 
 
-ARTICLE_FEEDBACK_REASONS = {
-    "suspicious_source",
-    "irrelevant",
-    "unavailable",
-    "outdated",
-}
-ARTICLE_FEEDBACK_DECISIONS = {"approved", "rejected"}
-
-
-def feedback_is_rejected(value: Any) -> bool:
-    return value is True or value == 1 or str(value or "").strip().casefold() in {"1", "true", "yes"}
-
-
-FEEDBACK_REASON_LABELS = {
-    "suspicious_source": "信頼できない情報源",
-    "irrelevant": "調査対象と無関係",
-    "unavailable": "ページ削除・取得不能",
-    "outdated": "情報が古すぎる",
-}
-FEEDBACK_REASON_INSTRUCTIONS = {
-    "suspicious_source": "同じ配信元・媒体名の新規記事を根拠として採用しない。信頼できる一次情報または別媒体で確認する。",
-    "irrelevant": "タイトルだけで採用せず、対象タレント・組織・企画との明確な関連を本文で確認する。",
-    "unavailable": "該当 URL は根拠に使わない。ページが利用できないことを記録し、代替の一次情報を探す。",
-    "outdated": "該当 URL は現在の状況の根拠に使わない。公開日・更新日を確認し、より新しい一次情報または報道へ置き換える。",
-}
-
-
-def markdown_text(value: Any) -> str:
-    return re.sub(r"[\r\n]+", " ", str(value or "")).replace("[", "\\[").replace("]", "\\]").strip()
-
-
-def markdown_url(value: Any) -> str:
-    return str(value or "").strip().replace(")", "%29")
-
-
-def feedback_instruction_timestamp() -> datetime:
-    return datetime.now(timezone(timedelta(hours=9), "JST"))
-
-
-def build_article_feedback_instruction_markdown(
-    payload: dict[str, Any],
-    generated_at: datetime | None = None,
-) -> str:
-    generated_at = generated_at or feedback_instruction_timestamp()
-    articles_by_key = {
-        str(article.get("article_key") or "").strip(): article
-        for article in payload.get("articles", [])
-        if str(article.get("article_key") or "").strip()
-    }
-    feedback_rows = [
-        feedback
-        for feedback in payload.get("article_feedback", [])
-        if str(feedback.get("article_key") or "").strip()
-    ]
-    feedback_rows.sort(
-        key=lambda feedback: str(feedback.get("reviewed_at") or ""),
-        reverse=True,
-    )
-
-    approved_count = sum(
-        1 for feedback in feedback_rows if not feedback_is_rejected(feedback.get("is_rejected"))
-    )
-    rejected_by_reason: dict[str, list[dict[str, Any]]] = {
-        reason: [] for reason in ARTICLE_FEEDBACK_REASONS
-    }
-    for feedback in feedback_rows:
-        if not feedback_is_rejected(feedback.get("is_rejected")):
-            continue
-        reason = str(feedback.get("reason_code") or "").strip()
-        if reason in rejected_by_reason:
-            rejected_by_reason[reason].append(feedback)
-
-    lines = [
-        f"# 記事評価フィードバック指示書 - {generated_at.date().isoformat()}",
-        "",
-        f"- 更新日時: {generated_at.isoformat(timespec='seconds')}",
-        "- 入力: n8n Data Table article_feedback",
-        "- 用途: 記事の収集、本文確認、要約、分類を行うAIが、利用者の評価を次回以降の判断に反映するための補助指示書。",
-        "",
-        "## AIへの共通指示",
-        "",
-        "1. 可と判定された記事を根拠に使う場合も、本文・公開日・対象との関連を確認する。",
-        "2. 不可と判定された記事は、以下の理由別ルールに従う。理由のない一般化や、未記載の媒体・記事への拡大適用はしない。",
-        "3. ページ削除・取得不能 と 情報が古すぎる は、原則として該当URLだけを除外する。媒体全体を除外してはならない。",
-        "4. 信頼できない情報源 は、記載された媒体・ドメインを根拠に使わず、代替の一次情報または別媒体を確認する。",
-        "",
-        "## 評価集計",
-        "",
-        f"- 可: {approved_count}件",
-        f"- 不可: {sum(len(rows) for rows in rejected_by_reason.values())}件",
-    ]
-    for reason in ("suspicious_source", "irrelevant", "unavailable", "outdated"):
-        lines.append(f"- 不可 / {FEEDBACK_REASON_LABELS[reason]}: {len(rejected_by_reason[reason])}件")
-
-    lines.extend(["", "## 理由別の判断ルール"])
-    for reason in ("suspicious_source", "irrelevant", "unavailable", "outdated"):
-        lines.extend([
-            "",
-            f"### {FEEDBACK_REASON_LABELS[reason]}",
-            "",
-            FEEDBACK_REASON_INSTRUCTIONS[reason],
-        ])
-        examples = rejected_by_reason[reason][:10]
-        if not examples:
-            lines.append("")
-            lines.append("- 該当する評価済み記事はありません。")
-            continue
-
-        lines.extend(["", "評価済みの代表記事:"])
-        for feedback in examples:
-            article_key = str(feedback.get("article_key") or "").strip()
-            article = articles_by_key.get(article_key, {})
-            title = markdown_text(article.get("title") or article_key or "記事タイトルなし")
-            url = markdown_url(article.get("url") or feedback.get("article_url"))
-            reviewed_at = str(feedback.get("reviewed_at") or "-")
-            source_hint = str(feedback.get("source_domain") or feedback.get("publisher_label") or "").strip()
-            article_link = f"[{title}]({url})" if url else title
-            lines.append(f"- {article_link}")
-            lines.append(f"  - 評価日時: {reviewed_at}")
-            if source_hint:
-                lines.append(f"  - 媒体・ドメイン: {source_hint}")
-
-    if not feedback_rows:
-        lines.extend([
-            "",
-            "## 評価済み記事",
-            "",
-            "- まだ評価はありません。通常の収集・本文確認・要約方針に従ってください。",
-        ])
-
-    return '\n'.join(lines) + '\n'
-
-
 def write_article_feedback_instruction(
     payload: dict[str, Any] | None = None,
     generated_at: datetime | None = None,
 ) -> Path:
     if payload is None:
         payload, _ = load_from_n8n()
-    generated_at = generated_at or feedback_instruction_timestamp()
-    output_dir = PROJECT_ROOT / "content" / "article-feedback-instructions"
-    output_dir.mkdir(parents=True, exist_ok=True)
-    output_path = output_dir / f"{generated_at.date().isoformat()}.md"
-    instruction = build_article_feedback_instruction_markdown(payload, generated_at)
-    snapshot = build_snapshot(payload, generated_at, instruction)
-    import project_business_writes as business
-    import project_database as project_db
-    if business.route('ai-reader')=='project-db':
-        packet=dict(day=generated_at.date().isoformat(),directory='article-feedback-instructions',document=snapshot,markdown=instruction)
-        business.submit('db-feedback-document-'+project_db.checksum(project_db.canonical(packet).encode()),'proposal',packet)
-    else:
-        atomic_text(output_path, instruction)
-        atomic_text(output_path.with_suffix(".json"), json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n")
-    return output_path
-
-
-def call_article_feedback_webhook(feedback: dict[str, Any]) -> dict[str, Any]:
-    body = json.dumps(feedback, ensure_ascii=False).encode("utf-8")
-    webhook_url = os.environ.get(
-        "N8N_ARTICLE_FEEDBACK_WEBHOOK_URL",
-        "http://127.0.0.1:5678/webhook/article-feedback/reject",
+    return feedback_service.write_article_feedback_instruction(
+        PROJECT_ROOT, payload, generated_at
     )
-    webhook_request = request.Request(
-        webhook_url,
-        data=body,
-        headers={"Content-Type": "application/json; charset=utf-8", "Accept": "application/json"},
-        method="POST",
-    )
-    try:
-        with request.urlopen(webhook_request, timeout=30) as response:
-            raw_response = response.read().decode("utf-8")
-    except error.HTTPError as exc:
-        details = exc.read().decode("utf-8", "replace")
-        raise RuntimeError(f"n8n returned HTTP {exc.code}: {details}") from exc
-    except error.URLError as exc:
-        raise RuntimeError(f"Could not connect to n8n: {exc.reason}") from exc
-    try:
-        result = json.loads(raw_response) if raw_response else {}
-    except json.JSONDecodeError as exc:
-        raise RuntimeError("n8n returned an invalid response") from exc
-    if not isinstance(result, dict) or not result.get("accepted"):
-        reason = result.get("reason") if isinstance(result, dict) else ""
-        raise RuntimeError(str(reason or "n8n did not accept the article feedback"))
-    return result
 
 
 def evaluate_article(payload: dict[str, Any]) -> dict[str, Any]:
-    article_key = str(payload.get("articleKey") or "").strip()
-    decision = str(payload.get("decision") or "").strip().casefold()
-    reason_code = str(payload.get("reasonCode") or "").strip().casefold()
-    if not article_key:
-        raise ValueError("articleKey is required")
-    if decision not in ARTICLE_FEEDBACK_DECISIONS:
-        raise ValueError("decision must be approved or rejected")
-    if decision == "rejected" and reason_code not in ARTICLE_FEEDBACK_REASONS:
-        raise ValueError("reasonCode must be suspicious_source, irrelevant, unavailable, or outdated")
-
-    with ARTICLE_FEEDBACK_MUTATION_LOCK:
-        try:
-            data, _ = load_from_n8n()
-        except Exception as exc:
-            raise RuntimeError(f"n8n Data Tables are unavailable: {exc}") from exc
-        article = next(
-            (item for item in data.get("articles", []) if str(item.get("article_key") or "") == article_key),
-            None,
-        )
-        if article is None:
-            raise ValueError("The article no longer exists in the current Data Table")
-
-        capture_metadata = load_article_capture_metadata()
-        feedback = {
-            "articleKey": article_key,
-            "articleUrl": str(article.get("url") or "").strip(),
-            "decision": decision,
-            "reasonCode": reason_code if decision == "rejected" else "approved",
-            "sourceDomain": source_domain_for_article(article, capture_metadata)
-            if decision == "rejected" and reason_code == "suspicious_source"
-            else "",
-            "publisherLabel": article_publisher_label(article)
-            if decision == "rejected" and reason_code == "suspicious_source"
-            else "",
-            "titleSignature": canonical_article_title(article.get("title"))
-            if decision == "rejected" and reason_code == "irrelevant"
-            else "",
-            "source": "talent-dashboard",
-        }
-        result = call_article_feedback_webhook(feedback)
-        instruction_path = write_article_feedback_instruction()
-        result["feedbackInstructionFile"] = str(instruction_path.relative_to(PROJECT_ROOT))
-        return result
+    return feedback_service.evaluate_article(payload, PROJECT_ROOT)
 
 
 def build_dashboard() -> dict[str, Any]:

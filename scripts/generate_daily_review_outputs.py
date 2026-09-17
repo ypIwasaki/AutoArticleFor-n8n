@@ -107,11 +107,9 @@ def load_capture_state() -> dict[str, dict[str, Any]]:
 
 
 def load_existing_talents() -> list[dict[str, Any]]:
-    dashboard = ROOT / "apps" / "talent-dashboard"
-    sys.path.insert(0, str(dashboard))
-    import server  # type: ignore
+    from talent_dashboard_data import load_dashboard_records
 
-    payload, _ = server.load_from_n8n()
+    payload, _ = load_dashboard_records(ROOT)
     return [dict(row) for row in payload.get("talents", [])]
 
 

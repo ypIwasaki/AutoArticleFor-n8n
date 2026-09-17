@@ -548,29 +548,67 @@ def additional(root, day, task, ref, kind='body', offset=0, maximum=1000, ids=No
         )
 
 
-def expand_review(c,day,authored):
-    if 'ref' not in authored:return authored
-    raw=dict(authored);ref=raw.pop('ref')
-    mapping,article,capture,_=resolve(c,ref,day)
-    if completed(c,mapping['articleId'],mapping['task']):raise ValueError('Stage already saved')
-    for key,value in dict(url=article['url'],inputHash=shared.input_hash(article,capture),policyHash=mapping['policyHash'],reviewVersion=1).items():
-        if key in raw and raw[key]!=value:raise ValueError('Authored reference disagrees with source')
-        raw[key]=value
-    return raw
-def completion(unit,ref,day,task,artifact):
-    mapping,article,capture,record=resolve(unit.c,ref,day,task)
-    if not record or record['taskStatus'][task]!='ready':raise ValueError('Saved artifact requires reviewed ready evidence')
-    prior=completed(unit.c,mapping['articleId'],task)
-    if prior and prior.get('reviewId')==mapping['reviewId']:return
-    # New artifacts must still match the live source and rules.
-    _,rows,captures=project.Reader(unit.c).load_day(day,[])
-    matches=[r for r in rows if r['_project']['occurrenceId']==mapping['occurrenceId']]
-    if len(matches)!=1:raise ValueError('Source occurrence changed')
-    current=captures.get(article['url'])
-    shared.validate_record(record,matches[0]['article'],current,shared.policy_hash(unit.root))
-    value=dict(task=task,articleId=mapping['articleId'],reviewId=mapping['reviewId'],contentVersionId=mapping['contentVersionId'],
-               ref=ref,artifact=artifact,state='saved')
-    save_history(unit,'ai-stage-completion',value,mapping['articleId'])
+def expand_review(c, day, authored):
+    """Fill source fields from the reference without changing authored facts."""
+    if 'ref' not in authored:
+        return authored
+    expanded = dict(authored)
+    reference = expanded.pop('ref')
+    mapping, article, capture, _ = resolve(c, reference, day)
+    if completed(c, mapping['articleId'], mapping['task']):
+        raise ValueError('Stage already saved')
+
+    source_fields = dict(
+        url=article['url'],
+        inputHash=shared.input_hash(article, capture),
+        policyHash=mapping['policyHash'],
+        reviewVersion=1,
+    )
+    for field, expected_value in source_fields.items():
+        if field in expanded and expanded[field] != expected_value:
+            raise ValueError('Authored reference disagrees with source')
+        expanded[field] = expected_value
+    return expanded
+
+
+def _validate_current_completion_inputs(unit, day, mapping, article, review):
+    """Require new completion records to match the current source and rules."""
+    _, occurrences, captures = project.Reader(unit.c).load_day(day, [])
+    matching_occurrences = [
+        occurrence for occurrence in occurrences
+        if occurrence['_project']['occurrenceId'] == mapping['occurrenceId']
+    ]
+    if len(matching_occurrences) != 1:
+        raise ValueError('Source occurrence changed')
+    current_article = matching_occurrences[0]['article']
+    current_capture = captures.get(article['url'])
+    shared.validate_record(
+        review, current_article, current_capture, shared.policy_hash(unit.root),
+    )
+
+
+def completion(unit, ref, day, task, artifact):
+    """Record completion after reviewed evidence and current inputs agree."""
+    mapping, article, capture, review = resolve(unit.c, ref, day, task)
+    if not review or review['taskStatus'][task] != 'ready':
+        raise ValueError('Saved artifact requires reviewed ready evidence')
+
+    prior_completion = completed(unit.c, mapping['articleId'], task)
+    if prior_completion and prior_completion.get('reviewId') == mapping['reviewId']:
+        return
+    _validate_current_completion_inputs(unit, day, mapping, article, review)
+    receipt = dict(
+        task=task,
+        articleId=mapping['articleId'],
+        reviewId=mapping['reviewId'],
+        contentVersionId=mapping['contentVersionId'],
+        ref=ref,
+        artifact=artifact,
+        state='saved',
+    )
+    save_history(unit, 'ai-stage-completion', receipt, mapping['articleId'])
+
+
 def expand_artifact(unit,request):
     """Explicit reviewed refs only; empty proposal is never blanket completion."""
     request=dict(request)

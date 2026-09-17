@@ -383,5 +383,32 @@
     "scripts/start_n8n_with_file_access.sh",
     "scripts/start_talent_dashboard.sh",
     "pre-existing content artifacts and ordinary business output changes"
-  ]
+  ],
+  "postCompletionStorageCleanup": {
+    "completedAt": "2026-09-17T07:02:36.725575+00:00",
+    "status": "completed",
+    "removedExternalRoot": "D:/N8N",
+    "removedLinks": [
+      "data/backups",
+      ".operation-state/database",
+      ".operation-state/database-consolidation",
+      ".operation-state/database-phase3",
+      ".operation-state/database-phase4",
+      ".operation-state/database-phase5",
+      ".operation-state/database-phase5-resume",
+      ".operation-state/database-phase5-decisions"
+    ],
+    "localDirectory": ".operation-state/database",
+    "preservedOrigins": [
+      {
+        "id": "0b219d4d4d07adfcf21834d9af395554eaa99894bbe005fe45ded1cf6d0c4d46",
+        "path": ".operation-state/database/identity-origins/0b219d4d4d07adfcf21834d9af395554eaa99894bbe005fe45ded1cf6d0c4d46",
+        "fileCount": 101,
+        "bytes": 589020204
+      }
+    ],
+    "validation": "registered manifest SHA256 and each copied file size; no whole database replay or full-content comparison",
+    "productionDatabaseModified": false,
+    "backupRecreated": false
+  }
 }

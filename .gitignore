@@ -239,3 +239,5 @@ content/article-review-backfill*.log
 # Project DB recovery copies (may include article bodies)
 /data/backups
 data/autoarticle.sqlite-journal
+# Runtime lock for serialized DB-first compatibility delivery
+data/autoarticle.write.lock

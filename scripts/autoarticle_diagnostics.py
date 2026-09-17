@@ -61,10 +61,12 @@ def preflight(ops, kind):
             details["executions"] = [{key: row.get(key) for key in ("id", "status", "startedAt")} for row in sorted(rows, key=lambda r: r.get("startedAt") or "", reverse=True)[:3]]
             if running:
                 checks.append({"check": "running_execution", "status": "blocked", "reason": "workflow_already_running"})
-            elif kind == "collect" and (len(rows) > 1 or (rows and rows[0].get("status") != "success")):
-                checks.append({"check": "existing_execution", "status": "blocked", "reason": "existing_execution_requires_review"})
             elif kind == "collect" and rows:
-                details["nextAction"] = "collect_reconciles_existing_success_without_resubmitting"
+                try:
+                    n8n.collection_success(rows, p.load()['steps'].get('collect', {}))
+                    details["nextAction"] = "collect_reconciles_existing_success_without_resubmitting"
+                except Blocked as error:
+                    checks.append({"check": "existing_execution", "status": "blocked", "reason": str(error)})
     saved = check("operation_evidence", p.load)
     if kind == "collect":
         def keyword_config():

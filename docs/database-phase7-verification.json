@@ -1,0 +1,521 @@
+{
+  "phase": 7,
+  "status": "complete_representative_acceptance",
+  "complete": true,
+  "phase6_commit": "ca10368db63edf249b1ff8c82fce0c939e42b075",
+  "started_at": "2026-09-17T00:31:00Z",
+  "gate": {
+    "observed_at": "2026-09-17T01:17:44.729908+00:00",
+    "processes": [],
+    "unfinished_executions": []
+  },
+  "recovery": "/mnt/d/N8N/backups/phase7-before-20260917T004938Z",
+  "before": {
+    "schema": [
+      {
+        "version": "001",
+        "checksum": "a14af4234486e082b7dabb915c19bb2fd6325537fa719c3e397d9d6dab5d8473"
+      },
+      {
+        "version": "002",
+        "checksum": "27b21c2b31eac2307efd873edb247456cbf3097cfe2ae1614411845e05a92d4b"
+      },
+      {
+        "version": "003",
+        "checksum": "d2d7410b6ad5e336c170b7a2a1f993baf663f468ba52bb44bd8ac9a39cdbf47e"
+      },
+      {
+        "version": "004",
+        "checksum": "a1ef3b3dd71100fd3049f640c4ad6abdf6e209beb03d1040a6935cab72099bb5"
+      },
+      {
+        "version": "005",
+        "checksum": "728d87b0d4f761a30101cd19f1b502005ccfb5ea1b02297030f4bdf55109d0fa"
+      },
+      {
+        "version": "006",
+        "checksum": "e312d6cbf591fac0f0fc0de33aa0d657196cc01230e18c6152ec4edb2fe2ee7d"
+      }
+    ],
+    "missing_body_count": 13,
+    "conflicts": 19567,
+    "routes": [
+      {
+        "feature": "comparison",
+        "read_source": "project-db",
+        "write_target": "legacy",
+        "changed_at": "2026-09-17T00:11:45.625533Z",
+        "rollback_state": "verified"
+      },
+      {
+        "feature": "dashboard",
+        "read_source": "project-db",
+        "write_target": "legacy",
+        "changed_at": "2026-09-17T00:13:17.220001Z",
+        "rollback_state": "verified"
+      },
+      {
+        "feature": "weekly",
+        "read_source": "project-db",
+        "write_target": "legacy",
+        "changed_at": "2026-09-17T00:13:47.549344Z",
+        "rollback_state": "verified"
+      },
+      {
+        "feature": "ai-reader",
+        "read_source": "project-db",
+        "write_target": "legacy",
+        "changed_at": "2026-09-17T00:14:13.586288Z",
+        "rollback_state": "verified"
+      },
+      {
+        "feature": "n8n-daily",
+        "read_source": "project-db",
+        "write_target": "legacy",
+        "changed_at": "2026-09-17T00:18:39.961321Z",
+        "rollback_state": "verified"
+      }
+    ]
+  },
+  "migration": {
+    "applied": [
+      "007"
+    ]
+  },
+  "tests": {
+    "unique_patterns_passed": 13,
+    "failures": 0,
+    "errors": 0,
+    "source": "tests/test_project_write_outbox.py",
+    "report": "/mnt/d/N8N/database/phase7-write-cutover-20260917/test-results.json",
+    "details": "/mnt/d/N8N/database/phase7-write-cutover-20260917/test-results.txt",
+    "compile": "passed",
+    "git_diff_check": "passed",
+    "actual_structured_node_fixture": "passed",
+    "full_historical_comparisons": false
+  },
+  "normal_operations": [
+    {
+      "business_operation": "collection:2026-09-17",
+      "execution_id": 183,
+      "status": "error",
+      "node": "Read RSS Search Results",
+      "reason": "read ETIMEDOUT",
+      "item_index": 150,
+      "started_at": "2026-09-17 01:51:04.274",
+      "stopped_at": "2026-09-17 01:52:54.622",
+      "db_write_node_reached": false,
+      "db_write_requests": 0,
+      "compatibility_deliveries": 0,
+      "saved_collection_runs": 0,
+      "successful_normal_operation_count": 0,
+      "blind_retry_performed": false,
+      "evidence": "/mnt/d/N8N/database/phase7-write-cutover-20260917/failed-collection-183-summary.json",
+      "preserved_execution": "/mnt/d/N8N/database/phase7-write-cutover-20260917/failed-execution-183.json"
+    },
+    {
+      "business_operation": "collection:2026-09-17",
+      "execution_id": 184,
+      "retry_of": 183,
+      "status": "success",
+      "articles": 525,
+      "db_operation_id": "db-collect-UHJ4LW3Oswhpj4zV-184",
+      "new_business_operation": false,
+      "successful_normal_operation_count": 1
+    }
+  ],
+  "remaining": [],
+  "phase8_started": false,
+  "updated_at": "2026-09-17T02:29:36.241384+00:00",
+  "routes_after": [
+    {
+      "feature": "comparison",
+      "read_source": "project-db",
+      "write_target": "legacy",
+      "changed_at": "2026-09-17T00:11:45.625533Z",
+      "rollback_state": "verified"
+    },
+    {
+      "feature": "dashboard",
+      "read_source": "project-db",
+      "write_target": "project-db",
+      "changed_at": "2026-09-17T02:14:39.051340Z",
+      "rollback_state": "verified"
+    },
+    {
+      "feature": "weekly",
+      "read_source": "project-db",
+      "write_target": "legacy",
+      "changed_at": "2026-09-17T00:13:47.549344Z",
+      "rollback_state": "verified"
+    },
+    {
+      "feature": "ai-reader",
+      "read_source": "project-db",
+      "write_target": "project-db",
+      "changed_at": "2026-09-17T02:14:39.001127Z",
+      "rollback_state": "verified"
+    },
+    {
+      "feature": "n8n-daily",
+      "read_source": "project-db",
+      "write_target": "project-db",
+      "changed_at": "2026-09-17T02:14:38.949886Z",
+      "rollback_state": "verified"
+    }
+  ],
+  "production_state": {
+    "project_write_requests": 1,
+    "compatibility_deliveries": 1,
+    "pending_deliveries": 0,
+    "missing_body_count": 13,
+    "conflicts": 20092,
+    "schema_versions": [
+      "001",
+      "002",
+      "003",
+      "004",
+      "005",
+      "006",
+      "007"
+    ],
+    "n8n_last_execution": 184,
+    "n8n_last_status": "success",
+    "n8n_unfinished": 0,
+    "ordinary_business_successes": 1,
+    "db_operation_id": "db-collect-UHJ4LW3Oswhpj4zV-184",
+    "routes": "business writes project-db; legacy compatibility after commit"
+  },
+  "approval_review": {
+    "rejected_action": "Persistently change n8n-daily, ai-reader and dashboard write_target to project-db",
+    "reason": "Automatic approval review requires explicit authorization for production write routing beyond the phase-start request.",
+    "action_executed": false,
+    "n8n_start_executed": false,
+    "ordinary_collection_executed": false
+  },
+  "workflow_state": {
+    "prepared_deployment": "/mnt/d/N8N/database/phase7-write-cutover-20260917/deployment-result.json",
+    "published_versions_restored": "/mnt/d/N8N/database/phase7-write-cutover-20260917/approval-wait-published-versions.json",
+    "new_versions_retained": true,
+    "n8n_server_running": true,
+    "dashboard_restarted": true,
+    "phase7_versions_published": true,
+    "rollback_evidence": "/mnt/d/N8N/database/phase7-write-cutover-20260917/rss-failure-rollback.json"
+  },
+  "preserved": {
+    "legacy_business_data": true,
+    "missing_body_13": true,
+    "existing_recovery_points": true,
+    "applied_migrations_001_006": true,
+    "unrelated_user_changes": true,
+    "startup_script_mode_differences_excluded": true
+  },
+  "phase7_completion_commit_created": true,
+  "explicit_cutover_approval": {
+    "approved_at": "2026-09-17T01:49:42.339632+00:00",
+    "authorization": "User explicitly approved the three production DB-first write routes, prepared workflow activation, n8n startup and one ordinary collection.",
+    "inputs": [
+      {
+        "path": "content/article-body-captures/backfill-state.json",
+        "sha256": "e3b1279a4669ea717f7f8e009e300e8e654c1f2d83d9df171680df6a9c8b5728",
+        "unchanged": true
+      },
+      {
+        "path": "content/article-body-captures/rate-limit-state.json",
+        "sha256": "68922f78c81b04b16c70e2a61a1395a773dbc47fa317d4a6529214b9d78c6be8",
+        "unchanged": true
+      },
+      {
+        "path": "content/structured-records/2026-09-16.jsonl",
+        "sha256": "ec715895853709efa9db8572b319f6fb2556eb02557681c2f28e7530463d086f",
+        "unchanged": true
+      },
+      {
+        "path": "content/article-body-captures/2026-09-16.jsonl",
+        "sha256": "751bf2f806430f9840fecf957d4ec64c789c4db9381c4264f35f17c797e2bf83",
+        "unchanged": true
+      },
+      {
+        "path": "content/article-review-facts/2026-09-16.jsonl",
+        "sha256": "d540675b55e633d79cc860872e5967a54e1d6404f703aa497839daa78be622da",
+        "unchanged": true
+      },
+      {
+        "path": "content/article-summaries/2026-09-16.md",
+        "sha256": "cfc88e69ff8d58da916e2aba4edcf3806f44c443334225df15f16b82a623af05",
+        "unchanged": true
+      }
+    ],
+    "idle": {
+      "observed_at": "2026-09-17T01:49:42.463032+00:00",
+      "processes": [],
+      "unfinished_executions": []
+    }
+  },
+  "activation": {
+    "activated_at": "2026-09-17T01:49:50.502650+00:00",
+    "evidence": "/mnt/d/N8N/database/phase7-write-cutover-20260917/approved-activation.json",
+    "published_versions": [
+      {
+        "file": "daily-keyword-news-summary.workflow.json",
+        "id": "UHJ4LW3Oswhpj4zV",
+        "old_version": "7ad8303e-909e-4bdc-a602-85675f71a6db",
+        "was_active": true,
+        "version": "b2303329-daa4-432a-b8ee-4c5e0a06fabb",
+        "definition_equal": true
+      },
+      {
+        "file": "apply-talent-index-proposal.workflow.json",
+        "id": "wdoTTKnHJ2r4ODlx",
+        "old_version": "a9659bd8-08c7-4883-8e53-cdcd3daee994",
+        "was_active": true,
+        "version": "abe7f4f3-e1a1-4c39-9f1c-8f4924497135",
+        "definition_equal": true
+      },
+      {
+        "file": "apply-article-classification-proposal.workflow.json",
+        "id": "oaE1yyeE7iHlSjXg",
+        "old_version": "b06303e4-97a3-443a-8d4a-5b33835d59c6",
+        "was_active": true,
+        "version": "56e76742-a626-48de-a124-5abe29128814",
+        "definition_equal": true
+      },
+      {
+        "file": "apply-article-feedback.workflow.json",
+        "id": "joeIHOKXPPqBkSS9",
+        "old_version": "d937f354-ef6a-4133-bea3-a113a6b1b720",
+        "was_active": true,
+        "version": "11eb885d-9947-4ea3-a677-8ac7a5ae495d",
+        "definition_equal": true
+      }
+    ]
+  },
+  "rollback_after_failed_collection": {
+    "rolled_back_at": "2026-09-17T01:57:18.392422+00:00",
+    "reason": "Ordinary collection failed before DB write at RSS timeout; phase7 normal acceptance remains incomplete.",
+    "routes": [
+      {
+        "feature": "comparison",
+        "read_source": "project-db",
+        "write_target": "legacy",
+        "changed_at": "2026-09-17T00:11:45.625533Z",
+        "rollback_state": "verified"
+      },
+      {
+        "feature": "dashboard",
+        "read_source": "project-db",
+        "write_target": "legacy",
+        "changed_at": "2026-09-17T01:57:18.376524Z",
+        "rollback_state": "rolled-back"
+      },
+      {
+        "feature": "weekly",
+        "read_source": "project-db",
+        "write_target": "legacy",
+        "changed_at": "2026-09-17T00:13:47.549344Z",
+        "rollback_state": "verified"
+      },
+      {
+        "feature": "ai-reader",
+        "read_source": "project-db",
+        "write_target": "legacy",
+        "changed_at": "2026-09-17T01:57:18.325779Z",
+        "rollback_state": "rolled-back"
+      },
+      {
+        "feature": "n8n-daily",
+        "read_source": "project-db",
+        "write_target": "legacy",
+        "changed_at": "2026-09-17T01:57:18.270839Z",
+        "rollback_state": "rolled-back"
+      }
+    ],
+    "n8n_running": false,
+    "db_service_running": false,
+    "new_business_data_lost": 0,
+    "prepared_versions_retained": true,
+    "failed_execution_retained": 183
+  },
+  "rss_recovery": {
+    "authorization": "User requested timeout prevention and resumption on 2026-09-17",
+    "deployment": "/mnt/d/N8N/database/phase7-write-cutover-20260917/rss-recovery-deployment.json",
+    "workflow_version": "9546ded7-7ab1-49c8-af00-ea843972f61d",
+    "read_timeout_ms": 60000,
+    "batch_size": 1,
+    "attempts_per_feed": 3,
+    "wait_between_attempts_ms": 5000,
+    "skip_failed_feeds": false,
+    "retry_parent": 183,
+    "tests": {
+      "collection_recovery": {
+        "passed": 7
+      },
+      "existing_diagnostics": {
+        "passed": 10
+      },
+      "existing_operations": {
+        "passed": 39
+      }
+    },
+    "startup_observation": "An initial read-only API check returned HTTP 404 during startup; the same read-only check then passed. No POST was sent before readiness.",
+    "execution_id": 184,
+    "status": "success"
+  },
+  "acceptance": {
+    "observed_at": "2026-09-17T02:28:20.891579+00:00",
+    "operation_id": "db-collect-UHJ4LW3Oswhpj4zV-184",
+    "execution_id": 184,
+    "retry_of": 183,
+    "normal_business_operations": 1,
+    "counts": {
+      "articles": 525,
+      "new_business_rows": 2627,
+      "updated_business_rows": 0,
+      "identity_held": 525,
+      "missing_body": 13,
+      "all_conflicts": 20092
+    },
+    "request_hash": "502bc1c9a387e2c2c82f63fad801c8606c6a27026b6b54584f869441736e83ba",
+    "destination": "/home/raimu/N8N/AutoArticleFor-n8n/data/autoarticle.sqlite",
+    "compatibility": "complete",
+    "pending_deliveries": 0,
+    "business_audit": [
+      {
+        "entity": "article",
+        "rows": 525
+      },
+      {
+        "entity": "collection",
+        "rows": 1
+      },
+      {
+        "entity": "conflict",
+        "rows": 525
+      },
+      {
+        "entity": "occurrence",
+        "rows": 525
+      },
+      {
+        "entity": "provenance",
+        "rows": 525
+      },
+      {
+        "entity": "sourceRecord",
+        "rows": 526
+      }
+    ],
+    "representative": {
+      "source": "content/structured-records/2026-09-17.jsonl",
+      "position": "line:2",
+      "source_record_id": "93ed8aac-14a3-5997-acf9-49f4d194205c",
+      "occurrence_id": "6309b266-78cd-5e4f-98cf-ea3912c86bd9",
+      "article_id": "b67927ff-5987-56ac-aa65-147ff45bb2a3",
+      "input_hash": "3d08eda4746780d60aec780324d7fd32419f630967638f6e05859ca6fea85b24",
+      "raw_record_matches": true,
+      "title_url_match": true,
+      "reader_matches": true,
+      "identity_state": "held",
+      "reason": "observation_identity_not_proven"
+    },
+    "preserved_missing_body_representative": {
+      "id": "0bd8296b-c482-5c4b-a5d2-6335d7f6871e",
+      "equals_pre_cutover_backup": true,
+      "version_id": null,
+      "status": "unverified"
+    },
+    "rss": {
+      "requested_feeds": 787,
+      "successful_feed_executions": 787,
+      "loop_executions": 788,
+      "failed_node_results": 0
+    },
+    "routes": [
+      {
+        "feature": "comparison",
+        "read_source": "project-db",
+        "write_target": "legacy",
+        "changed_at": "2026-09-17T00:11:45.625533Z",
+        "rollback_state": "verified"
+      },
+      {
+        "feature": "dashboard",
+        "read_source": "project-db",
+        "write_target": "project-db",
+        "changed_at": "2026-09-17T02:14:39.051340Z",
+        "rollback_state": "verified"
+      },
+      {
+        "feature": "weekly",
+        "read_source": "project-db",
+        "write_target": "legacy",
+        "changed_at": "2026-09-17T00:13:47.549344Z",
+        "rollback_state": "verified"
+      },
+      {
+        "feature": "ai-reader",
+        "read_source": "project-db",
+        "write_target": "project-db",
+        "changed_at": "2026-09-17T02:14:39.001127Z",
+        "rollback_state": "verified"
+      },
+      {
+        "feature": "n8n-daily",
+        "read_source": "project-db",
+        "write_target": "project-db",
+        "changed_at": "2026-09-17T02:14:38.949886Z",
+        "rollback_state": "verified"
+      }
+    ],
+    "foreign_key_violations": 0,
+    "collection_completed": true,
+    "article_review_performed": false,
+    "read_warnings": [
+      "2026-09-17: body-capture file is missing; articles are not_captured, not unavailable"
+    ],
+    "existing_isolated_transaction_restore_rollback_tests_reused": true
+  },
+  "completed_at": "2026-09-17T02:29:36.241384+00:00",
+  "production_state_before_rss_recovery": {
+    "project_write_requests": 0,
+    "compatibility_deliveries": 0,
+    "missing_body_count": 13,
+    "conflicts": 19567,
+    "schema_versions": [
+      "001",
+      "002",
+      "003",
+      "004",
+      "005",
+      "006",
+      "007"
+    ],
+    "sync_ids": [
+      "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+      "phase5-summary-20260916-v4"
+    ],
+    "n8n_last_execution": 183,
+    "n8n_unfinished": 0,
+    "related_business_inputs_unchanged": true,
+    "migrations_001_006_unchanged": true,
+    "n8n_last_status": "error"
+  },
+  "completion_conditions": {
+    "representative_new_update_versions": true,
+    "replay_idempotency_and_conflict_rejection": true,
+    "transaction_rollback_and_same_id_resume": true,
+    "new_db_data_delivered_before_isolated_rollback": true,
+    "backup_restore_including_new_schema": true,
+    "ordinary_business_once": true,
+    "actual_destination_and_representative_values": true,
+    "pending_deliveries_zero": true,
+    "phase8_not_started": true,
+    "verification_scope": "Representative acceptance; existing 13-pattern isolation proof and unchanged recovery proof reused. No historical full-row revalidation."
+  },
+  "phase7_completion_commit_locator": "git log -1 --format=%H -- docs/database-phase7-verification.json",
+  "out_of_scope": [
+    "2026-09-17 article body review, summaries and editorial work",
+    "Phase8 stopping legacy compatibility output",
+    "Deleting legacy data, automatic identity merging, promoting held records, AI input minimization"
+  ]
+}

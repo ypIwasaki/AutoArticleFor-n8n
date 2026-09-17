@@ -533,11 +533,16 @@ def main() -> int:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     proposal_dir = OUTPUT_DIR / "proposals"
     proposal_dir.mkdir(parents=True, exist_ok=True)
-    (OUTPUT_DIR / f"{report_date}.json").write_text(json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (proposal_dir / f"{report_date}.json").write_text(json.dumps(proposal, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    (OUTPUT_DIR / f"{report_date}.md").write_text(
-        build_report(report_date, generated_at, groups, roster, inserted, updated, unmatched_existing), encoding="utf-8"
-    )
+    markdown=build_report(report_date, generated_at, groups, roster, inserted, updated, unmatched_existing)
+    import project_business_writes as business
+    import project_database as project_db
+    if business.route('ai-reader')=='project-db':
+        packet={'documents':[dict(day=report_date,directory=directory,document=document,**extra) for directory,document,extra in [('official-talent-registry',snapshot,{'markdown':markdown}),('official-talent-registry/proposals',proposal,{})]]}
+        business.submit('db-registry-document-'+project_db.checksum(project_db.canonical(packet).encode()),'documents',packet)
+    else:
+        (OUTPUT_DIR / f"{report_date}.json").write_text(json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        (proposal_dir / f"{report_date}.json").write_text(json.dumps(proposal, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        (OUTPUT_DIR / f"{report_date}.md").write_text(markdown,encoding="utf-8")
 
     summary = {
         "date": report_date,

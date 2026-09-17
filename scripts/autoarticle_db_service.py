@@ -7,7 +7,7 @@ import os
 from urllib.parse import urlsplit, unquote
 import project_database as db
 
-MAX_BODY = 1024 * 1024
+MAX_BODY = 8 * 1024 * 1024
 
 def configuration():
     token=os.environ.get('AUTOARTICLE_DB_SERVICE_TOKEN','')
@@ -56,6 +56,10 @@ class Handler(BaseHTTPRequestHandler):
             if path in ('/v1/read/talents', '/v1/read/article_feedback'):
                 from project_readers import service_rows
                 return self.send(200,service_rows(path.rsplit('/',1)[-1],self.server.database))
+            if path.startswith('/v1/write-status/'):
+                from project_write_outbox import status
+                result=status(unquote(path[len('/v1/write-status/'):]),self.server.database)
+                return self.send(200 if result else 404,result or dict(error='not_found'))
             if path.startswith('/v1/articles/'):
                 article_id=unquote(path[len('/v1/articles/'):])
                 c=db.connect(self.server.database,readonly=True)
@@ -76,7 +80,7 @@ class Handler(BaseHTTPRequestHandler):
         if not self.authorized(): return
         path=urlsplit(self.path).path
         operation=path[len('/v1/'):] if path.startswith('/v1/') else ''
-        if operation not in db.OPERATIONS: return self.send(404,dict(error='not_found'))
+        if operation not in db.OPERATIONS and operation not in ('write/collection','write/talent','write/classification','write/feedback'): return self.send(404,dict(error='not_found'))
         if self.headers.get('Transfer-Encoding') or len(self.headers.get_all('Content-Length',[]))!=1:
             return self.send(400,dict(error='invalid_length'))
         try:
@@ -89,8 +93,16 @@ class Handler(BaseHTTPRequestHandler):
             raw=self.rfile.read(size)
             if len(raw)!=size: raise ValueError('incomplete body')
             payload=json.loads(raw)
-            if not isinstance(payload,dict) or set(payload)!={'operationId','records'}: raise ValueError('invalid payload')
-            result=db.save_operation(operation,payload['operationId'],payload['records'],self.server.database)
+            expected={'operationId','payload'} if operation in ('write/talent','write/classification','write/feedback') else {'operationId','records'}
+            if not isinstance(payload,dict) or set(payload)!=expected: raise ValueError('invalid payload')
+            if operation=='write/collection':
+                from project_business_writes import submit_collection
+                result=submit_collection(payload['operationId'],payload['records'],self.server.database)
+            elif operation.startswith('write/'):
+                from project_business_writes import submit
+                result=submit(payload['operationId'],operation.split('/')[1],payload['payload'],self.server.database)
+            else:
+                result=db.save_operation(operation,payload['operationId'],payload['records'],self.server.database)
             self.send(200,result)
         except db.Conflict:
             self.send(409,dict(error='operation_conflict'))

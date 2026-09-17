@@ -38,6 +38,16 @@ def save_reviews(root: Path, run_date: str, payload, check_only: bool = False) -
         validated.append(saved)
     relative = f'{shared.DIRECTORY}/{run_date}.jsonl'
     if not check_only and validated:
+        import project_readers
+        import project_business_writes as business
+        database=project_readers.path_for(root)
+        if database.exists() and business.route('ai-reader',database)=='project-db':
+            # The original authored packet determines the ID; server-assigned save
+            # times are created once inside the successful business transaction.
+            import project_database as db
+            operation='db-review-'+db.checksum(db.canonical(dict(day=run_date,records=rows)).encode())
+            result=business.submit(operation,'reviews',dict(day=run_date,records=rows),database,root)
+            return dict(checked=len(validated),saved=len(validated),checkOnly=False,path=relative,warnings=warnings,**result)
         shared.atomic_merge(root / relative, validated)
     return {'checked': len(validated), 'saved': 0 if check_only else len(validated),
             'checkOnly': check_only, 'path': relative, 'warnings': warnings}

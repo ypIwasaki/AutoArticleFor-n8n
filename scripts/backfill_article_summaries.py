@@ -547,6 +547,9 @@ def main() -> int:
     parser.add_argument("--sleep", type=float, default=0.15, help="Pause between articles in seconds (default: 0.15)")
     parser.add_argument("--write", action="store_true", help="Overwrite daily Markdown only after all stored articles have a result")
     args = parser.parse_args()
+    import project_business_writes as business
+    if business.route('ai-reader')=='project-db':
+        raise SystemExit('DB-first writes are enabled. Use capture_article_contents.py and save_project_artifact.py; this legacy backfill writer is not a DB-first operation.')
 
     if args.limit is not None and args.limit < 1:
         parser.error("--limit must be at least 1")

@@ -609,10 +609,16 @@ def main() -> int:
     validate(talent_payload, classification_payload)
     talent_base = CONTENT / "talent-index-proposals" / args.run_date
     classification_base = CONTENT / "article-classification-proposals" / args.run_date
-    write_json(talent_base.with_suffix(".json"), talent_payload)
-    write_markdown(talent_base.with_suffix(".md"), talent_markdown)
-    write_json(classification_base.with_suffix(".json"), classification_payload)
-    write_markdown(classification_base.with_suffix(".md"), classification_markdown)
+    import project_business_writes as business
+    import project_database as db
+    if business.route('ai-reader')=='project-db':
+        payload={'documents':[dict(day=args.run_date,directory=directory,document=document,markdown=markdown) for directory,document,markdown in [('talent-index-proposals',talent_payload,talent_markdown),('article-classification-proposals',classification_payload,classification_markdown)]]}
+        business.submit('db-proposals-'+db.checksum(db.canonical(payload).encode()),'documents',payload)
+    else:
+        write_json(talent_base.with_suffix(".json"), talent_payload)
+        write_markdown(talent_base.with_suffix(".md"), talent_markdown)
+        write_json(classification_base.with_suffix(".json"), classification_payload)
+        write_markdown(classification_base.with_suffix(".md"), classification_markdown)
     print(
         f"articles={len(articles)} talents={len(talent_payload['talents'])} "
         f"relations={len(talent_payload['articleTalents'])} classifications={len(classification_payload['classifications'])}"

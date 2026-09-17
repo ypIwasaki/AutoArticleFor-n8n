@@ -143,23 +143,25 @@ class Operations:
         result["resumePolicy"] = "recheck_before_skip; unknown submissions are never retried"
         return result
 
-    def collect(self):
+    def collect(self, retry_failed_execution=None):
         self.active_step = "collect"
         p = self.progress
         if p.date != today():
             raise Blocked("collection_only_supports_today_jst")
+        if retry_failed_execution is not None:
+            return self.retry_collection(retry_failed_execution)
         workflow, _ = self.workflow("collect", require=True)
         rows, running = n8n.executions(self.client, workflow["id"], p.date)
         if running:
             raise Blocked("collection_already_running")
         if rows:
-            if len(rows) != 1 or rows[0].get("status") != "success":
-                raise Blocked("existing_execution_requires_review")
             old = p.load()["steps"].get("collect")
+            execution_id = n8n.collection_success(rows, old or {})
             if old and old.get("status") == "completed" and not p.current(old):
                 raise Blocked("collection_outputs_changed_requires_review")
-            files, count = self.verify_collection(rows[0]["id"])
-            p.record("collect", "completed", files=files, executionId=str(rows[0]["id"]), articles=count)
+            files, count = self.verify_collection(execution_id)
+            p.record("collect", "completed", files=files, executionId=str(execution_id), articles=count,
+                     **({'retryOf':old['retryOf']} if old and old.get('retryOf') else {}))
             return {"step": "collect", "status": "reused", "articles": count}
         if "collect" in p.load()["steps"] or any(p.path(path).exists() for path in p.generated().values() if p.date in path):
             raise Blocked("existing_collection_evidence_requires_review")
@@ -177,6 +179,31 @@ class Operations:
         files, count = self.verify_collection(rows[0]["id"])
         p.record("collect", "completed", files=files, executionId=str(rows[0]["id"]), articles=count, webhookResponseVerified=response_verified)
         return {"step": "collect", "status": "completed", "articles": count, "verification": "execution_and_files", "webhookResponseVerified": response_verified}
+
+    def retry_collection(self, execution_id):
+        p = self.progress
+        checked = n8n.collection_retry_preflight(self, execution_id)
+        if checked['status'] == 'already_succeeded':
+            actual_id = checked['executionId']
+        else:
+            # Durable intent precedes the single official retry POST. A lost reply
+            # can only be reconciled from retryOf; this intent is never deleted.
+            p.record('collect','submission_unknown',files={},workflowId=checked['workflowId'],
+                     retryOf=str(execution_id),retryReason='explicitly_requested_pre_save_rss_recovery')
+            response = self.client.request('/executions/'+str(execution_id)+'/retry',
+                                           {'loadWorkflow':True},api=True,timeout=3600)
+            actual_id = str(response['id'])
+            if str(response.get('retryOf')) != str(execution_id):
+                raise Blocked('collection_retry_response_mismatch')
+        workflow, _ = self.workflow('collect',require=True)
+        rows, running = n8n.executions(self.client,workflow['id'],p.date)
+        if running:
+            raise Blocked('collection_retry_still_running_do_not_resubmit')
+        n8n.collection_success(rows,{'retryOf':str(execution_id),'executionId':actual_id})
+        files, count = self.verify_collection(actual_id)
+        p.record('collect','completed',files=files,executionId=actual_id,retryOf=str(execution_id),articles=count)
+        return {'step':'collect','status':'completed','executionId':actual_id,'retryOf':str(execution_id),
+                'articles':count,'verification':'linked_execution_and_files','normalBusinessOperations':1}
 
     def validate_artifact(self, step):
         def existing():
@@ -306,14 +333,17 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--date", help="Target collection date (JST); default today")
     subs = parser.add_subparsers(dest="command", required=True)
-    for command in ("status", "resume", "collect"):
+    for command in ("status", "resume"):
         subs.add_parser(command)
+    collect = subs.add_parser('collect')
+    collect.add_argument('--retry-failed-execution',help='Explicitly resume a proven pre-save RSS failure using n8n retryOf; never blindly resubmit')
     entry = subs.add_parser("brief", help="Build fresh operation entry information without chat or diagnostic history")
     entry.add_argument("--scope", choices=tuple(brief.SCOPES), required=True)
     entry.add_argument("--save", action="store_true", help="Save a reference snapshot; never reusable authorization")
     validate = subs.add_parser("validate", help="Validate saved artifacts before proceeding; no completion or DB writes")
     validate.add_argument("step", choices=artifacts.STEPS)
     preflight = subs.add_parser("preflight", help="Read-only connection, workflow and proposal readiness checks")
+    preflight.add_argument('--retry-failed-execution',help='Read-only pre-save RSS retry inspection')
     preflight.add_argument("--kind", choices=("collect", "talent", "classification", "dashboard", "all"), default="collect")
     diagnose = subs.add_parser("diagnose", help="Save bounded read-only diagnostic checks; never retry")
     diagnose.add_argument("--step", choices=ALL_STEPS, required=True)
@@ -345,7 +375,12 @@ def main(argv=None):
             result = ops.validate_artifact(args.step)
         elif args.command == "preflight":
             kinds = ("collect", "talent", "classification", "dashboard") if args.kind == "all" else (args.kind,)
-            checks = [diagnostics.preflight(ops, kind) for kind in kinds]
+            if args.retry_failed_execution:
+                if args.kind != 'collect':raise Blocked('retry_preflight_requires_collect')
+                check = n8n.collection_retry_preflight(ops,args.retry_failed_execution)
+                checks = [dict(check,kind='collect',ready=check['status'] in ('ready','already_succeeded'))]
+            else:
+                checks = [diagnostics.preflight(ops, kind) for kind in kinds]
             result = {"status": "ready" if all(check["ready"] for check in checks) else "not_ready", "checks": checks, "readOnly": True}
         elif args.command == "diagnose":
             result = diagnostics.diagnose(ops, args.step)
@@ -356,7 +391,7 @@ def main(argv=None):
                 if args.command == "start":
                     result = ops.start(args.service)
                 elif args.command == "collect":
-                    result = ops.collect()
+                    result = ops.collect(args.retry_failed_execution) if args.retry_failed_execution else ops.collect()
                 elif args.command == "apply":
                     result = ops.apply(args.kind)
                 else:

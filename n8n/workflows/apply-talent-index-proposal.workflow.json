@@ -172,7 +172,7 @@
     {
       "parameters": {
         "mode": "runOnceForAllItems",
-        "jsCode": "const proposal = $('Validate AI Proposal').first().json;\nreturn [{ json: { accepted: true, proposalDate: proposal.proposalDate, counts: proposal.counts } }];"
+        "jsCode": "if ($json.compatibility !== 'complete' || $json.accepted !== true) throw new Error('DB save or compatibility delivery incomplete');\nreturn [{json:$json}];"
       },
       "id": "f1c8b297-890b-40da-84d3-421ed35ce530",
       "name": "Build Apply Response",
@@ -197,6 +197,35 @@
         940,
         680
       ]
+    },
+    {
+      "id": "d5c4509c-0dc1-4fb3-8aca-7864178dbc37",
+      "name": "Save Talent to Project DB",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        900,
+        700
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.AUTOARTICLE_DB_SERVICE_URL + '/v1/write/talent' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ 'Bearer ' + $env.AUTOARTICLE_DB_SERVICE_TOKEN }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { operationId: 'db-talent-' + $workflow.id + '-' + $execution.id, payload: { proposal: ($('Apply Talent Index Proposal Webhook').first().json.body || $('Apply Talent Index Proposal Webhook').first().json) } } }}",
+        "options": {
+          "timeout": 120000
+        }
+      }
     }
   ],
   "connections": {
@@ -220,22 +249,7 @@
       "main": [
         [
           {
-            "node": "Prepare Proposed Articles",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Prepare Proposed Talents",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Prepare Proposed Relations",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "Build Apply Response",
+            "node": "Save Talent to Project DB",
             "type": "main",
             "index": 0
           }
@@ -299,6 +313,17 @@
     "Respond to Apply Request": {
       "main": [
         []
+      ]
+    },
+    "Save Talent to Project DB": {
+      "main": [
+        [
+          {
+            "node": "Build Apply Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     }
   },

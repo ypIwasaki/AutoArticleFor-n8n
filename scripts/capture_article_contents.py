@@ -15,7 +15,16 @@ RECORDS=ROOT/"content/structured-records"
 COLS=[{"name":n,"type":t} for n,t in [("article_key","string"),("original_url","string"),("resolved_url","string"),("source_domain","string"),("content_type","string"),("content_status","string"),("content_text","string"),("content_length","number"),("content_hash","string"),("extraction_method","string"),("failure_reason","string"),("content_path","string"),("fetched_at","date")]]
 SHORT={"t.co","bit.ly","tinyurl.com","ow.ly","buff.ly","is.gd"}; VIDEO={"youtube.com","youtu.be","tiktok.com","vimeo.com","twitch.tv"}; SOCIAL={"x.com","twitter.com","instagram.com","facebook.com","threads.net","bsky.app"}
 def now(): return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00","Z")
+def project_writes_enabled():
+ import project_business_writes as business
+ return business.route('ai-reader')=='project-db'
 def atomic_write_text(path,text):
+ if path==DIR/'rate-limit-state.json' and project_writes_enabled():
+  import project_business_writes as business
+  payload=dict(name='rate-limit-state.json',value=json.loads(text));operation='db-rate-'+hashlib.sha256(json.dumps(payload,sort_keys=True).encode()).hexdigest()
+  try:business.submit(operation,'runtime',payload)
+  except Exception:raise SystemExit('Runtime DB save incomplete; inspect/resume operation '+operation)
+  return
  path.parent.mkdir(parents=True,exist_ok=True);temporary=path.with_name(path.name+".tmp")
  temporary.write_text(text,encoding="utf8");temporary.replace(path)
 def host(u):
@@ -278,7 +287,19 @@ def main():
  print(f"articles={len(arts)} cached={len(e)} pending={len(todo)} resumed={len(completed_urls)}")
  processed_entries=[]
  for i,x in enumerate(todo,1):
-  e[x.url]=capture(x,keys.get(x.url,""),f,ca,old.load_keywords());archive_run(record_arts.values(),e);save(e,ca)
+  e[x.url]=capture(x,keys.get(x.url,""),f,ca,old.load_keywords())
+  if project_first:
+   import project_business_writes as business
+   entry=e[x.url];entry['content_path']='content/article-body-captures/'+x.run_date+'.jsonl'
+   record=archive_record(entry,x.url,entry.get('article_key') or hashlib.sha256(x.url.encode()).hexdigest())
+   record.update(contentHash=entry.get('content_hash',''),content_path=entry['content_path'])
+   if entry.get('retry_after') is not None:record['retry_after']=entry['retry_after']
+   payload=dict(day=x.run_date,record=record,cacheEntry=entry,syncContents=not a.no_sync_contents)
+   operation='db-capture-'+hashlib.sha256(json.dumps(payload,sort_keys=True,ensure_ascii=False).encode()).hexdigest()
+   try:business.submit(operation,'capture',payload)
+   except Exception:raise SystemExit('Capture DB save incomplete; inspect/resume operation '+operation)
+  else:
+   archive_run(record_arts.values(),e);save(e,ca)
   if not e[x.url].get("retry_after"):
    day_completed.add(x.url);global_completed.add(x.url);completed_urls.add(x.url)
   if a.progress_file:
@@ -290,11 +311,14 @@ def main():
   processed_entries.append({"status":e[x.url]["status"]})
   if a.verbose:print(f"[{i}/{len(todo)}] {e[x.url]['status']}: {x.title[:90]}",flush=True)
   elif i % 50 == 0:print(progress_line(i,len(todo),processed_entries),flush=True)
- archive_run(record_arts.values(),e) if a.run_date else archive(e);save(e,ca)
+ if not project_first:
+  archive_run(record_arts.values(),e) if a.run_date else archive(e);save(e,ca)
  if a.progress_file:
   day_progress.update(completedUrls=sorted(day_completed),complete=all(x.url in completed_urls for x in arts),updatedAt=now())
   progress["completedUrls"]=sorted(global_completed);save_progress(a.progress_file,progress)
- if a.write:write_new_summary_drafts(arts,e)
+ if a.write:
+  if project_first:old.SUMMARY_DIRECTORY=ROOT/'.operation-state/database/authoring/article-summaries'
+  write_new_summary_drafts(arts,e)
  print(progress_line(len(todo),len(todo),processed_entries),flush=True)
  waiting=[e[x.url]["retry_after"] for x in arts if e.get(x.url,{}).get("retry_after")]
  if waiting:print(json.dumps({"deferredByRateLimit":len(waiting),"nextRetryAt":datetime.fromtimestamp(min(waiting),timezone.utc).isoformat(),"resume":"rerun the same command at or after nextRetryAt; completed URLs stay cached"}),flush=True)

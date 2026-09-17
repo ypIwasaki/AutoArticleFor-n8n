@@ -4,6 +4,7 @@ from __future__ import annotations
 import base64
 import hashlib
 import json
+from contextlib import closing
 import re
 import socket
 import urllib.error
@@ -35,8 +36,9 @@ class Client:
 
     def request(self, path, body=None, api=False, timeout=None):
         # Execution detail includes every RSS item and node output. Keep the larger
-        # bounded allowance restricted to read-only, single-execution inspection.
-        limit = 256 * 1024 * 1024 if api and body is None and re.fullmatch(r"/executions/[^/?]+\?includeData=true", path) else 32 * 1024 * 1024
+        # bounded allowance restricted to single-execution inspection and the official
+        # retry response, which also includes full execution data.
+        limit = 256 * 1024 * 1024 if api and (body is None and re.fullmatch(r"/executions/[^/?]+\?includeData=true", path) or body is not None and re.fullmatch(r"/executions/[^/?]+/retry", path)) else 32 * 1024 * 1024
         if api and not self.key:
             raise Blocked("api_key_missing")
         headers = {"Accept": "application/json"}
@@ -135,6 +137,18 @@ def verify_collection(client, progress, workflow_id, execution_id):
             raise Blocked("invalid_archive_rows")
     except (KeyError, IndexError, TypeError, ValueError, OSError, StopIteration):
         raise Blocked("collection_evidence_missing_or_invalid")
+    if 'Save Collection to Project DB' in runs:
+        from contextlib import closing
+        import project_database as project_db
+        import project_write_outbox
+        saved=runs['Save Collection to Project DB'][-1]['data']['main'][0][0]['json']
+        state=project_write_outbox.status(saved.get('operationId'))
+        if saved.get('writeTarget')!='project-db' or saved.get('compatibility')!='complete' or not state or state['status']!='complete' or state['pendingDeliveries']:
+            raise Blocked('project_collection_save_incomplete')
+        with closing(project_db.connect(readonly=True)) as database:
+            matches=database.execute('SELECT id FROM collection_runs WHERE run_date=? AND workflow_execution_id=?',(progress.date,str(execution_id))).fetchall()
+            if len(matches)!=1 or database.execute('SELECT count(*) FROM article_occurrences WHERE collection_run_id=?',(matches[0][0],)).fetchone()[0]!=len(articles):
+                raise Blocked('project_collection_destination_mismatch')
     files = progress.fingerprints(progress.generated().values())
     if not all(files.values()):
         raise Blocked("generated_files_missing")
@@ -163,3 +177,87 @@ def verify_collection(client, progress, workflow_id, execution_id):
     except (KeyError, IndexError, TypeError):
         raise Blocked("markdown_execution_evidence_missing")
     return files, len(articles)
+
+
+def collection_success(rows, entry):
+    """Only one successful execution, or its explicitly recorded linear retry family."""
+    if len(rows) == 1 and rows[0].get('status') == 'success':
+        return rows[0]['id']
+    if not entry.get('retryOf') or not entry.get('executionId'):
+        raise Blocked('existing_execution_requires_review')
+    by_id = {str(row['id']): row for row in rows}
+    current = str(entry['executionId'])
+    if current not in by_id or by_id[current].get('status') != 'success':
+        raise Blocked('collection_retry_not_successful')
+    seen = set()
+    while current:
+        if current in seen or current not in by_id:
+            raise Blocked('collection_retry_lineage_invalid')
+        row = by_id[current]
+        if seen and row.get('status') != 'error':
+            raise Blocked('collection_retry_lineage_invalid')
+        seen.add(current)
+        current = str(row['retryOf']) if row.get('retryOf') else None
+    if seen != set(by_id) or str(by_id[str(entry['executionId'])].get('retryOf')) != str(entry['retryOf']):
+        raise Blocked('collection_retry_lineage_invalid')
+    return entry['executionId']
+
+
+def collection_retry_preflight(ops, execution_id):
+    """Read-only guard for an explicitly requested, pre-save RSS failure retry."""
+    from autoarticle_progress import today
+    import project_database
+    p = ops.progress
+    execution_id = str(execution_id)
+    if p.date != today() or not execution_id.isdigit():
+        raise Blocked('collection_retry_requires_today_and_execution_id')
+    workflow, _ = ops.workflow('collect', require=True)
+    rows, running = executions(ops.client, workflow['id'], p.date)
+    if running:
+        raise Blocked('collection_already_running')
+    # A repeated invocation may inspect a linked successful child, but never POST again.
+    children = [x for x in rows if str(x.get('retryOf')) == execution_id]
+    if children:
+        if len(children) != 1 or children[0].get('status') != 'success':
+            raise Blocked('collection_retry_already_exists_requires_review')
+        child = children[0]
+        collection_success(rows, {'retryOf':execution_id, 'executionId':str(child['id'])})
+        return {'status':'already_succeeded','executionId':str(child['id']),'retryOf':execution_id}
+    by_id = {str(row['id']):row for row in rows}
+    current, seen = execution_id, set()
+    while current:
+        if current in seen or current not in by_id or by_id[current].get('status') != 'error':
+            raise Blocked('collection_retry_lineage_invalid')
+        seen.add(current)
+        current = str(by_id[current]['retryOf']) if by_id[current].get('retryOf') else None
+    if seen != set(by_id):
+        raise Blocked('unrelated_collection_execution_exists')
+    saved = p.load()['steps'].get('collect', {})
+    if str(saved.get('retryOf')) == execution_id:
+        raise Blocked('collection_retry_submission_unknown_do_not_resubmit')
+    execution = ops.client.request('/executions/'+execution_id+'?includeData=true', api=True)
+    result = execution.get('data', {}).get('resultData', {})
+    if str(execution.get('workflowId')) != str(workflow['id']) or execution.get('status') != 'error':
+        raise Blocked('collection_retry_target_not_failed')
+    allowed = {'Keyword Summary Webhook','Daily Schedule','Manual Trigger','Read Keyword Configuration',
+               'Parse Keyword Configuration','Load Talent Registry','Build Keyword Summary Request',
+               'Build Search RSS URLs','Read RSS Search Results','Fetch One RSS Feed','Attach RSS Search Provenance'}
+    runs = result.get('runData', {})
+    if not runs or not set(runs).issubset(allowed) or result.get('lastNodeExecuted') not in {'Read RSS Search Results','Fetch One RSS Feed'}:
+        raise Blocked('collection_retry_may_have_saved_data')
+    error = result.get('error', {})
+    error_text = json.dumps({k:error.get(k) for k in ('message','messages')}).lower()
+    if not any(code in error_text for code in ('timed out','timeout','etimedout','econnreset')):
+        raise Blocked('collection_retry_failure_requires_review')
+    if any(p.path(path).exists() for path in p.generated().values() if p.date in path):
+        raise Blocked('collection_retry_outputs_already_exist')
+    with closing(project_database.connect(ops.root/'data/autoarticle.sqlite',readonly=True)) as c:
+        if c.execute('SELECT 1 FROM collection_runs WHERE run_date=?',(p.date,)).fetchone():
+            raise Blocked('collection_retry_db_already_saved')
+        if c.execute("SELECT 1 FROM compatibility_deliveries WHERE status='pending' LIMIT 1").fetchone():
+            raise Blocked('collection_retry_pending_compatibility')
+        for old_id in seen:
+            if c.execute('SELECT 1 FROM sync_runs WHERE id=?',('db-collect-'+str(workflow['id'])+'-'+old_id,)).fetchone():
+                raise Blocked('collection_retry_write_request_exists')
+    return {'status':'ready','retryOf':execution_id,'workflowId':str(workflow['id']),
+            'failedNode':result['lastNodeExecuted'],'databaseSaved':False,'readOnly':True}

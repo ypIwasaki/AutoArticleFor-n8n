@@ -791,8 +791,14 @@ def write_article_feedback_instruction(
     output_path = output_dir / f"{generated_at.date().isoformat()}.md"
     instruction = build_article_feedback_instruction_markdown(payload, generated_at)
     snapshot = build_snapshot(payload, generated_at, instruction)
-    atomic_text(output_path, instruction)
-    atomic_text(output_path.with_suffix(".json"), json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n")
+    import project_business_writes as business
+    import project_database as project_db
+    if business.route('ai-reader')=='project-db':
+        packet=dict(day=generated_at.date().isoformat(),directory='article-feedback-instructions',document=snapshot,markdown=instruction)
+        business.submit('db-feedback-document-'+project_db.checksum(project_db.canonical(packet).encode()),'proposal',packet)
+    else:
+        atomic_text(output_path, instruction)
+        atomic_text(output_path.with_suffix(".json"), json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n")
     return output_path
 
 

@@ -488,30 +488,66 @@ def build_payload(root, day, task, offset=0, limit=20, article_url=None,
         ]
     return result
 
-def additional(root,day,task,ref,kind='body',offset=0,maximum=1000,ids=None):
+def _additional_reference_payload(ref, task, mapping, article, capture, review,
+                                  kind, offset, maximum, ids):
+    """Format the requested part of an already resolved source reference."""
     from read_ai_inputs import content_chunk
+
+    if kind == 'detail':
+        task_is_ready = review and review['taskStatus'][task] == 'ready'
+        detail = dict(
+            ref=ref,
+            title=article.get('title', ''),
+            publishedAt=article.get('publishedAt', ''),
+            contentStatus=(capture or {}).get('contentStatus', 'not_captured'),
+            state='ready' if task_is_ready else 'needs_review',
+        )
+        if review:
+            detail.update(packet(review, task))
+        elif capture:
+            detail['content'] = content_chunk(capture, offset, maximum)
+        return detail
+
+    if kind == 'body':
+        if not capture:
+            return dict(ref=ref, state='no_saved_body')
+        return dict(ref=ref, content=content_chunk(capture, offset, maximum))
+
+    if kind == 'source':
+        return dict(ref=ref, url=article['url'], source=article.get('source'), references=mapping)
+
+    if kind not in ('facts', 'evidence'):
+        raise ValueError('Unknown reference kind')
+    if not ids:
+        raise ValueError('Select fact/evidence IDs explicitly')
+    selected_items = [item for item in (review or {}).get(kind, []) if item['id'] in ids]
+    if set(ids) != {item['id'] for item in selected_items}:
+        raise ValueError('Unknown fact/evidence ID in this reference')
+    return dict(ref=ref, **{kind: selected_items})
+
+
+def additional(root, day, task, ref, kind='body', offset=0, maximum=1000, ids=None):
+    """Check current saved/held status before returning the referenced inputs."""
     with project.reader(root) as reader:
-        mapping,article,capture,record=resolve(reader.c,ref,day,task)
-        if completed(reader.c,mapping['articleId'],task):return dict(ref=ref,state='saved')
-        latest=reader.c.execute('SELECT raw_json FROM review_records WHERE article_id=? ORDER BY rowid DESC LIMIT 1',(mapping['articleId'],)).fetchone()
-        hold=hold_state(reader.c,mapping['articleId'],task,json.loads(latest[0]) if latest else None)
-        if hold and hold['state']=='held':return dict(ref=ref,**hold)
-        if kind=='detail':
-            value=dict(ref=ref,title=article.get('title',''),publishedAt=article.get('publishedAt',''),
-                       contentStatus=(capture or {}).get('contentStatus','not_captured'),
-                       state='ready' if record and record['taskStatus'][task]=='ready' else 'needs_review')
-            if record:value.update(packet(record,task))
-            elif capture:value['content']=content_chunk(capture,offset,maximum)
-            return value
-        if kind=='body':
-            if not capture:return dict(ref=ref,state='no_saved_body')
-            return dict(ref=ref,content=content_chunk(capture,offset,maximum))
-        if kind=='source':return dict(ref=ref,url=article['url'],source=article.get('source'),references=mapping)
-        if kind not in ('facts','evidence'):raise ValueError('Unknown reference kind')
-        if not ids:raise ValueError('Select fact/evidence IDs explicitly')
-        values=[x for x in (record or {}).get(kind,[]) if x['id'] in ids]
-        if set(ids)!={x['id'] for x in values}:raise ValueError('Unknown fact/evidence ID in this reference')
-        return dict(ref=ref,**{kind:values})
+        mapping, article, capture, review = resolve(reader.c, ref, day, task)
+        article_id = mapping['articleId']
+        if completed(reader.c, article_id, task):
+            return dict(ref=ref, state='saved')
+
+        latest_review = reader.c.execute(
+            'SELECT raw_json FROM review_records WHERE article_id=? ORDER BY rowid DESC LIMIT 1',
+            (article_id,),
+        ).fetchone()
+        current_review = json.loads(latest_review[0]) if latest_review else None
+        hold = hold_state(reader.c, article_id, task, current_review)
+        if hold and hold['state'] == 'held':
+            return dict(ref=ref, **hold)
+
+        return _additional_reference_payload(
+            ref, task, mapping, article, capture, review, kind, offset, maximum, ids,
+        )
+
+
 def expand_review(c,day,authored):
     if 'ref' not in authored:return authored
     raw=dict(authored);ref=raw.pop('ref')

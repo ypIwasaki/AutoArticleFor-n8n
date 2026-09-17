@@ -92,6 +92,76 @@ class ReferenceTests(unittest.TestCase):
         )
         self.assertEqual(self.resolve(self.ref), before)
 
+    def additional(self, ref=None, **options):
+        return inputs.additional(
+            self.root, fixture.DAY, 'article-summary', ref or self.ref, **options,
+        )
+
+    def test_additional_detail_uses_review_or_unreviewed_body(self):
+        reviewed = self.additional(kind='detail')
+        unreviewed = self.additional(self.unreviewed_ref, kind='detail', offset=20, maximum=40)
+        self.assertEqual(reviewed['state'], 'ready')
+        self.assertIn('facts', reviewed)
+        self.assertNotIn('content', reviewed)
+        self.assertEqual(unreviewed['state'], 'needs_review')
+        self.assertEqual(unreviewed['content']['text'], fixture.BODY[20:60])
+
+    def test_additional_body_and_source_match_the_reference(self):
+        body = self.additional(kind='body', offset=20, maximum=40)
+        source = self.additional(kind='source')
+        self.assertEqual(body['content']['text'], fixture.BODY[20:60])
+        self.assertEqual(source['url'], fixture.URL)
+        self.assertEqual(source['references'], self.mapping)
+
+    def test_additional_facts_and_evidence_require_known_ids(self):
+        _, _, _, review = self.resolve(self.ref)
+        for kind, identifier in (('facts', 'f1'), ('evidence', 'e1')):
+            with self.subTest(kind=kind):
+                result = self.additional(kind=kind, ids=[identifier, identifier])
+                expected = [item for item in review[kind] if item['id'] == identifier]
+                self.assertEqual(result[kind], expected)
+                with self.assertRaisesRegex(ValueError, 'Select fact/evidence IDs explicitly'):
+                    self.additional(kind=kind)
+                with self.assertRaisesRegex(ValueError, 'Unknown fact/evidence ID in this reference'):
+                    self.additional(kind=kind, ids=[identifier, 'missing'])
+                with self.assertRaisesRegex(ValueError, 'Unknown fact/evidence ID in this reference'):
+                    self.additional(self.unreviewed_ref, kind=kind, ids=[identifier])
+        with self.assertRaisesRegex(ValueError, 'Unknown reference kind'):
+            self.additional(kind='unsupported')
+
+    def test_additional_reference_without_body(self):
+        reference = self.save_reference(fetchAttemptId=None, contentVersionId=None, reviewId=None)
+        self.assertEqual(self.additional(reference, kind='body'), dict(ref=reference, state='no_saved_body'))
+        detail = self.additional(reference, kind='detail')
+        self.assertEqual(detail['contentStatus'], 'not_captured')
+        self.assertEqual(detail['state'], 'needs_review')
+        self.assertNotIn('content', detail)
+
+    def test_additional_saved_status_precedes_requested_kind(self):
+        business.submit(
+            'additional-test-summary', 'summary',
+            dict(day=fixture.DAY, summaries=[dict(ref=self.ref, text='星野アキが音楽イベントに出演する。')]),
+            project.path_for(self.root), self.root,
+        )
+        for kind in ('detail', 'body', 'source', 'facts', 'evidence', 'unsupported'):
+            with self.subTest(kind=kind):
+                self.assertEqual(self.additional(kind=kind), dict(ref=self.ref, state='saved'))
+
+    def test_additional_current_hold_precedes_historical_ready_review(self):
+        review = fixture.review(self.root)
+        review['taskStatus']['article-summary'] = 'held'
+        review['unresolved'] = ['article-summary: event details missing']
+        review['holds'] = {
+            'article-summary': dict(reason='event details missing', missingTopics=['event']),
+        }
+        fixture.save_review(self.root, review, 'additional-test-held')
+        for kind in ('detail', 'body', 'source', 'facts', 'evidence', 'unsupported'):
+            with self.subTest(kind=kind):
+                self.assertEqual(
+                    self.additional(kind=kind),
+                    dict(ref=self.ref, state='held', reason='event details missing'),
+                )
+
 
 if __name__ == '__main__':
     unittest.main()

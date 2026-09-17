@@ -162,6 +162,8 @@ def build_reviews(unit,request):
     policy=rules.policy_hash(unit.root)
     if not policy:raise ValueError('Review rules missing')
     for authored in request['records']:
+        from ai_input_minimization import expand_review
+        authored=expand_review(unit.c,day,authored)
         raw=dict(authored,sourceDate=day,reviewedAt=authored.get('reviewedAt') or db.now())
         matches=[a for a in articles if a['article']['url']==raw['url'] and rules.input_hash(a['article'],captures.get(raw['url']))==raw['inputHash']]
         if len(matches)!=1:raise ValueError('Review input is not unique')
@@ -185,6 +187,8 @@ def build_reviews(unit,request):
             unit.save('entity',dict(id=eid,review_id=rid,name=e['name'],kind=e['kind'],raw_json=db.canonical(e)),s)
             for ref in set(e['factIds']):unit.save('entityFact',dict(entity_id=eid,fact_id=facts[ref]),s)
         provenance(unit,s,'review_records',rid)
+        from ai_input_minimization import record_legacy_hold_assessments
+        record_legacy_hold_assessments(unit,aid)
     emit_jsonl(unit,path,'review_records')
 
 
@@ -207,6 +211,8 @@ def submit(operation_id,kind,payload,path=None,root=db.ROOT,fault=None):
 
 
 def build_summary(unit,request):
+    from ai_input_minimization import expand_artifact, record_artifact
+    request=expand_artifact(unit,request)
     from article_artifact_formats import parsed_summaries
     day=day_value(request['day']);path='content/article-summaries/'+day+'.md'
     reader=project_readers.Reader(unit.c);_,articles,captures=reader.load_day(day,[])
@@ -218,6 +224,10 @@ def build_summary(unit,request):
             matches=[a for a in articles if a['article']['url']==url and a['article']['title']==title]
             if len(matches)!=1:raise ValueError('Summary occurrence is not unique')
             aid=matches[0]['_project']['articleId']
+            from ai_input_minimization import valid_review
+            prior=unit.c.execute('SELECT * FROM article_summaries WHERE article_id=? AND source=? AND is_current=1',(aid,path)).fetchone()
+            if prior and prior['summary']==summary['text'] and valid_review(unit.c,prior['review_id'],aid,'article-summary'):
+                continue
             import article_review_facts as rules
             input_hash=rules.input_hash(matches[0]['article'],captures.get(url))
             reviews=unit.c.execute("SELECT r.* FROM review_records r JOIN review_task_statuses t ON t.review_id=r.id WHERE r.article_id=? AND r.input_hash=? AND r.rule_hash=? AND r.status='current' AND t.task='article-summary' AND t.status='ready' ORDER BY r.reviewed_at DESC,r.id",(aid,input_hash,rules.policy_hash(unit.root))).fetchall()
@@ -232,10 +242,15 @@ def build_summary(unit,request):
                 unit.save('summary',dict(id=iid,article_id=aid,review_id=reviews[0]['id'],summary=summary['text'],saved_at=stamp,version=version,is_current=1,source=path,raw_json=db.canonical(raw)),s)
             provenance(unit,s,'article_summaries',iid)
     # Authored non-business Markdown is also retained in the immutable request.
+    record_artifact(unit,request)
     unit.file(path,request['text'])
 
 
 def build_proposal(unit,request):
+    from ai_input_minimization import expand_artifact, record_artifact
+    request=expand_artifact(unit,request)
+    from ai_input_minimization import validate_proposal
+    validate_proposal(unit,request)
     day=day_value(request['day']);directory=request['directory']
     groups={'talent-index-proposals':('articles','talents','articleTalents'),'article-classification-proposals':('classifications',),'official-talent-registry':('groups','talents'),'official-talent-registry/proposals':('articles','talents','articleTalents'),'article-feedback-instructions':('feedback',)}
     if directory not in groups:raise ValueError('Unsupported proposal document')
@@ -249,6 +264,7 @@ def build_proposal(unit,request):
         # Source references and immutable document content are in the same commit.
         provenance(unit,s,'legacy_history_records',hid)
         unit.save('history',dict(id=hid,source_record_id=sid,kind=kind,article_id=None,talent_id=None,raw_json=db.canonical(raw)),s)
+    record_artifact(unit,request)
     unit.file(path,json.dumps(value,ensure_ascii=False,indent=2)+'\n')
     if 'markdown' in request:unit.file('content/'+directory+'/'+day+'.md',request['markdown'])
 
@@ -264,6 +280,10 @@ def native_article(unit,raw):
     matches=unit.c.execute("SELECT DISTINCT i.article_id FROM article_identifiers i WHERE i.kind='legacy_key' AND i.value=? AND i.source IN (SELECT DISTINCT source_path FROM source_records WHERE target_kind='articles')",(key,)).fetchall()
     if len(matches)>1:raise ValueError('Article key ambiguous')
     aid=matches[0][0] if matches else legacy.ident('n8n-article',key)
+    if not matches:
+        candidates=unit.c.execute('SELECT id FROM articles WHERE url=? AND title=? AND published_at=?',(raw['url'],raw['title'],legacy.utc(raw.get('published_at')))).fetchall()
+        if len(candidates)==1:aid=candidates[0]['id']
+        elif len(candidates)>1:raise ValueError('Proposed article identity is ambiguous')
     old=unit.c.execute('SELECT * FROM articles WHERE id=?',(aid,)).fetchone();stamp=legacy.utc(raw['last_seen_at'])
     unit.save('article',dict(id=aid,title=raw['title'],url=raw['url'],excerpt=raw.get('excerpt',''),source=raw.get('source',''),published_at=legacy.utc(raw.get('published_at')),created_at=old['created_at'] if old else stamp,updated_at=stamp,identity_state=old['identity_state'] if old else 'identified'),s)
     unit.save('identifier',dict(id=legacy.ident('identifier',aid,s['path'],'legacy_key',key),article_id=aid,source=s['path'],kind='legacy_key',value=key,match_state='exact'),s)
@@ -367,3 +387,6 @@ def build_documents(unit,request):
     for item in request['documents']:build_proposal(unit,item)
 
 BUILDERS['documents']=build_documents
+
+from ai_input_minimization import build_references
+BUILDERS['ai-references']=build_references

@@ -199,7 +199,15 @@ class Progress:
         if not isinstance(files, dict):
             reasons.append("file_evidence_missing")
             files = {}
+        stage = entry.get("dependencyStep")
+        frozen = set()
+        if stage in ("summary", "talent-review", "classification-review") and entry.get("status") == "completed":
+            from ai_input_minimization import saved_for_day, STEP_TASK
+            saved = saved_for_day(self.root,self.date,STEP_TASK[stage])
+            if saved and all(saved.values()):
+                frozen = set(self.inputs(stage)) - set(self.outputs(stage))
         for path, expected in files.items():
+            if path in frozen:continue
             if self.fingerprint(path) != expected:
                 changed.append(path)
         step = entry.get("dependencyStep")

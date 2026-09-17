@@ -74,6 +74,9 @@ def source_context(progress):
     policy = shared.policy_hash(progress.root)
 
     def review(article_url, task):
+        from ai_input_minimization import saved_for_day
+        saved=saved_for_day(progress.root,progress.date,task)
+        if saved and saved.get(article_url):return True
         article = articles.get(article_url)
         if article is None:
             return False
@@ -106,9 +109,9 @@ def summary(progress, check):
     return {"declaredSummaries": declarations, "dashboardSummaries": len(parsed), "readyArticles": len(expected), "inputWarningCount": warnings}
 
 
-def proposals(progress, step, check, existing):
+def proposals(progress, step, check, existing, staged=None):
     kind = "talent" if step == "talent-review" else "classification"
-    value = db.proposal(progress, kind)
+    value = staged if staged is not None else db.proposal(progress, kind)
     articles, ready, warnings = source_context(progress)
     counts = {"inputWarningCount": warnings}
     if kind == "talent":

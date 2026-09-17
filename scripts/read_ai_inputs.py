@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read bounded, task-specific views of existing article archives without writes."""
+"""Read bounded task-specific inputs; persist source-bound references in the project DB."""
 
 from __future__ import annotations
 
@@ -154,6 +154,9 @@ def article_view(day: str, row: dict[str, Any], index: int, capture: dict[str, A
 
 
 def build_payload(root: Path, run_date: str, task: str, offset: int = 0, limit: int = 20, article_url: str | None = None, content_offset: int = 0, max_content_chars: int = 6000, include_body: bool = False) -> dict[str, Any]:
+    if task in BODY_TASKS and project.source(root, "ai-reader") == "project-db":
+        from ai_input_minimization import build_payload as compact
+        return compact(root, run_date, task, offset, limit, article_url, content_offset, max_content_chars, include_body)
     requested = parse_day(run_date)
     if task not in TASKS:
         raise ValueError(f"Unknown task: {task}")
@@ -254,6 +257,10 @@ def build_payload(root: Path, run_date: str, task: str, offset: int = 0, limit: 
 def inventory_payload(payload: dict[str, Any]) -> dict[str, Any]:
     """Navigation only. Omitted bodies/facts must still be read for review."""
     result = {key: value for key, value in payload.items() if key not in ("articles", "context")}
+    if payload.get("inputVersion") == 2:
+        result["view"] = "inventory"
+        result["articles"] = [{k:v for k,v in a.items() if k in ("ref","title","state","contentStatus")} for a in payload["articles"]]
+        return result
     result["view"] = "inventory"
     result["reviewEvidenceOmitted"] = True
     result["nextAction"] = "Read --view detail --offset recordOffset --limit 1 for evidence. This inventory is not a completed review."
@@ -291,11 +298,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--article-url", help="Select an exact original URL for source inspection or continuation")
     parser.add_argument("--content-offset", type=int, default=0, help="Character offset in one selected saved body")
     parser.add_argument("--max-content-chars", type=int, default=6000)
-    parser.add_argument("--include-body", action="store_true", help="Read saved body even when current shared facts are ready/held; use for re-review")
+    parser.add_argument("--include-body", action="store_true", help="Read saved body for an unfinished task; saved/held tasks remain excluded")
     parser.add_argument("--weekly-articles", action="store_true", help="Explicitly page raw, pre-exclusion weekly articles instead of reading fixed metrics")
     parser.add_argument("--as-of", help="Weekly evaluation cutoff; default is run-date")
     parser.add_argument("--view", choices=("detail", "inventory"), default="detail", help="inventory: bounded navigation without URLs, bodies or evidence; detail: full review input")
     parser.add_argument("--pretty", action="store_true", help="Indent JSON; default is compact UTF-8 JSON")
+    parser.add_argument("--article-ref")
+    parser.add_argument("--reference-kind", choices=("detail","body","facts","evidence","source"), default="body")
+    parser.add_argument("--ids", nargs="+")
     args = parser.parse_args(argv)
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -312,11 +322,15 @@ def main(argv: list[str] | None = None) -> int:
                 raise ValueError("--as-of is for the default weekly metrics view only")
             if args.weekly_articles and args.task != "weekly-report":
                 raise ValueError("--weekly-articles requires --task weekly-report")
-            payload = build_payload(ROOT, args.run_date, args.task, args.offset, args.limit, args.article_url, args.content_offset, args.max_content_chars, args.include_body)
+            if args.article_ref:
+                from ai_input_minimization import additional
+                payload = additional(ROOT,args.run_date,args.task,args.article_ref,args.reference_kind,args.content_offset,args.max_content_chars,args.ids)
+            else:
+                payload = build_payload(ROOT, args.run_date, args.task, args.offset, args.limit, args.article_url, args.content_offset, args.max_content_chars, args.include_body)
     except (OSError, ValueError) as exc:
         print(json.dumps({"error": str(exc)}, ensure_ascii=False), file=sys.stderr)
         return 2
-    if args.view == "inventory":
+    if args.view == "inventory" and not args.article_ref:
         payload = inventory_payload(payload)
     print(json.dumps(payload, ensure_ascii=False, indent=2 if args.pretty else None, separators=None if args.pretty else (",", ":")))
     return 0

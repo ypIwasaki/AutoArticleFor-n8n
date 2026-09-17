@@ -117,6 +117,7 @@ def deferred(a,key,u,exc):
  return result
 
 def eligible_article(entry,refresh=False,retry=False):
+ if entry and entry.get("status") in {"unavailable","metadata_only"}:return False
  if entry and entry.get("retry_after"):
   return time.time()>=entry["retry_after"]
  return refresh or not entry or (retry and not has_verified_text(entry))
@@ -303,7 +304,7 @@ def main():
   if a.reset_progress:progress["dates"].pop(a.run_date,None);global_completed=set()
   day_progress=progress["dates"].setdefault(a.run_date,{"completedUrls":[],"complete":False})
  day_completed=set(day_progress.get("completedUrls",[]));day_completed.update(x.url for x in arts if x not in eligible)
- retry_urls={x.url for x in arts if e.get(x.url,{}).get("retry_after")}
+ retry_urls={x.url for x in eligible if e.get(x.url,{}).get("retry_after")}
  day_completed-=retry_urls;global_completed-=retry_urls
  completed_urls=day_completed|global_completed
  todo=[x for x in eligible if x.url not in completed_urls][:a.limit];c=None
@@ -346,6 +347,6 @@ def main():
   if project_first:old.SUMMARY_DIRECTORY=ROOT/'.operation-state/database/authoring/article-summaries'
   write_new_summary_drafts(arts,e)
  print(progress_line(len(todo),len(todo),processed_entries),flush=True)
- waiting=[e[x.url]["retry_after"] for x in arts if e.get(x.url,{}).get("retry_after")]
+ waiting=[e[x.url]["retry_after"] for x in arts if e.get(x.url,{}).get("retry_after") and e[x.url].get("status") not in {"unavailable","metadata_only"}]
  if waiting:print(json.dumps({"deferredByRateLimit":len(waiting),"nextRetryAt":datetime.fromtimestamp(min(waiting),timezone.utc).isoformat(),"resume":"rerun the same command at or after nextRetryAt; completed URLs stay cached"}),flush=True)
 if __name__=="__main__":main()

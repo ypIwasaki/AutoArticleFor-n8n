@@ -22,6 +22,11 @@ def save_reviews(root: Path, run_date: str, payload, check_only: bool = False) -
         raise ValueError(f"Missing shared review policy: {shared.RULES}")
     sources = {(row['article']['url'], shared.input_hash(row['article'], captures.get(row['article']['url']))): row['article'] for row in articles}
     validated, keys = [], set()
+    import project_readers
+    if project_readers.source(root) == "project-db":
+        from ai_input_minimization import expand_review
+        with project_readers.reader(root) as reader:
+            rows = [expand_review(reader.c,run_date,row) for row in rows]
     for row in rows:
         if not isinstance(row, dict) or not isinstance(row.get('url'), str) or not isinstance(row.get('inputHash'), str):
             raise ValueError('Each review requires a URL and inputHash from the input reader')

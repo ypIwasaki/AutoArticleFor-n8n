@@ -16,7 +16,10 @@ def main():
     p.add_argument('--operation-id')
     args=p.parse_args();text=args.input.read_text(encoding='utf-8-sig')
     payload=dict(day=args.run_date)
-    if args.kind=='summary':payload['text']=text
+    if args.kind=='summary':
+        if text.lstrip().startswith('{'):
+            payload['summaries']=json.loads(text)['summaries']
+        else:payload['text']=text
     else:
         if not args.directory:p.error('--directory is required for proposals')
         payload.update(directory=args.directory,document=json.loads(text))

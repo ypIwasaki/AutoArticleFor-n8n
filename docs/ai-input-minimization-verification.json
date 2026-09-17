@@ -1,0 +1,543 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-09-17T06:19:09.167273+00:00",
+  "status": "completed",
+  "scope": "implementation and six representative checks",
+  "baseline": {
+    "head": "488f6b9d040463fc21c00fab79f769d1d44239a1",
+    "statusFile": ".operation-state/ai-input-minimization/before-status.txt",
+    "inputFile": ".operation-state/ai-input-minimization/before-inputs.json",
+    "codeDirectory": ".operation-state/ai-input-minimization",
+    "savedBeforeImplementation": true
+  },
+  "isolation": {
+    "productionDatabaseModified": false,
+    "testRoot": ".operation-state/ai-input-minimization",
+    "representative": "synthetic-event-1",
+    "databaseSchemaChanged": false,
+    "existingUncommittedChangesPreserved": true,
+    "committed": false,
+    "pushed": false
+  },
+  "phases": [
+    {
+      "number": 1,
+      "status": "completed"
+    },
+    {
+      "number": 2,
+      "status": "completed"
+    },
+    {
+      "number": 3,
+      "status": "completed"
+    },
+    {
+      "number": 4,
+      "status": "completed"
+    }
+  ],
+  "patterns": [
+    {
+      "number": 1,
+      "name": "新しい記事",
+      "status": "passed",
+      "checks": [
+        "初回refによる本文確認と共通記録保存",
+        "要約・人材・分類のDB保存と読み出し",
+        "人物関係のarticleRef補完・既存DB反映経路",
+        "代表1件のChrome DOMと画像（記事・要約・人物・分類・正式出典・Project DB）"
+      ],
+      "method": "isolated SQLite + actual existing business/read adapters; unittest assertions",
+      "test": "tests/test_ai_input_minimization.py::Patterns.test_1_new_article",
+      "display": {
+        "status": "passed",
+        "method": "Chrome rendered DOM and inspected screenshot; single synthetic article",
+        "checks": {
+          "article": true,
+          "summary": true,
+          "person": true,
+          "classification": true,
+          "source": true,
+          "database": true
+        }
+      }
+    },
+    {
+      "number": 2,
+      "name": "一部工程が保存済み",
+      "status": "passed",
+      "checks": [
+        "要約だけの保存で他工程は残る",
+        "人材該当なしを記事単位で保存",
+        "本文・ルール変更後も保存済み工程を除外",
+        "過去の根拠と未反映提案を保持",
+        "既存要約/否定提案の再利用、進捗入力変更の無視"
+      ],
+      "method": "isolated SQLite + actual existing business/read adapters; unittest assertions",
+      "test": "tests/test_ai_input_minimization.py::Patterns.test_2_partial_saved"
+    },
+    {
+      "number": 3,
+      "name": "成果物が未保存",
+      "status": "passed",
+      "checks": [
+        "readyだけでは除外しない",
+        "空の未確認提案で全記事完了にしない",
+        "DB書き込み中の失敗でrollbackし未完了を維持",
+        "未確認Markdownの保存を拒否"
+      ],
+      "method": "isolated SQLite + actual existing business/read adapters; unittest assertions",
+      "test": "tests/test_ai_input_minimization.py::Patterns.test_3_unsaved"
+    },
+    {
+      "number": 4,
+      "name": "本文取得不能",
+      "status": "passed",
+      "checks": [
+        "期限経過済みretry_after=1で翌日相当の再実行も除外",
+        "refresh/retry指定でも取得不能を再取得しない",
+        "保存失敗理由と取得履歴保持",
+        "本文不要の人材入力は残る"
+      ],
+      "method": "isolated SQLite + actual existing business/read adapters; unittest assertions",
+      "test": "tests/test_ai_input_minimization.py::Patterns.test_4_unavailable"
+    },
+    {
+      "number": 5,
+      "name": "判断保留",
+      "status": "passed",
+      "checks": [
+        "同じ材料・無関係topic・ルール更新では再開しない",
+        "不足topicに一致する新しい根拠だけで再開",
+        "再保留後は同じ材料で再開しない",
+        "4判断と4本文snapshotを保持"
+      ],
+      "method": "isolated SQLite + actual existing business/read adapters; unittest assertions",
+      "test": "tests/test_ai_input_minimization.py::Patterns.test_5_held"
+    },
+    {
+      "number": 6,
+      "name": "最小入力と追加参照",
+      "status": "passed",
+      "checks": [
+        "長いURL・内部参照・本文を通常のready入力から除外",
+        "工程別factIdsで選択し省略した事実はID指定で追加参照",
+        "同じ記事の固定本文版・根拠・出典を復元",
+        "別日・別工程の参照を拒否",
+        "古い参照は閲覧できても新規成果物の確認には利用不可"
+      ],
+      "method": "isolated SQLite + actual existing business/read adapters; unittest assertions",
+      "test": "tests/test_ai_input_minimization.py::Patterns.test_6_minimal_and_references"
+    }
+  ],
+  "inputComparison": {
+    "method": "Exact compact JSON Unicode characters/UTF-8 bytes; estimated tokens = ceil(UTF-8 bytes / 4) per input packet. Not tokenizer or observed model billing. Same original rules copied into both isolated fixtures.",
+    "conditions": {
+      "article": "synthetic-event-1",
+      "states": "common: no shared review; three tasks: ready, no saved artifacts, no holds",
+      "additional": "same saved body range [6000:7000], clipped at end, one read per stage",
+      "scope": "AI data payload only; excludes fixed rules, conversation, tool envelopes and reference DB rows"
+    },
+    "stages": {
+      "common-review": {
+        "before": {
+          "initial": {
+            "unicodeCharacters": 8495,
+            "utf8Bytes": 20515,
+            "estimatedTokens": 5129
+          },
+          "additional": {
+            "unicodeCharacters": 2011,
+            "utf8Bytes": 3131,
+            "estimatedTokens": 783
+          },
+          "total": {
+            "unicodeCharacters": 10506,
+            "utf8Bytes": 23646,
+            "estimatedTokens": 5912
+          }
+        },
+        "after": {
+          "initial": {
+            "unicodeCharacters": 6475,
+            "utf8Bytes": 18491,
+            "estimatedTokens": 4623
+          },
+          "additional": {
+            "unicodeCharacters": 711,
+            "utf8Bytes": 1797,
+            "estimatedTokens": 450
+          },
+          "total": {
+            "unicodeCharacters": 7186,
+            "utf8Bytes": 20288,
+            "estimatedTokens": 5073
+          }
+        },
+        "estimatedTokenReductionPercent": 14.19
+      },
+      "article-summary": {
+        "before": {
+          "initial": {
+            "unicodeCharacters": 3436,
+            "utf8Bytes": 3622,
+            "estimatedTokens": 906
+          },
+          "additional": {
+            "unicodeCharacters": 3092,
+            "utf8Bytes": 4364,
+            "estimatedTokens": 1091
+          },
+          "total": {
+            "unicodeCharacters": 6528,
+            "utf8Bytes": 7986,
+            "estimatedTokens": 1997
+          }
+        },
+        "after": {
+          "initial": {
+            "unicodeCharacters": 641,
+            "utf8Bytes": 815,
+            "estimatedTokens": 204
+          },
+          "additional": {
+            "unicodeCharacters": 711,
+            "utf8Bytes": 1797,
+            "estimatedTokens": 450
+          },
+          "total": {
+            "unicodeCharacters": 1352,
+            "utf8Bytes": 2612,
+            "estimatedTokens": 654
+          }
+        },
+        "estimatedTokenReductionPercent": 67.25
+      },
+      "talent-index": {
+        "before": {
+          "initial": {
+            "unicodeCharacters": 3545,
+            "utf8Bytes": 3739,
+            "estimatedTokens": 935
+          },
+          "additional": {
+            "unicodeCharacters": 3109,
+            "utf8Bytes": 4389,
+            "estimatedTokens": 1098
+          },
+          "total": {
+            "unicodeCharacters": 6654,
+            "utf8Bytes": 8128,
+            "estimatedTokens": 2033
+          }
+        },
+        "after": {
+          "initial": {
+            "unicodeCharacters": 638,
+            "utf8Bytes": 812,
+            "estimatedTokens": 203
+          },
+          "additional": {
+            "unicodeCharacters": 711,
+            "utf8Bytes": 1797,
+            "estimatedTokens": 450
+          },
+          "total": {
+            "unicodeCharacters": 1349,
+            "utf8Bytes": 2609,
+            "estimatedTokens": 653
+          }
+        },
+        "estimatedTokenReductionPercent": 67.88
+      },
+      "article-classification": {
+        "before": {
+          "initial": {
+            "unicodeCharacters": 3850,
+            "utf8Bytes": 4036,
+            "estimatedTokens": 1009
+          },
+          "additional": {
+            "unicodeCharacters": 3099,
+            "utf8Bytes": 4371,
+            "estimatedTokens": 1093
+          },
+          "total": {
+            "unicodeCharacters": 6949,
+            "utf8Bytes": 8407,
+            "estimatedTokens": 2102
+          }
+        },
+        "after": {
+          "initial": {
+            "unicodeCharacters": 648,
+            "utf8Bytes": 822,
+            "estimatedTokens": 206
+          },
+          "additional": {
+            "unicodeCharacters": 711,
+            "utf8Bytes": 1797,
+            "estimatedTokens": 450
+          },
+          "total": {
+            "unicodeCharacters": 1359,
+            "utf8Bytes": 2619,
+            "estimatedTokens": 656
+          }
+        },
+        "estimatedTokenReductionPercent": 68.79
+      }
+    },
+    "totals": {
+      "before": {
+        "unicodeCharacters": 30637,
+        "utf8Bytes": 48167,
+        "estimatedTokens": 12044
+      },
+      "after": {
+        "unicodeCharacters": 11246,
+        "utf8Bytes": 28128,
+        "estimatedTokens": 7036
+      },
+      "estimatedTokenReductionPercent": 41.58
+    },
+    "sessionUsage": {
+      "status": "not_measured",
+      "reason": "No binding to current task log; no other task measurement reused"
+    }
+  },
+  "completionCriteria": [
+    {
+      "number": 1,
+      "status": "passed",
+      "evidence": "All six representative patterns, including one rendered article"
+    },
+    {
+      "number": 2,
+      "status": "passed",
+      "evidence": "Same initial states/rules/source/body range; total estimated input 12044 -> 7036 including additional reads"
+    },
+    {
+      "number": 3,
+      "status": "passed",
+      "evidence": "Major event/date/3000 yen/person/organization/category evidence and exact source preserved"
+    },
+    {
+      "number": 4,
+      "status": "passed",
+      "evidence": "Results recorded here and in progress document; exclusions/unmeasured checks explicitly listed"
+    }
+  ],
+  "rechecks": {
+    "policy": "affected patterns only",
+    "runs": [
+      "initial 1-6 passed",
+      "artifact/history adjustments: 1,2,3,5,6 passed",
+      "detail reference: 6 passed",
+      "articleRef and taskFacts: 1,6 passed",
+      "exclusion reasons: 4,5 passed"
+    ],
+    "display": "single representative; no full-screen or whole-database coverage claimed"
+  },
+  "validation": {
+    "pythonCompilation": "passed: 12 changed/new Python files",
+    "gitDiffCheck": "passed",
+    "workflowJavaScriptSyntax": "passed: new Function(Build Markdown Files jsCode)",
+    "wholeRepositoryTestSuite": "not_run_outside_agreed_scope"
+  },
+  "artifacts": {
+    "afterInputs": ".operation-state/ai-input-minimization/after-inputs.json",
+    "comparison": ".operation-state/ai-input-minimization/input-comparison.json",
+    "displayDOM": ".operation-state/ai-input-minimization/display-article/page-1.html",
+    "displayScreenshot": ".operation-state/ai-input-minimization/display-article/page-1.png"
+  },
+  "limitations": [
+    "実セッションの入力/キャッシュ入力/課金使用量は未計測。他タスクのログ・計測状態は流用していない。",
+    "推定トークンは入力データのUTF-8バイト数÷4の切り上げ。モデル固有トークナイザーではなく、日本語やJSONの実トークン数を保証しない。固定ルール・会話・ツール外枠は比較対象外。",
+    "共通確認のない旧成果物・記事との対応が証明できない記録・空の提案は保存完了と推測しない。",
+    "本番DB全記事検証・DB集約の再検証・外部ページ再取得は対象外として未実施。代表データのみで確認。",
+    "旧保留の自動関連性判定は、工程に対応付く不足理由と過去の根拠付き人物が一意で、所属/契約期間/契約開始日/開催・出演日/参加費等を明示した引用から値を確認できる場合に限定。曖昧な理由・複数人物・未確定表現・未対応表記・根拠snapshot欠落は理由を別履歴へ保存して保留する。",
+    "追加対応の動作検証は旧保留の代表1記事の指定4状態に限定。その他の認識表現を網羅検証したとは扱わない。既存6パターンは再実行せず引き継いだ。",
+    "日次運用全体・再収集・保存済み成果物再生成は未実施。n8n稼働定義はAPIの公開版で確認し、ワークフロー実行による確認は行っていない。"
+  ],
+  "followUps": [
+    {
+      "completedAt": "2026-09-17T06:44:20.052728+00:00",
+      "status": "completed",
+      "scope": [
+        "publish minimized generation instructions to running n8n",
+        "source-grounded reopening of legacy holds without missingTopics"
+      ],
+      "implementation": {
+        "status": "implemented",
+        "files": [
+          "scripts/legacy_hold_relevance.py",
+          "scripts/ai_input_minimization.py",
+          "scripts/project_business_writes.py",
+          "docs/ai-rules/shared-article-review.md"
+        ],
+        "schemaChange": false,
+        "historyKind": "ai-legacy-hold-assessment",
+        "historyPolicy": "append-only history separate from original review and review_input_snapshots",
+        "scopePolicy": "only the requested article/day/task or an article receiving new review material; no global backfill, no network fetch, no AI re-review batch"
+      },
+      "deployment": {
+        "status": "deployed_verified",
+        "checkedAt": "2026-09-17T06:34:22.546063+00:00",
+        "workflowId": "UHJ4LW3Oswhpj4zV",
+        "workflowName": "Daily Keyword News Summary",
+        "nodeId": "dce1c6b9-d4d7-498a-8b8c-cfbcf2e917fb",
+        "nodeName": "Build Markdown Files",
+        "previousVersionId": "d47524a4-208b-4f8f-b2a7-caf499d2f76e",
+        "versionId": "6bb0c4c3-ebc3-453d-a88c-b63a332ffc03",
+        "activeVersionId": "6bb0c4c3-ebc3-453d-a88c-b63a332ffc03",
+        "active": true,
+        "checks": {
+          "publishedActiveVersionMatches": true,
+          "generationCodeMatchesLocal": true,
+          "onlyTargetNodeCodeChanged": true,
+          "scheduleAndCollectionAndCredentialsPreserved": true,
+          "connectionsPreserved": true,
+          "effectiveSettingsPreserved": true,
+          "staticDataPreserved": true
+        },
+        "settingsNormalization": {
+          "callerPolicy": "absent -> workflowsFromSameOwner; installed default, no runtime environment override",
+          "availableInMCP": "absent -> false; installed code grants access only on true"
+        },
+        "normalizationEvidence": [
+          "@n8n/config/dist/configs/workflows.config.js:19",
+          "n8n/dist/executions/pre-execution-checks/subworkflow-policy-checker.js:72",
+          "n8n/dist/modules/mcp/tools/execute-workflow.tool.js:176"
+        ],
+        "codeSha256": "452b97940c09b3c9a726c8dea22aba7f3134fb1780e093abccb5577a1fd06bd9",
+        "evidence": "GET /api/v1/workflows/UHJ4LW3Oswhpj4zV returned active=true, activeVersionId=versionId and matching activeVersion.nodes; all other nodes/connections and effective settings unchanged.",
+        "executedWorkflow": false,
+        "method": "existing sync_workflow_to_n8n.py; PUT once, activate once; initial verification paused on server-default normalization, then one focused read, no mutation retry"
+      },
+      "verification": {
+        "status": "passed",
+        "representative": "synthetic-event-1",
+        "states": [
+          {
+            "number": 1,
+            "label": "材料追加なし",
+            "status": "passed",
+            "result": "held"
+          },
+          {
+            "number": 2,
+            "label": "無関係な材料追加",
+            "status": "passed",
+            "result": "held"
+          },
+          {
+            "number": 3,
+            "label": "関連材料追加",
+            "status": "passed",
+            "result": "talent-index only resumed"
+          },
+          {
+            "number": 4,
+            "label": "再開後に再保留",
+            "status": "passed",
+            "result": "held"
+          }
+        ],
+        "assertions": {
+          "oldReviewsAndSnapshotsUnchanged": true,
+          "savedStageExcluded": true,
+          "onlyTalentStageResumed": true,
+          "sameMaterialAfterReholdStaysHeld": true,
+          "undeterminedReasonPersisted": true,
+          "noRefetch": true,
+          "noArtifactRegeneration": true,
+          "normalInputAndAdditionalReferenceUnchanged": true,
+          "repeatedReadAddsNoDuplicateAssessment": true
+        },
+        "assessmentCount": 12,
+        "method": "Existing SQLite business/read adapters in a temporary isolated root",
+        "normalInputComparison": "byte-equivalent JSON objects before/after; prior token measurements retained",
+        "reusedPreviousSixPatterns": true,
+        "fullSixPatternRerun": false
+      },
+      "inputMeasurement": {
+        "ordinaryInputChanged": false,
+        "additionalReferenceChanged": false,
+        "priorMeasurementRetained": true,
+        "method": "Same synthetic normal-ready article, same source/rules/state; before and after JSON objects compare equal, including additional body read. No new token reduction claim.",
+        "sessionUsage": "not_measured"
+      },
+      "supersededLimitations": [
+        "旧保留記録にmissingTopicsがない場合は関連性を推測せず保留維持。自動再開はDBに保存された明示的なtopic付き事実・引用の追加に限定。",
+        "稼働中n8nへのワークフロー定義同期と日次運用全体の実行は未実施。ローカル生成指示元は更新済み。次回の稼働定義更新時に既存の同期手順を使用する。"
+      ],
+      "evidence": [
+        ".operation-state/ai-input-minimization/followup/sync-preflight.json",
+        ".operation-state/ai-input-minimization/followup/n8n-deployment.json",
+        ".operation-state/ai-input-minimization/followup/legacy-hold-verification.json"
+      ],
+      "checks": {
+        "testCommand": "python3 -m unittest discover -s tests -p test_legacy_hold_reopening.py -v",
+        "pythonCompilation": "passed",
+        "gitDiffCheck": "passed"
+      },
+      "productionChanges": {
+        "n8nWorkflowDefinition": true,
+        "projectBusinessDatabase": false,
+        "productionTestData": false,
+        "collectedArticles": false,
+        "regeneratedSavedArtifacts": false,
+        "committed": false,
+        "pushed": false
+      }
+    }
+  ],
+  "currentState": {
+    "implementation": "implemented",
+    "runningN8n": "deployed_verified",
+    "legacyHoldReopening": "implemented_verified",
+    "previousSixPatterns": "retained_not_rerun"
+  },
+  "postCompletionCleanup": {
+    "status": "completed",
+    "scope": "user-requested cleanup of this implementation's backup copies only",
+    "root": ".operation-state/ai-input-minimization",
+    "deletedPaths": [
+      "before-article_review_facts.py",
+      "before-autoarticle_artifacts.py",
+      "before-capture_article_contents.py",
+      "before-project_business_writes.py",
+      "before-read_ai_inputs.py",
+      "followup/before-ai_input_minimization.py",
+      "followup/before-ai-input-minimization-progress.md",
+      "followup/before-ai-input-minimization-verification.json",
+      "followup/local-before.private.json",
+      "followup/remote-before.private.json",
+      "followup/remote-after.private.json",
+      "fixture-before",
+      "followup/__pycache__"
+    ],
+    "deletedFileCount": 21,
+    "deletedBytes": 1956098,
+    "retained": [
+      "before-head.txt",
+      "before-status.txt",
+      "before-inputs.json",
+      "after-inputs.json",
+      "input-comparison.json",
+      "display-article/page-1.html",
+      "display-article/page-1.png",
+      "followup/sync-preflight.json",
+      "followup/n8n-deployment.json",
+      "followup/legacy-hold-verification.json"
+    ],
+    "notes": [
+      "Historical references to the deleted code/workflow snapshots describe evidence at implementation time; those copies were deleted after completion at the user's request.",
+      "The optional baseline-module comparison in test_legacy_hold_reopening.py reports not_run if rerun without the deleted baseline; its recorded passed comparison remains historical evidence.",
+      "Production databases, article content, runtime workflow, other tasks' backups and pre-existing unrelated working changes were not altered by this cleanup."
+    ],
+    "checks": "Prior representative checks and deployment evidence reused; no full retest. Commit preparation checks limited to selected files."
+  }
+}

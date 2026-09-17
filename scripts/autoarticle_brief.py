@@ -29,6 +29,12 @@ def build(ops, scope, save=False):
             item["reason"] = live["issues"][step]
         if step in live.get("dependencyChanges", {}):
             item["changes"] = live["dependencyChanges"][step]
+        if step in ("summary","talent-review","classification-review"):
+            from ai_input_minimization import selection_counts,STEP_TASK
+            counts=selection_counts(p.root,p.date,STEP_TASK[step])
+            if counts is not None:
+                item["articleStages"]=counts
+                item["articleAction"]="process_unfinished_only" if counts.get("ready",0)+counts.get("needs_review",0) else "reuse_saved_artifacts_and_finish_downstream; preserve_holds"
         if step in REVIEW_STEPS:
             item["outputs"] = p.outputs(step)
         # Notes are bounded operator data, not commands or reusable authorization.

@@ -34,3 +34,8 @@ python3 scripts/autoarticle_ops.py --date YYYY-MM-DD brief --scope full
 `--save` を付けると `content/operation-start/YYYY-MM-DD.json` に参考スナップショットを保存する。新旧どちらのチャットでも、開始時には必ずbriefを再実行する。保存済み開始情報を入力として再利用せず、その中の完了状態・接続先・scopeを現在の事実や承認とみなさない。証跡が照合中に変わった場合は作成を停止する。新しいタスクを自動作成しない。
 
 トークン計測は今回のタスクIDに結び付ける。前タスクのログ接続をそのまま使わず、`docs/token-usage.md` の接続確認を行う。同じチャットでも毎回この開始手順を使い、過去の調査ログを一括で読み直さない。
+
+
+## AI入力最小化
+
+記事工程は inputVersion 2 を使う。briefのarticleStagesとarticleActionで未完了だけを処理する。保存済みは入力変化でも再生成しない。保存済み提案は後続反映へ進める。保留は関連するmissingTopicsの根拠追加時だけ再開し、取得不能記事は既存予定を含め自動再取得しない。短いrefによるDB追加参照と保存方法は [共通ルール](ai-rules/shared-article-review.md) を参照する。

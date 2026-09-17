@@ -1,0 +1,396 @@
+"""Stage selection and source-bound compact inputs over the existing DB adapters.
+
+References/completion receipts use immutable history and the normal DB transaction.
+They never copy body payloads, infer approval from ready, or fetch external pages.
+"""
+import json
+from collections import Counter
+import article_review_facts as shared
+import project_database as db
+import project_readers as project
+
+TASKS=shared.TASKS
+STEP_TASK={'summary':'article-summary','talent-review':'talent-index','classification-review':'article-classification'}
+UNAVAILABLE={'unavailable','metadata_only'}
+def history(c,kind,article_id):
+    return [json.loads(r[0]) for r in c.execute(
+        "SELECT raw_json FROM legacy_history_records WHERE kind=? AND article_id=? ORDER BY rowid",
+        (kind,article_id))]
+def save_history(unit,kind,value,article_id=None,key=None):
+    import project_business_writes as business
+    import import_legacy_database as legacy
+    key=key or shared.digest(value)
+    s=business.source('ai-input/'+kind,key,value)
+    sid=legacy.ident('source',s['path'],s['position'],s['input_hash'])
+    hid=legacy.ident(kind,key)
+    business.provenance(unit,s,'legacy_history_records',hid)
+    unit.save('history',dict(id=hid,source_record_id=sid,kind=kind,article_id=article_id,
+                            talent_id=None,raw_json=db.canonical(value)),s)
+def reference_id(mapping):
+    return 'a'+shared.digest(mapping)[:16]
+def build_references(unit,request):
+    for mapping in request['references']:
+        ref=reference_id(mapping)
+        save_history(unit,'ai-reference',mapping,mapping['articleId'],ref)
+    for value in request.get('holdAssessments', []):
+        save_hold_assessment(unit,value)
+def resolve(c,ref,day,task=None):
+    import import_legacy_database as legacy
+    row=c.execute("SELECT raw_json FROM legacy_history_records WHERE id=? AND kind='ai-reference'",
+                  (legacy.ident('ai-reference',ref),)).fetchone()
+    if not row:raise ValueError('Unknown article reference')
+    mapping=json.loads(row[0])
+    if reference_id(mapping)!=ref or mapping['day']!=day:raise ValueError('Reference belongs to another input/day')
+    if task and mapping['task']!=task:raise ValueError('Reference belongs to another task')
+    occurrence=c.execute('SELECT * FROM article_occurrences WHERE id=? AND article_id=?',
+                         (mapping['occurrenceId'],mapping['articleId'])).fetchone()
+    if not occurrence:raise ValueError('Reference occurrence missing')
+    article=json.loads(occurrence['observations_json'])['article']
+    capture=None
+    if mapping['fetchAttemptId']:
+        fetch=c.execute('SELECT * FROM content_fetch_attempts WHERE id=? AND article_id=?',
+                        (mapping['fetchAttemptId'],mapping['articleId'])).fetchone()
+        if not fetch or fetch['version_id']!=mapping['contentVersionId']:raise ValueError('Reference body mismatch')
+        capture=project.Reader(c).capture(fetch)
+    review=None
+    if mapping['reviewId']:
+        review=c.execute('SELECT * FROM review_records WHERE id=? AND article_id=?',
+                         (mapping['reviewId'],mapping['articleId'])).fetchone()
+        if not review or review['content_version_id']!=mapping['contentVersionId']:raise ValueError('Reference review/body mismatch')
+        review=json.loads(review['raw_json'])
+        shared.validate_record(review,article,capture,review['policyHash'])
+    return mapping,article,capture,review
+def valid_review(c,rid,aid,task):
+    r=c.execute('SELECT * FROM review_records WHERE id=? AND article_id=?',(rid,aid)).fetchone()
+    if not r:return False
+    snapshot=c.execute('SELECT * FROM review_input_snapshots WHERE review_id=?',(rid,)).fetchone()
+    if not snapshot:return False
+    raw=json.loads(r['raw_json'])
+    try:shared.validate_record(raw,json.loads(snapshot['article_json']),json.loads(snapshot['capture_json']),r['rule_hash'])
+    except (ValueError,TypeError,KeyError):return False
+    return raw['taskStatus'][task]=='ready'
+def completed(c,aid,task):
+    receipts=history(c,'ai-stage-completion',aid)
+    for receipt in reversed(receipts):
+        if receipt['task']==task and valid_review(c,receipt['reviewId'],aid,task):
+            return receipt
+    if task=='article-summary':
+        for r in c.execute('SELECT id,review_id FROM article_summaries WHERE article_id=? ORDER BY saved_at DESC',(aid,)):
+            if valid_review(c,r['review_id'],aid,task):
+                return dict(task=task,reviewId=r['review_id'],artifactId=r['id'],state='saved')
+    # Existing adopted records are accepted only with their own historical review.
+    table='article_talents' if task=='talent-index' else 'article_classifications'
+    if task!='article-summary':
+        for r in c.execute('SELECT id,review_id,raw_json FROM '+table+' WHERE article_id=?',(aid,)):
+            raw=json.loads(r['raw_json'])
+            if raw.get('detection_method',raw.get('classification_method'))=='ai_review' and valid_review(c,r['review_id'],aid,task):
+                return dict(task=task,reviewId=r['review_id'],artifactId=r['id'],state='saved')
+    # Pre-existing immutable proposals: require an explicit AI result and a
+    # matching historical, grounded review; ready alone is never a result.
+    keys={x[0] for x in c.execute("SELECT value FROM article_identifiers WHERE article_id=? AND kind='legacy_key'",(aid,))}
+    kind='talent-index-proposals/articleTalents' if task=='talent-index' else 'article-classification-proposals/classifications'
+    for h in c.execute("SELECT h.id,h.raw_json,s.source_path FROM legacy_history_records h JOIN source_records s ON s.id=h.source_record_id WHERE h.kind=? ORDER BY h.rowid DESC",(kind,)):
+        raw=json.loads(h['raw_json'])
+        bound=raw.get('article_key') in keys
+        if not bound:
+            day=h['source_path'].rsplit('/',1)[-1][:-5]
+            source_url=raw.get('article_url')
+            if task=='talent-index' and raw.get('article_key'):
+                documents=project.Reader(c).documents('talent-index-proposals',day)
+                candidates=[a for path,doc in documents if path==h['source_path'] for a in doc.get('articles',[])
+                            if a.get('article_key')==raw['article_key']]
+                if len(candidates)==1:source_url=candidates[0].get('url')
+            if source_url:
+                ids={x[0] for x in c.execute('SELECT o.article_id FROM article_occurrences o JOIN collection_runs r ON r.id=o.collection_run_id WHERE r.run_date=? AND o.url=?',(day,source_url))}
+                bound=ids=={aid}
+        if not bound:continue
+        if raw.get('detection_method',raw.get('classification_method'))!='ai_review':continue
+        evidence=raw.get('evidence_text','').strip()
+        if not evidence:continue
+        for rev in c.execute("SELECT id,raw_json FROM review_records WHERE article_id=? ORDER BY rowid DESC",(aid,)):
+            rec=json.loads(rev['raw_json'])
+            grounded=[e['quote'] for e in rec['evidence']]+[f['text'] for f in rec['facts']]
+            if valid_review(c,rev['id'],aid,task) and any(evidence in text or text in evidence for text in grounded if text):
+                return dict(task=task,reviewId=rev['id'],artifactId=h['id'],state='saved')
+    return None
+def task_facts(record,task):
+    explicit=record.get('taskFacts',{}).get(task)
+    if explicit is None:
+        if task=='talent-index':
+            explicit={fid for e in record['entities'] for fid in e['factIds']}
+            # Without entities, retain facts so a negative finding has evidence.
+            if not explicit:explicit={f['id'] for f in record['facts']}
+        else:explicit={f['id'] for f in record['facts']}
+    return [f for f in record['facts'] if f['id'] in explicit]
+def packet(record,task):
+    facts=task_facts(record,task)
+    ids={f['id'] for f in facts}
+    evidence={eid for f in facts for eid in f['evidenceIds']}
+    result=dict(facts=[{k:v for k,v in f.items() if k!='topics'} for f in facts],
+                evidence=[e for e in record['evidence'] if e['id'] in evidence])
+    entities=[e for e in record['entities'] if ids.intersection(e['factIds'])]
+    if entities:result['entities']=[dict(e,factIds=[f for f in e['factIds'] if f in ids]) for e in entities]
+    return result
+def material(record,task,topics):
+    evid={e['id']:e for e in record['evidence']}
+    return {shared.digest(dict(text=f['text'],quotes=sorted(evid[e]['quote'] for e in f['evidenceIds'])))
+            for f in task_facts(record,task) if set(f.get('topics',[])).intersection(topics)}
+def hold_state(c,aid,task,current,audit=None):
+    records=[json.loads(r[0]) for r in c.execute('SELECT raw_json FROM review_records WHERE article_id=? ORDER BY rowid',(aid,))]
+    held=[r for r in records if r['taskStatus'].get(task)=='held']
+    if not held:return None
+    previous=held[-1];details=previous.get('holds',{}).get(task,{})
+    topics=details.get('missingTopics',[])
+    if not topics:
+        import legacy_hold_relevance as legacy_hold
+        held_row,current_row=legacy_hold.held_rows(c,aid,task)
+        result,assessment=legacy_hold.assess(c,aid,task,held_row,current_row)
+        if audit is not None:audit.append(assessment)
+        return result
+    added=material(current,task,topics)-material(previous,task,topics) if current and topics else set()
+    if added:return dict(state='resumed',reason=details.get('reason'),newMaterialCount=len(added))
+    return dict(state='held',reason=details.get('reason') or '; '.join(previous['unresolved']))
+def select(c,day,row,capture,task,policy,audit=None):
+    aid=row['_project']['articleId']
+    done=completed(c,aid,task)
+    if done:return dict(state='saved',receipt=done)
+    if capture and capture['_project']['articleId']!=aid:raise ValueError('Article/capture identity mismatch')
+    latest=c.execute('SELECT * FROM review_records WHERE article_id=? ORDER BY rowid DESC LIMIT 1',(aid,)).fetchone()
+    record=json.loads(latest['raw_json']) if latest else None
+    hold=hold_state(c,aid,task,record,audit)
+    if hold and hold['state']=='held':return hold
+    status=(capture or {}).get('contentStatus')
+    if status in UNAVAILABLE and task in ('article-summary','article-classification'):
+        return dict(state='unavailable',reason=(capture or {}).get('failureReason'))
+    valid=False
+    if record and latest['status']=='current':
+        try:shared.validate_record(record,row['article'],capture,policy);valid=True
+        except (ValueError,TypeError,KeyError):pass
+    result=dict(state='ready' if valid and record['taskStatus'][task]=='ready' else 'needs_review',
+                record=record if valid else None,reviewId=latest['id'] if valid else None)
+    if hold:result['resume']=hold
+    return result
+def build_payload(root,day,task,offset=0,limit=20,article_url=None,content_offset=0,max_content_chars=6000,include_body=False):
+    from read_ai_inputs import content_chunk,parse_day
+    parse_day(day)
+    if offset<0 or limit<1 or content_offset<0 or max_content_chars<1:raise ValueError('Invalid page bounds')
+    views=[];mappings=[];audit=[];excluded=Counter();exclusion_reasons=Counter()
+    with project.reader(root) as reader:
+        c=reader.c;_,rows,captures=reader.load_day(day,[])
+        candidates=[]
+        for row in rows:
+            if article_url and row['article']['url']!=article_url:continue
+            capture=captures.get(row['article']['url'])
+            if capture is None:
+                fetch=c.execute('SELECT * FROM content_fetch_attempts WHERE article_id=? ORDER BY rowid DESC LIMIT 1',(row['_project']['articleId'],)).fetchone()
+                if fetch:capture=reader.capture(fetch)
+            state=select(c,day,row,capture,task,shared.policy_hash(root),audit)
+            if state['state'] in ('saved','held','unavailable'):
+                excluded[state['state']]+=1
+                if state.get('reason'):exclusion_reasons[(state['state'],str(state['reason'])[:300])]+=1
+                continue
+            candidates.append((row,capture,state))
+        if offset>len(candidates):raise ValueError('Offset exceeds eligible article count')
+        page=candidates[offset:offset+limit]
+        if content_offset and (not article_url or len(page)!=1):raise ValueError('Continuation requires one article; prefer --article-ref')
+        for row,capture,state in page:
+            cp=(capture or {}).get('_project',{})
+            mapping=dict(day=day,task=task,articleId=row['_project']['articleId'],occurrenceId=row['_project']['occurrenceId'],
+                         fetchAttemptId=cp.get('fetchAttemptId'),contentVersionId=cp.get('contentVersionId'),
+                         reviewId=state['reviewId'],policyHash=shared.policy_hash(root))
+            ref=reference_id(mapping);mappings.append(mapping)
+            article=row['article']
+            view=dict(ref=ref,title=article.get('title',''),publishedAt=article.get('publishedAt',''),
+                      contentStatus=(capture or {}).get('contentStatus','not_captured'),state=state['state'])
+            if state.get('resume'):view['resume']=state['resume']
+            if state['record']:view.update(packet(state['record'],task))
+            if state['state']=='needs_review' or include_body or content_offset:
+                if capture:view['content']=content_chunk(capture,content_offset,max_content_chars)
+                if article.get('excerpt'):view['excerpt']=article['excerpt']
+            views.append(view)
+    if mappings or audit:
+        import project_business_writes as business
+        payload=dict(references=mappings)
+        if audit:payload["holdAssessments"]=audit
+        business.submit('ai-refs-'+shared.digest(payload),'ai-references',payload,project.path_for(root),root)
+    result=dict(inputVersion=2,task=task,runDate=day,totalArticles=len(rows),matchingArticles=len(candidates),
+                offset=offset,returnedArticles=len(views),nextOffset=offset+len(page) if offset+len(page)<len(candidates) else None,
+                excluded=dict(excluded),articles=views)
+    if exclusion_reasons:result['exclusionReasons']=[dict(state=state,reason=reason,count=count) for (state,reason),count in exclusion_reasons.items()]
+    return result
+def additional(root,day,task,ref,kind='body',offset=0,maximum=1000,ids=None):
+    from read_ai_inputs import content_chunk
+    with project.reader(root) as reader:
+        mapping,article,capture,record=resolve(reader.c,ref,day,task)
+        if completed(reader.c,mapping['articleId'],task):return dict(ref=ref,state='saved')
+        latest=reader.c.execute('SELECT raw_json FROM review_records WHERE article_id=? ORDER BY rowid DESC LIMIT 1',(mapping['articleId'],)).fetchone()
+        hold=hold_state(reader.c,mapping['articleId'],task,json.loads(latest[0]) if latest else None)
+        if hold and hold['state']=='held':return dict(ref=ref,**hold)
+        if kind=='detail':
+            value=dict(ref=ref,title=article.get('title',''),publishedAt=article.get('publishedAt',''),
+                       contentStatus=(capture or {}).get('contentStatus','not_captured'),
+                       state='ready' if record and record['taskStatus'][task]=='ready' else 'needs_review')
+            if record:value.update(packet(record,task))
+            elif capture:value['content']=content_chunk(capture,offset,maximum)
+            return value
+        if kind=='body':
+            if not capture:return dict(ref=ref,state='no_saved_body')
+            return dict(ref=ref,content=content_chunk(capture,offset,maximum))
+        if kind=='source':return dict(ref=ref,url=article['url'],source=article.get('source'),references=mapping)
+        if kind not in ('facts','evidence'):raise ValueError('Unknown reference kind')
+        if not ids:raise ValueError('Select fact/evidence IDs explicitly')
+        values=[x for x in (record or {}).get(kind,[]) if x['id'] in ids]
+        if set(ids)!={x['id'] for x in values}:raise ValueError('Unknown fact/evidence ID in this reference')
+        return dict(ref=ref,**{kind:values})
+def expand_review(c,day,authored):
+    if 'ref' not in authored:return authored
+    raw=dict(authored);ref=raw.pop('ref')
+    mapping,article,capture,_=resolve(c,ref,day)
+    if completed(c,mapping['articleId'],mapping['task']):raise ValueError('Stage already saved')
+    for key,value in dict(url=article['url'],inputHash=shared.input_hash(article,capture),policyHash=mapping['policyHash'],reviewVersion=1).items():
+        if key in raw and raw[key]!=value:raise ValueError('Authored reference disagrees with source')
+        raw[key]=value
+    return raw
+def completion(unit,ref,day,task,artifact):
+    mapping,article,capture,record=resolve(unit.c,ref,day,task)
+    if not record or record['taskStatus'][task]!='ready':raise ValueError('Saved artifact requires reviewed ready evidence')
+    prior=completed(unit.c,mapping['articleId'],task)
+    if prior and prior.get('reviewId')==mapping['reviewId']:return
+    # New artifacts must still match the live source and rules.
+    _,rows,captures=project.Reader(unit.c).load_day(day,[])
+    matches=[r for r in rows if r['_project']['occurrenceId']==mapping['occurrenceId']]
+    if len(matches)!=1:raise ValueError('Source occurrence changed')
+    current=captures.get(article['url'])
+    shared.validate_record(record,matches[0]['article'],current,shared.policy_hash(unit.root))
+    value=dict(task=task,articleId=mapping['articleId'],reviewId=mapping['reviewId'],contentVersionId=mapping['contentVersionId'],
+               ref=ref,artifact=artifact,state='saved')
+    save_history(unit,'ai-stage-completion',value,mapping['articleId'])
+def expand_artifact(unit,request):
+    """Explicit reviewed refs only; empty proposal is never blanket completion."""
+    request=dict(request)
+    if request['kind']=='summary' and 'summaries' in request:
+        entries=[]
+        for item in request['summaries']:
+            if not isinstance(item.get('text'),str) or not item['text'].strip():raise ValueError('Summary text required')
+            mapping,article,cap,record=resolve(unit.c,item['ref'],request['day'],'article-summary')
+            if not record or record['taskStatus']['article-summary']!='ready':raise ValueError('Summary not reviewed')
+            if any(x in article['title'] for x in ('[',']','\n')) or any(x in article['url'] for x in ('(',')','\n')):
+                raise ValueError('Use supported escaped Markdown authoring for special source characters')
+            entries.append('- ['+article['title']+']('+article['url']+') - 本文確認: 確認済み - 要約: '+item['text'])
+        supplied={resolve(unit.c,item['ref'],request['day'],'article-summary')[1]['url'] for item in request['summaries']}
+        path='content/article-summaries/'+request['day']+'.md'
+        for saved in unit.c.execute('SELECT raw_json FROM article_summaries WHERE source=? AND is_current=1 ORDER BY rowid',(path,)):
+            raw=json.loads(saved[0])
+            if raw['url'] in supplied:continue
+            title,url=raw['links'][0]
+            entries.append('- ['+title+']('+url+') - 本文確認: 確認済み - 要約: '+raw['text'])
+        request['text']=request.get('preamble','')+'\n## Source-by-source Notes\n'+'\n'.join(entries)+'\n'
+    if request['kind']=='proposal':
+        value=json.loads(json.dumps(request['document']))
+        task='talent-index' if request['directory']=='talent-index-proposals' else 'article-classification'
+        for name in ('articles','classifications'):
+            for row in value.get(name,[]):
+                if 'ref' not in row:continue
+                mapping,a,_,_=resolve(unit.c,row.pop('ref'),request['day'],task)
+                field='url' if name=='articles' else 'article_url'
+                if field in row and row[field]!=a['url']:raise ValueError('Wrong source URL')
+                row[field]=a['url']
+                if name=='articles':
+                    row['title']=a['title']
+                    try:key=project.Reader(unit.c).legacy_key(mapping['articleId'])
+                    except ValueError:key=db.checksum(mapping['articleId'].encode())
+                    if 'article_key' in row and row['article_key']!=key:raise ValueError('Authored article key disagrees with reference')
+                    row['article_key']=key
+                    row.setdefault('excerpt',a.get('excerpt',''));row.setdefault('source',a.get('source',''))
+                    row.setdefault('published_at',a.get('publishedAt',''))
+        for row in value.get('articleTalents',[]):
+            if 'articleRef' not in row:continue
+            mapping,a,_,_=resolve(unit.c,row.pop('articleRef'),request['day'],'talent-index')
+            try:key=project.Reader(unit.c).legacy_key(mapping['articleId'])
+            except ValueError:key=db.checksum(mapping['articleId'].encode())
+            if 'article_key' in row and row['article_key']!=key:raise ValueError('Relation source disagrees with reference')
+            row['article_key']=key
+            row.setdefault('relation_key',key+'-'+row['talent_id'])
+        # Retain other articles already saved in this daily proposal.
+        existing=[doc for path,doc in project.Reader(unit.c).documents(request['directory'],request['day'])
+                  if path=='content/'+request['directory']+'/'+request['day']+'.json']
+        if existing:
+            old=existing[0]
+            keys={'articles':'article_key','talents':'talent_id','articleTalents':'relation_key',
+                  'classifications':'article_url','reviewedArticles':'ref'}
+            for name,key in keys.items():
+                if name not in value and name not in old:continue
+                rows={}
+                for item in old.get(name,[])+value.get(name,[]):
+                    identity=item.get(key) or item.get('article_key')
+                    if not identity:raise ValueError('Proposal merge requires an explicit stable key')
+                    rows[identity]=item
+                value[name]=list(rows.values())
+        request['document']=value
+    return request
+def record_artifact(unit,request):
+    if request['kind']=='summary':
+        for item in request.get('summaries',[]):completion(unit,item['ref'],request['day'],'article-summary',dict(kind='summary'))
+    if request['kind']=='proposal' and request['directory'] in ('talent-index-proposals','article-classification-proposals'):
+        task='talent-index' if request['directory']=='talent-index-proposals' else 'article-classification'
+        document=request['document']
+        for item in document.get('reviewedArticles',[]):
+            if item.get('result') not in ('confirmed','none'):raise ValueError('Explicit confirmed/none result required')
+            mapping,article,_,_=resolve(unit.c,item['ref'],request['day'],task)
+            # Bind each receipt to an actual per-article proposal, including explicit negative findings.
+            if item['result']=='confirmed':
+                rows=document.get('articles' if task=='talent-index' else 'classifications',[])
+                if not any(r.get('url',r.get('article_url'))==article['url'] for r in rows):raise ValueError('Reviewed article missing from proposal')
+            completion(unit,item['ref'],request['day'],task,dict(kind='proposal',directory=request['directory'],
+                       documentHash=shared.digest(document),result=item['result']))
+def saved_for_day(root,day,task):
+    if project.source(root)!='project-db':return None
+    with project.reader(root) as r:
+        _,rows,_=r.load_day(day,[])
+        return {row['article']['url']:completed(r.c,row['_project']['articleId'],task) for row in rows}
+
+def validate_proposal(unit,request):
+    if request['directory'] not in ('talent-index-proposals','article-classification-proposals'):return
+    import autoarticle_artifacts as artifacts
+    from autoarticle_progress import Progress
+    value=request['document'];task='talent-index' if request['directory']=='talent-index-proposals' else 'article-classification'
+    p=Progress(unit.root,request['day'],'http://127.0.0.1:5678')
+    fields=('articles','talents','articleTalents') if task=='talent-index' else ('classifications',)
+    if value.get('proposalVersion')!=1 or value.get('proposalDate')!=request['day'] or any(not isinstance(value.get(f),list) for f in fields):
+        raise ValueError('Invalid proposal contract/date')
+    check=artifacts.Check()
+    artifacts.proposals(p,'talent-review' if task=='talent-index' else 'classification-review',check,
+                       lambda: project.Reader(unit.c).dashboard(),staged=value)
+    if check.count:raise ValueError('Invalid proposal: '+str(check.errors))
+
+def selection_counts(root,day,task):
+    if project.source(root)!='project-db':return None
+    with project.reader(root) as reader:
+        _,rows,captures=reader.load_day(day,[])
+        return dict(Counter(select(reader.c,day,row,captures.get(row['article']['url']),task,
+                                   shared.policy_hash(root))['state'] for row in rows))
+
+
+def save_hold_assessment(unit,value):
+    """Recheck source binding inside the existing transaction, then append only."""
+    import legacy_hold_relevance as legacy_hold
+    aid,task=value['articleId'],value['task']
+    if completed(unit.c,aid,task):return
+    held=unit.c.execute('SELECT * FROM review_records WHERE id=? AND article_id=?',
+                        (value['heldReviewId'],aid)).fetchone()
+    current=unit.c.execute('SELECT * FROM review_records WHERE id=? AND article_id=?',
+                          (value['currentReviewId'],aid)).fetchone()
+    if not held or not current:raise ValueError('Hold assessment source missing')
+    if json.loads(held['raw_json'])['taskStatus'][task]!='held':
+        raise ValueError('Hold assessment needs a historical hold')
+    _,verified=legacy_hold.assess(unit.c,aid,task,held,current)
+    if verified!=value:raise ValueError('Hold assessment differs from grounded inputs')
+    save_history(unit,'ai-legacy-hold-assessment',value,aid)
+
+def record_legacy_hold_assessments(unit,aid):
+    """Only an article receiving new reviewed material; no bulk backfill."""
+    for task in TASKS:
+        if completed(unit.c,aid,task):continue
+        audit=[]
+        hold_state(unit.c,aid,task,None,audit)
+        for value in audit:save_hold_assessment(unit,value)

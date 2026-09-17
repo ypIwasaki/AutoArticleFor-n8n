@@ -76,7 +76,7 @@ def validate_record(record: dict[str, Any], article: dict[str, Any], capture: di
         raise ValueError("Review must be an object")
     required = {"reviewVersion", "url", "inputHash", "policyHash", "basis", "taskStatus",
                 "facts", "entities", "evidence", "unresolved", "reviewedBy"}
-    if not required <= record.keys() or record.keys() - required - {"sourceDate", "reviewedAt"}:
+    if not required <= record.keys() or record.keys() - required - {"sourceDate", "reviewedAt", "taskFacts", "holds"}:
         raise ValueError("Review fields are missing or unsupported")
     if type(record["reviewVersion"]) is not int or record["reviewVersion"] != REVIEW_VERSION:
         raise ValueError("Unsupported reviewVersion")
@@ -132,7 +132,7 @@ def validate_record(record: dict[str, Any], article: dict[str, Any], capture: di
     fact_ids = set()
     grounded_in_body = False
     for fact in record["facts"]:
-        if not isinstance(fact, dict) or set(fact) != {"id", "text", "evidenceIds"}:
+        if not isinstance(fact, dict) or set(fact) - {"topics"} != {"id", "text", "evidenceIds"}:
             raise ValueError("Fact requires id, text, evidenceIds")
         require_text(fact["id"], "fact.id", 100)
         require_text(fact["text"], "fact.text")
@@ -156,6 +156,32 @@ def validate_record(record: dict[str, Any], article: dict[str, Any], capture: di
         refs = entity["factIds"]
         if not isinstance(refs, list) or not refs or any(not isinstance(ref, str) or ref not in fact_ids for ref in refs):
             raise ValueError("Entity factIds must reference grounded facts")
+    task_facts = record.get("taskFacts", {})
+    if not isinstance(task_facts, dict) or set(task_facts) - set(TASKS):
+        raise ValueError("taskFacts must map known tasks to fact IDs")
+    for task, refs in task_facts.items():
+        if not isinstance(refs,list) or not refs or any(ref not in fact_ids for ref in refs):
+            raise ValueError("taskFacts requires existing facts")
+    for task in ("article-summary","article-classification"):
+        selected=task_facts.get(task)
+        if statuses[task]=="ready" and selected is not None and not any(
+                body_evidence.intersection(f["evidenceIds"]) for f in record["facts"] if f["id"] in selected):
+            raise ValueError("Each ready body task requires its own body evidence")
+    for fact in record["facts"]:
+        topics=fact.get("topics",[])
+        if not isinstance(topics,list) or len(topics)>20:
+            raise ValueError("topics must be a short list")
+        for topic in topics:require_text(topic,"topic",200)
+    holds=record.get("holds",{})
+    if not isinstance(holds,dict) or set(holds)-set(TASKS):
+        raise ValueError("holds must map known tasks")
+    for task,hold in holds.items():
+        if statuses[task]!="held" or not isinstance(hold,dict) or set(hold)!={"reason","missingTopics"}:
+            raise ValueError("holds requires held task, reason and missingTopics")
+        require_text(hold["reason"],"hold reason")
+        if not isinstance(hold["missingTopics"],list) or not hold["missingTopics"]:
+            raise ValueError("hold needs explicit missing topics")
+        for topic in hold["missingTopics"]:require_text(topic,"missing topic",200)
     # Bound the complete shared packet; do not silently truncate reviewed evidence.
     if len(canonical(record)) > 30000:
         raise ValueError("Review exceeds 30000 characters; keep facts/evidence concise")

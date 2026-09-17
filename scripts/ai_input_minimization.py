@@ -34,31 +34,61 @@ def build_references(unit,request):
         save_history(unit,'ai-reference',mapping,mapping['articleId'],ref)
     for value in request.get('holdAssessments', []):
         save_hold_assessment(unit,value)
-def resolve(c,ref,day,task=None):
-    row=c.execute("SELECT raw_json FROM legacy_history_records WHERE id=? AND kind='ai-reference'",
-                  (record_values.record_id('ai-reference',ref),)).fetchone()
-    if not row:raise ValueError('Unknown article reference')
-    mapping=json.loads(row[0])
-    if reference_id(mapping)!=ref or mapping['day']!=day:raise ValueError('Reference belongs to another input/day')
-    if task and mapping['task']!=task:raise ValueError('Reference belongs to another task')
-    occurrence=c.execute('SELECT * FROM article_occurrences WHERE id=? AND article_id=?',
-                         (mapping['occurrenceId'],mapping['articleId'])).fetchone()
-    if not occurrence:raise ValueError('Reference occurrence missing')
-    article=json.loads(occurrence['observations_json'])['article']
-    capture=None
-    if mapping['fetchAttemptId']:
-        fetch=c.execute('SELECT * FROM content_fetch_attempts WHERE id=? AND article_id=?',
-                        (mapping['fetchAttemptId'],mapping['articleId'])).fetchone()
-        if not fetch or fetch['version_id']!=mapping['contentVersionId']:raise ValueError('Reference body mismatch')
-        capture=project.Reader(c).capture(fetch)
-    review=None
-    if mapping['reviewId']:
-        review=c.execute('SELECT * FROM review_records WHERE id=? AND article_id=?',
-                         (mapping['reviewId'],mapping['articleId'])).fetchone()
-        if not review or review['content_version_id']!=mapping['contentVersionId']:raise ValueError('Reference review/body mismatch')
-        review=json.loads(review['raw_json'])
-        shared.validate_record(review,article,capture,review['policyHash'])
-    return mapping,article,capture,review
+def _resolve_reference_capture(connection, mapping):
+    """Load the exact fetch attempt and body version recorded in a reference."""
+    if not mapping['fetchAttemptId']:
+        return None
+    fetch_attempt = connection.execute(
+        'SELECT * FROM content_fetch_attempts WHERE id=? AND article_id=?',
+        (mapping['fetchAttemptId'], mapping['articleId']),
+    ).fetchone()
+    if not fetch_attempt or fetch_attempt['version_id'] != mapping['contentVersionId']:
+        raise ValueError('Reference body mismatch')
+    return project.Reader(connection).capture(fetch_attempt)
+
+
+def _resolve_reference_review(connection, mapping, article, capture):
+    """Validate the referenced review against its recorded article and body."""
+    if not mapping['reviewId']:
+        return None
+    review_row = connection.execute(
+        'SELECT * FROM review_records WHERE id=? AND article_id=?',
+        (mapping['reviewId'], mapping['articleId']),
+    ).fetchone()
+    if not review_row or review_row['content_version_id'] != mapping['contentVersionId']:
+        raise ValueError('Reference review/body mismatch')
+    review_record = json.loads(review_row['raw_json'])
+    shared.validate_record(review_record, article, capture, review_record['policyHash'])
+    return review_record
+
+
+def resolve(c, ref, day, task=None):
+    """Restore source-bound inputs, rejecting mismatched references in order."""
+    reference_row = c.execute(
+        "SELECT raw_json FROM legacy_history_records WHERE id=? AND kind='ai-reference'",
+        (record_values.record_id('ai-reference', ref),),
+    ).fetchone()
+    if not reference_row:
+        raise ValueError('Unknown article reference')
+
+    mapping = json.loads(reference_row[0])
+    if reference_id(mapping) != ref or mapping['day'] != day:
+        raise ValueError('Reference belongs to another input/day')
+    if task and mapping['task'] != task:
+        raise ValueError('Reference belongs to another task')
+
+    occurrence = c.execute(
+        'SELECT * FROM article_occurrences WHERE id=? AND article_id=?',
+        (mapping['occurrenceId'], mapping['articleId']),
+    ).fetchone()
+    if not occurrence:
+        raise ValueError('Reference occurrence missing')
+    article = json.loads(occurrence['observations_json'])['article']
+    capture = _resolve_reference_capture(c, mapping)
+    review = _resolve_reference_review(c, mapping, article, capture)
+    return mapping, article, capture, review
+
+
 def valid_review(c, rid, aid, task):
     """Validate saved work against its historical inputs and policy."""
     review_row = c.execute(

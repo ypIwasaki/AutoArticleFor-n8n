@@ -609,69 +609,124 @@ def completion(unit, ref, day, task, artifact):
     save_history(unit, 'ai-stage-completion', receipt, mapping['articleId'])
 
 
-def expand_artifact(unit,request):
-    """Explicit reviewed refs only; empty proposal is never blanket completion."""
-    request=dict(request)
-    if request['kind']=='summary' and 'summaries' in request:
-        entries=[]
-        for item in request['summaries']:
-            if not isinstance(item.get('text'),str) or not item['text'].strip():raise ValueError('Summary text required')
-            mapping,article,cap,record=resolve(unit.c,item['ref'],request['day'],'article-summary')
-            if not record or record['taskStatus']['article-summary']!='ready':raise ValueError('Summary not reviewed')
-            if any(x in article['title'] for x in ('[',']','\n')) or any(x in article['url'] for x in ('(',')','\n')):
-                raise ValueError('Use supported escaped Markdown authoring for special source characters')
-            entries.append('- ['+article['title']+']('+article['url']+') - 本文確認: 確認済み - 要約: '+item['text'])
-        supplied={resolve(unit.c,item['ref'],request['day'],'article-summary')[1]['url'] for item in request['summaries']}
-        path='content/article-summaries/'+request['day']+'.md'
-        for saved in unit.c.execute('SELECT raw_json FROM article_summaries WHERE source=? AND is_current=1 ORDER BY rowid',(path,)):
-            raw=json.loads(saved[0])
-            if raw['url'] in supplied:continue
-            title,url=raw['links'][0]
-            entries.append('- ['+title+']('+url+') - 本文確認: 確認済み - 要約: '+raw['text'])
-        request['text']=request.get('preamble','')+'\n## Source-by-source Notes\n'+'\n'.join(entries)+'\n'
-    if request['kind']=='proposal':
-        value=json.loads(json.dumps(request['document']))
-        task='talent-index' if request['directory']=='talent-index-proposals' else 'article-classification'
-        for name in ('articles','classifications'):
-            for row in value.get(name,[]):
-                if 'ref' not in row:continue
-                mapping,a,_,_=resolve(unit.c,row.pop('ref'),request['day'],task)
-                field='url' if name=='articles' else 'article_url'
-                if field in row and row[field]!=a['url']:raise ValueError('Wrong source URL')
-                row[field]=a['url']
-                if name=='articles':
-                    row['title']=a['title']
-                    try:key=project.Reader(unit.c).legacy_key(mapping['articleId'])
-                    except ValueError:key=db.checksum(mapping['articleId'].encode())
-                    if 'article_key' in row and row['article_key']!=key:raise ValueError('Authored article key disagrees with reference')
-                    row['article_key']=key
-                    row.setdefault('excerpt',a.get('excerpt',''));row.setdefault('source',a.get('source',''))
-                    row.setdefault('published_at',a.get('publishedAt',''))
-        for row in value.get('articleTalents',[]):
-            if 'articleRef' not in row:continue
-            mapping,a,_,_=resolve(unit.c,row.pop('articleRef'),request['day'],'talent-index')
-            try:key=project.Reader(unit.c).legacy_key(mapping['articleId'])
-            except ValueError:key=db.checksum(mapping['articleId'].encode())
-            if 'article_key' in row and row['article_key']!=key:raise ValueError('Relation source disagrees with reference')
-            row['article_key']=key
-            row.setdefault('relation_key',key+'-'+row['talent_id'])
-        # Retain other articles already saved in this daily proposal.
-        existing=[doc for path,doc in project.Reader(unit.c).documents(request['directory'],request['day'])
-                  if path=='content/'+request['directory']+'/'+request['day']+'.json']
-        if existing:
-            old=existing[0]
-            keys={'articles':'article_key','talents':'talent_id','articleTalents':'relation_key',
-                  'classifications':'article_url','reviewedArticles':'ref'}
-            for name,key in keys.items():
-                if name not in value and name not in old:continue
-                rows={}
-                for item in old.get(name,[])+value.get(name,[]):
-                    identity=item.get(key) or item.get('article_key')
-                    if not identity:raise ValueError('Proposal merge requires an explicit stable key')
-                    rows[identity]=item
-                value[name]=list(rows.values())
-        request['document']=value
-    return request
+def _expand_summary_text(unit, request):
+    """Render reviewed summaries and retain saved articles absent from this update."""
+    entries = []
+    for item in request['summaries']:
+        if not isinstance(item.get('text'), str) or not item['text'].strip():
+            raise ValueError('Summary text required')
+        _, article, _, review = resolve(unit.c, item['ref'], request['day'], 'article-summary')
+        if not review or review['taskStatus']['article-summary'] != 'ready':
+            raise ValueError('Summary not reviewed')
+        title_needs_escaping = any(character in article['title'] for character in ('[', ']', '\n'))
+        url_needs_escaping = any(character in article['url'] for character in ('(', ')', '\n'))
+        if title_needs_escaping or url_needs_escaping:
+            raise ValueError('Use supported escaped Markdown authoring for special source characters')
+        entries.append(
+            '- [' + article['title'] + '](' + article['url']
+            + ') - 本文確認: 確認済み - 要約: ' + item['text']
+        )
+
+    supplied_urls = {
+        resolve(unit.c, item['ref'], request['day'], 'article-summary')[1]['url']
+        for item in request['summaries']
+    }
+    source_path = 'content/article-summaries/' + request['day'] + '.md'
+    saved_summaries = unit.c.execute(
+        'SELECT raw_json FROM article_summaries WHERE source=? AND is_current=1 ORDER BY rowid',
+        (source_path,),
+    )
+    for saved_summary in saved_summaries:
+        record = json.loads(saved_summary[0])
+        if record['url'] in supplied_urls:
+            continue
+        title, url = record['links'][0]
+        entries.append('- [' + title + '](' + url + ') - 本文確認: 確認済み - 要約: ' + record['text'])
+    return request.get('preamble', '') + '\n## Source-by-source Notes\n' + '\n'.join(entries) + '\n'
+
+
+def _proposal_article_key(connection, article_id):
+    """Use the legacy key when available, preserving the existing fallback."""
+    try:
+        return project.Reader(connection).legacy_key(article_id)
+    except ValueError:
+        return db.checksum(article_id.encode())
+
+
+def _merge_proposal_records(previous, incoming):
+    """Replace matching records in place and append new identities in input order."""
+    identity_fields = {
+        'articles': 'article_key',
+        'talents': 'talent_id',
+        'articleTalents': 'relation_key',
+        'classifications': 'article_url',
+        'reviewedArticles': 'ref',
+    }
+    for collection, identity_field in identity_fields.items():
+        if collection not in incoming and collection not in previous:
+            continue
+        records_by_identity = {}
+        for record in previous.get(collection, []) + incoming.get(collection, []):
+            identity = record.get(identity_field) or record.get('article_key')
+            if not identity:
+                raise ValueError('Proposal merge requires an explicit stable key')
+            records_by_identity[identity] = record
+        incoming[collection] = list(records_by_identity.values())
+
+
+def _expand_proposal_document(unit, request):
+    """Resolve authored references in a copy, then retain other saved records."""
+    document = json.loads(json.dumps(request['document']))
+    task = 'talent-index' if request['directory'] == 'talent-index-proposals' else 'article-classification'
+    for collection in ('articles', 'classifications'):
+        for record in document.get(collection, []):
+            if 'ref' not in record:
+                continue
+            mapping, article, _, _ = resolve(unit.c, record.pop('ref'), request['day'], task)
+            url_field = 'url' if collection == 'articles' else 'article_url'
+            if url_field in record and record[url_field] != article['url']:
+                raise ValueError('Wrong source URL')
+            record[url_field] = article['url']
+            if collection == 'articles':
+                record['title'] = article['title']
+                article_key = _proposal_article_key(unit.c, mapping['articleId'])
+                if 'article_key' in record and record['article_key'] != article_key:
+                    raise ValueError('Authored article key disagrees with reference')
+                record['article_key'] = article_key
+                record.setdefault('excerpt', article.get('excerpt', ''))
+                record.setdefault('source', article.get('source', ''))
+                record.setdefault('published_at', article.get('publishedAt', ''))
+
+    for relation in document.get('articleTalents', []):
+        if 'articleRef' not in relation:
+            continue
+        mapping, _, _, _ = resolve(unit.c, relation.pop('articleRef'), request['day'], 'talent-index')
+        article_key = _proposal_article_key(unit.c, mapping['articleId'])
+        if 'article_key' in relation and relation['article_key'] != article_key:
+            raise ValueError('Relation source disagrees with reference')
+        relation['article_key'] = article_key
+        relation.setdefault('relation_key', article_key + '-' + relation['talent_id'])
+
+    source_path = 'content/' + request['directory'] + '/' + request['day'] + '.json'
+    existing_documents = [
+        document for path, document in project.Reader(unit.c).documents(request['directory'], request['day'])
+        if path == source_path
+    ]
+    if existing_documents:
+        _merge_proposal_records(existing_documents[0], document)
+    return document
+
+
+def expand_artifact(unit, request):
+    """Expand authored references without treating an empty proposal as completion."""
+    expanded = dict(request)
+    if expanded['kind'] == 'summary' and 'summaries' in expanded:
+        expanded['text'] = _expand_summary_text(unit, expanded)
+    if expanded['kind'] == 'proposal':
+        expanded['document'] = _expand_proposal_document(unit, expanded)
+    return expanded
+
+
 def record_artifact(unit,request):
     if request['kind']=='summary':
         for item in request.get('summaries',[]):completion(unit,item['ref'],request['day'],'article-summary',dict(kind='summary'))

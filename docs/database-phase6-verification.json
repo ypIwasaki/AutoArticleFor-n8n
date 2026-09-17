@@ -1,0 +1,757 @@
+{
+  "phase": 6,
+  "status": "complete",
+  "complete": true,
+  "started_at": "2026-09-17T00:05:08.806573Z",
+  "scope": "Read cutover only; write_target remains legacy",
+  "phase5_commit": "f1504b1cbed735a429b006edfed6b0b7cd1e447a",
+  "start_gate": {
+    "phase5_complete": true,
+    "running_writers": [],
+    "unfinished_n8n_executions": [],
+    "read_sources_before": {
+      "comparison": "legacy",
+      "dashboard": "legacy",
+      "weekly": "legacy",
+      "ai-reader": "legacy",
+      "n8n-daily": "legacy"
+    },
+    "schema_versions": [
+      "001",
+      "002",
+      "003",
+      "004",
+      "005",
+      "006"
+    ],
+    "last_sync_operations": [
+      "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+      "phase5-summary-20260916-v4"
+    ],
+    "recovery": {
+      "backup": "/mnt/d/N8N/backups/phase5-summary-20260916-v4/after-summary.sqlite",
+      "restored": "/mnt/d/N8N/backups/phase5-summary-20260916-v4/after-summary-restored.sqlite",
+      "existing_proof": "/mnt/d/N8N/database/phase5-capture-history-20260916T044305Z/v4/production-summary-sync.json",
+      "reuse": "Existing successful restore proof; no repeated full backup/hash/restore.",
+      "post_sync_backup": {
+        "source": "/home/raimu/N8N/AutoArticleFor-n8n/data/autoarticle.sqlite",
+        "path": "/mnt/d/N8N/backups/phase5-summary-20260916-v4/after-summary.sqlite",
+        "sha256": "1a4abf83ce16625e7483b06a70952d43347c19ae69a9d5e5f30f854e9c5e2b0b",
+        "bytes": 2040864768,
+        "method": "closed_database_byte_copy_with_before_after_sha256",
+        "equal": true
+      },
+      "post_sync_restore": {
+        "source": "/mnt/d/N8N/backups/phase5-summary-20260916-v4/after-summary.sqlite",
+        "path": "/mnt/d/N8N/backups/phase5-summary-20260916-v4/after-summary-restored.sqlite",
+        "sha256": "1a4abf83ce16625e7483b06a70952d43347c19ae69a9d5e5f30f854e9c5e2b0b",
+        "bytes": 2040864768,
+        "method": "closed_database_byte_copy_with_before_after_sha256",
+        "equal": true
+      },
+      "restored_business_history_and_sync_state_equal": true
+    },
+    "preexisting_changes": "Phase6/validation instructions and September16 business artifacts preserved. Startup script modes excluded.",
+    "related_input_checks": [
+      {
+        "path": "content/article-body-captures/backfill-state.json",
+        "sha256": "e3b1279a4669ea717f7f8e009e300e8e654c1f2d83d9df171680df6a9c8b5728",
+        "matches_phase5_snapshot": true
+      },
+      {
+        "path": "content/article-body-captures/rate-limit-state.json",
+        "sha256": "68922f78c81b04b16c70e2a61a1395a773dbc47fa317d4a6529214b9d78c6be8",
+        "matches_phase5_snapshot": true
+      },
+      {
+        "path": "content/structured-records/2026-09-16.jsonl",
+        "sha256": "ec715895853709efa9db8572b319f6fb2556eb02557681c2f28e7530463d086f",
+        "matches_phase5_snapshot": true
+      },
+      {
+        "path": "content/article-body-captures/2026-09-16.jsonl",
+        "sha256": "751bf2f806430f9840fecf957d4ec64c789c4db9381c4264f35f17c797e2bf83",
+        "matches_phase5_snapshot": true
+      },
+      {
+        "path": "content/article-review-facts/2026-09-16.jsonl",
+        "sha256": "d540675b55e633d79cc860872e5967a54e1d6404f703aa497839daa78be622da",
+        "matches_phase5_snapshot": true
+      },
+      {
+        "path": "content/article-summaries/2026-09-16.md",
+        "sha256": "cfc88e69ff8d58da916e2aba4edcf3806f44c443334225df15f16b82a623af05",
+        "matches_phase5_snapshot": true
+      }
+    ]
+  },
+  "features": {
+    "comparison": {
+      "status": "passed",
+      "actual_source": "project-db",
+      "representative": {
+        "date": "2026-09-16",
+        "articleIndex": 1
+      },
+      "business_equal": true,
+      "comparator": "compare_phase4_database.Compare.equal reused",
+      "small_cases": [
+        "equal",
+        "business difference detected",
+        "equivalent timestamp spelling"
+      ]
+    },
+    "dashboard": {
+      "status": "passed",
+      "actual_source": "project-db",
+      "list_and_detail_payload": [
+        {
+          "pattern": "normal",
+          "article_id": "5a2f8de2-7b41-5245-8670-4b9242545c39",
+          "article_key": "article-e8d570d396df2512",
+          "compared_fields": [
+            "title",
+            "url",
+            "ai_summary",
+            "summary_date",
+            "classification",
+            "feedback"
+          ],
+          "equal": true,
+          "review_states": [
+            {
+              "reviewId": "74f88a98-8bf0-52bb-a8a6-c0faf04244dd",
+              "articleId": "5a2f8de2-7b41-5245-8670-4b9242545c39",
+              "status": "current",
+              "contentVersionId": "e4cfe201-caad-5a2d-8e40-2823347eb060",
+              "taskStatus": {
+                "article-classification": "ready",
+                "article-summary": "ready",
+                "talent-index": "ready"
+              }
+            }
+          ]
+        },
+        {
+          "pattern": "held",
+          "article_id": "1dcde1bd-6561-5685-a7f0-c8f65fc33a83",
+          "article_key": "article-3c9412450b5ca09e",
+          "compared_fields": [
+            "title",
+            "url",
+            "ai_summary",
+            "summary_date",
+            "classification",
+            "feedback"
+          ],
+          "equal": true,
+          "review_states": [
+            {
+              "reviewId": "7f4c3382-f76f-59df-a2cd-f2f82783e811",
+              "articleId": "1dcde1bd-6561-5685-a7f0-c8f65fc33a83",
+              "status": "current",
+              "contentVersionId": null,
+              "taskStatus": {
+                "article-classification": "held",
+                "article-summary": "held",
+                "talent-index": "held"
+              }
+            }
+          ]
+        }
+      ],
+      "source_badge": "Project DB",
+      "auxiliary_reads": [
+        "summaries",
+        "classification history",
+        "official registry history",
+        "capture metadata",
+        "talent aliases",
+        "relations",
+        "feedback"
+      ],
+      "rollback": "shared python switch",
+      "summary_counts": {
+        "talents": 604,
+        "articles": 18007,
+        "rejectedArticles": 2,
+        "reviewedArticles": 16,
+        "relations": 1673,
+        "searchEnabled": 353,
+        "articleSummaries": 863,
+        "articleClassifications": 850,
+        "statusCounts": {
+          "approved": 389,
+          "pending": 215
+        },
+        "articleTypeCounts": {
+          "guide_or_database": 92,
+          "news_article": 608,
+          "image_gallery": 41,
+          "official_announcement": 8,
+          "press_release": 59,
+          "other": 32,
+          "video_or_stream": 10
+        },
+        "primaryCategoryCounts": {
+          "game_or_technology": 162,
+          "company_or_business": 54,
+          "event": 110,
+          "product_or_goods": 95,
+          "community_or_fan": 14,
+          "live_or_music": 133,
+          "talent_activity": 25,
+          "collaboration": 25,
+          "audition_or_recruitment": 17,
+          "other": 159,
+          "media_or_editorial": 56
+        },
+        "relevanceCounts": {
+          "in_scope": 279,
+          "low_relevance": 68,
+          "out_of_scope": 503
+        },
+        "dailyVolume": [
+          {
+            "date": "2026-07-14",
+            "count": 47
+          },
+          {
+            "date": "2026-07-15",
+            "count": 53
+          },
+          {
+            "date": "2026-07-16",
+            "count": 230
+          },
+          {
+            "date": "2026-07-20",
+            "count": 2
+          },
+          {
+            "date": "2026-07-21",
+            "count": 334
+          },
+          {
+            "date": "2026-07-22",
+            "count": 374
+          },
+          {
+            "date": "2026-07-23",
+            "count": 414
+          },
+          {
+            "date": "2026-07-25",
+            "count": 10
+          },
+          {
+            "date": "2026-07-26",
+            "count": 552
+          },
+          {
+            "date": "2026-07-27",
+            "count": 266
+          },
+          {
+            "date": "2026-07-28",
+            "count": 222
+          },
+          {
+            "date": "2026-07-29",
+            "count": 574
+          },
+          {
+            "date": "2026-07-30",
+            "count": 583
+          },
+          {
+            "date": "2026-08-01",
+            "count": 10
+          },
+          {
+            "date": "2026-08-02",
+            "count": 319
+          },
+          {
+            "date": "2026-08-03",
+            "count": 431
+          },
+          {
+            "date": "2026-08-04",
+            "count": 390
+          },
+          {
+            "date": "2026-08-05",
+            "count": 464
+          },
+          {
+            "date": "2026-08-06",
+            "count": 524
+          },
+          {
+            "date": "2026-08-08",
+            "count": 7
+          },
+          {
+            "date": "2026-08-09",
+            "count": 619
+          },
+          {
+            "date": "2026-08-11",
+            "count": 581
+          },
+          {
+            "date": "2026-08-12",
+            "count": 820
+          },
+          {
+            "date": "2026-08-13",
+            "count": 620
+          },
+          {
+            "date": "2026-08-16",
+            "count": 520
+          },
+          {
+            "date": "2026-08-17",
+            "count": 703
+          },
+          {
+            "date": "2026-08-18",
+            "count": 654
+          },
+          {
+            "date": "2026-08-19",
+            "count": 646
+          },
+          {
+            "date": "2026-08-20",
+            "count": 583
+          },
+          {
+            "date": "2026-08-21",
+            "count": 50
+          },
+          {
+            "date": "2026-08-22",
+            "count": 10
+          },
+          {
+            "date": "2026-08-23",
+            "count": 445
+          },
+          {
+            "date": "2026-08-24",
+            "count": 621
+          },
+          {
+            "date": "2026-08-25",
+            "count": 681
+          },
+          {
+            "date": "2026-08-26",
+            "count": 764
+          },
+          {
+            "date": "2026-08-27",
+            "count": 677
+          },
+          {
+            "date": "2026-08-28",
+            "count": 6
+          },
+          {
+            "date": "2026-08-29",
+            "count": 2
+          },
+          {
+            "date": "2026-08-30",
+            "count": 531
+          },
+          {
+            "date": "2026-08-31",
+            "count": 648
+          },
+          {
+            "date": "2026-09-01",
+            "count": 119
+          },
+          {
+            "date": "2026-09-02",
+            "count": 499
+          },
+          {
+            "date": "2026-09-03",
+            "count": 3
+          },
+          {
+            "date": "2026-09-09",
+            "count": 401
+          },
+          {
+            "date": "2026-09-10",
+            "count": 628
+          },
+          {
+            "date": "2026-09-11",
+            "count": 1
+          },
+          {
+            "date": "2026-09-13",
+            "count": 369
+          }
+        ],
+        "organizations": [
+          ".LIVE",
+          "CORECATIS VIRTUAL PROJECT",
+          "Espoiris",
+          "IZIGENIA",
+          "NIJISANJI EN",
+          "Re:AcT",
+          "STARAZO PRODUCTION",
+          "Varium",
+          "VEE",
+          "あおぎり高校",
+          "うおむすめ",
+          "すぺしゃりて",
+          "ななしいんく",
+          "にじさんじ",
+          "のなめぷろだくしょん",
+          "ぶいすぽっ！",
+          "ゆめかいろプロダクション",
+          "りぷらい！",
+          "クインテ",
+          "ネオポルテ",
+          "ハコネクト",
+          "ビバップ高校",
+          "ホロスターズ",
+          "ホロライブ",
+          "ミリプロ",
+          "ラブボックス",
+          "中京テレビ",
+          "個人"
+        ]
+      },
+      "chrome_display": {
+        "pages": [
+          {
+            "dom": "/mnt/d/N8N/database/phase6-read-node-check/display/page-1.html",
+            "screenshot": "/mnt/d/N8N/database/phase6-read-node-check/display/page-1.png",
+            "project_db_badge": true,
+            "visually_inspected": true
+          },
+          {
+            "dom": "/mnt/d/N8N/database/phase6-read-node-check/display/page-2.html",
+            "screenshot": "/mnt/d/N8N/database/phase6-read-node-check/display/page-2.png",
+            "project_db_badge": true,
+            "visually_inspected": true
+          },
+          {
+            "dom": "/mnt/d/N8N/database/phase6-read-node-check/display/page-3.html",
+            "screenshot": "/mnt/d/N8N/database/phase6-read-node-check/display/page-3.png",
+            "project_db_badge": true,
+            "visually_inspected": true
+          }
+        ],
+        "observed": "List and both details rendered. Normal summary/classification preserved; held example stays unsummarized/unclassified. DB review hold is retained in the same article API record.",
+        "capture_path_note": "Windows could not follow the WSL-to-D-drive symlink; saved the same captures via D:\\N8N\\database directly."
+      }
+    },
+    "weekly": {
+      "status": "passed",
+      "actual_source": "project-db",
+      "representative": {
+        "week_start": "2026-09-14",
+        "through": "2026-09-16"
+      },
+      "business_fields_equal": [
+        "counts",
+        "daily",
+        "coverage",
+        "feedback",
+        "captureStatuses",
+        "sharedReviewStatuses",
+        "taskStatuses",
+        "classificationCoverage",
+        "byCategory",
+        "byArticleType",
+        "byRelevance",
+        "bySource",
+        "entities",
+        "exclusionReasons"
+      ],
+      "counts": {
+        "reportedArticles": 833,
+        "archivedRecords": 833,
+        "uniqueArticles": 801,
+        "duplicateRecords": 32,
+        "changedInputUrls": 32,
+        "excludedArticles": 0,
+        "eligibleArticles": 801,
+        "classifiedArticles": 16,
+        "unclassifiedArticles": 785,
+        "invalidClassificationArticles": 3,
+        "unboundClassifications": 8,
+        "bodyReviewReadyArticles": 15,
+        "videoMetadataSummaries": null
+      },
+      "output_paths": [
+        "content/analysis/weekly-metrics/2026-W38.json",
+        "content/analysis/weekly-reports/weekly-trends-2026-W38.md",
+        "content/analysis/keyword-quality/keyword-quality-2026-W38.md"
+      ],
+      "rollback": "shared python switch",
+      "provenance_difference": "DB-scoped input hashes replace legacy file hashes; implementation/snapshot IDs change. Aggregation formulas unchanged.",
+      "final_snapshot_id": "c57e57a7539d63b37cfce0671d5b48bba19e5b64fed91dfe43db5cbe8bbb7df1"
+    },
+    "ai-reader": {
+      "status": "passed",
+      "actual_source": "project-db",
+      "representatives": [
+        {
+          "pattern": "body",
+          "date": "2026-09-14",
+          "articleIndex": 2,
+          "contentStatus": "verified",
+          "reviewStatus": "current",
+          "taskStatus": "ready",
+          "databaseReferences": {
+            "articleId": "5a2f8de2-7b41-5245-8670-4b9242545c39",
+            "occurrenceId": "548c3142-4117-52e4-bef3-90a485c6511c",
+            "identityState": "identified",
+            "capture": {
+              "articleId": "1ed3f281-c82b-5d4e-adc0-72c2616f77ef",
+              "contentVersionId": "f28d3a08-99fc-5e60-87a2-59566c571949",
+              "fetchAttemptId": "f6144a13-264b-5b09-bdee-c25d6a04adff",
+              "bodyIntegrity": "consistent",
+              "sourceStatus": "verified",
+              "storedBodyHash": "",
+              "storedBodyLength": 5586
+            }
+          },
+          "reviewReferences": {
+            "reviewId": "74f88a98-8bf0-52bb-a8a6-c0faf04244dd",
+            "articleId": "5a2f8de2-7b41-5245-8670-4b9242545c39",
+            "contentVersionId": "e4cfe201-caad-5a2d-8e40-2823347eb060",
+            "status": "current"
+          },
+          "characters": 5586,
+          "business_equal": true
+        },
+        {
+          "pattern": "held_unavailable",
+          "date": "2026-09-16",
+          "articleIndex": 1,
+          "contentStatus": "unavailable",
+          "reviewStatus": "current",
+          "taskStatus": "held",
+          "databaseReferences": {
+            "articleId": "8000c50c-a067-5a47-9a6c-fd12f6aea46b",
+            "occurrenceId": "166973e2-01f2-5a44-8141-af4bea3b5c4b",
+            "identityState": "held",
+            "capture": {
+              "articleId": "1bc37a73-113c-5d9b-92af-fc05c71fb645",
+              "contentVersionId": null,
+              "fetchAttemptId": "9c5147a1-0297-5166-bd2a-99b391ea5af6",
+              "bodyIntegrity": "no_body",
+              "sourceStatus": "unavailable",
+              "storedBodyHash": "",
+              "storedBodyLength": 0
+            }
+          },
+          "reviewReferences": {
+            "reviewId": "855be6c2-ba72-5ebb-a5eb-58305e9ff4c5",
+            "articleId": "8000c50c-a067-5a47-9a6c-fd12f6aea46b",
+            "contentVersionId": null,
+            "status": "current"
+          },
+          "characters": 0,
+          "business_equal": true
+        }
+      ],
+      "body_amount_unchanged": true,
+      "review_evidence_equal": true,
+      "rollback": "shared python switch"
+    },
+    "n8n-daily": {
+      "status": "passed",
+      "actual_source": "project-db",
+      "limited_execution": true,
+      "normal_daily_execution": false,
+      "external_collection": false,
+      "business_writes": false,
+      "probe_workflow_id": "phase6ReadProbe01",
+      "isolated_execution_id": 1,
+      "isolated_n8n_folder": "/mnt/d/N8N/database/phase6-read-node-check/runtime",
+      "nodes": [
+        "Load Talent Registry",
+        "Load Article Feedback",
+        "Build Keyword Summary Request",
+        "Apply Article Feedback Exclusions"
+      ],
+      "talent_rows": 604,
+      "feedback_rows": 16,
+      "search_keywords": 353,
+      "saved_article_input": 2,
+      "excluded_articles": 1,
+      "retained_articles": 1,
+      "without_token_http_status": 401,
+      "loopback_origin": "http://127.0.0.1:8766",
+      "execution_result_source": "Persisted execution_data; stdout suppressed by N8N_LOG_LEVEL=error, execution was not resent.",
+      "production_workflow_id": "UHJ4LW3Oswhpj4zV",
+      "production_version_id": "7ad8303e-909e-4bdc-a602-85675f71a6db",
+      "previous_version_id": "351aa2aa-7d3c-4a6c-8f39-ccbd786c1c14",
+      "changed_nodes": [
+        "Load Talent Registry",
+        "Build Keyword Summary Request",
+        "Load Article Feedback",
+        "Apply Article Feedback Exclusions"
+      ],
+      "production_definition_matches_verified_nodes": true,
+      "workflow_active_state_preserved": true,
+      "production_execution_count_unchanged": true,
+      "deployment_method": "Official offline import:workflow and publish:workflow; no n8n server, scheduler or production workflow executed.",
+      "workflow_recovery": "/mnt/d/N8N/database/phase6-read-node-check/production-workflow-before.json",
+      "previous_published_version_preserved": true,
+      "version_note": "n8n import assigns its own new version UUID; verified the actual published version and unchanged prior version."
+    }
+  },
+  "tests": {
+    "common_reader": {
+      "passed": 6
+    },
+    "ai_reader_existing": {
+      "passed": 12
+    },
+    "weekly_existing": {
+      "passed": 21
+    }
+  },
+  "rollback": {
+    "python": {
+      "feature": "comparison",
+      "sequence": [
+        "project-db",
+        "legacy",
+        "project-db"
+      ],
+      "same_representative_value": true,
+      "shared_resolver": "project_readers.source / set_source",
+      "applies_to": [
+        "comparison",
+        "dashboard",
+        "weekly",
+        "ai-reader"
+      ],
+      "write_target": "legacy"
+    },
+    "http": {
+      "sequence": [
+        "project-db",
+        "legacy",
+        "project-db"
+      ],
+      "paths": [
+        "/v1/read/talents",
+        "/v1/read/article_feedback"
+      ],
+      "actual_sources_verified": true,
+      "business_values_equal": true
+    }
+  },
+  "remaining": [],
+  "harmless_differences": [
+    {
+      "field": "classified_at",
+      "old": "2026-09-14 00:18:37.000",
+      "normalized": "2026-09-14T00:18:37Z",
+      "reason": "Same UTC instant; compatibility adapter preserves original spelling."
+    }
+  ],
+  "approval_review": {
+    "rejected_action": "Start production n8n service",
+    "reason": "Could activate production schedules, external collection or writes",
+    "action_not_performed": true,
+    "safe_alternative": "Installed official import:workflow / publish:workflow CLI only update workflow definitions and active-version metadata; server remains stopped."
+  },
+  "routes_after": [
+    {
+      "feature": "ai-reader",
+      "read_source": "project-db",
+      "write_target": "legacy",
+      "changed_at": "2026-09-17T00:14:13.586288Z",
+      "rollback_state": "verified"
+    },
+    {
+      "feature": "comparison",
+      "read_source": "project-db",
+      "write_target": "legacy",
+      "changed_at": "2026-09-17T00:11:45.625533Z",
+      "rollback_state": "verified"
+    },
+    {
+      "feature": "dashboard",
+      "read_source": "project-db",
+      "write_target": "legacy",
+      "changed_at": "2026-09-17T00:13:17.220001Z",
+      "rollback_state": "verified"
+    },
+    {
+      "feature": "n8n-daily",
+      "read_source": "project-db",
+      "write_target": "legacy",
+      "changed_at": "2026-09-17T00:18:39.961321Z",
+      "rollback_state": "verified"
+    },
+    {
+      "feature": "weekly",
+      "read_source": "project-db",
+      "write_target": "legacy",
+      "changed_at": "2026-09-17T00:13:47.549344Z",
+      "rollback_state": "verified"
+    }
+  ],
+  "schema_versions_after": [
+    "001",
+    "002",
+    "003",
+    "004",
+    "005",
+    "006"
+  ],
+  "sync_operations_after": [
+    "phase5-collect-UHJ4LW3Oswhpj4zV-182",
+    "phase5-summary-20260916-v4"
+  ],
+  "service_logging": {
+    "authentication_value_not_in_logs": true,
+    "article_body_not_requested_by_n8n_read_nodes": true,
+    "bind_host": "127.0.0.1"
+  },
+  "phase7_started": false,
+  "finished_at": "2026-09-17T00:29:12.116600Z",
+  "business_writes_performed": false,
+  "normal_daily_operations_performed": 0,
+  "implementation_corrections": [
+    "Batched article provenance/key reads; kept content legacy aliases distinct from registry keys.",
+    "Preserved equivalent UTC timestamp spelling.",
+    "Excluded supporting Markdown from JSON proposal/snapshot reads."
+  ],
+  "preservation": {
+    "legacy_business_inputs": "unchanged; n8n workflow metadata only was updated",
+    "project_business_data": "readonly throughout; only cutover_state updated",
+    "existing_recovery_and_phase5_evidence": "retained",
+    "applied_migrations": "unchanged 001-006",
+    "startup_script_permission_differences": "not included",
+    "ai_input_reduction": "not performed"
+  },
+  "final_checks": {
+    "python_compilation": "passed",
+    "git_diff_check": "passed",
+    "read_route_sql_after_final_change": "passed",
+    "production_n8n_last_execution": 182,
+    "production_n8n_unfinished_executions": 0,
+    "commit_created": false,
+    "unrelated_preexisting_changes": "preserved"
+  }
+}

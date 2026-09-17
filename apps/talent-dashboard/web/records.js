@@ -72,7 +72,7 @@
   }
 
   function sourceLabel(dashboard) {
-    return dashboard.source === 'n8n-data-tables' ? 'n8n Data Tables' : 'Proposal files';
+    return dashboard.source === 'project-db' ? 'Project DB' : (dashboard.source === 'n8n-data-tables' ? 'n8n Data Tables' : 'Proposal files');
   }
 
   function setSource(dashboard) {

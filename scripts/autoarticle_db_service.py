@@ -53,6 +53,9 @@ class Handler(BaseHTTPRequestHandler):
                 db.status(self.server.database)
                 return self.send(200,dict(status='ok'))
             if path=='/v1/status': return self.send(200,db.status(self.server.database))
+            if path in ('/v1/read/talents', '/v1/read/article_feedback'):
+                from project_readers import service_rows
+                return self.send(200,service_rows(path.rsplit('/',1)[-1],self.server.database))
             if path.startswith('/v1/articles/'):
                 article_id=unquote(path[len('/v1/articles/'):])
                 c=db.connect(self.server.database,readonly=True)
@@ -103,6 +106,42 @@ def make_server(database,token,port):
     server.database=database
     server.token=token
     return server
+
+def ensure_running(root, env):
+    """Start this existing service when n8n needs it; never log credentials."""
+    import subprocess
+    import sys
+    import time
+    import urllib.request
+    from pathlib import Path
+    # Validate the same configuration used by main without altering process env.
+    origin=env.get('AUTOARTICLE_DB_SERVICE_URL','http://127.0.0.1:8766')
+    parsed=urlsplit(origin)
+    token=env.get('AUTOARTICLE_DB_SERVICE_TOKEN','')
+    if parsed.scheme!='http' or parsed.hostname!='127.0.0.1' or parsed.path not in ('','/') or parsed.query or parsed.fragment or parsed.username or parsed.password or len(token)<32:
+        raise ValueError('Invalid project DB service configuration')
+    request=urllib.request.Request(origin.rstrip('/')+'/health',headers={'Authorization':'Bearer '+token})
+    def alive():
+        try:
+            with urllib.request.urlopen(request,timeout=1) as response:
+                return response.status==200
+        except urllib.error.HTTPError:
+            raise ValueError('Existing DB service authentication failed')
+        except OSError:
+            return False
+    if alive():return
+    logs=Path(root)/'.operation-logs';logs.mkdir(exist_ok=True)
+    log=logs/'project-db-service.log'
+    with log.open('ab') as stream:
+        os.chmod(str(log),0o600)
+        process=subprocess.Popen([sys.executable,str(Path(root)/'scripts/autoarticle_db_service.py')],cwd=str(root),env=env,
+                                 stdin=subprocess.DEVNULL,stdout=stream,stderr=subprocess.STDOUT,start_new_session=True)
+    for _ in range(30):
+        if process.poll() is not None:raise ValueError('DB service startup failed')
+        if alive():return
+        time.sleep(0.1)
+    raise ValueError('DB service startup not yet confirmed')
+
 
 def main():
     try:

@@ -1,119 +1,101 @@
 <!-- weekly-metrics:start -->
 ## 確定集計（自動生成・直接編集しない）
 
-- Snapshot: `268db3306fcf0e3595574477769ca587926a0b312e65ba4cf99fade491b58988`
-- 対象期間: 2026-09-14 ～ 2026-09-14 (JST)
-- 評価参照日: 2026-09-14
+- Snapshot: `c57e57a7539d63b37cfce0671d5b48bba19e5b64fed91dfe43db5cbe8bbb7df1`
+- 対象期間: 2026-09-14 ～ 2026-09-16 (JST)
+- 評価参照日: 2026-09-16
 - 状態: 採否反映済み
-- 欠損日: なし
+- 欠損日: 2026-09-15
 
 | 指標 | 件数 |
 | --- | --- |
-| reportedArticles | 369 |
-| archivedRecords | 369 |
-| uniqueArticles | 369 |
-| duplicateRecords | 0 |
-| changedInputUrls | 0 |
+| reportedArticles | 833 |
+| archivedRecords | 833 |
+| uniqueArticles | 801 |
+| duplicateRecords | 32 |
+| changedInputUrls | 32 |
 | excludedArticles | 0 |
-| eligibleArticles | 369 |
-| classifiedArticles | 17 |
-| unclassifiedArticles | 352 |
-| invalidClassificationArticles | 0 |
-| unboundClassifications | 6 |
-| bodyReviewReadyArticles | 11 |
+| eligibleArticles | 801 |
+| classifiedArticles | 16 |
+| unclassifiedArticles | 785 |
+| invalidClassificationArticles | 3 |
+| unboundClassifications | 8 |
+| bodyReviewReadyArticles | 15 |
 | videoMetadataSummaries | 未計測 |
 
 | 日付 | 収集データあり | 報告件数 | 保存行数 | URL数 |
 | --- | --- | --- | --- | --- |
 | 2026-09-14 | True | 369 | 369 | 369 |
+| 2026-09-15 | False | 未計測 | 未計測 | 未計測 |
+| 2026-09-16 | True | 464 | 464 | 464 |
 
 ### 主カテゴリ（分類提案ありを分母）
 
 | 項目 | 件数 | 分母 | % |
 | --- | --- | --- | --- |
-| game_or_technology | 9 | 17 | 52.94 |
-| media_or_editorial | 6 | 17 | 35.29 |
-| other | 2 | 17 | 11.76 |
+| game_or_technology | 8 | 16 | 50.0 |
+| media_or_editorial | 6 | 16 | 37.5 |
+| other | 2 | 16 | 12.5 |
 
 ### 記事種別（同分母）
 
 | 項目 | 件数 | 分母 | % |
 | --- | --- | --- | --- |
-| guide_or_database | 9 | 17 | 52.94 |
-| other | 8 | 17 | 47.06 |
+| guide_or_database | 8 | 16 | 50.0 |
+| other | 8 | 16 | 50.0 |
 
 ### 関連度（同分母）
 
 | 項目 | 件数 | 分母 | % |
 | --- | --- | --- | --- |
-| out_of_scope | 10 | 17 | 58.82 |
-| low_relevance | 4 | 17 | 23.53 |
-| in_scope | 3 | 17 | 17.65 |
+| out_of_scope | 11 | 16 | 68.75 |
+| low_relevance | 4 | 16 | 25.0 |
+| in_scope | 1 | 16 | 6.25 |
 
 ### 媒体・上位20（対象記事を分母）
 
 | 項目 | 件数 | 分母 | % |
 | --- | --- | --- | --- |
-| YouTube | 99 | 369 | 26.83 |
-| appmedia.jp | 40 | 369 | 10.84 |
-| ウォーカープラス | 20 | 369 | 5.42 |
-| t.co | 18 | 369 | 4.88 |
-| (unknown) | 10 | 369 | 2.71 |
-| Yahoo!ニュース | 10 | 369 | 2.71 |
-| インサイド | 10 | 369 | 2.71 |
-| au Webポータル | 9 | 369 | 2.44 |
-| ニコニコニュース | 9 | 369 | 2.44 |
-| Infoseek | 8 | 369 | 2.17 |
-| gamewith.jp | 7 | 369 | 1.9 |
-| WEBザテレビジョン | 6 | 369 | 1.63 |
-| AppMedia | 5 | 369 | 1.36 |
-| Motor Fan | 5 | 369 | 1.36 |
-| ホロライブ通信 | 5 | 369 | 1.36 |
-| ライブドアニュース | 5 | 369 | 1.36 |
-| 4gamer.net | 4 | 369 | 1.08 |
-| ラリープラス | 4 | 369 | 1.08 |
-| リアルサウンド | 4 | 369 | 1.08 |
-| excite.co.jp | 3 | 369 | 0.81 |
+| YouTube | 168 | 801 | 20.97 |
+| au Webポータル | 40 | 801 | 4.99 |
+| AppMedia | 38 | 801 | 4.74 |
+| Yahoo!ニュース | 34 | 801 | 4.24 |
+| t.co | 34 | 801 | 4.24 |
+| ウォーカープラス | 34 | 801 | 4.24 |
+| ニコニコニュース | 24 | 801 | 3.0 |
+| appmedia.jp | 21 | 801 | 2.62 |
+| PR TIMES | 18 | 801 | 2.25 |
+| ライブドアニュース | 18 | 801 | 2.25 |
+| (unknown) | 16 | 801 | 2.0 |
+| GameWith | 14 | 801 | 1.75 |
+| Infoseek | 14 | 801 | 1.75 |
+| インサイド | 13 | 801 | 1.62 |
+| rockinon.com | 10 | 801 | 1.25 |
+| ｄメニューニュース | 10 | 801 | 1.25 |
+| panora.tokyo | 9 | 801 | 1.12 |
+| thetv.jp | 9 | 801 | 1.12 |
+| オリコンニュース | 9 | 801 | 1.12 |
+| サンスポ | 9 | 801 | 1.12 |
 
 ### 確認状態（対象記事）
 
 | 取得状態 | 件数 |
 | --- | --- |
 | metadata_only | 1 |
-| partial | 7 |
-| unavailable | 348 |
-| verified | 13 |
+| partial | 21 |
+| unavailable | 762 |
+| verified | 17 |
 
 | 工程 | ready | held | needs_review |
 | --- | --- | --- | --- |
-| article-summary | 11 | 358 | 0 |
-| talent-index | 97 | 272 | 0 |
-| article-classification | 11 | 358 | 0 |
+| article-summary | 15 | 786 | 0 |
+| talent-index | 81 | 256 | 464 |
+| article-classification | 15 | 786 | 0 |
 
 ### 確認済み人物・団体等（上位20、URL単位）
 
 | 種別 | 名前 | 記事数 |
 | --- | --- | --- |
-| person | IRyS | 3 |
-| person | さくらみこ | 3 |
-| person | アユンダ・リス | 3 |
-| person | オーロ・クロニー | 3 |
-| person | モココ・アビスガード | 3 |
-| person | 不知火フレア | 3 |
-| person | 儒烏風亭らでん | 3 |
-| person | 兎田ぺこら | 3 |
-| person | 博衣こより | 3 |
-| person | 大神ミオ | 3 |
-| person | 大空スバル | 3 |
-| person | 小鳥遊キアラ | 3 |
-| person | 桃鈴ねね | 3 |
-| person | 森カリオペ | 3 |
-| person | 獅白ぼたん | 3 |
-| person | 白上フブキ | 3 |
-| person | 百鬼あやめ | 3 |
-| person | 角巻わため | 3 |
-| person | AZKi | 2 |
-| person | こぼ・かなえる | 2 |
 
 ### 集計上の注意
 

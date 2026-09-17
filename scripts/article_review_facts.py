@@ -161,7 +161,11 @@ def validate_record(record: dict[str, Any], article: dict[str, Any], capture: di
         raise ValueError("Review exceeds 30000 characters; keep facts/evidence concise")
 
 
-def load_reviews(root: Path, through_date: str, warnings: list[str]) -> tuple[dict, set]:
+def load_reviews(root: Path, through_date: str, warnings: list[str], feature: str = "ai-reader") -> tuple[dict, set]:
+    import project_readers as project
+    if project.source(root, feature) == "project-db":
+        with project.reader(root) as reader:
+            return reader.reviews(through_date, warnings)
     index, known_urls = {}, set()
     for path in sorted((root / DIRECTORY).glob("*.jsonl")):
         try:
@@ -195,6 +199,11 @@ def resolve_review(index: dict, known_urls: set, day: str, article: dict, captur
     if not match:
         return {"status": "stale" if article["url"] in known_urls else "missing", "taskStatus": "needs_review"}
     record, source_day, path = match
+    database_status = getattr(record, "database_status", "current")
+    if database_status != "current":
+        return {"status": database_status, "taskStatus": "held" if database_status == "held" else "needs_review",
+                "path": path, "reason": "Dedicated DB review is not current",
+                "databaseReferences": record.database_references}
     try:
         if record.get("sourceDate") != source_day:
             raise ValueError("Review sourceDate does not match its file")
@@ -206,7 +215,10 @@ def resolve_review(index: dict, known_urls: set, day: str, article: dict, captur
         return {"status": "invalid", "taskStatus": "needs_review", "reason": str(exc)}
     if record["basis"] != "body" and source_day != day:
         return {"status": "stale", "taskStatus": "needs_review", "reason": "Non-body reviews must be reconsidered on a new date"}
-    return {"status": "current", "taskStatus": record["taskStatus"][task], "path": path, "record": record}
+    result = {"status": "current", "taskStatus": record["taskStatus"][task], "path": path, "record": record}
+    if hasattr(record, "database_references"):
+        result["databaseReferences"] = record.database_references
+    return result
 
 
 def atomic_merge(path: Path, records: list[dict]) -> None:

@@ -14,6 +14,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 import article_review_facts as shared
+import project_readers as project
 from article_feedback_snapshot import REASONS, atomic_text
 import generate_analysis_reports as legacy
 
@@ -65,6 +66,7 @@ class Inputs:
     def __init__(self, root):
         self.root = root
         self.files = {}
+        self.project = project.source(root, "weekly") == "project-db"
 
     def add(self, path, role):
         path = Path(path)
@@ -81,20 +83,32 @@ class Inputs:
         self.add(path, role)
         return json.loads(path.read_text(encoding="utf-8-sig"))
 
+    def business(self, key, value):
+        self.files[key] = {"path": key, "role": "projectDatabase", "exists": True, "sha256": shared.digest(value)}
+
     def manifest(self):
         return [self.files[key] for key in sorted(self.files)]
 
 
 def feedback_state(root, as_of, inputs):
     directory = root / "content/article-feedback-instructions"
-    snapshots = dated_paths(directory, ".json", as_of)
+    documents = []
+    if inputs.project:
+        with project.reader(root) as reader:
+            documents = list(reader.documents("article-feedback-instructions", as_of))
+        snapshots = [root / path for path, _ in documents]
+    else:
+        snapshots = dated_paths(directory, ".json", as_of)
     guides = dated_paths(directory, ".md", as_of)
     for path in guides[-1:]:
         inputs.add(path, "feedbackGuidance")
     if not snapshots:
         return {"status": "missing", "snapshotDate": None, "applied": False}, {}
     path = snapshots[-1]
-    snapshot = inputs.json(path, "feedbackSnapshot")
+    snapshot = documents[-1][1] if inputs.project else inputs.json(path, "feedbackSnapshot")
+    if inputs.project:
+        snapshot.setdefault("feedback", [])
+        inputs.business("project-db:feedback:"+path.stem, snapshot)
     if not isinstance(snapshot, dict) or snapshot.get("schemaVersion") != 1 or snapshot.get("snapshotDate") != path.stem:
         raise ValueError(f"Invalid feedback snapshot: {path}")
     if snapshot.get("complete") is not True:
@@ -134,6 +148,11 @@ def feedback_state(root, as_of, inputs):
 
 def classification_rows(directory, as_of, inputs):
     selected = {}
+    if inputs.project:
+        with project.reader(inputs.root) as reader:
+            selected = reader.classifications(as_of)
+        inputs.business("project-db:classifications:"+as_of, selected)
+        return selected
     for path in dated_paths(directory, ".json", as_of):
         payload = inputs.json(path, "classificationProposals")
         if not isinstance(payload, dict) or not isinstance(payload.get("classifications"), list):
@@ -191,7 +210,7 @@ def build_metrics(root, through, as_of=None, records_dir=None, candidate_dir=Non
     inputs, warnings = Inputs(root), []
     # Code and rule versions participate in the snapshot fingerprint.
     for relative in ("scripts/weekly_metrics.py", "scripts/generate_analysis_reports.py", "scripts/read_ai_inputs.py",
-                     "scripts/article_review_facts.py", "scripts/article_feedback_snapshot.py",
+                     "scripts/article_review_facts.py", "scripts/article_feedback_snapshot.py", "scripts/project_readers.py",
                      "docs/ai-rules/weekly-report.md", *shared.POLICY_FILES):
         inputs.add(root / relative, "implementationOrPolicy")
     tax_path = root / "config/article-classification-taxonomy.json"
@@ -211,9 +230,12 @@ def build_metrics(root, through, as_of=None, records_dir=None, candidate_dir=Non
     if not feedback["applied"]:
         warnings.append("採否の完全なJSONが未取得・不完全・古い状態です。対象件数は採否未反映の暫定値です。")
     classifications = classification_rows(classification_dir, as_of, inputs)
-    for path in dated_paths(root / shared.DIRECTORY, ".jsonl", as_of):
-        inputs.add(path, "sharedReviews")
-    review_index, known_urls = shared.load_reviews(root, as_of, warnings)
+    if not inputs.project:
+        for path in dated_paths(root / shared.DIRECTORY, ".jsonl", as_of):
+            inputs.add(path, "sharedReviews")
+    review_index, known_urls = shared.load_reviews(root, as_of, warnings, feature="weekly")
+    if inputs.project:
+        inputs.business("project-db:reviews:"+as_of, [v for _, v in sorted(review_index.items())])
     for key, (record, _, _) in list(review_index.items()):
         try:
             if stamp(record.get("reviewedAt")).astimezone(JST).date().isoformat() > as_of:
@@ -224,14 +246,18 @@ def build_metrics(root, through, as_of=None, records_dir=None, candidate_dir=Non
     selected, variants, daily, runs = {}, defaultdict(set), [], []
     raw_count = reported = 0
     for label in dates:
-        path = inputs.add(records_dir / (label + ".jsonl"), "structuredRecords")
-        capture_path = inputs.add(root / "content/article-body-captures" / (label + ".jsonl"), "bodyCaptures")
-        inputs.add(root / "content/article-summaries" / (label + ".md"), "dailySummaryReference")
-        if not path.is_file():
+        path = records_dir / (label + ".jsonl")
+        if not inputs.project:
+            inputs.add(path, "structuredRecords")
+            inputs.add(root / "content/article-body-captures" / (label + ".jsonl"), "bodyCaptures")
+            inputs.add(root / "content/article-summaries" / (label + ".md"), "dailySummaryReference")
+        if not (project.has_day(root, label, "weekly") if inputs.project else path.is_file()):
             daily.append({"date": label, "available": False, "reported": None, "archived": None, "uniqueUrls": None})
             continue
         # Keep the strict reader's run/row validation and capture joining.
-        run, articles, captures = load_day(root, label, warnings, records_dir=records_dir)
+        run, articles, captures = load_day(root, label, warnings, records_dir=records_dir, feature="weekly")
+        if inputs.project:
+            inputs.business("project-db:collection:"+label, [run, articles, captures])
         count = run.get("articleCount", len(articles))
         if type(count) is not int or count < 0:
             raise ValueError(f"{label}: invalid reported article count")
@@ -375,6 +401,7 @@ def build_metrics(root, through, as_of=None, records_dir=None, candidate_dir=Non
         },
         "inputs": inputs.manifest(), "warnings": sorted(set(warnings)),
     }
+    payload["dataSource"] = "project-db" if inputs.project else "legacy"
     validate_metrics(payload)
     payload["snapshotId"] = shared.digest(payload)
     return payload
@@ -510,7 +537,7 @@ def read_weekly_input(root, through, as_of=None):
         compact[key] = metrics[key]
     compact["topSources"] = sorted(metrics["bySource"].items(), key=lambda row: (-row[1]["count"], row[0]))[:20]
     compact["topEntities"] = metrics["entities"][:20]
-    return {"inputVersion": 2, "task": "weekly-report", "runDate": through, "metrics": compact,
+    return {"inputVersion": 2, "task": "weekly-report", "runDate": through, "dataSource": metrics["dataSource"], "metrics": compact,
             "references": [str(path.relative_to(root)) for path in paths],
             "articles": [], "nextOffset": None,
             "nextAction": "Use fixed numbers and reviewed sources for interpretation. --weekly-articles explicitly reads raw pre-exclusion article pages. Do not recount or treat metadata captures as written summaries."}

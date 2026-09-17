@@ -137,7 +137,7 @@ function confidence(value) {
 }
 
 function setSource(dashboard) {
-  document.querySelector('#source-badge').textContent = dashboard.source === 'n8n-data-tables' ? 'n8n Data Tables' : 'Proposal files';
+  document.querySelector('#source-badge').textContent = dashboard.source === 'project-db' ? 'Project DB' : (dashboard.source === 'n8n-data-tables' ? 'n8n Data Tables' : 'Proposal files');
   document.querySelector('#generated-at').textContent = `更新: ${date(dashboard.generatedAt)}`;
   if (dashboard.sourceError) {
     elements.notice.hidden = false;

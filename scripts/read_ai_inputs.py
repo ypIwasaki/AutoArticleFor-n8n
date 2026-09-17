@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any
 
 import article_review_facts as shared
+import project_readers as project
 
 ROOT = Path(__file__).resolve().parents[1]
 TASKS = ("article-summary", "keyword-extraction", "talent-index", "article-classification", "weekly-report")
@@ -66,7 +67,10 @@ def day_references(root: Path, day: str, task: str) -> list[dict[str, Any]]:
     return [path_reference(root, path, role) for role, path in paths]
 
 
-def load_day(root: Path, day: str, warnings: list[str], records_dir: Path | None = None) -> tuple[dict[str, Any], list[dict[str, Any]], dict[str, dict[str, Any]]]:
+def load_day(root: Path, day: str, warnings: list[str], records_dir: Path | None = None, feature: str = "ai-reader") -> tuple[dict[str, Any], list[dict[str, Any]], dict[str, dict[str, Any]]]:
+    if project.source(root, feature) == "project-db" and (records_dir is None or Path(records_dir) == root / "content/structured-records"):
+        with project.reader(root) as reader:
+            return reader.load_day(day, warnings)
     relative = f"content/structured-records/{day}.jsonl"
     records = read_jsonl(Path(records_dir) / f"{day}.jsonl" if records_dir is not None else root / relative)
     runs = [row for row in records if row.get("recordType") == "run"]
@@ -134,7 +138,11 @@ def article_view(day: str, row: dict[str, Any], index: int, capture: dict[str, A
             result[key] = row.get(key, article.get(key))
     if task in {"keyword-extraction", "talent-index", "weekly-report"}:
         result["rssExcerpt"] = article.get("excerpt", "")
+    if "_project" in row:
+        result["databaseReferences"] = dict(row["_project"])
     if capture is not None:
+        if "_project" in capture:
+            result.setdefault("databaseReferences", {})["capture"] = capture["_project"]
         for key in ("articleKey", "resolvedUrl", "sourceDomain", "contentType", "contentCompleteness", "failureReason", "fetchedAt", "extractionMethod", "extractionScope"):
             if key in capture:
                 result[key] = capture[key]
@@ -155,11 +163,13 @@ def build_payload(root: Path, run_date: str, task: str, offset: int = 0, limit: 
         raise ValueError("content-offset requires article-url and a daily body-review task")
     first = requested - timedelta(days=requested.weekday()) if task == "weekly-report" else requested
     days = [(first + timedelta(days=i)).isoformat() for i in range((requested - first).days + 1)]
-    missing = [day for day in days if not (root / "content/structured-records" / f"{day}.jsonl").is_file()]
+    feature = "weekly" if task == "weekly-report" else "ai-reader"
+    adopted = project.source(root, feature)
+    missing = [day for day in days if not project.has_day(root, day, feature)]
     if missing and task != "weekly-report":
         raise ValueError(f"Missing structured records: content/structured-records/{run_date}.jsonl")
     warnings: list[str] = []
-    review_index, known_review_urls = shared.load_reviews(root, run_date, warnings) if task in BODY_TASKS else ({}, set())
+    review_index, known_review_urls = shared.load_reviews(root, run_date, warnings, feature=feature) if task in BODY_TASKS else ({}, set())
     review_policy = shared.policy_hash(root) if task in BODY_TASKS else None
     entries = []
     runs = []
@@ -168,7 +178,7 @@ def build_payload(root: Path, run_date: str, task: str, offset: int = 0, limit: 
         references.extend(day_references(root, day, task))
         if day in missing:
             continue
-        run, articles, captures = load_day(root, day, warnings)
+        run, articles, captures = load_day(root, day, warnings, feature=feature)
         runs.append(run)
         for index, row in enumerate(articles, 1):
             entries.append((day, row, index, captures.get(row["article"]["url"])))
@@ -203,7 +213,7 @@ def build_payload(root: Path, run_date: str, task: str, offset: int = 0, limit: 
                 view["bodyOmitted"] = False
         views.append(view)
     result: dict[str, Any] = {
-        "inputVersion": 1, "task": task, "runDate": run_date,
+        "inputVersion": 1, "task": task, "runDate": run_date, "dataSource": adopted,
         "totalArticles": total, "uniqueUrls": unique_urls, "matchingArticles": len(selected),
         "offset": offset, "returnedArticles": len(page),
         "nextOffset": next_offset if next_offset < len(selected) else None,

@@ -243,6 +243,9 @@ class Operations:
 
     def start(self, service):
         self.active_step = service
+        if service == "n8n" and self.startup_env.get("AUTOARTICLE_DB_SERVICE_TOKEN"):
+            from autoarticle_db_service import ensure_running
+            ensure_running(self.root, self.startup_env)
         client = self.client if service == "n8n" else n8n.Client(self.dashboard, "")
         url = urllib.parse.urlsplit(client.base)
         if url.hostname not in ("localhost", "127.0.0.1", "::1") or url.path or url.scheme != "http":
@@ -328,6 +331,9 @@ def main(argv=None):
     try:
         startup_env = os.environ.copy()
         load_env_file(ROOT / ".env")
+        for key in ("AUTOARTICLE_DB_SERVICE_URL", "AUTOARTICLE_DB_SERVICE_TOKEN", "AUTOARTICLE_DATABASE_PATH"):
+            if key in os.environ:
+                startup_env[key] = os.environ[key]
         if args.command == "tokens":
             result = token_usage.execute(args, root=ROOT, run_date=args.date)
             print(json.dumps(result, ensure_ascii=False, separators=(",", ":")))

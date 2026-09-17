@@ -238,7 +238,7 @@
     {
       "parameters": {
         "mode": "runOnceForAllItems",
-        "jsCode": "const config = $('Parse Keyword Configuration').first().json.keywordConfig ?? {};\nconst rows = $('Load Talent Registry').all().map((item) => item.json ?? {});\nconst terms = (value) => { const seen = new Set(); return (Array.isArray(value) ? value : String(value ?? '').split(/,|\\n/)).reduce((all, value) => { const term = String(value || '').trim(); const key = term.toLocaleLowerCase('ja-JP'); if (term && !seen.has(key)) { seen.add(key); all.push(term); } return all; }, []); };\nconst positive = (value, fallback) => Number.isFinite(Number(value)) && Number(value) > 0 ? Number(value) : fallback;\nconst optionalPositive = (value) => Number.isFinite(Number(value)) && Number(value) > 0 ? Math.floor(Number(value)) : null;\nconst manualKeywords = terms(config.manualKeywords); if (!manualKeywords.length) throw new Error('config/keywords.json must contain at least one manualKeywords entry.');\nconst excludedKeywords = terms(config.excludedKeywords); const excluded = new Set(excludedKeywords.map((term) => term.toLocaleLowerCase('ja-JP')));\nconst staticData = $getWorkflowStaticData('global');\nconst autoKeywords = terms(staticData.autoKeywords).filter((term) => !excluded.has(term.toLocaleLowerCase('ja-JP')));\nconst registeredTalents = rows.filter((row) => { const status = String(row.status || '').trim().toLocaleLowerCase('ja-JP'); const searchEnabled = row.search_enabled === true || row.search_enabled === 1 || String(row.search_enabled || '').trim().toLocaleLowerCase('ja-JP') === 'true'; return status === 'approved' && searchEnabled; });\nconst talentSearchKeywords = terms(registeredTalents.map((row) => row.display_name)).filter((term) => term.length >= 1 && term.length <= 80 && !/^https?:/i.test(term) && !/[|/\\\\]/.test(term) && !excluded.has(term.toLocaleLowerCase('ja-JP'))).sort((left, right) => left.localeCompare(right, 'ja-JP'));\nlet webhook = null; try { webhook = $('Keyword Summary Webhook').first().json; } catch (error) {}\nconst input = webhook && Object.keys(webhook).length ? (webhook.body ?? webhook) : {}; const explicit = Object.hasOwn(input, 'keywords') || Object.hasOwn(input, 'keyword'); const requested = terms(input.keywords ?? input.keyword ?? []);\nreturn [{ json: { keywords: explicit && requested.length ? requested : terms([...manualKeywords, ...autoKeywords, ...talentSearchKeywords]), keywordConfig: { schemaVersion: Number(config.schemaVersion || 1), manualKeywords, excludedKeywords, maxAutoKeywords: Math.max(0, Math.floor(Number(config.maxAutoKeywords ?? 30) || 0)) }, talentSearchKeywords, talentKeywordCount: talentSearchKeywords.length, keywordConfigPath: 'config/keywords.json', lookbackHours: positive(input.lookbackHours ?? input.lookback_hours, 24), maxArticles: optionalPositive(input.maxArticles ?? input.max_articles), locale: input.locale ?? 'ja-JP', language: input.language ?? 'ja', country: input.country ?? 'JP', outputLanguage: input.outputLanguage ?? input.output_language ?? 'ja', source: webhook ? 'webhook-request' : 'default-daily-request' } }];"
+        "jsCode": "const config = $('Parse Keyword Configuration').first().json.keywordConfig ?? {};\nconst databaseRead = $('Load Talent Registry').first().json;\nif (!['legacy', 'project-db'].includes(databaseRead.source) || !Array.isArray(databaseRead.rows)) throw new Error('Invalid talent read response');\nconst rows = databaseRead.rows;\nconst terms = (value) => { const seen = new Set(); return (Array.isArray(value) ? value : String(value ?? '').split(/,|\\n/)).reduce((all, value) => { const term = String(value || '').trim(); const key = term.toLocaleLowerCase('ja-JP'); if (term && !seen.has(key)) { seen.add(key); all.push(term); } return all; }, []); };\nconst positive = (value, fallback) => Number.isFinite(Number(value)) && Number(value) > 0 ? Number(value) : fallback;\nconst optionalPositive = (value) => Number.isFinite(Number(value)) && Number(value) > 0 ? Math.floor(Number(value)) : null;\nconst manualKeywords = terms(config.manualKeywords); if (!manualKeywords.length) throw new Error('config/keywords.json must contain at least one manualKeywords entry.');\nconst excludedKeywords = terms(config.excludedKeywords); const excluded = new Set(excludedKeywords.map((term) => term.toLocaleLowerCase('ja-JP')));\nconst staticData = $getWorkflowStaticData('global');\nconst autoKeywords = terms(staticData.autoKeywords).filter((term) => !excluded.has(term.toLocaleLowerCase('ja-JP')));\nconst registeredTalents = rows.filter((row) => { const status = String(row.status || '').trim().toLocaleLowerCase('ja-JP'); const searchEnabled = row.search_enabled === true || row.search_enabled === 1 || String(row.search_enabled || '').trim().toLocaleLowerCase('ja-JP') === 'true'; return status === 'approved' && searchEnabled; });\nconst talentSearchKeywords = terms(registeredTalents.map((row) => row.display_name)).filter((term) => term.length >= 1 && term.length <= 80 && !/^https?:/i.test(term) && !/[|/\\\\]/.test(term) && !excluded.has(term.toLocaleLowerCase('ja-JP'))).sort((left, right) => left.localeCompare(right, 'ja-JP'));\nlet webhook = null; try { webhook = $('Keyword Summary Webhook').first().json; } catch (error) {}\nconst input = webhook && Object.keys(webhook).length ? (webhook.body ?? webhook) : {}; const explicit = Object.hasOwn(input, 'keywords') || Object.hasOwn(input, 'keyword'); const requested = terms(input.keywords ?? input.keyword ?? []);\nreturn [{ json: { databaseReadSource: databaseRead.source, keywords: explicit && requested.length ? requested : terms([...manualKeywords, ...autoKeywords, ...talentSearchKeywords]), keywordConfig: { schemaVersion: Number(config.schemaVersion || 1), manualKeywords, excludedKeywords, maxAutoKeywords: Math.max(0, Math.floor(Number(config.maxAutoKeywords ?? 30) || 0)) }, talentSearchKeywords, talentKeywordCount: talentSearchKeywords.length, keywordConfigPath: 'config/keywords.json', lookbackHours: positive(input.lookbackHours ?? input.lookback_hours, 24), maxArticles: optionalPositive(input.maxArticles ?? input.max_articles), locale: input.locale ?? 'ja-JP', language: input.language ?? 'ja', country: input.country ?? 'JP', outputLanguage: input.outputLanguage ?? input.output_language ?? 'ja', source: webhook ? 'webhook-request' : 'default-daily-request' } }];"
       },
       "id": "ccf6e73d-dcfe-42ed-92a9-d89a94ab521a",
       "name": "Build Keyword Summary Request",
@@ -251,20 +251,23 @@
     },
     {
       "parameters": {
-        "resource": "row",
-        "operation": "get",
-        "dataTableId": {
-          "value": "OF29JuraLMGFrnxt",
-          "mode": "id"
+        "method": "GET",
+        "url": "={{ $env.AUTOARTICLE_DB_SERVICE_URL + '/v1/read/talents' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ 'Bearer ' + $env.AUTOARTICLE_DB_SERVICE_TOKEN }}"
+            }
+          ]
         },
-        "matchType": "allConditions",
-        "filters": {
-          "conditions": []
-        },
-        "returnAll": true
+        "options": {
+          "timeout": 15000
+        }
       },
-      "type": "n8n-nodes-base.dataTable",
-      "typeVersion": 1.1,
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
       "position": [
         1600,
         120
@@ -411,20 +414,23 @@
     },
     {
       "parameters": {
-        "resource": "row",
-        "operation": "get",
-        "dataTableId": {
-          "value": "article_feedback",
-          "mode": "name"
+        "method": "GET",
+        "url": "={{ $env.AUTOARTICLE_DB_SERVICE_URL + '/v1/read/article_feedback' }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "={{ 'Bearer ' + $env.AUTOARTICLE_DB_SERVICE_TOKEN }}"
+            }
+          ]
         },
-        "matchType": "allConditions",
-        "filters": {
-          "conditions": []
-        },
-        "returnAll": true
+        "options": {
+          "timeout": 15000
+        }
       },
-      "type": "n8n-nodes-base.dataTable",
-      "typeVersion": 1.1,
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
       "position": [
         1840,
         500
@@ -436,7 +442,7 @@
     {
       "parameters": {
         "mode": "runOnceForAllItems",
-        "jsCode": "const data = $('Normalize and Deduplicate Articles').first().json;\nconst feedbackRows = $input.all().map((item) => item.json ?? {});\nconst isRejected = (value) => value === true || value === 1 || ['1', 'true', 'yes'].includes(String(value ?? '').trim().toLocaleLowerCase('ja-JP'));\nconst rejected = feedbackRows.filter((row) => row.article_key && isRejected(row.is_rejected));\nconst exactUrls = new Set(rejected.map((row) => String(row.article_url ?? '').trim()).filter(Boolean));\nconst sourceDomains = new Set(rejected\n  .filter((row) => String(row.reason_code ?? '') === 'suspicious_source')\n  .map((row) => String(row.source_domain ?? '').trim().toLocaleLowerCase('ja-JP').replace(/^www\\./, ''))\n  .filter(Boolean));\nconst publisherLabels = new Set(rejected\n  .filter((row) => String(row.reason_code ?? '') === 'suspicious_source')\n  .map((row) => String(row.publisher_label ?? '').trim().toLocaleLowerCase('ja-JP'))\n  .filter(Boolean));\nconst titleSignatures = new Set(rejected\n  .filter((row) => String(row.reason_code ?? '') === 'irrelevant')\n  .map((row) => String(row.title_signature ?? '').trim().toLocaleLowerCase('ja-JP'))\n  .filter(Boolean));\n\nfunction canonicalTitle(value) {\n  return String(value ?? '')\n    .replace(/\\s+(?:-|｜|–|—)\\s+\\S.*$/, '')\n    .replace(/\\s+/g, ' ')\n    .trim()\n    .toLocaleLowerCase('ja-JP');\n}\nfunction publisherLabel(article) {\n  const source = String(article.source ?? '').trim();\n  if (source) return source.replace(/\\s+/g, ' ').toLocaleLowerCase('ja-JP');\n  const title = String(article.title ?? '').trim();\n  const match = title.match(/\\s+(?:-|｜|–|—)\\s+(.+)$/);\n  return match ? match[1].replace(/\\s+/g, ' ').trim().toLocaleLowerCase('ja-JP') : '';\n}\nfunction sourceDomain(article) {\n  try {\n    const hostname = new URL(String(article.url ?? '')).hostname.toLocaleLowerCase('ja-JP').replace(/^www\\./, '');\n    return ['news.google.com', 'b.hatena.ne.jp'].includes(hostname) ? '' : hostname;\n  } catch (error) {\n    return '';\n  }\n}\n\nlet excludedArticleCount = 0;\nconst articles = (Array.isArray(data.articles) ? data.articles : []).filter((article) => {\n  const url = String(article.url ?? '').trim();\n  const rejectedByUrl = url && exactUrls.has(url);\n  const rejectedByDomain = sourceDomains.has(sourceDomain(article));\n  const rejectedByPublisher = publisherLabels.has(publisherLabel(article));\n  const rejectedByTitle = titleSignatures.has(canonicalTitle(article));\n  const rejectedArticle = rejectedByUrl || rejectedByDomain || rejectedByPublisher || rejectedByTitle;\n  if (rejectedArticle) excludedArticleCount += 1;\n  return !rejectedArticle;\n});\n\nreturn [{\n  json: {\n    ...data,\n    articleCount: articles.length,\n    excludedArticleCount,\n    articles,\n  },\n}];"
+        "jsCode": "const data = $('Normalize and Deduplicate Articles').first().json;\nconst databaseRead = $input.first().json;\nif (!['legacy', 'project-db'].includes(databaseRead.source) || !Array.isArray(databaseRead.rows)) throw new Error('Invalid feedback read response');\nconst feedbackRows = databaseRead.rows;\nconst isRejected = (value) => value === true || value === 1 || ['1', 'true', 'yes'].includes(String(value ?? '').trim().toLocaleLowerCase('ja-JP'));\nconst rejected = feedbackRows.filter((row) => row.article_key && isRejected(row.is_rejected));\nconst exactUrls = new Set(rejected.map((row) => String(row.article_url ?? '').trim()).filter(Boolean));\nconst sourceDomains = new Set(rejected\n  .filter((row) => String(row.reason_code ?? '') === 'suspicious_source')\n  .map((row) => String(row.source_domain ?? '').trim().toLocaleLowerCase('ja-JP').replace(/^www\\./, ''))\n  .filter(Boolean));\nconst publisherLabels = new Set(rejected\n  .filter((row) => String(row.reason_code ?? '') === 'suspicious_source')\n  .map((row) => String(row.publisher_label ?? '').trim().toLocaleLowerCase('ja-JP'))\n  .filter(Boolean));\nconst titleSignatures = new Set(rejected\n  .filter((row) => String(row.reason_code ?? '') === 'irrelevant')\n  .map((row) => String(row.title_signature ?? '').trim().toLocaleLowerCase('ja-JP'))\n  .filter(Boolean));\n\nfunction canonicalTitle(value) {\n  return String(value ?? '')\n    .replace(/\\s+(?:-|｜|–|—)\\s+\\S.*$/, '')\n    .replace(/\\s+/g, ' ')\n    .trim()\n    .toLocaleLowerCase('ja-JP');\n}\nfunction publisherLabel(article) {\n  const source = String(article.source ?? '').trim();\n  if (source) return source.replace(/\\s+/g, ' ').toLocaleLowerCase('ja-JP');\n  const title = String(article.title ?? '').trim();\n  const match = title.match(/\\s+(?:-|｜|–|—)\\s+(.+)$/);\n  return match ? match[1].replace(/\\s+/g, ' ').trim().toLocaleLowerCase('ja-JP') : '';\n}\nfunction sourceDomain(article) {\n  try {\n    const hostname = new URL(String(article.url ?? '')).hostname.toLocaleLowerCase('ja-JP').replace(/^www\\./, '');\n    return ['news.google.com', 'b.hatena.ne.jp'].includes(hostname) ? '' : hostname;\n  } catch (error) {\n    return '';\n  }\n}\n\nlet excludedArticleCount = 0;\nconst articles = (Array.isArray(data.articles) ? data.articles : []).filter((article) => {\n  const url = String(article.url ?? '').trim();\n  const rejectedByUrl = url && exactUrls.has(url);\n  const rejectedByDomain = sourceDomains.has(sourceDomain(article));\n  const rejectedByPublisher = publisherLabels.has(publisherLabel(article));\n  const rejectedByTitle = titleSignatures.has(canonicalTitle(article));\n  const rejectedArticle = rejectedByUrl || rejectedByDomain || rejectedByPublisher || rejectedByTitle;\n  if (rejectedArticle) excludedArticleCount += 1;\n  return !rejectedArticle;\n});\n\nreturn [{\n  json: {\n    ...data,\n    databaseReadSource: databaseRead.source,\n    articleCount: articles.length,\n    excludedArticleCount,\n    articles,\n  },\n}];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,

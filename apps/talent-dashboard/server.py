@@ -59,6 +59,10 @@ def quoted_table_name(table_id: str) -> str:
 
 
 def load_from_n8n() -> tuple[dict[str, Any], str]:
+    import project_readers as project
+    if project.source(PROJECT_ROOT, "dashboard") == "project-db":
+        with project.reader(PROJECT_ROOT) as reader:
+            return reader.dashboard(), "project-db"
     path = database_path()
     if not path.exists():
         raise FileNotFoundError(f"n8n database was not found: {path}")
@@ -135,6 +139,10 @@ def load_from_proposals() -> tuple[dict[str, Any], str]:
 
 def load_classification_proposals() -> list[dict[str, Any]]:
     """Load reviewed classification proposals when no Data Table row exists yet."""
+    import project_readers as project
+    if project.source(PROJECT_ROOT, "dashboard") == "project-db":
+        with project.reader(PROJECT_ROOT) as reader:
+            return [row for row, _ in reader.classifications().values()]
     proposal_dir = PROJECT_ROOT / "content" / "article-classification-proposals"
     classifications: dict[str, dict[str, Any]] = {}
     for path in sorted(proposal_dir.glob("*.json")):
@@ -184,6 +192,11 @@ def value_list(value: Any) -> list[str]:
 
 
 def load_official_talent_registry() -> dict[str, Any]:
+    import project_readers as project
+    if project.source(PROJECT_ROOT, "dashboard") == "project-db":
+        with project.reader(PROJECT_ROOT) as reader:
+            documents = list(reader.documents("official-talent-registry"))
+            return documents[-1][1] if documents else {"generatedAt": "", "talents": []}
     registry_dir = PROJECT_ROOT / "content" / "official-talent-registry"
     for path in sorted(registry_dir.glob("????-??-??.json"), reverse=True):
         try:
@@ -197,6 +210,10 @@ def load_official_talent_registry() -> dict[str, Any]:
 
 def load_article_summaries() -> dict[str, dict[str, Any]]:
     """Map source-note URLs to their manually reviewed AI summaries."""
+    import project_readers as project
+    if project.source(PROJECT_ROOT, "dashboard") == "project-db":
+        with project.reader(PROJECT_ROOT) as reader:
+            return reader.summaries()
     summary_dir = PROJECT_ROOT / "content" / "article-summaries"
     summaries: dict[str, dict[str, Any]] = {}
 
@@ -215,6 +232,10 @@ def load_article_summaries() -> dict[str, dict[str, Any]]:
 
 def load_article_capture_metadata() -> dict[str, dict[str, str]]:
     """Map saved article URLs to resolved source details captured during review."""
+    import project_readers as project
+    if project.source(PROJECT_ROOT, "dashboard") == "project-db":
+        with project.reader(PROJECT_ROOT) as reader:
+            return reader.capture_metadata()
     path = PROJECT_ROOT / "content" / "article-body-captures" / "backfill-state.json"
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
@@ -855,7 +876,10 @@ def build_dashboard() -> dict[str, Any]:
     error: str | None = None
     try:
         payload, source = load_from_n8n()
-    except Exception as exc:  # Fallback keeps the dashboard usable without n8n.
+    except Exception as exc:  # Legacy proposal fallback only; DB errors remain visible.
+        import project_readers as project
+        if project.source(PROJECT_ROOT, "dashboard") == "project-db":
+            raise
         payload, source = load_from_proposals()
         error = str(exc)
 

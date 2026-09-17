@@ -68,8 +68,8 @@ class Operations:
                 for r in sorted(rows, key=lambda r: r.get("startedAt") or "", reverse=True)[:3]]}
         except Blocked as error:
             result["executions"] = {"status": "unknown", "reason": str(error)}
-        result["generated"] = {name: p.path(path).is_file() for name, path in p.generated().items()}
-        result["outputs"] = {step: all(p.path(path).is_file() for path in p.outputs(step)) for step in REVIEW_STEPS if step != "page"}
+        result["generated"] = {name: p.exists(path) for name, path in p.generated().items()}
+        result["outputs"] = {step: all(p.exists(path) for path in p.outputs(step)) for step in REVIEW_STEPS if step != "page"}
         result["artifactVerification"] = "existence_only"
         return result
 
@@ -113,7 +113,7 @@ class Operations:
                     elif step.startswith("apply-"):
                         kind = step[6:]
                         workflow, _ = self.workflow(kind)
-                        db_apply.verify(kind, db_apply.proposal(self.progress, kind), db_apply.tables(self.client.base, workflow))
+                        db_apply.verify(kind, db_apply.proposal(self.progress, kind), db_apply.tables(self.client.base, workflow, self.root))
                         state = "completed"
                     elif step == "collect":
                         execution_id = entry.get("executionId")
@@ -163,7 +163,7 @@ class Operations:
             p.record("collect", "completed", files=files, executionId=str(execution_id), articles=count,
                      **({'retryOf':old['retryOf']} if old and old.get('retryOf') else {}))
             return {"step": "collect", "status": "reused", "articles": count}
-        if "collect" in p.load()["steps"] or any(p.path(path).exists() for path in p.generated().values() if p.date in path):
+        if "collect" in p.load()["steps"] or any(p.exists(path) for path in p.generated().values() if p.date in path):
             raise Blocked("existing_collection_evidence_requires_review")
         p.record("collect", "submission_unknown", files={}, workflowId=str(workflow["id"]))
         response = self.client.request("/webhook/" + n8n.WORKFLOWS["collect"][1], {}, timeout=850)
@@ -208,7 +208,7 @@ class Operations:
     def validate_artifact(self, step):
         def existing():
             workflow, _ = self.workflow("talent", require=True)
-            return db_apply.tables(self.client.base, workflow)
+            return db_apply.tables(self.client.base, workflow, self.root)
         result = artifacts.validate(self.progress, step, existing=existing)
         if step == "weekly":
             result["metrics"] = self.check_weekly()
@@ -248,7 +248,7 @@ class Operations:
         _, running = n8n.executions(self.client, workflow["id"], p.date)
         if running:
             raise Blocked("apply_workflow_already_running")
-        current = db_apply.tables(self.client.base, workflow)
+        current = db_apply.tables(self.client.base, workflow, self.root)
         db_apply.preflight(kind, value, current)
         dependencies = {key: entry[key] for key in ("dependencyVersion", "dependencyStep", "evidence") if key in entry}
         old = p.load()["steps"].get("apply-" + kind)
@@ -264,7 +264,7 @@ class Operations:
         counts = {f: len(value[f]) for f in fields}
         if not isinstance(response, dict) or response.get("accepted") is not True or response.get("proposalDate") != p.date or response.get("counts") != counts:
             raise Blocked("apply_response_unverified_do_not_retry")
-        db_apply.verify(kind, value, db_apply.tables(self.client.base, workflow))
+        db_apply.verify(kind, value, db_apply.tables(self.client.base, workflow, self.root))
         p.record("apply-" + kind, "completed", files=entry["files"], **dependencies, verification="db_content_match", workflowId=str(workflow["id"]))
         return {"step": "apply-" + kind, "status": "completed", "counts": counts, "verification": "db_content_match"}
 

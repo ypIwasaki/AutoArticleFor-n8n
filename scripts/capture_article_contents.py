@@ -60,7 +60,10 @@ class Fetch:
   self.global_delay=global_delay;self.cooldown=cooldown;self.global_next=0
   self.opener=request.build_opener(PacedRedirect(self))
   self.d={"g":g,"p":p};self.next=defaultdict(float);self.r=r;self.state_path=state_path;self.max_wait=max_wait;self.hosts={};self.cache={}
-  if state_path and state_path.exists():
+  if state_path==DIR/'rate-limit-state.json' and project_writes_enabled():
+   from project_virtual_files import runtime_state
+   saved=runtime_state(ROOT,'rate-limit-state.json');self.hosts=saved['hosts'];self.global_next=saved.get('globalNext',0)
+  elif state_path and state_path.exists():
    saved=json.loads(state_path.read_text(encoding="utf8"));self.hosts=saved["hosts"];self.global_next=saved.get("globalNext",0)
  def persist(self):
   if self.state_path:atomic_write_text(self.state_path,json.dumps({"hosts":self.hosts,"globalNext":self.global_next},ensure_ascii=False))
@@ -119,12 +122,30 @@ def eligible_article(entry,refresh=False,retry=False):
  return refresh or not entry or (retry and not has_verified_text(entry))
 
 def load():
+ if project_writes_enabled():
+  from contextlib import closing
+  import project_database as project_db
+  from project_business_writes import render_compatibility_file
+  with closing(project_db.connect(readonly=True)) as c:watermark=c.execute('SELECT max(rowid) FROM source_records').fetchone()[0]
+  value=json.loads(render_compatibility_file(dict(format='capture-cache-v1',sourceWatermark=watermark,generatedAt=now()),project_db.database_path()))
+  return value['entries'],value['resolvedUrls']
  try:d=json.loads(STATE.read_text(encoding="utf8"))
  except (OSError,json.JSONDecodeError):return {},{}
  return d.get("entries",{}),d.get("resolvedUrls",{})
 def has_verified_text(x):return x.get("status")=="verified" and bool(str(x.get("content_text","")).strip())
 
 def load_record_articles(run_date=None):
+ if project_writes_enabled():
+  import project_readers
+  result={}
+  with project_readers.reader(ROOT) as reader:
+   days=[run_date] if run_date else [x[0] for x in reader.c.execute('SELECT run_date FROM collection_runs ORDER BY run_date')]
+   for day in days:
+    _,rows,_=reader.load_day(day,[])
+    for row in rows:
+     a=row['article'];u=a.get('url')
+     if u:result[u]=old.Article(url=u,title=a.get('title',''),excerpt=a.get('excerpt',''),source=a.get('source',''),published_at=a.get('publishedAt',''),last_seen_at=a.get('lastSeenAt',''),run_date=day)
+  return result
  paths=[RECORDS/f"{run_date}.jsonl"] if run_date else sorted(RECORDS.glob("????-??-??.jsonl"))
  result={}
  for path in paths:
@@ -257,9 +278,10 @@ def main():
  capture_lock=(DIR/"capture.lock").open("a")
  try:fcntl.flock(capture_lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
  except BlockingIOError:raise SystemExit("本文取得が既に実行中です。同時取得は開始しません。")
+ project_first=project_writes_enabled()
  db=a.database.expanduser();f=Fetch(a.google_delay,a.publisher_delay,a.max_retries,DIR/"rate-limit-state.json",a.max_rate_wait,a.global_delay,a.rate_cooldown);old.http_bytes=f
  if a.progress_file and not a.run_date:raise SystemExit("--progress-file には --run-date が必要です")
- db_arts=old.load_articles(db);record_arts=load_record_articles(a.run_date)
+ db_arts=[] if project_first else old.load_articles(db);record_arts=load_record_articles(a.run_date)
  if a.refetch_file:
   requested={str(json.loads(line).get("originalUrl","")).strip() for line in a.refetch_file.read_text(encoding="utf8").splitlines() if line.strip()}
   record_arts={url:article for url,article in record_arts.items() if url in requested};a.refresh=True
@@ -270,7 +292,11 @@ def main():
  if a.run_date or a.refetch_file:arts=sorted(record_arts.values(),key=lambda x:(x.published_at,x.url),reverse=True)
  else:
   arts_by_url={x.url:x for x in db_arts};arts_by_url.update(record_arts);arts=sorted(arts_by_url.values(),key=lambda x:(x.run_date,x.published_at,x.url),reverse=True)
- keys={str(x.get("url","")):str(x.get("article_key","")) for x in old.database_rows(db)};e,ca=load()
+ if project_first:
+  import project_readers
+  with project_readers.reader(ROOT) as reader:rows=reader.table('articles')
+ else:rows=old.database_rows(db)
+ keys={str(x.get('url','')):str(x.get('article_key','')) for x in rows};e,ca=load()
  eligible=[x for x in arts if eligible_article(e.get(x.url),a.refresh,a.retry_unverified)]
  progress=load_progress(a.progress_file);day_progress={"completedUrls":[],"complete":False};global_completed=set(progress.get("completedUrls",[]))
  if a.progress_file:
@@ -281,7 +307,7 @@ def main():
  day_completed-=retry_urls;global_completed-=retry_urls
  completed_urls=day_completed|global_completed
  todo=[x for x in eligible if x.url not in completed_urls][:a.limit];c=None
- if not a.no_sync_contents:
+ if not a.no_sync_contents and not project_first:
   try:c=conn(a.env_file)
   except Exception as x:print("warning: Data Table sync disabled: "+str(x),file=sys.stderr)
  print(f"articles={len(arts)} cached={len(e)} pending={len(todo)} resumed={len(completed_urls)}")

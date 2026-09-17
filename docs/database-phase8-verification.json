@@ -1,0 +1,387 @@
+{
+  "phase": 8,
+  "status": "complete",
+  "completedAt": "2026-09-17T03:09:48.073520+00:00",
+  "validationPolicy": "representative patterns; docs/database-validation-policy.md",
+  "phase7Commit": "c8662c8352809fc58060b35c9d5da83d372c764d",
+  "evidenceDirectory": "/mnt/d/N8N/database/phase8-retirement-20260917",
+  "preChangeRecovery": "/mnt/d/N8N/backups/phase8-before-20260917T023801Z",
+  "postOperationRecovery": "/mnt/d/N8N/backups/phase8-after-20260917T030409Z",
+  "migration": {
+    "added": "008_legacy_delivery_policy.sql",
+    "previous001Through007Unchanged": true
+  },
+  "policy": {
+    "mode": "on-demand",
+    "legacyDataTableAutomaticWrites": false,
+    "machineJsonJsonlAutomaticWrites": false,
+    "humanMarkdownAutomaticOutput": true,
+    "automaticPending": 0,
+    "deferredOutputs": 8,
+    "deferredAreNotAcknowledgedAsDelivered": true
+  },
+  "readWriteRoutes": [
+    {
+      "feature": "comparison",
+      "read_source": "project-db",
+      "write_target": "legacy"
+    },
+    {
+      "feature": "dashboard",
+      "read_source": "project-db",
+      "write_target": "project-db"
+    },
+    {
+      "feature": "weekly",
+      "read_source": "project-db",
+      "write_target": "legacy"
+    },
+    {
+      "feature": "ai-reader",
+      "read_source": "project-db",
+      "write_target": "project-db"
+    },
+    {
+      "feature": "n8n-daily",
+      "read_source": "project-db",
+      "write_target": "project-db"
+    }
+  ],
+  "deployment": [
+    {
+      "file": "daily-keyword-news-summary.workflow.json",
+      "id": "UHJ4LW3Oswhpj4zV",
+      "previousVersion": "9546ded7-7ab1-49c8-af00-ea843972f61d",
+      "version": "61142d09-d34c-42e1-86e9-dbd82cfd32cf",
+      "requestedVersion": "61142d09-d34c-42e1-86e9-dbd82cfd32cf",
+      "actualVersion": "d47524a4-208b-4f8f-b2a7-caf499d2f76e",
+      "verified": true
+    },
+    {
+      "file": "apply-talent-index-proposal.workflow.json",
+      "id": "wdoTTKnHJ2r4ODlx",
+      "previousVersion": "abe7f4f3-e1a1-4c39-9f1c-8f4924497135",
+      "version": "4f25a994-e7e1-488b-b3b9-077fe8e1d5f2",
+      "requestedVersion": "4f25a994-e7e1-488b-b3b9-077fe8e1d5f2",
+      "actualVersion": "83052478-db8b-48aa-9705-5bfbeb549717",
+      "verified": true
+    },
+    {
+      "file": "apply-article-classification-proposal.workflow.json",
+      "id": "oaE1yyeE7iHlSjXg",
+      "previousVersion": "56e76742-a626-48de-a124-5abe29128814",
+      "version": "34d398fd-9ada-412c-afb7-5d5b3f292e31",
+      "requestedVersion": "34d398fd-9ada-412c-afb7-5d5b3f292e31",
+      "actualVersion": "cddbb5ac-2c8f-47d9-8fe4-e9ecba55104c",
+      "verified": true
+    },
+    {
+      "file": "apply-article-feedback.workflow.json",
+      "id": "joeIHOKXPPqBkSS9",
+      "previousVersion": "11eb885d-9947-4ea3-a677-8ac7a5ae495d",
+      "version": "9b2ba378-b1ed-4915-90bc-c0916b3bf3ff",
+      "requestedVersion": "9b2ba378-b1ed-4915-90bc-c0916b3bf3ff",
+      "actualVersion": "070b7f82-2f0a-41a3-a7a4-e40db7a4e436",
+      "verified": true
+    }
+  ],
+  "tests": {
+    "regression": {
+      "tests": 103,
+      "failures": 0,
+      "errors": 0,
+      "seconds": 15.66,
+      "patterns": [
+        "test_legacy_retirement.py",
+        "test_project_write_outbox.py",
+        "test_capture_rate_limit.py",
+        "test_collection_recovery.py",
+        "test_autoarticle_ops.py",
+        "test_operation_diagnostics.py",
+        "test_apply_timestamps.py",
+        "test_artifact_validation.py"
+      ]
+    },
+    "statusGuardRecheck": {
+      "tests": 51,
+      "failures": 0,
+      "errors": 0
+    },
+    "finalRelatedRecheck": {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0
+    },
+    "smallDbPatterns": [
+      "DB-only add/read, same-ID replay/conflict, separate export and backup restoration",
+      "human Markdown automatic output, deferred file predecessor chain, maintenance gate, interrupted catch-up resume",
+      "Data Table predecessor chain and transaction rollback of delivery schedules",
+      "collection completion and DB-derived Markdown with no legacy JSONL",
+      "DB-only capture inputs and pacing state"
+    ]
+  },
+  "ordinaryBusiness": {
+    "date": "2026-09-17",
+    "scope": "one ordinary article-capture work session after legacy-write stop",
+    "completedSessions": 1,
+    "processedArticles": 2,
+    "results": {
+      "partial": 1,
+      "unavailable_with_retry": 1
+    },
+    "captureOperations": [
+      {
+        "operationId": "db-capture-a7d0cf8296191829edbf122f74f6fb3d9ac17da4d2f61180a7a3d90f06bbd65c",
+        "fetchId": "ec435ac5-8229-55bc-85a8-f4d36ffd4c63",
+        "articleId": "05908cc2-19dc-525e-adfe-736dd3467135",
+        "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBlUk11VDNsRW5OblpLTy1tM21MeU1JR09NYzVIUV9wTU9XY0lpTU9PWXhxSlhJdm5talF1eXRubUkyM3lEUXhyRzVXNC1RZjBBVWdtaUNSNVZWTlpxYXdCc0RyU1FGNzB2Qm1DSw?oc=5",
+        "status": "unavailable",
+        "bodyIntegrity": "no_body",
+        "bodyLength": 0,
+        "storedLength": 0,
+        "bodyHash": "",
+        "versionId": null,
+        "identityState": "held",
+        "retryAfter": "2026-09-17T03:38:32.645425Z",
+        "readerMatches": true
+      },
+      {
+        "operationId": "db-capture-c9d8d486fa15cc4bcdc83c28770d19d071a8987b40400c969518570233c396fd",
+        "fetchId": "4eedb476-ed4a-565e-8628-71e615d0d398",
+        "articleId": "0c9ac502-60c5-5476-ac90-ec6b0efa91f6",
+        "url": "https://panora.tokyo/archives/156961",
+        "status": "partial",
+        "bodyIntegrity": "consistent",
+        "bodyLength": 921,
+        "storedLength": 921,
+        "bodyHash": "1cf3695b357039271872cfb860a0e863e180ec58c156155d92f6a94f35c20cae",
+        "versionId": "3c2340ec-3540-5f6f-9a08-3e1d3aac8cab",
+        "identityState": "held",
+        "retryAfter": null,
+        "readerMatches": true
+      }
+    ],
+    "articleReviewOrSummaryCompleted": false,
+    "existingCollection184RevalidatedOnly": true,
+    "additionalCollectionRequests": 0,
+    "syntheticOrReplayCountedAsBusiness": 0
+  },
+  "legacyStop": {
+    "tableChecks": {
+      "articles": {
+        "before": {
+          "id": "SxxxaIzNRCuyag42",
+          "count": 18009,
+          "latest": "2026-09-14 00:33:52.385"
+        },
+        "after": {
+          "id": "SxxxaIzNRCuyag42",
+          "count": 18009,
+          "latest": "2026-09-14 00:33:52.385"
+        },
+        "equal": true
+      },
+      "talents": {
+        "before": {
+          "id": "OF29JuraLMGFrnxt",
+          "count": 604,
+          "latest": "2026-09-14 00:33:54.418"
+        },
+        "after": {
+          "id": "OF29JuraLMGFrnxt",
+          "count": 604,
+          "latest": "2026-09-14 00:33:54.418"
+        },
+        "equal": true
+      },
+      "article_talents": {
+        "before": {
+          "id": "yRjO5ajn72B5hvxA",
+          "count": 1675,
+          "latest": "2026-09-14 00:33:58.753"
+        },
+        "after": {
+          "id": "yRjO5ajn72B5hvxA",
+          "count": 1675,
+          "latest": "2026-09-14 00:33:58.753"
+        },
+        "equal": true
+      },
+      "article_classifications": {
+        "before": {
+          "id": "D8O0LdG5wjlFd615",
+          "count": 830,
+          "latest": "2026-09-14 00:34:25.877"
+        },
+        "after": {
+          "id": "D8O0LdG5wjlFd615",
+          "count": 830,
+          "latest": "2026-09-14 00:34:25.877"
+        },
+        "equal": true
+      },
+      "article_feedback": {
+        "before": {
+          "id": "tpNuI6usWl5x1wnR",
+          "count": 16,
+          "latest": "2026-07-24 08:17:55.778"
+        },
+        "after": {
+          "id": "tpNuI6usWl5x1wnR",
+          "count": 16,
+          "latest": "2026-07-24 08:17:55.778"
+        },
+        "equal": true
+      },
+      "article_contents": {
+        "before": {
+          "id": "zcsbkDjtHx8ixldU",
+          "count": 14822,
+          "latest": "2026-09-14 00:32:28.087"
+        },
+        "after": {
+          "id": "zcsbkDjtHx8ixldU",
+          "count": 14822,
+          "latest": "2026-09-14 00:32:28.087"
+        },
+        "equal": true
+      }
+    },
+    "fileChecks": {
+      "content/article-body-captures/backfill-state.json": {
+        "before": {
+          "exists": true,
+          "sha256": "e3b1279a4669ea717f7f8e009e300e8e654c1f2d83d9df171680df6a9c8b5728",
+          "size": 44897191
+        },
+        "after": {
+          "exists": true,
+          "sha256": "e3b1279a4669ea717f7f8e009e300e8e654c1f2d83d9df171680df6a9c8b5728",
+          "size": 44897191
+        },
+        "equal": true
+      },
+      "content/article-body-captures/rate-limit-state.json": {
+        "before": {
+          "exists": true,
+          "sha256": "68922f78c81b04b16c70e2a61a1395a773dbc47fa317d4a6529214b9d78c6be8",
+          "size": 2473
+        },
+        "after": {
+          "exists": true,
+          "sha256": "68922f78c81b04b16c70e2a61a1395a773dbc47fa317d4a6529214b9d78c6be8",
+          "size": 2473
+        },
+        "equal": true
+      },
+      "content/article-body-captures/2026-09-17.jsonl": {
+        "before": {
+          "exists": false,
+          "sha256": null,
+          "size": null
+        },
+        "after": {
+          "exists": false,
+          "sha256": null,
+          "size": null
+        },
+        "equal": true
+      },
+      "content/structured-records/2026-09-17.jsonl": {
+        "before": {
+          "exists": true,
+          "sha256": "587f62a77413442b9887dfd93f7defd8b3ed13ec33095b080259922e8dc9c8ee",
+          "size": 4525805
+        },
+        "after": {
+          "exists": true,
+          "sha256": "587f62a77413442b9887dfd93f7defd8b3ed13ec33095b080259922e8dc9c8ee",
+          "size": 4525805
+        },
+        "equal": true
+      }
+    },
+    "representativeScope": "six table counts/latest-update values; four relevant physical file hashes/absence; direct adapter path and isolated contracts"
+  },
+  "representativeOutputs": {
+    "export": {
+      "operationId": "db-capture-c9d8d486fa15cc4bcdc83c28770d19d071a8987b40400c969518570233c396fd",
+      "files": 3,
+      "directory": "/mnt/d/N8N/database/phase8-retirement-20260917/on-demand-export"
+    },
+    "bodyMatches": true,
+    "statusPreserved": true,
+    "humanReport": "/mnt/d/N8N/database/phase8-retirement-20260917/capture-report.md",
+    "canonicalCaptureFileAbsent": true,
+    "deferredNotAcknowledged": true
+  },
+  "preservation": {
+    "missingBody": {
+      "count": 13,
+      "representativeId": "0bd8296b-c482-5c4b-a5d2-6335d7f6871e",
+      "unchanged": true,
+      "versionNull": true
+    },
+    "articleIdentityStatesRemainHeld": true,
+    "noAutoMerge": true,
+    "noOldDataDeletion": true,
+    "noAiInputMinimization": true
+  },
+  "foreignKeyViolations": 0,
+  "restore": {
+    "representativeProductionCopy": {
+      "path": "/mnt/d/N8N/backups/phase8-after-20260917T030409Z",
+      "createdAt": "2026-09-17T03:08:11.383329+00:00",
+      "kind": "post-phase8 database recovery copy",
+      "files": {
+        "n8n.sqlite": 499957760,
+        "n8n.sqlite-shm": 32768,
+        "n8n.sqlite-wal": 0,
+        "project.sqlite": 2102824960,
+        "project.sqlite-shm": 32768,
+        "project.sqlite-wal": 0
+      },
+      "representativeRestoreRead": "passed",
+      "captureId": "4eedb476-ed4a-565e-8628-71e615d0d398",
+      "bodyLength": 921,
+      "bodyHash": "1cf3695b357039271872cfb860a0e863e180ec58c156155d92f6a94f35c20cae",
+      "deferredDeliveries": 8,
+      "originalCompleteRecovery": "/mnt/d/N8N/backups/phase8-before-20260917T023801Z",
+      "smallDatabaseRollbackRestoreTest": "tests/test_legacy_retirement.py",
+      "retentionDays": 90
+    },
+    "isolatedRollbackRestore": "passed",
+    "productionLegacyCatchUpPerformed": false
+  },
+  "service": {
+    "dbServiceListen": "127.0.0.1:8766",
+    "n8n": "reachable",
+    "dashboard": "reachable",
+    "workflowDefinitionsMatch": true,
+    "inFlightExecutions": 0,
+    "operationResumeIssues": {}
+  },
+  "completionConditions": {
+    "recoveryPointRecorded": true,
+    "legacyWritesStopped": true,
+    "ordinaryOperationCompleted": true,
+    "representativeSaveReadOutputMatched": true,
+    "rollbackAndRestorationVerified": true
+  },
+  "operationalRemaining": [
+    "921文字の取得本文はpartialのまま。意味的レビュー・要約は未実施。",
+    "Google News経由1件は再試行予定を保持。待機期限は取得記録を参照。",
+    "完了後の日次30回は通常ログで経過確認。旧JSON/JSONLは30回、完全バックアップは90日保持。削除は別作業。"
+  ],
+  "phase8BlockingItems": [],
+  "knownNonBusinessIssues": [
+    "CLIをプロジェクト直下で起動すると開発用.envとの暗号化キー差で開始前に失敗。既存起動方法と同じホームディレクトリから配備。キーは変更していない。",
+    "n8n公式importが発行した実際の版IDを確認してpublishした。失敗ログと旧公開版を保持。",
+    "別DB読戻しの確認SQLの列名誤りを修正し、同じ作成済みコピーで検証成功。"
+  ],
+  "commitScopeExcludes": [
+    "scripts/start_n8n_with_file_access.sh",
+    "scripts/start_talent_dashboard.sh",
+    "pre-existing content artifacts and ordinary business output changes"
+  ]
+}

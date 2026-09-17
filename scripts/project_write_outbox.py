@@ -1,7 +1,7 @@
 """DB-first transactions followed by durable, idempotent compatibility delivery.
 
 Only trusted business adapters build changes/deliveries. No arbitrary SQL/file
-endpoint is exposed. A committed DB with pending compatibility is NOT success.
+endpoint is exposed. Pending automatic delivery is NOT success. On-demand exports remain deferred.
 """
 from contextlib import closing
 import fcntl
@@ -11,6 +11,7 @@ from pathlib import Path
 import tempfile
 import project_database as db
 import continuous_database_sync as sync
+import project_legacy_retirement as retirement
 
 VERSION = 'project-write-v1'
 
@@ -75,6 +76,7 @@ class Unit:
         if kind=='file' and self.c.execute('SELECT 1 FROM compatibility_deliveries WHERE operation_id=? AND kind=? AND target=?',(self.operation_id,kind,target)).fetchone():raise ValueError('Duplicate compatibility file in operation')
         self.c.execute('INSERT INTO compatibility_deliveries(operation_id,ordinal,kind,target,payload_json,payload_hash,previous_hash) VALUES (?,?,?,?,?,?,?)',
             (self.operation_id,self.ordinal,kind,target,db.canonical(payload),sync.digest(payload),previous_hash))
+        retirement.schedule(self.c,self.operation_id,self.ordinal,kind,target,payload)
         self.ordinal += 1
 
 
@@ -82,7 +84,7 @@ def status(operation_id, path=None):
     with closing(db.connect(path,readonly=True)) as c:
         row = c.execute('SELECT id,status,outcome,result_json,request_hash FROM sync_runs WHERE id=?',(operation_id,)).fetchone()
         if not row: return None
-        return dict(row, dbCommitted=bool(c.execute('SELECT 1 FROM project_write_requests WHERE operation_id=?',(operation_id,)).fetchone()), pendingDeliveries=c.execute("SELECT count(*) FROM compatibility_deliveries WHERE operation_id=? AND status='pending'",(operation_id,)).fetchone()[0])
+        return dict(row, dbCommitted=bool(c.execute('SELECT 1 FROM project_write_requests WHERE operation_id=?',(operation_id,)).fetchone()), pendingDeliveries=retirement.pending(c,operation_id), deferredDeliveries=retirement.pending(c,operation_id,False)-retirement.pending(c,operation_id))
 
 
 def commit(operation_id, request, path, root, build, deliver=None, fault=None):
@@ -109,7 +111,8 @@ def commit(operation_id, request, path, root, build, deliver=None, fault=None):
                     return json.loads(current['result_json'])
                 committed = c.execute('SELECT 1 FROM project_write_requests WHERE operation_id=?',(operation_id,)).fetchone()
                 if not committed:
-                    if c.execute("SELECT 1 FROM compatibility_deliveries WHERE status='pending' AND operation_id!=? LIMIT 1",(operation_id,)).fetchone():
+                    if retirement.mode(c)=='maintenance':raise WriteStopped('legacy_delivery_maintenance')
+                    if c.execute("SELECT 1 FROM compatibility_deliveries d WHERE d.status='pending' AND d.operation_id!=? AND "+retirement.AUTOMATIC+" LIMIT 1",(operation_id,)).fetchone():
                         raise WriteStopped('pending_compatibility_must_be_resumed_first')
                     unit = Unit(c,operation_id,root,fault)
                     # The FK for deliveries is deferred by creating the parent first;
@@ -166,7 +169,9 @@ def drain(operation_id,path,root,deliver=None,fault=None):
     with lock.open('a') as stream:
         fcntl.flock(stream,fcntl.LOCK_EX)
         with closing(db.connect(path)) as c:
-            rows=c.execute("SELECT * FROM compatibility_deliveries WHERE operation_id=? AND status='pending' ORDER BY ordinal",(operation_id,)).fetchall()
+            completed=c.execute('SELECT status,result_json FROM sync_runs WHERE id=?',(operation_id,)).fetchone()
+            if completed and completed['status']=='complete':return json.loads(completed['result_json'])
+            rows=c.execute("SELECT d.* FROM compatibility_deliveries d WHERE d.operation_id=? AND d.status='pending' AND "+retirement.AUTOMATIC+" ORDER BY d.ordinal",(operation_id,)).fetchall()
             if not c.execute('SELECT 1 FROM project_write_requests WHERE operation_id=?',(operation_id,)).fetchone():raise WriteStopped('database_not_committed')
             for row in rows:
                 if row['kind']=='file':deliver_file(row,root,path)
@@ -177,7 +182,7 @@ def drain(operation_id,path,root,deliver=None,fault=None):
                     c.execute("UPDATE compatibility_deliveries SET status='complete',completed_at=? WHERE operation_id=? AND ordinal=?",(db.now(),operation_id,row['ordinal']))
             with db.transaction(c):
                 row=c.execute('SELECT * FROM sync_runs WHERE id=?',(operation_id,)).fetchone()
-                result=json.loads(row['result_json']);result['compatibility']='complete'
+                result=json.loads(row['result_json']);result['compatibility']='on-demand' if retirement.pending(c,operation_id,False) else 'complete'
                 c.execute("UPDATE sync_runs SET status='complete',outcome='success',completed_at=?,result_json=? WHERE id=?",(db.now(),db.canonical(result),operation_id))
                 sync.event(c,operation_id,row['request_hash'],'success',result)
             return result

@@ -15,7 +15,8 @@ from autoarticle_progress import Blocked, read_json
 
 def proposal(progress, kind):
     step = "talent-review" if kind == "talent" else "classification-review"
-    value = read_json(progress.path(progress.outputs(step)[0]))
+    from project_virtual_files import document
+    value = document(progress.root,progress.outputs(step)[0])
     fields = ("articles", "talents", "articleTalents") if kind == "talent" else ("classifications",)
     if value.get("proposalVersion") != 1 or value.get("proposalDate") != progress.date or any(not isinstance(value.get(f), list) for f in fields):
         raise Blocked("invalid_proposal_contract_or_date")
@@ -24,9 +25,13 @@ def proposal(progress, kind):
     return value
 
 
-def tables(base, remote_workflow):
+def tables(base, remote_workflow, root=None):
     if urllib.parse.urlsplit(base).hostname not in ("localhost", "127.0.0.1", "::1"):
         raise Blocked("db_verification_requires_local_n8n")
+    import project_readers
+    if root is not None and project_readers.source(root,feature='n8n-daily')=='project-db':
+        with project_readers.reader(root) as reader:
+            return {name:reader.table(name) for name in ('articles','talents','article_talents','article_classifications')}
     path = Path(os.environ.get("N8N_DATABASE_PATH") or str(Path(os.environ.get("N8N_USER_FOLDER", "~/.n8n")).expanduser() / "database.sqlite")).expanduser().resolve()
     if not path.is_file():
         raise Blocked("n8n_database_missing")

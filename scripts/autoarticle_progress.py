@@ -97,8 +97,16 @@ class Progress:
         }
         return ["content/" + item for item in mapping[step]]
 
+    def fingerprint(self,relative):
+        from project_virtual_files import fingerprint
+        value=fingerprint(self.root,relative)
+        return digest(self.path(relative)) if value is None else value
+
+    def exists(self,relative):
+        return bool(self.fingerprint(relative))
+
     def fingerprints(self, paths):
-        return {p: digest(self.path(p)) for p in sorted(set(paths))}
+        return {p: self.fingerprint(p) for p in sorted(set(paths))}
 
     def inputs(self, step):
         generated = self.generated()
@@ -192,7 +200,7 @@ class Progress:
             reasons.append("file_evidence_missing")
             files = {}
         for path, expected in files.items():
-            if digest(self.path(path)) != expected:
+            if self.fingerprint(path) != expected:
                 changed.append(path)
         step = entry.get("dependencyStep")
         if step:
@@ -217,9 +225,9 @@ class Progress:
         if not evidence or not note.strip():
             raise Blocked("review_evidence_and_note_required")
         paths = self.outputs(step) + [str(self.path(p).relative_to(self.root)) for p in evidence]
-        if not all(self.path(p).is_file() for p in paths):
+        if not all(self.exists(p) for p in paths):
             raise Blocked("checkpoint_output_or_evidence_missing")
-        if not self.path(self.generated()["structured-records"]).is_file():
+        if not self.exists(self.generated()["structured-records"]):
             raise Blocked("source_archive_missing")
         files = self.fingerprints(paths + self.inputs(step))
         self.record(step, "completed", files=files, dependencyVersion=1, dependencyStep=step, verification="operator_attested", note=note[:1000], evidence=evidence)

@@ -98,6 +98,8 @@ class Handler(BaseHTTPRequestHandler):
             if operation=='write/collection':
                 from project_business_writes import submit_collection
                 result=submit_collection(payload['operationId'],payload['records'],self.server.database)
+                from project_virtual_files import collection_output
+                result=dict(result,collection=collection_output(payload['records'][0]['runDate'],self.server.database))
             elif operation.startswith('write/'):
                 from project_business_writes import submit
                 result=submit(payload['operationId'],operation.split('/')[1],payload['payload'],self.server.database)

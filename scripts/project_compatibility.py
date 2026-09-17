@@ -36,7 +36,7 @@ def projected(row,columns):
 
 def enqueue(unit,name,data):
     table_id,before=current(name,data[KEYS[name]])
-    unit.delivery('data-table',name,dict(tableId=table_id,data=data,before=projected(before,data)),sync.digest(projected(before,data)))
+    unit.delivery('data-table',name,dict(tableId=table_id,rowKey=data[KEYS[name]],data=data,before=projected(before,data)),sync.digest(projected(before,data)))
 
 
 def same(actual,wanted):
@@ -49,7 +49,7 @@ def deliver(row):
     name=row['target'];data=payload['data'];table_id,actual=current(name,data[KEYS[name]])
     if table_id!=payload['tableId']:raise writes.WriteStopped('compatibility_table_changed')
     if same(actual,data):return
-    if projected(actual,data)!=payload['before']:raise writes.WriteStopped('legacy_target_changed')
+    if projected(actual,data)!=row.get('expected_before',payload['before']):raise writes.WriteStopped('legacy_target_changed')
     from sync_workflow_to_n8n import load_env_file,normalize_api_base_url,api_request
     load_env_file(db.ROOT/'.env')
     base=normalize_api_base_url(os.environ.get('N8N_API_BASE_URL') or os.environ.get('N8N_BASE_URL') or '')

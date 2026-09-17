@@ -104,7 +104,7 @@
     {
       "parameters": {
         "mode": "runOnceForAllItems",
-        "jsCode": "if ($json.compatibility !== 'complete' || $json.accepted !== true) throw new Error('DB save or compatibility delivery incomplete');\nreturn [{json:$json}];"
+        "jsCode": "if (!['complete','on-demand'].includes($json.compatibility) || $json.accepted !== true) throw new Error('DB save or compatibility delivery incomplete');\nreturn [{json:$json}];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,

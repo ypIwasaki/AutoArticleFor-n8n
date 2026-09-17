@@ -172,7 +172,7 @@
     {
       "parameters": {
         "mode": "runOnceForAllItems",
-        "jsCode": "if ($json.compatibility !== 'complete' || $json.accepted !== true) throw new Error('DB save or compatibility delivery incomplete');\nreturn [{json:$json}];"
+        "jsCode": "if (!['complete','on-demand'].includes($json.compatibility) || $json.accepted !== true) throw new Error('DB save or compatibility delivery incomplete');\nreturn [{json:$json}];"
       },
       "id": "f1c8b297-890b-40da-84d3-421ed35ce530",
       "name": "Build Apply Response",

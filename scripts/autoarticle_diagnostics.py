@@ -103,7 +103,7 @@ def preflight(ops, kind):
             details["changedFiles"] = file_changes(p, entry)
         value = check("proposal_contract", lambda: db.proposal(p, kind))
         if value is not None and resolved is not None:
-            current = check("database_target", lambda: db.tables(ops.client.base, resolved[0]))
+            current = check("database_target", lambda: db.tables(ops.client.base, resolved[0], ops.root))
             if current is not None:
                 check("proposal_fields_and_permissions", lambda: db.preflight(kind, value, current))
                 if saved is not None and "apply-" + kind in saved["steps"]:

@@ -148,7 +148,7 @@ def proposals(progress, step, check, existing):
         return counts
     # Prefer local proposals; consult the verified DB only for unresolved references.
     path = progress.path(progress.outputs("talent-review")[0])
-    talent = db.proposal(progress, "talent") if path.exists() else {"articles": []}
+    talent = db.proposal(progress, "talent") if progress.exists(progress.outputs("talent-review")[0]) else {"articles": []}
     proposed = talent["articles"]
     keys = {r["article_key"] for r in proposed}
     urls = {r["url"] for r in proposed}

@@ -125,9 +125,16 @@ def verify_collection(client, progress, workflow_id, execution_id):
         node = runs["Build Structured Records"][-1]["data"]["main"][0][0]["json"]
         if node["date"] != progress.date:
             raise Blocked("execution_artifact_date_mismatch")
-        with progress.path(progress.generated()["structured-records"]).open(encoding="utf-8") as stream:
-            header = json.loads(next(stream))
-            articles = [json.loads(line) for line in stream if line.strip()]
+        saved=runs.get('Save Collection to Project DB',[{}])[-1].get('data',{}).get('main',[[{}]])[0][0].get('json',{})
+        db_only=saved.get('compatibility')=='on-demand'
+        if db_only:
+            from project_virtual_files import collection_records
+            from project_readers import path_for
+            records=collection_records(progress.date,path_for(progress.root));header,articles=records[0],records[1:]
+        else:
+            with progress.path(progress.generated()["structured-records"]).open(encoding="utf-8") as stream:
+                header = json.loads(next(stream))
+                articles = [json.loads(line) for line in stream if line.strip()]
         generated = timestamp(header["generatedAt"])
         if not timestamp(execution["startedAt"]) <= generated <= timestamp(execution["stoppedAt"]):
             raise Blocked("archive_does_not_match_execution_time")
@@ -142,10 +149,11 @@ def verify_collection(client, progress, workflow_id, execution_id):
         import project_database as project_db
         import project_write_outbox
         saved=runs['Save Collection to Project DB'][-1]['data']['main'][0][0]['json']
-        state=project_write_outbox.status(saved.get('operationId'))
-        if saved.get('writeTarget')!='project-db' or saved.get('compatibility')!='complete' or not state or state['status']!='complete' or state['pendingDeliveries']:
+        from project_readers import path_for
+        state=project_write_outbox.status(saved.get('operationId'),path_for(progress.root))
+        if saved.get('writeTarget')!='project-db' or saved.get('compatibility') not in ('complete','on-demand') or not state or state['status']!='complete' or state['pendingDeliveries']:
             raise Blocked('project_collection_save_incomplete')
-        with closing(project_db.connect(readonly=True)) as database:
+        with closing(project_db.connect(path_for(progress.root),readonly=True)) as database:
             matches=database.execute('SELECT id FROM collection_runs WHERE run_date=? AND workflow_execution_id=?',(progress.date,str(execution_id))).fetchall()
             if len(matches)!=1 or database.execute('SELECT count(*) FROM article_occurrences WHERE collection_run_id=?',(matches[0][0],)).fetchone()[0]!=len(articles):
                 raise Blocked('project_collection_destination_mismatch')
@@ -249,12 +257,14 @@ def collection_retry_preflight(ops, execution_id):
     error_text = json.dumps({k:error.get(k) for k in ('message','messages')}).lower()
     if not any(code in error_text for code in ('timed out','timeout','etimedout','econnreset')):
         raise Blocked('collection_retry_failure_requires_review')
-    if any(p.path(path).exists() for path in p.generated().values() if p.date in path):
+    if any(p.exists(path) for path in p.generated().values() if p.date in path):
         raise Blocked('collection_retry_outputs_already_exist')
     with closing(project_database.connect(ops.root/'data/autoarticle.sqlite',readonly=True)) as c:
         if c.execute('SELECT 1 FROM collection_runs WHERE run_date=?',(p.date,)).fetchone():
             raise Blocked('collection_retry_db_already_saved')
-        if c.execute("SELECT 1 FROM compatibility_deliveries WHERE status='pending' LIMIT 1").fetchone():
+        from project_legacy_retirement import AUTOMATIC
+        has_schedule=c.execute("SELECT 1 FROM sqlite_master WHERE name='compatibility_delivery_schedule'").fetchone()
+        if c.execute("SELECT 1 FROM compatibility_deliveries d WHERE d.status='pending'"+(' AND '+AUTOMATIC if has_schedule else '')+' LIMIT 1').fetchone():
             raise Blocked('collection_retry_pending_compatibility')
         for old_id in seen:
             if c.execute('SELECT 1 FROM sync_runs WHERE id=?',('db-collect-'+str(workflow['id'])+'-'+old_id,)).fetchone():

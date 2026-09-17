@@ -4,7 +4,9 @@
 
 ## コードの責務
 
-- `apps/talent-dashboard/server.py`: HTTPの受付、画面用データの組立て、共通サービスへの委譲。
+- `apps/talent-dashboard/server.py`: HTTPの受付、読取り先と生成日時の指定、共通サービスへの委譲。
+- `scripts/talent_dashboard_presenter.py`: 入力レコードから画面JSONを生成。公式照合、分類の優先順位、採否を考慮した集計を担当し、DB・ファイルの読書きを行わない。
+- `scripts/weekly_report_reader.py`: 明示したプロジェクト内の週次レポート一覧・詳細の読取り。
 - `scripts/talent_dashboard_data.py`: 保存先設定に従うデータ取得。専用DBの読取り失敗は旧ファイルへ暗黙に切り替えない。
 - `scripts/keyword_service.py`: 手動キーワードの検証・保存、自動キーワードと候補のWebhook操作、キーワード画面用データの取得。
 - `scripts/article_feedback_service.py`: 記事評価の入力検証、Webhook送信、評価指示書とスナップショットの保存。
@@ -65,7 +67,7 @@ N8N_DATABASE_PATH=/path/to/.n8n/database.sqlite bash scripts/start_talent_dashbo
 WSLのプロジェクトルートから、関連する隔離テストを実行できます。
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=scripts:tests python3 -m unittest test_keyword_service test_talent_dashboard_services test_artifact_validation test_weekly_metrics -q
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=scripts:tests python3 -m unittest test_dashboard_presentation test_keyword_service test_talent_dashboard_services test_artifact_validation test_weekly_metrics -q
 ```
 
 2026-09-17の責務分離では44件が成功。変更前後の画面JSON 6例と評価指示書6例も、保存・通信を伴わない比較で一致を確認しました。実サービスへの配備・再起動はこの変更に含みません。
@@ -77,6 +79,14 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=scripts:tests python3 -m unittest test_keyw
 キーワードの同一性判定と入力検証、手動リストの最後の1件の保護、推薦された最新候補だけを追加する条件、HTTP応答とエラーの扱いは維持している。タレント由来の表示一覧と、日次ワークフローが実際に検索する対象の条件も変更していない。
 
 分離後の関連テスト56件が成功。手動操作12例で応答・保存バイト列、画面データ2例で変更前後の一致を確認した。検証は一時フォルダー・一時DB・通信モック内で実行し、実設定の変更や実Webhookの呼出しは行っていない。
+
+### 表示データと週次読取りの分離
+
+表示生成には記事・人材・関係・評価・要約・分類・公式台帳と生成日時を渡す。公式照合、分類の統合、集計を名前付き関数へ分割し、入力データは変更しない。不可の記事は確認用の記事一覧に残し、可視記事の件数や関係の集計から除く。DBに保存された分類は提案より優先する。
+
+週次一覧は日付順、詳細は元のMarkdownを返す契約を維持する。不正な識別子と存在しないファイルに対するHTTP 404、専用DB失敗時に旧ファイルへ切り替えない動作も維持する。
+
+関連テスト68件が成功。変更前後の画面JSON 6例、週次一覧1例、週次詳細2例が一致した。検証には固定データ・一時フォルダー・モックを使用し、実DBや記事データの変更、実Webhookの呼出し、サービス再起動は行っていない。
 
 ### 保存先の隔離修正と復旧記録
 

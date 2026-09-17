@@ -1,6 +1,6 @@
 # DB集約 作業指示書
 
-状態: フェーズ7完了（2026-09-17、代表パターン受入）。業務はDB先行保存・旧経路への互換反映。フェーズ8未着手。
+状態: フェーズ8完了（2026-09-17、代表運用確認）。業務の読み書きは専用DB。旧Data Tables・機械用JSON／JSONLへの自動反映は停止し、必要時のみ出力する。検証・残る通常の記事作業は database-phase8-verification.json を参照。
 対象: AutoArticleFor-n8nの記事処理データ
 前提資料: [現状調査](database-current-state.md)、[確定方針](database-consolidation-decisions.md)
 

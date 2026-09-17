@@ -9,55 +9,24 @@ import os
 from pathlib import Path
 import sqlite3
 import sys
-import uuid
 import project_database as db
 import database_phase1 as baseline
 import article_review_facts as review_rules
 from article_artifact_formats import parsed_summaries
 
 VERSION='phase5-capture-history-import-v5'
-NS=uuid.UUID('520e98ee-e2d9-4c73-a2d5-535e16f6ce61')
+# Keep the import API available for historical migration tools.
+from project_record_values import (
+    RECORD_NAMESPACE as NS,
+    record_id as ident,
+    record_hash as hashrow,
+    utc_timestamp as utc,
+    json_array as array,
+    stored_body_length as stored_length,
+    content_values,
+    body_integrity,
+)
 
-def ident(*parts): return str(uuid.uuid5(NS,db.canonical(parts)))
-def hashrow(value): return db.checksum(db.canonical(value).encode())
-def utc(value,default=None):
-    if value in (None,''): return default
-    if isinstance(value,(int,float)):
-        return datetime.fromtimestamp(value,timezone.utc).isoformat().replace('+00:00','Z')
-    dt=datetime.fromisoformat(str(value).replace('Z','+00:00'))
-    if dt.tzinfo is None: dt=dt.replace(tzinfo=timezone.utc)  # n8n SQLite datetime convention
-    return dt.astimezone(timezone.utc).isoformat().replace('+00:00','Z')
-def array(value):
-    value=json.loads(value) if isinstance(value,str) else value
-    if value is None:return []
-    if not isinstance(value,list):raise ValueError('Expected saved JSON array')
-    return value
-
-def stored_length(raw):
-    values={k:raw[k] for k in ('contentLength','content_length','body_length') if k in raw}
-    if not values:return None
-    first=next(iter(values.values()))
-    if any(type(v)!=type(first) or v!=first for v in values.values()):
-        raise RuntimeError('Conflicting saved body length aliases: '+','.join(values))
-    return first
-
-def content_values(raw):
-    def val(a,b,default=''):return raw.get(a,raw.get(b,default))
-    return dict(key=val('articleKey','article_key'),url=val('originalUrl','original_url'),
-        text=val('contentText','content_text') or '',markdown=val('contentMarkdown','content_markdown') or '',
-        metadata=val('pageMetadata','page_metadata',{}) or {},non_content=val('nonContentText','non_content_text') or '',
-        scope=val('extractionScope','extraction_scope') or '',status=val('contentStatus','content_status',raw.get('status')),
-        stored_hash=val('contentHash','content_hash'),fetched=val('fetchedAt','fetched_at',raw.get('processed_at')),
-        resolved=val('resolvedUrl','resolved_url'),method=val('extractionMethod','extraction_method'),
-        reason=val('failureReason','failure_reason',raw.get('reason')),completeness=val('contentCompleteness','content_completeness'),
-        retry=raw.get('retry_after'),stored_length=stored_length(raw),content_path=raw.get('content_path'))
-
-def body_integrity(raw):
-    v=content_values(raw);computed=db.checksum(v['text'].encode())
-    if not v['text'] and ((v['stored_hash'] and v['stored_hash']!=computed) or (v['stored_length'] or 0)>0):
-        return 'held_missing_body'
-    if v['stored_hash'] and v['stored_hash']!=computed:return 'held_hash_mismatch'
-    return 'consistent' if v['text'] else 'no_body'
 
 def assess_content(row,candidates,cache_entries):
     """Multiple candidates always held. A single URL needs independent title/date/body support."""

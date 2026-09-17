@@ -1,7 +1,29 @@
 # AutoArticleFor-n8n
 
-This repository stores n8n workflow definitions and operating notes for a daily
-keyword-based news and web-content summarization project.
+This project collects keyword-based news with n8n, captures article bodies,
+supports evidence-based AI review, and provides review dashboards and weekly reports.
+
+## Current architecture
+
+- n8n orchestrates collection and reviewed proposal application.
+- Python scripts handle capture, review validation, operations, and reporting.
+- The dedicated SQLite database is the current business-data source of truth.
+  Normal processing does not automatically update legacy Data Tables or machine
+  JSON/JSONL files. Human-readable Markdown is generated after database saves.
+- The dashboard supports browsing, article evaluation, and keyword management.
+- AI input preparation can save source-bound references and review assessments;
+  it does not fetch external pages or call AI APIs.
+
+See [current storage and export behavior](docs/database-phase8-retirement.md)
+and [AI input minimization progress](docs/ai-input-minimization-progress.md).
+Older setup and archive descriptions below include compatibility workflows.
+
+Shared record IDs, hashes, timestamps, and body-field interpretation live in
+`scripts/project_record_values.py`. Business code should use this module directly;
+`import_legacy_database.py` retains its earlier function names for migration tools.
+Keep the ID namespace, serialized field names, and held-state semantics stable
+when refactoring. Use descriptive names and separate statements for validation,
+transformation, and persistence.
 
 ## 利用マニュアル
 
@@ -32,7 +54,7 @@ keyword-based news and web-content summarization project.
 - `docs/ai-rules/`
   - Reusable rules for summary, keyword extraction, talent indexing, classification, and weekly reporting.
 - `scripts/read_ai_inputs.py`
-  - Read-only, paginated input reader for those five AI tasks.
+  - Paginated input preparation for those five AI tasks, with persisted source references.
 - `content/`
   - Daily article archives, compact AI task instructions, and reviewed outputs.
 
@@ -240,8 +262,9 @@ review. Source/rule hashes and exact evidence ranges are checked before reuse.
 Unchanged verified-body inputs can reuse prior-date facts; non-body reviews
 are reconsidered each date. Existing summaries/proposals and human approvals
 are not converted automatically. The heuristic proposal generator is still a
-draft tool, not the shared review producer. No n8n execution, AI API, or DB
-write is performed by the input reader or fact saver.
+draft tool, not the shared review producer. Neither the input reader nor the fact saver executes n8n or calls AI APIs.
+In the current DB route, input preparation persists source-bound references and
+review assessments, and the fact saver validates and saves review records.
 
 ## Weekly analysis
 
@@ -288,16 +311,16 @@ workflow to the `article_classifications` Data Table. See
 
 ## Talent Index dashboard
 
-Run the local read-only dashboard to browse the n8n `talents`, `articles`,
-`article_talents`, and `article_classifications` Data Tables:
+Run the local dashboard to browse talents, articles, relationships, and
+classifications, evaluate articles, and manage search keywords:
 
 ```bash
 bash scripts/start_talent_dashboard.sh
 ```
 
-Open `http://127.0.0.1:8765`. It falls back to reviewed proposal JSON when the
-local n8n database is unavailable. See `docs/talent-dashboard.md` for the data
-source and configuration details.
+Open `http://127.0.0.1:8765`. The current route reads the dedicated project DB;
+DB errors remain visible. Proposal-file fallback applies only to the explicitly
+selected legacy route. See `docs/talent-dashboard.md` for configuration details.
 
 ## AI weekly research reports
 

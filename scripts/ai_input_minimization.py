@@ -7,6 +7,7 @@ import json
 from collections import Counter
 import article_review_facts as shared
 import project_database as db
+import project_record_values as record_values
 import project_readers as project
 
 TASKS=shared.TASKS
@@ -18,11 +19,10 @@ def history(c,kind,article_id):
         (kind,article_id))]
 def save_history(unit,kind,value,article_id=None,key=None):
     import project_business_writes as business
-    import import_legacy_database as legacy
     key=key or shared.digest(value)
     s=business.source('ai-input/'+kind,key,value)
-    sid=legacy.ident('source',s['path'],s['position'],s['input_hash'])
-    hid=legacy.ident(kind,key)
+    sid=record_values.record_id('source',s['path'],s['position'],s['input_hash'])
+    hid=record_values.record_id(kind,key)
     business.provenance(unit,s,'legacy_history_records',hid)
     unit.save('history',dict(id=hid,source_record_id=sid,kind=kind,article_id=article_id,
                             talent_id=None,raw_json=db.canonical(value)),s)
@@ -35,9 +35,8 @@ def build_references(unit,request):
     for value in request.get('holdAssessments', []):
         save_hold_assessment(unit,value)
 def resolve(c,ref,day,task=None):
-    import import_legacy_database as legacy
     row=c.execute("SELECT raw_json FROM legacy_history_records WHERE id=? AND kind='ai-reference'",
-                  (legacy.ident('ai-reference',ref),)).fetchone()
+                  (record_values.record_id('ai-reference',ref),)).fetchone()
     if not row:raise ValueError('Unknown article reference')
     mapping=json.loads(row[0])
     if reference_id(mapping)!=ref or mapping['day']!=day:raise ValueError('Reference belongs to another input/day')

@@ -9,7 +9,7 @@ from pathlib import Path
 import json
 import os
 import sqlite3
-import uuid
+from project_record_values import record_id
 import project_database as db
 
 FEATURES = ('comparison', 'dashboard', 'weekly', 'ai-reader', 'n8n-daily')
@@ -155,8 +155,6 @@ class Reader:
 
     def reviews(self, through, warnings):
         index, known = {}, set()
-        ns = uuid.UUID('520e98ee-e2d9-4c73-a2d5-535e16f6ce61')
-        def ident(*parts): return str(uuid.uuid5(ns, db.canonical(parts)))
         for s in self.sources('review_records', 'content/article-review-facts/%.jsonl'):
             day = Path(s['source_path']).stem
             if day > through:
@@ -168,7 +166,7 @@ class Reader:
             raw.update(inputHash=r['input_hash'],policyHash=r['rule_hash'],basis=r['basis'],reviewedBy=r['reviewer'])
             assign(raw,'reviewedAt',r['reviewed_at'],True)
             raw['taskStatus'] = dict(self.c.execute('SELECT task,status FROM review_task_statuses WHERE review_id=?',(r['id'],)))
-            emap = {ident('evidence',r['id'],e['id']):e['id'] for e in raw['evidence']}
+            emap = {record_id('evidence',r['id'],e['id']):e['id'] for e in raw['evidence']}
             evid = []
             for e in self.c.execute('SELECT * FROM review_evidence WHERE review_id=?',(r['id'],)):
                 if e['id'] not in emap: raise ValueError('Unknown evidence identifier')
@@ -186,7 +184,7 @@ class Reader:
                 item=json.loads(e['raw_json']);item.update(name=e['name'],kind=e['kind'])
                 item['factIds']=sorted({fmap[x[0]] for x in self.c.execute('SELECT fact_id FROM review_entity_facts WHERE entity_id=?',(e['id'],))},key=lambda x:forder[x])
                 entities.append((e['id'],item))
-            order={ident('entity',r['id'],i):i for i in range(len(raw['entities']))}
+            order={record_id('entity',r['id'],i):i for i in range(len(raw['entities']))}
             raw['entities']=[e for _,e in sorted(entities,key=lambda v:order[v[0]])]
             index[(raw['url'],r['input_hash'],r['rule_hash'])]=(raw,day,s['source_path'])
         return index,known

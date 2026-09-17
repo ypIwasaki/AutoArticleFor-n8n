@@ -7,6 +7,7 @@ from contextlib import closing
 import json
 import uuid
 import project_database as db
+import project_record_values as record_values
 import identity_assessment_history as identity_history
 import missing_body_capture_history as capture_history
 
@@ -76,18 +77,18 @@ def validate_change(c, change):
         if digest(fields)!=after['payload_hash']:
             raise SyncStopped('invalid_payload_hash')
     if entity=='fetchAttempt':
-        import import_legacy_database as legacy
-        raw = source['raw']; integrity = legacy.body_integrity(raw)
+        raw = source['raw']
+        integrity = record_values.body_integrity(raw)
         if after['body_integrity'] != integrity:
             raise SyncStopped('body_integrity_difference')
         if integrity.startswith('held_') and (after['version_id'] is not None or after['status']!='unverified'):
             raise SyncStopped('missing_body_requires_null_version')
-        values=legacy.content_values(raw)
+        values=record_values.content_values(raw)
         if values['text'] and values['stored_length'] is not None and len(values['text'])!=values['stored_length']:
             raise SyncStopped('body_length_disagrees_with_payload')
         if after['source_status']!=values['status'] or after['stored_body_hash']!=values['stored_hash'] or json.loads(after['raw_json'])!=raw:
             raise SyncStopped('saved_body_claim_difference')
-        if after['stored_body_length'] != legacy.stored_length(raw):
+        if after['stored_body_length'] != record_values.stored_body_length(raw):
             raise SyncStopped('saved_body_length_difference')
     return entity
 

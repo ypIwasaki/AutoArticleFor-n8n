@@ -132,7 +132,26 @@ class BusinessPatterns(unittest.TestCase):
         business.submit('phase7-summary-two','summary',dict(day='2026-09-17',text=text.replace('one.','two.')),self.path,self.root)
         self.assertEqual(2,self.scalar('SELECT count(*) FROM article_summaries'))
         self.assertEqual(1,self.scalar('SELECT count(*) FROM article_summaries WHERE is_current=1'))
-        proposal=dict(day='2026-09-17',directory='talent-index-proposals',document={'proposalVersion':1,'articles':[],'talents':[{'talent_id':'new','status':'pending'}],'articleTalents':[]})
+        proposal = {
+            "day": "2026-09-17",
+            "directory": "talent-index-proposals",
+            "document": {
+                "proposalVersion": 1,
+                "proposalDate": "2026-09-17",
+                "articles": [],
+                "talents": [{
+                    "talent_id": "new",
+                    "display_name": "Example",
+                    "organization": "",
+                    "aliases_json": "[]",
+                    "status": "pending",
+                    "search_enabled": False,
+                    "auto_discovered": False,
+                    "last_seen_at": "2026-09-17T01:05:00Z",
+                }],
+                "articleTalents": [],
+            },
+        }
         business.submit('phase7-proposal-one','proposal',proposal,self.path,self.root)
         self.assertEqual(2,self.scalar('SELECT count(*) FROM legacy_history_records'))
         self.assertEqual(0,self.scalar('SELECT count(*) FROM talents'))

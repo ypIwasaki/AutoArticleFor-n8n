@@ -4,23 +4,61 @@ import json
 from pathlib import Path
 import re
 import project_database as db
+import project_record_values as record_values
 import project_write_outbox as outbox
-import import_legacy_database as legacy
 import project_readers
 
 
-def source(path,position,raw):
-    return dict(path=path,position=str(position),old_key=raw.get('article_key',raw.get('articleKey')),raw=raw,input_hash=legacy.hashrow(raw))
+def source(path, position, raw):
+    """Describe the original record used to build a database row."""
+    return {
+        "path": path,
+        "position": str(position),
+        "old_key": raw.get("article_key", raw.get("articleKey")),
+        "raw": raw,
+        "input_hash": record_values.record_hash(raw),
+    }
 
 
-def provenance(unit,s,kind,target,reason=None):
-    sid=legacy.ident('source',s['path'],s['position'],s['input_hash'])
-    existing=unit.c.execute('SELECT * FROM source_records WHERE id=?',(sid,)).fetchone()
+def provenance(unit, source_record, target_kind, target_id, reason=None):
+    """Save an immutable source reference, or verify its existing destination."""
+    source_id = record_values.record_id(
+        "source",
+        source_record["path"],
+        source_record["position"],
+        source_record["input_hash"],
+    )
+    existing = unit.c.execute(
+        "SELECT * FROM source_records WHERE id=?", (source_id,)
+    ).fetchone()
     if existing:
-        if existing['target_kind']!=kind or existing['target_id']!=target or existing['raw_json']!=db.canonical(s['raw']):raise ValueError('Existing source disposition differs')
-        return sid
-    unit.save('sourceRecord',dict(id=sid,migration_run_id=None,source_path=s['path'],record_position=s['position'],input_hash=s['input_hash'],importer_version=outbox.VERSION,target_kind=kind,target_id=target,state='held' if reason else 'imported',reason=reason,raw_json=db.canonical(s['raw'])),s)
-    return sid
+        same_destination = (
+            existing["target_kind"] == target_kind
+            and existing["target_id"] == target_id
+            and existing["raw_json"] == db.canonical(source_record["raw"])
+        )
+        if not same_destination:
+            raise ValueError("Existing source disposition differs")
+        return source_id
+
+    unit.save(
+        "sourceRecord",
+        {
+            "id": source_id,
+            "migration_run_id": None,
+            "source_path": source_record["path"],
+            "record_position": source_record["position"],
+            "input_hash": source_record["input_hash"],
+            "importer_version": outbox.VERSION,
+            "target_kind": target_kind,
+            "target_id": target_id,
+            "state": "held" if reason else "imported",
+            "reason": reason,
+            "raw_json": db.canonical(source_record["raw"]),
+        },
+        source_record,
+    )
+    return source_id
 
 
 def day_value(value):
@@ -53,23 +91,23 @@ def build_collection(unit,request):
     if any(r.get('recordType')!='article' or r.get('runDate')!=day for r in articles):raise ValueError('Invalid collection article record')
     if run.get('capturedArticleCount')!=len(articles):raise ValueError('Collection count mismatch')
     if unit.c.execute('SELECT 1 FROM collection_runs WHERE run_date=?',(day,)).fetchone():raise outbox.WriteStopped('collection_day_already_saved_use_original_operation_id')
-    stamp=legacy.utc(run['generatedAt']);rid=legacy.ident('collection',path,'line:1')
+    stamp=record_values.utc_timestamp(run['generatedAt']);rid=record_values.record_id('collection',path,'line:1')
     s=source(path,'line:1',run)
     unit.save('collection',dict(id=rid,source=path,source_record='line:1',run_date=day,workflow_execution_id=str(run['workflowExecutionId']),search_conditions_json=db.canonical(run),observed_at=stamp),s)
     provenance(unit,s,'collection_runs',rid)
     for i,raw in enumerate(articles,2):
         a=raw['article'];pos='line:'+str(i);s=source(path,pos,raw)
         if not a.get('url'):raise ValueError('Article URL required')
-        candidates=unit.c.execute("SELECT a.* FROM articles a WHERE a.url=? AND a.title=? AND a.published_at=? AND a.id IN (SELECT target_id FROM source_records WHERE target_kind='articles')",(a['url'],a.get('title',''),legacy.utc(a.get('publishedAt')))).fetchall()
+        candidates=unit.c.execute("SELECT a.* FROM articles a WHERE a.url=? AND a.title=? AND a.published_at=? AND a.id IN (SELECT target_id FROM source_records WHERE target_kind='articles')",(a['url'],a.get('title',''),record_values.utc_timestamp(a.get('publishedAt')))).fetchall()
         if len(candidates)==1 and a.get('title') and a.get('publishedAt'):
             aid=candidates[0]['id'];reason=None
         else:
-            aid=legacy.ident('held-article',path,pos);reason='observation_identity_not_proven'
-            unit.save('article',dict(id=aid,title=a.get('title',''),url=a['url'],excerpt=a.get('excerpt',''),source=a.get('source',''),published_at=legacy.utc(a.get('publishedAt')),created_at=stamp,updated_at=stamp,identity_state='held'),s)
+            aid=record_values.record_id('held-article',path,pos);reason='observation_identity_not_proven'
+            unit.save('article',dict(id=aid,title=a.get('title',''),url=a['url'],excerpt=a.get('excerpt',''),source=a.get('source',''),published_at=record_values.utc_timestamp(a.get('publishedAt')),created_at=stamp,updated_at=stamp,identity_state='held'),s)
             details={'source_path':path,'source_position':pos,'candidates':[x['id'] for x in candidates]}
-            unit.save('conflict',dict(id=legacy.ident('conflict','identity',aid,details),kind='identity',article_id=aid,reason=reason,status='unresolved',details_json=db.canonical(details),created_at=stamp),s)
-        oid=legacy.ident('occurrence',path,pos)
-        unit.save('occurrence',dict(id=oid,collection_run_id=rid,article_id=aid,source_record=pos,title=a.get('title',''),url=a['url'],excerpt=a.get('excerpt',''),published_at=legacy.utc(a.get('publishedAt')),observations_json=db.canonical(raw)),s)
+            unit.save('conflict',dict(id=record_values.record_id('conflict','identity',aid,details),kind='identity',article_id=aid,reason=reason,status='unresolved',details_json=db.canonical(details),created_at=stamp),s)
+        oid=record_values.record_id('occurrence',path,pos)
+        unit.save('occurrence',dict(id=oid,collection_run_id=rid,article_id=aid,source_record=pos,title=a.get('title',''),url=a['url'],excerpt=a.get('excerpt',''),published_at=record_values.utc_timestamp(a.get('publishedAt')),observations_json=db.canonical(raw)),s)
         sid=provenance(unit,s,'article_occurrences',oid,reason)
         unit.save('provenance',dict(source_record_id=sid,article_id=aid,source_table=None,source_row_id=pos,old_article_key=s['old_key'],original_url=a['url'],input_hash=s['input_hash'],stored_content_hash=None,fetch_status=None),s)
     # Emit from saved DB rows, preserving the original transport representation.
@@ -85,18 +123,62 @@ def submit_collection(operation_id,records,path=None,root=db.ROOT,fault=None):
     return outbox.commit(operation_id,{'version':outbox.VERSION,'kind':'collection','records':records},path,root,build_collection,fault=fault)
 
 
-def body_version(unit,aid,raw,s,stamp):
-    v=legacy.content_values(raw)
-    if legacy.body_integrity(raw).startswith('held_'):return None
-    if not (v['text'] or v['markdown'] or v['metadata']):return None
-    if v['stored_length'] is not None and len(v['text'])!=v['stored_length']:raise ValueError('Body length does not match payload')
-    fields=dict(text=v['text'],markdown=v['markdown'],metadata_json=db.canonical(v['metadata']),non_content_text=v['non_content'],extraction_scope=v['scope'])
-    fields['raw_json']=db.canonical(fields);h=legacy.hashrow(fields);pid=legacy.ident('payload',h)
-    unit.save('body',dict(id=pid,payload_hash=h,text_hash=db.checksum(v['text'].encode()),**fields),s)
-    vid=legacy.ident('content-version',aid,pid)
-    old=unit.c.execute('SELECT * FROM article_content_versions WHERE id=?',(vid,)).fetchone()
-    unit.save('bodyVersion',dict(id=vid,article_id=aid,payload_id=pid,first_observed_at=min(old['first_observed_at'],stamp) if old else stamp,last_observed_at=max(old['last_observed_at'],stamp) if old else stamp),s)
-    return vid
+def body_version(unit, article_id, capture_record, source_record, observed_at):
+    """Store a reusable body payload and its article-specific observation range."""
+    content = record_values.content_values(capture_record)
+    if record_values.body_integrity(capture_record).startswith("held_"):
+        return None
+    if not (content["text"] or content["markdown"] or content["metadata"]):
+        return None
+    if (
+        content["stored_length"] is not None
+        and len(content["text"]) != content["stored_length"]
+    ):
+        raise ValueError("Body length does not match payload")
+
+    payload_fields = {
+        "text": content["text"],
+        "markdown": content["markdown"],
+        "metadata_json": db.canonical(content["metadata"]),
+        "non_content_text": content["non_content"],
+        "extraction_scope": content["scope"],
+    }
+    payload_fields["raw_json"] = db.canonical(payload_fields)
+    payload_hash = record_values.record_hash(payload_fields)
+    payload_id = record_values.record_id("payload", payload_hash)
+    unit.save(
+        "body",
+        {
+            "id": payload_id,
+            "payload_hash": payload_hash,
+            "text_hash": db.checksum(content["text"].encode()),
+            **payload_fields,
+        },
+        source_record,
+    )
+
+    version_id = record_values.record_id("content-version", article_id, payload_id)
+    existing_version = unit.c.execute(
+        "SELECT * FROM article_content_versions WHERE id=?", (version_id,)
+    ).fetchone()
+    first_observed_at = observed_at
+    last_observed_at = observed_at
+    if existing_version:
+        first_observed_at = min(existing_version["first_observed_at"], observed_at)
+        last_observed_at = max(existing_version["last_observed_at"], observed_at)
+
+    unit.save(
+        "bodyVersion",
+        {
+            "id": version_id,
+            "article_id": article_id,
+            "payload_id": payload_id,
+            "first_observed_at": first_observed_at,
+            "last_observed_at": last_observed_at,
+        },
+        source_record,
+    )
+    return version_id
 
 
 def file_rows(c,path,kind):
@@ -115,35 +197,35 @@ def emit_jsonl(unit,path,kind):
 
 
 def build_capture(unit,request):
-    day=day_value(request['day']);raw=request['record'];v=legacy.content_values(raw)
+    day=day_value(request['day']);raw=request['record'];v=record_values.content_values(raw)
     reader=project_readers.Reader(unit.c);_,articles,captures=reader.load_day(day,[])
     matches=[a for a in articles if a['article']['url']==v['url']]
     if len(matches)!=1:raise ValueError('Capture occurrence is not unique')
     previous=captures.get(v['url']);aid=previous['_project']['articleId'] if previous else matches[0]['_project']['articleId']
     path='content/article-body-captures/'+day+'.jsonl'
     rows=file_rows(unit.c,path,'content_fetch_attempts');pos=merged_position(rows,'originalUrl',v['url']);s=source(path,pos,raw)
-    stamp=legacy.utc(v['fetched']);integrity=legacy.body_integrity(raw);sid=legacy.ident('source',path,pos,s['input_hash']);fid=legacy.ident('fetch',sid)
+    stamp=record_values.utc_timestamp(v['fetched']);integrity=record_values.body_integrity(raw);sid=record_values.record_id('source',path,pos,s['input_hash']);fid=record_values.record_id('fetch',sid)
     vid=body_version(unit,aid,raw,s,stamp)
-    unit.save('fetchAttempt',dict(id=fid,article_id=aid,version_id=vid,fetched_at=stamp,status='unverified' if integrity.startswith('held_') else v['status'],completeness=v['completeness'],original_url=v['url'],resolved_url=v['resolved'],failure_reason=v['reason'],extraction_method=v['method'],retry_after=legacy.utc(v['retry']),raw_json=db.canonical(raw),body_integrity=integrity,source_status=v['status'],stored_body_hash=v['stored_hash'],stored_body_length=v['stored_length'],source_content_path=v['content_path'],computed_body_hash=db.checksum(v['text'].encode())),s)
+    unit.save('fetchAttempt',dict(id=fid,article_id=aid,version_id=vid,fetched_at=stamp,status='unverified' if integrity.startswith('held_') else v['status'],completeness=v['completeness'],original_url=v['url'],resolved_url=v['resolved'],failure_reason=v['reason'],extraction_method=v['method'],retry_after=record_values.utc_timestamp(v['retry']),raw_json=db.canonical(raw),body_integrity=integrity,source_status=v['status'],stored_body_hash=v['stored_hash'],stored_body_length=v['stored_length'],source_content_path=v['content_path'],computed_body_hash=db.checksum(v['text'].encode())),s)
     reason=integrity if integrity.startswith('held_') else None
     provenance(unit,s,'content_fetch_attempts',fid,reason)
     unit.save('provenance',dict(source_record_id=sid,article_id=aid,source_table=None,source_row_id=pos,old_article_key=v['key'],original_url=v['url'],input_hash=s['input_hash'],stored_content_hash=v['stored_hash'],fetch_status=v['status']),s)
     if reason:
         details=dict(source_record_id=sid,source_path=path,source_position=pos,stored_body_hash=v['stored_hash'],stored_body_length=v['stored_length'],computed_body_hash=db.checksum(v['text'].encode()),source_status=v['status'],body_empty=not bool(v['text']))
-        unit.save('conflict',dict(id=legacy.ident('new-body-integrity',sid),kind='body_integrity',article_id=aid,reason=reason,status='unresolved',details_json=db.canonical(details),created_at=stamp),s)
+        unit.save('conflict',dict(id=record_values.record_id('new-body-integrity',sid),kind='body_integrity',article_id=aid,reason=reason,status='unresolved',details_json=db.canonical(details),created_at=stamp),s)
     emit_jsonl(unit,path,'content_fetch_attempts')
     if 'cacheEntry' in request:
         entry=request['cacheEntry'];cache_path='content/article-body-captures/backfill-state.json'
-        cv=legacy.content_values(entry)
+        cv=record_values.content_values(entry)
         if cv['text']!=v['text'] or cv['url']!=v['url'] or cv['status']!=v['status'] or cv['stored_length']!=v['stored_length']:
             raise ValueError('Cache entry does not match captured body')
         cache_source=source(cache_path,'entries/'+v['url'],entry)
-        cache_id=legacy.ident('source',cache_path,cache_source['position'],cache_source['input_hash'])
-        runtime_id=legacy.ident('runtime',cache_id)
+        cache_id=record_values.record_id('source',cache_path,cache_source['position'],cache_source['input_hash'])
+        runtime_id=record_values.record_id('runtime',cache_id)
         provenance(unit,cache_source,'content_runtime_state',runtime_id,reason)
         unit.save('runtime',dict(id=runtime_id,source_record_id=cache_id,state_key='entries/'+v['url'],state_json=db.canonical(entry)),cache_source)
         resolved={'originalUrl':v['url'],'value':v['resolved']}
-        rs=source(cache_path,'resolvedUrls/'+v['url'],resolved);rsid=legacy.ident('source',cache_path,rs['position'],rs['input_hash']);rtid=legacy.ident('runtime',rsid)
+        rs=source(cache_path,'resolvedUrls/'+v['url'],resolved);rsid=record_values.record_id('source',cache_path,rs['position'],rs['input_hash']);rtid=record_values.record_id('runtime',rsid)
         provenance(unit,rs,'content_runtime_state',rtid)
         unit.save('runtime',dict(id=rtid,source_record_id=rsid,state_key=v['url'],state_json=db.canonical(v['resolved'])),rs)
         watermark=unit.c.execute('SELECT max(rowid) FROM source_records').fetchone()[0]
@@ -168,22 +250,22 @@ def build_reviews(unit,request):
         matches=[a for a in articles if a['article']['url']==raw['url'] and rules.input_hash(a['article'],captures.get(raw['url']))==raw['inputHash']]
         if len(matches)!=1:raise ValueError('Review input is not unique')
         a=matches[0];cap=captures.get(raw['url']);rules.validate_record(raw,a['article'],cap,policy)
-        aid=a['_project']['articleId'];stamp=legacy.utc(raw['reviewedAt'])
+        aid=a['_project']['articleId'];stamp=record_values.utc_timestamp(raw['reviewedAt'])
         pos=merged_position(file_rows(unit.c,path,'review_records'),'url',raw['url']);s=source(path,pos,raw)
-        sid=legacy.ident('source',path,pos,s['input_hash']);rid=legacy.ident('review',sid)
+        sid=record_values.record_id('source',path,pos,s['input_hash']);rid=record_values.record_id('review',sid)
         unit.save('review',dict(id=rid,article_id=aid,content_version_id=body_version(unit,aid,cap,s,stamp) if cap else None,input_hash=raw['inputHash'],rule_hash=raw['policyHash'],basis=raw['basis'],reviewer=raw['reviewedBy'],reviewed_at=stamp,status='current',raw_json=db.canonical(raw)),s)
         for task,state in raw['taskStatus'].items():unit.save('taskStatus',dict(review_id=rid,task=task,status=state),s)
         unit.save('reviewInput',dict(review_id=rid,input_hash=raw['inputHash'],article_json=db.canonical(a['article']),capture_json=db.canonical({k:v for k,v in cap.items() if k!='_project'} if cap else None)),s)
         evidence={};facts={}
         for e in raw['evidence']:
-            eid=legacy.ident('evidence',rid,e['id']);evidence[e['id']]=eid
+            eid=record_values.record_id('evidence',rid,e['id']);evidence[e['id']]=eid
             unit.save('evidence',dict(id=eid,review_id=rid,input_field=e['field'],start_offset=e['start'],end_offset=e['end'],quote=e['quote']),s)
         for f in raw['facts']:
-            fid=legacy.ident('fact',rid,f['id']);facts[f['id']]=fid
+            fid=record_values.record_id('fact',rid,f['id']);facts[f['id']]=fid
             unit.save('fact',dict(id=fid,review_id=rid,fact=f['text'],raw_json=db.canonical(f)),s)
             for ref in set(f['evidenceIds']):unit.save('factEvidence',dict(fact_id=fid,evidence_id=evidence[ref]),s)
         for i,e in enumerate(raw['entities']):
-            eid=legacy.ident('entity',rid,i)
+            eid=record_values.record_id('entity',rid,i)
             unit.save('entity',dict(id=eid,review_id=rid,name=e['name'],kind=e['kind'],raw_json=db.canonical(e)),s)
             for ref in set(e['factIds']):unit.save('entityFact',dict(entity_id=eid,fact_id=facts[ref]),s)
         provenance(unit,s,'review_records',rid)
@@ -218,7 +300,7 @@ def build_summary(unit,request):
     reader=project_readers.Reader(unit.c);_,articles,captures=reader.load_day(day,[])
     parsed=list(parsed_summaries(request['text'],day))
     if not parsed:raise ValueError('No summaries in authored document')
-    stamp=legacy.utc(day+'T00:00:00+09:00')
+    stamp=record_values.utc_timestamp(day+'T00:00:00+09:00')
     for i,(links,summary) in enumerate(parsed):
         for j,(title,url) in enumerate(links):
             matches=[a for a in articles if a['article']['url']==url and a['article']['title']==title]
@@ -233,7 +315,7 @@ def build_summary(unit,request):
             reviews=unit.c.execute("SELECT r.* FROM review_records r JOIN review_task_statuses t ON t.review_id=r.id WHERE r.article_id=? AND r.input_hash=? AND r.rule_hash=? AND r.status='current' AND t.task='article-summary' AND t.status='ready' ORDER BY r.reviewed_at DESC,r.id",(aid,input_hash,rules.policy_hash(unit.root))).fetchall()
             if not reviews:raise ValueError('Summary requires an explicit current ready review')
             pos='summary:'+str(i)+':link:'+str(j);raw=dict(summary,links=links,url=url);s=source(path,pos,raw)
-            sid=legacy.ident('source',path,pos,s['input_hash']);iid=legacy.ident('summary',sid)
+            sid=record_values.record_id('source',path,pos,s['input_hash']);iid=record_values.record_id('summary',sid)
             previous=unit.c.execute('SELECT * FROM article_summaries WHERE id=?',(iid,)).fetchone()
             if not previous:
                 current=unit.c.execute('SELECT * FROM article_summaries WHERE article_id=? AND is_current=1',(aid,)).fetchall()
@@ -260,7 +342,7 @@ def build_proposal(unit,request):
     for key in fields:
         for index,raw in enumerate(value.get(key,[])):rows.append((key+'/'+str(index),raw,directory+'/'+key))
     for pos,raw,kind in rows:
-        s=source(path,pos,raw);sid=legacy.ident('source',path,pos,s['input_hash']);hid=legacy.ident('history',sid)
+        s=source(path,pos,raw);sid=record_values.record_id('source',path,pos,s['input_hash']);hid=record_values.record_id('history',sid)
         # Source references and immutable document content are in the same commit.
         provenance(unit,s,'legacy_history_records',hid)
         unit.save('history',dict(id=hid,source_record_id=sid,kind=kind,article_id=None,talent_id=None,raw_json=db.canonical(raw)),s)
@@ -279,21 +361,21 @@ def native_article(unit,raw):
     key=raw['article_key'];s=native_source('articles',raw,'article_key')
     matches=unit.c.execute("SELECT DISTINCT i.article_id FROM article_identifiers i WHERE i.kind='legacy_key' AND i.value=? AND i.source IN (SELECT DISTINCT source_path FROM source_records WHERE target_kind='articles')",(key,)).fetchall()
     if len(matches)>1:raise ValueError('Article key ambiguous')
-    aid=matches[0][0] if matches else legacy.ident('n8n-article',key)
+    aid=matches[0][0] if matches else record_values.record_id('n8n-article',key)
     if not matches:
-        candidates=unit.c.execute('SELECT id FROM articles WHERE url=? AND title=? AND published_at=?',(raw['url'],raw['title'],legacy.utc(raw.get('published_at')))).fetchall()
+        candidates=unit.c.execute('SELECT id FROM articles WHERE url=? AND title=? AND published_at=?',(raw['url'],raw['title'],record_values.utc_timestamp(raw.get('published_at')))).fetchall()
         if len(candidates)==1:aid=candidates[0]['id']
         elif len(candidates)>1:raise ValueError('Proposed article identity is ambiguous')
-    old=unit.c.execute('SELECT * FROM articles WHERE id=?',(aid,)).fetchone();stamp=legacy.utc(raw['last_seen_at'])
-    unit.save('article',dict(id=aid,title=raw['title'],url=raw['url'],excerpt=raw.get('excerpt',''),source=raw.get('source',''),published_at=legacy.utc(raw.get('published_at')),created_at=old['created_at'] if old else stamp,updated_at=stamp,identity_state=old['identity_state'] if old else 'identified'),s)
-    unit.save('identifier',dict(id=legacy.ident('identifier',aid,s['path'],'legacy_key',key),article_id=aid,source=s['path'],kind='legacy_key',value=key,match_state='exact'),s)
-    unit.save('identifier',dict(id=legacy.ident('identifier',aid,s['path'],'original_url',raw['url']),article_id=aid,source=s['path'],kind='original_url',value=raw['url'],match_state='exact'),s)
+    old=unit.c.execute('SELECT * FROM articles WHERE id=?',(aid,)).fetchone();stamp=record_values.utc_timestamp(raw['last_seen_at'])
+    unit.save('article',dict(id=aid,title=raw['title'],url=raw['url'],excerpt=raw.get('excerpt',''),source=raw.get('source',''),published_at=record_values.utc_timestamp(raw.get('published_at')),created_at=old['created_at'] if old else stamp,updated_at=stamp,identity_state=old['identity_state'] if old else 'identified'),s)
+    unit.save('identifier',dict(id=record_values.record_id('identifier',aid,s['path'],'legacy_key',key),article_id=aid,source=s['path'],kind='legacy_key',value=key,match_state='exact'),s)
+    unit.save('identifier',dict(id=record_values.record_id('identifier',aid,s['path'],'original_url',raw['url']),article_id=aid,source=s['path'],kind='original_url',value=raw['url'],match_state='exact'),s)
     provenance(unit,s,'articles',aid)
     return aid
 
 
 def native_version(unit,entity,table,aid,raw,fields):
-    s=native_source(table,raw,'article_key');iid=legacy.ident('project-version',table,aid,s['input_hash'])
+    s=native_source(table,raw,'article_key');iid=record_values.record_id('project-version',table,aid,s['input_hash'])
     existing=unit.c.execute('SELECT * FROM '+table+' WHERE id=?',(iid,)).fetchone()
     if not existing:
         for old in unit.c.execute('SELECT * FROM '+table+' WHERE article_id=? AND is_current=1',(aid,)).fetchall():unit.save(entity,dict(old,is_current=0),s)
@@ -311,7 +393,7 @@ def build_native(unit,request):
         if raw.get('review_source') not in ('talent-dashboard','article-review-markdown'):raise ValueError('Explicit review tool source required')
         if raw['reason_code'] not in ('approved','suspicious_source','irrelevant','unavailable','outdated'):raise ValueError('Unknown feedback reason')
         if bool(raw['is_rejected'])==(raw['reason_code']=='approved'):raise ValueError('Feedback decision/reason mismatch')
-        native_version(unit,'feedback','article_feedback',aid,raw,dict(is_rejected=int(raw['is_rejected']),reason_code=raw['reason_code'],reviewed_at=legacy.utc(raw['reviewed_at']),source=raw['review_source']))
+        native_version(unit,'feedback','article_feedback',aid,raw,dict(is_rejected=int(raw['is_rejected']),reason_code=raw['reason_code'],reviewed_at=record_values.utc_timestamp(raw['reviewed_at']),source=raw['review_source']))
         compat.enqueue(unit,'article_feedback',raw)
         return
     proposal=request['proposal']
@@ -330,17 +412,17 @@ def build_native(unit,request):
         for raw in proposal['articles']:
             native_article(unit,raw);compat.enqueue(unit,'articles',raw)
         for raw in proposal['talents']:
-            tid=legacy.ident('talent',raw['talent_id']);s=native_source('talents',raw,'talent_id')
+            tid=record_values.record_id('talent',raw['talent_id']);s=native_source('talents',raw,'talent_id')
             old=unit.c.execute('SELECT * FROM talents WHERE id=?',(tid,)).fetchone()
             if raw['status']!=(old['status'] if old else 'pending') or bool(raw['search_enabled'])!=bool(old['search_enabled'] if old else 0):raise ValueError('Talent approval/search change requires separate explicit review')
-            unit.save('talent',dict(id=tid,display_name=raw['display_name'],organization=raw['organization'],status=raw['status'],search_enabled=int(raw['search_enabled']),auto_discovered=int(raw['auto_discovered']),last_seen_at=legacy.utc(raw['last_seen_at']),raw_json=db.canonical(raw)),s)
-            aliases=set(legacy.array(raw['aliases_json']));old_aliases={x[0] for x in unit.c.execute('SELECT alias FROM talent_aliases WHERE talent_id=?',(tid,))}
+            unit.save('talent',dict(id=tid,display_name=raw['display_name'],organization=raw['organization'],status=raw['status'],search_enabled=int(raw['search_enabled']),auto_discovered=int(raw['auto_discovered']),last_seen_at=record_values.utc_timestamp(raw['last_seen_at']),raw_json=db.canonical(raw)),s)
+            aliases=set(record_values.json_array(raw['aliases_json']));old_aliases={x[0] for x in unit.c.execute('SELECT alias FROM talent_aliases WHERE talent_id=?',(tid,))}
             if old_aliases-aliases:raise ValueError('Alias removal is outside this operation')
             for alias in sorted(aliases):unit.save('alias',dict(talent_id=tid,alias=alias),s)
             provenance(unit,s,'talents',tid);compat.enqueue(unit,'talents',raw)
         for raw in proposal['articleTalents']:
-            aid=article_for_key(unit.c,raw['article_key']);tid=legacy.ident('talent',raw['talent_id']);s=native_source('article_talents',raw,'relation_key')
-            iid=legacy.ident('relationship',raw['relation_key']);old=unit.c.execute('SELECT * FROM article_talents WHERE id=?',(iid,)).fetchone()
+            aid=article_for_key(unit.c,raw['article_key']);tid=record_values.record_id('talent',raw['talent_id']);s=native_source('article_talents',raw,'relation_key')
+            iid=record_values.record_id('relationship',raw['relation_key']);old=unit.c.execute('SELECT * FROM article_talents WHERE id=?',(iid,)).fetchone()
             # Reviewed application preserves an existing hold and never promotes it.
             state=old['state'] if old else 'proposed'
             unit.save('relationship',dict(id=iid,article_id=aid,talent_id=tid,review_id=None,evidence=raw['evidence_text'],confidence=raw['confidence'],state=state,raw_json=db.canonical(raw)),s)
@@ -349,8 +431,8 @@ def build_native(unit,request):
     elif kind=='classification':
         for raw in proposal['classifications']:
             aid=article_for_key(unit.c,raw['article_key'])
-            iid,s=native_version(unit,'classification','article_classifications',aid,raw,dict(review_id=None,article_type=raw['article_type'],primary_category=raw['primary_category'],relevance=raw['relevance'],confidence=raw['confidence'],evidence=raw['evidence_text'],classified_at=legacy.utc(raw['classified_at'])))
-            for category in set(legacy.array(raw['secondary_categories_json'])):unit.save('secondaryCategory',dict(classification_id=iid,category=category),s)
+            iid,s=native_version(unit,'classification','article_classifications',aid,raw,dict(review_id=None,article_type=raw['article_type'],primary_category=raw['primary_category'],relevance=raw['relevance'],confidence=raw['confidence'],evidence=raw['evidence_text'],classified_at=record_values.utc_timestamp(raw['classified_at'])))
+            for category in set(record_values.json_array(raw['secondary_categories_json'])):unit.save('secondaryCategory',dict(classification_id=iid,category=category),s)
             compat.enqueue(unit,'article_classifications',raw)
     else:raise ValueError('Unsupported native business operation')
 
@@ -375,7 +457,7 @@ def build_runtime(unit,request):
     name=request['name']
     if name!='rate-limit-state.json':raise ValueError('Unsupported runtime state')
     path='content/article-body-captures/'+name;raw=request['value'];s=source(path,'$',raw)
-    sid=legacy.ident('source',path,'$',s['input_hash']);iid=legacy.ident('runtime',sid)
+    sid=record_values.record_id('source',path,'$',s['input_hash']);iid=record_values.record_id('runtime',sid)
     provenance(unit,s,'content_runtime_state',iid)
     unit.save('runtime',dict(id=iid,source_record_id=sid,state_key=name,state_json=db.canonical(raw)),s)
     unit.file(path,json.dumps(raw,ensure_ascii=False,indent=2)+'\n')

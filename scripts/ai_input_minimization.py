@@ -130,45 +130,100 @@ def packet(record,task):
     entities=[e for e in record['entities'] if ids.intersection(e['factIds'])]
     if entities:result['entities']=[dict(e,factIds=[f for f in e['factIds'] if f in ids]) for e in entities]
     return result
-def material(record,task,topics):
-    evid={e['id']:e for e in record['evidence']}
-    return {shared.digest(dict(text=f['text'],quotes=sorted(evid[e]['quote'] for e in f['evidenceIds'])))
-            for f in task_facts(record,task) if set(f.get('topics',[])).intersection(topics)}
-def hold_state(c,aid,task,current,audit=None):
-    records=[json.loads(r[0]) for r in c.execute('SELECT raw_json FROM review_records WHERE article_id=? ORDER BY rowid',(aid,))]
-    held=[r for r in records if r['taskStatus'].get(task)=='held']
-    if not held:return None
-    previous=held[-1];details=previous.get('holds',{}).get(task,{})
-    topics=details.get('missingTopics',[])
-    if not topics:
+def material(record, task, topics):
+    """Identify task facts by their text and quotes for the missing topics."""
+    evidence_by_id = {item['id']: item for item in record['evidence']}
+    requested_topics = set(topics)
+    material_hashes = set()
+    for fact in task_facts(record, task):
+        if not requested_topics.intersection(fact.get('topics', [])):
+            continue
+        quotes = sorted(evidence_by_id[evidence_id]['quote'] for evidence_id in fact['evidenceIds'])
+        material_hashes.add(shared.digest(dict(text=fact['text'], quotes=quotes)))
+    return material_hashes
+
+
+def hold_state(c, aid, task, current, audit=None):
+    """Reopen the latest hold only when its missing topics gain material."""
+    records = [
+        json.loads(row[0])
+        for row in c.execute(
+            'SELECT raw_json FROM review_records WHERE article_id=? ORDER BY rowid',
+            (aid,),
+        )
+    ]
+    held_records = [record for record in records if record['taskStatus'].get(task) == 'held']
+    if not held_records:
+        return None
+
+    previous_hold = held_records[-1]
+    hold_details = previous_hold.get('holds', {}).get(task, {})
+    missing_topics = hold_details.get('missingTopics', [])
+    if not missing_topics:
         import legacy_hold_relevance as legacy_hold
-        held_row,current_row=legacy_hold.held_rows(c,aid,task)
-        result,assessment=legacy_hold.assess(c,aid,task,held_row,current_row)
-        if audit is not None:audit.append(assessment)
+
+        held_row, current_row = legacy_hold.held_rows(c, aid, task)
+        result, assessment = legacy_hold.assess(c, aid, task, held_row, current_row)
+        if audit is not None:
+            audit.append(assessment)
         return result
-    added=material(current,task,topics)-material(previous,task,topics) if current and topics else set()
-    if added:return dict(state='resumed',reason=details.get('reason'),newMaterialCount=len(added))
-    return dict(state='held',reason=details.get('reason') or '; '.join(previous['unresolved']))
-def select(c,day,row,capture,task,policy,audit=None):
-    aid=row['_project']['articleId']
-    done=completed(c,aid,task)
-    if done:return dict(state='saved',receipt=done)
-    if capture and capture['_project']['articleId']!=aid:raise ValueError('Article/capture identity mismatch')
-    latest=c.execute('SELECT * FROM review_records WHERE article_id=? ORDER BY rowid DESC LIMIT 1',(aid,)).fetchone()
-    record=json.loads(latest['raw_json']) if latest else None
-    hold=hold_state(c,aid,task,record,audit)
-    if hold and hold['state']=='held':return hold
-    status=(capture or {}).get('contentStatus')
-    if status in UNAVAILABLE and task in ('article-summary','article-classification'):
-        return dict(state='unavailable',reason=(capture or {}).get('failureReason'))
-    valid=False
-    if record and latest['status']=='current':
-        try:shared.validate_record(record,row['article'],capture,policy);valid=True
-        except (ValueError,TypeError,KeyError):pass
-    result=dict(state='ready' if valid and record['taskStatus'][task]=='ready' else 'needs_review',
-                record=record if valid else None,reviewId=latest['id'] if valid else None)
-    if hold:result['resume']=hold
+
+    new_material = set()
+    if current:
+        current_material = material(current, task, missing_topics)
+        previous_material = material(previous_hold, task, missing_topics)
+        new_material = current_material - previous_material
+    if new_material:
+        return dict(
+            state='resumed',
+            reason=hold_details.get('reason'),
+            newMaterialCount=len(new_material),
+        )
+    reason = hold_details.get('reason') or '; '.join(previous_hold['unresolved'])
+    return dict(state='held', reason=reason)
+
+
+def select(c, day, row, capture, task, policy, audit=None):
+    """Apply saved, held, unavailable, and review checks in that order."""
+    article_id = row['_project']['articleId']
+    completion_receipt = completed(c, article_id, task)
+    if completion_receipt:
+        return dict(state='saved', receipt=completion_receipt)
+
+    if capture and capture['_project']['articleId'] != article_id:
+        raise ValueError('Article/capture identity mismatch')
+    latest_review = c.execute(
+        'SELECT * FROM review_records WHERE article_id=? ORDER BY rowid DESC LIMIT 1',
+        (article_id,),
+    ).fetchone()
+    review_record = json.loads(latest_review['raw_json']) if latest_review else None
+    hold = hold_state(c, article_id, task, review_record, audit)
+    if hold and hold['state'] == 'held':
+        return hold
+
+    content_status = (capture or {}).get('contentStatus')
+    if content_status in UNAVAILABLE and task in ('article-summary', 'article-classification'):
+        return dict(state='unavailable', reason=(capture or {}).get('failureReason'))
+
+    review_is_valid = False
+    if review_record and latest_review['status'] == 'current':
+        try:
+            shared.validate_record(review_record, row['article'], capture, policy)
+            review_is_valid = True
+        except (ValueError, TypeError, KeyError):
+            pass
+
+    task_is_ready = review_is_valid and review_record['taskStatus'][task] == 'ready'
+    result = dict(
+        state='ready' if task_is_ready else 'needs_review',
+        record=review_record if review_is_valid else None,
+        reviewId=latest_review['id'] if review_is_valid else None,
+    )
+    if hold:
+        result['resume'] = hold
     return result
+
+
 def _select_input_candidates(reader, day, rows, captures, task, policy_hash, article_url, audit):
     """Select before pagination so totals include every eligible article."""
     candidates = []

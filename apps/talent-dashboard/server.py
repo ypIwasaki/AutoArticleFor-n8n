@@ -5,17 +5,13 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import re
-import sqlite3
 import sys
-import threading
 from datetime import datetime, timezone
 from http import HTTPStatus
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
-from urllib import error, request
 from urllib.parse import urlparse
 
 
@@ -24,6 +20,7 @@ PROJECT_ROOT = APP_ROOT.parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
 import article_feedback_service as feedback_service
 import talent_dashboard_data as dashboard_data
+from keyword_service import KeywordService
 from talent_dashboard_data import database_path, normalise_row, quoted_table_name
 from article_feedback_service import (
     article_publisher_label,
@@ -37,7 +34,6 @@ from article_artifact_formats import (
     WEEKLY_REPORT_FRONT_MATTER_PATTERN,
     weekly_report_metadata,
 )
-KEYWORD_MUTATION_LOCK = threading.RLock()
 
 
 def load_from_n8n() -> tuple[dict[str, Any], str]:
@@ -125,320 +121,24 @@ def date_key(value: Any) -> str:
     return str(value or "")[:10]
 
 
-def keyword_identity(value: Any) -> str:
-    return " ".join(str(value or "").strip().replace("！", "!").split()).casefold()
-
-
-def load_keyword_config() -> dict[str, Any]:
-    path = PROJECT_ROOT / "config" / "keywords.json"
-    data = json.loads(path.read_text(encoding="utf-8"))
-    if not isinstance(data, dict):
-        raise ValueError("config/keywords.json must contain an object")
-    return data
-
-
-def load_keyword_runtime() -> tuple[list[str], str | None]:
-    path = database_path()
-    if not path.exists():
-        return [], f"n8n database was not found: {path}"
-
-    try:
-        connection = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
-        row = connection.execute(
-            "SELECT staticData FROM workflow_entity WHERE name = ?",
-            ("Daily Keyword News Summary",),
-        ).fetchone()
-        if row is None:
-            raise RuntimeError("Daily Keyword News Summary workflow was not found")
-        raw_static_data = row[0] or "{}"
-        static_data = json.loads(raw_static_data)
-        global_data = static_data.get("global", {}) if isinstance(static_data, dict) else {}
-        keywords = global_data.get("autoKeywords", []) if isinstance(global_data, dict) else []
-        return [str(term).strip() for term in keywords if str(term).strip()], None
-    except (OSError, sqlite3.Error, json.JSONDecodeError, RuntimeError) as exc:
-        return [], str(exc)
-    finally:
-        try:
-            connection.close()
-        except UnboundLocalError:
-            pass
-
-
-def load_registered_talent_keywords() -> tuple[list[str], str, str | None]:
-    try:
-        payload, source = load_from_n8n()
-        source_error: str | None = None
-    except Exception as exc:  # Keep keyword visibility available without n8n.
-        payload, source = load_from_proposals()
-        source_error = str(exc)
-
-    keywords: dict[str, str] = {}
-    for row in payload.get("talents", []):
-        if str(row.get("status", "")).strip().casefold() == "rejected":
-            continue
-        keyword = str(row.get("display_name", "")).strip()
-        if (
-            len(keyword) < 1
-            or len(keyword) > 80
-            or re.search(r"[|/\\\r\n]", keyword)
-            or re.match(r"^https?:", keyword, flags=re.IGNORECASE)
-        ):
-            continue
-        keywords.setdefault(keyword_identity(keyword), keyword)
-
-    return sorted(keywords.values(), key=lambda item: (item.casefold(), item)), source, source_error
-
-
-def load_latest_keyword_candidates() -> tuple[str, list[dict[str, Any]]]:
-    candidate_dir = PROJECT_ROOT / "content" / "ai-keyword-candidates"
-    paths = sorted(candidate_dir.glob("????-??-??.md"))
-    if not paths:
-        raise FileNotFoundError("No AI keyword candidate file was found")
-
-    path = paths[-1]
-    section = path.read_text(encoding="utf-8")
-    table = section.split("## Candidates", 1)
-    if len(table) != 2:
-        raise ValueError(f"Candidates table is missing in {path}")
-    table_text = table[1].split("## Suggested Default Keywords", 1)[0]
-    candidates: list[dict[str, Any]] = []
-    for raw_line in table_text.splitlines():
-        line = raw_line.strip()
-        if not line.startswith("|"):
-            continue
-        columns = [cell.strip() for cell in line.strip("|").split("|")]
-        if not columns or columns[0] in {"Candidate", "---"} or all(set(cell) <= {"-", ":"} for cell in columns):
-            continue
-        if len(columns) != 6:
-            continue
-        keyword, category, confidence, add, reason, evidence = columns
-        try:
-            confidence_value = float(confidence)
-        except ValueError:
-            confidence_value = 0.0
-        candidates.append(
-            {
-                "keyword": keyword,
-                "category": category,
-                "confidence": confidence_value,
-                "recommended": add.lower() == "yes",
-                "reason": reason,
-                "evidence": evidence,
-            }
-        )
-    return path.stem, candidates
+def keyword_service() -> KeywordService:
+    return KeywordService(PROJECT_ROOT, dashboard_data.database_path())
 
 
 def keyword_candidates_payload() -> dict[str, Any]:
-    candidate_date, candidates = load_latest_keyword_candidates()
-    config = load_keyword_config()
-    manual = [str(term).strip() for term in config.get("manualKeywords", []) if str(term).strip()]
-    automatic, runtime_error = load_keyword_runtime()
-    talent_keywords, talent_keyword_source, talent_keyword_error = load_registered_talent_keywords()
-    current_by_identity: dict[str, str] = {}
-    for term in [*manual, *automatic, *talent_keywords]:
-        current_by_identity.setdefault(keyword_identity(term), term)
-
-    for candidate in candidates:
-        existing = current_by_identity.get(keyword_identity(candidate["keyword"]))
-        candidate["state"] = "added" if existing else ("eligible" if candidate["recommended"] else "not_recommended")
-        candidate["existingKeyword"] = existing or ""
-
-    return {
-        "candidateDate": candidate_date,
-        "candidates": candidates,
-        "manualKeywords": manual,
-        "automaticKeywords": automatic,
-        "talentKeywords": talent_keywords,
-        "talentKeywordSource": talent_keyword_source,
-        "talentKeywordError": talent_keyword_error,
-        "currentKeywordCount": len(current_by_identity),
-        "runtimeError": runtime_error,
-    }
-
-
-def keyword_config_path() -> Path:
-    return PROJECT_ROOT / "config" / "keywords.json"
-
-
-def validate_keyword(value: Any) -> str:
-    keyword = str(value or "").strip()
-    if len(keyword) < 2 or len(keyword) > 30:
-        raise ValueError("Keyword must contain 2 to 30 characters")
-    if re.search(r"[|/\\\r\n]", keyword) or re.match(r"^https?:", keyword, flags=re.IGNORECASE):
-        raise ValueError("Keyword contains unsupported characters")
-    return keyword
-
-
-def write_keyword_config(config: dict[str, Any]) -> None:
-    path = keyword_config_path()
-    temporary_path = path.with_suffix(".json.tmp")
-    temporary_path.write_text(json.dumps(config, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    temporary_path.replace(path)
+    return keyword_service().candidate_payload()
 
 
 def keyword_management_payload() -> dict[str, Any]:
-    config = load_keyword_config()
-    manual = [str(term).strip() for term in config.get("manualKeywords", []) if str(term).strip()]
-    automatic, runtime_error = load_keyword_runtime()
-    talent_keywords, talent_keyword_source, talent_keyword_error = load_registered_talent_keywords()
-    return {
-        "manualKeywords": manual,
-        "automaticKeywords": automatic,
-        "talentKeywords": talent_keywords,
-        "talentKeywordSource": talent_keyword_source,
-        "talentKeywordError": talent_keyword_error,
-        "excludedKeywords": [str(term).strip() for term in config.get("excludedKeywords", []) if str(term).strip()],
-        "maxAutoKeywords": max(0, int(config.get("maxAutoKeywords", 30) or 0)),
-        "runtimeError": runtime_error,
-    }
-
-
-def call_keyword_management_webhook(operation: str, keyword: str, previous_keyword: str) -> dict[str, Any]:
-    body = json.dumps(
-        {
-            "operation": operation,
-            "keyword": keyword,
-            "previousKeyword": previous_keyword,
-            "source": "talent-dashboard",
-        },
-        ensure_ascii=False,
-    ).encode("utf-8")
-    webhook_url = os.environ.get(
-        "N8N_KEYWORD_MANAGEMENT_WEBHOOK_URL",
-        "http://127.0.0.1:5678/webhook/keyword-management/update",
-    )
-    webhook_request = request.Request(
-        webhook_url,
-        data=body,
-        headers={"Content-Type": "application/json; charset=utf-8", "Accept": "application/json"},
-        method="POST",
-    )
-    try:
-        with request.urlopen(webhook_request, timeout=30) as response:
-            raw_response = response.read().decode("utf-8")
-    except error.HTTPError as exc:
-        details = exc.read().decode("utf-8", "replace")
-        raise RuntimeError(f"n8n returned HTTP {exc.code}: {details}") from exc
-    except error.URLError as exc:
-        raise RuntimeError(f"Could not connect to n8n: {exc.reason}") from exc
-    try:
-        result = json.loads(raw_response) if raw_response else {}
-    except json.JSONDecodeError as exc:
-        raise RuntimeError("n8n returned an invalid response") from exc
-    if not isinstance(result, dict):
-        raise RuntimeError("n8n returned an unexpected response")
-    if result.get("status") == "rejected":
-        raise ValueError(str(result.get("reason") or "n8n rejected the keyword"))
-    return result
-
-
-def manage_manual_keyword(operation: str, keyword: str, previous_keyword: str) -> dict[str, Any]:
-    with KEYWORD_MUTATION_LOCK:
-        config = load_keyword_config()
-        manual = [str(term).strip() for term in config.get("manualKeywords", []) if str(term).strip()]
-        target_identity = keyword_identity(previous_keyword or keyword)
-        index = next((position for position, term in enumerate(manual) if keyword_identity(term) == target_identity), None)
-
-        if operation == "add":
-            keyword = validate_keyword(keyword)
-            if any(keyword_identity(term) == keyword_identity(keyword) for term in manual):
-                return {"status": "already_added", "keyword": next(term for term in manual if keyword_identity(term) == keyword_identity(keyword))}
-            manual.append(keyword)
-            status = "added"
-        elif operation == "edit":
-            keyword = validate_keyword(keyword)
-            if index is None:
-                raise ValueError("The manual keyword no longer exists")
-            if keyword_identity(manual[index]) == keyword_identity(keyword):
-                return {"status": "unchanged", "keyword": manual[index]}
-            if any(position != index and keyword_identity(term) == keyword_identity(keyword) for position, term in enumerate(manual)):
-                raise ValueError("The keyword already exists in the manual list")
-            manual[index] = keyword
-            status = "updated"
-        elif operation == "remove":
-            if index is None:
-                return {"status": "already_removed", "keyword": previous_keyword or keyword}
-            if len(manual) <= 1:
-                raise ValueError("At least one manual keyword must remain")
-            keyword = manual.pop(index)
-            status = "removed"
-        else:
-            raise ValueError("Unsupported keyword operation")
-
-        config["manualKeywords"] = manual
-        write_keyword_config(config)
-        return {"status": status, "keyword": keyword}
+    return keyword_service().management_payload()
 
 
 def manage_keyword(payload: dict[str, Any]) -> dict[str, Any]:
-    operation = str(payload.get("operation", "")).strip().lower()
-    scope = str(payload.get("scope", "")).strip().lower()
-    keyword = str(payload.get("keyword", "")).strip()
-    previous_keyword = str(payload.get("previousKeyword", "")).strip()
-    if operation not in {"add", "edit", "remove"}:
-        raise ValueError("operation must be add, edit, or remove")
-    if scope not in {"manual", "automatic"}:
-        raise ValueError("scope must be manual or automatic")
-    if operation in {"add", "edit"}:
-        keyword = validate_keyword(keyword)
-    if operation in {"edit", "remove"} and not previous_keyword:
-        raise ValueError("previousKeyword is required for edit and remove")
-
-    if scope == "manual":
-        return manage_manual_keyword(operation, keyword, previous_keyword)
-    with KEYWORD_MUTATION_LOCK:
-        return call_keyword_management_webhook(operation, keyword, previous_keyword)
+    return keyword_service().manage_keyword(payload)
 
 
 def add_keyword_candidate(keyword: str) -> dict[str, Any]:
-    payload = keyword_candidates_payload()
-    normalized = keyword_identity(keyword)
-    candidate = next(
-        (item for item in payload["candidates"] if keyword_identity(item["keyword"]) == normalized),
-        None,
-    )
-    if candidate is None:
-        raise ValueError("The keyword is not in the latest AI candidate file")
-    if not candidate["recommended"]:
-        raise ValueError("Only candidates marked Add: yes can be added")
-    if candidate["state"] == "added":
-        return {"status": "already_added", "keyword": candidate["existingKeyword"] or candidate["keyword"]}
-
-    body = json.dumps(
-        {
-            "keyword": candidate["keyword"],
-            "candidateDate": payload["candidateDate"],
-            "source": "talent-dashboard",
-        },
-        ensure_ascii=False,
-    ).encode("utf-8")
-    webhook_url = os.environ.get(
-        "N8N_KEYWORD_CANDIDATE_WEBHOOK_URL",
-        "http://127.0.0.1:5678/webhook/keyword-candidate/add",
-    )
-    webhook_request = request.Request(
-        webhook_url,
-        data=body,
-        headers={"Content-Type": "application/json; charset=utf-8", "Accept": "application/json"},
-        method="POST",
-    )
-    try:
-        with request.urlopen(webhook_request, timeout=30) as response:
-            raw_response = response.read().decode("utf-8")
-    except error.HTTPError as exc:
-        details = exc.read().decode("utf-8", "replace")
-        raise RuntimeError(f"n8n returned HTTP {exc.code}: {details}") from exc
-    except error.URLError as exc:
-        raise RuntimeError(f"Could not connect to n8n: {exc.reason}") from exc
-
-    try:
-        result = json.loads(raw_response) if raw_response else {}
-    except json.JSONDecodeError as exc:
-        raise RuntimeError("n8n returned an invalid response") from exc
-    if not isinstance(result, dict):
-        raise RuntimeError("n8n returned an unexpected response")
-    return result
+    return keyword_service().add_candidate(keyword)
 
 
 def write_article_feedback_instruction(

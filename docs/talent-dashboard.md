@@ -4,8 +4,9 @@
 
 ## コードの責務
 
-- `apps/talent-dashboard/server.py`: HTTPの受付、画面用データの組立て、キーワード管理。
+- `apps/talent-dashboard/server.py`: HTTPの受付、画面用データの組立て、共通サービスへの委譲。
 - `scripts/talent_dashboard_data.py`: 保存先設定に従うデータ取得。専用DBの読取り失敗は旧ファイルへ暗黙に切り替えない。
+- `scripts/keyword_service.py`: 手動キーワードの検証・保存、自動キーワードと候補のWebhook操作、キーワード画面用データの取得。
 - `scripts/article_feedback_service.py`: 記事評価の入力検証、Webhook送信、評価指示書とスナップショットの保存。
 - 指示書生成と日次レビューのCLIは共通モジュールを直接利用し、Webサーバーをインポートしない。
 
@@ -64,10 +65,18 @@ N8N_DATABASE_PATH=/path/to/.n8n/database.sqlite bash scripts/start_talent_dashbo
 WSLのプロジェクトルートから、関連する隔離テストを実行できます。
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=scripts:tests python3 -m unittest test_talent_dashboard_services test_artifact_validation test_weekly_metrics -q
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=scripts:tests python3 -m unittest test_keyword_service test_talent_dashboard_services test_artifact_validation test_weekly_metrics -q
 ```
 
 2026-09-17の責務分離では44件が成功。変更前後の画面JSON 6例と評価指示書6例も、保存・通信を伴わない比較で一致を確認しました。実サービスへの配備・再起動はこの変更に含みません。
+
+### キーワード管理の分離
+
+`KeywordService(project_root, runtime_database)`には設定・候補ファイルのルートとn8n DBのパスを明示する。手動変更は指定ルートの`config/keywords.json`だけを更新し、自動変更は既存Webhookへ送信する。DB読取りは読み取り専用。サービスのインスタンス間で変更ロックを共有する。
+
+キーワードの同一性判定と入力検証、手動リストの最後の1件の保護、推薦された最新候補だけを追加する条件、HTTP応答とエラーの扱いは維持している。タレント由来の表示一覧と、日次ワークフローが実際に検索する対象の条件も変更していない。
+
+分離後の関連テスト56件が成功。手動操作12例で応答・保存バイト列、画面データ2例で変更前後の一致を確認した。検証は一時フォルダー・一時DB・通信モック内で実行し、実設定の変更や実Webhookの呼出しは行っていない。
 
 ### 保存先の隔離修正と復旧記録
 

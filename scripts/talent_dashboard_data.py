@@ -48,11 +48,13 @@ def quoted_table_name(table_id: str) -> str:
 
 
 
-def load_dashboard_records(project_root: Path) -> tuple[dict[str, Any], str]:
+def load_dashboard_records(
+    project_root: Path, *, legacy_database: Path | None = None
+) -> tuple[dict[str, Any], str]:
     if project.source(project_root, "dashboard") == "project-db":
         with project.reader(project_root) as reader:
             return reader.dashboard(), "project-db"
-    path = database_path()
+    path = Path(legacy_database) if legacy_database is not None else database_path()
     if not path.exists():
         raise FileNotFoundError(f"n8n database was not found: {path}")
 

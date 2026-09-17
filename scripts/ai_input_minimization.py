@@ -59,59 +59,156 @@ def resolve(c,ref,day,task=None):
         review=json.loads(review['raw_json'])
         shared.validate_record(review,article,capture,review['policyHash'])
     return mapping,article,capture,review
-def valid_review(c,rid,aid,task):
-    r=c.execute('SELECT * FROM review_records WHERE id=? AND article_id=?',(rid,aid)).fetchone()
-    if not r:return False
-    snapshot=c.execute('SELECT * FROM review_input_snapshots WHERE review_id=?',(rid,)).fetchone()
-    if not snapshot:return False
-    raw=json.loads(r['raw_json'])
-    try:shared.validate_record(raw,json.loads(snapshot['article_json']),json.loads(snapshot['capture_json']),r['rule_hash'])
-    except (ValueError,TypeError,KeyError):return False
-    return raw['taskStatus'][task]=='ready'
-def completed(c,aid,task):
-    receipts=history(c,'ai-stage-completion',aid)
-    for receipt in reversed(receipts):
-        if receipt['task']==task and valid_review(c,receipt['reviewId'],aid,task):
-            return receipt
-    if task=='article-summary':
-        for r in c.execute('SELECT id,review_id FROM article_summaries WHERE article_id=? ORDER BY saved_at DESC',(aid,)):
-            if valid_review(c,r['review_id'],aid,task):
-                return dict(task=task,reviewId=r['review_id'],artifactId=r['id'],state='saved')
-    # Existing adopted records are accepted only with their own historical review.
-    table='article_talents' if task=='talent-index' else 'article_classifications'
-    if task!='article-summary':
-        for r in c.execute('SELECT id,review_id,raw_json FROM '+table+' WHERE article_id=?',(aid,)):
-            raw=json.loads(r['raw_json'])
-            if raw.get('detection_method',raw.get('classification_method'))=='ai_review' and valid_review(c,r['review_id'],aid,task):
-                return dict(task=task,reviewId=r['review_id'],artifactId=r['id'],state='saved')
-    # Pre-existing immutable proposals: require an explicit AI result and a
-    # matching historical, grounded review; ready alone is never a result.
-    keys={x[0] for x in c.execute("SELECT value FROM article_identifiers WHERE article_id=? AND kind='legacy_key'",(aid,))}
-    kind='talent-index-proposals/articleTalents' if task=='talent-index' else 'article-classification-proposals/classifications'
-    for h in c.execute("SELECT h.id,h.raw_json,s.source_path FROM legacy_history_records h JOIN source_records s ON s.id=h.source_record_id WHERE h.kind=? ORDER BY h.rowid DESC",(kind,)):
-        raw=json.loads(h['raw_json'])
-        bound=raw.get('article_key') in keys
-        if not bound:
-            day=h['source_path'].rsplit('/',1)[-1][:-5]
-            source_url=raw.get('article_url')
-            if task=='talent-index' and raw.get('article_key'):
-                documents=project.Reader(c).documents('talent-index-proposals',day)
-                candidates=[a for path,doc in documents if path==h['source_path'] for a in doc.get('articles',[])
-                            if a.get('article_key')==raw['article_key']]
-                if len(candidates)==1:source_url=candidates[0].get('url')
-            if source_url:
-                ids={x[0] for x in c.execute('SELECT o.article_id FROM article_occurrences o JOIN collection_runs r ON r.id=o.collection_run_id WHERE r.run_date=? AND o.url=?',(day,source_url))}
-                bound=ids=={aid}
-        if not bound:continue
-        if raw.get('detection_method',raw.get('classification_method'))!='ai_review':continue
-        evidence=raw.get('evidence_text','').strip()
-        if not evidence:continue
-        for rev in c.execute("SELECT id,raw_json FROM review_records WHERE article_id=? ORDER BY rowid DESC",(aid,)):
-            rec=json.loads(rev['raw_json'])
-            grounded=[e['quote'] for e in rec['evidence']]+[f['text'] for f in rec['facts']]
-            if valid_review(c,rev['id'],aid,task) and any(evidence in text or text in evidence for text in grounded if text):
-                return dict(task=task,reviewId=rev['id'],artifactId=h['id'],state='saved')
+def valid_review(c, rid, aid, task):
+    """Validate saved work against its historical inputs and policy."""
+    review_row = c.execute(
+        'SELECT * FROM review_records WHERE id=? AND article_id=?', (rid, aid),
+    ).fetchone()
+    if not review_row:
+        return False
+    snapshot = c.execute(
+        'SELECT * FROM review_input_snapshots WHERE review_id=?', (rid,),
+    ).fetchone()
+    if not snapshot:
+        return False
+    review_record = json.loads(review_row['raw_json'])
+    try:
+        shared.validate_record(
+            review_record,
+            json.loads(snapshot['article_json']),
+            json.loads(snapshot['capture_json']),
+            review_row['rule_hash'],
+        )
+    except (ValueError, TypeError, KeyError):
+        return False
+    return review_record['taskStatus'][task] == 'ready'
+
+
+def _completed_artifact(connection, article_id, task):
+    """Find saved business records backed by their own historical review."""
+    if task == 'article-summary':
+        summaries = connection.execute(
+            'SELECT id,review_id FROM article_summaries WHERE article_id=? ORDER BY saved_at DESC',
+            (article_id,),
+        )
+        for summary in summaries:
+            if valid_review(connection, summary['review_id'], article_id, task):
+                return dict(
+                    task=task, reviewId=summary['review_id'],
+                    artifactId=summary['id'], state='saved',
+                )
+        return None
+
+    table = 'article_talents' if task == 'talent-index' else 'article_classifications'
+    artifacts = connection.execute(
+        'SELECT id,review_id,raw_json FROM ' + table + ' WHERE article_id=?',
+        (article_id,),
+    )
+    for artifact in artifacts:
+        record = json.loads(artifact['raw_json'])
+        method = record.get('detection_method', record.get('classification_method'))
+        if method == 'ai_review' and valid_review(connection, artifact['review_id'], article_id, task):
+            return dict(
+                task=task, reviewId=artifact['review_id'],
+                artifactId=artifact['id'], state='saved',
+            )
     return None
+
+
+def _proposal_matches_article(connection, proposal, source_path, article_id, legacy_keys, task):
+    """Match a legacy key or an unambiguous URL within the proposal's day."""
+    if proposal.get('article_key') in legacy_keys:
+        return True
+
+    day = source_path.rsplit('/', 1)[-1][:-5]
+    source_url = proposal.get('article_url')
+    if task == 'talent-index' and proposal.get('article_key'):
+        documents = project.Reader(connection).documents('talent-index-proposals', day)
+        matching_articles = [
+            article
+            for path, document in documents if path == source_path
+            for article in document.get('articles', [])
+            if article.get('article_key') == proposal['article_key']
+        ]
+        if len(matching_articles) == 1:
+            source_url = matching_articles[0].get('url')
+    if not source_url:
+        return False
+
+    matching_ids = {
+        row[0] for row in connection.execute(
+            'SELECT o.article_id FROM article_occurrences o '
+            'JOIN collection_runs r ON r.id=o.collection_run_id '
+            'WHERE r.run_date=? AND o.url=?',
+            (day, source_url),
+        )
+    }
+    return matching_ids == {article_id}
+
+
+def _completed_proposal(connection, article_id, task):
+    """Require an explicit AI proposal and matching, grounded review evidence."""
+    legacy_keys = {
+        row[0] for row in connection.execute(
+            "SELECT value FROM article_identifiers WHERE article_id=? AND kind='legacy_key'",
+            (article_id,),
+        )
+    }
+    proposal_kind = (
+        'talent-index-proposals/articleTalents' if task == 'talent-index'
+        else 'article-classification-proposals/classifications'
+    )
+    proposals = connection.execute(
+        'SELECT h.id,h.raw_json,s.source_path FROM legacy_history_records h '
+        'JOIN source_records s ON s.id=h.source_record_id WHERE h.kind=? ORDER BY h.rowid DESC',
+        (proposal_kind,),
+    )
+    for proposal_row in proposals:
+        proposal = json.loads(proposal_row['raw_json'])
+        if not _proposal_matches_article(
+            connection, proposal, proposal_row['source_path'], article_id, legacy_keys, task,
+        ):
+            continue
+        method = proposal.get('detection_method', proposal.get('classification_method'))
+        if method != 'ai_review':
+            continue
+        evidence_text = proposal.get('evidence_text', '').strip()
+        if not evidence_text:
+            continue
+
+        reviews = connection.execute(
+            'SELECT id,raw_json FROM review_records WHERE article_id=? ORDER BY rowid DESC',
+            (article_id,),
+        )
+        for review_row in reviews:
+            review = json.loads(review_row['raw_json'])
+            grounded_texts = (
+                [evidence['quote'] for evidence in review['evidence']]
+                + [fact['text'] for fact in review['facts']]
+            )
+            if valid_review(connection, review_row['id'], article_id, task) and any(
+                evidence_text in text or text in evidence_text for text in grounded_texts if text
+            ):
+                return dict(
+                    task=task, reviewId=review_row['id'],
+                    artifactId=proposal_row['id'], state='saved',
+                )
+    return None
+
+
+def completed(c, aid, task):
+    """Prefer completion receipts, then saved artifacts, then legacy proposals."""
+    receipts = history(c, 'ai-stage-completion', aid)
+    for receipt in reversed(receipts):
+        if receipt['task'] == task and valid_review(c, receipt['reviewId'], aid, task):
+            return receipt
+
+    saved_artifact = _completed_artifact(c, aid, task)
+    if saved_artifact:
+        return saved_artifact
+    return _completed_proposal(c, aid, task)
+
+
 def task_facts(record,task):
     explicit=record.get('taskFacts',{}).get(task)
     if explicit is None:

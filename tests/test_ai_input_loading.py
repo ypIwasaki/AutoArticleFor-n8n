@@ -90,6 +90,49 @@ class InputLoadingTests(unittest.TestCase):
             inputs.build_payload(self.root, fixture.DAY, 'article-summary')
         self.assertEqual(policy.call_count, 1)
 
+    def test_pages_preserve_order_totals_and_end_boundary(self):
+        full = inputs.build_payload(self.root, fixture.DAY, 'article-summary')
+        first = inputs.build_payload(self.root, fixture.DAY, 'article-summary', limit=1)
+        second = inputs.build_payload(self.root, fixture.DAY, 'article-summary', offset=1, limit=1)
+        end = inputs.build_payload(self.root, fixture.DAY, 'article-summary', offset=2, limit=1)
+        self.assertEqual(first['articles'] + second['articles'], full['articles'])
+        self.assertEqual(first['nextOffset'], 1)
+        self.assertIsNone(second['nextOffset'])
+        self.assertEqual(end['articles'], [])
+        self.assertIsNone(end['nextOffset'])
+        for page in (first, second, end):
+            self.assertEqual(page['totalArticles'], 2)
+            self.assertEqual(page['matchingArticles'], 2)
+
+    def test_invalid_page_never_saves_references(self):
+        invalid_options = (
+            dict(offset=-1), dict(limit=0), dict(content_offset=-1),
+            dict(max_content_chars=0), dict(offset=3), dict(content_offset=1),
+            dict(article_url=fixture.URL, offset=1, content_offset=1),
+        )
+        with patch.object(business, 'submit') as submit:
+            for options in invalid_options:
+                with self.subTest(options=options), self.assertRaises(ValueError):
+                    inputs.build_payload(self.root, fixture.DAY, 'article-summary', **options)
+            submit.assert_not_called()
+
+    def test_reviewed_body_is_only_included_when_requested(self):
+        fixture.save_review(self.root)
+        options = dict(article_url=fixture.URL, max_content_chars=80)
+        compact = inputs.build_payload(self.root, fixture.DAY, 'article-summary', **options)
+        expanded = inputs.build_payload(
+            self.root, fixture.DAY, 'article-summary', include_body=True, **options,
+        )
+        compact_article = compact['articles'][0]
+        expanded_article = expanded['articles'][0]
+        self.assertNotIn('content', compact_article)
+        self.assertNotIn('excerpt', compact_article)
+        self.assertIn('content', expanded_article)
+        self.assertEqual(
+            {key: value for key, value in expanded_article.items() if key not in ('content', 'excerpt')},
+            compact_article,
+        )
+
     def test_review_validation_still_uses_body(self):
         fixture.save_review(self.root)
         packet = inputs.build_payload(

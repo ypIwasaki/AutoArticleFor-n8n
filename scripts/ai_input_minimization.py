@@ -169,57 +169,143 @@ def select(c,day,row,capture,task,policy,audit=None):
                 record=record if valid else None,reviewId=latest['id'] if valid else None)
     if hold:result['resume']=hold
     return result
-def build_payload(root,day,task,offset=0,limit=20,article_url=None,content_offset=0,max_content_chars=6000,include_body=False):
-    from read_ai_inputs import content_chunk,parse_day
+def _select_input_candidates(reader, day, rows, captures, task, policy_hash, article_url, audit):
+    """Select before pagination so totals include every eligible article."""
+    candidates = []
+    excluded = Counter()
+    exclusion_reasons = Counter()
+    for row in rows:
+        if article_url and row['article']['url'] != article_url:
+            continue
+        capture = captures.get(row['article']['url'])
+        if capture is None:
+            latest_fetch = reader.c.execute(
+                'SELECT * FROM content_fetch_attempts WHERE article_id=? ORDER BY rowid DESC LIMIT 1',
+                (row['_project']['articleId'],),
+            ).fetchone()
+            if latest_fetch:
+                capture = reader.capture(latest_fetch)
+
+        selection = select(reader.c, day, row, capture, task, policy_hash, audit)
+        state = selection['state']
+        if state in ('saved', 'held', 'unavailable'):
+            excluded[state] += 1
+            if selection.get('reason'):
+                reason = str(selection['reason'])[:300]
+                exclusion_reasons[(state, reason)] += 1
+            continue
+        candidates.append((row, capture, selection))
+    return candidates, excluded, exclusion_reasons
+
+
+def _build_input_article(day, task, row, capture, selection, policy_hash,
+                         content_offset, max_content_chars, include_body):
+    """Bind the displayed facts and body chunk to the same source reference."""
+    from read_ai_inputs import content_chunk
+
+    capture_references = (capture or {}).get('_project', {})
+    mapping = dict(
+        day=day,
+        task=task,
+        articleId=row['_project']['articleId'],
+        occurrenceId=row['_project']['occurrenceId'],
+        fetchAttemptId=capture_references.get('fetchAttemptId'),
+        contentVersionId=capture_references.get('contentVersionId'),
+        reviewId=selection['reviewId'],
+        policyHash=policy_hash,
+    )
+    article = row['article']
+    view = dict(
+        ref=reference_id(mapping),
+        title=article.get('title', ''),
+        publishedAt=article.get('publishedAt', ''),
+        contentStatus=(capture or {}).get('contentStatus', 'not_captured'),
+        state=selection['state'],
+    )
+    if selection.get('resume'):
+        view['resume'] = selection['resume']
+    if selection['record']:
+        view.update(packet(selection['record'], task))
+    if selection['state'] == 'needs_review' or include_body or content_offset:
+        if capture:
+            view['content'] = content_chunk(capture, content_offset, max_content_chars)
+        if article.get('excerpt'):
+            view['excerpt'] = article['excerpt']
+    return view, mapping
+
+
+def _save_input_references(root, mappings, audit):
+    """Persist references and hold assessments through the normal transaction."""
+    if not mappings and not audit:
+        return
+    import project_business_writes as business
+
+    payload = dict(references=mappings)
+    if audit:
+        payload['holdAssessments'] = audit
+    business.submit(
+        'ai-refs-' + shared.digest(payload),
+        'ai-references',
+        payload,
+        project.path_for(root),
+        root,
+    )
+
+
+def build_payload(root, day, task, offset=0, limit=20, article_url=None,
+                  content_offset=0, max_content_chars=6000, include_body=False):
+    from read_ai_inputs import parse_day
+
     parse_day(day)
-    if offset<0 or limit<1 or content_offset<0 or max_content_chars<1:raise ValueError('Invalid page bounds')
-    views=[];mappings=[];audit=[];excluded=Counter();exclusion_reasons=Counter()
+    if offset < 0 or limit < 1 or content_offset < 0 or max_content_chars < 1:
+        raise ValueError('Invalid page bounds')
+
+    views = []
+    mappings = []
+    audit = []
     with project.reader(root) as reader:
-        c = reader.c
         requested_urls = {article_url} if article_url else None
         _, rows, captures = reader.load_day(day, [], capture_urls=requested_urls)
         policy_hash = shared.policy_hash(root)
-        candidates=[]
-        for row in rows:
-            if article_url and row['article']['url']!=article_url:continue
-            capture=captures.get(row['article']['url'])
-            if capture is None:
-                fetch=c.execute('SELECT * FROM content_fetch_attempts WHERE article_id=? ORDER BY rowid DESC LIMIT 1',(row['_project']['articleId'],)).fetchone()
-                if fetch:capture=reader.capture(fetch)
-            state = select(c, day, row, capture, task, policy_hash, audit)
-            if state['state'] in ('saved','held','unavailable'):
-                excluded[state['state']]+=1
-                if state.get('reason'):exclusion_reasons[(state['state'],str(state['reason'])[:300])]+=1
-                continue
-            candidates.append((row,capture,state))
-        if offset>len(candidates):raise ValueError('Offset exceeds eligible article count')
-        page=candidates[offset:offset+limit]
-        if content_offset and (not article_url or len(page)!=1):raise ValueError('Continuation requires one article; prefer --article-ref')
-        for row,capture,state in page:
-            cp=(capture or {}).get('_project',{})
-            mapping=dict(day=day,task=task,articleId=row['_project']['articleId'],occurrenceId=row['_project']['occurrenceId'],
-                         fetchAttemptId=cp.get('fetchAttemptId'),contentVersionId=cp.get('contentVersionId'),
-                         reviewId=state['reviewId'],policyHash=policy_hash)
-            ref=reference_id(mapping);mappings.append(mapping)
-            article=row['article']
-            view=dict(ref=ref,title=article.get('title',''),publishedAt=article.get('publishedAt',''),
-                      contentStatus=(capture or {}).get('contentStatus','not_captured'),state=state['state'])
-            if state.get('resume'):view['resume']=state['resume']
-            if state['record']:view.update(packet(state['record'],task))
-            if state['state']=='needs_review' or include_body or content_offset:
-                if capture:view['content']=content_chunk(capture,content_offset,max_content_chars)
-                if article.get('excerpt'):view['excerpt']=article['excerpt']
+        candidates, excluded, exclusion_reasons = _select_input_candidates(
+            reader, day, rows, captures, task, policy_hash, article_url, audit,
+        )
+        if offset > len(candidates):
+            raise ValueError('Offset exceeds eligible article count')
+        page = candidates[offset:offset + limit]
+        if content_offset and (not article_url or len(page) != 1):
+            raise ValueError('Continuation requires one article; prefer --article-ref')
+
+        for row, capture, selection in page:
+            view, mapping = _build_input_article(
+                day, task, row, capture, selection, policy_hash,
+                content_offset, max_content_chars, include_body,
+            )
             views.append(view)
-    if mappings or audit:
-        import project_business_writes as business
-        payload=dict(references=mappings)
-        if audit:payload["holdAssessments"]=audit
-        business.submit('ai-refs-'+shared.digest(payload),'ai-references',payload,project.path_for(root),root)
-    result=dict(inputVersion=2,task=task,runDate=day,totalArticles=len(rows),matchingArticles=len(candidates),
-                offset=offset,returnedArticles=len(views),nextOffset=offset+len(page) if offset+len(page)<len(candidates) else None,
-                excluded=dict(excluded),articles=views)
-    if exclusion_reasons:result['exclusionReasons']=[dict(state=state,reason=reason,count=count) for (state,reason),count in exclusion_reasons.items()]
+            mappings.append(mapping)
+
+    # Close the read snapshot before starting the reference write transaction.
+    _save_input_references(root, mappings, audit)
+    next_offset = offset + len(page)
+    result = dict(
+        inputVersion=2,
+        task=task,
+        runDate=day,
+        totalArticles=len(rows),
+        matchingArticles=len(candidates),
+        offset=offset,
+        returnedArticles=len(views),
+        nextOffset=next_offset if next_offset < len(candidates) else None,
+        excluded=dict(excluded),
+        articles=views,
+    )
+    if exclusion_reasons:
+        result['exclusionReasons'] = [
+            dict(state=state, reason=reason, count=count)
+            for (state, reason), count in exclusion_reasons.items()
+        ]
     return result
+
 def additional(root,day,task,ref,kind='body',offset=0,maximum=1000,ids=None):
     from read_ai_inputs import content_chunk
     with project.reader(root) as reader:

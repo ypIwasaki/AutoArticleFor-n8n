@@ -119,7 +119,14 @@ class Reader:
                                storedBodyLength=row['stored_body_length'])
         return raw
 
-    def load_day(self, day, warnings):
+    def load_day(self, day, warnings, *, capture_urls=None):
+        """Load daily records; optionally restrict bodies to exact source URLs."""
+        run, articles = self.load_day_articles(day)
+        captures = self.load_day_captures(day, warnings, capture_urls=capture_urls)
+        return run, articles, captures
+
+    def load_day_articles(self, day):
+        """Read collection metadata and article observations without bodies."""
         runs = self.c.execute('SELECT * FROM collection_runs WHERE run_date=?', (day,)).fetchall()
         if len(runs) != 1:
             raise ValueError(day + ': expected exactly one collection run')
@@ -140,18 +147,53 @@ class Reader:
             raw['runDate'] = runrow['run_date']
             raw['_project'] = dict(articleId=row['article_id'], occurrenceId=row['id'], identityState=row['identity_state'])
             articles.append(raw)
+        return run, articles
+
+    def load_day_captures(self, day, warnings, *, capture_urls=None):
+        """Resolve source order before loading only the requested bodies.
+
+        None loads every capture; an empty collection loads no bodies.
+        Missing source targets remain errors even when URL filtering is used.
+        """
+        requested_urls = None if capture_urls is None else set(capture_urls)
+        source_path = 'content/article-body-captures/' + day + '.jsonl'
+        sources = self.c.execute("""
+            SELECT source.target_id, capture.original_url
+            FROM source_records AS source
+            LEFT JOIN content_fetch_attempts AS capture ON capture.id = source.target_id
+            WHERE source.target_kind = 'content_fetch_attempts'
+              AND source.source_path LIKE ?
+              AND source.rowid = (
+                  SELECT max(version.rowid) FROM source_records AS version
+                  WHERE version.source_path = source.source_path
+                    AND version.record_position = source.record_position
+              )
+            ORDER BY source.source_path,
+                     CAST(replace(source.record_position, 'line:', '') AS INTEGER),
+                     source.record_position
+        """, (source_path,)).fetchall()
         captures = {}
-        sources = self.sources('content_fetch_attempts', 'content/article-body-captures/'+day+'.jsonl')
-        for s in sources:
-            row = self.c.execute('SELECT * FROM content_fetch_attempts WHERE id=?', (s['target_id'],)).fetchone()
-            if row is None:
+        for source in sources:
+            original_url = source['original_url']
+            if original_url is None:
                 raise ValueError('Missing capture target')
-            if row['original_url'] in captures:
-                warnings.append(day+': duplicate body capture for '+row['original_url']+'; last saved row selected')
-            captures[row['original_url']] = self.capture(row)
+            if requested_urls is not None and original_url not in requested_urls:
+                continue
+            capture_row = self.c.execute(
+                'SELECT * FROM content_fetch_attempts WHERE id=?',
+                (source['target_id'],),
+            ).fetchone()
+            if original_url in captures:
+                warnings.append(
+                    day + ': duplicate body capture for ' + original_url
+                    + '; last saved row selected'
+                )
+            captures[original_url] = self.capture(capture_row)
         if not sources:
-            warnings.append(day+': body-capture file is missing; articles are not_captured, not unavailable')
-        return run, articles, captures
+            warnings.append(
+                day + ': body-capture file is missing; articles are not_captured, not unavailable'
+            )
+        return captures
 
     def reviews(self, through, warnings):
         index, known = {}, set()

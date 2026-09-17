@@ -175,7 +175,10 @@ def build_payload(root,day,task,offset=0,limit=20,article_url=None,content_offse
     if offset<0 or limit<1 or content_offset<0 or max_content_chars<1:raise ValueError('Invalid page bounds')
     views=[];mappings=[];audit=[];excluded=Counter();exclusion_reasons=Counter()
     with project.reader(root) as reader:
-        c=reader.c;_,rows,captures=reader.load_day(day,[])
+        c = reader.c
+        requested_urls = {article_url} if article_url else None
+        _, rows, captures = reader.load_day(day, [], capture_urls=requested_urls)
+        policy_hash = shared.policy_hash(root)
         candidates=[]
         for row in rows:
             if article_url and row['article']['url']!=article_url:continue
@@ -183,7 +186,7 @@ def build_payload(root,day,task,offset=0,limit=20,article_url=None,content_offse
             if capture is None:
                 fetch=c.execute('SELECT * FROM content_fetch_attempts WHERE article_id=? ORDER BY rowid DESC LIMIT 1',(row['_project']['articleId'],)).fetchone()
                 if fetch:capture=reader.capture(fetch)
-            state=select(c,day,row,capture,task,shared.policy_hash(root),audit)
+            state = select(c, day, row, capture, task, policy_hash, audit)
             if state['state'] in ('saved','held','unavailable'):
                 excluded[state['state']]+=1
                 if state.get('reason'):exclusion_reasons[(state['state'],str(state['reason'])[:300])]+=1
@@ -196,7 +199,7 @@ def build_payload(root,day,task,offset=0,limit=20,article_url=None,content_offse
             cp=(capture or {}).get('_project',{})
             mapping=dict(day=day,task=task,articleId=row['_project']['articleId'],occurrenceId=row['_project']['occurrenceId'],
                          fetchAttemptId=cp.get('fetchAttemptId'),contentVersionId=cp.get('contentVersionId'),
-                         reviewId=state['reviewId'],policyHash=shared.policy_hash(root))
+                         reviewId=state['reviewId'],policyHash=policy_hash)
             ref=reference_id(mapping);mappings.append(mapping)
             article=row['article']
             view=dict(ref=ref,title=article.get('title',''),publishedAt=article.get('publishedAt',''),
@@ -345,7 +348,7 @@ def record_artifact(unit,request):
 def saved_for_day(root,day,task):
     if project.source(root)!='project-db':return None
     with project.reader(root) as r:
-        _,rows,_=r.load_day(day,[])
+        _, rows = r.load_day_articles(day)
         return {row['article']['url']:completed(r.c,row['_project']['articleId'],task) for row in rows}
 
 def validate_proposal(unit,request):
@@ -366,8 +369,12 @@ def selection_counts(root,day,task):
     if project.source(root)!='project-db':return None
     with project.reader(root) as reader:
         _,rows,captures=reader.load_day(day,[])
-        return dict(Counter(select(reader.c,day,row,captures.get(row['article']['url']),task,
-                                   shared.policy_hash(root))['state'] for row in rows))
+        policy_hash = shared.policy_hash(root)
+        states = (
+            select(reader.c, day, row, captures.get(row['article']['url']), task, policy_hash)['state']
+            for row in rows
+        )
+        return dict(Counter(states))
 
 
 def save_hold_assessment(unit,value):

@@ -1,5 +1,8 @@
 # AI入力最小化の進捗・完了記録
 
+> 最終状態（2026-09-18）: 合意した5回のリファクタリングはすべて完了。対象はAI入力まわりと関連する日次記事読取り・レビュー保存処理。最終回帰テスト210件成功。対象範囲に未完了作業なし。以下の途中経過にある「次回」「残り」は各実施時点の記録。
+
+
 最新状況：2026-09-17の追加対応で、稼働中n8nへの反映と旧保留の再開対応を完了。以下の初回記録は履歴として保持し、初回の「未反映」「missingTopicsなしは維持」の制限は末尾の追加対応で更新した。
 
 2026-09-17：4フェーズ完了。代表6パターン合格。コミット・プッシュなし。
@@ -214,7 +217,7 @@ docs/ai-input-minimization-verification.json の followUps に同期識別情報
 2. **完了**: 履歴保存・保留評価を整理。
 3. **完了**: AI入力モジュールを責務別に分割。
 4. **完了**: 関連するDB読取り・書込み処理を整理。
-5. 未着手: 全体の回帰確認、必要な修正、作業記録の整備。
+5. **完了**: 全体の回帰確認、必要な修正、作業記録の整備。
 
 第1回では task_facts と packet の選択条件を selected_fact_ids、selected_evidence_ids、linked_fact_ids など役割が明確な変数で表現した。明示された空の選択、人物に根拠がない場合の全事実へのフォールバック、元の並び順、topics の出力除外、入力非変更を維持した。
 
@@ -256,3 +259,41 @@ docs/ai-input-minimization-verification.json の followUps に同期識別情報
 - 新規3テストで読取り結果の往復、書込み途中の障害によるロールバックと再実行、同一操作IDの再実行時にレビュー・関連付けが増えないことを確認した。
 - 旧新それぞれの一時DBにレビュー済み・保留・再レビューの3状態を保存し、12テーブルと日次記事の読取りを各状態で比較した。合計39項目が一致。
 - **5回中4回完了、残り1回。** 次は今回の範囲全体の回帰確認、必要な修正、作業記録の最終整備を行う。前回のステージ済み変更は保持した。
+
+
+## 2026-09-18: 完了計画の第5回 — 最終回帰確認と完了
+
+**5回中5回完了。今回合意した範囲の残作業はない。**
+
+### 最終確認
+
+- AI入力の選定、参照の復元、事実・根拠の抽出、レビュー補完、要約・提案の変換と完了判定、保留評価、履歴保存、関連DBの読取り・書込みを対象に確認した。
+- 関連する互換読取り・書込み、レビュー検証、ダッシュボード、週次集計まで含めた24テストモジュール・210テストを一括実行し、すべて成功した。失敗・スキップなし。前回修正したレビュー保存テストも含む。
+- Python 3.8.10で主要6モジュールの構文を確認した。
+- 別PythonプロセスでCLI・DB書込み・既存の呼び出し口の読込み順6通り、分割先3モジュールの独立インポートを確認し、計9チェックが成功した。既存の公開関数が分割先の関数を再エクスポートすることも確認した。
+- read_ai_inputs.py と save_article_review_facts.py の --help 起動確認が成功した。
+- 最終回帰確認で追加のコード修正は不要だった。git diff --check も成功した。
+- DBを使う検証はテスト用データと隔離DBで実施。実運用の収集・記事生成・配備は実行していない。
+
+### 再実行コマンド
+
+プロジェクトのルートで実行する。
+
+~~~bash
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=scripts:tests python3 -m unittest \
+  test_ai_review_persistence test_project_write_outbox \
+  test_ai_history test_ai_fact_selection test_ai_artifact_recording \
+  test_ai_artifact_expansion test_ai_save_validation test_ai_references \
+  test_ai_completion test_ai_selection test_ai_input_loading \
+  test_project_readers test_ai_input_minimization test_legacy_hold_reopening \
+  test_compact_inputs test_read_ai_inputs test_artifact_validation \
+  test_legacy_retirement test_article_review_facts test_project_record_values \
+  test_dashboard_presentation test_keyword_service \
+  test_talent_dashboard_services test_weekly_metrics -q
+~~~
+
+### 完了範囲
+
+- 可読性の改善、責務に沿った関数分割と3モジュールへの分離、既存の呼び出し口の互換性維持を完了した。
+- 参照・履歴の識別子、判定の優先順位、出力と並び順、保存時の根拠検証、トランザクションと再実行時の動作を維持した。
+- 日次出力・レポート生成の追加改善や関連しないDB処理の全面整理は今回の対象外。今後必要性を確認した場合に別の作業として扱う。

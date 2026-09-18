@@ -412,7 +412,7 @@ def native_source(name,raw,key):
     return source('n8n:project-writes:'+name,raw[key],raw)
 
 
-def native_article(unit,raw):
+def native_article(unit,raw,proposal_day=None):
     key=raw['article_key'];s=native_source('articles',raw,'article_key')
     matches=unit.c.execute("SELECT DISTINCT i.article_id FROM article_identifiers i WHERE i.kind='legacy_key' AND i.value=? AND i.source IN (SELECT DISTINCT source_path FROM source_records WHERE target_kind='articles')",(key,)).fetchall()
     if len(matches)>1:raise ValueError('Article key ambiguous')
@@ -420,7 +420,18 @@ def native_article(unit,raw):
     if not matches:
         candidates=unit.c.execute('SELECT id FROM articles WHERE url=? AND title=? AND published_at=?',(raw['url'],raw['title'],record_values.utc_timestamp(raw.get('published_at')))).fetchall()
         if len(candidates)==1:aid=candidates[0]['id']
-        elif len(candidates)>1:raise ValueError('Proposed article identity is ambiguous')
+        elif len(candidates)>1:
+            # Identical metadata may occur in separate daily collection records.
+            # Select only an exact occurrence in the reviewed proposal's day;
+            # preserve the ambiguity guard when that scope is not unique.
+            scoped=unit.c.execute(
+                'SELECT DISTINCT a.id FROM articles a JOIN article_occurrences o ON o.article_id=a.id '
+                'JOIN collection_runs r ON r.id=o.collection_run_id '
+                'WHERE a.url=? AND a.title=? AND a.published_at=? AND r.run_date=?',
+                (raw['url'],raw['title'],record_values.utc_timestamp(raw.get('published_at')),proposal_day)
+            ).fetchall() if proposal_day else []
+            if len(scoped)!=1:raise ValueError('Proposed article identity is ambiguous')
+            aid=scoped[0]['id']
     old=unit.c.execute('SELECT * FROM articles WHERE id=?',(aid,)).fetchone();stamp=record_values.utc_timestamp(raw['last_seen_at'])
     unit.save('article',dict(id=aid,title=raw['title'],url=raw['url'],excerpt=raw.get('excerpt',''),source=raw.get('source',''),published_at=record_values.utc_timestamp(raw.get('published_at')),created_at=old['created_at'] if old else stamp,updated_at=stamp,identity_state=old['identity_state'] if old else 'identified'),s)
     unit.save('identifier',dict(id=record_values.record_id('identifier',aid,s['path'],'legacy_key',key),article_id=aid,source=s['path'],kind='legacy_key',value=key,match_state='exact'),s)
@@ -465,7 +476,7 @@ def build_native(unit,request):
     else:proposal['classifications']=normalized['article_classifications']
     if kind=='talent':
         for raw in proposal['articles']:
-            native_article(unit,raw);compat.enqueue(unit,'articles',raw)
+            native_article(unit,raw,proposal['proposalDate']);compat.enqueue(unit,'articles',raw)
         for raw in proposal['talents']:
             tid=record_values.record_id('talent',raw['talent_id']);s=native_source('talents',raw,'talent_id')
             old=unit.c.execute('SELECT * FROM talents WHERE id=?',(tid,)).fetchone()

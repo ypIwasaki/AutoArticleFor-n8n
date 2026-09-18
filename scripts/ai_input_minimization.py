@@ -129,7 +129,7 @@ def _completed_artifact(connection, article_id, task):
     return None
 
 
-def _proposal_matches_article(connection, proposal, source_path, article_id, legacy_keys, task):
+def _proposal_matches_article(connection, proposal, source_path, article_id, legacy_keys, task, document_cache=None):
     """Match a legacy key or an unambiguous URL within the proposal's day."""
     if proposal.get('article_key') in legacy_keys:
         return True
@@ -137,13 +137,19 @@ def _proposal_matches_article(connection, proposal, source_path, article_id, leg
     day = source_path.rsplit('/', 1)[-1][:-5]
     source_url = proposal.get('article_url')
     if task == 'talent-index' and proposal.get('article_key'):
-        documents = project.Reader(connection).documents('talent-index-proposals', day)
-        matching_articles = [
-            article
-            for path, document in documents if path == source_path
-            for article in document.get('articles', [])
-            if article.get('article_key') == proposal['article_key']
-        ]
+        cache = document_cache if document_cache is not None else {}
+        if source_path not in cache:
+            by_key = {}
+            for source in project.Reader(connection).sources('legacy_history_records', source_path):
+                if source['source_path'] != source_path or not source['record_position'].startswith('articles/'):
+                    continue
+                saved = connection.execute('SELECT raw_json FROM legacy_history_records WHERE id=?', (source['target_id'],)).fetchone()
+                if saved is None:
+                    raise ValueError('Missing proposal history')
+                article = json.loads(saved['raw_json'])
+                by_key.setdefault(article.get('article_key'), []).append(article)
+            cache[source_path] = by_key
+        matching_articles = cache[source_path].get(proposal['article_key'], [])
         if len(matching_articles) == 1:
             source_url = matching_articles[0].get('url')
     if not source_url:
@@ -162,6 +168,13 @@ def _proposal_matches_article(connection, proposal, source_path, article_id, leg
 
 def _completed_proposal(connection, article_id, task):
     """Require an explicit AI proposal and matching, grounded review evidence."""
+    # Every legacy completion below requires a grounded review for this article.
+    # New articles cannot match; avoid scanning the entire proposal archive.
+    if connection.execute(
+        'SELECT 1 FROM review_records WHERE article_id=? AND json_extract(raw_json, ?)=? LIMIT 1',
+        (article_id, '$.taskStatus.' + task, 'ready'),
+    ).fetchone() is None:
+        return None
     legacy_keys = {
         row[0] for row in connection.execute(
             "SELECT value FROM article_identifiers WHERE article_id=? AND kind='legacy_key'",
@@ -172,15 +185,35 @@ def _completed_proposal(connection, article_id, task):
         'talent-index-proposals/articleTalents' if task == 'talent-index'
         else 'article-classification-proposals/classifications'
     )
+    # Only keys/URLs that can pass the exact matcher need Python-side review.
+    # This is a broad prefilter; day/identity and evidence checks remain below.
+    urls = {row[0] for row in connection.execute(
+        'SELECT url FROM article_occurrences WHERE article_id=?', (article_id,),
+    )}
+    key_slots = ','.join('?' for _ in legacy_keys) or 'NULL'
+    url_slots = ','.join('?' for _ in urls) or 'NULL'
+    predicates = [
+        "json_extract(h.raw_json,'$.article_key') IN (" + key_slots + ')',
+        "json_extract(h.raw_json,'$.article_url') IN (" + url_slots + ')',
+    ]
+    parameters = [proposal_kind, *legacy_keys, *urls]
+    if task == 'talent-index':
+        predicates.append(
+            "json_extract(h.raw_json,'$.article_key') IN (SELECT json_extract(a.raw_json,'$.article_key') "
+            "FROM legacy_history_records a WHERE a.kind='talent-index-proposals/articles' "
+            "AND json_extract(a.raw_json,'$.url') IN (" + url_slots + '))'
+        )
+        parameters.extend(urls)
     proposals = connection.execute(
         'SELECT h.id,h.raw_json,s.source_path FROM legacy_history_records h '
-        'JOIN source_records s ON s.id=h.source_record_id WHERE h.kind=? ORDER BY h.rowid DESC',
-        (proposal_kind,),
+        'JOIN source_records s ON s.id=h.source_record_id WHERE h.kind=? AND ('
+        + ' OR '.join(predicates) + ') ORDER BY h.rowid DESC', parameters,
     )
+    document_cache = {}
     for proposal_row in proposals:
         proposal = json.loads(proposal_row['raw_json'])
         if not _proposal_matches_article(
-            connection, proposal, proposal_row['source_path'], article_id, legacy_keys, task,
+            connection, proposal, proposal_row['source_path'], article_id, legacy_keys, task, document_cache,
         ):
             continue
         method = proposal.get('detection_method', proposal.get('classification_method'))
@@ -684,9 +717,10 @@ def save_hold_assessment(unit, value):
 def record_legacy_hold_assessments(unit, aid):
     """Assess only this article's unfinished tasks after new reviewed material."""
     for task in TASKS:
-        if completed(unit.c, aid, task):
-            continue
         assessments = []
         hold_state(unit.c, aid, task, None, assessments)
+        # Completion matters only if there is a legacy hold assessment to save.
+        if not assessments or completed(unit.c, aid, task):
+            continue
         for assessment in assessments:
             save_hold_assessment(unit, assessment)

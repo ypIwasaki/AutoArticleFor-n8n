@@ -5174,5 +5174,5 @@
   "dayPolicy": "usage_notification_day; cross-day intervals remain unassigned",
   "detailPolicy": "cached input and reasoning output are breakdowns, not additional totals",
   "snapshotId": "8b1b0fff3077836a140f07d50f429dd542811e457194381db5f32ceda76b83c0",
-  "generatedAt": "2026-09-17T03:11:33.050816+00:00"
+  "generatedAt": "2026-09-18T02:30:21.339070+00:00"
 }

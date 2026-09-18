@@ -228,4 +228,32 @@ class ServicePattern(unittest.TestCase):
                 self.assertEqual('complete',state['status']);self.assertEqual(0,state['pendingDeliveries'])
         finally:server.shutdown();server.server_close();worker.join()
 
+
+
+class NativeArticleDayScope(unittest.TestCase):
+    setUp=ProjectWrites.setUp
+    tearDown=ProjectWrites.tearDown
+    submit=ProjectWrites.submit
+    def test_identical_metadata_uses_unique_proposal_day_only(self):
+        from unittest.mock import Mock, patch
+        self.submit()
+        second=copy.deepcopy(self.records)
+        for row in second: row['runDate']='2026-09-18'
+        second[0]['workflowExecutionId']='ordinary-2'
+        business.submit_collection('phase7-next-day',second,self.path,self.root)
+        c=db.connect(self.path)
+        try:
+            expected=c.execute("SELECT o.article_id FROM article_occurrences o JOIN collection_runs r ON r.id=o.collection_run_id WHERE r.run_date='2026-09-18'").fetchone()[0]
+            unit=Mock(c=c)
+            raw=dict(article_key='new-proposal-key',url='https://example.test/a',title='Example',published_at='2026-09-17T00:00:00Z',last_seen_at='2026-09-18T01:00:00Z')
+            with patch.object(business,'provenance'):
+                self.assertEqual(expected,business.native_article(unit,raw,'2026-09-18'))
+                with self.assertRaisesRegex(ValueError,'ambiguous'): business.native_article(unit,raw)
+                with self.assertRaisesRegex(ValueError,'ambiguous'): business.native_article(unit,raw,'2026-09-19')
+                # A second occurrence on the same day must remain ambiguous.
+                c.execute("UPDATE article_occurrences SET source_record=source_record||id,collection_run_id=(SELECT id FROM collection_runs WHERE run_date='2026-09-18')")
+                with self.assertRaisesRegex(ValueError,'ambiguous'): business.native_article(unit,raw,'2026-09-18')
+        finally:
+            c.rollback();c.close()
+
 if __name__=='__main__':unittest.main()

@@ -73,9 +73,13 @@ def source_context(progress):
     index, known = shared.load_reviews(progress.root, progress.date, warnings)
     policy = shared.policy_hash(progress.root)
 
+    saved_by_task = {}
+
     def review(article_url, task):
         from ai_input_minimization import saved_for_day
-        saved=saved_for_day(progress.root,progress.date,task)
+        if task not in saved_by_task:
+            saved_by_task[task] = saved_for_day(progress.root,progress.date,task)
+        saved = saved_by_task[task]
         if saved and saved.get(article_url):return True
         article = articles.get(article_url)
         if article is None:

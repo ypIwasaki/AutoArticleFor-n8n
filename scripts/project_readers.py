@@ -130,23 +130,31 @@ class Reader:
         runs = self.c.execute('SELECT * FROM collection_runs WHERE run_date=?', (day,)).fetchall()
         if len(runs) != 1:
             raise ValueError(day + ': expected exactly one collection run')
-        runrow = runs[0]; run = json.loads(runrow['search_conditions_json'])
-        run['runDate'] = runrow['run_date']
+        collection_run = runs[0]
+        run = json.loads(collection_run['search_conditions_json'])
+        run['runDate'] = collection_run['run_date']
         if 'workflowExecutionId' in run:
-            if str(run['workflowExecutionId']) != runrow['workflow_execution_id']:
-                run['workflowExecutionId'] = runrow['workflow_execution_id']
-        rows = self.c.execute("""SELECT o.*,a.identity_state FROM article_occurrences o
-          JOIN articles a ON a.id=o.article_id WHERE o.collection_run_id=?
-          ORDER BY CAST(replace(o.source_record,'line:','') AS INTEGER),o.id""", (runrow['id'],)).fetchall()
+            if str(run['workflowExecutionId']) != collection_run['workflow_execution_id']:
+                run['workflowExecutionId'] = collection_run['workflow_execution_id']
+        occurrences = self.c.execute("""
+            SELECT o.*,a.identity_state FROM article_occurrences o
+            JOIN articles a ON a.id=o.article_id WHERE o.collection_run_id=?
+            ORDER BY CAST(replace(o.source_record,'line:','') AS INTEGER),o.id
+        """, (collection_run['id'],)).fetchall()
         articles = []
-        for row in rows:
-            raw = json.loads(row['observations_json']); article = raw['article']
-            for key in ('title','url','excerpt'):
-                assign(article,key,row[key])
-            assign(article,'publishedAt',row['published_at'],True)
-            raw['runDate'] = runrow['run_date']
-            raw['_project'] = dict(articleId=row['article_id'], occurrenceId=row['id'], identityState=row['identity_state'])
-            articles.append(raw)
+        for occurrence in occurrences:
+            record = json.loads(occurrence['observations_json'])
+            article = record['article']
+            for field in ('title', 'url', 'excerpt'):
+                assign(article, field, occurrence[field])
+            assign(article, 'publishedAt', occurrence['published_at'], True)
+            record['runDate'] = collection_run['run_date']
+            record['_project'] = dict(
+                articleId=occurrence['article_id'],
+                occurrenceId=occurrence['id'],
+                identityState=occurrence['identity_state'],
+            )
+            articles.append(record)
         return run, articles
 
     def load_day_captures(self, day, warnings, *, capture_urls=None):

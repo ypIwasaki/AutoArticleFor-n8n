@@ -237,41 +237,96 @@ def build_capture(unit,request):
         if request.get('syncContents',True):compat.enqueue(unit,'article_contents',data)
 
 
-def build_reviews(unit,request):
+def _save_review_evidence_and_facts(unit, review_id, review, source_record):
+    """Persist evidence, facts, and entity links in dependency order."""
+    evidence_ids = {}
+    fact_ids = {}
+    for evidence in review['evidence']:
+        evidence_id = record_values.record_id('evidence', review_id, evidence['id'])
+        evidence_ids[evidence['id']] = evidence_id
+        unit.save('evidence', dict(
+            id=evidence_id, review_id=review_id, input_field=evidence['field'],
+            start_offset=evidence['start'], end_offset=evidence['end'], quote=evidence['quote'],
+        ), source_record)
+
+    for fact in review['facts']:
+        fact_id = record_values.record_id('fact', review_id, fact['id'])
+        fact_ids[fact['id']] = fact_id
+        unit.save('fact', dict(
+            id=fact_id, review_id=review_id, fact=fact['text'], raw_json=db.canonical(fact),
+        ), source_record)
+        for evidence_reference in set(fact['evidenceIds']):
+            unit.save('factEvidence', dict(
+                fact_id=fact_id, evidence_id=evidence_ids[evidence_reference],
+            ), source_record)
+
+    for index, entity in enumerate(review['entities']):
+        entity_id = record_values.record_id('entity', review_id, index)
+        unit.save('entity', dict(
+            id=entity_id, review_id=review_id, name=entity['name'], kind=entity['kind'],
+            raw_json=db.canonical(entity),
+        ), source_record)
+        for fact_reference in set(entity['factIds']):
+            unit.save('entityFact', dict(
+                entity_id=entity_id, fact_id=fact_ids[fact_reference],
+            ), source_record)
+
+
+def build_reviews(unit, request):
     import article_review_facts as rules
-    day=day_value(request['day']);path=rules.DIRECTORY+'/'+day+'.jsonl'
-    reader=project_readers.Reader(unit.c);_,articles,captures=reader.load_day(day,[])
-    policy=rules.policy_hash(unit.root)
-    if not policy:raise ValueError('Review rules missing')
+    from ai_input_minimization import expand_review, record_legacy_hold_assessments
+
+    day = day_value(request['day'])
+    source_path = rules.DIRECTORY + '/' + day + '.jsonl'
+    reader = project_readers.Reader(unit.c)
+    _, articles, captures = reader.load_day(day, [])
+    policy_hash = rules.policy_hash(unit.root)
+    if not policy_hash:
+        raise ValueError('Review rules missing')
+
     for authored in request['records']:
-        from ai_input_minimization import expand_review
-        authored=expand_review(unit.c,day,authored)
-        raw=dict(authored,sourceDate=day,reviewedAt=authored.get('reviewedAt') or db.now())
-        matches=[a for a in articles if a['article']['url']==raw['url'] and rules.input_hash(a['article'],captures.get(raw['url']))==raw['inputHash']]
-        if len(matches)!=1:raise ValueError('Review input is not unique')
-        a=matches[0];cap=captures.get(raw['url']);rules.validate_record(raw,a['article'],cap,policy)
-        aid=a['_project']['articleId'];stamp=record_values.utc_timestamp(raw['reviewedAt'])
-        pos=merged_position(file_rows(unit.c,path,'review_records'),'url',raw['url']);s=source(path,pos,raw)
-        sid=record_values.record_id('source',path,pos,s['input_hash']);rid=record_values.record_id('review',sid)
-        unit.save('review',dict(id=rid,article_id=aid,content_version_id=body_version(unit,aid,cap,s,stamp) if cap else None,input_hash=raw['inputHash'],rule_hash=raw['policyHash'],basis=raw['basis'],reviewer=raw['reviewedBy'],reviewed_at=stamp,status='current',raw_json=db.canonical(raw)),s)
-        for task,state in raw['taskStatus'].items():unit.save('taskStatus',dict(review_id=rid,task=task,status=state),s)
-        unit.save('reviewInput',dict(review_id=rid,input_hash=raw['inputHash'],article_json=db.canonical(a['article']),capture_json=db.canonical({k:v for k,v in cap.items() if k!='_project'} if cap else None)),s)
-        evidence={};facts={}
-        for e in raw['evidence']:
-            eid=record_values.record_id('evidence',rid,e['id']);evidence[e['id']]=eid
-            unit.save('evidence',dict(id=eid,review_id=rid,input_field=e['field'],start_offset=e['start'],end_offset=e['end'],quote=e['quote']),s)
-        for f in raw['facts']:
-            fid=record_values.record_id('fact',rid,f['id']);facts[f['id']]=fid
-            unit.save('fact',dict(id=fid,review_id=rid,fact=f['text'],raw_json=db.canonical(f)),s)
-            for ref in set(f['evidenceIds']):unit.save('factEvidence',dict(fact_id=fid,evidence_id=evidence[ref]),s)
-        for i,e in enumerate(raw['entities']):
-            eid=record_values.record_id('entity',rid,i)
-            unit.save('entity',dict(id=eid,review_id=rid,name=e['name'],kind=e['kind'],raw_json=db.canonical(e)),s)
-            for ref in set(e['factIds']):unit.save('entityFact',dict(entity_id=eid,fact_id=facts[ref]),s)
-        provenance(unit,s,'review_records',rid)
-        from ai_input_minimization import record_legacy_hold_assessments
-        record_legacy_hold_assessments(unit,aid)
-    emit_jsonl(unit,path,'review_records')
+        expanded = expand_review(unit.c, day, authored)
+        review = dict(expanded, sourceDate=day, reviewedAt=expanded.get('reviewedAt') or db.now())
+        matching_articles = [
+            occurrence for occurrence in articles
+            if occurrence['article']['url'] == review['url']
+            and rules.input_hash(occurrence['article'], captures.get(review['url'])) == review['inputHash']
+        ]
+        if len(matching_articles) != 1:
+            raise ValueError('Review input is not unique')
+        occurrence = matching_articles[0]
+        capture = captures.get(review['url'])
+        rules.validate_record(review, occurrence['article'], capture, policy_hash)
+
+        article_id = occurrence['_project']['articleId']
+        reviewed_at = record_values.utc_timestamp(review['reviewedAt'])
+        position = merged_position(file_rows(unit.c, source_path, 'review_records'), 'url', review['url'])
+        source_record = source(source_path, position, review)
+        source_id = record_values.record_id('source', source_path, position, source_record['input_hash'])
+        review_id = record_values.record_id('review', source_id)
+        content_version_id = (
+            body_version(unit, article_id, capture, source_record, reviewed_at) if capture else None
+        )
+        unit.save('review', dict(
+            id=review_id, article_id=article_id, content_version_id=content_version_id,
+            input_hash=review['inputHash'], rule_hash=review['policyHash'],
+            basis=review['basis'], reviewer=review['reviewedBy'], reviewed_at=reviewed_at,
+            status='current', raw_json=db.canonical(review),
+        ), source_record)
+        for task, state in review['taskStatus'].items():
+            unit.save('taskStatus', dict(review_id=review_id, task=task, status=state), source_record)
+        capture_snapshot = (
+            {field: value for field, value in capture.items() if field != '_project'} if capture else None
+        )
+        unit.save('reviewInput', dict(
+            review_id=review_id, input_hash=review['inputHash'],
+            article_json=db.canonical(occurrence['article']),
+            capture_json=db.canonical(capture_snapshot),
+        ), source_record)
+        _save_review_evidence_and_facts(unit, review_id, review, source_record)
+        provenance(unit, source_record, 'review_records', review_id)
+        record_legacy_hold_assessments(unit, article_id)
+    emit_jsonl(unit, source_path, 'review_records')
 
 
 BUILDERS={'collection':build_collection,'capture':build_capture,'reviews':build_reviews}

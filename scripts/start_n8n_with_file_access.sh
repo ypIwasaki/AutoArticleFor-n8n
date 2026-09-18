@@ -3,6 +3,11 @@ set -euo pipefail
 
 PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
+if [[ -e "$PROJECT_ROOT/.migration/RESTORE_INCOMPLETE" ]]; then
+  echo "PC migration restore is incomplete; see docs/pc-migration.md." >&2
+  exit 1
+fi
+
 # The workflow reads config/keywords.json and writes archives under content/.
 export N8N_RESTRICT_FILE_ACCESS_TO="${N8N_RESTRICT_FILE_ACCESS_TO:-$PROJECT_ROOT}"
 export PROJECT_ROOT="$PROJECT_ROOT"
@@ -22,7 +27,10 @@ echo "N8N_RESTRICT_FILE_ACCESS_TO=$N8N_RESTRICT_FILE_ACCESS_TO"
 echo "PROJECT_ROOT=$PROJECT_ROOT"
 
 cd "$HOME"
-N8N_BIN="${N8N_BIN:-$HOME/.local/bin/n8n}"
+N8N_BIN="${N8N_BIN:-$PROJECT_ROOT/runtime/node_modules/.bin/n8n}"
+if [[ ! -x "$N8N_BIN" ]]; then
+  N8N_BIN="$HOME/.local/bin/n8n"
+fi
 if [[ ! -x "$N8N_BIN" ]]; then
   N8N_BIN="$(command -v n8n)"
 fi

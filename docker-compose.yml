@@ -1,6 +1,8 @@
+# Legacy n8n-only runtime. The current DB service is WSL-loopback-only;
+# use docs/pc-migration.md for the supported full application setup.
 services:
   n8n:
-    image: docker.n8n.io/n8nio/n8n
+    image: docker.n8n.io/n8nio/n8n:2.8.4
     restart: unless-stopped
     ports:
       - "${N8N_PORT:-5678}:5678"

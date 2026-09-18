@@ -241,3 +241,7 @@ content/article-review-backfill*.log
 data/autoarticle.sqlite-journal
 # Runtime lock for serialized DB-first compatibility delivery
 data/autoarticle.write.lock
+
+# Reproducible local runtime and private PC transfer bundles
+runtime/node_modules/
+.migration/

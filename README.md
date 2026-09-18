@@ -3,6 +3,23 @@
 This project collects keyword-based news with n8n, captures article bodies,
 supports evidence-based AI review, and provides review dashboards and weekly reports.
 
+## 別PCへの移行・実行環境の再現
+
+Windows＋WSLでの現行構成は [PC移行手順](docs/pc-migration.md) にまとめています。
+コード・依存関係はGitで共有し、業務DB・n8n内部状態・認証情報は初回だけ別途移送します。
+
+```bash
+# 指定バージョンのNode.js/npmを用意した新PCで
+bash scripts/setup_environment.sh
+# 移行データ復元後の確認
+python3 scripts/pc_migration.py doctor
+# 通常の起動（DBサービスも準備）
+python3 scripts/autoarticle_ops.py start n8n
+```
+
+移行データの作成・検証・復元は `scripts/pc_migration.py` を使用します。
+停止条件、必要なデータ、新PCでの確認項目は手順書を参照してください。
+
 ## Current architecture
 
 - n8n orchestrates collection and reviewed proposal application.
@@ -58,28 +75,23 @@ transformation, and persistence.
 - `content/`
   - Daily article archives, compact AI task instructions, and reviewed outputs.
 
-## Quick start with npm
+## Start the current WSL/npm deployment
 
-With n8n installed, start it with project file access:
-
-```bash
-bash scripts/start_n8n_with_file_access.sh
-```
-
-Open `http://localhost:5678`, then import:
-
-```text
-n8n/workflows/daily-keyword-news-summary.workflow.json
-```
-
-## Quick start with Docker
+Follow [PC migration and runtime setup](docs/pc-migration.md) on a new PC.
+After the project DB, n8n state, and `.env` have been restored:
 
 ```bash
-cp .env.example .env
-docker compose up -d
+python3 scripts/autoarticle_ops.py start n8n
+python3 scripts/autoarticle_ops.py status
 ```
 
-Open `http://localhost:5678`.
+Open `http://localhost:5678`. Existing restored workflows keep their IDs;
+there is no need to import them again.
+
+`docker-compose.yml` is a legacy n8n-only runtime. It does not configure the
+current loopback DB service and is not a complete current-project setup.
+Older workflow-import and Data Table descriptions below document compatibility
+paths; use the migration guide for current deployment.
 
 ## Workflow test payload
 
@@ -145,13 +157,13 @@ does not call AI APIs automatically.
 
 ## Start n8n with project file access
 
-To let n8n write generated Markdown into this project, start n8n with:
+For the current DB-backed deployment, start the DB service and n8n together with:
 
 ```bash
-./scripts/start_n8n_with_file_access.sh
+python3 scripts/autoarticle_ops.py start n8n
 ```
 
-If n8n is already running, stop it first and start it again with this script.
+When changing startup configuration, restart n8n during a planned pause in operations.
 The script detects the checkout root as `PROJECT_ROOT`; Docker Compose uses
 the container mount `/project`. Workflow configuration reads and archive
 writes use this root, so cloning to another directory needs no path edits.

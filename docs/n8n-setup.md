@@ -1,5 +1,8 @@
 # n8n Setup
 
+> 現在のWindows＋WSL環境の導入・別PCへの移行は [PC移行手順](pc-migration.md) を使用してください。
+> 以下の直接起動・Docker・初回インポートは旧構成の参考情報です。現行の専用DBサービス・業務DB・認証状態は別途必要です。
+
 ## Shared review facts
 
 The three review tasks now follow

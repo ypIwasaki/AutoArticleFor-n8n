@@ -269,6 +269,8 @@ class Operations:
         return {"step": "apply-" + kind, "status": "completed", "counts": counts, "verification": "db_content_match"}
 
     def start(self, service):
+        if (self.root / ".migration/RESTORE_INCOMPLETE").exists():
+            raise Blocked("pc_migration_restore_incomplete")
         self.active_step = service
         if service == "n8n" and self.startup_env.get("AUTOARTICLE_DB_SERVICE_TOKEN"):
             from autoarticle_db_service import ensure_running

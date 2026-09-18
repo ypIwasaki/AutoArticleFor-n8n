@@ -239,24 +239,57 @@ def completed(c, aid, task):
     return _completed_proposal(c, aid, task)
 
 
-def task_facts(record,task):
-    explicit=record.get('taskFacts',{}).get(task)
-    if explicit is None:
-        if task=='talent-index':
-            explicit={fid for e in record['entities'] for fid in e['factIds']}
-            # Without entities, retain facts so a negative finding has evidence.
-            if not explicit:explicit={f['id'] for f in record['facts']}
-        else:explicit={f['id'] for f in record['facts']}
-    return [f for f in record['facts'] if f['id'] in explicit]
-def packet(record,task):
-    facts=task_facts(record,task)
-    ids={f['id'] for f in facts}
-    evidence={eid for f in facts for eid in f['evidenceIds']}
-    result=dict(facts=[{k:v for k,v in f.items() if k!='topics'} for f in facts],
-                evidence=[e for e in record['evidence'] if e['id'] in evidence])
-    entities=[e for e in record['entities'] if ids.intersection(e['factIds'])]
-    if entities:result['entities']=[dict(e,factIds=[f for f in e['factIds'] if f in ids]) for e in entities]
+def task_facts(record, task):
+    """Select task facts in source order, honoring an explicitly empty selection."""
+    selected_fact_ids = record.get('taskFacts', {}).get(task)
+    if selected_fact_ids is None:
+        if task == 'talent-index':
+            selected_fact_ids = {
+                fact_id
+                for entity in record['entities']
+                for fact_id in entity['factIds']
+            }
+            # A negative finding still needs evidence when no entity cites a fact.
+            if not selected_fact_ids:
+                selected_fact_ids = {fact['id'] for fact in record['facts']}
+        else:
+            selected_fact_ids = {fact['id'] for fact in record['facts']}
+    return [fact for fact in record['facts'] if fact['id'] in selected_fact_ids]
+
+
+def packet(record, task):
+    """Include the selected facts and only their linked evidence and entities."""
+    selected_facts = task_facts(record, task)
+    selected_fact_ids = {fact['id'] for fact in selected_facts}
+    selected_evidence_ids = {
+        evidence_id
+        for fact in selected_facts
+        for evidence_id in fact['evidenceIds']
+    }
+    result = dict(
+        facts=[
+            {field: value for field, value in fact.items() if field != 'topics'}
+            for fact in selected_facts
+        ],
+        evidence=[
+            evidence for evidence in record['evidence']
+            if evidence['id'] in selected_evidence_ids
+        ],
+    )
+
+    selected_entities = []
+    for entity in record['entities']:
+        if not selected_fact_ids.intersection(entity['factIds']):
+            continue
+        linked_fact_ids = [
+            fact_id for fact_id in entity['factIds'] if fact_id in selected_fact_ids
+        ]
+        selected_entities.append(dict(entity, factIds=linked_fact_ids))
+    if selected_entities:
+        result['entities'] = selected_entities
     return result
+
+
 def material(record, task, topics):
     """Identify task facts by their text and quotes for the missing topics."""
     evidence_by_id = {item['id']: item for item in record['evidence']}

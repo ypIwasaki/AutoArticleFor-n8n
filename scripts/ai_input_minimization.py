@@ -727,40 +727,83 @@ def expand_artifact(unit, request):
     return expanded
 
 
-def record_artifact(unit,request):
-    if request['kind']=='summary':
-        for item in request.get('summaries',[]):completion(unit,item['ref'],request['day'],'article-summary',dict(kind='summary'))
-    if request['kind']=='proposal' and request['directory'] in ('talent-index-proposals','article-classification-proposals'):
-        task='talent-index' if request['directory']=='talent-index-proposals' else 'article-classification'
-        document=request['document']
-        for item in document.get('reviewedArticles',[]):
-            if item.get('result') not in ('confirmed','none'):raise ValueError('Explicit confirmed/none result required')
-            mapping,article,_,_=resolve(unit.c,item['ref'],request['day'],task)
-            # Bind each receipt to an actual per-article proposal, including explicit negative findings.
-            if item['result']=='confirmed':
-                rows=document.get('articles' if task=='talent-index' else 'classifications',[])
-                if not any(r.get('url',r.get('article_url'))==article['url'] for r in rows):raise ValueError('Reviewed article missing from proposal')
-            completion(unit,item['ref'],request['day'],task,dict(kind='proposal',directory=request['directory'],
-                       documentHash=shared.digest(document),result=item['result']))
+def _record_proposal_completions(unit, request):
+    """Bind each explicit review result to its article before recording completion."""
+    task = 'talent-index' if request['directory'] == 'talent-index-proposals' else 'article-classification'
+    document = request['document']
+    for reviewed_article in document.get('reviewedArticles', []):
+        result = reviewed_article.get('result')
+        if result not in ('confirmed', 'none'):
+            raise ValueError('Explicit confirmed/none result required')
+        reference = reviewed_article['ref']
+        _, article, _, _ = resolve(unit.c, reference, request['day'], task)
+
+        # A confirmed result needs a matching proposal; an explicit negative does not.
+        if result == 'confirmed':
+            collection = 'articles' if task == 'talent-index' else 'classifications'
+            proposed_articles = document.get(collection, [])
+            matches_source = any(
+                proposal.get('url', proposal.get('article_url')) == article['url']
+                for proposal in proposed_articles
+            )
+            if not matches_source:
+                raise ValueError('Reviewed article missing from proposal')
+
+        artifact = dict(
+            kind='proposal',
+            directory=request['directory'],
+            documentHash=shared.digest(document),
+            result=result,
+        )
+        completion(unit, reference, request['day'], task, artifact)
+
+
+def record_artifact(unit, request):
+    """Record only the per-article results explicitly supplied by the author."""
+    if request['kind'] == 'summary':
+        for summary in request.get('summaries', []):
+            completion(unit, summary['ref'], request['day'], 'article-summary', dict(kind='summary'))
+    if request['kind'] == 'proposal' and request['directory'] in (
+        'talent-index-proposals', 'article-classification-proposals',
+    ):
+        _record_proposal_completions(unit, request)
+
+
 def saved_for_day(root,day,task):
     if project.source(root)!='project-db':return None
     with project.reader(root) as r:
         _, rows = r.load_day_articles(day)
         return {row['article']['url']:completed(r.c,row['_project']['articleId'],task) for row in rows}
 
-def validate_proposal(unit,request):
-    if request['directory'] not in ('talent-index-proposals','article-classification-proposals'):return
+def validate_proposal(unit, request):
+    """Check the document contract before validating its proposed business records."""
+    if request['directory'] not in ('talent-index-proposals', 'article-classification-proposals'):
+        return
     import autoarticle_artifacts as artifacts
     from autoarticle_progress import Progress
-    value=request['document'];task='talent-index' if request['directory']=='talent-index-proposals' else 'article-classification'
-    p=Progress(unit.root,request['day'],'http://127.0.0.1:5678')
-    fields=('articles','talents','articleTalents') if task=='talent-index' else ('classifications',)
-    if value.get('proposalVersion')!=1 or value.get('proposalDate')!=request['day'] or any(not isinstance(value.get(f),list) for f in fields):
+
+    document = request['document']
+    is_talent_proposal = request['directory'] == 'talent-index-proposals'
+    progress = Progress(unit.root, request['day'], 'http://127.0.0.1:5678')
+    required_collections = (
+        ('articles', 'talents', 'articleTalents') if is_talent_proposal else ('classifications',)
+    )
+    if (
+        document.get('proposalVersion') != 1
+        or document.get('proposalDate') != request['day']
+        or any(not isinstance(document.get(field), list) for field in required_collections)
+    ):
         raise ValueError('Invalid proposal contract/date')
-    check=artifacts.Check()
-    artifacts.proposals(p,'talent-review' if task=='talent-index' else 'classification-review',check,
-                       lambda: project.Reader(unit.c).dashboard(),staged=value)
-    if check.count:raise ValueError('Invalid proposal: '+str(check.errors))
+
+    validation = artifacts.Check()
+    review_step = 'talent-review' if is_talent_proposal else 'classification-review'
+    artifacts.proposals(
+        progress, review_step, validation,
+        lambda: project.Reader(unit.c).dashboard(), staged=document,
+    )
+    if validation.count:
+        raise ValueError('Invalid proposal: ' + str(validation.errors))
+
 
 def selection_counts(root,day,task):
     if project.source(root)!='project-db':return None

@@ -13,27 +13,50 @@ import project_readers as project
 TASKS=shared.TASKS
 STEP_TASK={'summary':'article-summary','talent-review':'talent-index','classification-review':'article-classification'}
 UNAVAILABLE={'unavailable','metadata_only'}
-def history(c,kind,article_id):
-    return [json.loads(r[0]) for r in c.execute(
+def history(c, kind, article_id):
+    """Read an article's immutable history in insertion order."""
+    rows = c.execute(
         "SELECT raw_json FROM legacy_history_records WHERE kind=? AND article_id=? ORDER BY rowid",
-        (kind,article_id))]
-def save_history(unit,kind,value,article_id=None,key=None):
+        (kind, article_id),
+    )
+    return [json.loads(row[0]) for row in rows]
+
+
+def save_history(unit, kind, value, article_id=None, key=None):
+    """Save provenance and history using the same deterministic source identity."""
     import project_business_writes as business
-    key=key or shared.digest(value)
-    s=business.source('ai-input/'+kind,key,value)
-    sid=record_values.record_id('source',s['path'],s['position'],s['input_hash'])
-    hid=record_values.record_id(kind,key)
-    business.provenance(unit,s,'legacy_history_records',hid)
-    unit.save('history',dict(id=hid,source_record_id=sid,kind=kind,article_id=article_id,
-                            talent_id=None,raw_json=db.canonical(value)),s)
+
+    history_key = key or shared.digest(value)
+    source_record = business.source('ai-input/' + kind, history_key, value)
+    source_id = record_values.record_id(
+        'source', source_record['path'], source_record['position'], source_record['input_hash'],
+    )
+    history_id = record_values.record_id(kind, history_key)
+    business.provenance(unit, source_record, 'legacy_history_records', history_id)
+    history_record = dict(
+        id=history_id,
+        source_record_id=source_id,
+        kind=kind,
+        article_id=article_id,
+        talent_id=None,
+        raw_json=db.canonical(value),
+    )
+    unit.save('history', history_record, source_record)
+
+
 def reference_id(mapping):
-    return 'a'+shared.digest(mapping)[:16]
-def build_references(unit,request):
+    return 'a' + shared.digest(mapping)[:16]
+
+
+def build_references(unit, request):
+    """Persist source references before validating any accompanying hold assessments."""
     for mapping in request['references']:
-        ref=reference_id(mapping)
-        save_history(unit,'ai-reference',mapping,mapping['articleId'],ref)
-    for value in request.get('holdAssessments', []):
-        save_hold_assessment(unit,value)
+        reference = reference_id(mapping)
+        save_history(unit, 'ai-reference', mapping, mapping['articleId'], reference)
+    for assessment in request.get('holdAssessments', []):
+        save_hold_assessment(unit, assessment)
+
+
 def _resolve_reference_capture(connection, mapping):
     """Load the exact fetch attempt and body version recorded in a reference."""
     if not mapping['fetchAttemptId']:
@@ -850,26 +873,41 @@ def selection_counts(root,day,task):
         return dict(Counter(states))
 
 
-def save_hold_assessment(unit,value):
+def save_hold_assessment(unit, value):
     """Recheck source binding inside the existing transaction, then append only."""
     import legacy_hold_relevance as legacy_hold
-    aid,task=value['articleId'],value['task']
-    if completed(unit.c,aid,task):return
-    held=unit.c.execute('SELECT * FROM review_records WHERE id=? AND article_id=?',
-                        (value['heldReviewId'],aid)).fetchone()
-    current=unit.c.execute('SELECT * FROM review_records WHERE id=? AND article_id=?',
-                          (value['currentReviewId'],aid)).fetchone()
-    if not held or not current:raise ValueError('Hold assessment source missing')
-    if json.loads(held['raw_json'])['taskStatus'][task]!='held':
-        raise ValueError('Hold assessment needs a historical hold')
-    _,verified=legacy_hold.assess(unit.c,aid,task,held,current)
-    if verified!=value:raise ValueError('Hold assessment differs from grounded inputs')
-    save_history(unit,'ai-legacy-hold-assessment',value,aid)
 
-def record_legacy_hold_assessments(unit,aid):
-    """Only an article receiving new reviewed material; no bulk backfill."""
+    article_id = value['articleId']
+    task = value['task']
+    if completed(unit.c, article_id, task):
+        return
+
+    held_review = unit.c.execute(
+        'SELECT * FROM review_records WHERE id=? AND article_id=?',
+        (value['heldReviewId'], article_id),
+    ).fetchone()
+    current_review = unit.c.execute(
+        'SELECT * FROM review_records WHERE id=? AND article_id=?',
+        (value['currentReviewId'], article_id),
+    ).fetchone()
+    if not held_review or not current_review:
+        raise ValueError('Hold assessment source missing')
+    held_record = json.loads(held_review['raw_json'])
+    if held_record['taskStatus'][task] != 'held':
+        raise ValueError('Hold assessment needs a historical hold')
+
+    _, verified_assessment = legacy_hold.assess(unit.c, article_id, task, held_review, current_review)
+    if verified_assessment != value:
+        raise ValueError('Hold assessment differs from grounded inputs')
+    save_history(unit, 'ai-legacy-hold-assessment', value, article_id)
+
+
+def record_legacy_hold_assessments(unit, aid):
+    """Assess only this article's unfinished tasks after new reviewed material."""
     for task in TASKS:
-        if completed(unit.c,aid,task):continue
-        audit=[]
-        hold_state(unit.c,aid,task,None,audit)
-        for value in audit:save_hold_assessment(unit,value)
+        if completed(unit.c, aid, task):
+            continue
+        assessments = []
+        hold_state(unit.c, aid, task, None, assessments)
+        for assessment in assessments:
+            save_hold_assessment(unit, assessment)
